@@ -1,0 +1,14 @@
+name: 'Lightnest components: Block component'
+description: 'Allows to add components in blocks.'
+type: module
+core_version_requirement: ^8.7.7 || ^9
+version: 9.x-1.0.0
+package: Lightnest Components
+dependencies:
+  - block_content
+  - entity_reference_revisions
+  - field
+  - paragraphs
+  - paragraphs_ee
+
+

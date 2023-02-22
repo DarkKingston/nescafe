@@ -1,0 +1,38 @@
+type: ln_c_cardgrid
+component_description: "CARD GRID COMPONENT - VIEW MODE: EXTENDED CARDS"
+field_c_cardgrid_view_mode: extended_card
+field_c_advanced_title:
+  value: CARD Grid - Extended cards
+  html_tag: h1
+field_c_subitems:
+  paragraph:
+    item_0:
+      type: ln_c_grid_card_item
+      field_c_advanced_title:
+        value: Steamed bar dripper
+        html_tag: h2
+      field_c_advanced_subtitle:
+        value: Iced as breve, spoon cortado java redeye mocha foam
+        html_tag: h3
+      field_c_text: Steamed bar dripper galão aftertaste shop java. Iced as breve, spoon cortado java redeye mocha foam qui cappuccino latte. Plunger pot viennese lungo milk, aftertaste percolator caramelization medium aged frappuccino.
+      field_c_image:
+        image_name: nan.jpg
+        image_title: NAN
+      field_c_link:
+        uri: internal:/ # Drupal save "internal:/" when "<front>" is used
+        title: More
+    item_1:
+      type: ln_c_grid_card_item
+      field_c_advanced_title:
+        value: Americano decaffeinated coffee
+        html_tag: h2
+      field_c_advanced_subtitle:
+        value: Redeye as froth, cup filter cup percolator
+        html_tag: h3
+      field_c_text: Americano decaffeinated coffee caffeine extra turkish, to go turkish single shot est crema milk. Redeye as froth, cup filter cup percolator con panna irish saucer. Shop pumpkin spice rich medium eu instant lungo instant viennese.
+      field_c_image:
+        image_name: purina-one-cats.jpg
+        image_title: Purina One
+      field_c_link:
+        uri: internal:/ # Drupal save "internal:/" when "<front>" is used
+        title: More

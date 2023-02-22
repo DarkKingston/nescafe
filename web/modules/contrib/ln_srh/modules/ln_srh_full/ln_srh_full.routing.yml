@@ -1,0 +1,29 @@
+ln_srh_full.sync_node_complement:
+  path: '/node/{node}/srh-sync-complement'
+  defaults:
+    _form: '\Drupal\ln_srh_full\Form\SRHSyncComplementConfirm'
+    _title: 'Confirm Complement Syncronization'
+  options:
+    _node_operation_route: TRUE
+    parameters:
+      node:
+        type: entity:node
+  requirements:
+    _permission: 'access administration pages'
+    _entity_bundles: node:srh_complement
+
+ln_srh_full.sync_complements:
+  path: '/admin/config/lightnest/srh/sync-complements'
+  defaults:
+    _form: '\Drupal\ln_srh_full\Form\SRHSyncComplements'
+    _title: 'SRH Sync Complements'
+  requirements:
+    _permission: 'access administration pages'
+
+ln_srh_full.complement_mapping:
+  path: '/admin/config/lightnest/srh/complement-mapping'
+  defaults:
+    _form: '\Drupal\ln_srh_full\Form\SRHComplementFieldMapping'
+    _title: 'SRH Complement Field Mapping'
+  requirements:
+    _permission: 'access administration pages'

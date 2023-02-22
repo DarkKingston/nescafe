@@ -1,0 +1,6 @@
+langcode: en
+status: true
+dependencies: {  }
+id: register
+label: 'Register page'
+tags: {  }

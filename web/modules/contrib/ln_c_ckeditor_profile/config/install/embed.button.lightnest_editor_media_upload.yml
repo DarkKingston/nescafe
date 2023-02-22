@@ -1,0 +1,26 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.embedded
+    - entity_browser.browser.ckeditor_media_browser
+  module:
+    - entity_embed
+    - image
+    - media
+label: 'Lightnest Editor Media upload'
+id: lightnest_editor_media_upload
+type_id: entity
+type_settings:
+  entity_type: media
+  bundles: {  }
+  display_plugins:
+    - 'view_mode:media.embedded'
+    - media_image
+  entity_browser: ckeditor_media_browser
+  entity_browser_settings:
+    display_review: false
+icon:
+  data: iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAA7EAAAOxAGVKw4bAAADp0lEQVRYhcVXvUs7SxQ9s7tJNiGYEDeB2KgINgo2P0EbFSu1stfKXkgU/whBsFXQzlo7sZNUISIBQfCj0iI2UQuDuiaze17h233ZfK6i73fhwO7embln78fMHWHbNvEXRfmbxgFAE0L4Hkx+OsuZU//uPNfrfRGon+gsatu27wU6iaIobcm4pG3bpm3bNE2TmUyGhmEwEAj8CAzDYDabpWmadOw0AiRp2zYzmQwBUFEUBoPBH4GiKATAtbU1thOQpGVZjMfjFELw7OyMUsofQT6fp6IoTCaTlFK2JCD+dQU0TYOmafj4+GgZt8ZEa5TGBAUAy7IQjUYhhMDj4yN0XYeieAvPdxl2Mz4zM4PZ2dmW40zTRCqVQjqdxvr6OqrVqqvT/BLoJt0qhySenp6wvb0NIQS2trZcBaWUBEBN02hZlidGu7u73N/fbxk/J5Mbnx2p1WoMhULUdZ2vr6/M5/MUQrC3t9e1A9u2mwg4C52cnDAQCFDTNB4eHnrKp95oKzQSqFartCyLmqYRAKWUn2XYjsDFxQVjsRgBEADD4TBPT0/bGtzZ2eHe3p7nmy8CrUJQKpU4MDBAAFxeXubq6ioBMBaLsVgsNoXC8VQgEODR0ZFvD7j7QD2Bl5cXjo+PEwCnpqb4/v5OKSWXlpYIgOl0mre3t67xVp7K5XL+CdSHQFVVLi4uEgCHh4dZLpddd5qmyfn5eQLg0NAQS6USHx4e2N/f3+SpeDzOYrH49RxwYBgGb25umuJcqVQ4MTFBABwbG+OfP38IgNPT03x7e/N4qq+vj9fX118noOs6c7lc22Qrl8scHR11x7fy1NzcHAFwcHCQqqr6T0IAPDg4aFnz9XJ/f++6fmFhgdVq1aOvVCqcnJz0/JSvHKgvw264urpiKpUiAK6srDTNK5fLHBkZ6Uig4z7gB4VCgT09PQTAjY2NJv3d3R01TeseAsuymEgkKIRgoVBgtVr1jePjYwaDQQLg5uamR+ccx4ZhUErZfh8gyWw26zYk4XD4SxBCEACFEJ7vjQ1J2xyob8mSySQjkYibQJFI5NtIJpNuS9aKgG3bnw1J47FqmiYMwwBJPD8/Q9O+d2qrquppQEgiFApBSgkpJRRFaW5IFEWBruuIRqOo1Wq4vLyEqqrfgvNDDs7Pz2FZFhKJxH+dU7tar8+Jn25Ss9msa8fNAdJ7vv92m+7Ya8qBRuEvX1QE2aHb/B9EATp3vL8ljk3P3bATkW73gu/oSeIfFKbUrH4LLWMAAAAASUVORK5CYII=
+  uri: 'public://embed_buttons/images_0.png'
+icon_uuid: null

@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - ln_srh_basic
+name: 'SRH Difficulty'
+vid: srh_difficulty
+description: ''
+weight: 0

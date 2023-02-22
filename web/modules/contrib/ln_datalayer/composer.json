@@ -1,0 +1,15 @@
+{
+    "name": "lightnest/ln_datalayer",
+    "description": "Lightnest Datalayer Integration for components.",
+    "keywords": [
+        "datalayer",
+        "GTM",
+        "Drupal"
+    ],
+    "type": "drupal-module",
+    "license": "GPL-2.0+",
+    "require": {
+        "drupal/advanced_datalayer": "~1.0@dev",
+        "drupal/core": "^8 || ^9"
+    }
+}

@@ -1,0 +1,43 @@
+<?php
+
+/**
+ * @file
+ * Module file for the Lightnest SEO hreflang content module.
+ */
+
+use Drupal\migrate\Plugin\MigrationInterface;
+use Drupal\migrate\Plugin\MigrateSourceInterface;
+use Drupal\migrate\Row;
+
+
+/**
+ * Implements hook_migrate_MIGRATE_ID_prepare_row().
+ *
+ * @param \Drupal\migrate\Row                           $row
+ * @param \Drupal\migrate\Plugin\MigrateSourceInterface $source
+ * @param \Drupal\migrate\Plugin\MigrationInterface     $migration
+ *
+ * @throws \Exception
+ */
+function ln_seo_hreflang_content_migrate_ln_hreflang_import_prepare_row(Row $row, MigrateSourceInterface $source, MigrationInterface $migration) {
+
+  $linksSource = $row->getSourceProperty('Links');
+  $links = [];
+  if(!empty($linksSource)){
+    $items = explode(',', $linksSource);
+    if(!empty($items)){
+      foreach ($items as $link){
+        if(!empty($link)){
+          [$uri, $lang] = explode('|', $link);
+          if(isset($uri) && !empty($uri) && isset($lang) && !empty($lang)){
+            $links[] = [
+              'uri' => $uri,
+              'lang' => $lang
+            ];
+          }
+        }
+      }
+    }
+    $row->setSourceProperty('Links', $links);
+  }
+}

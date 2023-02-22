@@ -1,0 +1,26 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.search_index
+    - field.field.paragraph.srh_sport.field_c_title
+    - field.field.paragraph.srh_sport.field_srh_duration
+    - field.field.paragraph.srh_sport.field_srh_sport
+    - paragraphs.paragraphs_type.srh_sport
+third_party_settings: {  }
+id: paragraph.srh_sport.search_index
+targetEntityType: paragraph
+bundle: srh_sport
+mode: search_index
+content:
+  field_srh_sport:
+    weight: 0
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+hidden:
+  field_c_title: true
+  field_srh_duration: true

@@ -1,0 +1,12 @@
+{
+    "name": "lightnest/dsu_c_gallery",
+    "description": "DSU Gallery Slider for images and video.",
+    "type": "drupal-module",
+    "keywords": [
+        "content",
+        "slider",
+        "gallery",
+        "paragraphs",
+        "frontend"
+    ]
+}

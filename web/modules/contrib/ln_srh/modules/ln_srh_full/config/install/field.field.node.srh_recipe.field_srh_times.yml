@@ -1,0 +1,35 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_srh_times
+    - node.type.srh_recipe
+  module:
+    - ln_srh
+  enforced:
+    module:
+      - ln_srh_full
+id: node.srh_recipe.field_srh_times
+field_name: field_srh_times
+entity_type: node
+bundle: srh_recipe
+label: 'SRH Times'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    times:
+      total: '0'
+      serving: '0'
+      preparation: '0'
+      cooking: '0'
+      waiting: '0'
+    total: '0'
+    serving: '0'
+    preparation: '0'
+    cooking: '0'
+    waiting: '0'
+default_value_callback: ''
+settings: {  }
+field_type: srh_times

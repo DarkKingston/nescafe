@@ -1,0 +1,5 @@
+ln_srh_menuiq.settings:
+  route_name: ln_srh_menuiq.settings
+  title: 'My Menu IQ Settings'
+  base_route: ln_srh.config
+

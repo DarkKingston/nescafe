@@ -1,0 +1,10 @@
+# Changelog
+
+## 1.1.1
+- Apply changes for refactor ln_datalayer module
+
+## 1.1.0
+- Update datalayer for GA4
+
+## 1.0.2
+- H's should be implemented inside the DIV instead of above.

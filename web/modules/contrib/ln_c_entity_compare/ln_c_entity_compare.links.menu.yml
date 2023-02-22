@@ -1,0 +1,6 @@
+ln_c_entity_compare.settings_form:
+  title: 'Lightnest Entity Compare'
+  description: 'Configure Lightnest Entity Compare Component.'
+  parent: dsu_c_core.settings
+  route_name: ln_c_entity_compare.settings_form
+  weight: 10

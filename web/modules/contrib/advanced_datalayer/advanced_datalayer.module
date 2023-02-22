@@ -1,0 +1,281 @@
+<?php
+
+/**
+ * @file
+ * Main functions and hooks of advanced_datalayer module.
+ */
+
+use Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException;
+use Drupal\Component\Plugin\Exception\PluginNotFoundException;
+use Drupal\Core\Entity\ContentEntityInterface;
+use Drupal\Component\Serialization\Json;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Url;
+
+/**
+ * Implements hook_help().
+ */
+function advanced_datalayer_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'entity.advanced_datalayer_defaults.collection':
+    case 'help.page.advanced_datalayer':
+      $output = '<p>' . t('Module allows a site to automatically provide GTM datalayer page variables for pages.');
+      $output .= '<p>' . t('The module uses <a href=":tokens">"tokens"</a> to automatically fill in values for different GTM datalayer page variables.', [
+        ':tokens' => Url::fromRoute('help.page', ['name' => 'token'])
+          ->toString(),
+      ]);
+      $output .= '<p>' . t('Some specific notes:') . '</p>';
+      $output .= '<ol>';
+      $output .= '<li>' . t('Customize the <a href=":defaults">global defaults</a>, fill in the specific values and tokens that every page should have. Global values available on global default form <b>ONLY</b> and can\'t be overwritten from in other places.', [
+        ':defaults' => Url::fromRoute('entity.advanced_datalayer_defaults.edit_form', ['advanced_datalayer_defaults' => 'global'])
+          ->toString(),
+      ]) . '</li>';
+      $output .= '<li>' . t('Override each of the <a href=":defaults">other NON Global defaults</a>, fill in specific values and tokens that each item should have by default. This allows e.g. for all nodes to have different values than taxonomy terms.', [
+        ':defaults' => Url::fromRoute('entity.advanced_datalayer_defaults.collection')
+          ->toString(),
+      ]) . '</li>';
+      $output .= '<li>' . t('<a href=":add">Add more default configurations</a> if necessary for different entity types and entity bundles, e.g. for different content types or different vocabularies.', [
+        ':add' => Url::fromRoute('entity.advanced_datalayer_defaults.add_form')
+          ->toString(),
+      ]) . '</li>';
+      $output .= '<li>' . t('To override the GTM page variables for individual entities, e.g. for individual nodes, add the "Datalayer" field via the field settings for that entity or bundle type.') . '</li>';
+      $output .= '<li>' . t('Every GTM tags has translation settings, so pay attention with tag schema and "translation" setting during development of your own tag plugin.') . '</li>';
+      $output .= '</ol>';
+      if (!empty($errors = advanced_datalayer_check_plugins_configuration())) {
+        foreach ($errors as $error) {
+          \Drupal::messenger()->addMessage($error, 'warning');
+        }
+      }
+      return $output;
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function advanced_datalayer_form_field_storage_config_edit_form_alter(&$form, FormStateInterface $form_state) {
+  if (isset($form['cardinality_container'])
+    && $form_state->getFormObject()->getEntity()->getType() === 'advanced_datalayer'
+  ) {
+    // Hide the cardinality field.
+    $form['cardinality_container']['#access'] = FALSE;
+    $form['cardinality_container']['#disabled'] = TRUE;
+  }
+}
+
+/**
+ * Implements hook_page_attachments().
+ *
+ * Load all datalayer tags for this page.
+ */
+function advanced_datalayer_page_attachments(array &$attachments) {
+
+  if (!advanced_datalayer_is_current_route_supported()) {
+    return NULL;
+  }
+
+  $datalayer_tags = advanced_datalayer_get_tags_from_route();
+
+  if (!$datalayer_tags) {
+    return NULL;
+  }
+
+  // Trigger hook_advanced_datalayer_attachments_alter().
+  // Allow modules to rendered advanced_datalayer prior to attaching.
+  \Drupal::service('module_handler')->alter('advanced_datalayer_attachments', $datalayer_tags);
+
+  // Some values can be setted only on JS side, like device type
+  // so leave possibility to add this information on client-side.
+  $attachments['#attached']['html_head'][] = [
+    [
+      '#type' => 'html_tag',
+      '#tag' => 'script',
+      '#value' => 'var dataLayer_tags = ' . Json::encode($datalayer_tags) . ';',
+      '#attributes' => ['type' => 'text/javascript'],
+      '#weight' => -100,
+    ],
+    'datalayers-tags',
+  ];
+
+  $attachments['#attached']['html_head'][] = [
+    [
+      '#type' => 'html_tag',
+      '#tag' => 'script',
+      '#value' => 'window.dataLayer = window.dataLayer || []; window.dataLayer.push(dataLayer_tags);',
+      '#attributes' => ['type' => 'text/javascript'],
+      '#weight' => -90,
+    ],
+    'datalayers-js',
+  ];
+}
+
+/**
+ * Load the datalayer tags by processing the route parameters.
+ *
+ * @param \Drupal\Core\Entity\EntityInterface|null $entity
+ *   Entity or null.
+ *
+ * @return mixed
+ *   Array of datalayer tags or NULL.
+ */
+function advanced_datalayer_get_tags_from_route(EntityInterface $entity = NULL) {
+
+  $datalayer_manager = \Drupal::service('advanced_datalayer.manager');
+
+  // First, get defaults.
+  $datalayer_tags = advanced_datalayer_get_default_tags($entity);
+  if (!$datalayer_tags) {
+    return NULL;
+  }
+
+  // Then, set tag overrides for this particular entity.
+  if (!$entity) {
+    $entity = advanced_datalayer_get_route_entity();
+  }
+
+  if ($entity instanceof ContentEntityInterface) {
+    foreach ($datalayer_manager->tagsFromEntity($entity) as $tag => $data) {
+      $datalayer_tags[$tag] = $data;
+    }
+  }
+
+  // Trigger hook_advanced_datalayer_alter().
+  // Allow modules to override tags or the entity used for token replacements.
+  $context = [
+    'entity' => &$entity,
+  ];
+  \Drupal::service('module_handler')->alter(
+    'advanced_datalayer',
+    $datalayer_tags,
+    $context
+  );
+
+  // If the entity was changed above,
+  // use that for generating the datalayer tags.
+  if (isset($context['entity'])) {
+    $entity = $context['entity'];
+  }
+
+  return $datalayer_manager->generateElements($datalayer_tags, $entity);
+}
+
+/**
+ * Returns the entity of the current route.
+ *
+ * @return \Drupal\Core\Entity\EntityInterface
+ *   The entity or NULL if this is not an entity route.
+ */
+function advanced_datalayer_get_route_entity() {
+  $route_match = \Drupal::routeMatch();
+  $route_name = $route_match->getRouteName();
+
+  // Look for a canonical entity view page, e.g. node/{nid}, user/{uid}, etc.
+  $matches = [];
+  preg_match('/entity\.(.*)\.(latest[_-]version|canonical)/', $route_name, $matches);
+  if (!empty($matches[1])) {
+    $entity_type = $matches[1];
+    return $route_match->getParameter($entity_type);
+  }
+
+  return NULL;
+}
+
+/**
+ * Identify whether the current route is supported by the module.
+ *
+ * @return bool
+ *   TRUE if the current route is supported.
+ */
+function advanced_datalayer_is_current_route_supported() {
+
+  // Ignore admin paths.
+  if (\Drupal::service('router.admin_context')->isAdminRoute()) {
+    return FALSE;
+  }
+
+  // Skip everything if the site is in maintenance mode.
+  if (\Drupal::service('maintenance_mode')->applies(\Drupal::routeMatch())) {
+    return FALSE;
+  }
+
+  return TRUE;
+}
+
+/**
+ * Returns default datalayer tags for the current route.
+ *
+ * @param \Drupal\Core\Entity\EntityInterface|null $entity
+ *   Entity or null.
+ *
+ * @return mixed
+ *   Array of tags or NULL;
+ */
+function advanced_datalayer_get_default_tags(EntityInterface $entity = NULL) {
+
+  try {
+    $datalayer_entity_manager = \Drupal::entityTypeManager()->getStorage('advanced_datalayer_defaults');
+  }
+  catch (InvalidPluginDefinitionException | PluginNotFoundException $e) {
+    return NULL;
+  }
+
+  $datalayer_manager = \Drupal::service('advanced_datalayer.manager');
+
+  // Search entity by route (exclude HP, as it has special datalayer).
+  if (!$entity && !\Drupal::service('path.matcher')->isFrontPage()) {
+    $entity = advanced_datalayer_get_route_entity();
+  }
+
+  // First we load global defaults.
+  $datalayer_tags = $datalayer_manager->getGlobalDatalayerTags();
+  if (!$datalayer_tags) {
+    return NULL;
+  }
+
+  // Check if this is a special page.
+  $special_datalayetags = $datalayer_manager->getSpecialDatalayerTags();
+  if (isset($special_datalayetags)) {
+    $datalayer_tags->overwriteTags($special_datalayetags->get('tags'));
+  }
+
+  if ($entity instanceof ContentEntityInterface) {
+    $entity_datalayetags = $datalayer_entity_manager->load($entity->getEntityTypeId());
+    if ($entity_datalayetags !== NULL && $entity_datalayetags->status()) {
+      // Merge with global defaults.
+      $datalayer_tags->overwriteTags($entity_datalayetags->get('tags'));
+    }
+
+    // Сheck if bundle overrides should be added.
+    $bundle_datalayetags = $datalayer_entity_manager->load($entity->getEntityTypeId() . '__' . $entity->bundle());
+    if ($bundle_datalayetags !== NULL && $bundle_datalayetags->status()) {
+      // Merge with existing defaults.
+      $datalayer_tags->overwriteTags($bundle_datalayetags->get('tags'));
+    }
+  }
+
+  return $datalayer_tags->get('tags');
+
+}
+
+/**
+ * Helper function to check translations settings for GTM tags.
+ */
+function advanced_datalayer_check_plugins_configuration() {
+  // Make sure the config translation module is enabled.
+  $languages = \Drupal::languageManager()->getLanguages();
+  $errors = [];
+  if (\Drupal::moduleHandler()->moduleExists('config_translation') && count($languages) > 1) {
+    $datalayer_manager = \Drupal::service('plugin.manager.advanced_datalayer.tag');
+    $mapper_manager = \Drupal::service('plugin.manager.config_translation.mapper');
+    foreach ($datalayer_manager->getDefinitions() as $plugin_id => $plugin) {
+      $is_schema_translatable = $mapper_manager->hasTranslatable('advanced_datalayer.advanced_datalayer_tag.' . $plugin_id);
+      if ($is_schema_translatable != !empty($plugin['translatable'])) {
+        $errors[$plugin_id] = t('Plugin "%plugin" has misconfiguration with translations settings in plugin scheme and plugin itself. Please check plugin config schema or "translatable" settings in plugin definition.', ['%plugin' => $plugin_id]);
+      }
+    }
+  }
+
+  return $errors;
+}

@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_srh_serving
+    - node.type.srh_recipe
+  module:
+    - ln_srh
+  enforced:
+    module:
+      - ln_srh_full
+id: node.srh_recipe.field_srh_serving
+field_name: field_srh_serving
+entity_type: node
+bundle: srh_recipe
+label: 'SRH Serving'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    serving:
+      number: '1'
+      display_name: ''
+    number: '1'
+    display_name: ''
+default_value_callback: ''
+settings: {  }
+field_type: srh_serving

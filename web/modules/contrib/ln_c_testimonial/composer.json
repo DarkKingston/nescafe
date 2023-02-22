@@ -1,0 +1,13 @@
+{
+    "name": "lightnest/ln_c_testimonial",
+    "description": "Lightnest Testimonial Component.",
+    "type": "drupal-module",
+    "keywords": [
+        "content",
+        "testimonial",
+        "frontend"
+    ],
+    "require": {
+        "drupal/core": "^8.7.7 || ^9"
+    }
+}

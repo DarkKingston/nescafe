@@ -1,0 +1,62 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.c_gallery.field_c_gallery_item
+    - field.field.paragraph.c_gallery.field_gallery_navigation
+    - paragraphs.paragraphs_type.c_gallery
+  module:
+    - paragraphs
+    - paragraphs_ee
+    - paragraphs_features
+    - paragraphs_previewer
+    - paragraphs_sets
+id: paragraph.c_gallery.default
+targetEntityType: paragraph
+bundle: c_gallery
+mode: default
+content:
+  field_c_gallery_item:
+    type: paragraphs_previewer
+    weight: 6
+    settings:
+      title: 'Gallery Item'
+      title_plural: 'Gallery Items'
+      edit_mode: closed
+      closed_mode: preview
+      autocollapse: none
+      closed_mode_threshold: '0'
+      add_mode: modal
+      form_display_mode: default
+      default_paragraph_type: c_gallery_item
+      features:
+        duplicate: duplicate
+        collapse_edit_all: collapse_edit_all
+        add_above: 0
+    third_party_settings:
+      paragraphs_features:
+        add_in_between: true
+        show_drag_and_drop: true
+        delete_confirmation: false
+        split_text: false
+      paragraphs_ee:
+        paragraphs_ee:
+          dialog_style: tiles
+          easy_access_count: 0
+          dialog_off_canvas: false
+      paragraphs_sets:
+        paragraphs_sets:
+          use_paragraphs_sets: false
+          sets_allowed: {  }
+          default_set: ''
+    region: content
+  field_gallery_navigation:
+    weight: 7
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

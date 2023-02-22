@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_ln_c_pr_rev_disp_comp_type
+    - paragraphs.paragraphs_type.ln_c_power_reviews
+  module:
+    - options
+id: paragraph.ln_c_power_reviews.field_ln_c_pr_rev_disp_comp_type
+field_name: field_ln_c_pr_rev_disp_comp_type
+entity_type: paragraph
+bundle: ln_c_power_reviews
+label: 'Review Display Components'
+description: 'The Review Display takes collected and modified user-generated content (UGC), aggregates it, and then displays the content on your product pages for consumers to read. Multiselect is available.'
+required: false
+translatable: false
+default_value:
+  -
+    value: pr_reviewdisplay
+default_value_callback: ''
+settings: {  }
+field_type: list_string

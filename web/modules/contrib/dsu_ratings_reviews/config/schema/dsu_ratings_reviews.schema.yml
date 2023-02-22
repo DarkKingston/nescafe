@@ -1,0 +1,22 @@
+dsu_ratings_reviews.settings:
+  type: config_entity
+  label: 'Email'
+  mapping:
+    mail_subject:
+      type: label
+      label: 'Subject'
+      translatable: true
+    mail_body:
+      type: text
+      label: 'Body'
+      translatable: true
+    rating_tos:
+      type: mapping
+      label: 'Terms of use'
+      mapping:
+        value:
+          type: text
+          label: 'Value'
+        format:
+          type: string
+          label: 'Text format'

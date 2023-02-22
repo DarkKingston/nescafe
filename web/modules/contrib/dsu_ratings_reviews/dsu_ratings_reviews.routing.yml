@@ -1,0 +1,92 @@
+dsu_ratings_reviews.admin.index:
+  path: '/admin/config/lightnest/dsu_ratings_reviews'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'Lightnest Ratings & Reviews'
+  requirements:
+    _permission: 'access ratings reviews dashboard'
+
+dsu_ratings_reviews.admin.config:
+  path: '/admin/config/lightnest/dsu_ratings_reviews/settings'
+  defaults:
+    _form: '\Drupal\dsu_ratings_reviews\Form\RatingsReviewsSettingsForm'
+    _title: 'Lightnest Rating & Reviews settings'
+  requirements:
+    _permission: 'administer site configuration'
+
+dsu_ratings_reviews.admin.dashboard:
+  path: '/admin/config/lightnest/dsu_ratings_reviews/dashboard'
+  defaults:
+    _controller: '\Drupal\dsu_ratings_reviews\Controller\RatingsReviewsDashboardController::main'
+    _title: 'Lightnest Ratings & Reviews Dashboard'
+  requirements:
+    _permission: 'access ratings reviews dashboard'
+
+dsu_ratings_reviews.admin.dashboard_type:
+  path: '/admin/config/lightnest/dsu_ratings_reviews/dashboard/bundle/{bundle}'
+  defaults:
+    _controller: '\Drupal\dsu_ratings_reviews\Controller\RatingsReviewsDashboardController::bundle'
+    _title: 'Lightnest Ratings & Reviews Dashboard'
+  requirements:
+    _permission: 'access ratings reviews dashboard'
+
+dsu_ratings_reviews.admin.dashboard_node:
+  path: '/admin/config/lightnest/dsu_ratings_reviews/dashboard/node/{node}'
+  defaults:
+    _controller: '\Drupal\dsu_ratings_reviews\Controller\RatingsReviewsDashboardController::node'
+    _title: 'Lightnest Ratings & Reviews Dashboard'
+  requirements:
+    _permission: 'access ratings reviews dashboard'
+
+dsu_ratings_reviews.tos:
+  path: '/ratings/tos'
+  defaults:
+    _controller: '\Drupal\dsu_ratings_reviews\Controller\RatingsReviewsTermsController::content'
+    _title: 'Terms & Conditions'
+  requirements:
+    _permission: 'access content'
+
+# Moderator only paths.
+dsu_ratings_reviews.moderator.index:
+  path: '/admin/config/lightnest/dsu_ratings_reviews/moderation'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'Lightnest Ratings & Reviews'
+  requirements:
+    _permission: 'access ratings reviews dashboard'
+    _role: 'ln_moderator'
+
+dsu_ratings_reviews.moderator.config:
+  path: '/admin/config/lightnest/dsu_ratings_reviews/moderation/settings'
+  defaults:
+    _form: '\Drupal\dsu_ratings_reviews\Form\RatingsReviewsSettingsForm'
+    _title: 'Lightnest Rating & Reviews settings'
+  requirements:
+    _role: 'ln_moderator'
+
+dsu_ratings_reviews.moderator.dashboard:
+  path: '/admin/config/lightnest/dsu_ratings_reviews/moderation/dashboard'
+  defaults:
+    _controller: '\Drupal\dsu_ratings_reviews\Controller\RatingsReviewsDashboardController::main'
+    _title: 'Lightnest Ratings & Reviews Dashboard'
+  requirements:
+    _permission: 'access ratings reviews dashboard'
+    _role: 'ln_moderator'
+
+dsu_ratings_reviews.moderator.dashboard_type:
+  path: '/admin/config/lightnest/dsu_ratings_reviews/moderation/dashboard/bundle/{bundle}'
+  defaults:
+    _controller: '\Drupal\dsu_ratings_reviews\Controller\RatingsReviewsDashboardController::bundle'
+    _title: 'Lightnest Ratings & Reviews Dashboard'
+  requirements:
+    _permission: 'access ratings reviews dashboard'
+    _role: 'ln_moderator'
+
+dsu_ratings_reviews.moderator.dashboard_node:
+  path: '/admin/config/lightnest/dsu_ratings_reviews/moderation/dashboard/node/{node}'
+  defaults:
+    _controller: '\Drupal\dsu_ratings_reviews\Controller\RatingsReviewsDashboardController::node'
+    _title: 'Lightnest Ratings & Reviews Dashboard'
+  requirements:
+    _permission: 'access ratings reviews dashboard'
+    _role: 'ln_moderator'

@@ -1,0 +1,73 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.quiz_summary
+    - field.field.paragraph.quiz.field_quiz_description
+    - field.field.paragraph.quiz.field_quiz_questions
+    - field.field.paragraph.quiz.field_quiz_summary
+    - field.field.paragraph.quiz.field_quiz_title
+    - paragraphs.paragraphs_type.quiz
+  module:
+    - ds
+    - text
+  enforced:
+    module:
+      - ln_quiz
+third_party_settings:
+  ds:
+    layout:
+      id: ds_1col
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        label: ''
+        wrappers:
+          ds_content: div
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+        classes:
+          layout_class: {  }
+    regions:
+      ds_content:
+        - field_quiz_title
+        - ln_quiz_results
+        - field_quiz_summary
+        - ln_quiz_reset
+    fields:
+      ln_quiz_reset:
+        plugin_id: ln_quiz_reset
+        weight: 3
+        label: hidden
+        formatter: default
+      ln_quiz_results:
+        plugin_id: ln_quiz_results
+        weight: 1
+        label: hidden
+        formatter: default
+id: paragraph.quiz.quiz_summary
+targetEntityType: paragraph
+bundle: quiz
+mode: quiz_summary
+content:
+  field_quiz_summary:
+    type: text_default
+    weight: 2
+    region: ds_content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+  field_quiz_title:
+    type: string
+    weight: 0
+    region: ds_content
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+hidden:
+  field_quiz_description: true
+  field_quiz_questions: true

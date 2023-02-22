@@ -1,0 +1,91 @@
+# Changelog
+
+## 1.1.1 (Feb 28, 2022)
+
+- Search query is updated to accept record ID.
+
+##Validation
+- Add new "Media" reference field in a content type or paragraph. Select all "Content Hub" related Media types.
+- Go to "Manage form display" tab.
+- Select the 'Entity Browser" from the widget. Click on the setting Icon at Right side
+	- Entity browser: Select "Media Browser (With Content Hub)"
+	- Entity display plugin: "Rendered entity"
+	- View mode: "default'
+	- Check Display Edit button, Display Remove button and Show widget details as open by default.
+	- Selection mode: "Append to selection".
+	- Click on "Update" button.
+- Click on "Save" button.
+- Go to respected content/paragraph creation page.
+- Under media reference field, `Keyword` field can now search by file_name or record_id.
+
+## 1.0.6 (August 26, 2020)
+
+- Created new "Content Hub Document" media type with the "ln_contenthub_document_widget" widget.
+- Create an entity browser that you will be able to use when adding media field with the 'Content Hub Document' Media type.
+
+## Steps:
+- Check Features UI module should enable on your site.
+- Go to "admin/config/development/features"
+- Choose "Lightnest" Bundle type.
+- Find "Lightnest Content Hub" in the list.
+- Click on missing link and import missing files.
+- After import missing files. Newly created media type will be import in database.
+- Now go to "admin/config/development/features/diff/ln_contenthub" and import specific difference of files.
+
+##Validation
+- Add new "Media" reference field in a content type or paragraph. Select "Content Hub Document" Media type.
+- Go to "Manage form display" tab.
+- Select the 'Entity Browser" from the widget. Click on the setting Icon at Right side
+	- Entity browser: Select "Content Hub Document Media browser"
+	- Entity display plugin: "Rendered entity"
+	- View mode: "default'
+	- Check Display Edit button, Display Remove button and Show widget details as open by default.
+	- Selection mode: "Append to selection".
+	- Click on "Update" button.
+- Click on "Save" button.
+
+
+
+## 1.0.7 (Saptember 10, 2020)
+
+- Add sub_brand and product_category filters to all existing Contenthub entity browsers.
+- Add site-wide filters to Configuration page.
+- Created new "Content Hub Video" media type with the "ln_contenthub_video_widget" widget.
+- Create an entity browser that you will be able to use when adding media field with the 'Content Hub Video' Media type.
+- Add a contenthub cron queue that updates existing Contenthub assets regularly.
+
+
+## Steps:
+- Clear the cache from drush cc or Flush all caches.
+- Added two new checkboxes to the configuration form '/admin/config/lightnest/ContentHub'.
+- All will be enabled by default.
+- If the corresponding checkbox is checked, the filter will appear in the form.
+- Added **Brand range**, **Brand corporate**, **Applicable region** and **Creator region** filter field to the configuration form.
+- Which will be used on every query for the content hub.
+- Check Features UI module should enable on your site.
+- Go to "admin/config/development/features"
+- Choose "Lightnest" Bundle type.
+- Find "Lightnest Content Hub" in the list.
+- Click on missing link and import missing files.
+- After import missing files. Newly created media type will be import in database.
+- Now go to "admin/config/development/features/diff/ln_contenthub" and import specific difference of files.
+- Set cron execution periodicity in configuration form '/admin/config/lightnest/ContentHub'.
+
+
+##Validation
+- Add new "Media" reference field in a content type or paragraph. 
+- Select any one "Content Hub" Media type.
+- Create new content for the content type.
+- Validate new **Sub brand** and **Product category** filter added in the contenthub reference field.
+- Filter fields will appear on the basis of configure checkboxs.
+- If the filter fields on the configuration page are empty. It will not be added to the query.
+- Add new "Media" reference field in a content type or paragraph. Select "Content Hub Video" Media type.
+- Go to "Manage form display" tab.
+- Select the 'Entity Browser" from the widget. Click on the setting Icon at Right side
+	- Entity browser: Select "Content Hub Video Media browser"
+	- Entity display plugin: "Rendered entity"
+	- View mode: "default'
+	- Check Display Edit button, Display Remove button and Show widget details as open by default.
+	- Selection mode: "Append to selection".
+	- Click on "Update" button.
+- Click on "Save" button.

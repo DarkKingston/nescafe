@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_al_health_allegations
+    - node.type.dsu_product
+id: node.dsu_product.field_al_health_allegations
+field_name: field_al_health_allegations
+entity_type: node
+bundle: dsu_product
+label: 'Health claims'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

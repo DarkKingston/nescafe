@@ -1,0 +1,82 @@
+<?php
+
+/**
+ * @file
+ * Contains dsu_c_countdown.module.
+ */
+
+use Drupal\Core\Entity\ContentEntityInterface;
+use Drupal\field\Entity\FieldStorageConfig;
+use Drupal\Core\Field\FieldDefinitionInterface;
+
+/**
+ * Implements hook_preprocess_theme().
+ */
+function dsu_c_countdown_theme($existing, $type, $theme, $path) {
+  return [
+    'paragraph__c_countdown' => [
+      'template' => 'paragraph--c-countdown',
+      'base hook' => 'paragraphs',
+    ],
+  ];
+}
+
+/**
+ * Implements hook_preprocess_paragraph().
+ */
+function dsu_c_countdown_preprocess_paragraph(&$variables) {
+  if ($variables['paragraph']->getType() == 'c_countdown') {
+    $variables['#attached']['library'][] = 'dsu_c_countdown/countdown';
+    $end_date = $variables['paragraph']->get('field_c_end_date')->getValue();
+    $c_timezone = $variables['paragraph']->get('field_c_timezone')
+      ->getValue();
+    if (!empty($end_date) && !empty($c_timezone)) {
+      $end_date_datetime = new \DateTime($end_date[0]['value']);
+      $date_formatter = \Drupal::service('date.formatter');
+      $formatted_date = $date_formatter->format($end_date_datetime->getTimestamp(), 'countdown_date', '', $c_timezone[0]['value']);
+      /*$variables['content']['countdown_date'] = [
+        '#type' => 'markup',
+        '#markup' => '<span class="countdown-date">' . $formatted_date . '</span>',
+        '#weight' => -100,
+      ];*/
+    }
+  }
+}
+
+/**
+ * Callback function to get allowed values for timezone field.
+ */
+function dsu_c_countdown_allowed_values_function(FieldStorageConfig $definition, ContentEntityInterface $entity = NULL, $cacheable) {
+  return system_time_zones(NULL, TRUE);
+}
+
+/**
+ * Callback function to get default value for timezone field.
+ */
+function dsu_c_countdown_default_value_function(ContentEntityInterface $entity, FieldDefinitionInterface $definition) {
+  $system_date = \Drupal::config('system.date');
+  return ['value' => $system_date->get('timezone.default') ?: date_default_timezone_get()];
+}
+
+/**
+ * Implements hook_ln_sample_content().
+ */
+
+function dsu_c_countdown_ln_sample_content() {
+    /** @var \Drupal\Core\Extension\ModuleHandlerInterface $module_handler */
+    $module_handler = \Drupal::service('module_handler');
+    /** @var \Drupal\Core\Extension\Extension $module_object */
+    $module_object = $module_handler->getModule(basename(__FILE__, '.module'));
+    $module_name = $module_object->getName();
+
+    $source = drupal_get_path('module', $module_name) . '/content';
+    /** @var \Drupal\Core\File\FileSystemInterface $file_system */
+    $file_system = \Drupal::service('file_system');
+    $files = $file_system->scanDirectory($source, '/demo.*\.(yml)$/');
+    $yaml_file_path = NULL;
+    foreach ($files as $file) {
+        $yaml_file_path[] = '/content/' . $file->filename;
+    }
+
+    return $yaml_file_path;
+}

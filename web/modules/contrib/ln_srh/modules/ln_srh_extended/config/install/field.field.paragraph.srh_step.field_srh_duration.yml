@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_srh_duration
+    - paragraphs.paragraphs_type.srh_step
+  enforced:
+    module:
+      - ln_srh_extended
+id: paragraph.srh_step.field_srh_duration
+field_name: field_srh_duration
+entity_type: paragraph
+bundle: srh_step
+label: 'SRH Duration'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: min
+field_type: integer

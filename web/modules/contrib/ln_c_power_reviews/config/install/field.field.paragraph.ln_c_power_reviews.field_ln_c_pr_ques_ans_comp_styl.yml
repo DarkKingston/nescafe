@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_ln_c_pr_ques_ans_comp_styl
+    - paragraphs.paragraphs_type.ln_c_power_reviews
+  module:
+    - options
+id: paragraph.ln_c_power_reviews.field_ln_c_pr_ques_ans_comp_styl
+field_name: field_ln_c_pr_ques_ans_comp_styl
+entity_type: paragraph
+bundle: ln_c_power_reviews
+label: 'Questions and Answers Components'
+description: 'PowerReviews offers a Questions & Answers (Q&A) solution that you can add to your site for your customers to ask questions and provide answers to purchase-blocking questions about your products. Multiselect is available.'
+required: false
+translatable: false
+default_value:
+  -
+    value: pr_questiondisplay
+default_value_callback: ''
+settings: {  }
+field_type: list_string

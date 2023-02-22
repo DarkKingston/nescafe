@@ -1,0 +1,50 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.c_countdown.field_c_countdown_title
+    - field.field.paragraph.c_countdown.field_c_countdown_title_style
+    - field.field.paragraph.c_countdown.field_c_end_date
+    - field.field.paragraph.c_countdown.field_c_timezone
+    - paragraphs.paragraphs_type.c_countdown
+  module:
+    - field_timer
+    - options
+id: paragraph.c_countdown.default
+targetEntityType: paragraph
+bundle: c_countdown
+mode: default
+content:
+  field_c_countdown_title:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_c_countdown_title_style:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_key
+    region: content
+  field_c_end_date:
+    weight: 2
+    label: hidden
+    settings:
+      type: countdown
+      regional: en
+      format: dHMS
+      layout: ''
+      significant: 0
+      timeSeparator: ':'
+      compact: false
+      padZeroes: false
+      use_system_language: false
+    third_party_settings: {  }
+    type: field_timer_countdown
+    region: content
+hidden:
+  field_c_timezone: true

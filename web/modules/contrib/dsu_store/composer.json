@@ -1,0 +1,12 @@
+{
+  "name": "lightnest/dsu_store",
+  "description": "Creates a DSU standardized store content type.",
+  "type": "drupal-module",
+  "keywords": [
+    "content"
+  ],
+  "require": {
+    "drupal/core": "^8 || ^9",
+    "drupal/address": "*"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "name": "lightnest/dsu_c_slider",
+  "description": "Provides a slider component to be used as paragraph.",
+  "type": "drupal-module",
+  "keywords": [
+    "content",
+    "paragraphs",
+    "frontend"
+  ],
+  "require": {
+    "drupal/core": "^8 || ^9"
+  }
+}

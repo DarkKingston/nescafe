@@ -1,0 +1,131 @@
+/*
+  PARAGRAPH PREVIEW
+*/
+
+.paragraph--type--dsu-tint.paragraph--view-mode--preview {
+  .ln-tint-post-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+
+    .tint-post {
+      --cols: 4;
+      --gutter: 0.5rem;
+      margin: var(--gutter);
+      width: calc(100% / var(--cols) - 2 * var(--gutter));
+    }
+  }
+
+  .ln-tint-pagination {
+    display: none;
+  }
+}
+
+/*
+  TINT POST
+*/
+
+.tintup {
+  .tint-post .tint-post-wrapper {
+    position: relative;
+
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+
+    img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      max-width: 100%;
+    }
+  }
+
+  .ln-tint-pagination .pagination {
+    margin: 0;
+  }
+}
+
+/*
+  TINT MODAL
+*/
+
+.tint-post-modal {
+  --color-light: #fff;
+  --color-dark: #333;
+  --text-color: var(--color-dark);
+  --bg-color: var(--color-light);
+  background-color: var(--bg-color);
+
+  &.white-text {
+    --text-color: var(--color-light);
+    --bg-color: var(--color-dark);
+  }
+
+  .ui-widget-content {
+    color: var(--text-color);
+
+    a {
+      color: var(--text-color);
+    }
+  }
+
+  &.ui-dialog {
+    padding: 0;
+    border: none;
+  }
+
+  .ui-dialog-content {
+    padding: 0;
+  }
+
+  .ui-dialog-titlebar {
+    background: none;
+    border: none;
+    padding: 0;
+  }
+
+  .ui-dialog-titlebar-close {
+    background: none;
+    border: none;
+    right: -3rem;
+    width: 35px;
+    height: 35px;
+    margin: 0;
+
+    &::before {
+      content: "\2573";
+      position: absolute;
+      font-size: 2rem;
+      line-height: 2rem;
+      font-weight: 300;
+      left: 0;
+      top: 0;
+      color: #fff;
+    }
+  }
+
+  .ui-dialog-titlebar .ui-dialog-title {
+    display: none;
+  }
+
+  .tint-content-wrapper {
+    padding: 1.5rem;
+  }
+
+  .tint-author {
+    margin-bottom: 2rem;
+
+    img {
+      max-width: 60px;
+    }
+  }
+
+  img, video {
+    max-width: 100%;
+  }
+}

@@ -1,0 +1,11 @@
+entity.advanced_datalayer_defaults.collection:
+  title: 'Datalayer tags'
+  route_name: entity.advanced_datalayer_defaults.collection
+  description: 'Configure datalayer defaults.'
+  parent: system.admin_config_search
+
+entity.advanced_datalayer_defaults.settings:
+  title: 'Datalayer settings'
+  route_name: advanced_datalayer.settings
+  description: 'Configure datalayer settings.'
+  parent: entity.advanced_datalayer_defaults.collection

@@ -1,0 +1,6 @@
+dsu_security_user_profile.settings_form:
+  title: "LightNest User Profile Path Settings"
+  description: 'LightNest Security: Select Roles where to block UID in Edit page URL'
+  parent: dsu_c_core.settings
+  route_name: dsu_security_user_profile.settings_form
+  weight: 145

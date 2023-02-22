@@ -1,0 +1,77 @@
+{#
+/**
+ * @file
+ * Theme implementation for a 'webform' element.
+ *
+ * This is an copy of the webform.html.twig theme_wrapper which includes the
+ * 'title_prefix' and 'title_suffix' variables needed for
+ * contextual links to appear.
+ *
+ * Available variables
+ * - attributes: A list of HTML attributes for the wrapper element.
+ * - children: The child elements of the webform.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the main title tag that appears in the template.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the main title tag that appears in the template.
+ *
+ * @see template_preprocess_webform()
+ * @see _webform_form_after_build()
+ *
+ * @ingroup themeable
+ */
+#}
+
+{% set classes = [
+  'ln_c_contactus_form',
+] %}
+
+<form{{attributes.addClass(classes)}}>
+  {{ title_prefix }}
+  <div class="ln_c_contactus_form_title">
+    {{ element.elements.processed_text_01 }}
+  </div>
+  <fieldset>
+    <!--  it wil display the webform confirmation message -->
+    {% if element.confirmation %}
+      {{ children }}
+    {% endif %}
+    <!--  it wil display the errors if the fields are empty -->
+    {% if element.status_messages %}
+      {{ element.status_messages }}
+    {% endif %}
+    {{ element.elements.form_wrapper.what_would_you_like_to_contact_us_about_today_ }}
+    {{ element.elements.form_wrapper.complaint_about }}
+    {{ element.elements.form_wrapper.question_about }}
+    {{ element.elements.form_wrapper.your_message }}
+    {{ element.elements.form_wrapper.product_description }}
+    {{ element.elements.form_wrapper.batchcode }}
+    {{ element.elements.form_wrapper.barcode}}
+    <div class="ln_c_contactus_form_file_upload">
+      {{ element.elements.form_wrapper.attach_a_file_2mb_limit_ }}
+    </div>
+    {{ element.elements.form_wrapper.country }}
+    {{ element.elements.form_wrapper.your_first_name }}
+    {{ element.elements.form_wrapper.your_last_name }}
+  </fieldset>
+  {{ element.elements.processed_text_message }}
+  <fieldset class="last-child">
+    {{ element.elements.contact_wrapper.preferred_channel}}
+    {{ element.elements.contact_wrapper.email_me }}
+    <div class="contact-country-wrapper">
+      {{ element.elements.contact_wrapper.container.country_code_field }}
+      {{ element.elements.contact_wrapper.container.contact_number }}
+    </div>
+    {{ element.elements.contact_wrapper.privacy_agreement }}
+    {{ element.elements.contact_wrapper.captcha }}
+    {{ element.elements.message }}
+    {{ element.form_token }}
+    {{ element.form_build_id }}
+    {{ element.form_id }}
+    {{ element.elements.contact_wrapper.actions }}
+    {#  {{ children }}#}
+    <input data-badge="inline" id="recaptchaResponseArrange" name="recaptcha_response" type="hidden">
+    {{ title_suffix }}
+  </fieldset>
+  {#  {{ dd(element) }}#}
+</form>

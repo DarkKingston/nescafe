@@ -1,0 +1,15 @@
+advanced_datalayer.advanced_datalayer_tag.ga_client_id:
+  type: string
+  label: 'GA client ID'
+advanced_datalayer.advanced_datalayer_tag.page_Category:
+  type: label
+  label: 'Page category'
+advanced_datalayer.advanced_datalayer_tag.page_Name:
+  type: label
+  label: 'Page Name'
+advanced_datalayer.advanced_datalayer_tag.site_Category:
+  type: string
+  label: 'Site Category'
+advanced_datalayer.advanced_datalayer_tag.site_Name:
+  type: string
+  label: 'Site name'

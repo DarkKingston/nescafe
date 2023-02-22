@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: countdown_date
+label: 'Countdown Date'
+locked: false
+pattern: 'F j Y'

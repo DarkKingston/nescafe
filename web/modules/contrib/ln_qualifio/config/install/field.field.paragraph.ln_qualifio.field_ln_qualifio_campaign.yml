@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_ln_qualifio_campaign
+    - paragraphs.paragraphs_type.ln_qualifio
+  module:
+    - ln_qualifio
+id: paragraph.ln_qualifio.field_ln_qualifio_campaign
+field_name: field_ln_qualifio_campaign
+entity_type: paragraph
+bundle: ln_qualifio
+label: 'Select Campaign'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    qualifiointegrationType: _none
+default_value_callback: ''
+settings: {  }
+field_type: QualifioIntegrationParams

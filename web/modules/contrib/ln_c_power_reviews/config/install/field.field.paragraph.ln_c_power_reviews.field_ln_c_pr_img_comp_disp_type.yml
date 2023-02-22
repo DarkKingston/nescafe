@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_ln_c_pr_img_comp_disp_type
+    - paragraphs.paragraphs_type.ln_c_power_reviews
+  module:
+    - options
+id: paragraph.ln_c_power_reviews.field_ln_c_pr_img_comp_disp_type
+field_name: field_ln_c_pr_img_comp_disp_type
+entity_type: paragraph
+bundle: ln_c_power_reviews
+label: 'Image Components'
+description: 'Can exist as its own unique element, or as part of the comprehensive review display. The image display will only render if 3+ images have been submitted for the product. Multiselect available.'
+required: false
+translatable: false
+default_value:
+  -
+    value: pr_review_imagedisplay
+default_value_callback: ''
+settings: {  }
+field_type: list_string

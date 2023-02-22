@@ -1,0 +1,158 @@
+srh_recipe:
+  nid:
+    enable_mapping: 0
+    plugin:
+      id: srh_process_default
+      settings:
+        srh_source_field: ''
+  uuid:
+    enable_mapping: 0
+    plugin:
+      id: srh_process_default
+      settings:
+        srh_source_field: ''
+  vid:
+    enable_mapping: 0
+    plugin:
+      id: srh_process_default
+      settings:
+        srh_source_field: ''
+  langcode:
+    enable_mapping: 1
+    plugin:
+      id: srh_process_default
+      settings:
+        srh_source_field: langcode
+  type:
+    enable_mapping: 0
+    plugin:
+      id: srh_process_default
+      settings:
+        srh_source_field: ''
+  revision_timestamp:
+    enable_mapping: 0
+    plugin:
+      id: srh_process_default
+      settings:
+        srh_source_field: ''
+  revision_uid:
+    enable_mapping: 0
+    plugin:
+      id: srh_process_default
+      settings:
+        srh_source_field: ''
+  revision_log:
+    enable_mapping: 0
+    plugin:
+      id: srh_process_default
+      settings:
+        srh_source_field: ''
+  status:
+    enable_mapping: 0
+    plugin:
+      id: srh_process_default
+      settings:
+        srh_source_field: ''
+  uid:
+    enable_mapping: 0
+    plugin:
+      id: srh_process_default
+      settings:
+        srh_source_field: ''
+  title:
+    enable_mapping: 0
+    plugin:
+      id: srh_process_default
+      settings:
+        srh_source_field: ''
+  created:
+    enable_mapping: 0
+    plugin:
+      id: srh_process_default
+      settings:
+        srh_source_field: ''
+  changed:
+    enable_mapping: 0
+    plugin:
+      id: srh_process_default
+      settings:
+        srh_source_field: ''
+  promote:
+    enable_mapping: 0
+    plugin:
+      id: srh_process_default
+      settings:
+        srh_source_field: ''
+  sticky:
+    enable_mapping: 0
+    plugin:
+      id: srh_process_default
+      settings:
+        srh_source_field: ''
+  default_langcode:
+    enable_mapping: 0
+    plugin:
+      id: srh_process_default
+      settings:
+        srh_source_field: ''
+  revision_default:
+    enable_mapping: 0
+    plugin:
+      id: srh_process_default
+      settings:
+        srh_source_field: ''
+  revision_translation_affected:
+    enable_mapping: 0
+    plugin:
+      id: srh_process_default
+      settings:
+        srh_source_field: ''
+  metatag:
+    enable_mapping: 0
+    plugin:
+      id: srh_process_default
+      settings:
+        srh_source_field: ''
+  path:
+    enable_mapping: 1
+    plugin:
+      id: srh_process_alias
+  menu_link:
+    enable_mapping: 0
+    plugin:
+      id: srh_process_default
+      settings:
+        srh_source_field: ''
+  field_meta_tags:
+    enable_mapping: 1
+    plugin:
+      id: srh_process_metatag
+  field_srh_difficulty:
+    enable_mapping: 1
+    plugin:
+      id: srh_process_tag
+      settings:
+        srh_source_field: difficulty
+        vocabulary_id: srh_difficulty
+  field_srh_id:
+    enable_mapping: 0
+    plugin:
+      id: srh_process_default
+      settings:
+        srh_source_field: ''
+  field_srh_ingredients:
+    enable_mapping: 1
+    plugin:
+      id: srh_process_ingredients_basic
+  field_srh_media_gallery:
+    enable_mapping: 1
+    plugin:
+      id: srh_process_gallery
+  field_srh_steps:
+    enable_mapping: 1
+    plugin:
+      id: srh_process_steps_basic
+  field_srh_cloudfront_medias:
+    enable_mapping: 1
+    plugin:
+      id: srh_process_cloudfront_medias

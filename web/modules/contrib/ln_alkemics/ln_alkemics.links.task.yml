@@ -1,0 +1,11 @@
+ln_alkemics.admin:
+  route_name: ln_alkemics.config
+  title: Alkemics Connector Configuration
+  weight: 1
+  base_route: ln_alkemics.config
+
+ln_alkemics.action:
+  route_name: ln_alkemics.action
+  title: Alkemics Manual Importer
+  weight: 2
+  base_route: ln_alkemics.config

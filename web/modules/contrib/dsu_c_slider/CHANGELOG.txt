@@ -1,0 +1,46 @@
+# Changelog
+-----------
+## 2.1.1
+- Improvement css
+
+## 2.1.0
+- Make accessibility improvements
+- Improvement css for better practices
+- Remove files and dependencies useless
+
+## 2.1.0
+- Make accessibility improvements
+- Improvement css for better practices
+- Remove files and dependencies useless
+
+## 2.0.0
+- Refactor Slider component
+
+## 1.4.0
+- Refactor Component Core: Remove id and classy fields for generic ones
+- Disable card component in selection, allow only the correct for behaviour: cardgrid
+
+## 1.3.7
+- H's should be implemented inside the DIV instead of above.
+
+## 1.3.6
+- Paragraph preview feature added to `Full content` field.
+- `Image component` is added under Slider.
+- Go to /admin/config/development/features/diff/dsu_c_slider
+- Import all configurations.
+- Clear all cache.
+- Bug Fixes: css fixes.
+
+## 1.3.5
+- Added paragraph features too enhance editorial experience.
+- Added one paragraph reference field to add components into slider.
+- Now site users add Externalvideo, card, Text + image, coutdown components into slider.
+- Go to admin/config/development/features/edit/dsu_c_slider
+- Import latest configuration.
+- validate newly added field in admin/structure/paragraphs_type/c_slide/form-display and
+admin/structure/paragraphs_type/c_slide/display
+- If disabled please enable it with default configuration.
+- Add content using slider component and validate.
+
+## 1.3.4 (Sep 16, 2021)
+- rel attribute added if target exist on anchor tag.

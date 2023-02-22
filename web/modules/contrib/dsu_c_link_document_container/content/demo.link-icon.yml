@@ -1,0 +1,52 @@
+type: c_link_document_container
+component_description: LINKS WITH ICONS
+field_c_link_document_item:
+  paragraph:
+    item_0:
+      type: c_link
+      field_button_color:
+      field_horizontal_position:
+      field_c_link:
+        links:
+          item_0:
+            uri: https://www.nestle.com
+            title: Sample Link in List List 1
+            options:
+              attributes:
+                target: _blank
+      field_c_image:
+        image_name: world.png
+        image_title: world
+      field_link_type: link
+    item_1:
+      type: c_link
+      field_button_color:
+      field_horizontal_position:
+      field_c_link:
+        links:
+          item_0:
+            uri: https://www.nestle.com
+            title: Sample Link in List List 2
+            options:
+              attributes:
+                target: _blank
+      field_c_image:
+        image_name: Shopping.png
+        image_title: shopping cart
+      field_link_type: link
+    item_2:
+      type: c_link
+      field_button_color:
+      field_horizontal_position:
+      field_c_link:
+        links:
+          item_0:
+            uri: https://www.nestle.com
+            title: Sample Link in List List 3
+            options:
+              attributes:
+                target: _blank
+      field_c_image:
+        image_name: Security.png
+        image_title: shopping cart
+      field_link_type: link

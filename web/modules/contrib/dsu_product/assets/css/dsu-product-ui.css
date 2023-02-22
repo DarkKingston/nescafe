@@ -1,0 +1,11 @@
+.dsu-product-component-list > div > .field {
+  margin-top: 30px;
+}
+
+.dsu-product-component-list .field--name-field-adimo,
+.dsu-product-component-list .field--type-field-price-spider {
+  display: block;
+  width: 100%;
+  clear: both;
+  overflow: hidden;
+}

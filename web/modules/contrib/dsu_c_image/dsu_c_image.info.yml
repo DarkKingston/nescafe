@@ -1,0 +1,17 @@
+name: 'Lightnest Components: Image'
+package: 'Lightnest Components'
+version: 8.x-2.0.1
+description: 'Includes configurations for Image Block Paragraph type and related field settings.'
+type: module
+core: 8.x
+core_version_requirement: ^8 || ^9 || ^10
+dependencies:
+  - dsu_c_core
+  - entity_browser
+  - field
+  - field_group
+  - options
+  - paragraphs
+  - taxonomy
+  - text
+  - link_attributes

@@ -1,0 +1,5 @@
+{
+  "name": "lightnest/dsu_multitheme",
+  "description": "Adds the possibility to display multiple themes on specific paths.",
+  "type": "drupal-module"
+}

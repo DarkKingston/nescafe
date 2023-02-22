@@ -1,0 +1,14 @@
+{
+  "name": "lightnest/ln_c_social_buttons",
+  "description": "Add social button component to be used as paragraph.",
+  "type": "drupal-module",
+  "keywords": [
+    "content",
+    "social_buttons",
+    "paragraphs",
+    "frontend"
+  ],
+  "require": {
+    "drupal/core": "^8 || ^9"
+  }
+}

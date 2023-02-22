@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_dsu_slider
+    - node.type.dsu_article
+  module:
+    - entity_reference_revisions
+_core:
+  default_config_hash: 0IRvVknRzWBnAVBpE6ES0lYSrBmU5vsMa7zgvDi4sys
+id: node.dsu_article.field_dsu_slider
+field_name: field_dsu_slider
+entity_type: node
+bundle: dsu_article
+label: Slider
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles: null
+field_type: entity_reference_revisions

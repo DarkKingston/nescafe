@@ -1,0 +1,180 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_srh_ingredients
+    - paragraphs.paragraphs_type.srh_ingredient
+    - paragraphs.paragraphs_type.srh_step
+  enforced:
+    module:
+      - ln_srh_extended
+  module:
+    - entity_reference_revisions
+id: paragraph.srh_step.field_srh_ingredients
+field_name: field_srh_ingredients
+entity_type: paragraph
+bundle: srh_step
+label: 'Ingredients on this step'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      srh_ingredient: srh_ingredient
+    target_bundles_drag_drop:
+      c_entitycycle:
+        weight: 51
+        enabled: false
+      c_externalvideo:
+        weight: 52
+        enabled: false
+      c_image:
+        weight: 53
+        enabled: false
+      c_map:
+        weight: 54
+        enabled: false
+      c_share_buttons:
+        weight: 55
+        enabled: false
+      c_shopify:
+        weight: 56
+        enabled: false
+      c_sideimagetext:
+        weight: 57
+        enabled: false
+      c_slide:
+        weight: 58
+        enabled: false
+      c_slider:
+        weight: 59
+        enabled: false
+      c_social_buttons_item:
+        weight: 61
+        enabled: false
+      c_socialbuttons:
+        weight: 60
+        enabled: false
+      c_spacer:
+        weight: 62
+        enabled: false
+      c_text:
+        weight: 63
+        enabled: false
+      dsu_srh_how_to_burn_it:
+        weight: 64
+        enabled: false
+      layout_25_25_50:
+        weight: 17
+        enabled: false
+      layout_25_50_25:
+        weight: 18
+        enabled: false
+      layout_25_75:
+        weight: 19
+        enabled: false
+      layout_33_66:
+        weight: 20
+        enabled: false
+      layout_50_25_25:
+        weight: 21
+        enabled: false
+      layout_66_33:
+        weight: 22
+        enabled: false
+      layout_75_25:
+        weight: 23
+        enabled: false
+      layout_columns_1:
+        weight: 24
+        enabled: false
+      layout_columns_2:
+        weight: 25
+        enabled: false
+      layout_columns_20:
+        weight: 26
+        enabled: false
+      layout_columns_3:
+        weight: 27
+        enabled: false
+      layout_columns_4:
+        weight: 28
+        enabled: false
+      ln_c_card:
+        weight: 77
+        enabled: false
+      ln_c_card_item:
+        weight: 78
+        enabled: false
+      macronutrients:
+        weight: 79
+        enabled: false
+      media_information:
+        weight: 80
+        enabled: false
+      paragraph_view:
+        weight: 81
+        enabled: false
+      product_listing_block:
+        weight: 82
+        enabled: false
+      recipe_ingredients:
+        weight: 83
+        enabled: false
+      recipe_steps:
+        weight: 84
+        enabled: false
+      recipe_tools:
+        weight: 85
+        enabled: false
+      recipe_variants:
+        weight: 86
+        enabled: false
+      related_recipes_in_other_languag:
+        weight: 87
+        enabled: false
+      srh_cloudfront_media:
+        weight: 88
+        enabled: false
+      srh_ingredient:
+        enabled: true
+        weight: 29
+      srh_ingredient_group:
+        weight: 90
+        enabled: false
+      srh_macronutrients_unittype:
+        weight: 91
+        enabled: false
+      srh_nutrient:
+        weight: 30
+        enabled: false
+      srh_sidedish:
+        weight: 93
+        enabled: false
+      srh_sport:
+        weight: 94
+        enabled: false
+      srh_step:
+        weight: 31
+        enabled: false
+      srh_step_group:
+        weight: 96
+        enabled: false
+      srh_tip:
+        weight: 32
+        enabled: false
+      srh_version:
+        weight: 98
+        enabled: false
+      tags_selector:
+        weight: 99
+        enabled: false
+      tips:
+        weight: 100
+        enabled: false
+field_type: entity_reference_revisions

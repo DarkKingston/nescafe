@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: crop_dsu_c_gallery_image_small
+label: 'Cropped: dsu_c_gallery_image_small'
+effects:
+  224d7ede-b37b-428a-a88b-014cd4ee2400:
+    uuid: 224d7ede-b37b-428a-a88b-014cd4ee2400
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 375
+      height: 500
+      crop_type: focal_point

@@ -1,0 +1,1 @@
+Adimo.main.init('https://basketads.adimo.co', false);

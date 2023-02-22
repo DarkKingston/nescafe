@@ -1,0 +1,21 @@
+<div class="exposed-extras">
+    <div class="exposed-extra-wrapper">
+        <div class="left">
+            {% if searched_text %}
+                <div class="searched-text">{{ searched_text }}</div>
+            {% endif %}
+            {% if search_result %}
+                <div class="search-result">{{ search_result }}</div>
+            {% endif %}
+        </div>
+        <div class="right">
+            {% if clear_link %}
+                <div class="clear-link"><a href={{ clear_link }} title="ClearText">{{ clear_text }}</a></div>
+            {% endif %}
+        </div>
+    </div>
+    <div class="page-listing-header">
+        <div class="list-title">{{ 'Title'|t }}</div>
+        <div class="list-date">{{ 'Date'|t }}</div>
+    </div>
+</div>

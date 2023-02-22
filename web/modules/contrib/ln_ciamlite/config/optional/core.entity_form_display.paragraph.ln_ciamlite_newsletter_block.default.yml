@@ -1,0 +1,31 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.ln_ciamlite_newsletter_block.field_c_subtitle
+    - field.field.paragraph.ln_ciamlite_newsletter_block.field_c_title
+    - paragraphs.paragraphs_type.ln_ciamlite_newsletter_block
+id: paragraph.ln_ciamlite_newsletter_block.default
+targetEntityType: paragraph
+bundle: ln_ciamlite_newsletter_block
+mode: default
+content:
+  field_c_subtitle:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_c_title:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  status: true

@@ -1,0 +1,25 @@
+type: c_sideimagetext
+component_description: TEXT + IMAGE COMPONENT - HORIZONTAL ALIGNMENT RIGHT / VERTICAL ALIGNMENT BOTTOM WITH DARK BACKGROUND FULL-WIDTH
+field_c_image:
+  image_name: gerber-organic.jpg
+  image_title: Gerber Organic Juice
+field_c_advanced_title:
+  value: Crema single shot aged bar viennese
+  html_tag: h1
+field_c_advanced_subtitle:
+  value: Single origin, aftertaste seasonal roast, and organic aromatic
+  html_tag: h2
+field_c_text: Est, et brewed, saucer fair trade a robusta whipped plunger pot. So to go galão dark coffee strong white spoon medium. Id qui crema galão in, strong cultivar in single origin rich. Saucer caramelization steamed sit steamed, as lungo redeye cultivar breve chicory lungo.
+field_c_link:
+  links:
+    item_0:
+      uri: https://www.nestle.com
+      title: Button Text
+      options:
+        attributes:
+          target: _blank
+classy:
+  -
+    target_id: dsu_text_position_bottom_right
+  -
+    target_id: dsu_c_sideimagetext_image_left

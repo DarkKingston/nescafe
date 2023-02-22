@@ -1,0 +1,96 @@
+<?php
+
+use Drupal\Core\Field\WidgetBase;
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_field_widget_WIDGET_TYPE_form_alter().
+ */
+function ln_c_power_reviews_field_widget_paragraphs_form_alter(&$element, FormStateInterface $form_state, $context) {
+  /** @var \Drupal\field\Entity\FieldConfig $field_definition */
+  $field_definition = $context['items']->getFieldDefinition();
+  $paragraph_entity_reference_field_name = $field_definition->getName();
+
+  // Reference field in the content type component.
+  if ($paragraph_entity_reference_field_name == 'field_components') {
+    /** @see \Drupal\paragraphs\Plugin\Field\FieldWidget\ParagraphsWidget::formElement() */
+    $widget_state = WidgetBase::getWidgetState($element['#field_parents'], $paragraph_entity_reference_field_name, $form_state);
+
+    /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
+    $paragraph_instance = $widget_state['paragraphs'][$element['#delta']]['entity'];
+    $paragraph_type = $paragraph_instance->bundle();
+
+    // Determine which paragraph type is being embedded.
+    if ($paragraph_type == 'ln_c_power_reviews') {
+      $dependee_field_name = 'field_ln_c_pr_display_comp_type';
+      $selector = sprintf('select[name="%s[%d][subform][%s]"]', $paragraph_entity_reference_field_name, $element['#delta'], $dependee_field_name);
+
+      // Dependent fields for display reviews comp type.
+      $element['subform']['field_ln_c_pr_rev_disp_comp_type']['#states'] = [
+        'visible' => [
+          $selector => ['value' => 'pr_review_display'],
+        ],
+      ];
+
+      // Dependent fields for question and answer in reviews.
+      $element['subform']['field_ln_c_pr_ques_ans_comp_styl']['#states'] = [
+        'visible' => [
+          $selector => ['value' => 'pr_questions_answers'],
+        ],
+      ];
+
+      // Dependent fields for showing image review type.
+      $element['subform']['field_ln_c_pr_img_comp_disp_type']['#states'] = [
+        'visible' => [
+          $selector => ['value' => 'pr_image'],
+        ],
+      ];
+
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_theme().
+ */
+function ln_c_power_reviews_theme($existing, $type, $theme, $path) {
+  return [
+    'paragraph__ln_c_power_reviews' => [
+      'template'  => 'paragraph--ln-c-power-reviews',
+      'base hook' => 'paragraphs',
+    ],
+    'ln-c-power-reviews-type'       => [
+      'variables' => [
+        'html_id'                    => NULL,
+        'ln_c_power_reviews_keys'    => NULL,
+        'ln_c_power_rev_disp_type'   => NULL,
+        'ln_c_power_reviews_page_id' => NULL,
+      ],
+    ],
+  ];
+}
+
+/**
+ * @param $variables
+ */
+function ln_c_power_reviews_preprocess_paragraph(&$variables) {
+  $paragraph = $variables['paragraph'];
+  $paragraphType = $paragraph->bundle();
+  switch ($paragraphType) {
+    case 'ln_c_power_reviews':
+      // Check if the paragraph has your field.
+      $ln_c_power_reviews_settings['pr_api_key_read'] = \Drupal::config('ln_c_power_reviews.settings')
+        ->get('pr_api_key_read');
+      $ln_c_power_reviews_settings['pr_api_key_write'] = \Drupal::config('ln_c_power_reviews.settings')
+        ->get('pr_api_key_write');
+      $ln_c_power_reviews_settings['pr_merchant_group_id'] = \Drupal::config('ln_c_power_reviews.settings')
+        ->get('pr_merchant_group_id');
+      $ln_c_power_reviews_settings['pr_merchant_id'] = \Drupal::config('ln_c_power_reviews.settings')
+        ->get('pr_merchant_id');
+      $ln_c_power_reviews_settings['pr_locale'] = \Drupal::config('ln_c_power_reviews.settings')
+        ->get('pr_locale');
+      // Get all variables settings and pass in the twig for rendering the component of reviews.
+      $variables['pr_settings_key'] = $ln_c_power_reviews_settings;
+      break;
+  }
+}

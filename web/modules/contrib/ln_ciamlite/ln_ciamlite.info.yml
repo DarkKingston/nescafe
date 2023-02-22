@@ -1,0 +1,12 @@
+name: 'Lightnest CIAM lite'
+description: 'Lightnest CIAM lite.'
+type: module
+configure: ln_ciamlite.settings
+version: 8.x-1.0.1
+core_version_requirement: ^8.8 || ^9
+package: 'Lightnest'
+dependencies:
+  - gigya (>= 2.8)
+  - gigya_raas
+  - paragraphs
+  - ds

@@ -1,0 +1,85 @@
+langcode: en
+status: true
+config_replace: replace
+dependencies:
+  config:
+    - field.field.taxonomy_term.srh_nutrient.field_srh_id
+    - field.field.taxonomy_term.srh_nutrient.field_srh_display_name
+    - field.field.taxonomy_term.srh_nutrient.field_srh_unit
+    - field.field.taxonomy_term.srh_nutrient.field_srh_unit_type
+    - taxonomy.vocabulary.srh_nutrient
+  module:
+    - path
+    - text
+  enforced:
+    module:
+      - ln_srh_standard
+id: taxonomy_term.srh_nutrient.default
+targetEntityType: taxonomy_term
+bundle: srh_nutrient
+mode: default
+content:
+  description:
+    type: text_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_srh_id:
+    weight: 101
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: { }
+    type: string_textfield
+    region: content
+  field_srh_display_name:
+    weight: 102
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_srh_unit:
+    weight: 103
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_srh_unit_type:
+    weight: 104
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  name:
+    type: string_textfield
+    weight: -5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 100
+    region: content
+    third_party_settings: {  }
+hidden: {  }

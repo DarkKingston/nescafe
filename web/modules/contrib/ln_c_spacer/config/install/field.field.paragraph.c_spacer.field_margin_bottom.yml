@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_margin_bottom
+    - paragraphs.paragraphs_type.c_spacer
+id: paragraph.c_spacer.field_margin_bottom
+field_name: field_margin_bottom
+entity_type: paragraph
+bundle: c_spacer
+label: 'Margin bottom'
+description: 'Please enter css property value in numeric format eg. 1,2,3...'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

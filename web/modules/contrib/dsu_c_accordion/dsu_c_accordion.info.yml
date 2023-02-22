@@ -1,0 +1,13 @@
+name: 'Lightnest Components: Accordion'
+description: 'Provides an accordion component to be used as paragraph.'
+type: module
+core: 8.x
+core_version_requirement: ^8 || ^9
+dependencies:
+  - dsu_c_core
+  - entity_reference_revisions
+  - field
+  - paragraphs
+  - text
+version: 9.x-2.0.1
+package: 'Lightnest Components'

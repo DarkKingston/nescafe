@@ -1,0 +1,59 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.ln_ciamlite_newsletter_block.field_c_subtitle
+    - field.field.paragraph.ln_ciamlite_newsletter_block.field_c_title
+    - paragraphs.paragraphs_type.ln_ciamlite_newsletter_block
+  module:
+    - ds
+third_party_settings:
+  ds:
+    layout:
+      id: ds_1col
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        label: ''
+        wrappers:
+          ds_content: div
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+        classes:
+          layout_class: {  }
+    regions:
+      ds_content:
+        - field_c_title
+        - field_c_subtitle
+        - ln_ciamlite_newsleter
+    fields:
+      ln_ciamlite_newsleter:
+        plugin_id: ln_ciamlite_newsleter
+        weight: 2
+        label: hidden
+        formatter: default
+id: paragraph.ln_ciamlite_newsletter_block.default
+targetEntityType: paragraph
+bundle: ln_ciamlite_newsletter_block
+mode: default
+content:
+  field_c_subtitle:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: ds_content
+  field_c_title:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: ds_content
+hidden: { }

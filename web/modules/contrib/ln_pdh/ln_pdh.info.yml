@@ -1,0 +1,23 @@
+name: 'Lightnest PDH'
+description: 'Connect with PDH for import and syncronize Products.'
+package: 'Lightnest'
+type: module
+core: 8.x
+core_version_requirement: ^8 || ^9
+dependencies:
+  - drupal:path
+  - dsu_product
+  - drupal:entity_browser
+  - drupal:paragraphs
+  - drupal:entity_reference_revisions
+  - drupal:field_group
+  - drupal:options
+  - drupal:scheduler
+  - drupal:user
+  - drupal:video_embed_field
+  - dsu_c_core
+enforced:
+module:
+  - ln_pdh
+configure: ln_pdh.config
+version: 9.x-2.0.1

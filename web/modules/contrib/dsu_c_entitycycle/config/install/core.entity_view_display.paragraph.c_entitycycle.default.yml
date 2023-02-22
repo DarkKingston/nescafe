@@ -1,0 +1,42 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.c_entitycycle.field_c_entity_relation
+    - field.field.paragraph.c_entitycycle.field_c_entity_relation_do
+    - paragraphs.paragraphs_type.c_entitycycle
+  module:
+    - slick_entityreference
+id: paragraph.c_entitycycle.default
+targetEntityType: paragraph
+bundle: c_entitycycle
+mode: default
+content:
+  field_c_entity_relation:
+    weight: 0
+    label: hidden
+    settings:
+      optionset: entity_cycle_slick
+      skin: ''
+      view_mode: default
+      cache: 0
+      current_view_mode: default
+      override: false
+      overridables:
+        arrows: '0'
+        autoplay: '0'
+        dots: '0'
+        draggable: '0'
+        infinite: '0'
+        mouseWheel: '0'
+        randomize: '0'
+        variableWidth: '0'
+      skin_arrows: ''
+      skin_dots: ''
+      style: ''
+      fx: ''
+    third_party_settings: {  }
+    type: slick_entityreference_vanilla
+    region: content
+hidden:
+  field_c_entity_relation_do: true

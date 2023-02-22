@@ -1,0 +1,33 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.ln_c_entity_compare.field_c_advanced_title
+    - field.field.paragraph.ln_c_entity_compare.field_c_settings
+    - paragraphs.paragraphs_type.ln_c_entity_compare
+  module:
+    - dsu_c_core
+    - ln_c_entity_compare
+id: paragraph.ln_c_entity_compare.default
+targetEntityType: paragraph
+bundle: ln_c_entity_compare
+mode: default
+content:
+  field_c_advanced_title:
+    type: string_html_tag_formatter
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_c_settings:
+    type: ln_c_entity_compare
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  comparison_tables: true
+  search_api_excerpt: true

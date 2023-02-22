@@ -1,0 +1,10 @@
+advanced_datalayer_defaults:
+  route_name: 'entity.advanced_datalayer_defaults.collection'
+  base_route: 'entity.advanced_datalayer_defaults.collection'
+  title: 'Datalayer defaults'
+  weight: 0
+advanced_datalayer.settings:
+  route_name: 'advanced_datalayer.settings'
+  base_route: 'entity.advanced_datalayer_defaults.collection'
+  title: 'Settings'
+  weight: 10

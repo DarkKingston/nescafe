@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - ln_srh_basic
+name: 'SRH Unit Type'
+vid: srh_unit_type
+description: ''
+weight: 0

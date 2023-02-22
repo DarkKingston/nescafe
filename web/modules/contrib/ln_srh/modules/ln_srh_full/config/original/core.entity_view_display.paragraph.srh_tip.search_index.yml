@@ -1,0 +1,50 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.search_index
+    - field.field.paragraph.srh_tip.field_c_text
+    - field.field.paragraph.srh_tip.field_c_title
+    - field.field.paragraph.srh_tip.field_srh_cloudfront_media
+    - field.field.paragraph.srh_tip.field_srh_media
+    - paragraphs.paragraphs_type.srh_tip
+  module:
+    - ds
+    - text
+third_party_settings:
+  ds:
+    layout:
+      id: layout_onecol
+      library: layout_discovery/onecol
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        label: ''
+    regions:
+      content:
+        - field_c_title
+        - field_c_text
+id: paragraph.srh_tip.search_index
+targetEntityType: paragraph
+bundle: srh_tip
+mode: search_index
+content:
+  field_c_text:
+    type: text_default
+    weight: 1
+    region: content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+  field_c_title:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden:
+  field_srh_cloudfront_media: true
+  field_srh_media: true
+  search_api_excerpt: true

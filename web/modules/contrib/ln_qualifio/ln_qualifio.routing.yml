@@ -1,0 +1,7 @@
+ln_qualifio.admin.form:
+  path: '/admin/config/lightnest/ln-qualifio/qualifio-settings'
+  defaults:
+    _form: 'Drupal\ln_qualifio\Form\QualifioSettingsForm'
+    _title: 'LightNest Qualifio'
+  requirements:
+    _permission: 'administer site configuration'

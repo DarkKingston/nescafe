@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - comment
+    - lightning_core
+third_party_settings:
+  lightning_core:
+    description: 'Comment reply form mode for moderators'
+id: comment.reply
+label: Reply
+targetEntityType: comment
+cache: true

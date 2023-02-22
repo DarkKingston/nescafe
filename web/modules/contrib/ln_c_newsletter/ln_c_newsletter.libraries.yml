@@ -1,0 +1,17 @@
+ln_c_newsletter:
+  version: 1.x
+  css:
+    component:
+      css/ln_c_newsletter.css: {}
+  js:
+    'js/ln_c_newsletter.js': {}
+  dependencies:
+    - core/drupal
+    - core/jquery
+
+webform-styling:
+  version: 1.x
+  css:
+    component:
+      css/ln_c_newsletter_webform.css: {}
+

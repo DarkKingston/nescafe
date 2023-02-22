@@ -1,0 +1,84 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a paragraph.
+ *
+ * Available variables:
+ * - paragraph: Full paragraph entity.
+ *   Only method names starting with "get", "has", or "is" and a few common
+ *   methods such as "id", "label", and "bundle" are available. For example:
+ *   - paragraph.getCreatedTime() will return the paragraph creation timestamp.
+ *   - paragraph.id(): The paragraph ID.
+ *   - paragraph.bundle(): The type of the paragraph, for example, "image" or "text".
+ *   - paragraph.getOwnerId(): The user ID of the paragraph author.
+ *   See Drupal\paragraphs\Entity\Paragraph for a full list of public properties
+ *   and methods for the paragraph object.
+ * - content: All paragraph items. Use {{ content }} to print them all,
+ *   or print a subset such as {{ content.field_example }}. Use
+ *   {{ content|without('field_example') }} to temporarily suppress the printing
+ *   of a given child element.
+ * - attributes: HTML attributes for the containing element.
+ *   The attributes.class element may contain one or more of the following
+ *   classes:
+ *   - paragraphs: The current template type (also known as a "theming hook").
+ *   - paragraphs--type-[type]: The current paragraphs type. For example, if the paragraph is an
+ *     "Image" it would result in "paragraphs--type--image". Note that the machine
+ *     name will often be in a short form of the human readable label.
+ *   - paragraphs--view-mode--[view_mode]: The View Mode of the paragraph; for example, a
+ *     preview would result in: "paragraphs--view-mode--preview", and
+ *     default: "paragraphs--view-mode--default".
+ * - view_mode: View mode; for example, "preview" or "full".
+ * - logged_in: Flag for authenticated user status. Will be true when the
+ *   current user is a logged-in member.
+ * - is_admin: Flag for admin user status. Will be true when the current user
+ *   is an administrator.
+ *
+ * @see template_preprocess_paragraph()
+ *
+ * @ingroup themeable
+ */
+#}
+{% set classes = [
+  'paragraph',
+  'paragraph--type--' ~ paragraph.bundle|clean_class,
+  view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+] %}
+{% block paragraph %}
+	{% set bg_color = content.field_testimonial_color[0]['#options'].entity.field_color_code.value %}
+	{% set ft_color = content.field_testimonial_color[0]['#options'].entity.field_font_color.value  %}
+	<section class="testimonial-item-container {{ content.field_testimonial_style['#items'].getString() }}" {% if content.field_testimonial_style['#items'].getString() == 'full-width' %}style="background-color: {{bg_color}}; color:{{ft_color }}" {% endif %} >
+		<div{{attributes.addClass(classes)}} style="background-color: {{bg_color}}; color:{{ft_color }}">
+			{% block content %}
+				
+				{% if content.field_testimonial_quote_text is defined and content.field_testimonial_quote_text|render is not empty %}
+					<svg aria-label="" role="img" class="" aria-hidden="true">
+						<use xlink:href="#quote">
+							<svg id="quote" viewBox="0 0 59 38"><path d="M8.77 37.59l3.67-.18h2.01a110 110 0 013.94-.65c2.02-.3 3.2-.64 3.57-1a4.4 4.4 0 002.2-1.47c.5-.85.74-1.65.74-2.38s-.28-1.5-.83-2.3c-.55-.79-1-1.43-1.37-1.92-1.22-2.93-1.77-5.55-1.65-7.87a8.7 8.7 0 01-.18-2.02c0-2.44.6-5.07 1.83-7.88a14.24 14.24 0 012.65-4.21 24.9 24.9 0 013.94-3.3 3.47 3.47 0 00-2.56-.92c-.37 0-.7.06-1 .18-.31.13-.53.19-.65.19l-.55-.19-.64-.64c-.3-.3-.83-.45-1.56-.45h-.55L21.23.2a33.16 33.16 0 00-6.41.18 9.73 9.73 0 00-3.85 1.47A31.17 31.17 0 002.54 12.3 29.18 29.18 0 00.16 23.66c0 3.55.8 6.66 2.38 9.35l.55 1.56c.25.67.55 1.28.92 1.83.36.55.98.88 1.83 1 .49.13 1.1.19 1.83.19h1.1zm29.32 0l3.66-.18h2.02a110 110 0 013.94-.65c2.02-.3 3.2-.64 3.57-1a4.4 4.4 0 002.2-1.47c.49-.85.73-1.65.73-2.38s-.27-1.5-.82-2.3c-.55-.79-1-1.43-1.37-1.92-1.23-2.93-1.78-5.55-1.65-7.87a8.7 8.7 0 01-.19-2.02c0-2.44.61-5.07 1.84-7.88a14.24 14.24 0 012.65-4.21 24.9 24.9 0 013.94-3.3 3.47 3.47 0 00-2.56-.92c-.37 0-.7.06-1.01.18-.3.13-.52.19-.64.19l-.55-.19-.64-.64c-.3-.3-.83-.45-1.56-.45h-.55L50.55.2a33.16 33.16 0 00-6.41.18 9.73 9.73 0 00-3.85 1.47 31.17 31.17 0 00-8.43 10.44 29.18 29.18 0 00-2.38 11.36c0 3.55.8 6.66 2.38 9.35l.55 1.56c.24.67.55 1.28.92 1.83.36.55.97.88 1.83 1 .49.13 1.1.19 1.83.19h1.1z"></path></svg>
+						</use>
+					</svg>
+					<div class="ln-testimonial-quote-text">
+						{{ content.field_testimonial_quote_text}}
+					</div>
+				{% endif %}
+				{% if content.field_testimonial_author_name is defined and content.field_testimonial_author_name|render is not empty %}
+					<div class="ln-testimonial-bottom-wrapper">
+						<div class="ln-testimonial-img">
+							{{ content.field_testimonial_author_image }}
+						</div>
+						<div class="ln-testimonial-content">
+							{{ content.field_testimonial_author_name }}
+							{{ content.field_testimonial_author_role}}
+							{% if content.field_testimonial_author_market is defined and content.field_testimonial_author_market|render is not empty %}
+								<div class="seprator">{{ ',' }}
+								</div>
+								{{ content.field_testimonial_author_market }}
+							{% endif %}
+							{{ content.field_testimonial_link }}
+						</div>
+					</div>
+				{% endif %}
+			{% endblock %}
+		</div>
+	</section>
+{% endblock paragraph %}
+

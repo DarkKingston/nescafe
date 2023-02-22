@@ -1,0 +1,7 @@
+ln_sample_content.create_content:
+  path: '/admin/config/lightnest/create_content'
+  defaults:
+    _form: '\Drupal\ln_sample_content\Form\CreateSampleContentForm'
+    _title: 'Create sample content'
+  requirements:
+    _permission: 'access administration pages'

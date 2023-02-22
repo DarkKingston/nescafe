@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: crop_dsu_c_gallery_large_large
+label: 'Cropped: dsu_c_gallery_large_large'
+effects:
+  21784ce1-81e4-4d78-86ab-8c6416c4a20d:
+    uuid: 21784ce1-81e4-4d78-86ab-8c6416c4a20d
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 1024
+      height: 768
+      crop_type: focal_point

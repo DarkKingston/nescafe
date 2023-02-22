@@ -1,0 +1,90 @@
+productwidget:
+  header: true
+  version: 1.x
+  css:
+    theme:
+      css/productwidget.css: {}
+  js:
+    //cdn.adimo.co/scripts/sitev3.min.js: { type: external }
+
+iframe:
+  header: true
+  version: 1.x
+  css:
+    theme:
+      css/iframe.css: {}
+  js:
+    //cdn.adimo.co/scripts/iframev3.min.js: { type: external }
+
+lightbox:
+  header: true
+  version: 1.x
+  css:
+    theme:
+      css/lightbox.css: {}
+  js:
+    //cdn.adimo.co/scripts/lightboxv2.min.js: { type: external }
+    js/lightboxinit.js: { }
+    js/cookieconsent.js: { }
+
+recipeiframe:
+  header: true
+  version: 1.x
+  css:
+    theme:
+      css/recipeiframe.css: {}
+  js:
+    //cdn.adimo.co/scripts/iframev3.min.js: { type: external }
+
+recipelightbox:
+  header: true
+  js:
+    //cdn.adimo.co/scripts/lightboxv2.min.js: { type: external }
+    js/lightboxinit.js: { }
+
+enhancedrecipe:
+  header: true
+  version: 1.x
+  css:
+    theme:
+      css/enhancedrecipe.css: {}
+  js:
+    //cdn.adimo.co/scripts/ramsay.min.js: { type: external }
+
+storefirst:
+  header: true
+  version: 1.x
+  css:
+    theme:
+      css/storefirst.css: {}
+  js:
+    //cdn.adimo.co/scripts/storeFirst.min.js: { type: external }
+
+pricefirst:
+  header: true
+  version: 1.x
+  css:
+    theme:
+      css/pricefirst.css: {}
+  js:
+    //cdn.adimo.co/scripts/priceFirst.min.js: { type: external }
+
+multitouchpoint:
+  header: true
+  version: 1.x
+  css:
+    theme:
+      css/multitouchpoint.css: {}
+  js:
+    //cdn.adimo.co/scripts/multi-touchpoint.min.js: { type: external }
+
+adimo-cookie-consent:
+  version: 2.x
+  js:
+    js/cookieconsent.js: { }
+
+adimo-general:
+  version: 1.x
+  css:
+    theme:
+      css/ln-adimo.css: {}

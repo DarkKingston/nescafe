@@ -1,0 +1,25 @@
+google_optimize_js.settings:
+  type: 'config_object'
+  label: 'Google optimize config'
+  mapping:
+    container:
+      label: 'Container Id'
+      type: string
+    enabled:
+      label: 'Enable Google Optimize on specified pages'
+      type: boolean
+    pages:
+      label: 'Pages to add the snippet on'
+      type: string
+    anti_flicker_timeout:
+      label: 'The number of milliseconds to wait before timing out'
+      type: integer
+    anti_flicker_pages:
+      label: 'Pages to add the anti-flicker snippet on'
+      type: string
+    datalayer_js_weight:
+      label: 'Override the default placement of the optimize script'
+      type: float
+    loading_strategy:
+      label: 'Loading strategy'
+      type: string

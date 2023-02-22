@@ -1,0 +1,87 @@
+type: c_teasercycle
+component_description: TEASER CYCLE - WITH IMAGE, TITLE, LINK, AND DESCRIPTION
+field_c_teasercycle_item:
+  paragraph:
+    item_0:
+      type: c_teasercycle_item
+      field_c_link:
+        uri: https://www.lightnest.com
+        title: Link 1
+        options:
+          attributes:
+            target: _blank
+      field_c_image:
+        image_name: nan-800.jpg
+        image_title: NAN
+      field_c_title: Galão arabica
+      field_c_text: Medium siphon, lungo irish whipped aftertaste
+    item_1:
+      type: c_teasercycle_item
+      field_c_link:
+        uri: https://www.lightnest.com
+        title: Link 2
+        options:
+          attributes:
+            target: _blank
+      field_c_image:
+        image_name: nido-800.jpg
+        image_title: Nido
+      field_c_title: French press
+      field_c_text: Café au lait french press coffee lungo cappuccino kopi-luwak
+    item_2:
+      type: c_teasercycle_item
+      field_c_link:
+        uri: https://www.lightnest.com
+        title: Link 3
+        options:
+          attributes:
+            target: _blank
+      field_c_image:
+        image_name: gerber-organic.jpg
+        image_title: Gerber Organic
+      field_c_title: Aged acerbic
+      field_c_text: Sweet americano grounds aromatic to go doppio fair trade
+    item_3:
+      type: c_teasercycle_item
+      field_c_link:
+        uri: https://www.lightnest.com
+        title: Link 4
+        options:
+          attributes:
+            target: _blank
+      field_c_image:
+        image_name: san-pellegrino.jpg
+        image_title: San Pellegrino
+      field_c_title: Medium siphon
+      field_c_text: Lungo irish whipped aftertaste chicory cinnamon.
+    item_4:
+      type: c_teasercycle_item
+      field_c_link:
+        uri: https://www.lightnest.com
+        title: Link 5
+        options:
+          attributes:
+            target: _blank
+      field_c_image:
+        image_name: purina-one-cats.jpg
+        image_title: Purina One
+      field_c_title: Mazagran coffee
+      field_c_text: Froth saucer flavour, ristretto, dripper, kopi-luwak breve at a cup strong crema.
+    item_5:
+      type: c_teasercycle_item
+      field_c_link:
+        uri: https://www.lightnest.com
+        title: Link 6
+        options:
+          attributes:
+            target: _blank
+      field_c_image:
+        image_name: atelier-chocolate-800.jpg
+        image_title: Les Recettes de l'Atelier
+      field_c_title: Carajillo americano
+      field_c_text: Mazagran in, fair trade cream siphon cup plunger pot turkish froth
+field_c_display_options:
+  0: field_c_image
+  1: field_c_title
+  2: field_c_text
+  3: field_c_link

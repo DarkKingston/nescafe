@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - ln_srh_extended
+name: 'SRH Version Type'
+vid: srh_version_type
+description: ''
+weight: 0

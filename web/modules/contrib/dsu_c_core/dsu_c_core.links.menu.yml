@@ -1,0 +1,12 @@
+dsu_c_core.settings:
+  title: Lightnest
+  description: Various settings for altering the behavior of Lightnest modules.
+  parent: system.admin_config
+  route_name: dsu_c_core.settings
+  weight: -15
+entity.classy_group.collection:
+  title: 'Classy group'
+  route_name: entity.classy_group.collection
+  description: 'List Classy group'
+  parent: entity.classy_paragraphs_style.collection
+  weight: 99

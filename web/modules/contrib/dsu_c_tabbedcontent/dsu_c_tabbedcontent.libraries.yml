@@ -1,0 +1,25 @@
+tabbed-content:
+  version: 1.x
+  css:
+    theme:
+      css/dsu_c_tabbed_content.css: {}
+  js:
+    'js/dsu_c_tabbed_content.js': {}
+  dependencies:
+    - core/drupal
+    - core/jquery  
+tab-item:
+  version: 1.x
+  css:
+    theme:
+      css/dsu_c_tab_item.css: {}
+tabbed-content-bootstrap:
+  version: 1.x
+  css:
+    theme:
+      css/dsu_c_tabbed_content_bootstrap.css: {}
+  js:
+    'js/dsu_c_tabbed_content_bootstrap.js': {}
+  dependencies:
+    - core/drupal
+    - core/jquery

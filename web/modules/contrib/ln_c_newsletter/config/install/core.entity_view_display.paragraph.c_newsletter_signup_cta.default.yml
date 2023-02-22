@@ -1,0 +1,53 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.c_newsletter_signup_cta.field_newsletter_block_cta
+    - field.field.paragraph.c_newsletter_signup_cta.field_newsletter_block_message
+    - field.field.paragraph.c_newsletter_signup_cta.field_newsletter_block_title
+    - field.field.paragraph.c_newsletter_signup_cta.field_newsletter_heading_style
+    - paragraphs.paragraphs_type.c_newsletter_signup_cta
+  module:
+    - link
+    - options
+    - text
+id: paragraph.c_newsletter_signup_cta.default
+targetEntityType: paragraph
+bundle: c_newsletter_signup_cta
+mode: default
+content:
+  field_newsletter_block_cta:
+    weight: 2
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  field_newsletter_block_message:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_newsletter_block_title:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_newsletter_heading_style:
+    weight: 3
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+hidden: {  }

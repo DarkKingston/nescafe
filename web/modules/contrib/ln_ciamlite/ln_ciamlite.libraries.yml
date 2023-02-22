@@ -1,0 +1,11 @@
+LnCiamliteGigyaBlock:
+  version: VERSION
+  js:
+    js/ln_ciamlite_gigya.js: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.once
+    - core/drupal
+    - core/drupalSettings
+    - core/drupal.ajax
+    - gigya_raas/gigyaRaas

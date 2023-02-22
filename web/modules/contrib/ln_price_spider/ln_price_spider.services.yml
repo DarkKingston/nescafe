@@ -1,0 +1,5 @@
+services:
+  # Services.
+  ln_price_spider:
+    class: Drupal\ln_price_spider\Service\LnPriceSpiderService
+    arguments: ['@config.factory', '@database', '@language_manager']

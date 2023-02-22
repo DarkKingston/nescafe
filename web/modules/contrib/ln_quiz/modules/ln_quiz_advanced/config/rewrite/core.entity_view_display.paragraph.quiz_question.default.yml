@@ -1,0 +1,98 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.quiz_question.field_quiz_answers
+    - field.field.paragraph.quiz_question.field_quiz_description
+    - field.field.paragraph.quiz_question.field_quiz_failed_msg
+    - field.field.paragraph.quiz_question.field_quiz_image
+    - field.field.paragraph.quiz_question.field_quiz_success_msg
+    - field.field.paragraph.quiz_question.field_quiz_title
+    - image.style.large
+    - paragraphs.paragraphs_type.quiz_question
+  enforced:
+    module:
+      - ln_quiz
+  module:
+    - ds
+    - media
+    - text
+third_party_settings:
+  ds:
+    layout:
+      id: ds_2col
+      library: ds/ds_2col
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        label: ''
+        wrappers:
+          left: div
+          right: div
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+        classes:
+          layout_class: {  }
+    regions:
+      left:
+        - field_quiz_image
+      right:
+        - ln_quiz_title
+        - ln_quiz_question_number
+        - field_quiz_title
+        - field_quiz_description
+        - field_quiz_answers
+    fields:
+      ln_quiz_question_number:
+        plugin_id: ln_quiz_question_number
+        weight: 2
+        label: hidden
+        formatter: default
+      ln_quiz_title:
+        plugin_id: ln_quiz_title
+        weight: 1
+        label: hidden
+        formatter: default
+id: paragraph.quiz_question.default
+targetEntityType: paragraph
+bundle: quiz_question
+mode: default
+content:
+  field_quiz_answers:
+    type: ln_quiz_answers_formatter
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 5
+    region: right
+  field_quiz_description:
+    weight: 4
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: right
+  field_quiz_image:
+    type: media_thumbnail
+    weight: 0
+    region: left
+    label: hidden
+    settings:
+      image_style: large
+      image_link: ''
+    third_party_settings: {  }
+  field_quiz_title:
+    weight: 3
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: right
+hidden:
+  field_quiz_answers: true
+  field_quiz_failed_msg: true
+  field_quiz_success_msg: true

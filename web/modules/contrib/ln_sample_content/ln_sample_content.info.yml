@@ -1,0 +1,13 @@
+name: 'Lightnest Sample Content'
+description: 'Create sample content.'
+package: 'Lightnest'
+version: 9.x-1.2.0
+type: module
+core: 8.x
+core_version_requirement: ^8 || ^9
+dependencies:
+  - dsu_c_core
+  - dsu_c_image
+  - dsu_c_text
+  - field_group
+  - ln_c_spacer

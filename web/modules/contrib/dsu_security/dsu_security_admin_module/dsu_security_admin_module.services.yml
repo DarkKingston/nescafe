@@ -1,0 +1,6 @@
+services:
+  dsu_security_admin_module.redirect_auth:
+    class: Drupal\dsu_security_admin_module\EventSubscriber\RedirectAuthSubscriber
+    arguments: ['@config.factory', '@path.current', '@request_stack']
+    tags:
+      - { name: event_subscriber }

@@ -1,0 +1,43 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.dsu_tint.field_c_advanced_title
+    - field.field.paragraph.dsu_tint.field_c_settings
+    - field.field.paragraph.dsu_tint.field_c_text
+    - paragraphs.paragraphs_type.dsu_tint
+  module:
+    - dsu_c_core
+    - ln_tint_connector
+    - text
+id: paragraph.dsu_tint.default
+targetEntityType: paragraph
+bundle: dsu_tint
+mode: default
+content:
+  field_c_advanced_title:
+    type: string_html_tag_widget
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_c_settings:
+    type: ln_tint
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_c_text:
+    type: text_textarea
+    weight: 1
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true

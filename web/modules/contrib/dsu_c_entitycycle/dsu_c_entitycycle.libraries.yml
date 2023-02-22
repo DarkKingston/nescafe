@@ -1,0 +1,10 @@
+entitycycle:
+  version: 1.x
+  css:
+    theme:
+      css/dsu_c_entitycycle.css: {}
+      /libraries/slick/slick/slick-theme.css: {}
+  js:
+    js/dsu_c_entitycycle.js: {}
+  dependencies:
+    - slick/slick.theme  

@@ -1,0 +1,74 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.srh_ingredient.field_c_title
+    - field.field.paragraph.srh_ingredient.field_srh_ingredient
+    - field.field.paragraph.srh_ingredient.field_srh_is_nestle_product
+    - field.field.paragraph.srh_ingredient.field_srh_preparation_hint
+    - field.field.paragraph.srh_ingredient.field_srh_quantity
+    - field.field.paragraph.srh_ingredient.field_srh_unit_type
+    - paragraphs.paragraphs_type.srh_ingredient
+  enforced:
+    module:
+      - ln_srh_basic
+  module:
+    - ln_srh
+    - paragraphs
+id: paragraph.srh_ingredient.default
+targetEntityType: paragraph
+bundle: srh_ingredient
+mode: default
+content:
+  field_c_title:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_srh_ingredient:
+    weight: 2
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_srh_is_nestle_product:
+    weight: 5
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  field_srh_preparation_hint:
+    weight: 4
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_srh_quantity:
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+    type: srh_quantity_widget
+    region: content
+  field_srh_unit_type:
+    weight: 7
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+hidden:
+  created: true
+  status: true

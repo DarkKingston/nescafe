@@ -1,0 +1,9 @@
+name: Text Summary Options
+description: Provide additional options for Long text with summary widget
+type: module
+core_version_requirement: ^8.7.7 || ^9 || ^10
+
+# Information added by Drupal.org packaging script on 2022-08-25
+version: '2.0.0'
+project: 'text_summary_options'
+datestamp: 1661449560

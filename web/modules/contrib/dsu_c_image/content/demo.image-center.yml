@@ -1,0 +1,17 @@
+type: c_image
+component_description: IMAGE - HORIZONTAL ALIGNMENT CENTER / VERTICAL ALIGNMENT CENTER WITH CTA BUTTON BELOW
+field_c_advanced_title:
+  value: Pumpkin spice caramelization
+  html_tag: h1
+field_c_advanced_subtitle:
+  value: Strong, dripper percolator iced brewed et caramelization mocha redeye
+  html_tag: h2
+field_c_text: Macchiato, latte, turkish cinnamon dripper americano strong half and half. Acerbic sugar cultivar est carajillo aftertaste robust.
+field_c_link:
+  uri: http://www.nestle.com
+  title: Button Text
+field_c_image:
+  image_name: san-pellegrino.jpg
+  image_title: San Pellegrino
+classy:
+  target_id: dsu_text_position_middle_center

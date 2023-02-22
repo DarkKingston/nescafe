@@ -1,0 +1,7 @@
+{
+  "name": "lightnest/dsu_c_teasercycle",
+  "type": "drupal-module",
+  "require": {
+    "drupal/core": "^8 || ^9"
+  }
+}

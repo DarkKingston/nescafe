@@ -1,0 +1,46 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.c_countdown.field_c_countdown_title
+    - field.field.paragraph.c_countdown.field_c_countdown_title_style
+    - field.field.paragraph.c_countdown.field_c_end_date
+    - field.field.paragraph.c_countdown.field_c_timezone
+    - paragraphs.paragraphs_type.c_countdown
+  module:
+    - datetime
+id: paragraph.c_countdown.default
+targetEntityType: paragraph
+bundle: c_countdown
+mode: default
+content:
+  field_c_countdown_title:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_c_countdown_title_style:
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_c_end_date:
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_c_timezone:
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

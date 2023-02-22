@@ -1,0 +1,48 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.search_index
+    - field.field.paragraph.srh_ingredient.field_c_title
+    - field.field.paragraph.srh_ingredient.field_srh_ingredient
+    - field.field.paragraph.srh_ingredient.field_srh_is_nestle_product
+    - field.field.paragraph.srh_ingredient.field_srh_preparation_hint
+    - field.field.paragraph.srh_ingredient.field_srh_quantity
+    - field.field.paragraph.srh_ingredient.field_srh_unit_type
+    - paragraphs.paragraphs_type.srh_ingredient
+  enforced:
+    module:
+      - ln_srh_basic
+  module:
+    - ds
+third_party_settings:
+  ds:
+    layout:
+      id: layout_onecol
+      library: layout_discovery/onecol
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        label: ''
+    regions:
+      content:
+        - field_c_title
+id: paragraph.srh_ingredient.search_index
+targetEntityType: paragraph
+bundle: srh_ingredient
+mode: search_index
+content:
+  field_c_title:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden:
+  field_srh_ingredient: true
+  field_srh_is_nestle_product: true
+  field_srh_preparation_hint: true
+  field_srh_quantity: true
+  field_srh_unit_type: true

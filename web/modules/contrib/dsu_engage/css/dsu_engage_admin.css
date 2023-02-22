@@ -1,0 +1,19 @@
+.dsu_enage_fields_settings thead th,
+.dsu_enage_fields_settings td{
+    text-align: center;
+}
+.dsu_enage_fields_settings tr:first-child{
+    font-weight: bold;
+    background-color: #F5F5F1;
+}
+
+.dsu_enage_fields_settings tr td{
+    width: 60px;
+}
+.dsu_enage_fields_settings tr td:first-child{
+    text-align: left;
+    width: 40px;
+}
+.dsu_enage_fields_settings td:nth-child(even){
+    border-left: 1px solid #e6e4df;
+}

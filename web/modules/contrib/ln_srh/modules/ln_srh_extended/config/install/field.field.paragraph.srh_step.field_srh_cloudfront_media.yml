@@ -1,0 +1,93 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_srh_cloudfront_media
+    - paragraphs.paragraphs_type.srh_cloudfront_media
+    - paragraphs.paragraphs_type.srh_step
+  enforced:
+    module:
+      - ln_srh_extended
+  module:
+    - entity_reference_revisions
+id: paragraph.srh_step.field_srh_cloudfront_media
+field_name: field_srh_cloudfront_media
+entity_type: paragraph
+bundle: srh_step
+label: 'SRH CloudFront Media'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      srh_cloudfront_media: srh_cloudfront_media
+    target_bundles_drag_drop:
+      layout_25_25_50:
+        weight: 22
+        enabled: false
+      layout_25_50_25:
+        weight: 23
+        enabled: false
+      layout_25_75:
+        weight: 24
+        enabled: false
+      layout_33_66:
+        weight: 25
+        enabled: false
+      layout_50_25_25:
+        weight: 26
+        enabled: false
+      layout_66_33:
+        weight: 27
+        enabled: false
+      layout_75_25:
+        weight: 28
+        enabled: false
+      layout_columns_1:
+        weight: 29
+        enabled: false
+      layout_columns_2:
+        weight: 30
+        enabled: false
+      layout_columns_20:
+        weight: 31
+        enabled: false
+      layout_columns_3:
+        weight: 32
+        enabled: false
+      layout_columns_4:
+        weight: 33
+        enabled: false
+      paragraph_view:
+        weight: 34
+        enabled: false
+      product_listing_block:
+        weight: 35
+        enabled: false
+      srh_cloudfront_media:
+        enabled: true
+        weight: 36
+      srh_ingredient:
+        weight: 37
+        enabled: false
+      srh_nutrient:
+        weight: 38
+        enabled: false
+      srh_sidedish:
+        weight: 39
+        enabled: false
+      srh_step:
+        weight: 40
+        enabled: false
+      srh_tip:
+        weight: 41
+        enabled: false
+      srh_version:
+        weight: 42
+        enabled: false
+field_type: entity_reference_revisions

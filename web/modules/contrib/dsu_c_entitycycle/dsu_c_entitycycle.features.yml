@@ -1,0 +1,6 @@
+bundle: ln_c
+excluded:
+  - core.entity_form_display.block_content.countdown.default
+  - core.entity_view_display.block_content.countdown.default
+  - field.field.block_content.countdown.field_entity_cycle
+required: true

@@ -1,0 +1,20 @@
+ln_c_entity_compare.settings:
+  type: config_object
+  label: 'Lightnest Entity Compare Settings'
+  mapping:
+    entity_bundles_per_type:
+      type: sequence
+      label: 'Entity types enabled for comparison'
+      sequence:
+        type: mapping
+        label: 'Entity bundles and view mode enabled for entity type'
+        mapping:
+          view_mode:
+            type: string
+            label: 'View mode used to render entities'
+          bundles:
+            type: sequence
+            label: 'List of entity bundles available for comparison'
+            sequence:
+              type: string
+              label: 'Entity bundle'

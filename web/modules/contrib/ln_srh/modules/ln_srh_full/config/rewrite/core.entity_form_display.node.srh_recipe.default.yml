@@ -1,0 +1,389 @@
+langcode: en
+status: true
+config_replace: replace
+dependencies:
+  config:
+    - field.field.node.srh_recipe.body
+    - field.field.node.srh_recipe.field_meta_tags
+    - field.field.node.srh_recipe.field_srh_brand
+    - field.field.node.srh_recipe.field_srh_chef
+    - field.field.node.srh_recipe.field_srh_cost
+    - field.field.node.srh_recipe.field_srh_difficulty
+    - field.field.node.srh_recipe.field_srh_how_burn
+    - field.field.node.srh_recipe.field_srh_id
+    - field.field.node.srh_recipe.field_srh_ingredients
+    - field.field.node.srh_recipe.field_srh_ingredients_groups
+    - field.field.node.srh_recipe.field_srh_media_gallery
+    - field.field.node.srh_recipe.field_srh_menuiqscore
+    - field.field.node.srh_recipe.field_srh_nutrients
+    - field.field.node.srh_recipe.field_srh_nutritional_tips
+    - field.field.node.srh_recipe.field_srh_serving
+    - field.field.node.srh_recipe.field_srh_steps
+    - field.field.node.srh_recipe.field_srh_steps_groups
+    - field.field.node.srh_recipe.field_srh_cloudfront_medias
+    - field.field.node.srh_recipe.field_srh_tagging
+    - field.field.node.srh_recipe.field_srh_times
+    - field.field.node.srh_recipe.field_srh_tips
+    - field.field.node.srh_recipe.field_srh_tools
+    - field.field.node.srh_recipe.field_srh_translations
+    - field.field.node.srh_recipe.field_srh_versions
+    - node.type.srh_recipe
+  module:
+    - ln_srh_extended
+    - ln_srh_full
+    - media_library
+    - paragraphs
+    - path
+    - text
+id: node.srh_recipe.default
+targetEntityType: node
+bundle: srh_recipe
+mode: default
+content:
+  body:
+    weight: 10
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+    type: text_textarea_with_summary
+    region: content
+  created:
+    type: datetime_timestamp
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_srh_brand:
+    weight: 20
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_srh_chef:
+    weight: 12
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_srh_cost:
+    weight: 23
+    settings: { }
+    third_party_settings: { }
+    type: options_select
+    region: content
+  field_srh_difficulty:
+    weight: 11
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_srh_how_burn:
+    type: paragraphs
+    weight: 19
+    settings:
+      title: Sport
+      title_plural: Sports
+      edit_mode: closed
+      closed_mode: summary
+      autocollapse: all
+      closed_mode_threshold: 0
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: srh_sport
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings: {  }
+    region: content
+  field_srh_id:
+    weight: 9
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_srh_ingredients:
+    type: paragraphs
+    weight: 15
+    settings:
+      title: Ingredient
+      title_plural: Ingredients
+      edit_mode: closed
+      closed_mode: summary
+      autocollapse: all
+      closed_mode_threshold: 0
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: srh_ingredient
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings: {  }
+    region: content
+  field_srh_ingredients_groups:
+    type: paragraphs
+    weight: 27
+    settings:
+      title: Ingredients Group
+      title_plural: Ingredients Groups
+      edit_mode: closed
+      closed_mode: summary
+      autocollapse: all
+      closed_mode_threshold: 0
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: srh_ingredient_group
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings: { }
+    region: content
+  field_srh_nutritional_tips:
+    type: paragraphs
+    weight: 18
+    settings:
+      title: Nutritional Tip
+      title_plural: Nutritional Tips
+      edit_mode: closed
+      closed_mode: summary
+      autocollapse: all
+      closed_mode_threshold: 0
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: srh_tip
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings: { }
+    region: content
+  field_srh_media_gallery:
+    type: media_library_widget
+    weight: 14
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+    region: content
+  field_srh_menuiqscore:
+    weight: 13
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+    region: content
+  field_srh_nutrients:
+    type: paragraphs
+    weight: 17
+    settings:
+      title: Nutrient
+      title_plural: Nutrients
+      edit_mode: closed
+      closed_mode: summary
+      autocollapse: all
+      closed_mode_threshold: 0
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: srh_nutrient
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings: {  }
+    region: content
+  field_srh_serving:
+    weight: 26
+    settings: {  }
+    third_party_settings: {  }
+    type: srh_serving_widget
+    region: content
+  field_srh_steps:
+    type: paragraphs
+    weight: 16
+    settings:
+      title: Step
+      title_plural: Steps
+      edit_mode: closed
+      closed_mode: summary
+      autocollapse: all
+      closed_mode_threshold: 0
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: srh_step
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings: {  }
+    region: content
+  field_srh_steps_groups:
+    type: paragraphs
+    weight: 17
+    settings:
+      title: 'Steps Group'
+      title_plural: 'Steps Groups'
+      edit_mode: closed
+      closed_mode: summary
+      autocollapse: all
+      closed_mode_threshold: 0
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: srh_step_group
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings: {  }
+    region: content
+  field_srh_cloudfront_medias:
+    type: paragraphs
+    weight: 11
+    settings:
+      title: 'CloudFront Media'
+      title_plural: 'CloudFront Medias'
+      edit_mode: closed
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: srh_cloudfront_media
+      closed_mode: summary
+      autocollapse: all
+      closed_mode_threshold: 0
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings: {  }
+    region: content
+  field_srh_tagging:
+    weight: 22
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_srh_times:
+    weight: 25
+    settings: {  }
+    third_party_settings: {  }
+    type: srh_times_widget
+    region: content
+  field_srh_tips:
+    type: paragraphs
+    weight: 18
+    settings:
+      title: Tip
+      title_plural: Tips
+      edit_mode: closed
+      closed_mode: summary
+      autocollapse: all
+      closed_mode_threshold: 0
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: srh_tip
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings: {  }
+    region: content
+  field_srh_tools:
+    weight: 21
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_srh_translations:
+    weight: 31
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: { }
+    type: entity_reference_autocomplete
+    region: content
+  field_srh_versions:
+    type: paragraphs
+    weight: 24
+    settings:
+      title: Version
+      title_plural: Versions
+      edit_mode: closed
+      closed_mode: summary
+      autocollapse: all
+      closed_mode_threshold: 0
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: srh_version
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings: { }
+    region: content
+  path:
+    type: path
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 3
+    region: content
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 8
+    region: content
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 4
+    region: content
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 1
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+      match_limit: 10
+    region: content
+    third_party_settings: {  }
+hidden:
+  field_meta_tags: true

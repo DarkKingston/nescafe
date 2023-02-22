@@ -1,0 +1,38 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_ln_c_pr_rev_disp_comp_type
+field_name: field_ln_c_pr_rev_disp_comp_type
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: pr_categorysnippet
+      label: CategorySnippet
+    -
+      value: pr_reviewsnippet
+      label: ReviewSnippet
+    -
+      value: pr_sizesnippet
+      label: SizeFitSnippet
+    -
+      value: pr_reviewdisplay
+      label: ReviewDisplay
+    -
+      value: pr_reviewsnapshot
+      label: ReviewSnapshot
+    -
+      value: pr_reviewlist
+      label: ReviewList
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

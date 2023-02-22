@@ -1,0 +1,16 @@
+services:
+  plugin.manager.advanced_datalayer.tag:
+    class: Drupal\advanced_datalayer\AdvancedDatalayerTagPluginManager
+    parent: default_plugin_manager
+
+  plugin.manager.advanced_datalayer.group:
+    class: Drupal\advanced_datalayer\AdvancedDatalayerGroupPluginManager
+    parent: default_plugin_manager
+
+  advanced_datalayer.token:
+    class: Drupal\advanced_datalayer\AdvancedDatalayerToken
+    arguments: ['@token', '@token.entity_mapper']
+
+  advanced_datalayer.manager:
+    class: Drupal\advanced_datalayer\AdvancedDatalayerManager
+    arguments: ['@plugin.manager.advanced_datalayer.group', '@plugin.manager.advanced_datalayer.tag', '@advanced_datalayer.token', '@logger.factory', '@entity_type.manager', '@current_route_match', '@language_manager', '@path.matcher']

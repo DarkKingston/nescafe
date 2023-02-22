@@ -1,0 +1,10 @@
+{
+  "name": "lightnest/ln_bazaarvoice",
+  "description": "Adds the integration from Drupal to Bazaarvoice.",
+  "type": "drupal-module",
+  "keywords": [
+    "content",
+    "bazaarvoice",
+    "frontend"
+  ]
+}

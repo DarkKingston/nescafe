@@ -1,0 +1,15 @@
+.paragraph--type--c-shopify .left .field--name-field-c-title {
+  text-align: left; }
+
+.paragraph--type--c-shopify .center .field--name-field-c-title {
+  text-align: center; }
+
+.paragraph--type--c-shopify .right .field--name-field-c-title {
+  text-align: right; }
+ 
+.paragraph-type--c-shopify .field--name-field-shopify-content .filter-wrapper {
+	display:none;
+}
+div.field--type-field-shopify .filter-wrapper {
+	display:none;
+  }

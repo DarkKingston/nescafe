@@ -1,0 +1,13 @@
+ln_adimo.migrate.admin.form:
+  title: LightNest Adimo
+  description: 'Adimo Mass Uploader'
+  route_name: ln_adimo.migrate.admin.form
+  base_route: ln_adimo.migrate.admin.form
+  weight: 1
+
+ln_adimo.config_form:
+  route_name: ln_adimo.admin.config
+  title: Adimo Miscellaneous Configuration
+  weight: 2
+  base_route: ln_adimo.migrate.admin.form
+

@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_quiz_title
+    - paragraphs.paragraphs_type.quiz
+  enforced:
+    module:
+      - ln_quiz
+id: paragraph.quiz.field_quiz_title
+field_name: field_quiz_title
+entity_type: paragraph
+bundle: quiz
+label: Title
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

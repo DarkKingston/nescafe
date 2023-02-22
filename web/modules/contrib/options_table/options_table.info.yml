@@ -1,0 +1,12 @@
+name: Options Table
+type: module
+description: Draggable Table widget for options field types.
+core_version_requirement: ^9.1 || ^10
+package: Fields
+dependencies:
+  - drupal:options
+
+# Information added by Drupal.org packaging script on 2022-08-01
+version: '2.1.0'
+project: 'options_table'
+datestamp: 1659339598

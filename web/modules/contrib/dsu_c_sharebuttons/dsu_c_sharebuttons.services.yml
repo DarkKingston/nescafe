@@ -1,0 +1,5 @@
+services:
+  dsu_c_sharebuttons.subscriber:
+    class: Drupal\dsu_c_sharebuttons\EventSubscriber\DSUShareButtonsSubscriber
+    tags:
+      - {name: event_subscriber}

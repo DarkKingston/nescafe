@@ -1,0 +1,7 @@
+services:
+  ratings_reviews.main:
+    class: Drupal\dsu_ratings_reviews\RatingsReviewsService
+  ratings_reviews.route_subscriber:
+    class: Drupal\dsu_ratings_reviews\Routing\RatingsReviewsRouteSubscriber
+    tags:
+      - { name: event_subscriber }

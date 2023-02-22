@@ -1,0 +1,31 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_srh_sidedish_type
+    - paragraphs.paragraphs_type.srh_sidedish
+    - taxonomy.vocabulary.srh_sidedish_type
+  enforced:
+    module:
+      - ln_srh_menuiq
+id: paragraph.srh_sidedish.field_srh_sidedish_type
+field_name: field_srh_sidedish_type
+entity_type: paragraph
+bundle: srh_sidedish
+label: 'SRH SideDish Type'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      srh_sidedish_type: srh_sidedish_type
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

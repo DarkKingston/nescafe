@@ -1,0 +1,3 @@
+services:
+  ln_sample_content.sample_content_maker:
+    class: Drupal\ln_sample_content\Controller\SampleContentMaker

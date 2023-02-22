@@ -1,0 +1,15 @@
+<?php
+  /**
+   * @file
+   * Hooks implementations.
+   */
+
+  /**
+   * Implements hook_preprocess_page().
+   */
+  function ckeditor_responsive_plugin_preprocess_page(&$variables) {
+    global $base_url;
+    $defaultThemeName = \Drupal::config('system.theme')->get('default');
+    $image_path = '/themes/custom/' . $defaultThemeName . '/' . 'assets/img/';
+    $variables['#attached']['drupalSettings']['active']['theme_path'] = $base_url . $image_path;
+  }

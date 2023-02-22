@@ -1,0 +1,16 @@
+name: 'Lightnest Components: Map'
+package: 'Lightnest Components'
+type: module
+version: 8.x-1.2.0
+description: 'Includes DSU Map Component related configurations.'
+core: 8.x
+core_version_requirement: ^8 || ^9
+libraries:
+  - dsu_c_map/general
+dependencies:
+  - field
+  - geolocation
+  - address
+  - paragraphs
+  - text
+  - geolocation_google_maps

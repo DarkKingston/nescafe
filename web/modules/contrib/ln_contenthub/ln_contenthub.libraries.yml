@@ -1,0 +1,17 @@
+integration:
+  version: 1.0
+  css:
+    theme:
+      css/ln_contenthub.integration.css: {}
+  js:
+    js/ln_contenthub.integration.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - ln_contenthub/imagesloaded
+    - ln_contenthub/masonry
+ln_contenthub_pager:
+  version: 1.0
+  css:
+    theme:
+      css/ln_contenthub_entity_browser.pager.css: {}

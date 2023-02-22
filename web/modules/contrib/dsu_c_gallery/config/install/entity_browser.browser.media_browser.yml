@@ -1,0 +1,51 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.media
+  module:
+    - lightning_media
+    - views
+name: media_browser
+label: 'Media browser'
+display: modal
+display_configuration:
+  width: ''
+  height: ''
+  link_text: 'Add media'
+  auto_open: false
+selection_display: no_display
+selection_display_configuration: {  }
+widget_selector: tabs
+widget_selector_configuration: {  }
+widgets:
+  66e13a7b-c062-4502-ad4d-bb8469eaced6:
+    settings:
+      view: media
+      view_display: entity_browser_1
+      submit_text: Select
+      auto_select: false
+    uuid: 66e13a7b-c062-4502-ad4d-bb8469eaced6
+    weight: 1
+    label: Library
+    id: view
+  e33b931f-8116-40fe-9080-4c663d7e8e2d:
+    settings:
+      submit_text: Place
+      target_bundles: {  }
+      form_mode: media_browser
+      return_file: false
+      upload_validators: {  }
+    uuid: e33b931f-8116-40fe-9080-4c663d7e8e2d
+    weight: 2
+    label: Upload
+    id: file_upload
+  8934c5ad-502c-4e9b-8d28-b44f64450e75:
+    settings:
+      submit_text: Place
+      target_bundles: {  }
+      form_mode: media_browser
+    uuid: 8934c5ad-502c-4e9b-8d28-b44f64450e75
+    weight: 3
+    label: 'Create embed'
+    id: embed_code

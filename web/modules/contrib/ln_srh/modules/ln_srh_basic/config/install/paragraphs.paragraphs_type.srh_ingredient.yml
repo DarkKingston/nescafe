@@ -1,0 +1,12 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - ln_srh_basic
+id: srh_ingredient
+label: 'SRH Ingredient'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

@@ -1,0 +1,23 @@
+<?php
+
+/**
+ * @file
+ * Install, update, and uninstall functions for the ln_tint_connector module.
+ */
+
+
+/**
+ * Implements hook_update().
+ * DWDL-3407 : Refactor Lightnest Tint Connector component.
+ * Refactor ln_tint_connector module
+ */
+function ln_tint_connector_update_9101() {
+  \Drupal::service('dsu_core.config_replace')->rewriteModuleConfig('ln_tint_connector');
+}
+
+function ln_tint_connector_update_dependencies() {
+  $dependencies['ln_tint_connector'][9101] = [
+    'dsu_c_core' => 9101,
+  ];
+  return $dependencies;
+}

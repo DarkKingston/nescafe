@@ -1,0 +1,114 @@
+<?php
+
+/**
+ * @file
+ * Contains  dsu_c_tabbedcontent.module.
+ */
+
+use Drupal\taxonomy\Entity\Term;
+
+/**
+ * Implements hook_preprocess_theme().
+ */
+function dsu_c_tabbedcontent_theme($existing, $type, $theme, $path) {
+  return [
+    'paragraph__c_tab_item' => [
+      'template' => 'paragraph--c-tab-item',
+      'base hook' => 'paragraphs',
+    ],
+    'paragraph__c_tabbed_content' => [
+      'template' => 'paragraph--c-tabbed-content',
+      'base hook' => 'paragraphs',
+    ],
+    'paragraph__tabbed_content' => [
+      'template' => 'paragraph--tabbed-content',
+      'variables' => [
+        'paragraphs' => NULL,
+        'parent_paragraph' => NULL,
+      ],
+    ],
+  ];
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for paragraph.html.twig.
+ */
+function dsu_c_tabbedcontent_preprocess_paragraph(&$variables) {
+    if ($variables['paragraph']->getType() == 'c_tabbed_content') {
+      $paragraph_view_builder = \Drupal::entityTypeManager()
+        ->getViewBuilder('paragraph');
+      $tab_item_entity_display_settings = \Drupal::service('entity_display.repository')
+        ->getViewDisplay('paragraph', 'c_tab_item', 'default');
+      $paragraphs = [];
+      foreach ($variables['content']['field_c_tab_item'] as $key => $value) {
+        if (is_numeric($key) && isset($value['#paragraph'])) {
+          $tab_item = $value['#paragraph'];
+          $paragraphs['tab_icon'][$tab_item->id()] = [
+            'icon' => (!empty($tab_item->field_c_image->getValue())) ? $paragraph_view_builder->viewField($tab_item->field_c_image, $tab_item_entity_display_settings->getComponent('field_c_image')) : '',
+            'title' => $paragraph_view_builder->viewField($tab_item->field_c_title, $tab_item_entity_display_settings->getComponent('field_c_title')),
+          ];
+          if ($tab_item->hasField('field_button_color') && $tab_item->get('field_button_color')
+            ->first()) {
+            $term_id = $tab_item->get('field_button_color')->getString();
+            $term = Term::load($term_id);
+            $paragraphs['tab_icon'][$tab_item->id()]['bg_color'] = $term->get('field_color_code')
+              ->getString();
+          }
+          $paragraphs['tab_content'][$tab_item->id()] = $paragraph_view_builder->viewField($tab_item->field_column_first, $tab_item_entity_display_settings->getComponent('field_column_first'));
+        }
+      }
+      if (!empty($paragraphs)) {
+        $variables['content']['field_c_tab_item'] = [
+          '#theme' => 'paragraph__tabbed_content',
+          '#paragraphs' => $paragraphs,
+          '#parent_paragraph' => $variables['paragraph']->id(),
+        ];
+        $variables['#attached']['library'][] = 'dsu_c_tabbedcontent/tabbed-content';
+      }
+    }
+  else {
+    if ($variables['paragraph']->getType() == 'c_tabbed_content') {
+      $variables['#attached']['library'][] = 'dsu_c_tabbedcontent/tabbed-content';
+      $variables['attributes']['id'] = 'dsu-tabbed-content--' . $variables['paragraph']->id();
+      $variables['attributes']['class'][] = 'dsu-tabbed-content';
+    }
+    elseif ($variables['paragraph']->getType() == 'c_tab_item') {
+      $variables['#attached']['library'][] = 'dsu_c_tabbedcontent/tab-item';
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_hook() for field.html.twig.
+ */
+function dsu_c_tabbedcontent_preprocess_field(&$variables) {
+  if ($variables['entity_type'] == 'paragraph' && $variables['element']['#object']->getType() == 'c_tabbed_content') {
+    if ($variables['field_name'] == 'field_c_tab_item') {
+      foreach ($variables['items'] as $key => $value) {
+        $variables['items'][$key]['attributes']->setAttribute('class', 'dsu-tabbed-content--items');
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_ln_sample_content().
+ */
+function dsu_c_tabbedcontent_ln_sample_content() {
+    /** @var \Drupal\Core\Extension\ModuleHandlerInterface $module_handler */
+    $module_handler = \Drupal::service('module_handler');
+    /** @var \Drupal\Core\Extension\Extension $module_object */
+    $module_object = $module_handler->getModule(basename(__FILE__, '.module'));
+    $module_name = $module_object->getName();
+
+    $source = drupal_get_path('module', $module_name) . '/content';
+    /** @var \Drupal\Core\File\FileSystemInterface $file_system */
+    $file_system = \Drupal::service('file_system');
+    $files = $file_system->scanDirectory($source, '/demo.*\.(yml)$/');
+    $yaml_file_path = NULL;
+    foreach ($files as $file) {
+        $yaml_file_path[] = '/content/' . $file->filename;
+    }
+
+    return $yaml_file_path;
+}

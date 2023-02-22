@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - ln_fusepump
+    - paragraphs
+id: paragraph.field_ln_c_wunderman_buy_now
+field_name: field_ln_c_wunderman_buy_now
+entity_type: paragraph
+type: field_fusepump
+settings: {  }
+module: ln_fusepump
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,64 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.c_link.field_button_color
+    - field.field.paragraph.c_link.field_c_image
+    - field.field.paragraph.c_link.field_c_link
+    - field.field.paragraph.c_link.field_horizontal_position
+    - field.field.paragraph.c_link.field_link_type
+    - image.style.c_document_icon
+    - paragraphs.paragraphs_type.c_link
+  module:
+    - link
+    - media
+    - options
+id: paragraph.c_link.default
+targetEntityType: paragraph
+bundle: c_link
+mode: default
+content:
+  field_button_color:
+    type: entity_reference_label
+    weight: 2
+    region: content
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+  field_c_image:
+    weight: 0
+    label: hidden
+    settings:
+      image_style: c_document_icon
+      image_link: ''
+    third_party_settings: {  }
+    type: media_thumbnail
+    region: content
+  field_c_link:
+    weight: 1
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  field_horizontal_position:
+    type: list_key
+    weight: 3
+    region: content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+  field_link_type:
+    type: list_key
+    weight: 4
+    region: content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

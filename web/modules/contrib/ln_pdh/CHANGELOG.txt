@@ -1,0 +1,10 @@
+# Changelog
+
+## 2.0.1
+ - Move link menu into Lighnest
+
+## 1.1.0
+ - Add optional fields that can be configured using a form, including complex ones that will be stored as paragraphs.
+
+## 1.0.1
+ - Move the dsu_product entity form display config from install to optional to avoid overwriting existing customizations.

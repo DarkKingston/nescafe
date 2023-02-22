@@ -1,0 +1,20 @@
+name: 'Lightnest Components: Social Buttons'
+description: 'Provides Social buttons component.'
+type: module
+core: 8.x
+core_version_requirement: ^8 || ^9
+version: 8.x-1.1.2
+dependencies:
+  - dsu_c_core
+  - entity_browser
+  - entity_reference_revisions
+  - field
+  - link
+  - link_attributes
+  - media
+  - panelizer
+  - paragraphs
+  - path
+  - taxonomy
+  - text
+package: 'Lightnest Components'

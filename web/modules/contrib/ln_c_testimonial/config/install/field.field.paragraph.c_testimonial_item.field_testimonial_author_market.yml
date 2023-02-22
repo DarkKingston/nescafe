@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_testimonial_author_market
+    - paragraphs.paragraphs_type.c_testimonial_item
+id: paragraph.c_testimonial_item.field_testimonial_author_market
+field_name: field_testimonial_author_market
+entity_type: paragraph
+bundle: c_testimonial_item
+label: 'Author Company/Market'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

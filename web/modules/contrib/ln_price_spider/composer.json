@@ -1,0 +1,19 @@
+{
+  "name": "lightnest/ln_price_spider",
+  "description": "Integration from Drupal to PriceSpider.",
+  "type": "drupal-module",
+  "keywords": [
+    "content",
+    "paragraphs",
+    "frontend"
+  ],
+  "repositories": {
+    "drupal": {
+      "type": "composer",
+      "url": "https://packages.drupal.org/8"
+    }
+  },
+  "require": {
+    "drupal/migrate_source_csv": "^3.2"
+  }
+}

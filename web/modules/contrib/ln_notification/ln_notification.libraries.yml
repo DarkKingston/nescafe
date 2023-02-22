@@ -1,0 +1,39 @@
+firebasejs:
+  remote: https://www.gstatic.com/firebasejs
+  version: 9.6.7
+  license:
+    name: MIT
+    url: https://firebase.google.com/terms
+    gpl-compatible: true
+  js:
+    https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js: { type: external, minified: true }
+    https://www.gstatic.com/firebasejs/9.6.7/firebase-messaging-compat.js: { type: external, minified: true }
+
+lib:
+  js:
+    js/fcm_lib.js: {}
+  drupalSettings:
+    notificationSystemDispatchFcm:
+      applicationServerKey: ''
+      serviceWorkerUrl: ''
+      apiUrl: ''
+  dependencies:
+    - core/drupal
+    - core/drupalSettings
+    - ln_notification/firebasejs
+
+popup_block:
+  js:
+    js/fcm_popup_block.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - ln_notification/lib
+
+usersettings_block:
+  js:
+    js/fcm_usersettings_block.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - ln_notification/lib

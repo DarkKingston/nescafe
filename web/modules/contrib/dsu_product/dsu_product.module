@@ -1,0 +1,46 @@
+<?php
+
+/**
+ * @file
+ * Contains tint.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function dsu_product_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the tint module.
+    case 'help.page.dsu_product':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('DSU Product Rendering and showing components.') . '</p>';
+
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function dsu_product_theme($existing, $type, $theme, $path) {
+  return [
+    'node__dsu_product' => [
+      'template'  => 'node--dsu-product',
+      'base hook' => 'node',
+    ],
+  ];
+}
+
+/**
+ * Implements hook_page_attachments().
+ *
+ * Load JS and replacing with dynamic js URL for this page.
+ */
+function dsu_product_page_attachments(array &$page) {
+  $page['#attached']['library'][] = 'dsu_product/dsu-product';
+}

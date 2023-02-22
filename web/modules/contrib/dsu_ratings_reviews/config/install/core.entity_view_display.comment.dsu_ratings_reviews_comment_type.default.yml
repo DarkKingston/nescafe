@@ -1,0 +1,88 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.dsu_ratings_reviews_comment_type
+    - field.field.comment.dsu_ratings_reviews_comment_type.field_display_name
+    - field.field.comment.dsu_ratings_reviews_comment_type.field_dsu_comment
+    - field.field.comment.dsu_ratings_reviews_comment_type.field_dsu_images
+    - field.field.comment.dsu_ratings_reviews_comment_type.field_dsu_marketing_opt_in
+    - field.field.comment.dsu_ratings_reviews_comment_type.field_dsu_ratings
+    - field.field.comment.dsu_ratings_reviews_comment_type.field_dsu_recommend
+    - field.field.comment.dsu_ratings_reviews_comment_type.field_dsu_tos
+  module:
+    - fivestar
+id: comment.dsu_ratings_reviews_comment_type.default
+targetEntityType: comment
+bundle: dsu_ratings_reviews_comment_type
+mode: default
+content:
+  field_display_name:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 8
+    region: content
+  field_dsu_comment:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_dsu_images:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_dsu_ratings:
+    type: fivestar_stars
+    label: hidden
+    settings:
+      text_format: average
+      display_format: average
+      fivestar_widget: modules/contrib/fivestar/widgets/basic/basic.css
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_dsu_recommend:
+    type: boolean
+    label: hidden
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  flag_dsu_ratings_comment_unuseful:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  flag_dsu_ratings_comment_useful:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  reply:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 7
+    region: content
+hidden:
+  field_dsu_marketing_opt_in: true
+  field_dsu_tos: true
+  langcode: true
+  search_api_excerpt: true

@@ -1,0 +1,15 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs_ee
+third_party_settings:
+  paragraphs_ee:
+    paragraphs_categories:
+      other: other
+id: c_newsletter_signup_cta
+label: 'Content: Newsletter Signup CTA Block'
+icon_uuid: null
+icon_default: null
+description: 'Component to build newsletter signup cta block'
+behavior_plugins: {  }

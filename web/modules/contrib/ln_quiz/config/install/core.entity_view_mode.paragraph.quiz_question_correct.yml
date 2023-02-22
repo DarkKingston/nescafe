@@ -1,0 +1,12 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+  enforced:
+    module:
+      - ln_quiz
+id: paragraph.quiz_question_correct
+label: 'Quiz question correct'
+targetEntityType: paragraph
+cache: true

@@ -1,0 +1,66 @@
+## changelog
+
+## 2.1.3
+- Fix datalayer use
+
+## 2.1.2
+- Apply changes for refactor ln_datalayer module
+## 2.1.1
+- Remove hardcoded credentials
+
+## 2.1.0
+- Update datalayer for GA4
+
+## 2.0.8
+- `Contact Us Block Form` setting are placed as seperate tab.
+- Text changes.
+- To Incorporate these changes please follow below steps :
+    * Go to `/admin/config/lightnest/dsu_engage/dsu_engage_settings` form and simply save confiuration again.
+
+## 2.0.7
+- Fix Inline errors for ln_contactus_block form.
+- Remove default path contact_us for contact us form, now site owner can enable/disable this from configuration.(/admin/config/lightnest/dsu_engage/dsu_engage_settings)
+- Site owner can also set dynamic url for contact us form.
+- Added captcha for dsu_engage and ln_contactus_block form.
+- To Incorporate these changes please follow below steps :
+    * Run “composer update”
+    * Drush cr and rebuild the cache
+    * Go to Admin -> config -> Development -> Features Page (admin/config/development/features) and revert engage feature.
+    * Validate the changes on engage and contact us block form.
+
+## 2.0.6
+- The following options has been included in the Conctact Us block form:
+  Exclusion List: Allows sites to select countries for which Contact Us submission data will be stored locally in Drupal and not sent to Engage.
+  Send to Engage: This option is now selected by default unless the site is storing their data locally.
+  Location Options: This option allows sites to select which countries they want to show in the COUNTRY field dropdown.
+  Business email address: If the Send to Engage option is unchecked, the site can specify an email to send an alert to someone that a submission was done.
+- rel attribute added if target exist on anchor tag.
+
+
+DSU Engage 8.x-1.1, 2018-07-28
+----------------------------------
+Changes since 8.x-1.0:
+
+- Modified composer.json to apply a patch:
+    "1091852 - Display Bug when using #states (Forms API) with Ajax Request":"https://www.drupal.org/files/issues/1091852_70.patch"
+    This patch is intended for Drupal 8.5. If you want tompatch Drupal 8.4.x, you should use the follow one:
+    "1091852 - Display Bug when using #states (Forms API) with Ajax Request": "https://www.drupal.org/files/issues/1091852_70-8.4.x.patch"
+    see: https://www.drupal.org/project/drupal/issues/1091852 for more info.
+
+- Modified dsu_engage.info.yml to reflect the right version:1.x-dev
+
+DSU Engage 8.x-1.x-dev, 2018-10-14
+----------------------------------
+- Fixed: https://dsu-jira.nestle.biz/browse/DNE-2351 => Navigation - user redirected to 'Question' tab
+- Fixed: https://dsu-jira.nestle.biz/browse/DNE-2934 => CU Widget - Validation for Country not working
+- Adde help page fr the module:
+    If you are installing this module in Drupal 8.4.x, you should install the follow core patch:
+        1091852_70-8.4.x - Display Bug when using #states (Forms API) with Ajax Request: https://www.drupal.org/files/issues/1091852_70-8.4.x.patch
+
+    If you are installing this module in Drupal 8.5.x, you should install the follow core patch:
+
+        1091852_70 - Display Bug when using #states (Forms API) with Ajax Request: https://www.drupal.org/files/issues/1091852_70.patch
+
+    If you are installing this module in Drupal 8.7.x, you should install the follow core patch:
+
+        1091852_77 - Display Bug when using #states (Forms API) with Ajax Request: https://www.drupal.org/files/issues/2018-08-22/1091852-77.patch

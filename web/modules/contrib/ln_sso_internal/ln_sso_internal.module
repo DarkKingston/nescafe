@@ -1,0 +1,14 @@
+<?php
+
+/**
+ * Alters userinfo before authorization or connecting a user.
+ *
+ * @param array $userinfo
+ *   An array of returned user information.
+ * @param array $context
+ *   - user_data: An array of user_data.
+ */
+function ln_sso_internal_openid_connect_userinfo_alter(array &$userinfo, array $context) {
+  // We will use the email as the username.
+  $userinfo['name'] = substr($userinfo['email'], 0, 60);
+}

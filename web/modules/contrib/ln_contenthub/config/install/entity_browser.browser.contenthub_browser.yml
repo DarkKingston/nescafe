@@ -1,0 +1,37 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.content_hub
+  module:
+    - ln_contenthub
+    - media
+name: contenthub_browser
+label: 'Content Hub Browser'
+display: iframe
+display_configuration:
+  width: 100%
+  height: '640'
+  link_text: 'Select entities'
+  auto_open: true
+selection_display: no_display
+selection_display_configuration: {  }
+widget_selector: tabs
+widget_selector_configuration: {  }
+widgets:
+  891f23f2-7eaf-4b64-99f2-c80ba3ba5c6b:
+    settings:
+      media_type: content_hub
+      server_uri: ''
+      username: ''
+      password: ''
+      api_key: ''
+      upload_location: 'public://content_hub-media/[date:custom:Y]-[date:custom:m]'
+      multiple: true
+      submit_text: 'Select images'
+      extensions: 'jpg jpeg gif png txt doc xls pdf ppt pps odt ods odp'
+      per_page: ''
+    uuid: 891f23f2-7eaf-4b64-99f2-c80ba3ba5c6b
+    weight: 1
+    label: 'Content Hub Image'
+    id: ln_contenthub_widget

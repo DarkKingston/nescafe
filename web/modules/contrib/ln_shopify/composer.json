@@ -1,0 +1,10 @@
+{
+    "name": "lightnest/ln_shopify",
+    "description": "Integration from Drupal to Shopify.",
+    "type": "drupal-module",
+    "keywords": [
+        "content",
+        "paragraphs",
+        "frontend"
+    ]
+}

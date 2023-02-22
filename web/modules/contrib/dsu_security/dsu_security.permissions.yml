@@ -1,0 +1,3 @@
+'administer dsu security':
+  title: 'Administer DSU Security'
+  description: 'Configure DSU Security - Allows to specify the URL that user will be redirected after registration'

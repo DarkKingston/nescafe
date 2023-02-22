@@ -1,0 +1,51 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.media
+  module:
+    - lightning_media
+    - views
+name: video_browser
+label: 'Video Browser'
+display: modal
+display_configuration:
+  width: '900'
+  height: '600'
+  link_text: 'Select Video(s)'
+  auto_open: false
+selection_display: no_display
+selection_display_configuration: {  }
+widget_selector: tabs
+widget_selector_configuration: {  }
+widgets:
+  4db5c2ae-84a8-4cdb-923f-9713c8c3d677:
+    settings:
+      view: media
+      view_display: entity_browser_4
+      submit_text: Select
+      auto_select: false
+    uuid: 4db5c2ae-84a8-4cdb-923f-9713c8c3d677
+    weight: 1
+    label: Library
+    id: view
+  9f5908a8-cfd4-40d4-9867-ba7821e6b8e2:
+    settings:
+      submit_text: Select
+      target_bundles: {  }
+      form_mode: media_browser
+      return_file: false
+      upload_validators: {  }
+    uuid: 9f5908a8-cfd4-40d4-9867-ba7821e6b8e2
+    weight: 2
+    label: 'File Upload'
+    id: file_upload
+  f0271502-0233-4a8d-9222-54e61b9ac0b1:
+    settings:
+      submit_text: Select
+      target_bundles: {  }
+      form_mode: media_browser
+    uuid: f0271502-0233-4a8d-9222-54e61b9ac0b1
+    weight: 3
+    label: Embed
+    id: embed_code

@@ -1,0 +1,22 @@
+web_push_api.subscription:
+  path: '/web-push-api/subscription'
+  defaults:
+    _controller: 'Drupal\web_push_api\Controller\WebPushSubscriptionController::subscription'
+  methods:
+    - POST
+    - PATCH
+    - DELETE
+  requirements:
+    # The Push API subscriptions can be created for anonymous users too. If
+    # someone decides to share this then we'll bother them by our notifications.
+    _access: 'TRUE'
+
+entity.web_push_subscription.collection:
+  path: '/admin/config/services/web-push-api/subscriptions'
+  defaults:
+    _title: 'Web Push API subscriptions'
+    _entity_list: web_push_subscription
+  requirements:
+    _permission: 'administer web push subscriptions'
+  options:
+    _admin_route: TRUE

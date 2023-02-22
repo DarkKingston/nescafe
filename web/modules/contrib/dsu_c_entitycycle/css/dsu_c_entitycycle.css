@@ -1,0 +1,47 @@
+.paragraph--type--c-entitycycle {
+  padding: 0 20px; }
+  .paragraph--type--c-entitycycle .field--name-title {
+    display: block; }
+  .paragraph--type--c-entitycycle .slick-track {
+    text-align: center; }
+  .paragraph--type--c-entitycycle .slick--less .slick-track {
+    text-align: center; }
+  .paragraph--type--c-entitycycle .slick-prev, .paragraph--type--c-entitycycle .slick-next {
+    width: 42px;
+    height: 42px; }
+  .paragraph--type--c-entitycycle .slick-prev {
+    left: 0; }
+    .paragraph--type--c-entitycycle .slick-prev:before {
+      color: #000000;
+      font-size: 36px; }
+  .paragraph--type--c-entitycycle .slick-next {
+    right: 0; }
+    .paragraph--type--c-entitycycle .slick-next:before {
+      color: #000000;
+      font-size: 36px; }
+  .paragraph--type--c-entitycycle .slick-dots li button:before {
+    font-size: 10px; }
+
+.paragraph--type--c-entitycycle .slick-dotted.slick-slider {
+  padding-bottom: 15px; }
+
+.paragraph--type--c-entitycycle .slick img {
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover; }
+
+.paragraph--type--c-entitycycle .slick__slide {
+  margin: 0 5px; }
+  .paragraph--type--c-entitycycle .slick__slide article .field--type-image {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex; }
+
+.node-dsu-component-page-edit-form .paragraph--type--c-teasercycle .slick {
+  width: 100%; }
+
+.node-dsu-component-page-edit-form .paragraph--type--c-teasercycle .slick-next {
+  right: -22px; }

@@ -1,0 +1,56 @@
+{%
+  set classes = [
+  'srh-layout',
+  'srh-layout--one-column--stacked',
+  content['#entity_type']|clean_class,
+  content['#entity_type'] ~ '--type-' ~ content['#bundle']|clean_class,
+  content['#entity_type'] ~ '--view-mode-' ~ content['#view_mode']|clean_class,
+]
+%}
+<div{{ attributes.addClass(classes) }}>
+  {% if content.header %}
+    <div {{ region_attributes.header.addClass('srh-layout__region', 'srh-layout__region--header','container-fluid') }}>
+      <div class="row no-gutters">
+        <div class="col-md-12">
+          {{ content.header }}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+  {% if content.body_top %}
+    <div {{ region_attributes.body_top.addClass('srh-layout__region', 'srh-layout__region--body_top','container') }}>
+      <div class="row">
+        <div class="col-md-12">
+          {{ content.body_top }}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+  {% if content.body_middle %}
+    <div {{ region_attributes.body_middle.addClass('srh-layout__region', 'srh-layout__region--body_middle','container') }}>
+      <div class="row">
+        <div class="col-md-12">
+          {{ content.body_middle }}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+  {% if content.body_bottom %}
+    <div {{ region_attributes.body_bottom.addClass('srh-layout__region', 'srh-layout__region--body_bottom','container') }}>
+      <div class="row">
+        <div class="col-md-12">
+          {{ content.body_bottom }}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+  {% if content.footer %}
+    <div {{ region_attributes.footer.addClass('srh-layout__region', 'srh-layout__region--footer','container-fluid') }}>
+      <div class="row no-gutters">
+        <div class="col-md-12">
+          {{ content.footer }}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+</div>

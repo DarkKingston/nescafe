@@ -1,0 +1,48 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.c_spacer.field_divider_height
+    - field.field.paragraph.c_spacer.field_margin_bottom
+    - field.field.paragraph.c_spacer.field_margin_top
+    - field.field.paragraph.c_spacer.field_type_of_divider
+    - paragraphs.paragraphs_type.c_spacer
+  module:
+    - options
+id: paragraph.c_spacer.default
+targetEntityType: paragraph
+bundle: c_spacer
+mode: default
+content:
+  field_divider_height:
+    weight: 5
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_margin_bottom:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_margin_top:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_type_of_divider:
+    weight: 4
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_key
+    region: content
+hidden: {  }

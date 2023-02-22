@@ -1,0 +1,9 @@
+langcode: en
+status: false
+dependencies:
+  module:
+    - ln_campaign
+id: ln_campaign.search_result
+label: 'Search result highlighting input'
+targetEntityType: ln_campaign
+cache: true

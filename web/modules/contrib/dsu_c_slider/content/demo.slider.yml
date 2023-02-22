@@ -1,0 +1,61 @@
+type: c_slider
+component_description: SLIDER - SHOWING SAMPLE OPTIONS OF TEXT ABOVE, OVER AND BELOW SLIDE AND ALIGNMENTS
+field_c_subitems:
+  paragraph:
+    item_0:
+      type: c_slide
+      field_c_advanced_title:
+        value: "Slider Text Above Left"
+        html_tag: h1
+      field_c_image:
+        image_name: atelier-chocolate-800.jpg
+        image_title: Les Recettes de L'Atelier
+      field_c_text: Arabica strong lungo, espresso, arabica froth, as variety viennese instant robusta dripper
+      field_c_link:
+        links:
+          item_0:
+            uri: https://www.nestle.com
+            title: More
+            options:
+              attributes:
+                target: _blank
+      classy:
+        target_id: dsu_text_position_top_left
+    item_1:
+      type: c_slide
+      field_c_advanced_title:
+        value: "Slider Text Center Middle"
+        html_tag: h1
+      field_c_image:
+        image_name: nesquino.jpg
+        image_title: Nesquino
+      field_c_text: Arabica strong lungo, espresso, arabica froth, as variety viennese instant robusta dripper
+      field_c_link:
+        links:
+          item_0:
+            uri: https://www.nestle.com
+            title: More
+            options:
+              attributes:
+                target: _blank
+      classy:
+        target_id: dsu_text_position_middle_center
+    item_2:
+      type: c_slide
+      field_c_advanced_title:
+        value: "Slider Text Right Bottom"
+        html_tag: h1
+      field_c_image:
+        image_name: yes-bar.jpg
+        image_title: Yes bar
+      field_c_text: Arabica strong lungo, espresso, arabica froth, as variety viennese instant robusta dripper
+      field_c_link:
+        links:
+          item_0:
+            uri: https://www.nestle.com
+            title: More
+            options:
+              attributes:
+                target: _blank
+      classy:
+        target_id: dsu_text_position_bottom_right

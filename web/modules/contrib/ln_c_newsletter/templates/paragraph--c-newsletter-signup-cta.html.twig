@@ -1,0 +1,32 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a paragraph.
+ * @see template_preprocess_paragraph()
+ *
+ * @ingroup themeable
+ */
+#}
+
+{% set classes = [
+  'paragraph',
+  'paragraph--type--' ~ paragraph.bundle|clean_class,
+  view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+] %}
+{% block paragraph %}
+	<div{{attributes.addClass(classes)}}>
+		{% block content %}
+		<div class = "newsletter-signup-cta-block-wrapper">
+			{% if content.field_newsletter_heading_style[0]['#markup'] %}
+				{% set title_tag=content.field_newsletter_heading_style[0]['#markup'] %}
+				<{{title_tag}}>
+					{{ content.field_newsletter_block_title }}
+				</{{title_tag}}>
+			{% else %}
+				{{ content.field_newsletter_block_title }}
+			{% endif %}
+			{{ content|without('field_newsletter_heading_style', 'field_newsletter_block_title')}}
+		</div>
+		{% endblock %}
+	</div>
+{% endblock paragraph %}

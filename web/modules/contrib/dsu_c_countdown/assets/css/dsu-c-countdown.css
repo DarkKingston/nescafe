@@ -1,0 +1,33 @@
+.paragraph--type--c-countdown {
+    text-align: center;
+}
+.paragraph--type--c-countdown .countdown-date {
+    margin-bottom: 15px;
+    display: inline-block;
+}
+.paragraph--type--c-countdown .countdown-section {
+    margin-left: 10px;
+    float: none;
+    display: inline-block;
+}
+.paragraph--type--c-countdown .countdown-section:first-child {
+    margin-left: 0px;
+}
+.paragraph--type--c-countdown .countdown-section .countdown-amount {
+    display: inline-block;
+    margin-right: 3px;
+}
+.paragraph--type--c-countdown .countdown-section .countdown-period {
+    display: inline-block;
+    vertical-align: baseline;
+}
+.paragraph--type--c-countdown  .field-timer-jquery-countdown {
+    text-align: center;
+
+}
+.paragraph--type--c-countdown  .is-countdown {
+    text-align: center;
+    border: 0;
+    background-color: unset;
+
+}

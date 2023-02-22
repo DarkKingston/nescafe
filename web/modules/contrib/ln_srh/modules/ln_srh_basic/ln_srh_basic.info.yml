@@ -1,0 +1,22 @@
+name: Lightnest SRH basic
+description: 'Provide a basic module for recipes, with basic fields.'
+type: module
+core_version_requirement: ^8.8 || ^9
+package: Lightnest
+dependencies:
+  - ln_srh:ln_srh
+  - taxonomy:taxonomy
+  - paragraphs:paragraphs
+  - drupal:media
+  - drupal:media_library
+  - lightning_media_video:lightning_media_video
+  - lightning_media_image:lightning_media_image
+  - metatag:metatag
+  - metatag_open_graph:metatag_open_graph
+  - metatag_facebook:metatag_facebook
+  - metatag_twitter_cards:metatag_twitter_cards
+  - metatag_pinterest:metatag_pinterest
+  - ds:ds
+  - slick:slick
+  - focal_point:focal_point
+  - ln_srh_schema:ln_srh_schema

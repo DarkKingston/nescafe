@@ -1,0 +1,6 @@
+bundle: ln_c
+excluded:
+  - core.entity_form_display.block_content.component.default
+  - core.entity_view_display.block_content.component.default
+  - field.field.block_content.component.field_components
+required: true

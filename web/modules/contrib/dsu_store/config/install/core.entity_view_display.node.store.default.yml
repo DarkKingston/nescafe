@@ -1,0 +1,35 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.store.field_address
+    - field.field.node.store.field_country
+    - field.field.node.store.field_phone
+    - field.field.node.store.field_store_locator_widget
+    - field.field.node.store.field_town
+    - field.field.node.store.field_website
+    - field.field.node.store.field_zip_code
+    - node.type.store
+  module:
+    - text
+    - user
+id: node.store.default
+targetEntityType: node
+bundle: store
+mode: default
+content:
+  field_store_locator_widget:
+    weight: 0
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+hidden:
+  field_address: true
+  field_country: true
+  field_phone: true
+  field_town: true
+  field_website: true
+  field_zip_code: true
+  links: true

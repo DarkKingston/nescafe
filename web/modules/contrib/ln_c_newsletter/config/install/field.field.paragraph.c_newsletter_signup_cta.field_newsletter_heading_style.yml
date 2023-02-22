@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_newsletter_heading_style
+    - paragraphs.paragraphs_type.c_newsletter_signup_cta
+  module:
+    - options
+id: paragraph.c_newsletter_signup_cta.field_newsletter_heading_style
+field_name: field_newsletter_heading_style
+entity_type: paragraph
+bundle: c_newsletter_signup_cta
+label: 'Heading style'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

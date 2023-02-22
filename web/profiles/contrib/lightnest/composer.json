@@ -1,0 +1,214 @@
+{
+  "name": "lightnest/lightnest",
+  "description": "The Nestlé Drupal Distribution",
+  "type": "drupal-profile",
+  "license": "GPL-2.0+",
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "repositories": {
+    "drupal": {
+      "type": "composer",
+      "url": "https://packages.drupal.org/8"
+    },
+    "lightnest": {
+      "type": "composer",
+      "url": "https://satis.lightnest.nestle.com/"
+    },
+    "asset-packagist": {
+      "type": "composer",
+      "url": "https://asset-packagist.org"
+    }
+  },
+  "require": {
+    "php": ">=7.2",
+    "behat/behat": "^3.11",
+    "brilsergei/county": "master",
+    "ckeditor-plugin/font": "^4.10",
+    "ckeditor/colorbutton": "^4.14",
+    "ckeditor/fakeobjects": "^4.14",
+    "ckeditor/link": "^4.14",
+    "ckeditor/panelbutton": "^4.14",
+    "desandro/imagesloaded": "^4.1",
+    "desandro/masonry": "^4.2",
+    "drupal/admin_toolbar": "^3.3",
+    "drupal/advagg": "^5.0",
+    "drupal/akamai": "^4.0",
+    "drupal/anchor_link": "^2.5",
+    "drupal/autosave_form": "^1.4",
+    "drupal/bootstrap": "^3.25",
+    "drupal/bootstrap_barrio": "^5.5",
+    "drupal/bootstrap_library": "^2.0",
+    "drupal/ckeditor_font": "^1.3",
+    "drupal/ckeditor_responsive_plugin": "^2.0",
+    "drupal/classy_paragraphs": "^1.0@RC",
+    "drupal/colorbox_field_formatter": "^2.0",
+    "drupal/config_split": "^1.9",
+    "drupal/content_planner": "^1.0@beta",
+    "drupal/devel": "^5.0",
+    "drupal/devel_php": "^1.5",
+    "drupal/entity_class_formatter": "^1.3",
+    "drupal/entity_clone": "^1.0@beta",
+    "drupal/entity_reference_revisions": "^1.10",
+    "drupal/external_hreflang": "^2.0",
+    "drupal/features": "^3.12",
+    "drupal/field_group": "^3.4",
+    "drupal/file_browser": "^1.3",
+    "drupal/file_delete_ui": "^1.0@alpha",
+    "drupal/fivestar": "^1.0@alpha",
+    "drupal/focal_point": "^1.5",
+    "drupal/gin": "^3.0@RC",
+    "drupal/google_tag": "^1.5",
+    "drupal/lightning_layout": "^2.12",
+    "drupal/lightning_media": "^4.7",
+    "drupal/link_attributes": "^1.12",
+    "drupal/metatag": "^1.22",
+    "drupal/noreferrer": "^1.15",
+    "drupal/paragraphs": "^1.15",
+    "drupal/paragraphs_edit": "^2.0",
+    "drupal/paragraphs_features": "^1.16",
+    "drupal/paragraphs_previewer": "^1.5",
+    "drupal/pathologic": "^1.0@alpha",
+    "drupal/purge": "^3.4",
+    "drupal/recaptcha": "^3.1",
+    "drupal/redirect": "^1.8",
+    "drupal/robotstxt": "^1.4",
+    "drupal/scheduler": "^1.4",
+    "drupal/search_api_solr": "^4.2",
+    "drupal/shield": "^1.7",
+    "drupal/simple_sitemap": "^4.1",
+    "drupal/social_media": "^1.8",
+    "drupal/subpathauto": "^1.2",
+    "drupal/svg_image": "^1.16",
+    "drupal/token": "^1.11",
+    "drupal/twig_field_value": "^2.0",
+    "drupal/webform": "^6.1",
+    "drupal/xmlsitemap": "^1.4",
+    "drush/drush": "^11.3",
+    "harvesthq/chosen": "^1.8",
+    "jackmoore/colorbox": "^1.6",
+    "kbwood/countdown": "master",
+    "kenwheeler/slick": "^1.8",
+    "kint-php/kint": "^5.0",
+    "lightnest/dsu_article": "^1.4",
+    "lightnest/dsu_c_accordion": "^2.0",
+    "lightnest/dsu_c_block_component": "^1.0",
+    "lightnest/dsu_c_core": "^1.8",
+    "lightnest/dsu_c_countdown": "^1.0",
+    "lightnest/dsu_c_entitycycle": "^2.1",
+    "lightnest/dsu_c_extend_component": "^1.1",
+    "lightnest/dsu_c_externalvideo": "^2.2",
+    "lightnest/dsu_c_gallery": "^1.4",
+    "lightnest/dsu_c_image": "^2.0",
+    "lightnest/dsu_c_link_document_container": "^1.6",
+    "lightnest/dsu_c_map": "^1.2",
+    "lightnest/dsu_c_sharebuttons": "^1.3",
+    "lightnest/dsu_c_sideimagetext": "^2.0",
+    "lightnest/dsu_c_slider": "^2.1",
+    "lightnest/dsu_c_tabbedcontent": "^1.3",
+    "lightnest/dsu_c_teasercycle": "^1.2",
+    "lightnest/dsu_c_text": "^2.0",
+    "lightnest/dsu_c_view": "^1.2",
+    "lightnest/dsu_core": "^2.1",
+    "lightnest/dsu_engage": "^2.1",
+    "lightnest/dsu_multitheme": "^1.6",
+    "lightnest/dsu_product": "^1.4",
+    "lightnest/dsu_ratings_reviews": "^2.1",
+    "lightnest/dsu_security": "^2.12",
+    "lightnest/dsu_store": "^1.0",
+    "lightnest/libraries": "dev-master",
+    "lightnest/ln_adimo": "^2.2",
+    "lightnest/ln_alkemics": "^2.0",
+    "lightnest/ln_bazaarvoice": "^2.0",
+    "lightnest/ln_c_buy_now_component": "^1.1",
+    "lightnest/ln_c_cardgrid": "^2.2",
+    "lightnest/ln_c_ckeditor_profile": "^1.0",
+    "lightnest/ln_c_entity_compare": "^1.0",
+    "lightnest/ln_c_google_optimize": "^1.0",
+    "lightnest/ln_c_newsletter": "^1.1",
+    "lightnest/ln_c_power_reviews": "^1.0",
+    "lightnest/ln_c_social_buttons": "^1.1",
+    "lightnest/ln_c_spacer": "^1.1",
+    "lightnest/ln_c_testimonial": "^1.0",
+    "lightnest/ln_c_video_embed": "^1.0",
+    "lightnest/ln_c_webform": "^1.2",
+    "lightnest/ln_campaign": "^1.1",
+    "lightnest/ln_ciam": "^2.1",
+    "lightnest/ln_ciamlite": "^1.0",
+    "lightnest/ln_contenthub": "^1.1",
+    "lightnest/ln_datalayer": "^3.0",
+    "lightnest/ln_encrypt": "^1.0",
+    "lightnest/ln_fusepump": "^1.0",
+    "lightnest/ln_image_compression": "^1.0",
+    "lightnest/ln_lazy_load_image": "^1.0",
+    "lightnest/ln_notification": "^1.0",
+    "lightnest/ln_pdh": "^2.0",
+    "lightnest/ln_price_spider": "^1.1",
+    "lightnest/ln_qualifio": "^1.0",
+    "lightnest/ln_quiz": "^1.2",
+    "lightnest/ln_sample_content": "^1.2",
+    "lightnest/ln_seo_hreflang": "^1.0",
+    "lightnest/ln_shopify": "^1.1",
+    "lightnest/ln_srh": "^1.3",
+    "lightnest/ln_sso_internal": "^1.2",
+    "lightnest/ln_tint_connector": "^2.0",
+    "media/cropper": "^4.1",
+    "npm-asset/accessible360--accessible-slick": "dev-master",
+    "npm-asset/dropzone": "^5.9"
+  },
+  "extra": {
+    "enable-patching": true,
+    "patches": {
+      "drupal/classy_paragraphs": {
+        "2830403 - Allow to filter classy styles": "https://www.drupal.org/files/issues/2020-08-28/choose_and_order-2830403-43_0.patch"
+      },
+      "drupal/core": {
+        "Label Issue": "https://www.drupal.org/files/issues/2020-04-08/2985882-field-85.patch",
+        "2466553 - Untranslated menu items are displayed in menus": "https://www.drupal.org/files/issues/2020-05-14/2466553-75-d91x.patch"
+      },
+      "drupal/social_media": {
+        "Remove google plus icon from admin settings" : "https://www.drupal.org/files/issues/2021-08-10/3227486-2.patch"
+      },
+      "drupal/google_tag": {
+        "3153800 - Add Google Tag Snippets": "https://www.drupal.org/files/issues/2020-06-23/3153800-google-tag-script-1.patch",
+        "3113799 - Container insertion condition 'negate' value not converted to boolean when saving in form": "https://www.drupal.org/files/issues/2020-02-18/3113799-google-tag-validate-negate-type-6.patch"
+      },
+      "drupal/views_infinite_scroll": {
+        "Make Views Infinite Scroll more SEO friendly": "https://www.drupal.org/files/issues/2020-07-07/views_infinite_scroll-2283415-19.patch"
+      },
+      "drupal/external_hreflang": {
+        "Add hreflang reference URL for more usability": "https://www.drupal.org/files/issues/2020-07-10/external_hreflang_link_reference.patch"
+      },
+      "drupal/video_embed_field": {
+        "Provide a method to to configure alternative image thumbnail other than the provider's image thumbnail": "https://www.drupal.org/files/issues/2020-06-15/2883932-video-embed-field-alternative-thumbnail-28.patch",
+        "https required for YouTube autoplay": "https://www.drupal.org/files/issues/2018-09-12/video_embed_field-allow-autoplay-attribute_2977016-5.patch",
+        "Youtube Privacy": "https://www.drupal.org/files/issues/2019-06-08/video_embed_field_youtube_nocookie_2973246_41.patch"
+      },
+      "drupal/seckit": {
+        "3064669 - Remove div tag from header": "https://www.drupal.org/files/issues/2021-02-15/3064669-14.patch"
+      },
+      "drupal/lightning_media": {
+        "3167843 - Unable to upload SVG": "https://www.drupal.org/files/issues/2022-07-01/unable-to-upload-svg-file-3167843-12.patch"
+      },
+      "drupal/lightning_core": {
+        "3303770 - PHP 8.1: preg_replace(): Passing null to parameter #2 ($replacement) of type array|string is deprecated in UpdateManager.php line 129": "https://git.drupalcode.org/project/lightning_core/-/merge_requests/11.diff"
+      },
+      "drupal/metatag": {
+        "2949963 - Merge special page metatags with node pages": "https://www.drupal.org/files/issues/2020-12-07/metatag-merge-node-special-pages-2949963-31.patch"
+      },
+      "drupal/recaptcha": {
+        "2493183 - Ajax support / Use behaviors": "https://www.drupal.org/files/issues/2022-10-18/recaptcha-ajax-support-2493183-258.patch"
+      }
+    },
+    "patchLevel": {
+      "drupal/core": "-p2"
+    }
+  },
+  "config": {
+    "sort-packages": true,
+    "allow-plugins": {
+      "composer/installers": true,
+      "cweagans/composer-patches": true,
+      "oomphinc/composer-installers-extender": true
+    }
+  }
+}

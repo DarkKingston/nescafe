@@ -1,0 +1,18 @@
+colorbox:
+  js:
+    js/video-media-oembed.colorbox.js: {}
+  dependencies:
+    - system/drupal.system
+    - colorbox/colorbox
+
+lazy-load:
+  js:
+    js/video-media-oembed.lazyLoad.js: {}
+  dependencies:
+    - system/drupal.system
+    - ln_c_video_embed/responsive-video
+
+responsive-video:
+  css:
+    component:
+      css/video-media-oembed.responsive-video.css: {}

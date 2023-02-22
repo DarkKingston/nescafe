@@ -1,0 +1,13 @@
+name: 'Media Instagram'
+core_version_requirement: '^8.9 || ^9.0.1 || ^10'
+type: module
+description: 'Instagram support for Lightning Media.'
+package: Lightning
+dependencies:
+  - lightning_media:lightning_media
+  - media_entity_instagram:media_entity_instagram
+
+# Information added by Drupal.org packaging script on 2022-11-23
+version: '8.x-4.8'
+project: 'lightning_media'
+datestamp: 1669230592

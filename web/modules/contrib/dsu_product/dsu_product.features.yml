@@ -1,0 +1,7 @@
+bundle: ln_c
+excluded:
+  - user.role.dsu_product_creator
+  - user.role.dsu_product_reviewer
+  - taxonomy.vocabulary.dsu_category
+  - field.storage.node.field_dsu_category
+required: true

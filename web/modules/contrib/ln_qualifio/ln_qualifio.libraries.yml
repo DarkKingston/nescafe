@@ -1,0 +1,10 @@
+qualifio-general:
+  version: 1.x
+  css:
+    theme:
+      css/ln-qualifio.css: {}
+  js:
+    js/ln-qualifio.js: {}
+  dependencies:
+    - core/drupal
+    - core/jquery

@@ -1,0 +1,7 @@
+type: c_externalvideo
+component_description: EXTERNAL VIDEO EMBED WITH THUMBNAIL
+field_c_video_url: https://youtu.be/01pIW8CTTy8
+field_show_in_lightbox: off
+field_alternative_thumbnail:
+  image_name: san-pellegrino.jpg
+  image_title: San Pellegrino

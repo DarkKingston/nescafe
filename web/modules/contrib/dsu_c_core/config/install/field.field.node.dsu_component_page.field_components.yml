@@ -1,0 +1,283 @@
+config_replace: replace
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_components
+    - node.type.dsu_component_page
+  module:
+    - entity_reference_revisions
+id: node.dsu_component_page.field_components
+field_name: field_components
+entity_type: node
+bundle: dsu_component_page
+label: Components
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      accordion_item: accordion_item
+      c_gallery_item: c_gallery_item
+      c_slide: c_slide
+      c_social_buttons_item: c_social_buttons_item
+      c_tab_item: c_tab_item
+      c_teasercycle_item: c_teasercycle_item
+      c_testimonial_item: c_testimonial_item
+      dsu_srh_how_to_burn_it: dsu_srh_how_to_burn_it
+      ln_c_card: ln_c_card
+      ln_c_card_item: ln_c_card_item
+      ln_c_grid_card_item: ln_c_grid_card_item
+      macronutrients: macronutrients
+      media_information: media_information
+      paragraph_view: paragraph_view
+      quiz_question: quiz_question
+      recipe_ingredients: recipe_ingredients
+      recipe_steps: recipe_steps
+      recipe_tools: recipe_tools
+      recipe_variants: recipe_variants
+      related_recipes_in_other_languag: related_recipes_in_other_languag
+      srh_cloudfront_media: srh_cloudfront_media
+      srh_ingredient: srh_ingredient
+      srh_macronutrients_unittype: srh_macronutrients_unittype
+      srh_nutrient: srh_nutrient
+      srh_step: srh_step
+      srh_tip: srh_tip
+      srh_ingredient_group: srh_ingredient_group
+      srh_sport: srh_sport
+      srh_step_group: srh_step_group
+      srh_version: srh_version
+      tags_selector: tags_selector
+      tips: tips
+    negate: 1
+    target_bundles_drag_drop:
+      accordion:
+        weight: 61
+        enabled: false
+      accordion_item:
+        weight: 62
+        enabled: true
+      c_countdown:
+        weight: 63
+        enabled: false
+      c_document:
+        weight: 64
+        enabled: false
+      c_entitycycle:
+        weight: 65
+        enabled: false
+      c_externalvideo:
+        weight: 66
+        enabled: false
+      c_gallery:
+        weight: 67
+        enabled: false
+      c_gallery_item:
+        weight: 68
+        enabled: true
+      c_image:
+        weight: 69
+        enabled: false
+      c_link:
+        weight: 70
+        enabled: false
+      c_link_document_container:
+        weight: 71
+        enabled: false
+      c_map:
+        weight: 72
+        enabled: false
+      c_newsletter_signup_cta:
+        weight: 73
+        enabled: false
+      c_share_buttons:
+        weight: 74
+        enabled: false
+      c_shopify:
+        weight: 75
+        enabled: false
+      c_sideimagetext:
+        weight: 76
+        enabled: false
+      c_slide:
+        weight: 77
+        enabled: true
+      c_slider:
+        weight: 78
+        enabled: false
+      c_social_buttons_item:
+        weight: 79
+        enabled: true
+      c_socialbuttons:
+        weight: 80
+        enabled: false
+      c_spacer:
+        weight: 81
+        enabled: false
+      c_tab_item:
+        weight: 82
+        enabled: true
+      c_tabbed_content:
+        weight: 83
+        enabled: false
+      c_teasercycle:
+        weight: 84
+        enabled: false
+      c_teasercycle_item:
+        weight: 85
+        enabled: true
+      c_testimonial:
+        weight: 86
+        enabled: false
+      c_testimonial_item:
+        weight: 87
+        enabled: true
+      c_text:
+        weight: 88
+        enabled: false
+      dsu_c_view:
+        weight: 89
+        enabled: false
+      dsu_srh_how_to_burn_it:
+        weight: 90
+        enabled: true
+      dsu_tint:
+        weight: 91
+        enabled: false
+      forms:
+        weight: 92
+        enabled: false
+      layout_25_25_50:
+        weight: 94
+        enabled: false
+      layout_25_50_25:
+        weight: 95
+        enabled: false
+      layout_25_75:
+        weight: 96
+        enabled: false
+      layout_33_66:
+        weight: 97
+        enabled: false
+      layout_50_25_25:
+        weight: 98
+        enabled: false
+      layout_66_33:
+        weight: 99
+        enabled: false
+      layout_75_25:
+        weight: 100
+        enabled: false
+      layout_columns_1:
+        weight: 101
+        enabled: false
+      layout_columns_2:
+        weight: 102
+        enabled: false
+      layout_columns_20:
+        weight: 103
+        enabled: false
+      layout_columns_3:
+        weight: 104
+        enabled: false
+      layout_columns_4:
+        weight: 105
+        enabled: false
+      ln_c_buy_now_component:
+        weight: 106
+        enabled: false
+      ln_c_card:
+        weight: 107
+        enabled: true
+      ln_c_card_item:
+        weight: 108
+        enabled: true
+      ln_c_cardgrid:
+        weight: 109
+        enabled: false
+      ln_c_grid_card_item:
+        weight: 110
+        enabled: true
+      ln_c_power_reviews:
+        weight: 111
+        enabled: false
+      ln_ciamlite_newsletter_block:
+        weight: 113
+        enabled: false
+      ln_qualifio:
+        weight: 114
+        enabled: false
+      macronutrients:
+        weight: 115
+        enabled: true
+      media_information:
+        weight: 116
+        enabled: true
+      paragraph_view:
+        weight: 117
+        enabled: true
+      product_listing_block:
+        weight: 118
+        enabled: false
+      quiz:
+        weight: 119
+        enabled: false
+      quiz_question:
+        weight: 120
+        enabled: true
+      recipe_ingredients:
+        weight: 121
+        enabled: true
+      recipe_steps:
+        weight: 122
+        enabled: true
+      recipe_tools:
+        weight: 123
+        enabled: true
+      recipe_variants:
+        weight: 124
+        enabled: true
+      related_recipes_in_other_languag:
+        weight: 125
+        enabled: true
+      srh_cloudfront_media:
+        weight: 126
+        enabled: true
+      srh_ingredient:
+        weight: 127
+        enabled: true
+      srh_ingredient_group:
+        weight: 128
+        enabled: true
+      srh_macronutrients_unittype:
+        weight: 129
+        enabled: true
+      srh_nutrient:
+        weight: 130
+        enabled: true
+      srh_sport:
+        weight: 131
+        enabled: true
+      srh_step:
+        weight: 132
+        enabled: true
+      srh_step_group:
+        weight: 133
+        enabled: true
+      srh_tip:
+        weight: 134
+        enabled: true
+      srh_version:
+        weight: 135
+        enabled: true
+      tags_selector:
+        weight: 136
+        enabled: true
+      tips:
+        weight: 137
+        enabled: true
+field_type: entity_reference_revisions

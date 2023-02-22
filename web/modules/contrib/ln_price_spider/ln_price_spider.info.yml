@@ -1,0 +1,13 @@
+name: 'Lightnest PriceSpider connector'
+package: 'Lightnest'
+version: 8.x-1.1.0
+description: 'Adds the integration from Drupal to PriceSpider.'
+type: module
+core: 8.x
+core_version_requirement: ^8 || ^9
+dependencies:
+  - drupal:field
+  - dsu_c_core
+  - migrate_source_csv:migrate_source_csv
+
+configure: ln_price_spider.admin_settings_form

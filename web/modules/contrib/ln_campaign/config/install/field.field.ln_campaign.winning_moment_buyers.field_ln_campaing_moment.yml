@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.ln_campaign.field_ln_campaing_moment
+    - ln_campaign.ln_campaign_type.winning_moment_buyers
+  module:
+    - datetime_range
+id: ln_campaign.winning_moment_buyers.field_ln_campaing_moment
+field_name: field_ln_campaing_moment
+entity_type: ln_campaign
+bundle: winning_moment_buyers
+label: 'Winning Moment'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    default_date_type: now
+    default_date: now
+    default_end_date_type: now
+    default_end_date: now
+default_value_callback: ''
+settings: {  }
+field_type: daterange

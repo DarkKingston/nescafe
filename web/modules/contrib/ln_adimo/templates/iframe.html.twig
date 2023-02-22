@@ -1,0 +1,35 @@
+{#
+/**
+ * @file
+ * Template file for adimo module.
+ */
+#}
+
+{% set data_cookie_consent= cookieconsent ? "false" : "true" %}
+{% if touchpointId is not empty %}
+  {{ attach_library('ln_adimo/iframe') }}
+  {{ attach_library('ln_adimo/adimo-cookie-consent') }}
+  {% if customButtonHTML is not empty %}
+    <div class="adimo-iframe-outer">
+      <div class="adimo-iframe-inner">
+        <iframe class="adimo-iframe" data-touchpointId="{{ touchpointId }}"
+                border="0" frameborder="0" scrolling="no"
+                data-do-not-track="false"
+                onclick="window.Adimo.setLanguage('{{ language }}');">
+        </iframe>
+      </div>
+    </div>
+  {% else %}
+    <div class="adimo-iframe-inner">
+      <iframe class="adimo-iframe" data-touchpointId="{{ touchpointId }}"
+              border="0" frameborder="0" scrolling="no"
+              data-do-not-track="false"
+              onclick="window.Adimo.setLanguage('{{ language }}');">
+      </iframe>
+    </div>
+  {% endif %}
+
+  {% if customCSS is not empty %}
+    <style>{{ customCSS }}</style>
+  {% endif %}
+{% endif %}

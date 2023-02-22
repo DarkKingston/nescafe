@@ -1,0 +1,18 @@
+is_mobile:
+  js:
+    js/isMobile.min.js:
+      minified: true
+datalayer:
+  header: true
+  js:
+    js/ln_datalayer.js: {}
+  dependencies:
+    - ln_datalayer/is_mobile
+events:
+  js:
+    js/ln_datalayer.events.js: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.once
+    - core/drupal
+    - core/drupalSettings

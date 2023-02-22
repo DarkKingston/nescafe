@@ -1,0 +1,23 @@
+{
+  "name": "gigya/gigya-drupal",
+  "type": "drupal-module",
+  "description": "Gigya Drupal module",
+  "license": "GPL-2.0-or-later",
+  "version": "1.5.0",
+  "authors": [
+    {
+      "name": "Yuval Perelman",
+      "email": "perelman.yuval@gmail.com"
+    },
+    {
+      "name": "Yan Nasonov",
+      "email": "yan.na@gigya-inc.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {
+    "ext-json": "*",
+    "ext-openssl": "*",
+    "gigya/php-sdk": "^3.0"
+  }
+}

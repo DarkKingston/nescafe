@@ -1,0 +1,4 @@
+bundle: ln_c
+excluded:
+  - field.storage.comment.comment_body
+required: true

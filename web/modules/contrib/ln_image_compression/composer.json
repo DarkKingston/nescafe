@@ -1,0 +1,16 @@
+{
+    "name": "lightnest/ln_image_compression",
+    "description": "Enable improve image compression.",
+    "type": "drupal-module",
+    "keywords": [
+        "content",
+        "image_compression",
+        "image_optimization",
+        "image_optimization_binaries"
+    ],
+    "require": {
+        "drupal/imageapi_optimize": "^4.0",
+        "drupal/imageapi_optimize_binaries": "^1.0",
+        "drupal/core": "^8 || ^9"
+    }
+}

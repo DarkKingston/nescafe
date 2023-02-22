@@ -1,0 +1,40 @@
+route_callbacks:
+   - '\Drupal\dsu_engage\Routing\DsuEngageRoute::routes'
+
+dsu_engage.index:
+  path: '/admin/config/lightnest/dsu_engage'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'Engage Contact'
+  requirements:
+    _permission: 'access administration pages'
+
+dsu_engage.admin_settings_form:
+  path: '/admin/config/lightnest/dsu_engage/dsu_engage_settings'
+  defaults:
+    _form: '\Drupal\dsu_engage\Form\DsuEngageSettingsForm'
+    _title: 'DSU Engage Settings Form'
+  requirements:
+    _permission: 'access administration pages'
+  options:
+    _admin_route: TRUE
+
+dsu_engage.admin_advanced_settings_form:
+  path: '/admin/config/lightnest/dsu_engage/dsu_engage_advanced_settings'
+  defaults:
+    _form: '\Drupal\dsu_engage\Form\DsuEngageAdvancedSettingsForm'
+    _title: 'DSU Engage Advanced Settings Form'
+  requirements:
+    _permission: 'access administration pages'
+  options:
+    _admin_route: TRUE
+
+dsu_engage.admin_tool_tips_settings_form:
+  path: '/admin/config/lightnest/dsu_engage/dsu_engage_tool_tip_settings'
+  defaults:
+    _form: '\Drupal\dsu_engage\Form\DsuEngageToolTipSettingsForm'
+    _title: 'DSU Engage Tool Tip Settings Form'
+  requirements:
+    _permission: 'access administration pages'
+  options:
+    _admin_route: TRUE

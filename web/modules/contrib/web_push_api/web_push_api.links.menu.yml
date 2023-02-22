@@ -1,0 +1,5 @@
+entity.web_push_subscription.collection:
+  title: 'Web Push API subscriptions'
+  parent: system.admin_config_services
+  route_name: entity.web_push_subscription.collection
+  description: 'View the list of subscriptions, their actuality and owners.'

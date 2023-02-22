@@ -1,0 +1,17 @@
+Summary Options 2.0.0, 2022-08-25
+---------------------------------
+Issue #3266909: Allow to provide Placeholder text for Summary
+Issue #3290010: Drupal 10 compatibility
+
+Summary Options 8.x-1.2, 2020-04-14
+-----------------------------------
+Issue #3127397: Drupal 9 readiness
+
+Summary Options 8.x-1.1, 2019-12-24
+-----------------------------------
+Issue #3101879: Custom summary help text
+Mark Summary as required is no longer needed when core >=8.8. See https://www.drupal.org/project/drupal/issues/1704864
+
+Summary Options 8.x-1.0, 2018-12-02
+-----------------------------------
+First stable Drupal 8 release.

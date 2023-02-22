@@ -1,0 +1,16 @@
+# Changelog
+
+## 1.2.0
+- Enhacemnents on Quiz component
+
+## 1.1.0
+- Add multiple choices of answer in Quiz component
+- Error in preproccess function
+
+## 1.0.2
+- Added paragraph features too enhance editorial experience.
+- Go to admin/config/development/features/edit/dsu_c_slider
+- Import latest configuration.
+
+# 1.x
+- Only change the text nothing is changed in configs.

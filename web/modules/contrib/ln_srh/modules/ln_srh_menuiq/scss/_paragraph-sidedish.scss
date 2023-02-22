@@ -1,0 +1,189 @@
+.srh-sidedish {
+  position: relative;
+
+  .srh-sidedish-action {
+    top: 5px;
+    right: 5px;
+    position: absolute;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    background: url("../images/add_recipe.png") no-repeat center;
+    text-indent: -1000px;
+  }
+
+  &.selected {
+    border: 7px solid #f9d59d;
+
+    .srh-sidedish-action {
+      background: url("../images/remove_recipe.png") no-repeat center;
+    }
+  }
+
+  &.sidedish-current-recipe {
+    .field--name-srh-action-sidedish {
+      display: none !important;
+    }
+  }
+
+  .paragraph--type-srh-sidedish {
+    .field--type-entity-reference,
+    .field--type-image img,
+    .field--type-entity-reference div {
+      height: 100%;
+    }
+
+    .field--type-image {
+      position: absolute;
+      z-index: -1;
+      inset: 0;
+      margin: 0;
+
+      &::after {
+        content: " ";
+        background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.020045518207282953) 100%);
+        position: absolute;
+        inset: 0;
+        filter: opacity(40%);
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        padding: 0;
+      }
+    }
+
+    &.srh-sidedish-w-attr {
+      .field--type-image {
+        &::after {
+          content: " ";
+          background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.05) 100%);
+          position: absolute;
+          inset: 0;
+          filter: opacity(60%);
+        }
+      }
+    }
+  }
+
+  .field--name-srh-sidedish-title {
+    margin-top: auto;
+    padding-right: 40px;
+    .panel-combination & {
+      padding-right: 30px;
+    }
+  }
+
+  .score-diff {
+    flex: 0 0 30px;
+    text-align: center;
+    width: 30px;
+    height: 30px;
+    padding-top: 7px;
+    font-size: 12px;
+    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.09);
+    border-radius: 999px;
+    position: absolute;
+    right: 10px;
+    bottom: 20px;
+
+    &.negative {
+      background-color: #d8332f;
+      color: #fff;
+    }
+
+    &.positive {
+      background: #97d815;
+      color: #333330;
+    }
+  }
+
+  .paragraph--type-srh-sidedish {
+    display: flex;
+    flex-direction: column;
+    height: 272px;
+    padding: 11px;
+    align-items: flex-start;
+    color: #fff;
+    font-size: 12px;
+
+    .contextual-region {
+      position: static;
+    }
+
+    a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 16px;
+      line-height: 1.2;
+    }
+
+    .field--type-entity-reference,
+    .field--type-image img {
+      overflow: hidden;
+      margin-bottom: 0;
+    }
+
+    .field--type-image img {
+      display: block;
+      width: auto;
+      position: relative;
+    }
+
+    .srh-sidedish-attributes {
+      margin-bottom: 10px;
+    }
+
+    .field--name-srh-sidedish-duration,
+    .field--name-srh-sidedish-difficulty {
+      font-size: 11px;
+      display: flex;
+      vertical-align: middle;
+      align-items: center;
+      margin-right: 8px;
+
+      &:before {
+        position: relative;
+        width: 21px;
+        height: 21px;
+        display: inline-block;
+        background-size: cover;
+        content: ' ';
+        margin-right: 5px;
+      }
+
+      .srh-sidedish-duration,
+      .srh-sidedish-difficulty {
+        display: inline-block;
+        margin-top: 3px;
+      }
+    }
+
+    .field--name-srh-sidedish-difficulty:before {
+      background-image: url("../images/recipe-serving.png");
+    }
+
+    .field--name-srh-sidedish-duration:before {
+      background-image: url("../images/recipe-duration.svg");
+
+    }
+  }
+
+  &[data-type=complement] .field--type-image img {
+    object-fit: contain !important;
+  }
+}
+
+.srh-sidedish-attributes {
+  display: none;
+
+  &.show {
+    display: flex;
+  }
+}
+
+.srh-sidedish-toggle-attributes {
+  cursor: pointer;
+}

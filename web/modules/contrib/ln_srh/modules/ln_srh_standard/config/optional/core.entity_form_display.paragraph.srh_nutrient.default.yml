@@ -1,0 +1,43 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.srh_nutrient.field_srh_nutrient
+    - field.field.paragraph.srh_nutrient.field_srh_percentage
+    - field.field.paragraph.srh_nutrient.field_srh_nutrient_quantity
+    - paragraphs.paragraphs_type.srh_nutrient
+  enforced:
+    module:
+      - ln_srh_standard
+id: paragraph.srh_nutrient.default
+targetEntityType: paragraph
+bundle: srh_nutrient
+mode: default
+content:
+  field_srh_nutrient:
+    weight: 0
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_srh_nutrient_quantity:
+    weight: 1
+    settings:
+      placeholder: ''
+    third_party_settings: { }
+    type: number
+    region: content
+  field_srh_percentage:
+    weight: 2
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+    region: content
+hidden:
+  created: true
+  status: true

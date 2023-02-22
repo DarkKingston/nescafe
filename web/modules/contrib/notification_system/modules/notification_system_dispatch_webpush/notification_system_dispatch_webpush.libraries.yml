@@ -1,0 +1,27 @@
+lib:
+  js:
+    js/webpush_lib.js: {}
+  drupalSettings:
+    notificationSystemDispatchWebpush:
+      applicationServerKey: ''
+      serviceWorkerUrl: ''
+      apiUrl: ''
+  dependencies:
+    - core/drupal
+    - core/drupalSettings
+
+popup_block:
+  js:
+    js/webpush_popup_block.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - notification_system_dispatch_webpush/lib
+
+usersettings_block:
+  js:
+    js/webpush_usersettings_block.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - notification_system_dispatch_webpush/lib

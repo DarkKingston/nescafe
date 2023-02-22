@@ -1,0 +1,32 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.c_socialbuttons.field_c_title
+    - field.field.paragraph.c_socialbuttons.field_social_buttons_item
+    - paragraphs.paragraphs_type.c_socialbuttons
+  module:
+    - entity_reference_revisions
+id: paragraph.c_socialbuttons.default
+targetEntityType: paragraph
+bundle: c_socialbuttons
+mode: default
+content:
+  field_c_title:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_social_buttons_item:
+    type: entity_reference_revisions_entity_view
+    weight: 1
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+hidden: {  }

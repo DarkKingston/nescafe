@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - ln_srh_basic
+name: 'SRH Ingredient'
+vid: srh_ingredient
+description: ''
+weight: 0

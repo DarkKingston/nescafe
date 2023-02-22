@@ -1,0 +1,21 @@
+<?php
+
+use Drupal\Core\Entity\EntityListBuilder;
+use Drupal\file_delete_ui\FileAccessControlHandler;
+
+/**
+ * Implements hook_entity_type_alter().
+ */
+function file_delete_ui_entity_type_alter(array &$entity_types) {
+  /** @var $entity_types \Drupal\Core\Entity\EntityTypeInterface[] */
+  $entity_types['file']
+    // Add a list builder so entity_operations field will be added by
+    // EntityViewsData::getViewsData as an available views field.
+    ->setListBuilderClass(EntityListBuilder::class)
+    // Add a delete form link template and delete form class so
+    // entity_operations field will add and implement the delete operation.
+    ->setLinkTemplate('delete-form', '/file/{file}/delete')
+    ->setFormClass('delete', 'Drupal\Core\Entity\ContentEntityDeleteForm')
+    // Override the access class.
+    ->setAccessClass(FileAccessControlHandler::class);
+}

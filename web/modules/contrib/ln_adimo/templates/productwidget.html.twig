@@ -1,0 +1,38 @@
+{#
+/**
+ * @file
+ * Template file for adimo module.
+ */
+#}
+{% set data_cookie_consent= cookieconsent ? "false" : "true" %}
+{% if touchpointId is not empty %}
+
+  {{ attach_library('ln_adimo/productwidget') }}
+  {{ attach_library('ln_adimo/adimo-cookie-consent') }}
+
+  {% if customButtonHTML is not empty %}
+    <div class="adimo-site-container">
+      <div class="adimo-site-inner">
+        <iframe class="adimo-site-iframe" data-touchpointId="{{ touchpointId }}"
+                border="0" frameborder="0" scrolling="no"
+                data-do-not-track="false">
+        </iframe>
+      </div>
+    </div>
+  {% else %}
+    <div class="adimo-site-container">
+      <div class="adimo-site-inner">
+        <iframe class="adimo-site-iframe" data-touchpointId="{{ touchpointId }}"
+                border="0" frameborder="0" scrolling="no"
+                data-do-not-track="false">
+        </iframe>
+      </div>
+    </div>
+  {% endif %}
+
+  {% if customCSS is not empty %}
+
+    <style>{{ customCSS }}</style>
+
+  {% endif %}
+{% endif %}

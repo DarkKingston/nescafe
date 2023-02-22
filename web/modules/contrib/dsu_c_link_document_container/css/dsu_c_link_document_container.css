@@ -1,0 +1,114 @@
+.paragraph--type--c-link {
+    width: 100%;
+    margin: 0 auto 10px;
+    max-width: 83%;
+    padding: 0 15px;
+}
+
+.paragraph--type--c-link a {
+    display: inline-flex;
+}
+.paragraph--type--c-link .field--name-field-c-image {
+    margin: auto 9px auto 0;
+}
+.paragraph--type--c-document {
+    display: block;
+    width:100%;
+    max-width : 83%;
+    padding : 0 15px;
+    margin: 0 auto;
+    position: relative;
+}
+.paragraph--type--c-document .file-link a {
+    display: inline-block;
+    line-height: 41px;
+}
+/*.paragraph--type--c-document .field--name-field-c-image,*/
+.paragraph--type--c-document .field--name-field-c-title {
+    display: inline-block;
+    margin-left: 25px;
+}
+.paragraph--type--c-document .field--name-field-c-image {
+    float: left;
+    width: 20px;
+    margin: 7px;
+    margin-left:0;
+    display:flex;
+    align-items:center;
+}
+
+.paragraph--type--c-document .field--name-field-c-image .field--type-image {
+    float: unset;
+    margin:0;
+}
+
+.paragraph--type--c-document .field--name-field-c-image .field--type-image img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
+
+.paragraph--type--c-document .file-link .file-icon {
+    display: inline-block
+}
+
+.paragraph--type--c-link .btn .image_cta_link {
+    background: #007486;
+}
+
+.paragraph--type--c-link .btn.image_cta_link {
+    padding: 0 !important;
+}
+.paragraph--type--c-link .btn.image_cta_link a {
+    padding: 6px 12px !important;
+}
+.paragraph--type--c-document .file {
+    display: table;
+    font-size: 75%;
+    font-weight: 700;
+    margin: 5px 0;
+    width: 100%;
+}
+
+.paragraph--type--c-document .file-size {
+    display: inline-block;
+    padding: 0 1em;
+    text-align: right;
+    white-space: pre;
+    vertical-align: middle;
+}
+
+.paragraph--type--c-document .file-link {
+    display: inline;
+    vertical-align: middle;
+    width: 100%;
+}
+
+.paragraph--type--c-document .file > span {
+    background: #fff;
+    color: #337ab7;
+    /*border-bottom: 1px solid #ccc;
+    border-top: 1px solid #ccc;*/
+    font-size: 10.5px;
+}
+
+/*.paragraph--type--c-document .file > span:first-child {
+    border-left: 1px solid #ccc;
+}
+
+.paragraph--type--c-document .file > span:last-child {
+    border-right: 1px solid #ccc;
+}*/
+
+.paragraph--type--c-link .horizontal-right {
+    text-align: right;
+}
+
+.paragraph--type--c-link .horizontal-left {
+    text-align: left;
+}
+
+.paragraph--type--c-link .horizontal-center {
+    text-align: center;
+}

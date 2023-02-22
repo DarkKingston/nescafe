@@ -1,0 +1,37 @@
+# Changelog
+
+## 3.0.0
+ - Refactor module
+
+## 2.1.0
+ - Update datalayer for GA4
+ - Fix warnings for PHP 8
+ - Update groups and tags
+
+## 2.0.2
+ - To trigger datalayer events on Rating and Review form submit,
+add `comment_dsu_ratings_reviews_comment_type_form` form_id into Ajax URLs **/admin/config/lightnest/ln-datalayer/ajaxify-submit-forms**.
+ - phpcs fixes.
+
+## 2.0.1
+ - Hiding some datalayer tag fields. E.g.- pageType, conversionPage Type etc.
+ - Run clear cache and check if site having any issue.
+
+## 2.0.0
+ - Now all page variables and groups - it is plugins. (logic and configuration similar to metatag module).
+ - update DB required!!!
+ - Run clear cache and check if site having any issue.
+ - Datalayer contrib module no need more, and will be disabled during update, so please review you code before update.
+ - Now it has depenedency with `advanced_datalayer` contrib module.
+ - Some tags need reconfigure via admin part as was no such settings in previous version.
+ - Most of page variables - Global (all tags relative to site information), they configure only in Global defaults.
+ - Navigate to `/admin/config/search/advanced-datalayer/page-variables` page for checking page variables and adding new.
+ - to be able to change page variables in any entity (node,term and so on), need add new field with type 'Datalayer tags'.
+
+## 1.0.6
+
+- Added new sub_brand field in datalayer.
+- Change the PropertyStatus field type from textfield to dropdown. Update the values in datalayer configuration.
+- Added new pageSection attribute in pageInformation.
+- Updated the country, Business and Brand field option values. Save the datalayer configuration for new data.
+

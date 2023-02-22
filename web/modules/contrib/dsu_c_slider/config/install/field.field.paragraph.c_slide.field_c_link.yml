@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_c_link
+    - paragraphs.paragraphs_type.c_slide
+  module:
+    - link
+id: paragraph.c_slide.field_c_link
+field_name: field_c_link
+entity_type: paragraph
+bundle: c_slide
+label: 'Slide Link'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 2
+field_type: link

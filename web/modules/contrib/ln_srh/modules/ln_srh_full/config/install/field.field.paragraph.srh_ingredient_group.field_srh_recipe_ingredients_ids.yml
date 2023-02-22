@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_srh_recipe_ingredients_ids
+    - paragraphs.paragraphs_type.srh_ingredient_group
+  enforced:
+    module:
+      - ln_srh_full
+id: paragraph.srh_ingredient_group.field_srh_recipe_ingredients_ids
+field_name: field_srh_recipe_ingredients_ids
+entity_type: paragraph
+bundle: srh_ingredient_group
+label: 'SRH recipe ingredients ids'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

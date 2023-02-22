@@ -1,0 +1,10 @@
+dsu-product:
+  footer: true
+  version: 1.x
+  css:
+    theme:
+      assets/css/dsu-product-ui.css: {}
+  js:
+    assets/js/dsu-product.js: {}
+  dependencies:
+    - core/jquery

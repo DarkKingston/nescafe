@@ -1,0 +1,41 @@
+name: 'Lightnest CKEditor Profile'
+description: 'Lightnest CKEditor Profile'
+type: module
+core: 8.x
+version: 8.x-1.0.2
+core_version_requirement: '^8 || ^9'
+package: Lightnest
+dependencies:
+  - blazy
+  - ckeditor
+  - ckeditor_font
+  - ckwordcount
+  - colorbutton
+  - crop
+  - dsu_c_core
+  - dsu_c_externalvideo
+  - editor
+  - editor_file
+  - embed
+  - entity_browser
+  - entity_embed
+  - field
+  - file
+  - filter
+  - htmlawed
+  - image
+  - language
+  - layout_builder
+  - lightning_core
+  - lightning_media
+  - lightning_media_audio
+  - lightning_media_video
+  - lightning_media_document
+  - linkit
+  - media
+  - path
+  - user
+  - video_embed_field
+  - video_embed_wysiwyg
+  - views
+  - views_infinite_scroll

@@ -1,0 +1,6 @@
+ln_c_google_optimize.admin_settings_form:
+  route_name: ln_c_google_optimize.admin_settings_form
+  title: LightNest Google Optimize Config
+  description: 'Enter the config of Lightnest Google Optimize'
+  base_route: ln_c_google_optimize.admin_settings_form
+

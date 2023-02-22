@@ -1,0 +1,185 @@
+<?php
+
+/**
+ * @file
+ */
+
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Entity\ContentEntityInterface;
+use Drupal\field\Entity\FieldStorageConfig;
+
+/**
+ * Implements HOOK_preprocess_theme().
+ */
+function dsu_c_entitycycle_theme($existing, $type, $theme, $path) {
+  return [
+    'paragraph__c_entitycycle' => [
+      'template' => 'paragraph--c-entitycycle',
+      'base hook' => 'paragraphs',
+    ],
+  ];
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for paragraph.html.twig.
+ */
+function dsu_c_entitycycle_preprocess_paragraph(&$variables) {
+  if ($variables['paragraph']->getType() == 'c_entitycycle') {
+    $variables['#attached']['library'][] = 'dsu_c_entitycycle/entitycycle';
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK for node.html.twig.
+ */
+function dsu_c_entitycycle_preprocess_node(&$variables) {
+  if (isset($variables['elements']['display_options'])) {
+    $new_content = [];
+    $variables['#attached']['library'][] = 'dsu_c_entitycycle/entitycycle-item';
+    $field_count = count($variables['content']);
+    $weight = -10 * $field_count;
+    foreach ($variables['elements']['display_options']['node'][$variables['node']->getType()] as $display_option) {
+      if (isset($variables['content'][$display_option])) {
+        $new_content[$display_option] = $variables['content'][$display_option];
+        $new_content[$display_option]['#weight'] = $weight;
+        $weight += 10;
+      } else if ($display_option == 'title') {
+        $new_content[$display_option] = $variables['label'];
+        $new_content[$display_option]['#weight'] = $weight;
+        $weight += 10;
+      }
+    }
+    $variables['content'] = $new_content;
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for field.html.twig.
+ */
+function dsu_c_entitycycle_preprocess_field(&$variables) {
+  if ($variables['field_name'] == 'field_c_entity_relation'
+    && $variables['element']['#object']->getType() == 'c_entitycycle') {
+    $entitycycle_paragraph = $variables['element']['#object'];
+    $display_options = $entitycycle_paragraph->get('field_c_entity_relation_do')
+      ->getValue();
+    if (!empty($display_options)) {
+      $updated_display_options = [];
+      foreach ($display_options as $key => $display_option) {
+        $display_option_array = explode("-", $display_option['value']);
+        $updated_display_options[$display_option_array[0]][$display_option_array[1]][] = $display_option_array[2];
+      }
+      foreach ($variables['items'] as $key => $value) {
+        $variables['items'][$key]['content']['display_options'] = $updated_display_options;
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for slick-wrapper.html.twig.
+ */
+function dsu_c_entitycycle_preprocess_slick_wrapper(&$variables) {
+  if (isset($variables['settings']['field_name']) && $variables['settings']['field_name'] == 'field_c_entity_relation'
+    && $variables['element']['#object']->getType() == 'c_entitycycle') {
+    $entitycycle_paragraph = $variables['element']['#object'];
+    $display_options = $entitycycle_paragraph->get('field_c_entity_relation_do')
+      ->getValue();
+    if (!empty($display_options)) {
+      $updated_display_options = [];
+      foreach ($display_options as $key => $display_option) {
+        $display_option_array = explode("-", $display_option['value']);
+        $updated_display_options[$display_option_array[0]][$display_option_array[1]][] = $display_option_array[2];
+      }
+      foreach ($variables['items'] as $key => $value) {
+        $variables['items'][$key]['#display_options'] = $updated_display_options;
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for slick.html.twig.
+ */
+function dsu_c_entitycycle_preprocess_slick(&$variables) {
+  if (isset($variables['element']['#display_options'])) {
+    foreach ($variables['items'] as $key => $value) {
+      $variables['items'][$key]['#display_options'] = $variables['element']['#display_options'];
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for slick-vanilla.html.twig.
+ */
+function dsu_c_entitycycle_preprocess_slick_vanilla(&$variables) {
+  if (isset($variables['element']['#display_options'])) {
+    $variables['item']['display_options'] = $variables['element']['#display_options'];
+  }
+}
+
+/**
+ * Callback function to get allowed values for Entity Relation Display Option
+ * field.
+ */
+function dsu_c_entitycycle_allowed_values_function(FieldStorageConfig $definition, ContentEntityInterface $entity = NULL, $cacheable) {
+  $entity_relation_settings = $entity->getFieldDefinition('field_c_entity_relation')
+    ->getSettings();
+  $target_entity = $entity_relation_settings['target_type'];
+  $target_bundles = $entity_relation_settings['handler_settings']['target_bundles'];
+
+  $allowed_values = [];
+  $allow_label_suffix = (count($target_bundles) > 1) ? TRUE : FALSE;
+  foreach ($target_bundles as $target_bundle) {
+    $entity_display_settings = \Drupal::service('entity_display.repository')->getViewDisplay($target_entity, $target_bundle, 'default');
+    $field_definitions = Drupal::service('entity_field.manager')->getFieldDefinitions($target_entity, $target_bundle);
+    $field_name_prefix = $target_entity . "-" . $target_bundle;
+    $label_suffix = "";
+    if ($allow_label_suffix === TRUE) {
+      $bundle_names = \Drupal::service('entity_type.bundle.info')->getBundleInfo($target_entity);
+      if (isset($bundle_names[$target_bundle])) {
+        $label_suffix = " (" . $bundle_names[$target_bundle]['label'] . ")";
+      }
+    }
+
+    foreach ($field_definitions as $field_definition) {
+      if (array_key_exists($field_definition->getName(), $entity_display_settings->getComponents())) {
+        $allowed_values[$field_name_prefix . "-" . $field_definition->getName()] = $field_definition->getLabel() . $label_suffix;
+      }
+    }
+  }
+  return $allowed_values;
+}
+
+/**
+ * Implements hook_entity_presave().
+ */
+function dsu_c_entitycycle_entity_presave(EntityInterface $entity) {
+  if ($entity->getEntityTypeId() == 'paragraph' && $entity->getType() == 'c_entitycycle') {
+    \Drupal::cache('render')->deleteAll();
+  }
+}
+
+/**
+ * Implements hook_ln_sample_content().
+ *
+ * @todo Uncomment in phase two. It's mandatory to create dsu_article sample content before using this hook.
+ *
+ */
+//function dsu_c_entitycycle_ln_sample_content() {
+//    /** @var \Drupal\Core\Extension\ModuleHandlerInterface $module_handler */
+//    $module_handler = \Drupal::service('module_handler');
+//    /** @var \Drupal\Core\Extension\Extension $module_object */
+//    $module_object = $module_handler->getModule(basename(__FILE__, '.module'));
+//    $module_name = $module_object->getName();
+//
+//    $source = drupal_get_path('module', $module_name) . '/content';
+//    /** @var \Drupal\Core\File\FileSystemInterface $file_system */
+//    $file_system = \Drupal::service('file_system');
+//    $files = $file_system->scanDirectory($source, '/demo.*\.(yml)$/');
+//    $yaml_file_path = NULL;
+//    foreach ($files as $file) {
+//        $yaml_file_path[] = '/content/' . $file->filename;
+//    }
+//
+//    return $yaml_file_path;
+//}

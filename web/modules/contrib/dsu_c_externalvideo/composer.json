@@ -1,0 +1,14 @@
+{
+	"name": "lightnest/dsu_c_externalvideo",
+	"type": "drupal-module",
+	"minimum-stability": "dev",
+	"keywords": [
+		"video"
+	],
+	"require": {
+		"drupal/video_embed_field": "^2.4"
+	},
+	"extra": {
+		"enable-patching": true
+	}
+}

@@ -1,0 +1,183 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_srh_nutrients
+    - node.type.srh_complement
+    - paragraphs.paragraphs_type.srh_nutrient
+  module:
+    - entity_reference_revisions
+id: node.srh_complement.field_srh_nutrients
+field_name: field_srh_nutrients
+entity_type: node
+bundle: srh_complement
+label: Nutrients
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      srh_nutrient: srh_nutrient
+    target_bundles_drag_drop:
+      c_entitycycle:
+        weight: 53
+        enabled: false
+      c_externalvideo:
+        weight: 54
+        enabled: false
+      c_image:
+        weight: 55
+        enabled: false
+      c_map:
+        weight: 56
+        enabled: false
+      c_share_buttons:
+        weight: 57
+        enabled: false
+      c_shopify:
+        weight: 58
+        enabled: false
+      c_sideimagetext:
+        weight: 59
+        enabled: false
+      c_slide:
+        weight: 60
+        enabled: false
+      c_slider:
+        weight: 61
+        enabled: false
+      c_social_buttons_item:
+        weight: 63
+        enabled: false
+      c_socialbuttons:
+        weight: 62
+        enabled: false
+      c_spacer:
+        weight: 64
+        enabled: false
+      c_text:
+        weight: 65
+        enabled: false
+      dsu_srh_how_to_burn_it:
+        weight: 66
+        enabled: false
+      layout_25_25_50:
+        weight: 67
+        enabled: false
+      layout_25_50_25:
+        weight: 68
+        enabled: false
+      layout_25_75:
+        weight: 69
+        enabled: false
+      layout_33_66:
+        weight: 70
+        enabled: false
+      layout_50_25_25:
+        weight: 71
+        enabled: false
+      layout_66_33:
+        weight: 72
+        enabled: false
+      layout_75_25:
+        weight: 73
+        enabled: false
+      layout_columns_1:
+        weight: 74
+        enabled: false
+      layout_columns_2:
+        weight: 75
+        enabled: false
+      layout_columns_20:
+        weight: 76
+        enabled: false
+      layout_columns_3:
+        weight: 77
+        enabled: false
+      layout_columns_4:
+        weight: 78
+        enabled: false
+      ln_c_card:
+        weight: 79
+        enabled: false
+      ln_c_card_item:
+        weight: 80
+        enabled: false
+      macronutrients:
+        weight: 81
+        enabled: false
+      media_information:
+        weight: 82
+        enabled: false
+      paragraph_view:
+        weight: 83
+        enabled: false
+      product_listing_block:
+        weight: 84
+        enabled: false
+      recipe_ingredients:
+        weight: 85
+        enabled: false
+      recipe_steps:
+        weight: 86
+        enabled: false
+      recipe_tools:
+        weight: 87
+        enabled: false
+      recipe_variants:
+        weight: 88
+        enabled: false
+      related_recipes_in_other_languag:
+        weight: 89
+        enabled: false
+      srh_cloudfront_media:
+        weight: 90
+        enabled: false
+      srh_ingredient:
+        weight: 91
+        enabled: false
+      srh_ingredient_group:
+        weight: 92
+        enabled: false
+      srh_macronutrients_unittype:
+        weight: 93
+        enabled: false
+      srh_nutrient:
+        enabled: true
+        weight: 94
+      srh_recomendation:
+        weight: 95
+        enabled: false
+      srh_recommendation:
+        weight: 96
+        enabled: false
+      srh_sidedish:
+        weight: 97
+        enabled: false
+      srh_sport:
+        weight: 98
+        enabled: false
+      srh_step:
+        weight: 99
+        enabled: false
+      srh_step_group:
+        weight: 100
+        enabled: false
+      srh_tip:
+        weight: 101
+        enabled: false
+      srh_version:
+        weight: 102
+        enabled: false
+      tags_selector:
+        weight: 103
+        enabled: false
+      tips:
+        weight: 104
+        enabled: false
+field_type: entity_reference_revisions

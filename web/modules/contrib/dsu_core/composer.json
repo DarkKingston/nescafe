@@ -1,0 +1,15 @@
+{
+	"name": "lightnest/dsu_core",
+	"description": "Adds core configuration to be used by the rest of DSU modules.",
+	"type": "drupal-module",
+	"require": {
+        "drupal/lightning_media": "^4.1",
+        "drupal/layout_library":"^1.0",
+        "drupal/layout_builder_styles":"^1.0",
+        "drupal/entity_embed":"^1.1",
+        "drupal/entity_browser":"^2.5",
+        "drupal/entity_browser_block":"^1.1",
+        "drupal/layout_builder_restrictions":"^2.7"
+	}
+}
+

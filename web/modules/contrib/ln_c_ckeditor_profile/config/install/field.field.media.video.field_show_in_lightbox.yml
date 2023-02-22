@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_show_in_lightbox
+    - media.type.video
+id: media.video.field_show_in_lightbox
+field_name: field_show_in_lightbox
+entity_type: media
+bundle: video
+label: 'Show in Lightbox'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

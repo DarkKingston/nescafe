@@ -1,0 +1,24 @@
+bundle: ln_c
+excluded:
+  - core.base_field_override.node.paragraph_page.promote
+  - node.type.paragraph_page
+  - core.entity_form_display.node.paragraph_page.default
+  - core.entity_form_display.paragraph.c_image.default
+  - core.entity_form_display.paragraph.layout_full_witdth.default
+  - core.entity_view_display.node.paragraph_page.default
+  - core.entity_view_display.node.paragraph_page.teaser
+  - core.entity_view_display.paragraph.layout_full_witdth.default
+  - user.role.administrator
+  - user.role.page_creator
+  - user.role.page_reviewer
+  - user.role.paragraph_page_creator
+  - user.role.paragraph_page_reviewer
+  - core.entity_view_mode.block.token
+  - core.entity_view_mode.block_content.token
+  - core.entity_view_mode.contact_message.token
+  - core.entity_view_mode.file.token
+  - core.entity_view_mode.node.token
+  - core.entity_view_mode.search_api_task.token
+  - core.entity_view_mode.user.token
+  - field.field.paragraph.layout_full_witdth.field_column_first
+required: true

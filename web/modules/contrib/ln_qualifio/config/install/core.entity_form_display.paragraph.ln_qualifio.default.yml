@@ -1,0 +1,46 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.ln_qualifio.field_ln_qualifio_campaign
+    - field.field.paragraph.ln_qualifio.field_ln_qualifio_title
+    - field.field.paragraph.ln_qualifio.field_ln_qualifio_title_flag
+    - field.field.paragraph.ln_qualifio.field_ln_qualifio_title_style
+    - paragraphs.paragraphs_type.ln_qualifio
+  module:
+    - ln_qualifio
+id: paragraph.ln_qualifio.default
+targetEntityType: paragraph
+bundle: ln_qualifio
+mode: default
+content:
+  field_ln_qualifio_campaign:
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+    type: QualifioIntegrationWidget
+    region: content
+  field_ln_qualifio_title:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_ln_qualifio_title_flag:
+    weight: 2
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  field_ln_qualifio_title_style:
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+hidden:
+  created: true
+  status: true

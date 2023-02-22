@@ -1,0 +1,22 @@
+name: 'Lightnest Ratings and Reviews (New Version)'
+description: 'Provides the ratings and review comment type.'
+type: module
+core: 8.x
+core_version_requirement: ^8 || ^9
+version: 9.x-2.1.2
+dependencies:
+  - drupal:comment
+  - drupal:field
+  - drupal:fivestar
+  - drupal:text
+  - drupal:flag
+  - drupal:file
+  - drupal:media
+  - drupal:image
+  - drupal:crop
+  - drupal:colorbox
+  - lightning_media
+  - drupal:recaptcha
+  - lightning_media_image:lightning_media_image
+  - entity_browser:entity_browser
+package: Lightnest

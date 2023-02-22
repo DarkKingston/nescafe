@@ -1,0 +1,23 @@
+<?php
+
+/**
+ * @file
+ * Install, update, and uninstall functions for the dsu_c_slider module.
+ */
+
+
+/**
+ * Implements hook_update().
+ * DWDL-3199 : Refactor Slider component.
+ * Refactor dsu_c_slider module
+ */
+function dsu_c_slider_update_9102() {
+  \Drupal::service('dsu_core.config_replace')->rewriteModuleConfig('dsu_c_slider');
+}
+
+function dsu_c_slider_update_dependencies() {
+  $dependencies['dsu_c_slider'][9102] = [
+    'dsu_c_core' => 9101,
+  ];
+  return $dependencies;
+}

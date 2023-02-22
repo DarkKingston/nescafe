@@ -1,0 +1,7 @@
+# Changelog
+-----------
+
+## 1.0.1
+- Added paragraph features too enhance editorial experience.
+- Go to admin/config/development/features/edit/dsu_c_slider
+- Import latest configuration.

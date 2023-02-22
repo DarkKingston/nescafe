@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_show_title
+    - paragraphs.paragraphs_type.dsu_c_view
+id: paragraph.dsu_c_view.field_show_title
+field_name: field_show_title
+entity_type: paragraph
+bundle: dsu_c_view
+label: 'Show Title'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

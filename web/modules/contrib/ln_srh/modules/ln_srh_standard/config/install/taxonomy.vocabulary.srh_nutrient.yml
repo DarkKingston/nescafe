@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - ln_srh_standard
+name: 'SRH Nutrient'
+vid: srh_nutrient
+description: ''
+weight: 0

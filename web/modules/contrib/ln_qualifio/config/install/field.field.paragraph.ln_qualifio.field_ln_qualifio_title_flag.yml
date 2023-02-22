@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_ln_qualifio_title_flag
+    - paragraphs.paragraphs_type.ln_qualifio
+id: paragraph.ln_qualifio.field_ln_qualifio_title_flag
+field_name: field_ln_qualifio_title_flag
+entity_type: paragraph
+bundle: ln_qualifio
+label: 'Use Feed Campaign Title'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

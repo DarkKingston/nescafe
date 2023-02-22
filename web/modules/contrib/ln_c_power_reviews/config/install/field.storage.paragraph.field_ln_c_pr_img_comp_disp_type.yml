@@ -1,0 +1,26 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_ln_c_pr_img_comp_disp_type
+field_name: field_ln_c_pr_img_comp_disp_type
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: pr_review_imagesnippet
+      label: ReviewImageSnippet
+    -
+      value: pr_review_imagedisplay
+      label: ReviewImageDisplay
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

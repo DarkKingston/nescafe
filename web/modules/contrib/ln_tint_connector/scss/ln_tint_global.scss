@@ -1,0 +1,60 @@
+.paragraph--type--dsu-tint {
+  --color-light: #fff;
+  --color-dark: #333;
+  --text-align-x: left;
+  --text-color: var(--color-dark);
+  --bg-color: var(--color-light);
+  --spacing: 1.5rem;
+  --wrapper-margin-right: auto;
+  --wrapper-margin-left: 0;
+  background-color: var(--bg-color);
+  padding: var(--spacing);
+
+  &.white-text {
+    --text-color: var(--color-light);
+    --bg-color: var(--color-dark);
+  }
+
+  .pager .page-item {
+    &.disabled {
+      display: none;
+    }
+
+    .page-link {
+      color: var(--text-color);
+      background-color: var(--bg-color);
+    }
+  }
+
+  &.horizontal_position_center {
+    --text-align-x: center;
+    --wrapper-margin-left: auto;
+  }
+
+  &.horizontal_position_right {
+    --text-align-x: right;
+    --wrapper-margin-right: 0;
+    --wrapper-margin-left: auto;
+  }
+
+  .text-container {
+    max-width: 1024px;
+    margin-top: var(--spacing);
+    margin-bottom: var(--spacing);
+    margin-right: var(--wrapper-margin-right);
+    margin-left: var(--wrapper-margin-left);
+    text-align: var(--text-align-x);
+    color: var(--text-color);
+
+    * {
+      text-align: var(--text-align-x);
+      color: var(--text-color);
+    }
+  }
+
+  .field--name-field-c-advanced-title {
+    margin-bottom: var(--spacing);
+  }
+
+  .field--name-field-c-settings {}
+}

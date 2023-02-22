@@ -1,0 +1,7 @@
+# Changelog
+
+##1.0.2
+- Remove hardcoded credentials
+
+##1.0.1
+- Update javascript library based on changes in Google SEO

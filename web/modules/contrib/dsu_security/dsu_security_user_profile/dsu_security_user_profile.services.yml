@@ -1,0 +1,5 @@
+services:
+  dsu_security_user_profile.route_subscriber:
+    class: Drupal\dsu_security_user_profile\Routing\RouteSubscriber
+    tags:
+      - { name: event_subscriber }

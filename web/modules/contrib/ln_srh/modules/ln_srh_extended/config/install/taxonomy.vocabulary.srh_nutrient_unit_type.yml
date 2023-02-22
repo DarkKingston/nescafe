@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - ln_srh_extended
+name: 'SRH Nutrient Unit Type'
+vid: srh_nutrient_unit_type
+description: ''
+weight: 0

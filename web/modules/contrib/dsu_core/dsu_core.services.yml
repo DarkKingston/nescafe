@@ -1,0 +1,4 @@
+services:
+  dsu_core.config_replace:
+    class: Drupal\dsu_core\Services\ConfigReplace
+    arguments: [ '@config.factory', '@module_handler', '@file_system', '@logger.factory' ]

@@ -1,0 +1,21 @@
+testimonial:
+  version: 1.x
+  css:
+    component:
+      css/ln_c_testimonial.css: {}
+  js:
+    'js/ln_c_testimonial.js': {}
+  dependencies:
+    - core/drupal
+    - core/jquery
+
+testimonial-item:
+  version: 1.x
+  css:
+    component:
+      css/ln_c_testimonial_item.css: {}
+  js:
+    'js/ln_c_testimonial_item.js': {}
+  dependencies:
+    - core/drupal
+    - core/jquery

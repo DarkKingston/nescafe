@@ -1,0 +1,12 @@
+name: 'Lightnest Shopify'
+type: module
+core: 8.x
+description: Connect with Shopify Buy Now Connector.
+core_version_requirement: ^8 || ^9
+version: 8.x-1.1.0
+dependencies:
+  - field
+  - options
+  - paragraphs
+  - text
+package: 'Lightnest Components'

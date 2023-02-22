@@ -1,0 +1,24 @@
+langcode: en
+status: true
+dependencies: {  }
+id: node__srh_recipe
+label: 'Content: Recipe'
+tags:
+  schema_recipe_keywords: '[node:srh_keywords]'
+  schema_recipe_url: '[node:url:absolute]'
+  schema_recipe_videos: '[node:srh_videos]'
+  schema_recipe_recipe_category: '[node:srh_course]'
+  schema_recipe_recipe_ingredient: '[node:srh_ingredients]'
+  schema_recipe_recipe_instructions: '[node:srh_steps]'
+  schema_recipe_date_published: '[node:created:html_datetime]'
+  schema_recipe_author: 'a:2:{s:5:"@type";s:6:"Person";s:4:"name";s:21:"[node:field_srh_chef]";}'
+  schema_recipe_total_time: '[node:field_srh_times:total]'
+  schema_recipe_recipe_cuisine: '[node:srh_cuisine]'
+  schema_recipe_name: '[node:title]'
+  schema_recipe_type: Recipe
+  schema_recipe_recipe_yield: '[node:field_srh_serving:number]'
+  schema_recipe_cook_time: '[node:field_srh_times:cooking]'
+  schema_recipe_description: '[node:body]'
+  schema_recipe_image: 'a:3:{s:5:"@type";s:11:"ImageObject";s:20:"representativeOfPage";s:4:"True";s:3:"url";s:17:"[node:srh_images]";}'
+  schema_recipe_nutrition: 'a:12:{s:5:"@type";s:20:"NutritionInformation";s:8:"calories";s:19:"[node:srh_calories]";s:19:"carbohydrateContent";s:24:"[node:srh_carbohydrates]";s:18:"cholesterolContent";s:22:"[node:srh_cholesterol]";s:12:"fiberContent";s:16:"[node:srh_fiber]";s:14:"proteinContent";s:18:"[node:srh_protein]";s:13:"sodiumContent";s:17:"[node:srh_sodium]";s:12:"sugarContent";s:16:"[node:srh_sugar]";s:10:"fatContent";s:14:"[node:srh_fat]";s:19:"saturatedFatContent";s:24:"[node:srh_saturated_fat]";s:21:"unsaturatedFatContent";s:24:"[node:srh_unsatured_fat]";s:15:"transFatContent";s:20:"[node:srh_trans_fat]";}'
+  schema_recipe_prep_time: '[node:field_srh_times:preparation]'

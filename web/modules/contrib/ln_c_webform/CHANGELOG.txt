@@ -1,0 +1,17 @@
+# Changelog
+-----------
+
+## 1.2.0
+- Use last version of jquery_validation
+
+## 1.1.0
+- Refactor Component Core: Remove id and classy fields for generic ones
+
+##1.0.5
+- Added general promotional form template in the webform config.
+
+Configuration:
+- Enable the module normally with extend.
+- Go to feature list and find ln_c_weboform feature config
+- Update missing config and revert in default state with latest code changes in to database.
+- Important steps -> Please go to webform settings and enable this Checkbox for image files (Allow files to be uploaded to public file system)

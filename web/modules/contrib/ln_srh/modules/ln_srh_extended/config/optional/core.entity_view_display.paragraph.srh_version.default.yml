@@ -1,0 +1,33 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.srh_version.field_srh_recipe
+    - field.field.paragraph.srh_version.field_srh_version_type
+    - paragraphs.paragraphs_type.srh_version
+  enforced:
+    module:
+      - ln_srh_extended
+id: paragraph.srh_version.default
+targetEntityType: paragraph
+bundle: srh_version
+mode: default
+content:
+  field_srh_recipe:
+    weight: 1
+    label: hidden
+    settings:
+      view_mode: teaser
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+  field_srh_version_type:
+    weight: 2
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+hidden: {  }
