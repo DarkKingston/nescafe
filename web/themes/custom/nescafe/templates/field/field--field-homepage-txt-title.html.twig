@@ -36,7 +36,21 @@
  * @see template_preprocess_field()
  */
 #}
+{%
+  set title_classes = [
+  label_display == 'visually_hidden' ? 'visually-hidden',
+]
+%}
 
-<div class="homepage_txt">
-  {{ item.content }}
+<div class="homepage_txt_title">
+  <div{{ title_attributes.addClass(title_classes) }}>{{ label }}</div>
+  {% if multiple %}
+  <div>
+    {% endif %}
+    {% for item in items %}
+      <div{{ item.attributes }}>{{ item.content }}</div>
+    {% endfor %}
+    {% if multiple %}
+  </div>
+  {% endif %}
 </div>
