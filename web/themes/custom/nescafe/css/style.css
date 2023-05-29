@@ -34,6 +34,12 @@ body{margin:0;padding:0}
   display: flex;
   align-items: center;
   justify-content: space-between;
+  height: 100%;
+}
+
+.navbar_left{
+  display: flex;
+  align-items: flex-end;
 }
 
 .navbar_right{
@@ -48,10 +54,10 @@ body{margin:0;padding:0}
   background: #E31D1C;
   border-radius: 4px;
   cursor:pointer;
-  max-width: 230px;
-  width: 100%;
   border: none;
   height: 45px;
+  margin: 0 23px;
+  padding: 12px 25px;
 }
 
 .menu_links{
