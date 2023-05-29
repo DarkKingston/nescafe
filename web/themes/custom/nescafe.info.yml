@@ -1,0 +1,12 @@
+name: Nescafe
+type: theme
+description: 'Nescafe custom theme'
+core_version_requirement: ^9
+libraries:
+  - nescafe/global-styling
+base theme: stable9
+regions:
+  navbar: Navbar
+  header: Header
+  content: Content
+  footer: Footer

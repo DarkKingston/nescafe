@@ -1,0 +1,10 @@
+<?php
+
+/**
+ * @file
+ * Functions to support theming.
+ */
+
+function nescafe_preprocess_links__language_block(&$lang){
+    $lang['current_lang'] =  \Drupal::languageManager()->getCurrentLanguage()->getId();
+}
