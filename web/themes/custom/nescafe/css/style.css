@@ -36,6 +36,11 @@ body{margin:0;padding:0}
   justify-content: space-between;
 }
 
+.navbar_right{
+  display: flex;
+  align-items: center;
+}
+
 .auth_btn{
   font-weight: 700;
   font-size: 17px;
@@ -46,6 +51,7 @@ body{margin:0;padding:0}
   max-width: 230px;
   width: 100%;
   border: none;
+  height: 45px;
 }
 
 .menu_links{
