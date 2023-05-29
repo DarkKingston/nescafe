@@ -30,9 +30,9 @@
   {% import _self as menus %}
   {% if items %}
     {% if menu_level == 0 %}
-      <ul{{ attributes }}>
-    {% else %}
-      <ul>
+<ul{{ attributes }}>
+  {% else %}
+  <ul class="menu_links">
     {% endif %}
     {% for item in items %}
       <li{{ item.attributes }}>
@@ -42,6 +42,6 @@
         {% endif %}
       </li>
     {% endfor %}
-    </ul>
+  </ul>
   {% endif %}
-{% endmacro %}
+  {% endmacro %}

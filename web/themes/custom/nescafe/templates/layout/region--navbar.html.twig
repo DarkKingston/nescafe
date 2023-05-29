@@ -6,14 +6,21 @@
 
 <div{{ attributes.addClass(classes) }}>
   <div class="navbar__container container">
-    <div class="navbar__branding">
-      <a href="/">
-        <img class="navbar__logo" src="/{{ directory }}/images/logo.svg" />
-      </a>
+    <div class="navbar_right">
+      <div class="navbar__branding">
+        <a href="/">
+          <img class="navbar__logo" src="/{{ directory }}/images/logo.svg" />
+        </a>
+      </div>
+      {{ content }}
     </div>
-    {{ content }}
     <div class="navbar__actions">
-
+      <a href="tel:06060606060">
+        <img src="/{{ directory }}/images/phone.svg">
+      </a>
+      <button class="auth_btn">
+        Înregistrează & Câștigă
+      </button>
     </div>
   </div>
 </div>
