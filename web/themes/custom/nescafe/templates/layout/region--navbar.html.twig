@@ -1,0 +1,19 @@
+{% set classes = [
+  'region',
+  'region-' ~ region|clean_class,
+  'navbar',
+] %}
+
+<div{{ attributes.addClass(classes) }}>
+  <div class="navbar__container container">
+    <div class="navbar__branding">
+      <a href="/">
+        <img class="navbar__logo" src="/{{ directory }}/images/logo.svg" />
+      </a>
+    </div>
+    {{ content }}
+    <div class="navbar__actions">
+
+    </div>
+  </div>
+</div>
