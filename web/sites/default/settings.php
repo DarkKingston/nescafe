@@ -41,3 +41,15 @@ if (file_exists($app_root . '/' . $site_path . '/settings.platformsh.php')) {
 if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
   include $app_root . '/' . $site_path . '/settings.local.php';
 }
+$databases['default']['default'] = array (
+  'database' => 'nescafe_dev_db',
+  'username' => 'root',
+  'password' => '',
+  'prefix' => '',
+  'host' => 'localhost',
+  'port' => '3306',
+  'namespace' => 'Drupal\\mysql\\Driver\\Database\\mysql',
+  'driver' => 'mysql',
+  'autoload' => 'core/modules/mysql/src/Driver/Database/mysql/',
+);
+$settings['hash_salt'] = '5fQtQH_vpiSlyhFc_zW22jp-IDzzppu_EIUsNCMmdAPaZ9fcPzqpJhzH7EuPsTsjUtgfTRihwQ';

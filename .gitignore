@@ -25,7 +25,7 @@ drush/Commands
 
 # Ignore custom theme build artifacts
 web/themes/custom/*/node_modules
-web/themes/custom/*/css
+web/themes/custom/nescafe/asd
 web/themes/custom/*/styleguide
 
 # Ignore build artifacts
