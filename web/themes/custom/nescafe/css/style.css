@@ -81,3 +81,23 @@ body{margin:0;padding:0}
   display: block;
   height: auto;
 }
+
+.homepage_txt{
+  text-align: center;
+  margin-top: 70px;
+}
+
+.homepage_txt_title{
+  max-width: 585px;
+  margin: 0 auto;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 38px;
+  color: #263238;
+}
+
+.homepage_txt_block{
+  font-size: 14px;
+  line-height: 22px;
+  color: #404E55;
+}
