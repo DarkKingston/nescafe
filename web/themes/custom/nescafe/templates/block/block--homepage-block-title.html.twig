@@ -1,7 +1,8 @@
-<div class="block_title_wrapper contextual-region">
+<div class="block_title_wrapper">
   <div class="block_title">
-    {{ content }}
+    {% block content %}
+      {{ content }}
+    {% endblock %}
   </div>
   <div class="block_title_lines"></div>
 </div>
-
