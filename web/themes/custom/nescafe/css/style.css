@@ -124,3 +124,9 @@ body{margin:0;padding:0}
   border-top: 1px solid #CFD8DC;
   border-bottom: 1px solid #CFD8DC;
 }
+
+#block-izobrazheniesshagami img{
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
