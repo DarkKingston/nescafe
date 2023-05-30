@@ -102,6 +102,10 @@ body{margin:0;padding:0}
   color: #404E55;
 }
 
+.block_title_wrapper{
+  margin: 50px 0;
+}
+
 .block_title{
   font-weight: 600;
   font-size: 12px;
