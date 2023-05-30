@@ -35,13 +35,10 @@
 ]
 %}
 <div{{ attributes.addClass(classes) }}>
-  <div class="container">
     <div class="block_title">
       {% block content %}
         {{ content }}
       {% endblock %}
-      <div class="block_title_lines"></div>
     </div>
-  </div>
-
+  <div class="block_title_lines"></div>
 </div>

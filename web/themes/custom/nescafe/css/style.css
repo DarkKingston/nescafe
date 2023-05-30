@@ -101,3 +101,12 @@ body{margin:0;padding:0}
   line-height: 22px;
   color: #404E55;
 }
+
+.block_title{
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #404E55;
+  text-align: center;
+  padding: 0 12px;
+}
