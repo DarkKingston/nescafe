@@ -107,6 +107,16 @@ body{margin:0;padding:0}
   font-size: 12px;
   text-transform: uppercase;
   color: #404E55;
-  text-align: center;
   padding: 0 12px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  background: white;
+}
+
+.block_title_lines{
+  height: 4px;
+  border-top: 1px solid #CFD8DC;
+  border-bottom: 1px solid #CFD8DC;
 }
