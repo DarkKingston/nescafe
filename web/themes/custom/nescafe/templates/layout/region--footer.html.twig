@@ -1,0 +1,11 @@
+{% set classes = [
+  'region',
+  'region-' ~ region|clean_class,
+  'header',
+] %}
+
+<div{{ attributes.addClass(classes) }}>
+  <div class="footer_content_wrapper">
+    {{ content }}
+  </div>
+</div>
