@@ -135,3 +135,27 @@ body{margin:0;padding:0}
   margin-top: 70px;
   margin-bottom: 45px;
 }
+
+.current_lang.active + .langs{
+  display: block;
+}
+
+.langs{
+  display: none;
+}
+
+.langs a{
+  display: block;
+}
+
+.langs_select{
+  text-transform: capitalize;
+}
+
+.language-link.is-active{
+  display: none;
+}
+
+.langs_select{
+  cursor:pointer;
+}
