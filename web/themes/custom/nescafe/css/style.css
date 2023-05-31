@@ -174,6 +174,9 @@ body{margin:0;padding:0}
   padding-top: 35px;
   margin-top: 95px;
   border-top: 1px solid #CFD8DC;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
 }
 
 .footer_menu{
@@ -196,6 +199,8 @@ body{margin:0;padding:0}
   font-size: 14px;
   line-height: 20px;
   color: #252525;
+  margin-top: 20px;
+  margin-bottom: 45px;
 }
 
 .footer_adress{
