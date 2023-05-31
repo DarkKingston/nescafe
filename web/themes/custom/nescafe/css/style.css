@@ -190,3 +190,16 @@ body{margin:0;padding:0}
   padding-left: 10px;
   margin-left: 15px;
 }
+
+.footer_copyrights{
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 20px;
+  color: #252525;
+}
+
+.footer_adress{
+  font-weight: 700;
+  font-size: 15px;
+  color: #494F53;
+}
