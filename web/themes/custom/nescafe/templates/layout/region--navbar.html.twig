@@ -21,6 +21,23 @@
       <button class="auth_btn">
         Înregistrează & Câștigă
       </button>
+      {% if links -%}
+        <div class="langs_select">
+          <div class="current_lang" onclick="this.classList.toggle('active')">
+            {{ current_lang }}
+            <img src="/{{ directory }}/images/lang_select_arr.svg">
+          </div>
+          <div class="langs">
+            {%- for item in links -%}
+              <a{{ item.attributes }}>
+                {%- if item.link -%}
+                  {{ item.link}}
+                {%- endif -%}
+              </a>
+            {%- endfor -%}
+          </div>
+        </div>
+      {%- endif %}
     </div>
   </div>
 </div>
