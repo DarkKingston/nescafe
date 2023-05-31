@@ -137,6 +137,15 @@ body{margin:0;padding:0}
   margin-bottom: 45px;
 }
 
+.current_lang{
+  display: flex;
+  align-items: baseline;
+}
+
+.current_lang img{
+  margin-left: 5px;
+}
+
 .current_lang.active + .langs{
   display: block;
 }
@@ -147,6 +156,8 @@ body{margin:0;padding:0}
   top: 100%;
   left: 0;
   z-index: 2;
+  background: white;
+  width: 100%;
 }
 
 .langs a{
@@ -159,6 +170,7 @@ body{margin:0;padding:0}
   font-weight: 700;
   font-size: 17px;
   color: #333333;
+  position: relative;
 }
 
 .language-link.is-active{
