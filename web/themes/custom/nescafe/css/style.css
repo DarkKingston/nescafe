@@ -125,7 +125,7 @@ body{margin:0;padding:0}
   border-bottom: 1px solid #CFD8DC;
 }
 
-#block-izobrazheniesshagami img{
+.homepage_image img{
   display: block;
   max-width: 100%;
   height: auto;
@@ -158,4 +158,8 @@ body{margin:0;padding:0}
 
 .langs_select{
   cursor:pointer;
+}
+
+.prize_txt{
+  margin-bottom: 60px;
 }
