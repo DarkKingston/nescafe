@@ -35,6 +35,7 @@
   <div class="langs_select">
     <div class="current_lang" onclick="this.classList.toggle('active')">
       {{ current_lang }}
+      <img src="/{{ directory }}/images/lang_select_arr.svg">
     </div>
     <div class="langs">
       {%- for item in links -%}

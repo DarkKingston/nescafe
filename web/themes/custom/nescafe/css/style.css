@@ -64,6 +64,7 @@ body{margin:0;padding:0}
   display: inline-block;
   margin: 0;
   padding: 0;
+  margin-left: 25px;
 }
 
 .menu_links li{
@@ -142,6 +143,10 @@ body{margin:0;padding:0}
 
 .langs{
   display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 2;
 }
 
 .langs a{
@@ -149,15 +154,15 @@ body{margin:0;padding:0}
 }
 
 .langs_select{
-  text-transform: capitalize;
+  cursor:pointer;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 17px;
+  color: #333333;
 }
 
 .language-link.is-active{
   display: none;
-}
-
-.langs_select{
-  cursor:pointer;
 }
 
 .prize_txt{
