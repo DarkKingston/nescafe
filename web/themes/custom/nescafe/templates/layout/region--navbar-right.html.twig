@@ -1,0 +1,13 @@
+{% set classes = [
+  'region',
+  'region-' ~ region|clean_class,
+  'navbar',
+] %}
+
+<a href="tel:06060606060">
+  <img src="/{{ directory }}/images/phone.svg">
+</a>
+<button class="auth_btn">
+  Înregistrează & Câștigă
+</button>
+{{ content }}

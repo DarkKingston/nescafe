@@ -45,7 +45,22 @@
 <div class="layout-container">
 
   <header class="page__navbar">
-    {{ page.navbar }}
+    <div{{ attributes.addClass(classes) }}>
+      <div class="navbar__container container">
+        <div class="navbar_left">
+          <div class="navbar__branding">
+            <a href="/">
+              <img class="navbar__logo" src="/{{ directory }}/images/logo.svg" />
+            </a>
+          </div>
+          {{ page.navbar_left }}
+        </div>
+        <div class="navbar_right">
+          {{ page.navbar_right }}
+        </div>
+      </div>
+    </div>
+
   </header>
 
   <header role="banner">
