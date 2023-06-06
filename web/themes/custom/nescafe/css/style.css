@@ -242,6 +242,18 @@ body{margin:0;padding:0}
   cursor:pointer;
 }
 
+.mobile_menu{
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: auto;
+  padding: 15px;
+  background: white;
+  z-index: 5;
+}
+
 
 @media (max-width: 1199px){
   .menu_links{
