@@ -235,18 +235,13 @@ body{margin:0;padding:0}
   color: #494F53;
 }
 
-
-@media (max-width: 1199px){
-  .winners_photos img{
-    width: 50%;
-  }
-  .menu_links{
-    display: none;
-  }
+.burger{
+  display:none;
 }
 
-@media (max-width: 599px){
-  .winners_photos img{
-    width: 100%;
+
+@media (max-width: 1199px){
+  .menu_links{
+    display: none;
   }
 }
