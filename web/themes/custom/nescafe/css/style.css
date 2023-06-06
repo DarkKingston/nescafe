@@ -266,6 +266,15 @@ body{margin:0;padding:0}
   display: none;
 }
 
+.close_menu{
+  border: none;
+  background: none;
+  padding: 0;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}
+
 @media (max-width: 1199px){
   .menu_links{
     display: none;
@@ -276,5 +285,11 @@ body{margin:0;padding:0}
 
   .burger{
     display: block;
+  }
+}
+
+@media (max-width: 599px){
+  .auth_btn{
+    display: none;
   }
 }
