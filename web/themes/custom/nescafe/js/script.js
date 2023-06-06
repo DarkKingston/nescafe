@@ -6,11 +6,11 @@
       function toggleMobileMenu(){
         $('.mobile_menu').slideToggle();
         $('.mob_menu_overlay').fadeToggle();
-      };
+      }
 
       function toggleLangs(){
         $('.langs').slideToggle();
-      };
+      }
     }
   };
 })(jQuery);
