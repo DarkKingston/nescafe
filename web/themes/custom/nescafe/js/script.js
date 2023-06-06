@@ -7,9 +7,9 @@
         $('.mob_menu_overlay').fadeToggle();
       });
 
-      $('.current_lang',context).on('click',function(){
+      function toggleLangs(){
         $('.langs').slideToggle();
-      })
+      }
     }
   };
 })(jQuery);
