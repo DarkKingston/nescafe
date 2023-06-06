@@ -185,6 +185,15 @@ body{margin:0;padding:0}
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.winners_photos img{
+  display: block;
+  max-width: 100%;
+  height: auto;
+  width: 25%;
 }
 
 .footer_content_wrapper{
@@ -224,4 +233,20 @@ body{margin:0;padding:0}
   font-weight: 700;
   font-size: 15px;
   color: #494F53;
+}
+
+
+@media (max-width: 1199px){
+  .winners_photos img{
+    width: 50%;
+  }
+  .menu_links{
+    display: none;
+  }
+}
+
+@media (max-width: 599px){
+  .winners_photos img{
+    width: 100%;
+  }
 }
