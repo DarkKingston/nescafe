@@ -193,7 +193,6 @@ body{margin:0;padding:0}
   display: block;
   max-width: 100%;
   height: auto;
-  width: 25%;
 }
 
 .footer_content_wrapper{
@@ -237,11 +236,18 @@ body{margin:0;padding:0}
 
 .burger{
   display:none;
+  border: none;
+  background: none;
+  padding: 0;
+  cursor:pointer;
 }
 
 
 @media (max-width: 1199px){
   .menu_links{
     display: none;
+  }
+  .burger{
+    display: block;
   }
 }
