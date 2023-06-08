@@ -25,8 +25,9 @@
  * @see template_preprocess_block()
  */
 #}
-<div {{ item.attributes }}>
+<div {{ item.attributes.toString() }}>
   <button class="btn_main reglament_accept">
-    {{ link(item.title) }}
+
+    {{ item.title }}
   </button>
 </div>
