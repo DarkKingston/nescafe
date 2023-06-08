@@ -27,7 +27,11 @@
 #}
 <div >
   <button class="btn_main reglament_accept">
-    {{ item.link}}
-    {{ content }}
+    {%- for item in links -%}
+        {%- if item.link -%}
+          {{ item.link}}
+        {%- endif -%}
+
+    {%- endfor -%}
   </button>
 </div>
