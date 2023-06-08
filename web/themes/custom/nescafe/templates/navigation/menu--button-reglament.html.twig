@@ -26,14 +26,7 @@
  */
 #}
 <div{{ attributes }}>
-  {{ title_prefix }}
-  {% if label %}
-    <h2{{ title_attributes }}>{{ label }}</h2>
-  {% endif %}
-  {{ title_suffix }}
   <button class="btn_main reglament_accept">
-    {% block content %}
-      {{ content }}
-    {% endblock %}
+    {{ form }}
   </button>
 </div>
