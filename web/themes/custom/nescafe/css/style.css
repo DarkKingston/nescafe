@@ -127,9 +127,9 @@ body{margin:0;padding:0}
 }
 
 .homepage_image img{
-  display: none;
+  display: block;
   max-width: 100%;
-  height: 200px;
+  height: auto;
 }
 
 .top_txt_title{
