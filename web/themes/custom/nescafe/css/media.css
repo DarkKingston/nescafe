@@ -11,13 +11,13 @@
   }
 }
 
-@media(max-width: 880px){
+
+@media(max-width: 1175px){
   .winners_photos{
     max-width: 830px;
     justify-content: center;
   }
 }
-
 
 @media(max-width: 602px){
   .winners_photos{
