@@ -298,3 +298,12 @@ body{margin:0;padding:0}
 .reglament_accept{
   top: 50px;
 }
+
+.text_content{
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  color: #404E55;
+}
