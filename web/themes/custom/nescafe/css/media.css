@@ -1,0 +1,19 @@
+
+@media (max-width: 1199px){
+  .menu_links{
+    display: none;
+  }
+  .mobile_menu .menu_links{
+    display: block;
+  }
+
+  .burger{
+    display: block;
+  }
+}
+
+@media (max-width: 599px){
+  .auth_btn{
+    display: none;
+  }
+}
