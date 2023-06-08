@@ -1,4 +1,3 @@
-
 @media (max-width: 1199px){
   .menu_links{
     display: none;
@@ -15,5 +14,8 @@
 @media (max-width: 599px){
   .auth_btn{
     display: none;
+  }
+  .contextual-region{
+    margin-left: 10px;
   }
 }
