@@ -15,7 +15,21 @@
   .auth_btn{
     display: none;
   }
-  .contextual-region{
+  .langs_select{
     margin-left: 10px;
+  }
+  .homepage_txt_title{
+    font-size: 24px;
+    line-height: 36px;
+  }
+  .top_txt_title {
+    margin-top: 50px;
+    margin-bottom: 20px;
+  }
+  [role=banner] {
+    padding-top: 30px;
+  }
+  .winners_photos{
+    justify-content: center;
   }
 }
