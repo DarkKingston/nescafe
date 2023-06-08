@@ -29,7 +29,7 @@
   <button class="btn_main reglament_accept">
     {%- for item in links -%}
         {%- if item.link -%}
-          {{ item }}
+          {{ item.title }}
         {%- endif -%}
 {{ dd(item) }}
     {%- endfor -%}
