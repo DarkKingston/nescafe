@@ -29,9 +29,9 @@
   <button class="btn_main reglament_accept">
     {%- for item in links -%}
         {%- if item.link -%}
-          {{ item.link}}
+          {{ item }}
         {%- endif -%}
-
+{{ dd(item) }}
     {%- endfor -%}
   </button>
 </div>
