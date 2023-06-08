@@ -274,3 +274,11 @@ body{margin:0;padding:0}
   right: 20px;
   top: 20px;
 }
+
+.page_title {
+  max-width: 585px;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 38px;
+  color: #263238;
+}
