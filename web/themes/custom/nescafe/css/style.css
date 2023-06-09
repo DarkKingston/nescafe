@@ -61,7 +61,7 @@ ul>li{
   align-items: center;
 }
 
-.auth_btn{
+.auth_btn button{
   font-weight: 700;
   font-size: 17px;
   color: #FFFFFF;
