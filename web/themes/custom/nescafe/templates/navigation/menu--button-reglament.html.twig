@@ -25,16 +25,6 @@
  * @see template_preprocess_block()
  */
 #}
-<div >
-  <button class="btn_main reglament_accept">
-    {%- for item in links -%}
-      {{ item }}
-        {%- if item.link -%}
-          {{ item.title }}
-          {{ item.link }}
-          {{ item.link }}
-        {%- endif -%}
-
-    {%- endfor -%}
-  </button>
+<div class="btn_main">
+  {{ content }}
 </div>
