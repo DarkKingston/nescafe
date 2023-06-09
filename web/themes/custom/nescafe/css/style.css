@@ -290,7 +290,15 @@ ul>li{
 }
 
 .page_title {
+  text-align:center;
   max-width: 585px;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 38px;
+  color: #263238;
+}
+
+.title_page{
   font-weight: 700;
   font-size: 32px;
   line-height: 38px;
@@ -308,6 +316,7 @@ ul>li{
   border-radius: 4px;
   padding: 13px 23px 12px 27px;
   border: 0;
+  cursor: pointer;
 }
 
 .reglament_accept button{

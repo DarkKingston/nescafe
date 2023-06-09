@@ -10,6 +10,8 @@
       $('.current_lang',context).on('click',function(){
         $('.langs').slideToggle();
       })
+
+
     }
   };
 })(jQuery);
