@@ -11,4 +11,5 @@ regions:
   header: Header
   content: Content
   reglament: Content Reglament Page
+  policy: Content Policy Page
   footer: Footer
