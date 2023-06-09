@@ -38,13 +38,13 @@ ul>li{
   height: 60px;
 }
 
-.container{
+.navbar .container{
   max-width:1200px;
   padding:0 15px;
   margin: 0 auto;
 }
 
-.navbar__container{
+.navbar .navbar__container{
   display: flex;
   align-items: center;
   justify-content: space-between;
