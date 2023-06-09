@@ -283,7 +283,7 @@ body{margin:0;padding:0}
   color: #263238;
 }
 
-.btn_main{
+.btn_main button{
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 700;
@@ -296,7 +296,7 @@ body{margin:0;padding:0}
   border: 0;
 }
 
-.reglament_accept{
+.reglament_accept button{
   margin-top: 50px;
 }
 
