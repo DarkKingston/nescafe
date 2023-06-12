@@ -367,7 +367,7 @@ ul>li{
   content: '';
 }
 
-input{
+form>.form-item>input{
   font-weight: 700;
   font-size: 17px;
   color: #FFFFFF;
