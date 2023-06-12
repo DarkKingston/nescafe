@@ -405,6 +405,7 @@ form .form-item label{
 }
 
 .webform-button--submit{
+  margin-top: 10px;
   font-weight: 700;
   font-size: 17px;
   color: #FFFFFF;
