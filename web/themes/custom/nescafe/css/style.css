@@ -331,3 +331,34 @@ ul>li{
   line-height: 22px;
   color: #404E55;
 }
+
+.breadcrumb_wrapper{
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+}
+
+.breadcrumb_wrapper li{
+  margin-right: 10px;
+  padding-right: 10px;
+  position: relative;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 19px;
+  color: #404E55;
+}
+
+.breadcrumb_wrapper li:last-child{
+  font-weight: 700;
+  color: #E31D1C;
+}
+
+.breadcrumb_wrapper li::after{
+  content: '/';
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
