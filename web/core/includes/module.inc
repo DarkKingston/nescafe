@@ -83,6 +83,7 @@ function module_load_include($type, $module, $name = NULL) {
     /** @var \Drupal\Core\Extension\ModuleExtensionList $module_list */
     $module_list = \Drupal::service('extension.list.module');
     $file = DRUPAL_ROOT . '/' . $module_list->getPath($module) . "/$name.$type";
+    var_dump($file);
     if (is_file($file)) {
       require_once $file;
       return $file;
