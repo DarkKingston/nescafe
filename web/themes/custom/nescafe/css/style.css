@@ -366,3 +366,38 @@ ul>li{
 .breadcrumb_wrapper li:last-child::after{
   content: '';
 }
+
+input{
+  font-weight: 700;
+  font-size: 17px;
+  color: #FFFFFF;
+  background: #FFFFFF;
+  border: 1px solid #CECECE;
+  border-radius: 4px;
+  cursor: pointer;
+  height: 45px;
+  width: 300px;
+  padding: 12px 25px;
+}
+
+form .form-item{
+  display: flex;
+  flex-direction: column;
+}
+
+.js-webform-checkboxes .form-item{
+  display: block;
+}
+
+.webform-button--submit{
+  font-weight: 700;
+  font-size: 17px;
+  color: #FFFFFF;
+  background: #E31D1C;
+  border-radius: 4px;
+  cursor: pointer;
+  border: none;
+  height: 45px;
+  max-width: 250px;
+  padding: 12px 25px;
+}
