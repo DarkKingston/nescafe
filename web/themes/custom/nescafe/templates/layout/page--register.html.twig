@@ -71,11 +71,13 @@
     <div class="layout-content">
       <div class="container">
         {{ page.register }}
-        <form{{ attributes }}>
-          {{ title_prefix }}
-          {{ children }}
-          {{ title_suffix }}
-        </form>
+        <div class="register_wrapper">
+          <form{{ attributes }}>
+            {{ title_prefix }}
+            {{ children }}
+            {{ title_suffix }}
+          </form>
+        </div>
       </div>
     </div>{# /.layout-content #}
   </main>
