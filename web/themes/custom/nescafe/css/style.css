@@ -362,3 +362,7 @@ ul>li{
   right: 0;
   top: 0;
 }
+
+.breadcrumb_wrapper li:last-child::after{
+  content: '';
+}
