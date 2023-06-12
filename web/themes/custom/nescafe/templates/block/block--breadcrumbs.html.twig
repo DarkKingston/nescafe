@@ -4,21 +4,7 @@
     <h2{{ title_attributes }}>{{ label }}</h2>
   {% endif %}
   {{ title_suffix }}
-  {% if breadcrumb %}
-    <nav role="navigation" aria-labelledby="system-breadcrumb">
-      <h2 id="system-breadcrumb" class="visually-hidden">{{ 'Breadcrumb'|t }}</h2>
-      <ol class="breadcrumb_wrapper">
-        {% for item in breadcrumb %}
-          <li>
-            {% if item.url %}
-              <a href="{{ item.url }}">{{ item.text }}</a>
-            {% else %}
-              {{ item.text }}
-            {% endif %}
-          </li>
-        {% endfor %}
-      </ol>
-    </nav>
-  {% endif %}
-
+  {% block content %}
+    {{ content }}
+  {% endblock %}
 </div>
