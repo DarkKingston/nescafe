@@ -70,14 +70,17 @@
     <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
     <div class="layout-content">
       <div class="container">
+
         {{ page.register }}
-        <div class="register_wrapper">
+
           <form{{ attributes }}>
-            {{ title_prefix }}
-            {{ children }}
-            {{ title_suffix }}
+            <div class="register_wrapper">
+              {{ title_prefix }}
+              {{ children }}
+              {{ title_suffix }}
+            </div>
           </form>
-        </div>
+
       </div>
     </div>{# /.layout-content #}
   </main>
