@@ -392,6 +392,9 @@ form .form-item label{
 .js-webform-checkboxes .form-item{
   display: block;
 }
+.fieldgroup legend{
+  display: none;
+}
 
 .webform-button--submit{
   font-weight: 700;
