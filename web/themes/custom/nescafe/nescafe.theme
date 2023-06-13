@@ -17,15 +17,9 @@ function nescafe_preprocess_form(&$form, $form_state) {
       unset($form['account']['name']['#title']); // удаляем кнопку "Предпросмотр"
       unset($form['name']['#title']); // удаляем кнопку "Предпросмотр"
       dump($form['user']);
-      // retrieve field data from that user
-      $website = $user->get('field_website')->value;
-      $body = $user->get('body')->value;
-      $email = $user->get('mail')->value;
+
       $name = $user->get('name')->value;
       $uid= $user->get('uid')->value;
-      dump($website);
-      dump($body);
-      dump($email);
       dump($name);
       dump($uid);
   }
