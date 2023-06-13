@@ -13,9 +13,4 @@ function nescafe_preprocess_links__language_block(&$lang){
 
 function nescafe_preprocess_form(&$form, $form_state) {
     dump($form);
-      unset($form['element']['account']['name']['#description']); // удаляем кнопку "Предпросмотр"
-      unset($form['account']['name']['#title']); // удаляем кнопку "Предпросмотр"
-      unset($form['name']['#title']); // удаляем кнопку "Предпросмотр"
-      dump($form['user']);
-
   }
