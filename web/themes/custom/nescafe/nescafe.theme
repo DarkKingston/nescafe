@@ -49,7 +49,7 @@ try {
         print <<<TABLE
 <table>
 <thead>
-<tr><th>Name</th><th>City</th></tr>
+<tr><th>Name_field</th><th>Value</th></tr>
 </thead>
 <tbody>
 TABLE;
