@@ -41,7 +41,7 @@ try {
     // Creating a table.
 
     // Show table.
-    $sql = "SHOW TABLES";
+    $sql = "SELECT * FROM webform_submission_data WHERE webform_id = 'register' AND telefon='+1 718-555-6666' ";
     $result = $conn->query($sql);
     $result->setFetchMode(\PDO::FETCH_OBJ);
 
@@ -58,11 +58,6 @@ TABLE;
         }
         print "</tbody>\n</table>\n";
     }
-
-    // Drop table
-    $sql = "DROP TABLE People";
-    $conn->query($sql);
-
 } catch (\Exception $e) {
     print $e->getMessage();
 }
