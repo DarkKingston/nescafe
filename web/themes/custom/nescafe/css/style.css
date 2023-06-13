@@ -441,7 +441,7 @@ form .form-item label{
 }
 
 .password-strength{
-  max-width: 250px;
+  max-width: 300px;
 }
 
 #edit-name--description, #edit-mail--description, #edit-pass--description, #edit-contact, .password-suggestions{
