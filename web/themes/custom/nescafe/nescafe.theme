@@ -11,7 +11,7 @@ function nescafe_preprocess_links__language_block(&$lang){
 
 /*$current_path = \Drupal::service('path.current')->getPath();*/
 
-declare(strict_types=1);
+
 
 use Platformsh\ConfigReader\Config;
 
