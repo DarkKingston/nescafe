@@ -41,7 +41,7 @@ try {
     // Creating a table.
 
     // Show table.
-    $sql = "SELECT * FROM webform_submission_data WHERE webform_id = 'register' AND telefon='+1 718-555-6666' ";
+    $sql = "SELECT * FROM webform_submission_data WHERE webform_id = 'register' AND sid = 10 ";
     $result = $conn->query($sql);
     $result->setFetchMode(\PDO::FETCH_OBJ);
 
