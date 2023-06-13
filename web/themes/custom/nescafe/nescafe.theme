@@ -25,4 +25,3 @@ function nescafe_preprocess_form(&$form, $form_state) {
       $form['subject']['widget'][0]['value']['#attributes']['placeholder']= t('Theme'); // добавляем placeholder к полю Тема
       $form['message']['widget'][0]['value']['#attributes']['placeholder']= t('Message'); // добавляем placeholder к полю Сообщение
     }
-}
