@@ -445,7 +445,7 @@ form .form-item label{
 }
 
 #edit-name--description, #edit-mail--description, #edit-pass--description, #edit-contact, .password-suggestions{
-  display: none;
+  display: none !important;
 }
 
 .password-strength__meter{
