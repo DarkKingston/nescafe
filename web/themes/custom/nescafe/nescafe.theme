@@ -54,7 +54,7 @@ try {
 <tbody>
 TABLE;
         foreach ($result as $record) {
-            printf("<tr><td>%s</td><td>%s</td></tr>\n", $record->name, $record->city);
+            printf("<tr><td>%s</td><td>%s</td></tr>\n", $record->name, $record->value);
         }
         print "</tbody>\n</table>\n";
     }
