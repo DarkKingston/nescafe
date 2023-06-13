@@ -11,6 +11,6 @@ function nescafe_preprocess_links__language_block(&$lang){
 
 /*$current_path = \Drupal::service('path.current')->getPath();*/
 
-function your_theme_form_contact_message_feedback_form_alter(&$form, $form_state) {
+function nescafe_preprocess_form(&$form, $form_state) {
     dump($form);
 }
