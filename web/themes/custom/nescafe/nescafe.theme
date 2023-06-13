@@ -11,5 +11,5 @@ function nescafe_preprocess_links__language_block(&$lang){
 
 /*$current_path = \Drupal::service('path.current')->getPath();*/
 
-$sql = "Show TABLES";
+$sql = mysqli_query(localhost, "SELECT * FROM Persons");
 var_dump($sql);
