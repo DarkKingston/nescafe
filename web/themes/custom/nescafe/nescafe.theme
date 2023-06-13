@@ -41,7 +41,7 @@ try {
     // Creating a table.
 
     // Show table.
-    $sql = "SELECT * FROM config";
+    $sql = "SHOW TABLES";
     $result = $conn->query($sql);
     $result->setFetchMode(\PDO::FETCH_OBJ);
 
