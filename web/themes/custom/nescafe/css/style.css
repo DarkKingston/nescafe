@@ -432,3 +432,13 @@ form .form-item label{
 #edit-name--description, #edit-mail--description, #edit-pass--description, #edit-contact{
   display: none;
 }
+
+.password-strength__meter{
+  background-color: #E31D1C;
+  opacity: 0.5;
+}
+
+.password-strength__indicator{
+  background-color: #E31D1C;
+  opacity: 1;
+}
