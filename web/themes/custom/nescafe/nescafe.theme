@@ -13,15 +13,5 @@ function nescafe_preprocess_links__language_block(&$lang){
 
 function nescafe_preprocess_form(&$form, $form_state) {
     dump($form);
-      unset($form['actions']['preview']); // удаляем кнопку "Предпросмотр"
-      unset($form['name']['#title']); // удаляем label у поля Имя
-      unset($form['mail']['#title']); // удаляем label у поля Email
-      unset($form['subject']['widget'][0]['value']['#title']); // удаляем label у поля Тема
-      unset($form['message']['widget'][0]['value']['#title']); // удаляем label у поля Сообщение
-      $form['header']['#markup'] = "<h2>" . t('Contact Form') . "</h2>"; // добавляем h2 заголовок к форме
-      $form['header']['#weight'] = -100; // сдвигаем заголовок в самый верх формы
-      $form['name']['#attributes']['placeholder'] = t('Your Name'); // добавляем placeholder к полю Имя
-      $form['mail']['#attributes']['placeholder']= t('Your Email'); // добавляем placeholder к полю Email
-      $form['subject']['widget'][0]['value']['#attributes']['placeholder']= t('Theme'); // добавляем placeholder к полю Тема
-      $form['message']['widget'][0]['value']['#attributes']['placeholder']= t('Message'); // добавляем placeholder к полю Сообщение
+
     }
