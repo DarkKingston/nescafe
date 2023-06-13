@@ -440,6 +440,10 @@ form .form-item label{
   padding: 12px 25px;
 }
 
+.password-strength{
+  max-width: 250px;
+}
+
 #edit-name--description, #edit-mail--description, #edit-pass--description, #edit-contact, .password-suggestions{
   display: none;
 }
