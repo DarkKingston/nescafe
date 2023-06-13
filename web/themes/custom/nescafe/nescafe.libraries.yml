@@ -8,3 +8,5 @@ global-styling:
   dependencies:
     - core/jquery
     - core/jquery.once
+    - core/drupal
+    - core/drupal.dialog.ajax # именно здесь подключаем модальные окна Drupal
