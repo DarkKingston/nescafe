@@ -379,6 +379,17 @@ form>.form-item>input{
   padding: 12px 25px;
 }
 
+.iti__flag-container input{
+  font-weight: 700;
+  font-size: 17px;
+  color: #000000;
+  background: #FFFFFF;
+  border: 1px solid #CECECE;
+  border-radius: 4px;
+  height: 45px;
+  width: 300px;
+}
+
 form .form-item{
   display: flex;
   flex-direction: column;
