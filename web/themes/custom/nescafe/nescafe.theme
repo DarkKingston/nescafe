@@ -18,8 +18,4 @@ function nescafe_preprocess_form(&$form, $form_state) {
       unset($form['name']['#title']); // удаляем кнопку "Предпросмотр"
       dump($form['user']);
 
-      $name = $user->get('name')->value;
-      $uid= $user->get('uid')->value;
-      dump($name);
-      dump($uid);
   }
