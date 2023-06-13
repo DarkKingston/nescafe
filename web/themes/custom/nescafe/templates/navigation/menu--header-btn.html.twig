@@ -27,9 +27,10 @@
 #}
   {% for item in items %}
     <div class="auth_btn">
-{#      #}
-    <a href="/register" class="use-ajax user-login-form" data-dialog-type="modal" data-dialog-options="{&quot;dialogClass&quot;:&quot;login-modal&quot;}">
-      <span id="login-link">{{ link(item.title, item.url) }}</span>
-    </a>
+      {{ link(item.title, item.url) }}
     </div>
   {% endfor %}
+
+{#<a href="/register" class="use-ajax user-login-form" data-dialog-type="modal" data-dialog-options="{&quot;dialogClass&quot;:&quot;login-modal&quot;}">#}
+{#  <span id="login-link"></span>#}
+{#</a>#}
