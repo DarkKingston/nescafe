@@ -390,6 +390,17 @@ form>.form-item>input{
   width: 300px;
 }
 
+.form-wrapper input{
+  font-weight: 700;
+  font-size: 17px;
+  color: #000000;
+  background: #FFFFFF;
+  border: 1px solid #CECECE;
+  border-radius: 4px;
+  height: 45px;
+  width: 300px;
+}
+
 form .form-item{
   display: flex;
   flex-direction: column;
@@ -429,7 +440,7 @@ form .form-item label{
   padding: 12px 25px;
 }
 
-#edit-name--description, #edit-mail--description, #edit-pass--description, #edit-contact{
+#edit-name--description, #edit-mail--description, #edit-pass--description, #edit-contact, .password-suggestions{
   display: none;
 }
 
