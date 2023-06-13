@@ -434,11 +434,9 @@ form .form-item label{
 }
 
 .password-strength__meter{
-  background-color: #E31D1C;
-  opacity: 0.5;
+  background-color: #F08C8B;
 }
 
 .password-strength__indicator{
   background-color: #E31D1C;
-  opacity: 1;
 }
