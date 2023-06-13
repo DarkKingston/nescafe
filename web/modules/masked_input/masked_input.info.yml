@@ -1,0 +1,11 @@
+name: Masked Input
+description: Allows textfields to contain "masked" placeholders to easily communicate with the user how data should be formatted.
+
+type: module
+core: 8.x
+core_version_requirement: ^8 || ^9
+
+# Information added by Drupal.org packaging script on 2022-03-30
+version: '2.0.0-beta1'
+project: 'masked_input'
+datestamp: 1648657490

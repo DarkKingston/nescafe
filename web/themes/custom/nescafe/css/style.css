@@ -404,7 +404,7 @@ form>.form-item>input{
 form .form-item{
   display: flex;
   flex-direction: column;
-  margin: 10px 0;
+  margin: 10px 0 10px 0;
 }
 
 form .form-item label{
