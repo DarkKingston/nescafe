@@ -18,4 +18,17 @@ function nescafe_preprocess_form(&$form, $form_state) {
       unset($form['name']['#title']); // удаляем кнопку "Предпросмотр"
       dump($form['user']);
       dump(\Drupal::currentUser());
+      $user = \Drupal\user\Entity\User::load(\Drupal::currentUser()->id());
+
+      // retrieve field data from that user
+      $website = $user->get('field_website')->value;
+      $body = $user->get('body')->value;
+      $email = $user->get('mail')->value;
+      $name = $user->get('name')->value;
+      $uid= $user->get('uid')->value;
+      dump($website);
+      dump($body);
+      dump($email);
+      dump($name);
+      dump($uid);
   }
