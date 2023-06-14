@@ -448,12 +448,7 @@ form .form-item label{
   display: none !important;
 }
 
-/*
-ссылка на создание аккаунта из ядра
-*/
-.create-account-link{
-  display: none;
-}
+
 
 .ui-dialog{
   width: 350px !important;
