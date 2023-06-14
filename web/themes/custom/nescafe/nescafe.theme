@@ -14,3 +14,17 @@ function nescafe_preprocess_links__language_block(&$lang){
 function nescafe_preprocess_form(&$form, $form_state) {
     dump($form);
   }
+
+/**
+ * Implements hook_form_alter().
+ * @param $form
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ * @param $form_id
+ */
+function nescafe_preprocess_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  if ($form_id == 'user_login_form' ) {
+    // Add placeholders.
+    $form['name']['#attributes']['placeholder'] = t('User name');
+    $form['pass']['#attributes']['placeholder'] = t('Password');
+  }
+}
