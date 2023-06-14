@@ -19,7 +19,7 @@ function nescafe_preprocess_menu__header_btn(&$logged){
       }
       else {
           // Пользователь не авторизован, показываем ссылку 2.
-          $logged['current_btn'] = {{ link(item.title, item.url) }};
+          $logged['current_btn'] = '{{ link(item.title, item.url) }}';
       }
 }
 
