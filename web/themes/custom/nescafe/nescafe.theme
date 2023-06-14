@@ -15,11 +15,12 @@ function nescafe_preprocess_menu__header_btn(&$logged){
 
       if ($current_user->isAuthenticated()) {
           // Пользователь авторизован, показываем ссылку 1.
-          $logged['current_btn'] = '<a href="#">Личный кабинет</a>';
+
+            print `<a href="#">Личный кабинет</a>`;
       }
       else {
           // Пользователь не авторизован, показываем ссылку 2.
-          print `<a href="/register">фыв</a>`;
+          print `<a href="/register">link(item.title, item.url)</a>`;
       }
 }
 
