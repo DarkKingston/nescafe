@@ -14,11 +14,12 @@ function nescafe_preprocess_menu__header_btn(&$logged){
       $current_user = \Drupal::currentUser();
         if ($current_user->isAnonymous()) {
           // Анонимный юзер...
-           $logged['items']['menu_link_content:782f8d36-a980-4feb-95ab-0c3a0da00875']['title'] = t('Личный кабинет');
+           $logged['items']['menu_link_content:782f8d36-a980-4feb-95ab-0c3a0da00875']['title'] = t('Зарегистрируйся и выиграй');
         }
 
         if ($current_user->isAuthenticated()) {
           // Авторизованный юзер...
+          $logged['items']['menu_link_content:782f8d36-a980-4feb-95ab-0c3a0da00875']['title'] = t('Личный кабинет');
         }
 
 }
