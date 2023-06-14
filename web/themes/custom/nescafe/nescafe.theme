@@ -12,16 +12,14 @@ function nescafe_preprocess_links__language_block(&$lang){
 function nescafe_preprocess_menu__header_btn(&$logged){
 
       $current_user = \Drupal::currentUser();
+        if ($current_user->isAnonymous()) {
+          // Анонимный юзер...
+        }
 
-      if ($current_user->isAuthenticated()) {
-          // Пользователь авторизован, показываем ссылку 1.
+        if ($current_user->isAuthenticated()) {
+          // Авторизованный юзер...
+        }
 
-           echo `<a href="#">Личный кабинет</a>`;
-      }
-      else {
-          // Пользователь не авторизован, показываем ссылку 2.
-          echo `<a href="/register">link(item.title, item.url)</a>`;
-      }
 }
 
 /*$current_path = \Drupal::service('path.current')->getPath();*/
