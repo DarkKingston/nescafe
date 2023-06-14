@@ -25,7 +25,4 @@ function nescafe_preprocess_menu__header_btn(&$logged){
 
 /*$current_path = \Drupal::service('path.current')->getPath();*/
 
-function nescafe_preprocess_form(&$form, $form_state) {
-    dump($form);
-  }
 
