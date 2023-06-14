@@ -26,6 +26,6 @@ function nescafe_preprocess_menu__header_btn(&$logged){
 /*$current_path = \Drupal::service('path.current')->getPath();*/
 
 
-function nescafe_preprocess_page__user__register(&$page){
+function nescafe_preprocess_page(&$page){
     dump($page);
 }
