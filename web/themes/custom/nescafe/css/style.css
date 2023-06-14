@@ -444,7 +444,7 @@ form .form-item label{
   max-width: 300px;
 }
 
-#drupal-modal .description, .password-suggestions{
+#drupal-modal .description, .password-suggestions, #drupal-modal .js-form-item-contact, #drupal-modal sumamry{
   display: none !important;
 }
 
