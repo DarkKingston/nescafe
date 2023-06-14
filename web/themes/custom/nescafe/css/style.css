@@ -444,8 +444,12 @@ form .form-item label{
   max-width: 300px;
 }
 
-#edit-name--description, #edit-mail--description, #edit-pass--description, #edit-contact, .password-suggestions{
+#edit-name--0UEqROQ6oHs--description, #edit-mail--Ws3ydvCjqjk--description, #edit-pass--FuuK3pAHVFo--description, #edit-contact--UpLkUT6tjOs, .password-suggestions{
   display: none !important;
+}
+
+.ui-dialog{
+  width: 350px !important;
 }
 
 .password-strength__meter{
