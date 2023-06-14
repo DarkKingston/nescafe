@@ -9,6 +9,14 @@ function nescafe_preprocess_links__language_block(&$lang){
     $lang['current_lang'] =  \Drupal::languageManager()->getCurrentLanguage()->getId();
 }
 
+function nescafe_preprocess_menu__header_btn(&$logged){
+    if($logged == true){
+        echo 1;
+    }else{
+        echo 0;
+    }
+}
+
 /*$current_path = \Drupal::service('path.current')->getPath();*/
 
 function nescafe_preprocess_form(&$form, $form_state) {
