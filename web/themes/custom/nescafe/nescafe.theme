@@ -10,7 +10,7 @@ function nescafe_preprocess_links__language_block(&$lang){
 }
 
 function nescafe_preprocess_menu__header_btn(&$logged){
-    if($logged == true){
+    if($logged['logged_in'] == true){
         echo 1;
     }else{
         echo 0;
