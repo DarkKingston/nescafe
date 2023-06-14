@@ -14,12 +14,12 @@ function nescafe_preprocess_menu__header_btn(&$logged){
       $current_user = \Drupal::currentUser();
 
       if ($current_user->isAuthenticated()) {
-      // Пользователь авторизован, показываем ссылку 1.
-      print '<div class="auth_btn"><a href="#">Личный кабинет</a></div>';
+          // Пользователь авторизован, показываем ссылку 1.
+          print '<div class="auth_btn"><a href="#">Личный кабинет</a></div>';
       }
       else {
-      // Пользователь не авторизован, показываем ссылку 2.
-      print '<div class="auth_btn">Зарегестрироваться</div>';
+          // Пользователь не авторизован, показываем ссылку 2.
+          print `<div class="auth_btn">{{ link(item.title, item.url) }}</div>`;
       }
 }
 
