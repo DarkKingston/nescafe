@@ -1,0 +1,64 @@
+<?php
+
+/**
+ * @file
+ * Install, update, uninstall functions for the Mobile Number Login OTP module.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function mobile_number_login_otp_schema() {
+  $schema['mobile_otp'] = [
+    'description' => 'A table to store OTP to login to the number',
+    'fields' => [
+      'oid' => [
+        'description' => 'Holds the id value',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'otp' => [
+        'description' => 'Stores the OTP for the user',
+        'type' => 'int',
+        'default' => 0,
+        'not null' => TRUE,
+      ],
+      'mobilenumber' => [
+        'description' => 'Stores the mobilenumber of the user',
+        'type' => 'varchar',
+        'length' => '50',
+        'default' => '',
+        'not null' => TRUE,
+      ],
+      'expiry' => [
+        'description' => 'Stores the OTP expiry time',
+        'type' => 'int',
+        'default' => 0,
+        'not null' => TRUE,
+      ],
+      'otpcount' => [
+        'description' => 'Stores the OTP count time',
+        'type' => 'int',
+        'default' => 0,
+        'size' => 'tiny',
+        'not null' => TRUE,
+      ],
+      'created' => [
+        'description' => 'Stores the OTP creation time',
+        'type' => 'int',
+        'default' => 0,
+        'not null' => TRUE,
+      ],
+      'used' => [
+        'description' => 'Stores the OTP used as boolean',
+        'type' => 'int',
+        'size' => 'tiny',
+        'default' => 0,
+        'not null' => TRUE,
+      ],
+    ],
+    'primary key' => ['oid'],
+  ];
+  return $schema;
+}

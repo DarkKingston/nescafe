@@ -1,0 +1,13 @@
+name: Mobile Number Login OTP
+type: module
+description: Module for implementing for the user to login through mobile number and will recieve the OTP to login.
+core_version_requirement: ^9 || ^10
+package: Mobile
+dependencies:
+  - drupal:mobile_number_login
+configure: mobileloginotp.settings
+
+# Information added by Drupal.org packaging script on 2023-01-31
+version: '1.0.3'
+project: 'mobile_number_login_otp'
+datestamp: 1675145288

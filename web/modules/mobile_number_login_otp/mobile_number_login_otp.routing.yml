@@ -1,0 +1,32 @@
+mobileloginotp.settings:
+  path: '/admin/config/mobile-login-otp-settings'
+  defaults:
+    _form: '\Drupal\mobile_number_login_otp\Form\MobileLoginOtpConfigForm'
+    _title: 'Mobile Number Login OTP Settings form'
+  requirements:
+    _permission: 'administer site configuration'
+mobileloginotp.sendsms:
+  path: '/send-sms'
+  defaults:
+    _controller: '\Drupal\mobile_number_login_otp\Controller\MobileLoginOtpController::sendSms'
+    _title: 'Send SMS'
+  requirements:
+   _permission: 'access content'
+mobileloginotp.account.login:
+  path: '/user/login/mobile'
+  defaults:
+    _form: '\Drupal\mobile_number_login_otp\Form\AccountLoginForm'
+    _title: 'Login page'
+  requirements:
+    _user_is_logged_in: 'FALSE'
+  options:
+    _maintenance_access: TRUE
+    no_cache: TRUE
+mobileloginotp.account.login.http:
+  path: '/user/login/mobile'
+  defaults:
+    _controller: \Drupal\mobile_number_login_otp\Controller\AccountController::login
+  methods: [POST]
+  requirements:
+    _user_is_logged_in: 'FALSE'
+    _format: 'json'
