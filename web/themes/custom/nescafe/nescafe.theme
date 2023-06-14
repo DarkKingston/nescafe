@@ -10,12 +10,19 @@ function nescafe_preprocess_links__language_block(&$lang){
 }
 
 function nescafe_preprocess_menu__header_btn(&$logged){
-    if($logged['logged_in'] == true){
-    echo  `licinii kabinet`;
-        echo `<div class="auth_btn"><a href="#">Личный кабинет</a></div>`;
-    }else{
-        echo `<div class="auth_btn">{{ link(item.title, item.url) }} N</div>`;
-    }
+
+    use Drupal\Core\Session\AccountInterface;
+
+      $current_user = \Drupal::currentUser();
+
+      if ($current_user->isAuthenticated()) {
+      // Пользователь авторизован, показываем ссылку 1.
+      print '<a href="/путь-к-ссылке-1">Ссылка 1</a>';
+      }
+      else {
+      // Пользователь не авторизован, показываем ссылку 2.
+      print '<a href="/путь-к-ссылке-2">Ссылка 2</a>';
+      }
 }
 
 /*$current_path = \Drupal::service('path.current')->getPath();*/

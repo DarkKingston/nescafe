@@ -29,20 +29,6 @@
 
   {% endfor %}
 
-<?php
-  use Drupal\Core\Session\AccountInterface;
-
-  $current_user = \Drupal::currentUser();
-
-  if ($current_user->isAuthenticated()) {
-  // Пользователь авторизован, показываем ссылку 1.
-  print '<a href="/путь-к-ссылке-1">Ссылка 1</a>';
-  }
-  else {
-  // Пользователь не авторизован, показываем ссылку 2.
-  print '<a href="/путь-к-ссылке-2">Ссылка 2</a>';
-  }
-?>
 
 {#<a href="/register" class="use-ajax user-login-form" data-dialog-type="modal" data-dialog-options="{&quot;dialogClass&quot;:&quot;login-modal&quot;}">#}
 {#  <span id="login-link"></span>#}
