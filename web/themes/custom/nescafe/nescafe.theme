@@ -14,7 +14,7 @@ function nescafe_preprocess_menu__header_btn(&$logged){
       $current_user = \Drupal::currentUser();
         if ($current_user->isAnonymous()) {
           // Анонимный юзер...
-          $logged['items']['title'] = t('Личный кабинет');
+          // $logged['items']['title'] = t('Личный кабинет');
         }
 
         if ($current_user->isAuthenticated()) {
