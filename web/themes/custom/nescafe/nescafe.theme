@@ -11,8 +11,6 @@ function nescafe_preprocess_links__language_block(&$lang){
 
 function nescafe_preprocess_menu__header_btn(&$logged){
 
-    use Drupal\Core\Session\AccountInterface;
-
       $current_user = \Drupal::currentUser();
 
       if ($current_user->isAuthenticated()) {
