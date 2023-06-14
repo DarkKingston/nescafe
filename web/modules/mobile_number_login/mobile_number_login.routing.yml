@@ -1,0 +1,14 @@
+mobilelogin.settings:
+  path: '/admin/config/mobile-login-settings'
+  defaults:
+    _form: '\Drupal\mobile_number_login\Form\MobileLoginConfigForm'
+    _title: 'Mobile Number Login Settings form'
+  requirements:
+    _permission: 'administer site configuration'
+mobilelogin.admin:
+  path: '/admin/config/mobile-number-login'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'Mobile Number'
+  requirements:
+    _permission: 'administer site configuration'

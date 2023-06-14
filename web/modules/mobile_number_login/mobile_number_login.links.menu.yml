@@ -1,0 +1,10 @@
+mobilelogin.settings.admin:
+  route_name: mobilelogin.admin
+  parent: system.admin_config
+  title: 'Mobile Number'
+  weight: 0
+mobilelogin.settings:
+  route_name: mobilelogin.settings
+  parent: mobilelogin.settings.admin
+  title: 'Mobile Number Configurations'
+  weight: 0

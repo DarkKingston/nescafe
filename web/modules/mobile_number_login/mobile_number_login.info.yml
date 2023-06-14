@@ -1,0 +1,11 @@
+name: Mobile Number Login
+type: module
+description: Module for implementing for the user to login through mobile number.
+core_version_requirement: ^9 || ^10
+package: Mobile
+configure: mobilelogin.settings
+
+# Information added by Drupal.org packaging script on 2023-01-23
+version: '1.0.4'
+project: 'mobile_number_login'
+datestamp: 1674467184

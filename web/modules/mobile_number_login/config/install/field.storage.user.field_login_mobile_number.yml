@@ -1,0 +1,21 @@
+uuid: 55bad4c1-74b6-4e33-a4df-9763001e636a
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+id: user.field_login_mobile_number
+field_name: field_login_mobile_number
+entity_type: user
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
