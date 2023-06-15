@@ -69,6 +69,8 @@ $credentials = $config->credentials('database');
     $result->setFetchMode(\PDO::FETCH_OBJ);
 
     if ($result) {
+    print '2';
+
         print <<<TABLE
 <table id="table8">
 <thead>
