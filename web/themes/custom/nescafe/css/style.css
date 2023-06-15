@@ -461,3 +461,10 @@ form .form-item label{
 .password-strength__indicator{
   background-color: #E31D1C;
 }
+
+.account_wrapper{
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  width: 100%;
+}
