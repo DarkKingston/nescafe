@@ -36,3 +36,18 @@ function nescafe_preprocess_page(&$page){
     dump($page);
 }
 
+
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_form_alter().
+ */
+function nescafe_preprocess_webform__promo_code(&$form, FormStateInterface $form_state, $form_id) {
+  if ($form_id == 'webform-submission-promo-code-add-form') {
+    $current_user = \Drupal::currentUser();
+    $uid = $current_user->id();
+
+    $form['#attached']['library'][] = 'mymodule/user-id';
+    $form['#attributes']['data-user-id'] = $uid;
+  }
+}
