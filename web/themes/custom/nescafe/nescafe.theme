@@ -1,5 +1,6 @@
 <?php
-
+use Drupal\Core\Url;
+use Drupal\Core\StringTranslation\TranslatableMarkup;
 /**
  * @file
  * Functions to support theming.
@@ -14,8 +15,10 @@ function nescafe_preprocess_menu__header_btn(&$logged){
       $current_user = \Drupal::currentUser();
         if ($current_user->isAnonymous()) {
           // Анонимный юзер...
+           $routeName = new TranslatableMarkup('view.account.page_1');
+
            $logged['items']['menu_link_content:782f8d36-a980-4feb-95ab-0c3a0da00875']['title'] = t('Зарегистрируйся и выиграй');
-            $logged['items']['menu_link_content:782f8d36-a980-4feb-95ab-0c3a0da00875']['url']['#routeName'] = t('view.account.page_1');
+            $logged['items']['menu_link_content:782f8d36-a980-4feb-95ab-0c3a0da00875']['url'] = Url::fromRoute($routeName->getUntranslatedString());
         }
 
         if ($current_user->isAuthenticated()) {
