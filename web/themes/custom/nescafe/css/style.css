@@ -468,3 +468,38 @@ form .form-item label{
   justify-content: space-between;
   width: 100%;
 }
+
+
+#table8 {
+  border-spacing: 0 10px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bold;
+}
+#table8 th {
+  padding: 10px 20px;
+  background: #56433D;
+  color: #F9C941;
+  border-right: 2px solid;
+  font-size: 0.9em;
+}
+#table8 th:first-child {
+  text-align: left;
+}
+#table8 th:last-child {
+  border-right: none;
+}
+#table8 td {
+  vertical-align: middle;
+  padding: 10px;
+  font-size: 14px;
+  text-align: center;
+  border-top: 2px solid #56433D;
+  border-bottom: 2px solid #56433D;
+  border-right: 2px solid #56433D;
+}
+#table8 td:first-child {
+  border-left: 2px solid #56433D;
+}
+#table8 td:nth-child(2){
+  text-align: left;
+}
