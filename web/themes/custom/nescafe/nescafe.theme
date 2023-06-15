@@ -1,6 +1,7 @@
 <?php
 use Drupal\Core\Url;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
+use Platformsh\ConfigReader\Config;
 /**
  * @file
  * Functions to support theming.
@@ -38,7 +39,6 @@ function nescafe_preprocess_page(&$page){
 
 function nescafe_preprocess_region__account(&$elem){
 
-use Platformsh\ConfigReader\Config;
 
 // Create a new config object to ease reading the Platform.sh environment variables.
 // You can alternatively use getenv() yourself.
