@@ -104,7 +104,7 @@ $total = 0;
         }
         print "</tbody>\n</table>\n";
 
-        print 'Puncte acumulate => $total';
+        printf('Puncte acumulate => %s', $total);
     }
 
 
