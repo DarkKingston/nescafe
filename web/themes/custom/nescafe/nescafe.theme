@@ -112,61 +112,33 @@ use Drupal\webform\Entity\WebformSubmission;
  * Implements hook_webform_submission_insert().
  */
 function nescafe_preprocess_webform_submission_promo_code_add_form(WebformSubmissionInterface $webform_submission) {
-
-
-// Create a new config object to ease reading the Platform.sh environment variables.
-// You can alternatively use getenv() yourself.
 $config = new Config();
-
-// The 'database' relationship is generally the name of primary SQL database of an application.
-// That's not required, but much of our default automation code assumes it.
 $credentials = $config->credentials('database');
-
-    // Connect to the database using PDO.  If using some other abstraction layer you would
-    // inject the values from $database into whatever your abstraction layer asks for.
-    $dsn = sprintf('mysql:host=%s;port=%d;dbname=%s', $credentials['host'], $credentials['port'], $credentials['path']);
+   $dsn = sprintf('mysql:host=%s;port=%d;dbname=%s', $credentials['host'], $credentials['port'], $credentials['path']);
     $conn = new \PDO($dsn, $credentials['username'], $credentials['password'], [
-        // Always use Exception error mode with PDO, as it's more reliable.
-        \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
-        // So we don't have to mess around with cursors and unbuffered queries by default.
+       \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
         \PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => TRUE,
-        // Make sure MySQL returns all matched rows on update queries including
-        // rows that actually didn't have to be updated because the values didn't
-        // change. This matches common behavior among other database systems.
         \PDO::MYSQL_ATTR_FOUND_ROWS => TRUE,
     ]);
-
-
     // Show table.
         $sql2 = "SELECT promocode FROM promo_code WHERE active = 0  ";
              $result2 = $conn->query($sql2);
              $result2->setFetchMode(\PDO::FETCH_OBJ);
-
      if ($result2) {
          foreach ($result2 as $record2) {
-
           // Получаем данные из объекта $webform_submission.
           $data = $webform_submission->getData();
            dump($data);
           // Выполняем проверку данных.
-
           if ($data['introduceti_codul_promotional'] == $record2->promocode) {
-             //изменения статуса active у промокода
-
              $sql = "UPDATE promo_code SET active = 1 WHERE promocode = '".$record2->promocode."'";
                 $conn->query($sql);
-
-
-            // Данные проходят проверку, можно сохранить их в базе данных.
-            // В этом примере мы просто выводим сообщение об успешной проверке.
             drupal_set_message('Данные прошли проверку и будут сохранены.');
           }
           else {
-            // Данные не прошли проверку, отменяем сохранение.
             drupal_set_message('Данные не прошли проверку и не будут сохранены.', 'error');
             throw new \Exception('Ошибка: данные не прошли проверку.');
           }
-
      }
        }
 }
