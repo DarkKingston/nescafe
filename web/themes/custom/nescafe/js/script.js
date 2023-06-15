@@ -11,7 +11,7 @@
         $('.langs').slideToggle();
       });
 
-      $('.edit-user-id').val(8);
+      $('input').attr('#data-drupal-selector').val(8);
     }
   };
 })(jQuery);
