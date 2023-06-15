@@ -36,6 +36,3 @@ function nescafe_preprocess_page(&$page){
     dump($page);
 }
 
-function nescafe_preprocess_input__hidden(&$elem){
-    dump($elem);
-}

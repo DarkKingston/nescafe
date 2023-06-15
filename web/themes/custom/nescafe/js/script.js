@@ -9,9 +9,9 @@
 
       $('.current_lang',context).on('click',function(){
         $('.langs').slideToggle();
-      })
+      });
 
-
+      $('.edit-user-id').val(8);
     }
   };
 })(jQuery);
