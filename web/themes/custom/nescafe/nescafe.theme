@@ -83,7 +83,7 @@ TABLE;
 
             if ($result2) {
                 foreach ($result2 as $record2) {
-                    printf("<tr><td>%s</td><td>%s</td></tr>\n", $record->name, $record->value);
+                    printf("<tr><td>%s</td><td>%s</td></tr>\n", $record2->name, $record2->value);
                 }
             }
         }
