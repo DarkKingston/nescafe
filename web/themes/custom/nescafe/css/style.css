@@ -503,3 +503,11 @@ form .form-item label{
 #table8 td:nth-child(2){
   text-align: left;
 }
+
+.logout{
+  margin-top: 30px;
+}
+
+.logout a{
+  margin: 0;
+}
