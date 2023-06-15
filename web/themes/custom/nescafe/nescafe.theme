@@ -86,9 +86,9 @@ $score = 0;
             if ($result2) {
                 foreach ($result2 as $record2) {
                 if(!preg_match("/^([0-9])+$/", $record2->value)){
-                    $score +=1;
+                    $score = 1;
                 }else{
-                    $score += 2;
+                    $score = 2;
                 }
                     printf("<tr><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $record2->value, $score);
 
