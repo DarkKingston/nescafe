@@ -72,11 +72,12 @@ $credentials = $config->credentials('database');
         print <<<TABLE
 <table id="table8">
 <thead>
-<tr><th>ID</th><th>Codul Promotional</th></tr>
+<tr><th>ID</th><th>Codul Promotional</th> <th>Numarul de puncte</th></tr>
 </thead>
 <tbody>
 TABLE;
 $count = 1;
+$score = 0;
         foreach ($result as $record) {
             $sql2 = "SELECT * FROM webform_submission_data WHERE sid = '".$record->sid."' AND name = 'introduceti_codul_promotional' ";
             $result2 = $conn->query($sql2);
@@ -84,9 +85,16 @@ $count = 1;
 
             if ($result2) {
                 foreach ($result2 as $record2) {
+                if(!preg_match("/^([0-9])+$/", $record2->value)){
+                    $score +=1;
+                }else{
+                    $score += 2;
+                }
+                    printf("<tr><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $record2->value, $score);
 
-                    printf("<tr><td>%s</td><td>%s</td></tr>\n", $count, $record2->value);
                         $count++;
+
+
                 }
             }
         }
