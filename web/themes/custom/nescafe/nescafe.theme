@@ -170,3 +170,25 @@ $credentials = $config->credentials('database');
      }
        }
 }
+
+
+use Symfony\Component\HttpFoundation\Request;
+
+/**
+ * Обработчик запроса.
+ */
+function nescafe_process_request(Request $request) {
+  // Получение данных из строки запроса.
+  $queryData = $request->query->all();
+
+  // Обработка данных и выполнение необходимых действий.
+  $codPromotional = $queryData['introduceti_codul_promotional'];
+  $userId = $queryData['user_id'];
+
+  // Далее можно выполнить нужную логику на основе полученных данных.
+  // Например, сохранить их в базе данных или выполнить другие операции.
+
+  // Пример вывода данных для проверки.
+  drupal_set_message('Код промоции: ' . $codPromotional);
+  drupal_set_message('User ID: ' . $userId);
+}
