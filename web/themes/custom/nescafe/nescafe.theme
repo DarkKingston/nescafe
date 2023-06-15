@@ -76,6 +76,7 @@ $credentials = $config->credentials('database');
 </thead>
 <tbody>
 TABLE;
+$count = 1;
         foreach ($result as $record) {
             $sql2 = "SELECT * FROM webform_submission_data WHERE sid = '".$record->sid."' AND name = 'introduceti_codul_promotional' ";
             $result2 = $conn->query($sql2);
@@ -83,7 +84,9 @@ TABLE;
 
             if ($result2) {
                 foreach ($result2 as $record2) {
-                    printf("<tr><td>%s</td><td>%s</td></tr>\n", $record2->name, $record2->value);
+
+                    printf("<tr><td>%s</td><td>%s</td></tr>\n", $count, $record2->value);
+                        $count++;
                 }
             }
         }
