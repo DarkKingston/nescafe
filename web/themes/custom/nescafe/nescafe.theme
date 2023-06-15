@@ -111,19 +111,19 @@ use Drupal\webform\Entity\WebformSubmission;
 /**
  * Implements hook_webform_submission_insert().
  */
-function nescafe_preprocess_webform_submission_insert(WebformSubmissionInterface $webform_submission) {
+function nescafe_preprocess_webform_submission_promo_code_add_form(WebformSubmissionInterface $webform_submission) {
   // Получаем данные из объекта $webform_submission.
   $data = $webform_submission->getData();
    dump($data);
   // Выполняем проверку данных.
-  //if ($data['my_field'] == 'some_value') {
+  if ($data['introduceti_codul_promotional'] == '1234') {
     // Данные проходят проверку, можно сохранить их в базе данных.
     // В этом примере мы просто выводим сообщение об успешной проверке.
-    //drupal_set_message('Данные прошли проверку и будут сохранены.');
-  //}
-  //else {
+    drupal_set_message('Данные прошли проверку и будут сохранены.');
+  }
+  else {
     // Данные не прошли проверку, отменяем сохранение.
-    //drupal_set_message('Данные не прошли проверку и не будут сохранены.', 'error');
-    //throw new \Exception('Ошибка: данные не прошли проверку.');
-  //}
+    drupal_set_message('Данные не прошли проверку и не будут сохранены.', 'error');
+    throw new \Exception('Ошибка: данные не прошли проверку.');
+  }
 }
