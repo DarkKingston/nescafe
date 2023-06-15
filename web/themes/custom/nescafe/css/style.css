@@ -486,7 +486,7 @@ form .form-item label{
   text-align: left;
 }
 #table8 th:last-child {
-  border-right: none;
+  border-right: 2px solid #56433D;
 }
 #table8 td {
   vertical-align: middle;
@@ -497,7 +497,7 @@ form .form-item label{
   border-bottom: 2px solid #56433D;
   border-right: 2px solid #56433D;
 }
-#table8 td:first-child {
+#table8 td:first-child,#table8 th:first-child {
   border-left: 2px solid #56433D;
 }
 #table8 td:nth-child(2){
