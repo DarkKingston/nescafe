@@ -72,7 +72,7 @@ $credentials = $config->credentials('database');
         print <<<TABLE
 <table id="table8">
 <thead>
-<tr><th>Name</th><th>value</th></tr>
+<tr><th>ID</th><th>Codul Promotional</th></tr>
 </thead>
 <tbody>
 TABLE;
