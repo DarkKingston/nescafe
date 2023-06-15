@@ -467,12 +467,13 @@ form .form-item label{
   flex-direction: row-reverse;
   justify-content: space-between;
   width: 100%;
+  margin-top: 20px;
 }
 
 
 #table8 {
   border-spacing: 0 10px;
-  font-family: 'Open Sans', sans-serif;
+  margin-top: 15px;
   font-weight: bold;
 }
 #table8 th {
