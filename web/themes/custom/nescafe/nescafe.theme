@@ -82,7 +82,7 @@ if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro'){
         print <<<TABLE
 <table id="table8">
 <thead>
-<tr><th>ID</th>$promo<th></th>$number<th></th></tr>
+<tr><th>ID</th><th>$promo</th><th>$number</th></tr>
 </thead>
 <tbody>
 TABLE;
