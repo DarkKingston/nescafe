@@ -62,7 +62,7 @@ $credentials = $config->credentials('database');
         \PDO::MYSQL_ATTR_FOUND_ROWS => TRUE,
     ]);
 
-print_r($current_user);
+var_dump($current_user);
     // Show table.
     $sql = "SELECT * FROM webform_submission_data WHERE name = 'user_id'";
     $result = $conn->query($sql);
