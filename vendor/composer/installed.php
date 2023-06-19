@@ -1,13 +1,13 @@
 <?php return array(
     'root' => array(
         'name' => 'drupal/recommended-project',
-        'pretty_version' => 'dev-master',
-        'version' => 'dev-master',
-        'reference' => '9615a6acff703ee71ec68757b45a8738c525f3f0',
+        'pretty_version' => 'dev-stag',
+        'version' => 'dev-stag',
+        'reference' => '824a720adce44ee2926499048fca301f224dfb43',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'dev' => false,
+        'dev' => true,
     ),
     'versions' => array(
         'akamai-open/edgegrid-auth' => array(
@@ -1655,9 +1655,9 @@
             'dev_requirement' => false,
         ),
         'drupal/recommended-project' => array(
-            'pretty_version' => 'dev-master',
-            'version' => 'dev-master',
-            'reference' => '9615a6acff703ee71ec68757b45a8738c525f3f0',
+            'pretty_version' => 'dev-stag',
+            'version' => 'dev-stag',
+            'reference' => '824a720adce44ee2926499048fca301f224dfb43',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -1963,9 +1963,9 @@
             'dev_requirement' => false,
         ),
         'drush/drush' => array(
-            'pretty_version' => '11.3.2',
-            'version' => '11.3.2.0',
-            'reference' => '57cd12235f0a8b3aaabc841fd6c82b64f3dffc02',
+            'pretty_version' => '11.5.1',
+            'version' => '11.5.1.0',
+            'reference' => '3138f82baa3b0e29ac935893a444881a7332177d',
             'type' => 'library',
             'install_path' => __DIR__ . '/../drush/drush',
             'aliases' => array(),
@@ -3219,8 +3219,8 @@
         'psr/log-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-                0 => '1.0|2.0',
-                1 => '1.0.0 || 2.0.0 || 3.0.0',
+                0 => '1.0.0 || 2.0.0 || 3.0.0',
+                1 => '1.0|2.0',
             ),
         ),
         'psy/psysh' => array(

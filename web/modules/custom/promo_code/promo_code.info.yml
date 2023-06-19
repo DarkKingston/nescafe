@@ -1,0 +1,21 @@
+name: Promo Code Module
+description: Creates a page showing&post "promo codes".
+package: Custom
+
+type: module
+core_version_requirement: ^9
+
+dependencies:
+  - drupal:link
+  - drupal:views
+  - paragraphs:paragraphs
+  - webform:webform (>=8.x-5.x)
+
+test_dependencies:
+  - drupal:image
+
+configure: promo_code.settings
+
+php: 5.6
+
+hidden: true
