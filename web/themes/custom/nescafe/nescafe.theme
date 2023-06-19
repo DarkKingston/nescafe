@@ -40,6 +40,7 @@ function nescafe_preprocess_page(&$page){
 
 function nescafe_preprocess_region__account(&$elem){
 
+dump($elem['user']['#id']);
 
 // Create a new config object to ease reading the Platform.sh environment variables.
 // You can alternatively use getenv() yourself.
