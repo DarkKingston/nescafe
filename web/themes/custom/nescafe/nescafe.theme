@@ -103,6 +103,19 @@ $total = 0;
             }
         }
         print "</tbody>\n</table>\n";
+        $queryData = $request->query->all();
+
+          // Обработка данных и выполнение необходимых действий.
+          $codPromotional = $queryData['introduceti_codul_promotional'];
+          $userId = $queryData['user_id'];
+
+          // Далее можно выполнить нужную логику на основе полученных данных.
+          // Например, сохранить их в базе данных или выполнить другие операции.
+
+          // Пример вывода данных для проверки.
+          printf('Код промоции: ' . $codPromotional);
+          printf('User ID: ' . $userId);
+
 
         printf('Puncte acumulate => %s', $total);
     }
