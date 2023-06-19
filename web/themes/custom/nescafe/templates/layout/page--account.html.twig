@@ -75,7 +75,7 @@
               {{ page.account }}
             <form action="" method="POST">
               <input type="text" placeholder="promo code">
-              <input type="submit" value="Submit">
+              <input type="submit" value="Submit" onclick="go()">
             </form>
           </div>
 
@@ -93,20 +93,24 @@
 </div>{# /.layout-container #}
 
 <script>
-    fetch("https://stag-yxxbuhy-qkl3gjov7gxou.eu-5.platformsh.site/account", {
-        method: 'post',
-        body: post,
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        }
-    }).then((response) => {
-        return response.json()
-    }).then((res) => {
-        if (res.status === 201) {
-            console.log("Post successfully created!")
-        }
-    }).catch((error) => {
-        console.log(error)
-    })
+  function go(event){
+      event.preventDefault();
+      fetch("https://stag-yxxbuhy-qkl3gjov7gxou.eu-5.platformsh.site/account", {
+          method: 'post',
+          body: post,
+          headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+          }
+      }).then((response) => {
+          return response.json()
+      }).then((res) => {
+          if (res.status === 201) {
+              console.log("Post successfully created!")
+          }
+      }).catch((error) => {
+          console.log(error)
+      })
+  }
+
 </script>
