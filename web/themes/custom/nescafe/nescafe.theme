@@ -39,7 +39,7 @@ function nescafe_preprocess_page(&$page){
 }
 
 function nescafe_preprocess_region__account(&$elem){
-$curr_id_for_user = $elem['user']['id'];
+$curr_id_for_user = $elem['user'];
 echo $curr_id_for_user;
 
 // Create a new config object to ease reading the Platform.sh environment variables.
