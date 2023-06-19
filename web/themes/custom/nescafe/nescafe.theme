@@ -159,7 +159,7 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Обработчик запроса.
  */
-function nescafe_process_request(Request $request) {
+function nescafe_preprocess_request(Request $request) {
   // Получение данных из строки запроса.
   $queryData = $request->query->all();
 
