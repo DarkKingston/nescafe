@@ -9,6 +9,7 @@ use Platformsh\ConfigReader\Config;
 
 function nescafe_preprocess_links__language_block(&$lang){
     $lang['current_lang'] =  \Drupal::languageManager()->getCurrentLanguage()->getId();
+    dump(\Drupal::languageManager()->getCurrentLanguage()->getId());
 }
 
 function nescafe_preprocess_menu__header_btn(&$logged){
