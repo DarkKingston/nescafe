@@ -74,10 +74,12 @@ $credentials = $config->credentials('database');
 if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru'){
     $promo = 'Промо код';
     $number = 'Количество очков';
+    $totalPromo = 'Всего очков';
 }
 if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro'){
     $promo = 'Codul Promotional';
     $number = 'Numarul de puncte';
+    $totalPromo = 'Puncte acumulate';
 }
         print <<<TABLE
 <table id="table8">
@@ -113,7 +115,7 @@ $total = 0;
         }
         print "</tbody>\n</table>\n";
 
-        printf('Puncte acumulate => %s', $total);
+        printf('%s => %s',$totalPromo, $total);
     }
 
 
