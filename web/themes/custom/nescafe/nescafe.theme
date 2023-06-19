@@ -37,6 +37,7 @@ function nescafe_preprocess_menu__header_btn(&$logged){
 function nescafe_preprocess_page(&$page){
     dump($page);
 
+        echo $_POST['promocode'];
 }
 
 function nescafe_preprocess_region__account(&$elem){
@@ -116,7 +117,6 @@ $total = 0;
         print "</tbody>\n</table>\n";
 
         print "$totalPromo => $total";
-        echo $_POST['promocode'];
     }
 
 
