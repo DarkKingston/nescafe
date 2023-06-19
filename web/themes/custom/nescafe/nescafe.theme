@@ -115,7 +115,7 @@ $total = 0;
         }
         print "</tbody>\n</table>\n";
 
-        printf('$totalPromo => %s', $total);
+        print '$totalPromo => $total';
     }
 
 
