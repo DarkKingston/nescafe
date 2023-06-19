@@ -11,6 +11,7 @@ class PromoFormSubmit {
 
     // Обработка полученных данных из формы
     // ...
+    var_dump($form);
     print_r($_POST);
     drupal_set_message('Форма успешно отправлена');
   }
