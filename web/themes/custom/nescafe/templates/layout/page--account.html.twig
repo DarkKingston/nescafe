@@ -74,7 +74,7 @@
           <div class="account_wrapper">
               {{ page.account }}
             <form action="" method="POST">
-              <input type="text" placeholder="promo code">
+              <input type="text" placeholder="promo code" class="promo">
               <input type="button" id="btn_submit" value="Submit" onclick="insertNewEmployee();">
             </form>
           </div>
@@ -103,7 +103,8 @@
                 var response = this.responseText;
             }
         };
-        var data = {name:'dorin',salary: 35000,email: 'dorin@makitweb.com'};
+        let promocode = document.querySelector('.promo').value;
+        var data = {promocode:`${promocode}`};
         xhttp.send(JSON.stringify(data));
     }
 
