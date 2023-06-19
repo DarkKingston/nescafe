@@ -9,7 +9,7 @@ use Platformsh\ConfigReader\Config;
 
 function nescafe_preprocess_links__language_block(&$lang){
     $lang['current_lang'] =  \Drupal::languageManager()->getCurrentLanguage()->getId();
-    dump(\Drupal::languageManager()->getCurrentLanguage()->getId());
+
 }
 
 function nescafe_preprocess_menu__header_btn(&$logged){
@@ -71,11 +71,18 @@ $credentials = $config->credentials('database');
     $result->setFetchMode(\PDO::FETCH_OBJ);
 
     if ($result) {
-
+if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru'){
+    $promo = 'Промо код';
+    $number = 'Количество очков';
+}
+if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro'){
+    $promo = 'Codul Promotional';
+    $number = 'Numarul de puncte';
+}
         print <<<TABLE
 <table id="table8">
 <thead>
-<tr><th>ID</th><th>Codul Promotional</th> <th>Numarul de puncte</th></tr>
+<tr><th>ID</th>$promo<th></th>$number<th></th></tr>
 </thead>
 <tbody>
 TABLE;
