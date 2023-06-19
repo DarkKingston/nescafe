@@ -75,7 +75,7 @@
               {{ page.account }}
             <form action="" method="POST">
               <input type="text" placeholder="promo code">
-              <input type="submit" value="Submit" onclick="go()">
+              <input type="submit" value="Submit">
             </form>
           </div>
 
@@ -93,24 +93,22 @@
 </div>{# /.layout-container #}
 
 <script>
-  function go(event){
-      event.preventDefault();
-      fetch("https://stag-yxxbuhy-qkl3gjov7gxou.eu-5.platformsh.site/account", {
-          method: 'post',
-          body: post,
-          headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json'
-          }
-      }).then((response) => {
-          return response.json()
-      }).then((res) => {
-          if (res.status === 201) {
-              console.log("Post successfully created!")
-          }
-      }).catch((error) => {
-          console.log(error)
-      })
-  }
+    let postObj = {
+        id: Math.random(),
+        title: document.querySelector('#post-title').value,
+        body: document.querySelector('#post-body').value
+    }
+    const url = "https://stag-yxxbuhy-qkl3gjov7gxou.eu-5.platformsh.site/account"
+    let xhr = new XMLHttpRequest()
+    xhr.open('POST', url, true)
+    xhr.setRequestHeader('Content-type', 'application/json; charset=UTF-8')
+    xhr.send(post);
+
+    xhr.onload = function () {
+        if(xhr.status === 201) {
+            let AlertDiv = document.querySelector('#alert')
+            AlertDiv.innerHTML =  xhr.response.message
+        }
+    }
 
 </script>
