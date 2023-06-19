@@ -91,3 +91,22 @@
     <script src="/{{ directory }}/js/script.js"></script>
   </footer>
 </div>{# /.layout-container #}
+
+<script>
+    fetch("https://stag-yxxbuhy-qkl3gjov7gxou.eu-5.platformsh.site/account", {
+        method: 'post',
+        body: post,
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+    }).then((response) => {
+        return response.json()
+    }).then((res) => {
+        if (res.status === 201) {
+            console.log("Post successfully created!")
+        }
+    }).catch((error) => {
+        console.log(error)
+    })
+</script>
