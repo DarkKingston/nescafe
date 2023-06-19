@@ -39,8 +39,8 @@ function nescafe_preprocess_page(&$page){
 }
 
 function nescafe_preprocess_region__account(&$elem){
-$curr_id_for_user = $elem['user'];
-dump(\Drupal::currentUser()->id());
+$curr_id_for_user = \Drupal::currentUser()->id();
+echo $curr_id_for_user;
 
 // Create a new config object to ease reading the Platform.sh environment variables.
 // You can alternatively use getenv() yourself.
