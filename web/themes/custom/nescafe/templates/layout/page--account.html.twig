@@ -75,7 +75,7 @@
               {{ page.account }}
             <form action="" method="POST">
               <input type="text" placeholder="promo code">
-              <input type="submit" value="Submit">
+              <input type="button" id="btn_submit" value="Submit" onclick="insertNewEmployee();">
             </form>
           </div>
 
@@ -93,22 +93,18 @@
 </div>{# /.layout-container #}
 
 <script>
-    let postObj = {
-        id: Math.random(),
-        title: document.querySelector('#post-title').value,
-        body: document.querySelector('#post-body').value
-    }
-    const url = "https://stag-yxxbuhy-qkl3gjov7gxou.eu-5.platformsh.site/account"
-    let xhr = new XMLHttpRequest()
-    xhr.open('POST', url, true)
-    xhr.setRequestHeader('Content-type', 'application/json; charset=UTF-8')
-    xhr.send(post);
-
-    xhr.onload = function () {
-        if(xhr.status === 201) {
-            let AlertDiv = document.querySelector('#alert')
-            AlertDiv.innerHTML =  xhr.response.message
-        }
+    function insertNewEmployee(){
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("POST", "ajaxfile.php", true);
+        xhttp.setRequestHeader("Content-Type", "application/json");
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                // Response
+                var response = this.responseText;
+            }
+        };
+        var data = {name:'yogesh',salary: 35000,email: 'yogesh@makitweb.com'};
+        xhttp.send(JSON.stringify(data));
     }
 
 </script>
