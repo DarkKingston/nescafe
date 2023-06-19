@@ -7,6 +7,6 @@ use Twig\Loader\FilesystemLoader;
 
 $loader = new FilesystemLoader(__DIR__ . '/templates');
 $twig = new Environment($loader);
-$promoValue = $_POST['promocode'];
+$promoValue = 'asdafdfsfsa';
 
 echo $twig->render('page--account.html.twig', ['promo' => $promoValue]);
