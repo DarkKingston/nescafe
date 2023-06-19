@@ -64,7 +64,7 @@ $credentials = $config->credentials('database');
 
 
     // Show table.
-    $sql = "SELECT * FROM webform_submission_data WHERE name = 'user_id' AND value = '."$current_user".'";
+    $sql = "SELECT * FROM webform_submission_data WHERE name = 'user_id' AND value = '$current_user'";
     $result = $conn->query($sql);
     $result->setFetchMode(\PDO::FETCH_OBJ);
 
