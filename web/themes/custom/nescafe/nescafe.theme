@@ -35,11 +35,14 @@ function nescafe_preprocess_menu__header_btn(&$logged){
 
 function nescafe_preprocess_page(&$page){
     dump($page);
+
+$user = \Drupal::currentUser();
+var_dump($user);
 }
 
 function nescafe_preprocess_region__account(&$elem){
 
-$user = \Drupal::currentUser();
+
 // Create a new config object to ease reading the Platform.sh environment variables.
 // You can alternatively use getenv() yourself.
 $config = new Config();
@@ -62,7 +65,7 @@ $credentials = $config->credentials('database');
         \PDO::MYSQL_ATTR_FOUND_ROWS => TRUE,
     ]);
 
-var_dump($user);
+
     // Show table.
     $sql = "SELECT * FROM webform_submission_data WHERE name = 'user_id'";
     $result = $conn->query($sql);
