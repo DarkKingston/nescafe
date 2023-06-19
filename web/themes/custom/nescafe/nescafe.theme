@@ -117,7 +117,7 @@ $total = 0;
         print "</tbody>\n</table>\n";
 
         print "$totalPromo => $total";
-        print "$_GET['introduceti_codul_promotional']";
+        echo $_POST['introduceti_codul_promotional'];
     }
 
 
