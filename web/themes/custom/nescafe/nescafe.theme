@@ -39,7 +39,7 @@ function nescafe_preprocess_page(&$page){
 
 function nescafe_preprocess_region__account(&$elem){
 
-$user = User::load(\Drupal::currentUser()->id());
+$user = $user = \Drupal::currentUser();
 // Create a new config object to ease reading the Platform.sh environment variables.
 // You can alternatively use getenv() yourself.
 $config = new Config();
