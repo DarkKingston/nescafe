@@ -40,7 +40,6 @@ function nescafe_preprocess_page(&$page){
 
 function nescafe_preprocess_region__account(&$elem){
 $curr_id_for_user = \Drupal::currentUser()->id();
-echo $curr_id_for_user;
 
 // Create a new config object to ease reading the Platform.sh environment variables.
 // You can alternatively use getenv() yourself.
@@ -66,7 +65,7 @@ $credentials = $config->credentials('database');
 
 
     // Show table.
-    $sql = "SELECT * FROM webform_submission_data WHERE name = 'user_id'";
+    $sql = "SELECT * FROM webform_submission_data WHERE name = 'user_id' AND value = '".$curr_id_for_user."' ";
     $result = $conn->query($sql);
     $result->setFetchMode(\PDO::FETCH_OBJ);
 
