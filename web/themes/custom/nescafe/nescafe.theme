@@ -115,7 +115,7 @@ $total = 0;
         }
         print "</tbody>\n</table>\n";
 
-        print '$totalPromo => $total';
+        print <<<$totalPromo => $total;
     }
 
 
