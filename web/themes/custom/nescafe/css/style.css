@@ -517,3 +517,7 @@ form .form-item label{
   width: 100%;
   height: 100%;
 }
+#block-image-step img{
+  width: 100%;
+  height: 100%;
+}

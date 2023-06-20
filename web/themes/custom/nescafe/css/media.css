@@ -73,6 +73,9 @@
   #block-izobrazheniesgarantirovannymiprizami .prize_adaptive img{
     display: none;
   }
+  #block-image-step .prize_adaptive img{
+    display: none;
+  }
 }
 
 @media(max-width: 500px){
@@ -80,6 +83,12 @@
     display: none;
   }
   #block-izobrazheniesgarantirovannymiprizami .prize_adaptive img{
+    display: block;
+  }
+  #block-image-step img{
+    display: none;
+  }
+  #block-image-step .prize_adaptive img{
     display: block;
   }
 }
