@@ -547,6 +547,15 @@ form .form-item label{
   display: none;
 }
 
+.phone_hover{
+  width: 20px;
+  height: 20px;
+}
+
+.phone_hover img{
+  vertical-align: unset;
+}
+
 .phone_hover:hover .phone_mobile{
   display: block;
 }
