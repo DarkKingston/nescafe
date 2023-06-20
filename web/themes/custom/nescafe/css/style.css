@@ -526,19 +526,19 @@ form .form-item label{
   color: #000;
 }
 
-.btn_main:hover{
+.btn_main button:hover{
   background: #699200;
 }
 
-.auth_btn:hover{
+.auth_btn a:hover{
   background: #D10100;
 }
 
-.menu_links:hover{
+.menu_links li a:hover{
   color: #E31D1C;
 }
 
-.footer_menu li{
+.footer_menu li:hover{
   color: #000000;
   text-decoration: underline;
 }
