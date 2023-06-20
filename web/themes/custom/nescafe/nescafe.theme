@@ -36,8 +36,6 @@ function nescafe_preprocess_menu__header_btn(&$logged){
 
 function nescafe_preprocess_page(&$page){
     dump($page);
-
-        echo $_POST['promocode'];
 }
 
 function nescafe_preprocess_region__account(&$elem){
