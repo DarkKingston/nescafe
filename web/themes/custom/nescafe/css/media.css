@@ -68,3 +68,18 @@
     margin-left: 0;
   }
 }
+
+@media(min-width: 500px){
+  #block-izobrazheniesgarantirovannymiprizami .prize_adaptive{
+    display: none;
+  }
+}
+
+@media(max-width: 500px){
+  #block-izobrazheniesgarantirovannymiprizami img{
+    display: none;
+  }
+  #block-izobrazheniesgarantirovannymiprizami .prize_adaptive{
+    display: block;
+  }
+}
