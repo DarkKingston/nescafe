@@ -70,7 +70,7 @@
 }
 
 @media(min-width: 500px){
-  #block-izobrazheniesgarantirovannymiprizami .prize_adaptive{
+  #block-izobrazheniesgarantirovannymiprizami .prize_adaptive img{
     display: none;
   }
 }
@@ -79,7 +79,7 @@
   #block-izobrazheniesgarantirovannymiprizami img{
     display: none;
   }
-  #block-izobrazheniesgarantirovannymiprizami .prize_adaptive{
+  #block-izobrazheniesgarantirovannymiprizami .prize_adaptive img{
     display: block;
   }
 }
