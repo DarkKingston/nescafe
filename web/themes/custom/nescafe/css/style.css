@@ -542,3 +542,15 @@ form .form-item label{
   color: #000000;
   text-decoration: underline;
 }
+
+.phone_mobile{
+  display: none;
+}
+
+.phone_hover:hover .phone_mobile{
+  display: block;
+}
+.phone_hover:hover .phone_desktop{
+  display: none;
+}
+
