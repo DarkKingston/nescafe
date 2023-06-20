@@ -23,7 +23,7 @@
     <div>
       {% endif %}
       {% for item in items %}
-        <div{{ item.attributes }} class="hidden">{{ item.content }}</div>
+        <div{{ item.attributes }}>{{ item.content }}</div>
       {% endfor %}
       {% if multiple %}
     </div>
