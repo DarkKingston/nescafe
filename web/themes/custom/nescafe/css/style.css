@@ -513,3 +513,7 @@ form .form-item label{
   margin: 0;
 }
 
+#block-izobrazheniesgarantirovannymiprizami img{
+  width: 100%;
+  height: 100%;
+}
