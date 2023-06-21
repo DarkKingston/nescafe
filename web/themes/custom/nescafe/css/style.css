@@ -570,3 +570,7 @@ form .form-item label{
   font-weight: 700;
   font-size: 17px;
 }
+
+.map_content{
+  display: flex;
+}
