@@ -574,3 +574,10 @@ form .form-item label{
 .map_content{
   display: flex;
 }
+
+#map{
+  max-width: 845px;
+  width: 100%;
+  height: 840px;
+  margin-right: 47px;
+}
