@@ -429,7 +429,7 @@ form .form-item label{
 .webform-button--submit{
   margin-top: 10px;
   font-weight: 700;
-  font-size: 17px;
+  font-size: 17px !important;
   color: #FFFFFF;
   background: #E31D1C;
   border-radius: 4px;
