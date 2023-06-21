@@ -12,6 +12,7 @@ regions:
   content: Content
   reglament: Content Reglament Page
   contacts: Contact Page
+  contactsModal: Modal for phone
   policy: Content Policy Page
   termeni: Content Termeni Page
   register: Register
