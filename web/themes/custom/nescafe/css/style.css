@@ -595,5 +595,6 @@ form .form-item label{
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 65px 0;
   width: 100%;
 }
