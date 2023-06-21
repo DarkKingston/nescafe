@@ -9,4 +9,5 @@ global-styling:
     - core/jquery
     - core/jquery.once
     - core/drupal
-    - core/drupal.dialog.ajax # именно здесь подключаем модальные окна Drupal
+    - core/jquery.ui.dialog
+    - core/drupal.dialog.ajax
