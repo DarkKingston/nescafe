@@ -590,7 +590,7 @@ form .form-item label{
   bottom: 0;
   left: 0;
   background: #FFFFFF;
-  border: 1px solid #E31D1C;
+  border-top: 1px solid #E31D1C;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.07);
   display: flex;
   justify-content: center;
