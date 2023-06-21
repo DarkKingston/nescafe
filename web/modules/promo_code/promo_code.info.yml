@@ -2,7 +2,7 @@ name: 'Introduceți codul promoțional'
 type: module
 description: ''
 package: 'Webform Custom'
-core: 9.x
+core_version_requirement: ^9 || ^10
 configure: promo_code.settings
 dependencies:
   - 'webform:webform'
