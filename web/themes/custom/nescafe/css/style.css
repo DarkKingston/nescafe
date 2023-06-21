@@ -598,3 +598,14 @@ form .form-item label{
   padding: 65px 0;
   width: 100%;
 }
+
+.webform-submission-cookie-form{
+  display: flex;
+  width: 311px;
+  justify-content: space-between;
+}
+
+.webform-submission-cookie-form .webform-button--submit {
+  width: 146px;
+  height: 40px;
+}
