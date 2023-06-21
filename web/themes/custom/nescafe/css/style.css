@@ -571,7 +571,7 @@ form .form-item label{
   font-size: 17px;
 }
 
-.map_content{
+.map_content>div{
   display: flex;
 }
 
