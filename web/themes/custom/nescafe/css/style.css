@@ -571,7 +571,7 @@ form .form-item label{
   font-size: 17px;
 }
 
-.map_content>div{
+.map_wrapper{
   display: flex;
 }
 
@@ -581,6 +581,6 @@ form .form-item label{
   margin-right: 47px;
 }
 
-#block-points-title{
+.map_text{
   width: 247px;
 }
