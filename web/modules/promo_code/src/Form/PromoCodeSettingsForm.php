@@ -106,6 +106,7 @@ class PromoCodeSettingsForm extends ConfigFormBase {
     $form['#attributes']['class'][] = 'webform-details-toggle';
     $form['#attached']['library'][] = 'webform/webform.element.details.toggle';
 
+    var_dump('123');
     return $form;
   }
 
@@ -131,7 +132,7 @@ class PromoCodeSettingsForm extends ConfigFormBase {
       ->save();
     var_dump('123');
     // Display message.
-    //parent::submitForm($form, $form_state);
+    parent::submitForm($form, $form_state);
   }
 
 }
