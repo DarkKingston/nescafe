@@ -580,3 +580,7 @@ form .form-item label{
   height: 840px;
   margin-right: 47px;
 }
+
+.block-points-title>div:last-child{
+  width: 247px;
+}
