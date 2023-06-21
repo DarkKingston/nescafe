@@ -576,8 +576,7 @@ form .form-item label{
 }
 
 #map{
-  max-width: 845px;
-  width: 100%;
+  width: 845px;
   height: 840px;
   margin-right: 47px;
 }
