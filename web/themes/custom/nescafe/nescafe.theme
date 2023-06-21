@@ -39,7 +39,7 @@ function nescafe_preprocess_page(&$page){
 }
 
 function nescafe_preprocess_page__webform__promo_code(&$form){
-   dump($form);
+   //dump($form);
 }
 
 function nescafe_preprocess_region__account(&$elem){
