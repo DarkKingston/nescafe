@@ -565,5 +565,6 @@ form .form-item label{
 
 .ui-dialog .ui-dialog-buttonset button:hover{
   background: #D10100;
-
+  border: none;
+  color: white;
 }
