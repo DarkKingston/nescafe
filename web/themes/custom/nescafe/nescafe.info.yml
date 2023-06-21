@@ -11,6 +11,7 @@ regions:
   header: Header
   content: Content
   reglament: Content Reglament Page
+  points: Points page
   contacts: Contact Page
   contactsModal: Modal for phone
   policy: Content Policy Page
