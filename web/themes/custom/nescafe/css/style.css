@@ -567,4 +567,6 @@ form .form-item label{
   background: #D10100;
   border: none;
   color: white;
+  font-weight: 700;
+  font-size: 17px;
 }
