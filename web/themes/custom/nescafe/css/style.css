@@ -563,3 +563,6 @@ form .form-item label{
   display: none;
 }
 
+.ui-dialog .ui-dialog-buttonset button:hover{
+  background: #D10100;
+}
