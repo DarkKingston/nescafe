@@ -131,7 +131,7 @@ class PromoCodeSettingsForm extends ConfigFormBase {
       ->save();
     var_dump('123');
     // Display message.
-    parent::submitForm($form, $form_state);
+    //parent::submitForm($form, $form_state);
   }
 
 }
