@@ -1,0 +1,7 @@
+promo_code.settings:
+  path: /admin/config/promo_code
+  defaults:
+    _form: \Drupal\promo_code\Form\PromoCodeSettingsForm
+    _title: 'Introduceți codul promoțional'
+  requirements:
+    _permission: 'administer configuration'

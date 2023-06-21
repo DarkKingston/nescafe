@@ -1,0 +1,8 @@
+name: 'Introduceți codul promoțional'
+type: module
+description: ''
+package: 'Webform Custom'
+core: 8.x
+configure: promo_code.settings
+dependencies:
+  - 'webform:webform'
