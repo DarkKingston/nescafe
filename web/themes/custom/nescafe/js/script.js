@@ -20,6 +20,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
   let cookieBox = document.getElementById('block-webform-5');
   let cookieSuccess = document.querySelector('.cookie_success');
   if (cookieSuccess) {
-    cookieBox.style.display = 'none';
+    cookieBox.classList.add('cookie_hidden');
   }
 });
