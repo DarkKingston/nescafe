@@ -65,7 +65,6 @@
       <button class="close_menu">X</button>
     </div>
   </header>
-
   <main role="main">
     <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
     <div class="layout-content">
@@ -73,12 +72,7 @@
         <div class="text_content">
           <div class="account_wrapper">
               {{ page.account }}
-            <form action="" method="POST">
-              <input type="text" placeholder="promo code" class="promo">
-              <input type="button" id="btn_submit" value="Submit" onclick="insertNewEmployee();">
-            </form>
           </div>
-
         </div>
       </div>
     </div>{# /.layout-content #}
@@ -91,23 +85,3 @@
     <script src="/{{ directory }}/js/script.js"></script>
   </footer>
 </div>{# /.layout-container #}
-
-<script>
-    function insertNewEmployee(){
-        var xhttp = new XMLHttpRequest();
-        xhttp.open("POST", "https://stag-yxxbuhy-qkl3gjov7gxou.eu-5.platformsh.site/account", true);
-        xhttp.setRequestHeader("Content-Type", "application/json");
-        xhttp.onreadystatechange = function() {
-            if (this.status == 201) {
-                // Response
-                var response = this.responseText;
-                alert('success');
-            }
-        };
-        let promocode = document.querySelector('.promo').value;
-        var data = {promocode:`${promocode}`};
-        xhttp.send(JSON.stringify(data));
-    }
-
-</script>
-

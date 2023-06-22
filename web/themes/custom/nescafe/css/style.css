@@ -682,3 +682,7 @@ form .form-item label{
 .container [role=contentinfo]{
   display: none;
 }
+
+.user-login-form+ul{
+  display: none;
+}
