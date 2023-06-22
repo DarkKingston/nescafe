@@ -12,7 +12,8 @@ function nescafe_preprocess_links__language_block(&$lang){
 
 }
 
-function page__account(array &$form, FormStateInterface $form_state){
+function page__account(){
+     function submitForm(array &$form, FormStateInterface $form_state) {
         // Get all values.
         $values = $form_state->getValues();
 
@@ -32,7 +33,7 @@ function page__account(array &$form, FormStateInterface $form_state){
         dump('213');
         // Display message.
         parent::submitForm($form, $form_state);
-
+      }
 
       $result = db_query("SELECT * FROM promo_code");
 
