@@ -678,3 +678,7 @@ form .form-item label{
 .cookie_hidden{
   display: none;
 }
+
+.container [role=contentinfo]{
+  display: none;
+}
