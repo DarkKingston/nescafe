@@ -11,7 +11,7 @@
         $('.langs').slideToggle();
       });
 
-      if($('.cookie_success') == true){
+      if($('.cookie_success')){
         $('#block-webform-5').hide();
       }
     }
