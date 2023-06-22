@@ -42,6 +42,31 @@ function nescafe_preprocess_page__webform__promo_code(&$form){
    //dump($form);
 }
 
+function_nescafe_preprocess_block__webform_5(&$cookie){
+
+    $curr_id_for_user = \Drupal::currentUser()->id();
+
+    $config = new Config();
+
+    $credentials = $config->credentials('database');
+
+        $dsn = sprintf('mysql:host=%s;port=%d;dbname=%s', $credentials['host'], $credentials['port'], $credentials['path']);
+        $conn = new \PDO($dsn, $credentials['username'], $credentials['password'], [
+            \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
+            \PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => TRUE,
+            \PDO::MYSQL_ATTR_FOUND_ROWS => TRUE,
+        ]);
+
+
+        $sql = "SELECT * FROM webform_submission WHERE uid = '".$curr_id_for_user."' ";
+        $result = $conn->query($sql);
+        $result->setFetchMode(\PDO::FETCH_OBJ);
+
+        if ($result) {
+            dump('123');
+        }
+}
+
 function nescafe_preprocess_region__account(&$elem){
 $curr_id_for_user = \Drupal::currentUser()->id();
 
