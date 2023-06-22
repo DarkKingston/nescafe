@@ -607,5 +607,9 @@ form .form-item label{
 
 .webform-submission-cookie-form .webform-button--submit {
   width: 146px;
+  display: flex;
   height: 40px;
+  justify-content: center;
+  padding: 0;
+  align-items: center;
 }
