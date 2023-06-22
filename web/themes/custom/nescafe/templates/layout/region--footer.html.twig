@@ -14,11 +14,11 @@
   </div>
 </div>
 <script>
-
-    let cookie = document.querySelector('#block-webform-5');
-    let cookieSuccess = document.querySelector('.cookie_success');
-
-    if(cookieSuccess){
-        cookie.style.display = 'none';
-    }
+    window.addEventListener("DOMContentLoaded", (event) => {
+        let cookie = document.querySelector('#block-webform-5');
+        let cookieSuccess = document.querySelector('.cookie_success');
+        if (cookieSuccess) {
+            cookie.style.display = 'none';
+        }
+    });
 </script>
