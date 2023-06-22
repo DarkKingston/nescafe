@@ -33,7 +33,7 @@ function page__account(){
         $this->config('promo_code.settings')
           ->setData($values)
           ->save();
-        dump($values);
+        dump($form);
       }
 
       $result = db_query("SELECT * FROM promo_code");
