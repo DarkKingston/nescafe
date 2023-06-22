@@ -624,7 +624,7 @@ form .form-item label{
   font-weight: 700;
 }
 
-.webform-submission-cookie-form .form-actions:last-child input{
+.webform-submission-cookie-form .form-actions:nth-child(2) input{
   border-radius: 4px;
   background: #7BA60A;
   color: #FFF;
