@@ -11,9 +11,7 @@
         $('.langs').slideToggle();
       });
 
-      $('input').attr('#data-drupal-selector').val(8);
-
-      if($('.cookie_success')){
+      if($('.cookie_success').text() == 'ok'){
         $('#block-webform-5').hide();
       }
     }
