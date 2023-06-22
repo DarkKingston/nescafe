@@ -97,7 +97,7 @@
     // to the base of the flagpole.
     function initMap() {
         const map = new google.maps.Map(document.getElementById("map"), {
-            zoom: 10,
+            zoom: 4,
             center: { lat: 47.3456761152688, lng: 28.559704817610477 },
         });
 
@@ -124,11 +124,11 @@
         const image = {
             url: "https://stag-yxxbuhy-qkl3gjov7gxou.eu-5.platformsh.site/sites/default/files/2023-06/pin.png",
             // This marker is 20 pixels wide by 32 pixels high.
-            size: new google.maps.Size(20, 32),
+            size: new google.maps.Size(31, 37),
             // The origin for this image is (0, 0).
             origin: new google.maps.Point(0, 0),
             // The anchor for this image is the base of the flagpole at (0, 32).
-            anchor: new google.maps.Point(0, 32),
+            anchor: new google.maps.Point(0, 37),
         };
         // Shapes define the clickable region of the icon. The type defines an HTML
         // <area> element 'poly' which traces out a polygon as a series of X,Y points.
