@@ -12,14 +12,10 @@
       });
 
       $('input').attr('#data-drupal-selector').val(8);
+
+      if($('.cookie_success')){
+        $('#block-webform-5').hide();
+      }
     }
   };
 })(jQuery);
-
-window.addEventListener("DOMContentLoaded", (event) => {
-  let cookieBox = document.getElementById('block-webform-5');
-  let cookieSuccess = document.querySelector('.cookie_success');
-  if (cookieSuccess) {
-    cookieBox.classList.add('cookie_hidden');
-  }
-});
