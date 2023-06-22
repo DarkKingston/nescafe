@@ -64,7 +64,7 @@ function nescafe_preprocess_block__webform_5(&$elem){
 
         if ($result) {
             foreach ($result as $record) {
-                print '<div class="cookie_success">cookie_success</div>';
+                print '<div class="cookie_success"></div>';
             }
         }
 }
