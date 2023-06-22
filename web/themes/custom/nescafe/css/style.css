@@ -674,3 +674,7 @@ form .form-item label{
 .map_text .title_page{
   margin-bottom: 35px;
 }
+
+.cookie_hidden{
+  display: none;
+}
