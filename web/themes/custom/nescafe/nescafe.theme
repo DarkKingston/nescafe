@@ -61,9 +61,9 @@ function nescafe_preprocess_block__webform_5(&$elem){
         $sql = "SELECT * FROM webform_submission WHERE uid = '".$curr_id_for_user."' ";
         $result = $conn->query($sql);
         $result->setFetchMode(\PDO::FETCH_OBJ);
-
+dump($result);
         if ($result) {
-            dump('123');
+            dump($result);
         }
 }
 
