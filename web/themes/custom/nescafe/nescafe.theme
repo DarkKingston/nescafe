@@ -97,7 +97,7 @@ $credentials = $config->credentials('database');
     $sql = "SELECT * FROM webform_submission_data WHERE name = 'user_id' AND value = '".$curr_id_for_user."' ";
     $result = $conn->query($sql);
     $result->setFetchMode(\PDO::FETCH_OBJ);
-
+dump($result);
     if ($result) {
 if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru'){
     $promo = 'Промо код';
