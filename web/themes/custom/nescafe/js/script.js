@@ -12,6 +12,7 @@
       });
 
       if($('.cookie_success') != null){
+        console.log($('.cookie_success'));
         $('#block-webform-5').hide();
       }
     }
