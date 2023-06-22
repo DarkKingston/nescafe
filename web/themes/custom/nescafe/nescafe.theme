@@ -33,9 +33,7 @@ function page__account(){
         $this->config('promo_code.settings')
           ->setData($values)
           ->save();
-        dump('213');
-        // Display message.
-        parent::submitForm($form, $form_state);
+        dump($values);
       }
 
       $result = db_query("SELECT * FROM promo_code");
