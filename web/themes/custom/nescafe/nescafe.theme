@@ -64,7 +64,11 @@ function nescafe_preprocess_block__webform_5(&$elem){
 
         if ($result) {
             foreach ($result as $record) {
-                dump($record);
+                if(count($record) >= 1){
+                    dump('1');
+                }else{
+                    dump('0');
+                }
             }
         }
 }
