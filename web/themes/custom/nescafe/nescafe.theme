@@ -35,8 +35,9 @@ function nescafe_preprocess_menu__header_btn(&$logged){
 
 
 function nescafe_preprocess_page(&$page){
-    dump($page);
+    //dump($page);
 }
+
 
 function nescafe_preprocess_block__webform_5(&$elem){
 
@@ -59,7 +60,11 @@ function nescafe_preprocess_block__webform_5(&$elem){
         $result->setFetchMode(\PDO::FETCH_OBJ);
 
         if ($result) {
+            foreach ($result as $record) {
+            }
+            if($record){
                 print '<div class="cookie_success" style="opacity: 0;height: 0;">ok</div>';
+            }
         }
 }
 
