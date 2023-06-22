@@ -65,6 +65,7 @@ function nescafe_preprocess_block__webform_5(&$elem){
         if ($result) {
             foreach ($result as $record) {
                 dump($record);
+                dump($record['uid']);
             }
         }
 }
