@@ -14,6 +14,10 @@
       if($('.cookie_success').text() == 'ok'){
         $('#block-webform-5').hide();
       }
+
+      $('.#block-webform-5',context).on('click',function(){
+        $('.#block-webform-5').hide();
+      });
     }
   };
 })(jQuery);
