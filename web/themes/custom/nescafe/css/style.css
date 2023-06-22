@@ -661,3 +661,7 @@ form .form-item label{
 .cookie_box form{
   margin-top: 22px;
 }
+
+.map_text span{
+  margin-bottom: 5px;
+}
