@@ -12,7 +12,6 @@
       });
 
       if(document.querySelector('.cookie_success') != null){
-        console.log(document.querySelector('.cookie_success'));
         $('#block-webform-5').hide();
       }
     }
