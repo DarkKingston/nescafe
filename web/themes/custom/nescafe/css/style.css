@@ -670,3 +670,7 @@ form .form-item label{
 .gm-fullscreen-control, .gmnoprint, .gm-svpc, .gmnoprint{
   display: none;
 }
+
+.maw_wrapper .title_page{
+  margin-bottom: 35px;
+}
