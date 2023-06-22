@@ -15,8 +15,8 @@
         $('#block-webform-5').hide();
       }
 
-      $('.#block-webform-5',context).on('click',function(){
-        $('.#block-webform-5').hide();
+      $('#block-webform-5',context).on('click',function(){
+        $('#block-webform-5').hide();
       });
     }
   };
