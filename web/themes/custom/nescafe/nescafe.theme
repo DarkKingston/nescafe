@@ -2,6 +2,9 @@
 use Drupal\Core\Url;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Platformsh\ConfigReader\Config;
+use Drupal\Core\Form\ConfigFormBase;
+use Drupal\Core\Form\FormStateInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 /**
  * @file
  * Functions to support theming.
