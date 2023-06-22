@@ -632,3 +632,24 @@ form .form-item label{
   font-family: Roboto;
   font-weight: 700;
 }
+
+.cookie_title{
+  color: #263238;
+  text-align: center;
+  font-size: 26px;
+  font-family: Roboto Condensed;
+  font-weight: 700;
+}
+
+.cookie_subtitle{
+  color: #404E55;
+  text-align: center;
+  font-size: 14px;
+  font-family: Roboto;
+  line-height: 154.188%;
+  max-width: 755px;
+}
+
+.cookie_box{
+  padding: 0 15px;
+}
