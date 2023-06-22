@@ -664,4 +664,9 @@ form .form-item label{
 
 .map_text span{
   margin-bottom: 5px;
+  display: inline-block;
+}
+
+.gm-fullscreen-control, .gmnoprint, .gm-svpc, .gmnoprint{
+  display: none;
 }
