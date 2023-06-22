@@ -648,8 +648,16 @@ form .form-item label{
   font-family: Roboto;
   line-height: 154.188%;
   max-width: 755px;
+  margin-top: 11px;
 }
 
 .cookie_box{
   padding: 0 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cookie_box form{
+  margin-top: 22px;
 }
