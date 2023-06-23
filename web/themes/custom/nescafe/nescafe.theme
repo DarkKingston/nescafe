@@ -67,6 +67,13 @@ function nescafe_preprocess_menu__header_btn(&$logged){
 function nescafe_preprocess_page(&$page){
     dump($page);
     dump(\Drupal::currentUser());
+    $roles = \Drupal::currentUser()->getRoles();
+
+    if(in_array('administrator', $roles)) {
+      echo "Eu sunt administrator";
+    }else{
+        echo "Eu sunt un simplu user";
+    }
 }
 
 
