@@ -168,7 +168,12 @@ $promoTotal = 0;
 
                         $count++;
             }
-            dump(($promoTotal % 7));
+
+        }
+        print "</tbody>\n</table>\n";
+
+        print "$totalPromo => $total";
+dump(($promoTotal % 7));
             dump($score);
             if(($promoTotal % 7) == 0){
                 echo "У тебя награда 3 степени";
@@ -182,11 +187,6 @@ $promoTotal = 0;
             if($score > 30){
                 echo "Ты учавствуешь в финальную игру";
             }
-        }
-        print "</tbody>\n</table>\n";
-
-        print "$totalPromo => $total";
-
 
     }
 
