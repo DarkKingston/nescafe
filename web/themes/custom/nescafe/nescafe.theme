@@ -165,10 +165,7 @@ $total = 0;
 
                         $count++;
             }
-            if(count($record->promocode) == 7){
-                echo 'Al 7 cod introdus pe platforma';
-
-            }
+            dump(count($record));
         }
         print "</tbody>\n</table>\n";
 
