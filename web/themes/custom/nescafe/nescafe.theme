@@ -189,9 +189,14 @@ foreach($result2 as $record2){
         print "</tbody>\n</table>\n";
 
         print "$totalPromo => $total";
-
-            if(($promoTotal % 7) == 0){
-                echo "У тебя награда 3 степени";
+            $getUserID = "SELECT value FROM webform_submission_data WHERE webform_id = 'promo_code' AND name = 'user_id'";
+            $res = $conn->query($getUserID);
+            $res->setFetchMode(\PDO::FETCH_OBJ);
+            foreach($getUserID as $userID){}
+            if($curr_id_for_user == $userID->value){
+                if(($promoTotal % 7) == 0){
+                    echo "У тебя награда 3 степени";
+                }
             }
             if($total >= 10 && $total < 15){
                echo "У тебя награда 2 степени";
