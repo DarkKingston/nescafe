@@ -168,7 +168,7 @@ $promoTotal = 0;
 
                         $count++;
             }
-            if($promoTotal % 7 === 0){
+            if(($promoTotal % 7) == 0){
                 echo "У тебя награда 3 степени";
             }
             if($score >= 10 && $score < 15){
