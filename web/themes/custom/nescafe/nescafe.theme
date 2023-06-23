@@ -126,7 +126,7 @@ $credentials = $config->credentials('database');
 
 
     // Show table.
-    $sql = "SELECT * FROM webform_submission_data WHERE name = 'user_id' AND value = '".$curr_id_for_user."' ";
+    $sql = "SELECT * FROM promo_code WHERE acitve = '".$curr_id_for_user."' ";
     $result = $conn->query($sql);
     $result->setFetchMode(\PDO::FETCH_OBJ);
 
@@ -152,12 +152,9 @@ $count = 1;
 $score = 0;
 $total = 0;
         foreach ($result as $record) {
-            $sql2 = "SELECT * FROM webform_submission_data WHERE sid = '".$record->sid."' AND name = 'introduceti_codul_promotional' ";
-            $result2 = $conn->query($sql2);
-            $result2->setFetchMode(\PDO::FETCH_OBJ);
 
-            if ($result2) {
-                foreach ($result2 as $record2) {
+
+            if ($result) {
                 if(!preg_match("/^([0-9])+$/", $record2->value)){
                     $score = 2;
                     $total += 2;
@@ -168,9 +165,6 @@ $total = 0;
                     printf("<tr><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $record2->value, $score);
 
                         $count++;
-
-
-                }
             }
         }
         print "</tbody>\n</table>\n";
