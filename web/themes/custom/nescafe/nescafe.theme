@@ -126,9 +126,9 @@ $credentials = $config->credentials('database');
     $roles = \Drupal::currentUser()->getRoles();
 
         if(in_array('administrator', $roles)) {
-          $sql = "SELECT * FROM promo_code ";
+          $sqlQuery = "SELECT * FROM promo_code ";
         }else{
-          $sql = "SELECT * FROM promo_code WHERE active = '".$curr_id_for_user."'";
+          $sqlQuery = "SELECT * FROM promo_code WHERE active = '".$curr_id_for_user."'";
         }
 
 
