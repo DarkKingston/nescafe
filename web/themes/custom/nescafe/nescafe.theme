@@ -126,7 +126,7 @@ $credentials = $config->credentials('database');
 
 
     // Show table.
-    $sql = "SELECT * FROM promo_code WHERE acitve = '".$curr_id_for_user."' ";
+    $sql = "SELECT * FROM promo_code WHERE active = '".$curr_id_for_user."' ";
     $result = $conn->query($sql);
     $result->setFetchMode(\PDO::FETCH_OBJ);
 
@@ -155,7 +155,7 @@ $total = 0;
 
 
             if ($result) {
-                if(!preg_match("/^([0-9])+$/", $record2->value)){
+                if(!preg_match("/^([0-9])+$/", $record->promocode)){
                     $score = 2;
                     $total += 2;
                 }else{
