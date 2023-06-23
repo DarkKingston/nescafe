@@ -193,9 +193,8 @@ foreach($result2 as $record2){
             $res = $conn->query($getUserID);
             $res->setFetchMode(\PDO::FETCH_OBJ);
             foreach($getUserID as $userID){
-            dump($userID);
+                dump($userID);
             }
-            dump($getUserID);
             if($curr_id_for_user == $userID->value){
                 if(($promoTotal % 7) == 0){
                     echo "У тебя награда 3 степени";
