@@ -168,8 +168,17 @@ $promoTotal = 0;
 
                         $count++;
             }
-            if($promoTotal == 7){
-                echo "Aveti 7 coduri introduse";
+            if($promoTotal % 7 === 0){
+                echo "У тебя награда 3 степени";
+            }
+            if($score >= 10 && $score < 15){
+                echo "У тебя награда 2 степени";
+            }
+            if($score >= 15 && $score < 30){
+                echo "Ты учавствуешь в игру дня";
+            }
+            if($score > 30){
+                echo "Ты учавствуешь в финальную игру";
             }
         }
         print "</tbody>\n</table>\n";
