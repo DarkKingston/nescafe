@@ -15,35 +15,8 @@ function nescafe_preprocess_links__language_block(&$lang){
 
 }
 
-function page__account(){
-     function submitForm(array &$form, FormStateInterface $form_state) {
-        // Get all values.
-        $values = $form_state->getValues();
-
-        // Remove Form API values.
-        unset(
-          $values['form_build_id'],
-          $values['form_token'],
-          $values['form_id'],
-          $values['op'],
-          $values['actions']
-        );
-
-        // Save config.
-        $this->config('promo_code.settings')
-          ->setData($values)
-          ->save();
-        dump($form);
-      }
-
-      $result = db_query("SELECT * FROM promo_code");
-
-      $items = array();
-      while ($row = db_fetch_object($result)) {
-       $items[] = l($row->promo_code, "node/{$row->id}");
-       echo $row->promo_code;
-
-      }
+function page__account(&$form){
+     dump($_POST);
 }
 
 function nescafe_preprocess_menu__header_btn(&$logged){
