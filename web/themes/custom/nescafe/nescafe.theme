@@ -33,11 +33,10 @@ function nescafe_preprocess_webform__promo_code(&$form){
 
 
              $sql = "UPDATE promo_code SET active = '".$curr_id_for_user."' WHERE promocode = '".$_POST['introduceti_codul_promotional']."'  ";
-             $result = $conn->query($sql);
-             $result->setFetchMode(\PDO::FETCH_OBJ);
 
 
-     if($result){
+
+     if($conn->query($sql)){
         echo "success";
      }
 }
