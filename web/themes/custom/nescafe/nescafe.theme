@@ -65,7 +65,7 @@ function nescafe_preprocess_menu__header_btn(&$logged){
 
 
 function nescafe_preprocess_page(&$page){
-    dump($page);
+    //dump($page);
 }
 
 
@@ -126,7 +126,7 @@ $credentials = $config->credentials('database');
     $roles = \Drupal::currentUser()->getRoles();
 
         if(in_array('administrator', $roles)) {
-          $sqlQuery = "SELECT * FROM promo_code ";
+          $sqlQuery = "SELECT * FROM promo_code active != 0";
         }else{
           $sqlQuery = "SELECT * FROM promo_code WHERE active = '".$curr_id_for_user."'";
         }
