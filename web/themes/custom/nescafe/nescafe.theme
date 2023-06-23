@@ -66,14 +66,6 @@ function nescafe_preprocess_menu__header_btn(&$logged){
 
 function nescafe_preprocess_page(&$page){
     dump($page);
-    dump(\Drupal::currentUser());
-    $roles = \Drupal::currentUser()->getRoles();
-
-    if(in_array('administrator', $roles)) {
-      echo "Eu sunt administrator";
-    }else{
-        echo "Eu sunt un simplu user";
-    }
 }
 
 
@@ -131,9 +123,17 @@ $credentials = $config->credentials('database');
         \PDO::MYSQL_ATTR_FOUND_ROWS => TRUE,
     ]);
 
+    $roles = \Drupal::currentUser()->getRoles();
+
+        if(in_array('administrator', $roles)) {
+          $sql = "SELECT * FROM promo_code ";
+        }else{
+          $sql = "SELECT * FROM promo_code WHERE active = '".$curr_id_for_user."'";
+        }
+
 
     // Show table.
-    $sql = "SELECT * FROM promo_code WHERE active = '".$curr_id_for_user."' ";
+    $sql = " ";
     $result = $conn->query($sql);
     $result->setFetchMode(\PDO::FETCH_OBJ);
 
