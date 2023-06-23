@@ -15,6 +15,10 @@ function nescafe_preprocess_links__language_block(&$lang){
 
 }
 
+use Drupal\webform\Entity\WebformSubmissionInterface;
+use Drupal\Core\Messenger\MessengerInterface;
+use Drupal\Core\Config\ConfigFactoryInterface;
+
 function nescafe_preprocess_webform_submission_promo_code_add_form(&$form){
      dump($_POST);
 
@@ -182,48 +186,6 @@ $total = 0;
 
 }
 
-use Drupal\webform\Entity\WebformSubmissionInterface;
-use Drupal\Core\Messenger\MessengerInterface;
-use Drupal\Core\Config\ConfigFactoryInterface;
-
-/**
- * Implements hook_webform_submission_presave().
- */
-function nescafe_preprocess_webform_submission_promo_code_add_form(WebformSubmissionInterface $webform_submission) {
-  $configFactory = \Drupal::service('config.factory');
-  $config = $configFactory->get('nescafe.settings');
-
-  $credentials = $config->get('database');
-  $dsn = sprintf('mysql:host=%s;port=%d;dbname=%s', $credentials['host'], $credentials['port'], $credentials['path']);
-  $conn = new \PDO($dsn, $credentials['username'], $credentials['password'], [
-    \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
-    \PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => TRUE,
-    \PDO::MYSQL_ATTR_FOUND_ROWS => TRUE,
-  ]);
-
-  $sql2 = "SELECT promocode FROM promo_code WHERE active = 0";
-  $result2 = $conn->query($sql2);
-  $result2->setFetchMode(\PDO::FETCH_OBJ);
-
-  if ($result2) {
-    foreach ($result2 as $record2) {
-      $data = $webform_submission->getData();
-      watchdog('nescafe', '<pre>' . print_r($data, TRUE) . '</pre>');
-
-      if ($data['introduceti_codul_promotional'] == $record2->promocode) {
-        $sql = "UPDATE promo_code SET active = 1 WHERE promocode = '".$record2->promocode."'";
-        $conn->query($sql);
-        \Drupal::messenger()->addMessage('Данные прошли проверку и будут сохранены.');
-      }
-      else {
-        \Drupal::messenger()->addError('Данные не прошли проверку и не будут сохранены.');
-        throw new \Exception('Ошибка: данные не прошли проверку.');
-      }
-    }
-  }
-
-  return $webform_submission;
-}
 
 use Symfony\Component\HttpFoundation\Request;
 
