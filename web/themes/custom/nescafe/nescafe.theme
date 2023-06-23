@@ -164,9 +164,9 @@ $total = 0;
 $promoTotal = 0;
 foreach($result2 as $record2){
     if(!preg_match("/^([0-9])+$/", $record2->promocode)){
-        $total += 2;
+        $promoTotal += 1;
     }else{
-        $total += 1;
+        $promoTotal += 1;
     }
 }
         foreach ($result as $record) {
@@ -175,10 +175,10 @@ foreach($result2 as $record2){
             if ($result) {
                 if(!preg_match("/^([0-9])+$/", $record->promocode)){
                     $score = 2;
-                    $promoTotal += 1;
+                    $total += 2;
                 }else{
                     $score = 1;
-                    $promoTotal += 1;
+                    $total += 1;
                 }
                     printf("<tr><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $record->promocode, $score);
 
@@ -190,16 +190,16 @@ foreach($result2 as $record2){
 
         print "$totalPromo => $total";
 
-            if(($total % 7) == 0){
+            if(($promoTotal % 7) == 0){
                 echo "У тебя награда 3 степени";
             }
-            if($promoTotal >= 10 && $promoTotal < 15){
+            if($total >= 10 && $total < 15){
                echo "У тебя награда 2 степени";
             }
-            if($promoTotal >= 15 && $promoTotal < 30){
+            if($total >= 15 && $total < 30){
                 echo "Ты учавствуешь в игре дня";
             }
-            if($promoTotal > 30){
+            if($total > 30){
                 echo "Ты учавствуешь в финальную игру";
             }
 
