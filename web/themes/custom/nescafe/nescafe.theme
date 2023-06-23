@@ -16,7 +16,6 @@ function nescafe_preprocess_links__language_block(&$lang){
 }
 
 function nescafe_preprocess_webform__promo_code(&$form){
-     dump($_POST);
 
      $curr_id_for_user = \Drupal::currentUser()->id();
 
@@ -38,7 +37,7 @@ function nescafe_preprocess_webform__promo_code(&$form){
 
 
              if($conn->query($sql)){
-                echo "ok";
+              //echo "ok";
              }
         }
 }
