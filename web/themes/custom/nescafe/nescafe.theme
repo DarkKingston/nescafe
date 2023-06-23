@@ -133,7 +133,7 @@ $credentials = $config->credentials('database');
 
 
     // Show table.
-    $sql = " ";
+    $sql = $sqlQuery;
     $result = $conn->query($sql);
     $result->setFetchMode(\PDO::FETCH_OBJ);
 
