@@ -136,6 +136,9 @@ $credentials = $config->credentials('database');
     $sql = $sqlQuery;
     $result = $conn->query($sql);
     $result->setFetchMode(\PDO::FETCH_OBJ);
+    $sql2 = "SELECT * FROM promo_code WHERE active <> 0";
+    $result2 = $conn->query($sql2);
+    $result2->setFetchMode(\PDO::FETCH_OBJ);
 
     if ($result) {
 if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru'){
@@ -159,17 +162,22 @@ $count = 1;
 $score = 0;
 $total = 0;
 $promoTotal = 0;
+foreach($result2 as $record2){
+    if(!preg_match("/^([0-9])+$/", $record2->promocode)){
+        $total += 2;
+    }else{
+        $total += 1;
+    }
+}
         foreach ($result as $record) {
 
 
             if ($result) {
                 if(!preg_match("/^([0-9])+$/", $record->promocode)){
                     $score = 2;
-                    $total += 2;
                     $promoTotal += 1;
                 }else{
                     $score = 1;
-                    $total += 1;
                     $promoTotal += 1;
                 }
                     printf("<tr><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $record->promocode, $score);
@@ -182,16 +190,16 @@ $promoTotal = 0;
 
         print "$totalPromo => $total";
 
-            if(($promoTotal % 7) == 0){
+            if(($total % 7) == 0){
                 echo "У тебя награда 3 степени";
             }
-            if($total >= 10 && $total < 15){
+            if($promoTotal >= 10 && $promoTotal < 15){
                echo "У тебя награда 2 степени";
             }
-            if($total >= 15 && $total < 30){
+            if($promoTotal >= 15 && $promoTotal < 30){
                 echo "Ты учавствуешь в игре дня";
             }
-            if($total > 30){
+            if($promoTotal > 30){
                 echo "Ты учавствуешь в финальную игру";
             }
 
