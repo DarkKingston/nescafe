@@ -169,6 +169,7 @@ $promoTotal = 0;
                         $count++;
             }
             dump(($promoTotal % 7));
+            dump($score);
             if(($promoTotal % 7) == 0){
                 echo "У тебя награда 3 степени";
             }
