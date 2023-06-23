@@ -189,10 +189,10 @@ foreach($result2 as $record2){
         print "</tbody>\n</table>\n";
 
         print "$totalPromo => $total";
-            $getUserID = "SELECT value FROM webform_submission_data WHERE webform_id = 'promo_code' AND name = 'user_id'";
+            $getUserID = "SELECT * FROM webform_submission_data WHERE webform_id = 'promo_code' AND name = 'user_id'";
             $res = $conn->query($getUserID);
             $res->setFetchMode(\PDO::FETCH_OBJ);
-            foreach($getUserID as $userID){
+            foreach($res as $userID){
                 dump($userID);
             }
             if($curr_id_for_user == $userID->value){
