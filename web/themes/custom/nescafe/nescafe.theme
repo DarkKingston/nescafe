@@ -20,7 +20,7 @@ function nescafe_preprocess_webform__promo_code(&$form){
          $config = new Config();
 
                  $credentials = $config->credentials('database');
-
+dump($credentials);
                      $dsn = sprintf('mysql:host=%s;port=%d;dbname=%s', $credentials['host'], $credentials['port'], $credentials['path']);
                      $conn = new \PDO($dsn, $credentials['username'], $credentials['password'], [
                          \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
