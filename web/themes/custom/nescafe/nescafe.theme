@@ -173,8 +173,7 @@ $promoTotal = 0;
         print "</tbody>\n</table>\n";
 
         print "$totalPromo => $total";
-            dump('promoTotal =>' . $promoTotal);
-            dump($total);
+
             if(($promoTotal % 7) == 0){
                 echo "У тебя награда 3 степени";
             }
