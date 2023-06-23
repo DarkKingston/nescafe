@@ -12,11 +12,6 @@ function nescafe_preprocess_links__language_block(&$lang){
 
 }
 
-$config = new Config();
-
-                 $credentials = $config->credentials('database');
-dump($credentials);
-
 function nescafe_preprocess_webform__promo_code(&$form){
 
      $curr_id_for_user = \Drupal::currentUser()->id();
