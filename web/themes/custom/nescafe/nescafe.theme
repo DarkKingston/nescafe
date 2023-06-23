@@ -11,7 +11,6 @@ function nescafe_preprocess_links__language_block(&$lang){
     $lang['current_lang'] =  \Drupal::languageManager()->getCurrentLanguage()->getId();
 
 }
-
 function nescafe_preprocess_webform__promo_code(&$form){
 
      $curr_id_for_user = \Drupal::currentUser()->id();
@@ -66,7 +65,8 @@ function nescafe_preprocess_menu__header_btn(&$logged){
 
 
 function nescafe_preprocess_page(&$page){
-    //dump($page);
+    dump($page);
+    dump(\Drupal::currentUser());
 }
 
 
