@@ -192,8 +192,10 @@ foreach($result2 as $record2){
             $getUserID = "SELECT value FROM webform_submission_data WHERE webform_id = 'promo_code' AND name = 'user_id'";
             $res = $conn->query($getUserID);
             $res->setFetchMode(\PDO::FETCH_OBJ);
-            foreach($getUserID as $userID){}
-            dump($userID->value);
+            foreach($getUserID as $userID){
+            dump($userID);
+            }
+            dump($getUserID);
             if($curr_id_for_user == $userID->value){
                 if(($promoTotal % 7) == 0){
                     echo "У тебя награда 3 степени";
