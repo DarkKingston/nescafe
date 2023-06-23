@@ -46,7 +46,7 @@ function nescafe_preprocess_webform__promo_code(&$form){
 }
 
 function nescafe_preprocess_menu__header_btn(&$logged){
-       //dump($logged);
+
       $current_user = \Drupal::currentUser();
         if ($current_user->isAnonymous()) {
           // Анонимный юзер...
