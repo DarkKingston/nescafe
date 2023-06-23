@@ -165,7 +165,7 @@ $total = 0;
 
                         $count++;
             }
-            dump(count($record));
+            dump(count($result));
         }
         print "</tbody>\n</table>\n";
 
