@@ -5,10 +5,7 @@ use Platformsh\ConfigReader\Config;
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-/**
- * @file
- * Functions to support theming.
- */
+
 
 function nescafe_preprocess_links__language_block(&$lang){
     $lang['current_lang'] =  \Drupal::languageManager()->getCurrentLanguage()->getId();
