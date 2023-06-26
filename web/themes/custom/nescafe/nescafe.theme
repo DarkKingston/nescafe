@@ -199,6 +199,10 @@ foreach($result2 as $record2){
 
  if(in_array('authenticated', $roles) && in_array('manager_filiala', $roles) && !in_array('administrator', $roles)){
      foreach($result as $record){
+        $getPhone = "SELECT * FROM user__field_phone WHERE uid = $record->uid";
+        foreach($getPhone as $k=>$phone){
+
+        }
         dump($record);
      }
      if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru'){
@@ -223,7 +227,7 @@ foreach($result2 as $record2){
 
                  if ($result) {
 
-                         printf("<tr><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $record->name, $record->mail);
+                         printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $record->name, $record->mail,$getPhone[$k]);
 
                              $count++;
                  }
