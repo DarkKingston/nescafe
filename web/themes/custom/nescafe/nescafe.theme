@@ -204,7 +204,7 @@ foreach($result2 as $record2){
 
         }
         //dump($record);
-     }
+
      if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru'){
          $name = 'Имя';
          $mail = 'Почта';
@@ -234,6 +234,7 @@ foreach($result2 as $record2){
 
              }
              print "</tbody>\n</table>\n";
+             }
  }
         print "$totalPromo => $total";
             $getUserID = "SELECT * FROM webform_submission_data WHERE webform_id = 'promo_code' AND name = 'user_id'";
