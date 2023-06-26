@@ -158,6 +158,7 @@ if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro'){
     $number = 'Numarul de puncte';
     $totalPromo = 'Puncte acumulate';
 }
+ if(in_array('authenticated', $roles) && !in_array('manager_filiala', $roles)){
         print <<<TABLE
 <table id="table8">
 <thead>
@@ -194,7 +195,11 @@ foreach($result2 as $record2){
 
         }
         print "</tbody>\n</table>\n";
+}
 
+ if(in_array('authenticated', $roles) && in_array('manager_filiala', $roles) && !in_array('administrator', $roles)){
+     dump(record);
+ }
         print "$totalPromo => $total";
             $getUserID = "SELECT * FROM webform_submission_data WHERE webform_id = 'promo_code' AND name = 'user_id'";
             $res = $conn->query($getUserID);
