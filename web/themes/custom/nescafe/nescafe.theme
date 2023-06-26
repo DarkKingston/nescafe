@@ -131,6 +131,9 @@ dump($roles);
         if(in_array('authenticated', $roles) && !in_array('administrator', $roles)){
           $sqlQuery = "SELECT * FROM promo_code WHERE active = '".$curr_id_for_user."'";
         }
+        if(in_array('authenticated', $roles) && in_array('manager_filiala', $roles) && !in_array('administrator', $roles)){
+          $sqlQuery = "SELECT * FROM users_field_data";
+        }
 
 
 
@@ -144,6 +147,7 @@ dump($roles);
     $result2->setFetchMode(\PDO::FETCH_OBJ);
 
     if ($result) {
+    dump($result);
 if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru'){
     $promo = 'Промо код';
     $number = 'Количество очков';
