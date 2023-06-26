@@ -180,15 +180,16 @@
 
         for (let i = 0; i < nescafe.length; i++) {
             const nescafePoint = nescafe[i];
+
             const contentString =
                 '<div id="content">' +
                 '<div id="siteNotice">' +
                 "</div>" +
-                '<h1 id="firstHeading" class="firstHeading">nescafePoint[4]</h1>' +
+                `<h1 id="firstHeading" class="firstHeading">`+ nescafePoint[4] +`</h1>` +
                 '<div id="bodyContent">' +
-                "<p>nescafePoint[5]</p>" +
-                '<p>nescafePoint[6]</p>" +
-            '<p>nescafePoint[7]</p>" +
+                `<p>${nescafePoint[5]}</p>` +
+                `<p>${nescafePoint[6]}</p>` +
+            `<p>${nescafePoint[7]}</p>` +
             "</div>" +
             "</div>";
 
