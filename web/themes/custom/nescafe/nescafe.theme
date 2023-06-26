@@ -72,7 +72,7 @@ function nescafe_preprocess_page(&$page){
 function nescafe_preprocess_block__webform_5(&$elem){
 
     $curr_id_for_user = \Drupal::currentUser()->id();
-
+    $current_user = \Drupal::currentUser();
     $config = new Config();
 
     $credentials = $config->credentials('database');
