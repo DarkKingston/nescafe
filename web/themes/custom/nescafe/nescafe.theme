@@ -199,7 +199,7 @@ foreach($result2 as $record2){
 
  if(in_array('authenticated', $roles) && in_array('manager_filiala', $roles) && !in_array('administrator', $roles)){
      foreach($result as $record){
-        $getPhone = "SELECT * FROM user__field_phone WHERE uid = '".$record->uid."' ";
+        $getPhone = "SELECT * FROM user__field_phone";
         foreach($getPhone as $phoneVal){
             dump($phoneVal);
             dump($getPhone);
