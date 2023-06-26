@@ -125,12 +125,14 @@ $credentials = $config->credentials('database');
 
     $roles = \Drupal::currentUser()->getRoles();
 dump($roles);
-        if(in_array('administrator', $roles)) {
-          $sqlQuery = "SELECT * FROM promo_code WHERE active <> 0";
-        }
         if(in_array('authenticated', $roles)){
           $sqlQuery = "SELECT * FROM promo_code WHERE active = '".$curr_id_for_user."'";
+          if(in_array('administrator', $roles)) {
+                    $sqlQuery = "SELECT * FROM promo_code WHERE active <> 0";
+          }
         }
+
+
 
 
     // Show table.
