@@ -14,8 +14,6 @@ function nescafe_preprocess_links__language_block(&$lang){
 function nescafe_preprocess_webform__promo_code(&$form){
 
      $curr_id_for_user = \Drupal::currentUser()->id();
-
-        if($_POST['introduceti_codul_promotional']){
          $config = new Config();
          $credentials = $config->credentials('database');
          $dsn = sprintf('mysql:host=%s;port=%d;dbname=%s', $credentials['host'], $credentials['port'], $credentials['path']);
@@ -39,7 +37,7 @@ function nescafe_preprocess_webform__promo_code(&$form){
               //echo "ok";
              }
         }
-}
+
 }
 
 function nescafe_preprocess_menu__header_btn(&$logged){
