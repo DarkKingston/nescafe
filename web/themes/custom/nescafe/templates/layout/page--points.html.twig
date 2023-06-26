@@ -151,12 +151,12 @@
     // Data for the markers consisting of a name, a LatLng and a zIndex for the
     // order in which these markers should display on top of each other.
     const nescafe = [
-        ["Orașul Edineț", 48.17015843470841, 27.30448581277663, 6],
-        ["Orașul Cahul", 45.905459239020445, 28.194165997427962, 5],
-        ["Orașul Bălți", 47.784316422062425, 27.92505121792432, 4],
-        ["Orașul Comrat", 46.307130047610556, 28.657260912116733, 3],
-        ["Orașul Chișinău", 47.00734022586018, 28.780486265878775, 2],
-        ["Orașul Chișinău", 46.983945957556806, 28.865820037293457, 1],
+        ["Orașul Edineț", 48.17015843470841, 27.30448581277663, 6, "nume oras", "Descriere", "imagine", "link"],
+        ["Orașul Cahul", 45.905459239020445, 28.194165997427962, 5, "nume oras", "Descriere", "imagine", "link"],
+        ["Orașul Bălți", 47.784316422062425, 27.92505121792432, 4, "nume oras", "Descriere", "imagine", "link"],
+        ["Orașul Comrat", 46.307130047610556, 28.657260912116733, 3, "nume oras", "Descriere", "imagine", "link"],
+        ["Orașul Chișinău", 47.00734022586018, 28.780486265878775, 2, "nume oras", "Descriere", "imagine", "link"],
+        ["Orașul Chișinău", 46.983945957556806, 28.865820037293457, 1, "nume oras", "Descriere", "imagine", "link"],
     ];
 
     function setMarkers(map) {
@@ -170,32 +170,7 @@
             anchor: new google.maps.Point(0, 37),
         };
 
-        const contentString =
-            '<div id="content">' +
-            '<div id="siteNotice">' +
-            "</div>" +
-            '<h1 id="firstHeading" class="firstHeading">Uluru</h1>' +
-            '<div id="bodyContent">' +
-            "<p><b>Nescafe</b>, also referred to as <b>Ayers Rock</b>, is a large " +
-            "sandstone rock formation in the southern part of the " +
-            "Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) " +
-            "south west of the nearest large town, Alice Springs; 450&#160;km " +
-            "(280&#160;mi) by road. Kata Tjuta and Uluru are the two major " +
-            "features of the Uluru - Kata Tjuta National Park. Uluru is " +
-            "sacred to the Pitjantjatjara and Yankunytjatjara, the " +
-            "Aboriginal people of the area. It has many springs, waterholes, " +
-            "rock caves and ancient paintings. Uluru is listed as a World " +
-            "Heritage Site.</p>" +
-            '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' +
-            "https://en.wikipedia.org/w/index.php?title=Uluru</a> " +
-            "(last visited June 22, 2009).</p>" +
-            "</div>" +
-            "</div>";
 
-        const infowindow = new google.maps.InfoWindow({
-            content: contentString,
-            ariaLabel: "nescafe",
-        });
 
 
         const shape = {
@@ -205,7 +180,22 @@
 
         for (let i = 0; i < nescafe.length; i++) {
             const nescafePoint = nescafe[i];
+            const contentString =
+                '<div id="content">' +
+                '<div id="siteNotice">' +
+                "</div>" +
+                '<h1 id="firstHeading" class="firstHeading">nescafePoint[4]</h1>' +
+                '<div id="bodyContent">' +
+                "<p>nescafePoint[5]</p>" +
+                '<p>nescafePoint[6]</p>" +
+            '<p>nescafePoint[7]</p>" +
+            "</div>" +
+            "</div>";
 
+            const infowindow = new google.maps.InfoWindow({
+                content: contentString,
+                ariaLabel: "nescafe",
+            });
             const marker = new google.maps.Marker({
                 position: { lat: nescafePoint[1], lng: nescafePoint[2] },
                 map,
