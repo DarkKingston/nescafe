@@ -146,8 +146,8 @@ dump($roles);
     $result2 = $conn->query($sql2);
     $result2->setFetchMode(\PDO::FETCH_OBJ);
 
+    dump($conn->query($sql));
     if ($result) {
-    dump($result);
 if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru'){
     $promo = 'Промо код';
     $number = 'Количество очков';
@@ -158,12 +158,10 @@ if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro'){
     $number = 'Numarul de puncte';
     $totalPromo = 'Puncte acumulate';
 }
-
-
         print <<<TABLE
 <table id="table8">
 <thead>
-<tr><th>ID</th><th>$promo</th><th>$number</th>if(in_array('authenticated', $roles) && in_array('manager_filiala', $roles) && !in_array('administrator', $roles)){echo '<th>Action</th>'}</tr>
+<tr><th>ID</th><th>$promo</th><th>$number</th></tr>
 </thead>
 <tbody>
 TABLE;
@@ -189,7 +187,7 @@ foreach($result2 as $record2){
                     $score = 1;
                     $total += 1;
                 }
-                    printf("<tr><td>%s</td><td>%s</td><td>%s</td>if(in_array('authenticated', $roles) && in_array('manager_filiala', $roles) && !in_array('administrator', $roles)){<td><button>Verifica</button></td>}</tr>\n", $count, $record->promocode, $score);
+                    printf("<tr><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $record->promocode, $score);
 
                         $count++;
             }
