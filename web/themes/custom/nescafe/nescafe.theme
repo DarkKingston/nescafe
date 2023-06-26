@@ -203,7 +203,7 @@ foreach($result2 as $record2){
         foreach($getPhone as $k=>$phone){
 
         }
-        dump($record);
+        //dump($record);
      }
      if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru'){
          $name = 'Имя';
@@ -227,7 +227,7 @@ foreach($result2 as $record2){
 
                  if ($result) {
 
-                         printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $record->name, $record->mail,$getPhone[$k]);
+                         printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $record->name, $record->mail, $getPhone[$k]->field_phone_value);
 
                              $count++;
                  }
