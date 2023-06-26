@@ -476,6 +476,11 @@ form .form-item label{
   margin-top: 15px;
   font-weight: bold;
 }
+
+#table8 tr{
+  max-height: 40px;
+}
+
 #table8 th {
   padding: 10px 20px;
   background: #56433D;
