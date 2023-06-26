@@ -209,18 +209,20 @@ foreach($result2 as $record2){
      if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru'){
          $name = 'Имя';
          $phone = 'Телефон';
+         $action = "Действия";
          $mail = 'Почта';
      }
      if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro'){
          $name = 'Nume';
          $phone = "Telefon";
+         $action = 'Actiune';
          $mail = 'Posta';
      }
 
              print <<<TABLE
      <table id="table8">
      <thead>
-     <tr><th>ID</th><th>$name</th><th>$mail</th><th>$phone</th></tr>
+     <tr><th>ID</th><th>$name</th><th>$mail</th><th>$phone</th><th>$action</th></tr>
      </thead>
      <tbody>
      TABLE;
@@ -230,7 +232,7 @@ foreach($result2 as $record2){
 
                  if ($result) {
 
-                         printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $record->name, $record->mail, $phone->field_phone_value);
+                         printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><button>%s</button></td></tr>\n", $count, $record->name, $record->mail, $phoneVal->field_phone_value, $action);
 
                              $count++;
                  }
