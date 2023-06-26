@@ -151,27 +151,24 @@
     // Data for the markers consisting of a name, a LatLng and a zIndex for the
     // order in which these markers should display on top of each other.
     const nescafe = [
-        ["Orașul Edineț", 48.17015843470841, 27.30448581277663, 6, "nume oras", "Descriere", "imagine", "link"],
-        ["Orașul Cahul", 45.905459239020445, 28.194165997427962, 5, "nume oras", "Descriere", "imagine", "link"],
-        ["Orașul Bălți", 47.784316422062425, 27.92505121792432, 4, "nume oras", "Descriere", "imagine", "link"],
-        ["Orașul Comrat", 46.307130047610556, 28.657260912116733, 3, "nume oras", "Descriere", "imagine", "link"],
-        ["Orașul Chișinău", 47.00734022586018, 28.780486265878775, 2, "nume oras", "Descriere", "imagine", "link"],
-        ["Orașul Chișinău", 46.983945957556806, 28.865820037293457, 1, "nume oras", "Descriere", "imagine", "link"],
+        ["Orașul Edineț", 48.17015843470841, 27.30448581277663, 6, "Edinet", "Descriere", "imagine", "link"],
+        ["Orașul Cahul", 45.905459239020445, 28.194165997427962, 5, "Cahul", "Descriere", "imagine", "link"],
+        ["Orașul Bălți", 47.784316422062425, 27.92505121792432, 4, "Bălți", "Descriere", "imagine", "link"],
+        ["Orașul Comrat", 46.307130047610556, 28.657260912116733, 3, "Comrat", "Descriere", "imagine", "link"],
+        ["Orașul Chișinău", 47.00734022586018, 28.780486265878775, 2, "Chișinău", "Descriere", "imagine", "link"],
+        ["Orașul Chișinău", 46.983945957556806, 28.865820037293457, 1, "Chișinău2", "Descriere", "imagine", "link"],
     ];
 
     function setMarkers(map) {
         const image = {
             url: "https://stag-yxxbuhy-qkl3gjov7gxou.eu-5.platformsh.site/sites/default/files/2023-06/pin.png",
-            // This marker is 20 pixels wide by 32 pixels high.
+            // This marker is 31 pixels wide by 37 pixels high.
             size: new google.maps.Size(31, 37),
             // The origin for this image is (0, 0).
             origin: new google.maps.Point(0, 0),
-            // The anchor for this image is the base of the flagpole at (0, 32).
+            // The anchor for this image is the base of the flagpole at (0, 37).
             anchor: new google.maps.Point(0, 37),
         };
-
-
-
 
         const shape = {
             coords: [1, 1, 1, 20, 18, 20, 18, 1],
