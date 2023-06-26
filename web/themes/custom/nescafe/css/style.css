@@ -688,3 +688,7 @@ form .form-item label{
 .user-login-form+ul{
   display: none;
 }
+
+.form-item--error-message{
+  display: none;
+}
