@@ -93,7 +93,9 @@ function nescafe_preprocess_block__webform_5(&$elem){
             foreach ($result as $record) {
             }
             if($record){
-                print '<div class="cookie_success" style="opacity: 0;height: 0;">ok</div>';
+             if ($current_user->isAuthenticated()) {
+                        print '<div class="cookie_success" style="opacity: 0;height: 0;">ok</div>';
+                    }
             }
         }
 }
