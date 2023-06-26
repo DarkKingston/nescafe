@@ -59,7 +59,6 @@ function nescafe_preprocess_menu__header_btn(&$logged){
 
 
         }
-header("Location: /account/");
 }
 
 /*$current_path = \Drupal::service('path.current')->getPath();*/
