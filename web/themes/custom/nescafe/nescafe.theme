@@ -198,7 +198,9 @@ foreach($result2 as $record2){
 }
 
  if(in_array('authenticated', $roles) && in_array('manager_filiala', $roles) && !in_array('administrator', $roles)){
-     dump($record);
+     foreach($result as $record){
+        dump($record);
+     }
  }
         print "$totalPromo => $total";
             $getUserID = "SELECT * FROM webform_submission_data WHERE webform_id = 'promo_code' AND name = 'user_id'";
