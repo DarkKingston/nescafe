@@ -201,6 +201,35 @@ foreach($result2 as $record2){
      foreach($result as $record){
         dump($record);
      }
+     if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru'){
+         $name = 'Имя';
+         $mail = 'Почта';
+     }
+     if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro'){
+         $name = 'Nume';
+         $mail = 'Posta';
+     }
+
+             print <<<TABLE
+     <table id="table8">
+     <thead>
+     <tr><th>ID</th><th>$name</th><th>$mail</th></tr>
+     </thead>
+     <tbody>
+     TABLE;
+     $count = 1;
+             foreach ($result as $record) {
+
+
+                 if ($result) {
+
+                         printf("<tr><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $record->name, $record->mail);
+
+                             $count++;
+                 }
+
+             }
+             print "</tbody>\n</table>\n";
  }
         print "$totalPromo => $total";
             $getUserID = "SELECT * FROM webform_submission_data WHERE webform_id = 'promo_code' AND name = 'user_id'";
