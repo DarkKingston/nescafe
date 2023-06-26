@@ -201,7 +201,7 @@ foreach($result2 as $record2){
      foreach($result as $record){
         $getPhone = "SELECT * FROM user__field_phone WHERE uid = $record->uid";
         foreach($getPhone as $k=>$phone){
-
+            dump($phone);
         }
         //dump($record);
 
