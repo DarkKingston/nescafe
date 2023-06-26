@@ -689,6 +689,8 @@ form .form-item label{
   display: none;
 }
 
-/*.form-item--error-message{*/
-/*  display: none;*/
-/*}*/
+.form-item--error-message{
+  width: 310px;
+  overflow: hidden;
+  white-space: nowrap
+}
