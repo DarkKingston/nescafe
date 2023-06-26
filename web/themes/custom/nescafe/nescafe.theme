@@ -124,7 +124,7 @@ $credentials = $config->credentials('database');
     ]);
 
     $roles = \Drupal::currentUser()->getRoles();
-dump($roles);
+//dump($roles);
         if(in_array('administrator', $roles)) {
             $sqlQuery = "SELECT * FROM promo_code WHERE active <> 0";
         }
@@ -146,7 +146,7 @@ dump($roles);
     $result2 = $conn->query($sql2);
     $result2->setFetchMode(\PDO::FETCH_OBJ);
 
-    dump($conn->query($sql));
+    //dump($conn->query($sql));
     if ($result) {
 if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru'){
     $promo = 'Промо код';
