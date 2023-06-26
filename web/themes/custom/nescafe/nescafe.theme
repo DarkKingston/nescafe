@@ -30,7 +30,7 @@ function nescafe_preprocess_webform__promo_code(&$form){
         if ($result) {
         foreach ($result as $record) {
             if($record->active == 0){
-                     $sql = "UPDATE promo_code SET active = '".$curr_id_for_user."' WHERE promocode = '".$_POST['introduceti_codul_promotional']."' AND active = 0  ";
+                     $sql = "UPDATE promo_code SET active = '".$curr_id_for_user."' WHERE promocode = '".isset($_POST['introduceti_codul_promotional'])."' AND active = 0  ";
             }
         }
              if($conn->query($sql)){
