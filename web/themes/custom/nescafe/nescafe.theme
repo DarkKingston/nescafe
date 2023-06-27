@@ -342,3 +342,13 @@ function nescafe_preprocess_request(Request $request) {
   drupal_set_message('Код промоции: ' . $codPromotional);
   drupal_set_message('User ID: ' . $userId);
 }
+
+/*Добавление роли по умолчанию в регистрацию*/
+use Drupal\user\UserInterface;
+dump(user_roles());
+function nescafe_preprocess_user_insert(UserInterface $user) {
+    $rid = array_search('игрок', user_roles());
+
+    $user->addRole($rid);
+    $user->save();
+}
