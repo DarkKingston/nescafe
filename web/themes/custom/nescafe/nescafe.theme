@@ -232,9 +232,11 @@ foreach($result2 as $record2){
                         }else{
                             $phoneValItem == '';
                         }
-                    }
-                         printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><button>%s</button></td></tr>\n", $count, $record->name, $record->mail, $phoneValItem, $action);
 
+                         printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><button>%s</button></td></tr>\n", $count, $record->name, $record->mail, $phoneValItem, $action);
+                    }
+                    dump($getValPhoneQuery);
+                    dump($getValPhoneQuery[0]);
                              $count++;
                  }
 
