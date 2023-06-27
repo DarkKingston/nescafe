@@ -14,6 +14,7 @@ regions:
   points: Points page
   contacts: Contact Page
   contactsModal: Modal for phone
+  verify: Verificarea datelor
   policy: Content Policy Page
   termeni: Content Termeni Page
   register: Register
