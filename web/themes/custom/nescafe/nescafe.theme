@@ -225,19 +225,15 @@ foreach($result2 as $record2){
      TABLE;
      $count = 1;
      if ($result) {
-              foreach($getValPhoneQuery as $phoneVal){
-                  foreach ($result as $record) {
-                      if($record->uid == $phoneVal['revision_id']){
-                          printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><button>%s</button></td></tr>\n", $count, $record->name, $record->mail, $phoneVal['field_phone_value'], $action);
-                      }else{
-                          printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><button>%s</button></td></tr>\n", $count, $record->name, $record->mail, '', $action);
+         foreach ($result as $record) {
 
-                      }
-                  }
-                       $count++;
-              }
+                 printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>if($record->uid == $phoneVal['revision_id']){$phoneVal['revision_id'];}</td><td><button>%s</button></td></tr>\n", $count, $record->name, $record->mail, $action);
 
-           }
+              $count++;
+         }
+
+
+     }
      print "</tbody>\n</table>\n";
      }
  }
