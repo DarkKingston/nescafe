@@ -202,6 +202,8 @@ foreach($result2 as $record2){
         $getValPhone = "SELECT * FROM user__field_phone";
         $getValPhoneQuery = $conn->query($getValPhone);
         foreach($getValPhoneQuery as $phoneVal){
+
+                    dump($phoneVal->field_phone_value);
         }
 
      if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru'){
@@ -226,7 +228,6 @@ foreach($result2 as $record2){
      TABLE;
      $count = 1;
              foreach ($result as $record) {
-                    dump($phoneVal->field_phone_value);
                  if ($result) {
 
                          printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><button>%s</button></td></tr>\n", $count, $record->name, $record->mail, $phoneVal->field_phone_value, $action);
