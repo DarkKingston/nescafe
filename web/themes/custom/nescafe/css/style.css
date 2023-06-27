@@ -534,6 +534,9 @@ form .form-item label{
 .btn_main button:hover{
   background: #699200;
 }
+.btn_main.action:hover{
+  background: #699200;
+}
 
 .auth_btn a:hover{
   background: #D10100;
