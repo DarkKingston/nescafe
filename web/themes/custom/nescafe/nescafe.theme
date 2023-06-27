@@ -302,15 +302,39 @@ foreach($result2 as $record2){
                 if($curr_id_for_user == $userID->value){
                     if(($promoTotal % 7) == 0){
                         echo "У тебя награда 3 степени";
-                        $getGift = "SELECT * FROM webform_submission_data WHERE webform_id = 'cadouri' AND sid = '106' ";
+                        $arrData  = array();
+                        $getGift = "SELECT * FROM webform_submission_data WHERE webform_id = 'cadouri'  ";
                         $giftVal = $conn->query($getGift);
                         foreach($giftVal as $gift=>$val){
-                            dump($val);
-                            dump($val['value']);
+                            $arrData[ $val['sid'] ][ $val['name'] ] = $val;
+                            //dump($val);
+                            //dump($val['value']);
                         }
+
+                        dump($arrData);
+
+                        $arrShow = array();
+                        foreach($arrData as $IDgift => $val){
+                            foreach($val as $name => $val2){
+                                if( $name == 'categoria_de_produs' && $val2['categoria_de_produs'] == 3 ) {
+                                    $val['title'] = $val['']
+                                    // $arrShow[] = $val;
+                                }
+                            }
+                        }
+                        dump( $arrShow );
+
+
+                        $option = '';
+                         foreach($arrShow as $ft => $val){
+                            $option .= " <option>".$val['']."</option> ";
+                         }
+
+
                         print "<div class='use-ajax webform-dialog webform-dialog-narrow' data-dialog-type='modal'>
 
                             <select>
+
                                 <option>213</option>
                             </select>
                             <button class='btn_main action'>Alege</button>
