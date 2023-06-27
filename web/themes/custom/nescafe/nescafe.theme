@@ -124,7 +124,9 @@ $credentials = $config->credentials('database');
     ]);
 
     $roles = \Drupal::currentUser()->getRoles();
-//dump($roles);
+
+/* Sql запросы по ролям */
+
         if(in_array('administrator', $roles)) {
             $sqlQuery = "SELECT * FROM promo_code WHERE active <> 0";
         }
@@ -138,8 +140,9 @@ $credentials = $config->credentials('database');
 
 
 
-    // Show table.
+    // Кастомный запрос по ролям приравниваю к переменной sql
     $sql = $sqlQuery;
+
     $result = $conn->query($sql);
     $result->setFetchMode(\PDO::FETCH_OBJ);
     $sql2 = "SELECT * FROM promo_code WHERE active <> 0";
@@ -158,6 +161,8 @@ if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro'){
     $number = 'Numarul de puncte';
     $totalPromo = 'Puncte acumulate';
 }
+
+/*Обычный пользователь Вывод промокодов который он вводил*/
  if(in_array('authenticated', $roles) && !in_array('manager_filiala', $roles)){
         print <<<TABLE
 <table id="table8">
@@ -197,6 +202,7 @@ foreach($result2 as $record2){
         print "</tbody>\n</table>\n";
 }
 
+/* Для менеджера филиала */
  if(in_array('authenticated', $roles) && in_array('manager_filiala', $roles) && !in_array('administrator', $roles)){
      foreach($result as $record){
         $getValPhone = "SELECT * FROM user__field_phone";
@@ -234,6 +240,8 @@ foreach($result2 as $record2){
      print "</tbody>\n</table>\n";
      }
  }
+
+ /*Код с выводом наград*/
         print "$totalPromo => $total";
             $getUserID = "SELECT * FROM webform_submission_data WHERE webform_id = 'promo_code' AND name = 'user_id'";
             $res = $conn->query($getUserID);
