@@ -313,36 +313,36 @@ foreach($result2 as $record2){
 
                         // dump($arrData);
 
-                        $arrShow = array();
+                        $arrShowF = array();
                         foreach($arrData as $IDgift => $val){
                             foreach($val as $name => $val2){
                                 if( $name == 'categoria_de_produs' && $val2['value'] == 3 ) {
                                     // $val['title'] = $val[''];
-                                    $arrShow[] = array( 'name' => $arrData[$IDgift]['premiu']['value'] , 'id' => $IDgift );
+                                    $arrShowF[[$IDgift]['filiala']['value']][] = array( 'name' => $arrData[$IDgift]['premiu']['value'] , 'id' => $IDgift );
                                 }
                             }
                         }
-                        dump( $arrShow );
+                        dump( $arrShowF );
 
+                        foreach($arrShowF as $filiala => $arrShow){
 
-                        $option = '';
-                         foreach($arrShow as $ft => $val){
-                            $option .= " <option>".$val['name']."</option> ";
-                         }
+                                                $option = '';
+                                                 foreach($arrShow as $ft => $val){
+                                                    $option .= " <option>".$val['name']."</option> ";
+                                                 }
 
-                         dump($option);
+                            print "<div class='use-ajax webform-dialog webform-dialog-narrow' data-dialog-type='modal'>
+                                    ". $filiala ."
+                                <select>
 
+                                    ".$option."
+                                </select>
+                                <button class='btn_main action'>Alege</button>
 
-                        print "<div class='use-ajax webform-dialog webform-dialog-narrow' data-dialog-type='modal'>
+                            </div>
+                            ";
+                        }
 
-                            <select>
-
-                                ".$option."
-                            </select>
-                            <button class='btn_main action'>Alege</button>
-
-                        </div>
-                        ";
                     }
                 }
                 if($total >= 10 && $total < 15){

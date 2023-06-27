@@ -14,6 +14,16 @@
       if(document.querySelector('.cookie_success') != null){
         $('#block-webform-5').hide();
       }
+
+      $(".webform-button--submit").click(function(){
+          $.ajax({
+            url: "https://google.md",
+            success: function(result){
+              console.log(result);
+            }
+          });
+      });
+
     }
   };
 })(jQuery);
