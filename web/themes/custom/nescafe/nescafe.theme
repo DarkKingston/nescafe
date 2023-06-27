@@ -200,12 +200,8 @@ foreach($result2 as $record2){
  if(in_array('authenticated', $roles) && in_array('manager_filiala', $roles) && !in_array('administrator', $roles)){
      foreach($result as $record){
         $getValPhone = "SELECT * FROM user__field_phone";
-        $getValPhoneQuery = $conn->query($sql);
-        foreach($getValPhoneQuery as $phoneVal){
-        }
-            dump($getValPhone);
-            dump($phoneVal);
-            dump('123');
+        $getValPhoneQuery = $conn->query($getValPhone);
+
 
      if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru'){
          $name = 'Имя';
@@ -228,12 +224,12 @@ foreach($result2 as $record2){
      <tbody>
      TABLE;
      $count = 1;
-             foreach ($result as $record) {
+             foreach ($result as $k=>$record) {
 
 
                  if ($result) {
 
-                         printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><button>%s</button></td></tr>\n", $count, $record->name, $record->mail, $phoneVal->field_phone_value, $action);
+                         printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><button>%s</button></td></tr>\n", $count, $record->name, $record->mail, $getValPhoneQuery[$k]->field_phone_value, $action);
 
                              $count++;
                  }
