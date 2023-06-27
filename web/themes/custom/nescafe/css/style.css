@@ -699,3 +699,17 @@ form .form-item label{
   overflow: hidden;
   white-space: nowrap
 }
+
+.btn_main.action{
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 20px;
+  color: #FFFFFF;
+  background: #7BA60A;
+  border-radius: 4px;
+  padding: 13px 23px 12px 27px;
+  border: 0;
+  cursor: pointer;
+}
