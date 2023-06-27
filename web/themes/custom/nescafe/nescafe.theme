@@ -227,7 +227,7 @@ foreach($result2 as $record2){
      $relationPhone = [];
      if ($result) {
          foreach ($result as $record) {
-             $foreach($getValPhoneQuery as $value){
+             foreach($getValPhoneQuery as $value){
                  $relationPhone[] = $value['field_phone_value'];
              }
              dump($relationPhone);
