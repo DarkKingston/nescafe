@@ -201,8 +201,7 @@ foreach($result2 as $record2){
      foreach($result as $record){
         $getValPhone = "SELECT * FROM user__field_phone";
         $getValPhoneQuery = $conn->query($getValPhone);
-        foreach($getValPhoneQuery as $phoneVal){
-        }
+
 
      if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru'){
          $name = 'Имя';
@@ -227,11 +226,13 @@ foreach($result2 as $record2){
      $count = 1;
              foreach ($result as $record) {
                  if ($result) {
+                    foreach($getValPhoneQuery as $phoneVal){
                         if($record->uid == $phoneVal['revision_id']){
                             $phoneValItem = $phoneVal['field_phone_value'];
                         }else{
                             $phoneValItem == '';
                         }
+                    }
                          printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><button>%s</button></td></tr>\n", $count, $record->name, $record->mail, $phoneValItem, $action);
 
                              $count++;
