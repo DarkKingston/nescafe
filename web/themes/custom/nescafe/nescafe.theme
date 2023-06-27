@@ -308,8 +308,8 @@ foreach($result2 as $record2){
                                 <option>cadou2</option>
                                 <option>cadou3</option>
                             </select>
+                            <button class='btn_main action'>Alege</button>
                         </div>
-                        <button class='btn_main action'>Alege</button>
                         ";
                     }
                 }
