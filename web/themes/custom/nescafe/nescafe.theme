@@ -287,8 +287,13 @@ foreach($result2 as $record2){
       }
 
  /*Код с выводом наград*/
-        print "$totalPromo => $total";
-            $getUserID = "SELECT * FROM webform_submission_data WHERE webform_id = 'promo_code' AND name = 'user_id'";
+
+        if(in_array('authenticated', $roles) && !in_array('manager_filiala', $roles) && !in_array('administrator', $roles)){
+            /*вывод количество набранных очков*/
+            print "$totalPromo => $total";
+            /*вывод количество набранных очков конец*/
+        }
+             $getUserID = "SELECT * FROM webform_submission_data WHERE webform_id = 'promo_code' AND name = 'user_id'";
             $res = $conn->query($getUserID);
             $res->setFetchMode(\PDO::FETCH_OBJ);
             foreach($res as $userID){
