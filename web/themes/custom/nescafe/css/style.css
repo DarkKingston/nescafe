@@ -734,3 +734,7 @@ form .form-item label{
   opacity: 0;
   height: 1px !important;
 }
+
+.ui-dialog .ui-dialog-content{
+  overflow: hidden;
+}
