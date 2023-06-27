@@ -306,6 +306,7 @@ foreach($result2 as $record2){
                         $giftVal = $conn->query($getGift);
                         foreach($giftVal as $gift=>$val){
                             dump($val);
+                            dump($val['value']);
                         }
                         print "<div class='use-ajax webform-dialog webform-dialog-narrow' data-dialog-type='modal'>
 
