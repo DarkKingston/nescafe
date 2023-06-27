@@ -716,3 +716,16 @@ form .form-item label{
   border: 0;
   cursor: pointer;
 }
+
+.ui-dialog .ui-dialog-buttonset button{
+  font-weight: 700;
+  font-size: 17px !important;
+  color: #FFFFFF;
+  background: #E31D1C;
+  border-radius: 4px;
+  cursor: pointer;
+  border: none;
+  height: 45px;
+  max-width: 250px;
+  padding: 12px 25px;
+}
