@@ -17,7 +17,7 @@
 
       $(".webform-button--submit").click(function(){
           $.ajax({
-            url: "https://google.md",
+            url: "https://www.google.md/",
             success: function(result){
               console.log(result);
             }
