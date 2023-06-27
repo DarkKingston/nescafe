@@ -204,6 +204,9 @@ foreach($result2 as $record2){
 
 /* Для менеджера филиала */
    if(in_array('authenticated', $roles) && in_array('manager_filiala', $roles) && !in_array('administrator', $roles)){
+       $mainSql = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` WHERE uid != 0 ORDER BY uid ASC";
+       $result = $conn->query($mainSql);
+       $result->setFetchMode(\PDO::FETCH_OBJ);
        foreach($result as $record){
           $getValPhone = "SELECT * FROM user__field_phone";
           $getValPhoneQuery = $conn->query($getValPhone);
