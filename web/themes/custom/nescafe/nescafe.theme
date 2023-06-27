@@ -132,7 +132,7 @@ $credentials = $config->credentials('database');
           $sqlQuery = "SELECT * FROM promo_code WHERE active = '".$curr_id_for_user."'";
         }
         if(in_array('authenticated', $roles) && in_array('manager_filiala', $roles) && !in_array('administrator', $roles)){
-          $sqlQuery = "SELECT * FROM users_field_data";
+          $sqlQuery = "SELECT * FROM users_field_data FULL JOIN user__field_phone ON users_field_data.uid = user__field_phone.revision_id";
         }
 
 
@@ -227,10 +227,8 @@ foreach($result2 as $record2){
      $relationPhone = [];
      if ($result) {
          foreach ($result as $record) {
-             foreach($getValPhoneQuery as $value){
-                 $relationPhone[] = $value['field_phone_value'];
-             }
-             dump($relationPhone);
+
+             dump($record);
                  printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><button>%s</button></td></tr>\n", $count, $record->name, $record->mail, $phoneVal['field_phone_value'], $action);
 
               $count++;
