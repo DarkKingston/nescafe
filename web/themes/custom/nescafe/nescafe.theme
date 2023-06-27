@@ -298,19 +298,21 @@ foreach($result2 as $record2){
             $res->setFetchMode(\PDO::FETCH_OBJ);
             foreach($res as $userID){
             }
-            if($curr_id_for_user == $userID->value){
-                if(($promoTotal % 7) == 0){
-                    echo "У тебя награда 3 степени";
+            if(in_array('authenticated', $roles) && !in_array('manager_filiala', $roles) && !in_array('administrator', $roles)){
+                if($curr_id_for_user == $userID->value){
+                    if(($promoTotal % 7) == 0){
+                        echo "У тебя награда 3 степени";
+                    }
                 }
-            }
-            if($total >= 10 && $total < 15){
-               echo "У тебя награда 2 степени";
-            }
-            if($total >= 15 && $total < 30){
-                echo "Ты учавствуешь в игре дня";
-            }
-            if($total > 30){
-                echo "Ты учавствуешь в финальную игру";
+                if($total >= 10 && $total < 15){
+                   echo "У тебя награда 2 степени";
+                }
+                if($total >= 15 && $total < 30){
+                    echo "Ты учавствуешь в игре дня";
+                }
+                if($total > 30){
+                    echo "Ты учавствуешь в финальную игру";
+                }
             }
 
     }
