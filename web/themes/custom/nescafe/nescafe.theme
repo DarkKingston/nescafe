@@ -228,15 +228,12 @@ foreach($result2 as $record2){
                  if ($result) {
                     foreach($getValPhoneQuery as $phoneVal){
                         if($record->uid == $phoneVal['revision_id']){
-                            $phoneValItem = $phoneVal['field_phone_value'];
+                            printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><button>%s</button></td></tr>\n", $count, $record->name, $record->mail, $phoneVal['field_phone_value'], $action);
                         }else{
-                            $phoneValItem == '';
+                            printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><button>%s</button></td></tr>\n", $count, $record->name, $record->mail, '', $action);
+
                         }
                     }
-                         printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><button>%s</button></td></tr>\n", $count, $record->name, $record->mail, $phoneValItem, $action);
-
-                    dump($conn->query($getValPhone));
-                    dump($getValPhoneQuery);
                              $count++;
                  }
 
