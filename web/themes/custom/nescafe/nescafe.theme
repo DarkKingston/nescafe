@@ -317,7 +317,7 @@ foreach($result2 as $record2){
                         foreach($arrData as $IDgift => $val){
                             foreach($val as $name => $val2){
                                 if( $name == 'categoria_de_produs' && $val2['categoria_de_produs'] == 3 ) {
-                                    $val['title'] = $val['']
+                                    // $val['title'] = $val[''];
                                     // $arrShow[] = $val;
                                 }
                             }
