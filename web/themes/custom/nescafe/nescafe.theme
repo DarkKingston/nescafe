@@ -224,10 +224,14 @@ foreach($result2 as $record2){
      <tbody>
      TABLE;
      $count = 1;
+     $relationPhone = [];
      if ($result) {
          foreach ($result as $record) {
-
-                 printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>$phoneVal['revision_id']</td><td><button>%s</button></td></tr>\n", $count, $record->name, $record->mail, $action);
+             $foreach($getValPhoneQuery as $value){
+                 array_push($relationPhone, $value['field_phone_value'])
+             }
+             dump($relationPhone);
+                 printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><button>%s</button></td></tr>\n", $count, $record->name, $record->mail, $phoneVal['field_phone_value'], $action);
 
               $count++;
          }
