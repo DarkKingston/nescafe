@@ -226,12 +226,14 @@ foreach($result2 as $record2){
      <tbody>
      TABLE;
      $count = 1;
-             foreach ($result as $k=>$record) {
+             foreach ($result as $record) {
 
-
+                if($record->uid == $phoneVal->revision_id){
+                    dump($phoneVal->field_phone_value)
+                }
                  if ($result) {
 
-                         printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><button>%s</button></td></tr>\n", $count, $record->name, $record->mail, '123', $action);
+                         printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><button>%s</button></td></tr>\n", $count, $record->name, $record->mail, $phoneVal->field_phone_value, $action);
 
                              $count++;
                  }
