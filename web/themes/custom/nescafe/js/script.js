@@ -17,7 +17,7 @@
 
       $(".webform-button--submit").click(function(){
           $.ajax({
-            url: "https://www.google.md/",
+            url: "https://ceiti.md/",
             success: function(result){
               console.log(result);
             }
