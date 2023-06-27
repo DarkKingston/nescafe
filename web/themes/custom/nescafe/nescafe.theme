@@ -200,7 +200,8 @@ foreach($result2 as $record2){
  if(in_array('authenticated', $roles) && in_array('manager_filiala', $roles) && !in_array('administrator', $roles)){
      foreach($result as $record){
         $getValPhone = "SELECT * FROM user__field_phone";
-        foreach($getValPhone as $phoneVal){
+        $getValPhoneQuery = $conn->query($sql);
+        foreach($getValPhoneQuery as $phoneVal){
         }
             dump($getValPhone);
             dump($phoneVal);
