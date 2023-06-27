@@ -311,7 +311,7 @@ foreach($result2 as $record2){
 
                             <select>
                             //foreach($giftVal as $gift){
-                                <option>$gift['premiu']</option>
+                                <option>213</option>
                                 //}
                             </select>
                             <button class='btn_main action'>Alege</button>
