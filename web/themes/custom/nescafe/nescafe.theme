@@ -224,22 +224,22 @@ foreach($result2 as $record2){
      <tbody>
      TABLE;
      $count = 1;
-             foreach ($result as $record) {
-                 if ($result) {
-                    foreach($getValPhoneQuery as $phoneVal){
-                        if($record->uid == $phoneVal['revision_id']){
-                            printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><button>%s</button></td></tr>\n", $count, $record->name, $record->mail, $phoneVal['field_phone_value'], $action);
-                        }else{
-                            printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><button>%s</button></td></tr>\n", $count, $record->name, $record->mail, '', $action);
+     if ($result) {
+              foreach($getValPhoneQuery as $phoneVal){
+                  foreach ($result as $record) {
+                      if($record->uid == $phoneVal['revision_id']){
+                          printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><button>%s</button></td></tr>\n", $count, $record->name, $record->mail, $phoneVal['field_phone_value'], $action);
+                      }else{
+                          printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><button>%s</button></td></tr>\n", $count, $record->name, $record->mail, '', $action);
 
-                        }
-                    }
-                             $count++;
-                 }
+                      }
+                  }
+                       $count++;
+              }
 
-             }
-             print "</tbody>\n</table>\n";
-             }
+           }
+     print "</tbody>\n</table>\n";
+     }
  }
         print "$totalPromo => $total";
             $getUserID = "SELECT * FROM webform_submission_data WHERE webform_id = 'promo_code' AND name = 'user_id'";
