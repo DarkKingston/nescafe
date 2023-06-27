@@ -704,12 +704,12 @@ form .form-item label{
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 700;
-  font-size: 17px;
+  font-size: 13px;
   line-height: 20px;
   color: #FFFFFF;
   background: #7BA60A;
   border-radius: 4px;
-  padding: 13px 23px 12px 27px;
+  padding: 7px 13px 7px 13px;
   border: 0;
   cursor: pointer;
 }
