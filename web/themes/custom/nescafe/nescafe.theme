@@ -242,45 +242,7 @@ foreach($result2 as $record2){
    }
 
    /*Для администратора*/
-
-   /* Для менеджера филиала */
-      if(in_array('administrator', $roles)){
-          foreach($result as $record){
-             $getValPhone = "SELECT * FROM user__field_phone";
-             $getValPhoneQuery = $conn->query($getValPhone);
-
-
-          if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru'){
-              $name = 'Имя';
-              $phone = 'Телефон';
-              $action = "Действия";
-              $mail = 'Почта';
-          }
-          if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro'){
-              $name = 'Nume';
-              $phone = "Telefon";
-              $action = 'Actiune';
-              $mail = 'Posta';
-          }
-
-                  print <<<TABLE
-          <table id="table8">
-          <thead>
-          <tr><th>ID</th><th>$name</th><th>$mail</th><th>$phone</th><th>$action</th></tr>
-          </thead>
-          <tbody>
-          TABLE;
-          $count = 1;
-              foreach ($result as $record) {
-
-                      printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><a href='/verify' class='use-ajax webform-dialog webform-dialog-narrow' data-dialog-type='modal'>%s</a></td></tr>\n", $count, $record->name, $record->mail, $record->field_phone_value, $action);
-
-                   $count++;
-              }
-
-          print "</tbody>\n</table>\n";
-          }
-      }
+   //пока ничего нет думаем
 
  /*Код с выводом наград*/
         print "$totalPromo => $total";
