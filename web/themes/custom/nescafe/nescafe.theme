@@ -227,10 +227,7 @@ foreach($result2 as $record2){
      TABLE;
      $count = 1;
              foreach ($result as $record) {
-
-                if($record->uid == $phoneVal->revision_id){
                     dump($phoneVal->field_phone_value);
-                }
                  if ($result) {
 
                          printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><button>%s</button></td></tr>\n", $count, $record->name, $record->mail, $phoneVal->field_phone_value, $action);
