@@ -127,9 +127,9 @@ $credentials = $config->credentials('database');
 
 /* Sql запросы по ролям */
 
-        if(in_array('administrator', $roles)) {
+        /*if(in_array('administrator', $roles)) {
             $sqlQuery = "SELECT * FROM promo_code WHERE active <> 0";
-        }
+        }*/
         if(in_array('authenticated', $roles) && !in_array('administrator', $roles)){
           $sqlQuery = "SELECT * FROM promo_code WHERE active = '".$curr_id_for_user."'";
         }
