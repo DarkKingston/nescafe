@@ -141,6 +141,7 @@ $credentials = $config->credentials('database');
 
 
     // Кастомный запрос по ролям приравниваю к переменной sql
+    if($sqlQuery != ''){
     $sql = $sqlQuery;
 
     $result = $conn->query($sql);
@@ -200,6 +201,7 @@ foreach($result2 as $record2){
 
         }
         print "</tbody>\n</table>\n";
+}
 }
 
 /* Для менеджера филиала */
