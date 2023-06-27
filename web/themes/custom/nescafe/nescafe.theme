@@ -229,6 +229,8 @@ foreach($result2 as $record2){
                  if ($result) {
                         if($record->uid == $phoneVal['revision_id']){
                             $phoneValItem = $phoneVal['field_phone_value'];
+                        }else{
+                            $phoneValItem == '';
                         }
                          printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><button>%s</button></td></tr>\n", $count, $record->name, $record->mail, $phoneValItem, $action);
 
