@@ -202,7 +202,6 @@ foreach($result2 as $record2){
         $getValPhone = "SELECT * FROM user__field_phone";
         $getValPhoneQuery = $conn->query($getValPhone);
         foreach($getValPhoneQuery as $phoneVal){
-            dump($phoneVal);
         }
 
      if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru'){
