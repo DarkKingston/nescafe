@@ -202,7 +202,8 @@ foreach($result2 as $record2){
         $getValPhone = "SELECT * FROM user__field_phone";
         $getValPhoneQuery = $conn->query($getValPhone);
         foreach($getValPhoneQuery as $phoneVal){
-
+                    dump($phoneVal);
+                    dump($phoneVal['field_phone_value']);
                     dump($phoneVal->field_phone_value);
         }
 
