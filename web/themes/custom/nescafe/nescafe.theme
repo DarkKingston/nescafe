@@ -310,9 +310,7 @@ foreach($result2 as $record2){
                         print "<div class='use-ajax webform-dialog webform-dialog-narrow' data-dialog-type='modal'>
 
                             <select>
-                            //foreach($giftVal as $gift){
                                 <option>213</option>
-                                //}
                             </select>
                             <button class='btn_main action'>Alege</button>
 
