@@ -302,13 +302,15 @@ foreach($result2 as $record2){
                 if($curr_id_for_user == $userID->value){
                     if(($promoTotal % 7) == 0){
                         echo "У тебя награда 3 степени";
-                        print "<div class='use-ajax webform-dialog webform-dialog-narrow btn_main action' data-dialog-type='modal'>
+                        print "<div class='use-ajax webform-dialog webform-dialog-narrow' data-dialog-type='modal'>
                             <select>
                                 <option>cadou1</option>
                                 <option>cadou2</option>
                                 <option>cadou3</option>
                             </select>
-                        </div>"
+                        </div>
+                        <button class='btn_main action'>Alege</button>
+                        "
                     }
                 }
                 if($total >= 10 && $total < 15){
