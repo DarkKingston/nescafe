@@ -302,7 +302,7 @@ foreach($result2 as $record2){
                 if($curr_id_for_user == $userID->value){
                     if(($promoTotal % 7) == 0){
                         echo "У тебя награда 3 степени";
-                        $getGift = "SELECT * FROM webform_submission_data WHERE webform_id = 'cadouri' AND value = '3'";
+                        $getGift = "SELECT * FROM webform_submission_data WHERE webform_id = 'cadouri'";
                         $giftVal = $conn->query($getGift);
                         foreach($giftVal as $gift=>$val){
                             dump($val);
