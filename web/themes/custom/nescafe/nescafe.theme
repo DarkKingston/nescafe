@@ -347,7 +347,7 @@ function nescafe_preprocess_request(Request $request) {
 use Drupal\user\UserInterface;
 dump(user_roles());
 function nescafe_preprocess_user_insert(UserInterface $user) {
-    $rid = array_search('игрок', user_roles());
+    $rid = array_search('player', user_roles());
 
     $user->addRole($rid);
     $user->save();
