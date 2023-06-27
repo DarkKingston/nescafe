@@ -227,7 +227,7 @@ foreach($result2 as $record2){
      if ($result) {
          foreach ($result as $record) {
 
-                 printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>if($record->uid == $phoneVal['revision_id']){$phoneVal['revision_id'];}</td><td><button>%s</button></td></tr>\n", $count, $record->name, $record->mail, $action);
+                 printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>$phoneVal['revision_id']</td><td><button>%s</button></td></tr>\n", $count, $record->name, $record->mail, $action);
 
               $count++;
          }
