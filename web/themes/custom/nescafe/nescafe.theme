@@ -310,7 +310,7 @@ foreach($result2 as $record2){
                             </select>
                         </div>
                         <button class='btn_main action'>Alege</button>
-                        "
+                        ";
                     }
                 }
                 if($total >= 10 && $total < 15){
