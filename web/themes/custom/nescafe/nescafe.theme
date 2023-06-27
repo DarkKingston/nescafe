@@ -304,8 +304,8 @@ foreach($result2 as $record2){
                         echo "У тебя награда 3 степени";
                         $getGift = "SELECT * FROM webform_submission_data WHERE webform_id = 'cadouri' AND name = 'categoria_de_produs' AND value = '3'";
                         $giftVal = $conn->query($getGift);
-                        foreach($giftVal as $gift){
-                            dump($gift);
+                        foreach($giftVal as $gift=>$val){
+                            dump($val);
                         }
                         print "<div class='use-ajax webform-dialog webform-dialog-narrow' data-dialog-type='modal'>
 
