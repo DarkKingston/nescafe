@@ -245,9 +245,9 @@ foreach($result2 as $record2){
    /*Для администратора*/
    if(in_array('administrator', $roles)){
    $mainSql = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` WHERE uid != 0 ORDER BY uid ASC";
-          $result = $conn->query($mainSql);
-          $result->setFetchMode(\PDO::FETCH_OBJ);
-          foreach($result as $record){
+          $results = $conn->query($mainSql);
+          $results->setFetchMode(\PDO::FETCH_OBJ);
+          foreach($results as $records){
              $getValPhone = "SELECT * FROM user__field_phone";
              $getValPhoneQuery = $conn->query($getValPhone);
 
@@ -273,9 +273,9 @@ foreach($result2 as $record2){
           <tbody>
           TABLE;
           $count = 1;
-              foreach ($result as $record) {
+              foreach ($results as $records) {
 
-                      printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><a href='/verify' class='use-ajax webform-dialog webform-dialog-narrow' data-dialog-type='modal'>%s</a></td></tr>\n", $count, $record->name, $record->mail, $record->field_phone_value, $action);
+                      printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><a href='/verify' class='use-ajax webform-dialog webform-dialog-narrow' data-dialog-type='modal'>%s</a></td></tr>\n", $count, $records->name, $records->mail, $records->field_phone_value, $action);
 
                    $count++;
               }
