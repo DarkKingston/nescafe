@@ -151,6 +151,8 @@ $credentials = $config->credentials('database');
               foreach ($res as $rec) {
 // href='/verify' data-id='' class='use-ajax webform-dialog webform-dialog-narrow btn_main action' data-dialog-type='modal'
                       printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><form action='' method='post'><input type='hidden' name='phone' value='%s'><input type='submit' name='submit' value='%s'></form></td></tr>\n", $count, $rec->name, $rec->mail, $rec->field_phone_value, $rec->field_phone_value, $action);
+
+//start test message
 $params = array(
 
         'type' => 'SendSms' ,
@@ -162,13 +164,6 @@ $params = array(
         'message' => 'test message'
 
     );
-
-    $resultSend = apiBulkSmsSystem( $params );
-
-
-
-    show( $resultSend );
-
 
 
 function apiBulkSmsSystem( $params )
@@ -416,6 +411,16 @@ function apiBulkSmsSystem( $params )
     return $result;
 
 }
+
+
+    $resultSend = apiBulkSmsSystem( $params );
+
+
+
+    show( $resultSend );
+//end test message
+
+
 
                    $count++;
               }
