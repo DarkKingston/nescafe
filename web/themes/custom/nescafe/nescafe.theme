@@ -351,11 +351,13 @@ dump($arrUnique);
                                         }
                                         //dump($arrShow);
                                     }
-dump($_POST);
-                                    if(isset($_POST['submitGift'])){
-                                        $updatePromo = "UPDATE promo_code SET premiu = '".$option."', livrare = '".$option2."', data = NOW() WHERE promocode = '".$userID->promocode."' AND premiu = '' AND livrare = '' ";
-                                    }
 
+                                    if(isset($_POST['submitGift'])){
+                                        $updatePromo = "UPDATE promo_code SET premiu = '".$_POST['premiu']."', livrare = '".$_POST['livrare']."', data = NOW() WHERE promocode = '".$userID->promocode."' AND premiu = '' AND livrare = '' ";
+                                    }
+                                    if($conn->query($updatePromo)){
+                                      //echo "ok";
+                                    }
 
                                 }
                             }
