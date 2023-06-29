@@ -291,10 +291,7 @@ foreach($result2 as $record2){
                         $res->setFetchMode(\PDO::FETCH_OBJ);
                         foreach($res as $userID){
                         }
-                            dump($userID);
-                            dump($curr_id_for_user);
                             if($curr_id_for_user == $userID->active){
-                            dump($promoTotal);
                                 if(($promoTotal % 7) == 0){
                                     echo "У тебя награда 3 степени";
                                     $arrData  = array();
@@ -317,7 +314,7 @@ foreach($result2 as $record2){
                                             }
                                         }
                                     }
-                                    dump( $arrShowF );
+                                    //dump( $arrShowF );
 
                                     foreach($arrShowF as $filiala => $arrShow){
 
