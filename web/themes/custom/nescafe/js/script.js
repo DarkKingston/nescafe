@@ -15,15 +15,6 @@
         $('#block-webform-5').hide();
       }
 
-      $(".webform-button--submit").click(function(){
-          $.ajax({
-            url: "https://ceiti.md/",
-            success: function(result){
-              console.log(result);
-            }
-          });
-      });
-
     }
   };
 })(jQuery);
