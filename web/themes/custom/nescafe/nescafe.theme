@@ -293,7 +293,10 @@ foreach($result2 as $record2){
                         }
                             if($curr_id_for_user == $userID->active){
                                 if(($promoTotal % 7) == 0){
-                                    echo "У тебя награда 3 степени";
+                                    $promoSuccess = "UPDATE promo_code SET premiu = 1 WHERE promocode = '".$userID->promocode."' ";
+                                    if($conn->query($promoSuccess)){
+                                        //echo "ok";
+                                    }
                                     $arrData  = array();
                                     $getGift = "SELECT * FROM webform_submission_data WHERE webform_id = 'cadouri'  ";
                                     $giftVal = $conn->query($getGift);
