@@ -738,3 +738,15 @@ form .form-item label{
 .ui-dialog .ui-dialog-content{
   overflow: hidden;
 }
+
+.popup_gift{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 150px;
+  height: 150px;
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px 25px;
+}

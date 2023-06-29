@@ -323,7 +323,7 @@ foreach($result2 as $record2){
                                                                 $option .= " <option>".$val['name']."</option> ";
                                                              }
 
-                                        print "<div class='use-ajax webform-dialog webform-dialog-narrow' data-dialog-type='modal'>
+                                        print "<div class='use-ajax webform-dialog webform-dialog-narrow popup_gift' data-dialog-type='modal'>
                                                 ". $filiala ."
                                             <select>
 
