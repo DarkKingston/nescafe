@@ -317,9 +317,10 @@ foreach($result2 as $record2){
 
                                     foreach($arrShowF as $filiala => $arrShow){
 
-                                    dump( $arrShow );
+                                    dump($arrShowF);
                                                             $option = '';
                                                              foreach($arrShow as $ft => $val){
+                                                             dump( $val );
                                                                 $option .= " <option>".$val['name']."</option> ";
                                                              }
 
@@ -334,7 +335,7 @@ foreach($result2 as $record2){
                                         </div>
                                         ";
                                     }
-                                    dump($arrShow);
+                                    //dump($arrShow);
 
                                 }
                             }
