@@ -286,14 +286,14 @@ foreach($result2 as $record2){
                         print "$totalPromo => $total";
                         /*вывод количество набранных очков конец*/
 
-                         $getUserID = "SELECT * FROM webform_submission_data WHERE webform_id = 'promo_code' AND name = 'user_id' ORDER BY data DESC";
+                         $getUserID = "SELECT * FROM promo_code WHERE active != 0 ORDER BY data DESC";
                         $res = $conn->query($getUserID);
                         $res->setFetchMode(\PDO::FETCH_OBJ);
                         foreach($res as $userID){
                         }
                             dump($userID);
                             dump($curr_id_for_user);
-                            if($curr_id_for_user == $userID->value){
+                            if($curr_id_for_user == $userID->active){
                             dump($promoTotal);
                                 if(($promoTotal % 7) == 0){
                                     echo "У тебя награда 3 степени";
