@@ -286,7 +286,7 @@ foreach($result2 as $record2){
                         print "$totalPromo => $total";
                         /*вывод количество набранных очков конец*/
 
-                         $getUserID = "SELECT * FROM webform_submission_data WHERE webform_id = 'promo_code' AND name = 'user_id'";
+                         $getUserID = "SELECT * FROM webform_submission_data WHERE webform_id = 'promo_code' AND name = 'user_id' ORDER BY data DESC";
                         $res = $conn->query($getUserID);
                         $res->setFetchMode(\PDO::FETCH_OBJ);
                         foreach($res as $userID){
