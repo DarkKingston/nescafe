@@ -32,7 +32,7 @@ if(isset($_POST['introduceti_codul_promotional'])){
         if ($result) {
         foreach ($result as $record) {
             if($record->active == 0){
-                     $sql = "UPDATE promo_code SET active = '".$curr_id_for_user."' WHERE promocode = '".$_POST['introduceti_codul_promotional']."' AND active = 0  ";
+                     $sql = "UPDATE promo_code SET active = '".$curr_id_for_user."',  data = NOW() WHERE promocode = '".$_POST['introduceti_codul_promotional']."' AND active = 0  ";
             }
         }
              if($conn->query($sql)){
@@ -351,7 +351,7 @@ $arr = [];
                                     }
 
                                     if(isset($_POST['submitGift'])){
-                                        $updatePromo = "UPDATE promo_code SET premiu = '".$_POST['premiu']."', livrare = '".$_POST['filial']."', data = NOW() WHERE promocode = '".$userID->promocode."' AND premiu = '' AND livrare = '' ";
+                                        $updatePromo = "UPDATE promo_code SET premiu = '".$_POST['premiu']."', livrare = '".$_POST['filial']."' WHERE promocode = '".$userID->promocode."' AND premiu = '' AND livrare = '' ";
                                          if($conn->query($updatePromo)){
                                             //echo "ok";
                                          }
