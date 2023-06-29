@@ -230,7 +230,7 @@ foreach($result2 as $record2){
                     $score = 1;
                     $total += 1;
                 }
-                    printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $record->promocode, $record->premiu, $record->filiala);
+                    printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $record->promocode, $record->premiu, $record->livrare);
 
                         $count++;
             }
