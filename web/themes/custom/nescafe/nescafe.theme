@@ -317,28 +317,30 @@ foreach($result2 as $record2){
                                             }
                                         }
 //dump($arrShowF);
+$arr = [];
                                         foreach($arrShowF as $filiala => $arrShow){
 
 
                                                                 $option = '';
                                                                 $option2 = '';
                                                                  foreach($arrShow as $ft => $val){
-                                                                 $arr = [];
+
                                                                  $arr[] = $val['name'];
                                                                  //dump($arrShow);
                                                                     $option2 .= " <option>".$val['filiala']."</option> ";
                                                                  }
-                                                                 foreach($arr as $arrVal){
+          $arrUnique = array_unique($arr);
+                                                                 foreach($arrUnique as $arrVal){
                                                                     $option .= " <option>".$arrVal."</option> ";
                                                                  }
-dump($arr);
+dump($arrUnique);
                                             print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_gift' data-dialog-type='modal'>
 
-                                                <select>
+                                                <select name='premiu'>
 
                                                     ".$option."
                                                 </select>
-                                                <select>
+                                                <select name='filial'>
 
                                                     ".$option2."
                                                 </select>
