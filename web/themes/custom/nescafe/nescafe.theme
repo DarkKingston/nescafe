@@ -331,7 +331,7 @@ foreach($result2 as $record2){
                                                                  }
 //dump($filiala);
                                             print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_gift' data-dialog-type='modal'>
-                                                    ". $filiala ."
+
                                                 <select>
 
                                                     ".$option."
