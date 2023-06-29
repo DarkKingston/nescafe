@@ -248,45 +248,8 @@ foreach($result2 as $record2){
 
    /*Для администратора*/
    if(in_array('authenticated', $roles) && in_array('administrator', $roles)){
-   $mainSql = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` WHERE uid != 0 ORDER BY uid ASC";
-          $res = $conn->query($mainSql);
-          $res->setFetchMode(\PDO::FETCH_OBJ);
-          foreach($res as $rec){
-             $getValPhone = "SELECT * FROM user__field_phone";
-             $getValPhoneQuery = $conn->query($getValPhone);
-
-
-          if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru'){
-              $name = 'Имя';
-              $phone = 'Телефон';
-              $action = "Действия";
-              $mail = 'Почта';
-          }
-          if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro'){
-              $name = 'Nume';
-              $phone = "Telefon";
-              $action = 'Actiune';
-              $mail = 'Posta';
-          }
-
-                  print <<<TABLE
-          <table id="table8">
-          <thead>
-          <tr><th>ID</th><th>$name</th><th>$mail</th><th>$phone</th><th>$action</th></tr>
-          </thead>
-          <tbody>
-          TABLE;
-          $count = 1;
-              foreach ($res as $rec) {
-
-                      printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><a href='/verify' class='use-ajax webform-dialog webform-dialog-narrow' data-dialog-type='modal'>%s</a></td></tr>\n", $count, $rec->name, $rec->mail, $rec->field_phone_value, $action);
-
-                   $count++;
-              }
-
-          print "</tbody>\n</table>\n";
-          }
-}
+    dump('123');
+   }
 
  /*Код с выводом наград*/
 
