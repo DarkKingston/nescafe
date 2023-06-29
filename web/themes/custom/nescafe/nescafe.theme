@@ -275,7 +275,7 @@ foreach($result2 as $record2){
        print "<form method='post'>
                 <input type='text' name='search'>
                 <input type='submit' name='submitSearch' value='Cauta'>
-            </form>"
+            </form>";
 
             if(isset($_POST['submitSearch'])){
             $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` WHERE uid != 0 AND WHERE user__field_phone.field_phone_value = '".$_POST['search']."'  LIMIT 1";
