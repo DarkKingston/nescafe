@@ -212,7 +212,7 @@ $score = 0;
 $total = 0;
 $promoTotal = 0;
 foreach($result2 as $record2){
-dump($record2);
+//dump($record2);
     if(!preg_match("/^([0-9])+$/", $record2->promocode)){
         $promoTotal += 1;
     }else{
