@@ -292,6 +292,7 @@ foreach($result2 as $record2){
                         foreach($res as $userID){
                         }
                             if($curr_id_for_user == $userID->value){
+                            dump($promoTotal);
                                 if(($promoTotal % 7) == 0){
                                     echo "У тебя награда 3 степени";
                                     $arrData  = array();
