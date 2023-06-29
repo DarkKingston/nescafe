@@ -282,71 +282,8 @@ foreach($result2 as $record2){
  /*Код с выводом наград*/
 
         if(in_array('authenticated', $roles) && !in_array('manager_filiala', $roles) && !in_array('administrator', $roles)){
-            /*вывод количество набранных очков*/
-            print "$totalPromo => $total";
-            /*вывод количество набранных очков конец*/
 
-             $getUserID = "SELECT * FROM webform_submission_data WHERE webform_id = 'promo_code' AND name = 'user_id'";
-            $res = $conn->query($getUserID);
-            $res->setFetchMode(\PDO::FETCH_OBJ);
-            foreach($res as $userID){
-            }
-                if($curr_id_for_user == $userID->value){
-                    if(($promoTotal % 7) == 0){
-                        echo "У тебя награда 3 степени";
-                        $arrData  = array();
-                        $getGift = "SELECT * FROM webform_submission_data WHERE webform_id = 'cadouri'  ";
-                        $giftVal = $conn->query($getGift);
-                        foreach($giftVal as $gift=>$val){
-                            $arrData[ $val['sid'] ][ $val['name'] ] = $val;
-                            //dump($val);
-                            //dump($val['value']);
-                        }
-
-                        // dump($arrData);
-
-                        $arrShowF = array();
-                        foreach($arrData as $IDgift => $val){
-                            foreach($val as $name => $val2){
-                                if( $name == 'categoria_de_produs' && $val2['value'] == 3 ) {
-                                    // $val['title'] = $val[''];
-                                    $arrShowF[[$IDgift]['filiala']['value']][] = array( 'name' => $arrData[$IDgift]['premiu']['value'] , 'id' => $IDgift );
-                                }
-                            }
-                        }
-                        dump( $arrShowF );
-
-                        foreach($arrShowF as $filiala => $arrShow){
-
-                                                $option = '';
-                                                 foreach($arrShow as $ft => $val){
-                                                    $option .= " <option>".$val['name']."</option> ";
-                                                 }
-
-                            print "<div class='use-ajax webform-dialog webform-dialog-narrow' data-dialog-type='modal'>
-                                    ". $filiala ."
-                                <select>
-
-                                    ".$option."
-                                </select>
-                                <button class='btn_main action'>Alege</button>
-
-                            </div>
-                            ";
-                        }
-
-                    }
-                }
-                if($total >= 10 && $total < 15){
-                   echo "У тебя награда 2 степени";
-                }
-                if($total >= 15 && $total < 30){
-                    echo "Ты учавствуешь в игре дня";
-                }
-                if($total > 30){
-                    echo "Ты учавствуешь в финальную игру";
-                }
-
+            dump('346');
         }
     }
 
