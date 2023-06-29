@@ -189,13 +189,11 @@ $credentials = $config->credentials('database');
     if ($result) {
 if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru'){
     $promo = 'Промо код';
-    $number = 'Количество очков';
-    $totalPromo = 'Всего очков';
+    $number = 'Выйгрыш';
 }
 if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro'){
     $promo = 'Codul Promotional';
-    $number = 'Numarul de puncte';
-    $totalPromo = 'Puncte acumulate';
+    $number = 'Premiu';
 }
 
 /*Обычный пользователь Вывод промокодов который он вводил*/
@@ -230,7 +228,7 @@ foreach($result2 as $record2){
                     $score = 1;
                     $total += 1;
                 }
-                    printf("<tr><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $record->promocode, $score);
+                    printf("<tr><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $record->promocode, $record->filiala);
 
                         $count++;
             }
@@ -282,9 +280,7 @@ foreach($result2 as $record2){
  /*Код с выводом наград*/
 
         if(in_array('authenticated', $roles) && !in_array('manager_filiala', $roles) && !in_array('administrator', $roles)){
-             /*вывод количество набранных очков*/
-                        print "$totalPromo => $total";
-                        /*вывод количество набранных очков конец*/
+
 
                          $getUserID = "SELECT * FROM promo_code WHERE active != 0 ORDER BY data DESC LIMIT 1";
                         $res = $conn->query($getUserID);
