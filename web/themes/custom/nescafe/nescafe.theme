@@ -334,6 +334,7 @@ foreach($result2 as $record2){
                                         </div>
                                         ";
                                     }
+                                    dump($arrShow);
 
                                 }
                             }
