@@ -314,10 +314,10 @@ foreach($result2 as $record2){
                                             }
                                         }
                                     }
-                                    dump( $arrShowF );
 
                                     foreach($arrShowF as $filiala => $arrShow){
 
+                                    dump( $arrShow );
                                                             $option = '';
                                                              foreach($arrShow as $ft => $val){
                                                                 $option .= " <option>".$val['name']."</option> ";
