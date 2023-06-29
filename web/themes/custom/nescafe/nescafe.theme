@@ -323,8 +323,9 @@ foreach($result2 as $record2){
                                                                 $option = '';
                                                                 $option2 = '';
                                                                  foreach($arrShow as $ft => $val){
-
-                                                                 dump( array_unique($val['name']) );
+                                                                 $arr = [];
+                                                                 $arr = array_unique($val['name']);
+                                                                 dump( $arr );
                                                                  dump( $val['name'] );
                                                                     $option .= " <option>".$val['name']."</option> ";
                                                                     $option2 .= " <option>".$val['filiala']."</option> ";
