@@ -328,7 +328,7 @@ foreach($result2 as $record2){
                                                                  //dump($arrShow);
                                                                     $option2 .= " <option>".$val['filiala']."</option> ";
                                                                  }
-                                                                 for($arr as $arrVal){
+                                                                 foreach($arr as $arrVal){
                                                                     $option .= " <option>".$arrVal."</option> ";
                                                                  }
 //dump($filiala);
