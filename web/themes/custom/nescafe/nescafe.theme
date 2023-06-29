@@ -149,9 +149,9 @@ $credentials = $config->credentials('database');
           TABLE;
           $count = 1;
               foreach ($res as $rec) {
-
-                      printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><a href='/verify' data-id='%s' class='use-ajax webform-dialog webform-dialog-narrow btn_main action' data-dialog-type='modal'>%s</a></td></tr>\n", $count, $rec->name, $rec->mail, $rec->field_phone_value,$rec['uid'], $action);
-
+// href='/verify' data-id='' class='use-ajax webform-dialog webform-dialog-narrow btn_main action' data-dialog-type='modal'
+                      printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><form method='post'><input type='submit' value='%s'></form></td></tr>\n", $count, $rec->name, $rec->mail, $rec->field_phone_value, $action);
+dump($_POST);
                    $count++;
               }
 
