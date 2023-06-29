@@ -293,7 +293,7 @@ foreach($result2 as $record2){
                         }
                             if($curr_id_for_user == $userID->active){
                                 if(($promoTotal % 7) == 0){
-                                    $promoSuccess = "UPDATE promo_code SET premiu = 1 WHERE promocode = '".$userID->promocode."' ";
+                                    $promoSuccess = "UPDATE promo_code SET premiu = 1 WHERE promocode = '".$userID->promocode."' AND premiu = 0 ";
                                     if($conn->query($promoSuccess)){
                                         //echo "ok";
                                     }
