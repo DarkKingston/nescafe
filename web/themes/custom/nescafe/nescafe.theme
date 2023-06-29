@@ -263,6 +263,7 @@ foreach($result2 as $record2){
        foreach($result as $record){
           $getValPhone = "SELECT * FROM user__field_phone";
           $getValPhoneQuery = $conn->query($getValPhone);
+          dump($result);
           dump($record);
 
 
