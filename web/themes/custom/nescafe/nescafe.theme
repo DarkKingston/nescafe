@@ -150,7 +150,7 @@ $credentials = $config->credentials('database');
           $count = 1;
               foreach ($res as $rec) {
 
-                      printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><a href='/verify' data-id='.$rec['uid'].' class='use-ajax webform-dialog webform-dialog-narrow btn_main action' data-dialog-type='modal'>%s</a></td></tr>\n", $count, $rec->name, $rec->mail, $rec->field_phone_value, $action);
+                      printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><a href='/verify' data-id='$rec['uid']' class='use-ajax webform-dialog webform-dialog-narrow btn_main action' data-dialog-type='modal'>%s</a></td></tr>\n", $count, $rec->name, $rec->mail, $rec->field_phone_value, $action);
 
                    $count++;
               }
