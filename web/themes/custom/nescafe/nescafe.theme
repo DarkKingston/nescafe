@@ -324,7 +324,7 @@ dump($arrShowF);
                                                                 $option2 = '';
                                                                  foreach($arrShow as $ft => $val){
                                                                  //dump( $val );
-                                                                    $option .= " <option>".array_unique($val['name'])."</option> ";
+                                                                    $option .= " <option>".$val['name']."</option> ";
                                                                     $option2 .= " <option>".$val['filiala']."</option> ";
                                                                  }
 dump($filiala);
