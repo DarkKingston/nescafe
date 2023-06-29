@@ -272,6 +272,19 @@ foreach($result2 as $record2){
          $mail = 'Posta';
        }
 
+       print "<form method='post'>
+                <input type='text' name='search'>
+                <input type='submit' name='submitSearch' value='Cauta'>
+            </form>"
+
+            if(isset($_POST['submitSearch'])){
+            $sqlQuery = "SELECT * FROM webform_submission_data WHERE field_phone_value = '".$_POST['search']."'";
+                $sql = $sqlQuery;
+
+                    $result = $conn->query($sql);
+                    $result->setFetchMode(\PDO::FETCH_OBJ);
+            }
+
                print <<<TABLE
        <table id="table8">
        <thead>
