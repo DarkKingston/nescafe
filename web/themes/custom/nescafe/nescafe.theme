@@ -316,18 +316,20 @@ foreach($result2 as $record2){
                                                     }
                                             }
                                         }
-dump($arrShowF);
+//dump($arrShowF);
                                         foreach($arrShowF as $filiala => $arrShow){
 
 
                                                                 $option = '';
                                                                 $option2 = '';
                                                                  foreach($arrShow as $ft => $val){
-                                                                 //dump( $val );
+
+                                                                 dump( array_unique($val['name']) );
+                                                                 dump( $val['name'] );
                                                                     $option .= " <option>".$val['name']."</option> ";
                                                                     $option2 .= " <option>".$val['filiala']."</option> ";
                                                                  }
-dump($filiala);
+//dump($filiala);
                                             print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_gift' data-dialog-type='modal'>
                                                     ". $filiala ."
                                                 <select>
