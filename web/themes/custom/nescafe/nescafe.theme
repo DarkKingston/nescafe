@@ -69,7 +69,7 @@ function nescafe_preprocess_page(&$page){
     $roles = \Drupal::currentUser()->getRoles();
 
         $curr_id_for_user = \Drupal::currentUser()->id();
-        if(!in_array('player', $roles)){
+        if(!in_array('player', $roles) && !in_array('administrator', $roles) && !in_array('manager_filiala', $roles)){
               $role_id = 'player';
 
               $user = User::load($curr_id_for_user);
