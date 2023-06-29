@@ -286,7 +286,7 @@ foreach($result2 as $record2){
                         print "$totalPromo => $total";
                         /*вывод количество набранных очков конец*/
 
-                         $getUserID = "SELECT * FROM promo_code WHERE active != 0 ORDER BY data DESC";
+                         $getUserID = "SELECT * FROM promo_code WHERE active != 0 ORDER BY data DESC LIMIT 1";
                         $res = $conn->query($getUserID);
                         $res->setFetchMode(\PDO::FETCH_OBJ);
                         foreach($res as $userID){
