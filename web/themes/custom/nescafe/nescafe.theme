@@ -190,10 +190,12 @@ $credentials = $config->credentials('database');
 if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru'){
     $promo = 'Промо код';
     $number = 'Выйгрыш';
+    $filial = 'Филиал';
 }
 if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro'){
     $promo = 'Codul Promotional';
     $number = 'Premiu';
+    $filial = 'Filiala';
 }
 
 /*Обычный пользователь Вывод промокодов который он вводил*/
@@ -201,7 +203,7 @@ if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro'){
         print <<<TABLE
 <table id="table8">
 <thead>
-<tr><th>ID</th><th>$promo</th><th>$number</th></tr>
+<tr><th>ID</th><th>$promo</th><th>$number</th><th>$filial</th></tr>
 </thead>
 <tbody>
 TABLE;
@@ -228,7 +230,7 @@ foreach($result2 as $record2){
                     $score = 1;
                     $total += 1;
                 }
-                    printf("<tr><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $record->promocode, $record->filiala);
+                    printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $record->promocode, $record->premiu, $record->filiala);
 
                         $count++;
             }
@@ -280,7 +282,9 @@ foreach($result2 as $record2){
  /*Код с выводом наград*/
 
         if(in_array('authenticated', $roles) && !in_array('manager_filiala', $roles) && !in_array('administrator', $roles)){
-
+             /*вывод количество набранных очков*/
+                        print "$totalPromo => $total";
+                        /*вывод количество набранных очков конец*/
 
                          $getUserID = "SELECT * FROM promo_code WHERE active != 0 ORDER BY data DESC LIMIT 1";
                         $res = $conn->query($getUserID);
@@ -324,7 +328,7 @@ foreach($result2 as $record2){
                                                                  //dump($arrShow);
                                                                     $option2 .= " <option>".$val['filiala']."</option> ";
                                                                  }
-                                                                 for($i = 0; $i < $count($arr); $i++){
+                                                                 for($i = 0; $i < count($arr); $i++){
                                                                     $option .= " <option>".$arr[$i]."</option> ";
                                                                  }
 //dump($filiala);
