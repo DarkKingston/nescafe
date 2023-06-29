@@ -290,8 +290,8 @@ foreach($result2 as $record2){
                         $res = $conn->query($getUserID);
                         $res->setFetchMode(\PDO::FETCH_OBJ);
                         foreach($res as $userID){
-                            dump($userID);
                         }
+                            dump($userID);
                             dump($curr_id_for_user);
                             if($curr_id_for_user == $userID->value){
                             dump($promoTotal);
