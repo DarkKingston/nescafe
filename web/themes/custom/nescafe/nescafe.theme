@@ -314,7 +314,7 @@ foreach($result2 as $record2){
                                             }
                                         }
                                     }
-                                    //dump( $arrShowF );
+                                    dump( $arrShowF );
 
                                     foreach($arrShowF as $filiala => $arrShow){
 
