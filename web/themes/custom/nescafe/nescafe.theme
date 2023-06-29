@@ -351,7 +351,7 @@ dump($arrUnique);
                                     }
 
                                     if(isset($_POST['submitGift'])){
-                                        $updatePromo = "UPDATE promo_code SET premiu = '".$_POST['premiu']."', livrare = '".$_POST['livrare']."', data = NOW() WHERE promocode = '".$userID->promocode."' AND premiu = '' AND livrare = '' ";
+                                        $updatePromo = "UPDATE promo_code SET premiu = '".$_POST['premiu']."', livrare = '".$_POST['filial']."', data = NOW() WHERE promocode = '".$userID->promocode."' AND premiu = '' AND livrare = '' ";
                                          if($conn->query($updatePromo)){
                                             //echo "ok";
                                          }
