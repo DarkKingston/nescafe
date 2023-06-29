@@ -116,6 +116,17 @@ $credentials = $config->credentials('database');
 
     $roles = \Drupal::currentUser()->getRoles();
 
+    if(!in_array('player', $roles)){
+          $role_id = 'player';
+          $current_user = \Drupal::currentUser();
+
+          // Load the user entity.
+          $user = User::load($current_user->id());
+
+          // Add the role to the user.
+          $user->addRole($role_id);
+          $user->save();
+    }
 
 /*Для администратора*/
    if(in_array('authenticated', $roles) && in_array('administrator', $roles)){
@@ -399,7 +410,3 @@ function nescafe_preprocess_request(Request $request) {
 }
 
 
-function nescafe_preprocess_user_insert(Drupal\Core\Entity\EntityInterface $entity) {
-  $entity->addRole('player'); //no rid!
-  $entity->save();
-}
