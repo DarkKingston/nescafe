@@ -103,42 +103,68 @@ function nescafe_preprocess_block__webform_5(&$elem){
 function nescafe_preprocess_region__account(&$elem){
 $curr_id_for_user = \Drupal::currentUser()->id();
 
-// Create a new config object to ease reading the Platform.sh environment variables.
-// You can alternatively use getenv() yourself.
 $config = new Config();
 
-// The 'database' relationship is generally the name of primary SQL database of an application.
-// That's not required, but much of our default automation code assumes it.
 $credentials = $config->credentials('database');
 
-    // Connect to the database using PDO.  If using some other abstraction layer you would
-    // inject the values from $database into whatever your abstraction layer asks for.
     $dsn = sprintf('mysql:host=%s;port=%d;dbname=%s', $credentials['host'], $credentials['port'], $credentials['path']);
     $conn = new \PDO($dsn, $credentials['username'], $credentials['password'], [
-        // Always use Exception error mode with PDO, as it's more reliable.
         \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
-        // So we don't have to mess around with cursors and unbuffered queries by default.
         \PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => TRUE,
-        // Make sure MySQL returns all matched rows on update queries including
-        // rows that actually didn't have to be updated because the values didn't
-        // change. This matches common behavior among other database systems.
         \PDO::MYSQL_ATTR_FOUND_ROWS => TRUE,
     ]);
 
     $roles = \Drupal::currentUser()->getRoles();
 
- /*Для администратора*/
-   dump($roles);
+
+/*Для администратора*/
    if(in_array('authenticated', $roles) && in_array('administrator', $roles)){
-    dump('123');
-   }
+   $mainSql = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` WHERE uid != 0 ORDER BY uid ASC";
+          $res = $conn->query($mainSql);
+          $res->setFetchMode(\PDO::FETCH_OBJ);
+          foreach($res as $rec){
+             $getValPhone = "SELECT * FROM user__field_phone";
+             $getValPhoneQuery = $conn->query($getValPhone);
+
+
+          if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru'){
+              $name = 'Имя';
+              $phone = 'Телефон';
+              $action = "Действия";
+              $mail = 'Почта';
+          }
+          if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro'){
+              $name = 'Nume';
+              $phone = "Telefon";
+              $action = 'Actiune';
+              $mail = 'Posta';
+          }
+
+                  print <<<TABLE
+          <table id="table8">
+          <thead>
+          <tr><th>ID</th><th>$name</th><th>$mail</th><th>$phone</th><th>$action</th></tr>
+          </thead>
+          <tbody>
+          TABLE;
+          $count = 1;
+              foreach ($res as $rec) {
+
+                      printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><a href='/verify' class='use-ajax webform-dialog webform-dialog-narrow' data-dialog-type='modal'>%s</a></td></tr>\n", $count, $rec->name, $rec->mail, $rec->field_phone_value, $action);
+
+                   $count++;
+              }
+
+          print "</tbody>\n</table>\n";
+          }
+    }
 
 /* Sql запросы по ролям */
 
         //if(in_array('administrator', $roles)) {
         //    $sqlQuery = "SELECT * FROM promo_code WHERE active <> 0";
         //}
-        if(in_array('authenticated', $roles) && !in_array('administrator', $roles) && !in_array('manager_filiala', $roles)){
+        if(in_array('authenticated', $roles) && !in_array('administrator', $roles)){
           $sqlQuery = "SELECT * FROM promo_code WHERE active = '".$curr_id_for_user."'";
         }
         if(in_array('authenticated', $roles) && in_array('manager_filiala', $roles) && !in_array('administrator', $roles)){
@@ -251,9 +277,6 @@ foreach($result2 as $record2){
        print "</tbody>\n</table>\n";
        }
    }
-
-
-
  /*Код с выводом наград*/
 
         if(in_array('authenticated', $roles) && !in_array('manager_filiala', $roles) && !in_array('administrator', $roles)){
