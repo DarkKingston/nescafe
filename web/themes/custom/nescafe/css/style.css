@@ -749,4 +749,6 @@ form .form-item label{
   background: #fff;
   border-radius: 10px;
   padding: 20px 25px;
+  border: 1px solid #cecece;
+  box-shadow: 0 2px 10px #000;
 }
