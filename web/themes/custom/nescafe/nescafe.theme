@@ -285,7 +285,7 @@ foreach($result2 as $record2){
             /*вывод количество набранных очков*/
             print "$totalPromo => $total";
             /*вывод количество набранных очков конец*/
-        }
+
              $getUserID = "SELECT * FROM webform_submission_data WHERE webform_id = 'promo_code' AND name = 'user_id'";
             $res = $conn->query($getUserID);
             $res->setFetchMode(\PDO::FETCH_OBJ);
@@ -348,7 +348,7 @@ foreach($result2 as $record2){
                     echo "Ты учавствуешь в финальную игру";
                 }
             }
-
+            }
     }
 
 
