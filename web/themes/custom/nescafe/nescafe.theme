@@ -324,7 +324,7 @@ foreach($result2 as $record2){
                                                                 $option2 = '';
                                                                  foreach($arrShow as $ft => $val){
                                                                  $arr = [];
-                                                                 $arr = $val['name'];
+                                                                 $arr[] = $val['name'];
                                                                  //dump($arrShow);
                                                                     $option .= " <option>".$val['name']."</option> ";
                                                                     $option2 .= " <option>".$val['filiala']."</option> ";
