@@ -247,6 +247,7 @@ foreach($result2 as $record2){
    }
 
    /*Для администратора*/
+   dump($roles);
    if(in_array('authenticated', $roles) && in_array('administrator', $roles)){
     dump('123');
    }
