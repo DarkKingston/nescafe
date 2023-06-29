@@ -292,6 +292,8 @@ foreach($result2 as $record2){
                         foreach($res as $userID){
                         }
                             dump($promoTotal);
+                            dump($curr_id_for_user);
+                            dump($userID->value);
                             if($curr_id_for_user == $userID->value){
                             dump($promoTotal);
                                 if(($promoTotal % 7) == 0){
