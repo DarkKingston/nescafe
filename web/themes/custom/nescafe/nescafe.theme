@@ -331,7 +331,7 @@ $arr = [];
                                                                  foreach($arrUnique as $arrVal){
                                                                     $option .= " <option>".$arrVal."</option> ";
                                                                  }
-dump($arrUnique);
+//dump($arrUnique);
                                             print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_gift' data-dialog-type='modal'>
 
                                                 <select name='premiu'>
