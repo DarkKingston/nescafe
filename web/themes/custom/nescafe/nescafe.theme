@@ -324,12 +324,12 @@ foreach($result2 as $record2){
                                                                 $option2 = '';
                                                                  foreach($arrShow as $ft => $val){
                                                                  $arr = [];
-                                                                 $arr = array_unique($arrShow);
-                                                                 dump( $arr );
-                                                                 dump($arrShow);
+                                                                 $arr = $val['name'];
+                                                                 //dump($arrShow);
                                                                     $option .= " <option>".$val['name']."</option> ";
                                                                     $option2 .= " <option>".$val['filiala']."</option> ";
                                                                  }
+                                                                 dump( array_unique($arr) );
 //dump($filiala);
                                             print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_gift' data-dialog-type='modal'>
 
