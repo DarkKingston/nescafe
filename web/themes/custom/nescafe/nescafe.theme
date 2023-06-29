@@ -321,9 +321,11 @@ dump($arrShowF);
 
 
                                                                 $option = '';
+                                                                $option2 = '';
                                                                  foreach($arrShow as $ft => $val){
                                                                  //dump( $val );
                                                                     $option .= " <option>".$val['name']."</option> ";
+                                                                    $option2 .= " <option>".$val['filiala']."</option> ";
                                                                  }
 
                                             print "<div class='use-ajax webform-dialog webform-dialog-narrow popup_gift' data-dialog-type='modal'>
@@ -331,6 +333,10 @@ dump($arrShowF);
                                                 <select>
 
                                                     ".$option."
+                                                </select>
+                                                <select>
+
+                                                    ".$option2."
                                                 </select>
                                                 <button class='btn_main action'>Alege</button>
 

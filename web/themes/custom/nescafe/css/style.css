@@ -745,7 +745,6 @@ form .form-item label{
   left: 50%;
   transform: translate(-50%, -50%);
   width: 150px;
-  height: 150px;
   background: #fff;
   border-radius: 10px;
   padding: 20px 25px;
@@ -757,5 +756,6 @@ form .form-item label{
   width: 100%;
   border: none;
   padding: 5px;
+  border-radius: 5px;
   margin-bottom: 10px;
 }
