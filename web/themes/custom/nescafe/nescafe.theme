@@ -250,14 +250,14 @@ foreach($result2 as $record2){
        if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru'){
            $name = 'Имя';
            $phone = 'Телефон';
-           $action = "Действия";
+           $action = "Подтвердить";
            $mail = 'Почта';
        }
        if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro'){
            $name = 'Nume';
-           $phone = "Telefon";
-           $action = 'Actiune';
-           $mail = 'Posta';
+         $phone = "Telefon";
+         $action = 'Confirma';
+         $mail = 'Posta';
        }
 
                print <<<TABLE
@@ -270,7 +270,7 @@ foreach($result2 as $record2){
        $count = 1;
            foreach ($result as $record) {
 
-                   printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><a href='/verify' class='use-ajax webform-dialog webform-dialog-narrow btn_main action' data-dialog-type='modal'>%s</a></td></tr>\n", $count, $record->name, $record->mail, $record->field_phone_value, $action);
+                   printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><a href='/verify' data-id='%s' class='use-ajax webform-dialog webform-dialog-narrow btn_main action' data-dialog-type='modal'>%s</a></td></tr>\n", $count, $record->name, $record->mail, $record->field_phone_value,$record->uid, $action);
 
                 $count++;
            }
