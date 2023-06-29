@@ -752,3 +752,10 @@ form .form-item label{
   border: 1px solid #cecece;
   box-shadow: 0 2px 10px #000;
 }
+
+.popup_gift select{
+  width: 100%;
+  border: none;
+  padding: 5px;
+  margin-bottom: 10px;
+}
