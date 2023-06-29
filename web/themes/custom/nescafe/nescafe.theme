@@ -300,7 +300,7 @@ foreach($result2 as $record2){
                                         $giftVal = $conn->query($getGift);
                                         foreach($giftVal as $gift=>$val){
                                             $arrData[ $val['sid'] ][ $val['name'] ] = $val;
-                                            dump($val);
+                                            //dump($val);
                                             //dump($val['value']);
                                         }
 
@@ -313,6 +313,7 @@ foreach($result2 as $record2){
                                                 if( $name == 'categoria_de_produs' && $val2['value'] == 3 ) {
                                                     // $val['title'] = $val[''];
                                                     $arrShowF[[$IDgift]['filiala']['value']][] = array( 'name' => $arrData[$IDgift]['premiu']['value'] , 'id' => $IDgift );
+                                                    $arrShowF[[$IDgift]['filiala']['value']][] = array( 'name' => $arrData[$kIDgift]['filiala']['value'] , 'id' => $IDgift );
                                                 }
                                             }
                                         }
