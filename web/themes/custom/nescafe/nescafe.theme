@@ -130,13 +130,13 @@ $credentials = $config->credentials('database');
           if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru'){
               $name = 'Имя';
               $phone = 'Телефон';
-              $action = "Действия";
+              $action = "Проверить";
               $mail = 'Почта';
           }
           if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro'){
               $name = 'Nume';
               $phone = "Telefon";
-              $action = 'Actiune';
+              $action = 'Confirma';
               $mail = 'Posta';
           }
 
