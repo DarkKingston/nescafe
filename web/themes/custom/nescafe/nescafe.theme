@@ -166,7 +166,7 @@ if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro'){
 }
 
 /*Обычный пользователь Вывод промокодов который он вводил*/
- if(in_array('authenticated', $roles) && !in_array('manager_filiala', $roles)){
+ if(in_array('authenticated', $roles) && !in_array('manager_filiala', $roles) && !in_array('administrator', $roles)){
         print <<<TABLE
 <table id="table8">
 <thead>
@@ -247,7 +247,7 @@ foreach($result2 as $record2){
    }
 
    /*Для администратора*/
-   if(in_array('administrator', $roles)){
+   if(in_array('authenticated', $roles) && in_array('administrator', $roles)){
    $mainSql = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` WHERE uid != 0 ORDER BY uid ASC";
           $results = $conn->query($mainSql);
           $results->setFetchMode(\PDO::FETCH_OBJ);
@@ -286,7 +286,7 @@ foreach($result2 as $record2){
 
           print "</tbody>\n</table>\n";
           }
-      }
+}
 
  /*Код с выводом наград*/
 
