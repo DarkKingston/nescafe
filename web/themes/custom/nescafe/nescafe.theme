@@ -118,12 +118,9 @@ $credentials = $config->credentials('database');
 
     if(!in_array('player', $roles)){
           $role_id = 'player';
-          $current_user = \Drupal::currentUser();
 
-          // Load the user entity.
-          $user = User::load($current_user->id());
+          $user = User::load($curr_id_for_user);
 
-          // Add the role to the user.
           $user->addRole($role_id);
           $user->save();
     }
