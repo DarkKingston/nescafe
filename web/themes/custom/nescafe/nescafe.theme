@@ -328,8 +328,8 @@ foreach($result2 as $record2){
                                                                  //dump($arrShow);
                                                                     $option2 .= " <option>".$val['filiala']."</option> ";
                                                                  }
-                                                                 for($i = 0; $i < count($arr); $i++){
-                                                                    $option .= " <option>".$arr[$i]."</option> ";
+                                                                 for($arr as $arrVal){
+                                                                    $option .= " <option>".$arrVal."</option> ";
                                                                  }
 //dump($filiala);
                                             print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_gift' data-dialog-type='modal'>
