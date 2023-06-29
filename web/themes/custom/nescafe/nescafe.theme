@@ -127,12 +127,18 @@ $credentials = $config->credentials('database');
 
     $roles = \Drupal::currentUser()->getRoles();
 
+ /*Для администратора*/
+   dump($roles);
+   if(in_array('authenticated', $roles) && in_array('administrator', $roles)){
+    dump('123');
+   }
+
 /* Sql запросы по ролям */
 
         //if(in_array('administrator', $roles)) {
         //    $sqlQuery = "SELECT * FROM promo_code WHERE active <> 0";
         //}
-        if(in_array('authenticated', $roles) && !in_array('administrator', $roles)){
+        if(in_array('authenticated', $roles) && !in_array('administrator', $roles) && !in_array('manager_filiala', $roles)){
           $sqlQuery = "SELECT * FROM promo_code WHERE active = '".$curr_id_for_user."'";
         }
         if(in_array('authenticated', $roles) && in_array('manager_filiala', $roles) && !in_array('administrator', $roles)){
@@ -246,11 +252,7 @@ foreach($result2 as $record2){
        }
    }
 
-   /*Для администратора*/
-   dump($roles);
-   if(in_array('authenticated', $roles) && in_array('administrator', $roles)){
-    dump('123');
-   }
+
 
  /*Код с выводом наград*/
 
