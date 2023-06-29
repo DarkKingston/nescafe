@@ -730,14 +730,14 @@ form .form-item label{
   padding: 12px 25px;
 }
 
-.form-item-field-role{
-  opacity: 0;
-  height: 1px !important;
-}
+/*.field--name-field-role{*/
+/*  opacity: 0;*/
+/*  height: 1px !important;*/
+/*}*/
 
-.ui-dialog .ui-dialog-content{
-  overflow: hidden;
-}
+/*.ui-dialog .ui-dialog-content{*/
+/*  overflow: hidden;*/
+/*}*/
 
 .popup_gift{
   position: absolute;
