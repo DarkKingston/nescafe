@@ -397,3 +397,9 @@ function nescafe_preprocess_request(Request $request) {
   drupal_set_message('Код промоции: ' . $codPromotional);
   drupal_set_message('User ID: ' . $userId);
 }
+
+
+function nescafe_preprocess_user_insert(Drupal\Core\Entity\EntityInterface $entity) {
+  $entity->addRole('player'); //no rid!
+  $entity->save();
+}
