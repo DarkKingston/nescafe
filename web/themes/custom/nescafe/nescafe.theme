@@ -66,6 +66,17 @@ function nescafe_preprocess_menu__header_btn(&$logged){
 
 function nescafe_preprocess_page(&$page){
     //dump($page);
+    $roles = \Drupal::currentUser()->getRoles();
+
+        $curr_id_for_user = \Drupal::currentUser()->id();
+        if(!in_array('player', $roles)){
+              $role_id = 'player';
+
+              $user = User::load($curr_id_for_user);
+
+              $user->addRole($role_id);
+              $user->save();
+        }
 }
 
 
@@ -116,14 +127,6 @@ $credentials = $config->credentials('database');
 
     $roles = \Drupal::currentUser()->getRoles();
 
-    if(!in_array('player', $roles)){
-          $role_id = 'player';
-
-          $user = User::load($curr_id_for_user);
-
-          $user->addRole($role_id);
-          $user->save();
-    }
 
 /*Для администратора*/
    if(in_array('authenticated', $roles) && in_array('administrator', $roles)){
