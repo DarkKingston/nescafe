@@ -282,9 +282,7 @@ foreach($result2 as $record2){
  /*Код с выводом наград*/
 
         if(in_array('authenticated', $roles) && !in_array('manager_filiala', $roles) && !in_array('administrator', $roles)){
-             /*вывод количество набранных очков*/
-                        print "$totalPromo => $total";
-                        /*вывод количество набранных очков конец*/
+
 
                          $getUserID = "SELECT * FROM promo_code WHERE active != 0 ORDER BY data DESC LIMIT 1";
                         $res = $conn->query($getUserID);
@@ -354,10 +352,11 @@ dump($arrUnique);
 
                                     if(isset($_POST['submitGift'])){
                                         $updatePromo = "UPDATE promo_code SET premiu = '".$_POST['premiu']."', livrare = '".$_POST['livrare']."', data = NOW() WHERE promocode = '".$userID->promocode."' AND premiu = '' AND livrare = '' ";
+                                         if($conn->query($updatePromo)){
+                                            //echo "ok";
+                                         }
                                     }
-                                    if($conn->query($updatePromo)){
-                                      //echo "ok";
-                                    }
+
 
                                 }
                             }
