@@ -291,9 +291,8 @@ foreach($result2 as $record2){
                         $res->setFetchMode(\PDO::FETCH_OBJ);
                         foreach($res as $userID){
                         }
-                            dump($promoTotal);
                             dump($curr_id_for_user);
-                            dump($userID->value);
+                            dump($userID);
                             if($curr_id_for_user == $userID->value){
                             dump($promoTotal);
                                 if(($promoTotal % 7) == 0){
