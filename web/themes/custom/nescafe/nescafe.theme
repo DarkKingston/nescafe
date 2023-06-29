@@ -195,7 +195,7 @@ $credentials = $config->credentials('database');
     // Кастомный запрос по ролям приравниваю к переменной sql
     if($sqlQuery != ''){
     $sql = $sqlQuery;
-
+    dump($sql);
     $result = $conn->query($sql);
     $result->setFetchMode(\PDO::FETCH_OBJ);
     $sql2 = "SELECT * FROM promo_code WHERE active <> 0";
