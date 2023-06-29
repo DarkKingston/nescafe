@@ -254,19 +254,7 @@ function apiBulkSmsSystem( $params )
 
             // проверка если номер Молдавский
 
-            if( !checkMDPhone( $params['phone'] ) )
 
-            {
-
-                $result['message'] = 'No checkMDPhone | ' . $params['phone'];
-
-
-
-                // mysql_query("INSERT INTO ws_test ( `date` , `test` ) VALUES ( NOW() , '". json_encode( $result ) ."' ) ");
-
-                return $result;
-
-            }
 
 
 
