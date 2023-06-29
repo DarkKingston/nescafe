@@ -169,7 +169,7 @@ $params = array(
 
     show( $resultSend );
 
-*/
+
 
 function apiBulkSmsSystem( $params )
 
