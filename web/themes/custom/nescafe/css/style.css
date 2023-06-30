@@ -784,3 +784,8 @@ form .form-item label{
   margin: 0 23px;
   padding: 12px 25px;
 }
+
+.stock-content{
+  display: flex;
+  flex-direction: column-reverse;
+}

@@ -445,7 +445,7 @@ function nescafe_preprocess_region__stock($page){
             $giftVal = $conn->query($getGift);
             foreach($giftVal as $gift=>$val){
             $arrData[ $val['sid'] ][ $val['name'] ] = $val;
-            dump($val);
+            //dump($val);
             //dump($val['value']);
             }
 
@@ -454,10 +454,19 @@ function nescafe_preprocess_region__stock($page){
 
             $arrShowF = array();
             foreach($arrData as $IDgift => $val){
+            dump($arrData);
                 foreach($val as $name => $val2){
                     if( $name == 'categoria_de_produs' && $val2['value'] == 3 ) {
                     // $val['title'] = $val[''];
-                        $arrShowF[[$IDgift]['filiala']['value']][] = array( 'name' => $arrData[$IDgift]['premiu']['value'] ,'filiala' => $arrData[$IDgift]['filiala']['value'], 'id' => $IDgift );
+                        $arrShowF[[$IDgift]['filiala']['value']][] = array( 'name3' => $arrData[$IDgift]['premiu']['value'] ,'filiala3' => $arrData[$IDgift]['filiala']['value'], 'id' => $IDgift );
+                    }
+                    if( $name == 'categoria_de_produs' && $val2['value'] == 2 ) {
+                    // $val['title'] = $val[''];
+                        $arrShowF[[$IDgift]['filiala']['value']][] = array( 'name2' => $arrData[$IDgift]['premiu']['value'] ,'filiala2' => $arrData[$IDgift]['filiala']['value'], 'id' => $IDgift );
+                    }
+                    if( $name == 'categoria_de_produs' && $val2['value'] == 1 ) {
+                    // $val['title'] = $val[''];
+                        $arrShowF[[$IDgift]['filiala']['value']][] = array( 'name1' => $arrData[$IDgift]['premiu']['value'] ,'filiala1' => $arrData[$IDgift]['filiala']['value'], 'id' => $IDgift );
                     }
                 }
             }
@@ -493,7 +502,7 @@ function nescafe_preprocess_region__stock($page){
                    print <<<TABLE
            <table id="table8">
            <thead>
-           <tr><th>$grad 1</th><th>$solicitate</th><th>$stock_init</th><th>$supliment</th><th>$stoc_dispon</th><th>$eliberate</th><th>$stoc_final</th><th>$grad</th></tr>
+           <tr><th>$grad 3</th><th>$solicitate</th><th>$stock_init</th><th>$supliment</th><th>$stoc_dispon</th><th>$eliberate</th><th>$stoc_final</th><th>$grad</th></tr>
            </thead>
            <tbody>
            TABLE;
@@ -531,7 +540,7 @@ function nescafe_preprocess_region__stock($page){
            print <<<TABLE
            <table id="table8">
            <thead>
-           <tr><th>$grad 3</th><th>$solicitate</th><th>$stock_init</th><th>$supliment</th><th>$stoc_dispon</th><th>$eliberate</th><th>$stoc_final</th><th>$grad</th></tr>
+           <tr><th>$grad 1</th><th>$solicitate</th><th>$stock_init</th><th>$supliment</th><th>$stoc_dispon</th><th>$eliberate</th><th>$stoc_final</th><th>$grad</th></tr>
            </thead>
            <tbody>
            TABLE;
