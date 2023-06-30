@@ -163,12 +163,14 @@ $credentials = $config->credentials('database');
               $phone = 'Телефон';
               $action = "Проверить";
               $mail = 'Почта';
+              $stats = 'Сток';
           }
           if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro'){
               $name = 'Nume';
               $phone = "Telefon";
               $action = 'Confirma';
               $mail = 'Posta';
+              $stats = 'Stoc';
           }
 
                   print <<<TABLE
@@ -188,6 +190,8 @@ $credentials = $config->credentials('database');
               }
 
           print "</tbody>\n</table>\n";
+
+       print "<a href='/stock' class='btn_main stock'>".c."</a>";
           }
     }
 
