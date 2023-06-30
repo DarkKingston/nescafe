@@ -810,9 +810,9 @@ function nescafe_preprocess_region__details($details){
                   $count = 1;
                       foreach ($result as $record) {
                       if($record->status == 2){
-                        $statusPrint = $statusOFF;
+                        $statusPrint = $stateOFF;
                       }else if($record->status == 3){
-                       $statusPrint = $statusON;
+                       $statusPrint = $stateON;
                       }else{
                         $statusPrint = '';
                       }
