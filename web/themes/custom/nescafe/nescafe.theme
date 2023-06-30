@@ -422,4 +422,11 @@ function nescafe_preprocess_request(Request $request) {
   drupal_set_message('User ID: ' . $userId);
 }
 
+/*
+Страница вывода стока
+*/
 
+function nescafe_preprocess_page__stock($page){
+    echo 'test page stock';
+
+}
