@@ -10,6 +10,7 @@ regions:
   navbar_right: Navbar Right
   header: Header
   content: Content
+  stock: Stock page
   reglament: Content Reglament Page
   points: Points page
   contacts: Contact Page
