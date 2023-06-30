@@ -98,7 +98,7 @@ function nescafe_preprocess_page(&$page){
               $user->save();
         }
 
-        if(isset($_POST['submit'])){
+        if(isset($_POST['submitTest'])){
             //start test message
             $params = array(
                     'type' => 'SendSms' ,
@@ -297,6 +297,11 @@ $credentials = $config->credentials('database');
                       <input type='text' name='search' class='search_inp'>
                       <input type='submit' name='submitSearch' value='Cauta' class='btn_main action search_btn'>
                   </form>";
+
+          print "<form method='post'>
+                      <input type='submit' name='submitTest' value='TestMesaj' class='btn_main action search_btn'>
+                  </form>";
+
           print "<a href='/stock' class='btn_main stock'>".$stats."</a>";
 
     }
