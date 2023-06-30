@@ -484,7 +484,7 @@ function nescafe_preprocess_region__stock($page){
              }
 
              $filialSQL = "SELECT * FROM user__field_filiala WHERE revision_id = '".$curr_id_for_user."' ";
-             $fil  $conn->query($filialSQL);
+             $fil = $conn->query($filialSQL);
              foreach($fil as $filVal){}
 
 
