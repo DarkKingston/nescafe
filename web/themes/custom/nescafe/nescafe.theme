@@ -427,6 +427,114 @@ function nescafe_preprocess_request(Request $request) {
 */
 
 function nescafe_preprocess_page__stock($page){
-    echo 'test page stock';
+
+    if(in_array('authenticated', $roles) && in_array('manager_filiala', $roles) && !in_array('administrator', $roles)){
+            $arrData  = array();
+            $getGift = "SELECT * FROM webform_submission_data WHERE webform_id = 'cadouri'  ";
+            $giftVal = $conn->query($getGift);
+            foreach($giftVal as $gift=>$val){
+            $arrData[ $val['sid'] ][ $val['name'] ] = $val;
+            //dump($val);
+            //dump($val['value']);
+            }
+
+
+            // dump($arrData);
+
+            $arrShowF = array();
+            foreach($arrData as $IDgift => $val){
+                foreach($val as $name => $val2){
+                    if( $name == 'categoria_de_produs' && $val2['value'] == 3 ) {
+                    // $val['title'] = $val[''];
+                        $arrShowF[[$IDgift]['filiala']['value']][] = array( 'name' => $arrData[$IDgift]['premiu']['value'] ,'filiala' => $arrData[$IDgift]['filiala']['value'], 'id' => $IDgift );
+                    }
+                }
+            }
+            dump($arrShowF);
+            $arr = [];
+            foreach($arrShowF as $filiala => $arrShow){
+                foreach($arrShow as $ft => $val){
+                    $arr[] = $val['name'];
+                }
+                $arrUnique = array_unique($arr);
+                foreach($arrUnique as $arrVal){
+                    dump($arrVal);
+                }
+            }
+           if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru'){
+               $solicitate = 'Запрошено';
+               $stock_init = 'Начальный сток';
+               $supliment = 'Дополнение';
+               $stoc_dispon = 'Наличие в стоке';
+               $eliberate = 'Выпуск';
+               $stoc_final = 'Финальный сток';
+               $grad = 'Класс';
+           }
+           if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro'){
+               $solicitate = 'Solicitate';
+               $stock_init = 'Stoc initial';
+               $supliment = 'Suplimentar';
+               $stoc_dispon = 'Stoc disponibil';
+               $eliberate = 'Eliberate';
+               $stoc_final = 'Stoc final';
+               $grad = 'Gradul';
+           }
+                   print <<<TABLE
+           <table id="table8">
+           <thead>
+           <tr><th>$grad 1</th><th>$solicitate</th><th>$stock_init</th><th>$supliment</th><th>$stoc_dispon</th><th>$eliberate</th><th>$stoc_final</th><th>$grad</th></tr>
+           </thead>
+           <tbody>
+           TABLE;
+           $count = 1;
+               foreach ($result as $record) {
+               //dump($record);
+                       printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $record->name, $record->mail, $record->field_phone_value, $record->premiu, $record->livrare,$record->uid, $action);
+
+                    $count++;
+               }
+
+           print "</tbody>\n</table>\n";
+
+            print '<br>';
+
+           print <<<TABLE
+           <table id="table8">
+           <thead>
+           <tr><th>$grad 2</th><th>$solicitate</th><th>$stock_init</th><th>$supliment</th><th>$stoc_dispon</th><th>$eliberate</th><th>$stoc_final</th><th>$grad</th></tr>
+           </thead>
+           <tbody>
+           TABLE;
+           $count = 1;
+               foreach ($result as $record) {
+               //dump($record);
+                       printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $record->name, $record->mail, $record->field_phone_value, $record->premiu, $record->livrare,$record->uid, $action);
+
+                    $count++;
+               }
+
+           print "</tbody>\n</table>\n";
+
+           print '<br>';
+
+           print <<<TABLE
+           <table id="table8">
+           <thead>
+           <tr><th>$grad 3</th><th>$solicitate</th><th>$stock_init</th><th>$supliment</th><th>$stoc_dispon</th><th>$eliberate</th><th>$stoc_final</th><th>$grad</th></tr>
+           </thead>
+           <tbody>
+           TABLE;
+           $count = 1;
+               foreach ($result as $record) {
+               //dump($record);
+                       printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $record->name, $record->mail, $record->field_phone_value, $record->premiu, $record->livrare,$record->uid, $action);
+
+                    $count++;
+               }
+
+           print "</tbody>\n</table>\n";
+
+
+       }
 
 }
