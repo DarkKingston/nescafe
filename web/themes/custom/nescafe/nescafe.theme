@@ -187,7 +187,7 @@ $sql = $sqlQuery;
           $count = 1;
               foreach ($result as $record) {
               //dump($record);
-                      printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><a href='/details' data-id='%s' class='btn_main action'>%s</a></td></tr>\n", $count, $record->name, $record->mail, $record->field_phone_value, $record->premiu, $record->livrare, $record->promocode, $record->uid, $action);
+                      printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><a href='/details?id=%s' data-id='%s' class='btn_main action'>%s</a></td></tr>\n", $count, $record->name, $record->mail, $record->field_phone_value, $record->premiu, $record->livrare, $record->promocode, $curr_id_for_user, $record->uid, $action);
 
                    $count++;
               }
