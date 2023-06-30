@@ -181,7 +181,7 @@ $credentials = $config->credentials('database');
         }
         if(in_array('authenticated', $roles) && in_array('manager_filiala', $roles) && !in_array('administrator', $roles)){
           if(isset($_POST['submitSearch']) && $_POST['search'] != ''){
-                $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` WHERE uid != 0 AND  `user__field_phone`.`field_phone_value` = '".$_POST['search']."'  LIMIT 1";
+                $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` WHERE uid != 0 AND  `user__field_phone`.`field_phone_value` LIKE '%".$_POST['search']."%'";
             //dump($_POST);
            }else{
             $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` WHERE uid != 0 ORDER BY uid ASC";
