@@ -797,14 +797,14 @@ function nescafe_preprocess_region__details($details){
                           print <<<TABLE
                   <table id="table8">
                   <thead>
-                  <tr><th>ID</th><th>$name</th><th>$mail</th><th>$phone</th><th>$prem</th><th>$livrare</th><th>$promoCode</th><th>$action</th></tr>
+                  <tr><th>ID</th><th>$name</th><th>$mail</th><th>$phone</th><th>$prem</th><th>$livrare</th><th>$promoCode</th></tr>
                   </thead>
                   <tbody>
                   TABLE;
                   $count = 1;
                       foreach ($result as $record) {
                       //dump($record);
-                              printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><a href='/details?id=%s' data-id='%s' class='btn_main action'>%s</a></td></tr>\n", $count, $record->name, $record->mail, $record->field_phone_value, $record->premiu, $record->livrare, $record->promocode, $record->uid, $record->uid, $action);
+                              printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $record->name, $record->mail, $record->field_phone_value, $record->premiu, $record->livrare, $record->promocode);
 
                            $count++;
                       }
