@@ -505,10 +505,7 @@ function nescafe_preprocess_region__stock($page){
                $stoc_final = 'Stoc final';
                $grad = 'Gradul';
            }
-           $stockInit = 0;
-           $stockDisp = $stockInit + $val['suplimentar3'];
-           $elib = count($arrShow);
-           $stockFinal = $stockDisp - $elib;
+
                    print <<<TABLE
            <table id="table8">
            <thead>
@@ -518,6 +515,10 @@ function nescafe_preprocess_region__stock($page){
            TABLE;
            $count = 1;
            foreach($arrShowF as $filiala => $arrShow){
+                  $stockInit = 0;
+                  $stockDisp = $stockInit + $val['suplimentar3'];
+                  $elib = count($arrShow);
+                  $stockFinal = $stockDisp - $elib;
                            foreach($arrShow as $ft => $val){
                                $arr[] = $val['name'];
 
