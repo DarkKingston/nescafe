@@ -493,8 +493,8 @@ function nescafe_preprocess_region__stock($page){
            }
            $stockInit = 0;
            $stockDisp = $stockInit + $val['suplimentar3'];
-           $elib = count($arrShowF);
-           $stockFinal = $elib - $stockDisp;
+           $elib = count($arrShow);
+           $stockFinal = $stockDisp - $elib;
                    print <<<TABLE
            <table id="table8">
            <thead>
