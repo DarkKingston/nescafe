@@ -265,14 +265,14 @@ foreach($result2 as $record2){
            $phone = 'Телефон';
            $action = "Подтвердить";
            $mail = 'Почта';
-            $stats = 'Статистика';
+            $stats = 'Сток';
        }
        if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro'){
            $name = 'Nume';
          $phone = "Telefon";
          $action = 'Confirma';
          $mail = 'Posta';
-        $stats = 'Statistica';
+        $stats = 'Stoc';
        }
                print <<<TABLE
        <table id="table8">
@@ -295,7 +295,7 @@ foreach($result2 as $record2){
                    <input type='text' name='search'>
                    <input type='submit' name='submitSearch' value='Cauta'>
                </form>";
-       print "<a href='/stats'>".$stats."</a>";
+       print "<a href='/stock'>".$stats."</a>";
 
    }
  /*Код с выводом наград*/
