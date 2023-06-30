@@ -428,6 +428,7 @@ function nescafe_preprocess_request(Request $request) {
 
 function nescafe_preprocess_page__stock($page){
 
+    $roles = \Drupal::currentUser()->getRoles();
     if(in_array('authenticated', $roles) && in_array('manager_filiala', $roles) && !in_array('administrator', $roles)){
             $arrData  = array();
             $getGift = "SELECT * FROM webform_submission_data WHERE webform_id = 'cadouri'  ";
