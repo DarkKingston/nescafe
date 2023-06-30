@@ -487,10 +487,9 @@ function nescafe_preprocess_region__stock($page){
             foreach($arrShowF as $filiala => $arrShow){
                 foreach($arrShow as $ft => $val){
                     $arr[] = $val['name'];
-                    dump($arrShow);
-                }
 
-            dump($arrShowF);
+
+            //dump($arrShowF);
            if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru'){
                $solicitate = 'Запрошено';
                $stock_init = 'Начальный сток';
@@ -528,7 +527,7 @@ function nescafe_preprocess_region__stock($page){
 
            print "</tbody>\n</table>\n";
     }
-
+}
 
 }
 }
