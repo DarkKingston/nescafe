@@ -458,15 +458,7 @@ function nescafe_preprocess_region__stock($page){
                 foreach($val as $name => $val2){
                     if( $name == 'categoria_de_produs' && $val2['value'] == 3 ) {
                     // $val['title'] = $val[''];
-                        $arrShowF[[$IDgift]['filiala']['value']][] = array( 'name3' => $arrData[$IDgift]['premiu']['value'] ,'filiala3' => $arrData[$IDgift]['filiala']['value'], 'id' => $IDgift );
-                    }
-                    if( $name == 'categoria_de_produs' && $val2['value'] == 2 ) {
-                    // $val['title'] = $val[''];
-                        $arrShowF2[[$IDgift]['filiala']['value']][] = array( 'name2' => $arrData[$IDgift]['premiu']['value'] ,'filiala2' => $arrData[$IDgift]['filiala']['value'], 'id' => $IDgift );
-                    }
-                    if( $name == 'categoria_de_produs' && $val2['value'] == 1 ) {
-                    // $val['title'] = $val[''];
-                        $arrShowF1[[$IDgift]['filiala']['value']][] = array( 'name1' => $arrData[$IDgift]['premiu']['value'] ,'filiala1' => $arrData[$IDgift]['filiala']['value'], 'id' => $IDgift );
+                        $arrShowF[[$IDgift]['filiala']['value']][] = array( 'name3' => $arrData[$IDgift]['premiu']['value'] ,'filiala3' => $arrData[$IDgift]['filiala']['value'],'stock3' => $arrData[$IDgift]['stock']['value'],'suplimentar3' => $arrData[$IDgift]['suplimentar']['value'], 'id' => $IDgift );
                     }
                 }
             }
@@ -499,6 +491,10 @@ function nescafe_preprocess_region__stock($page){
                $stoc_final = 'Stoc final';
                $grad = 'Gradul';
            }
+           $stockInit = 0;
+           $stockDisp = $stockInit + $val['suplimentar3'];
+           $elib = count($arrShowF);
+           $stockFinal = $elib - $stockDisp;
                    print <<<TABLE
            <table id="table8">
            <thead>
@@ -508,7 +504,7 @@ function nescafe_preprocess_region__stock($page){
            TABLE;
            $count = 1;
                //dump($record);
-                       printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $val['name3'], $val['filiala3'], $record->field_phone_value, $record->premiu, $record->livrare,$record->uid, $action);
+                       printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $val['name3'], $val['filiala3'], $val['suplimentar3'], $stockInit, $stockDisp,$elib, $stockFinal);
 
                     $count++;
 
@@ -519,3 +515,15 @@ function nescafe_preprocess_region__stock($page){
 
 }
 }
+
+/*
+
+                    if( $name == 'categoria_de_produs' && $val2['value'] == 2 ) {
+                    // $val['title'] = $val[''];
+                        $arrShowF2[[$IDgift]['filiala']['value']][] = array( 'name2' => $arrData[$IDgift]['premiu']['value'] ,'filiala2' => $arrData[$IDgift]['filiala']['value'], 'id' => $IDgift );
+                    }
+                    if( $name == 'categoria_de_produs' && $val2['value'] == 1 ) {
+                    // $val['title'] = $val[''];
+                        $arrShowF1[[$IDgift]['filiala']['value']][] = array( 'name1' => $arrData[$IDgift]['premiu']['value'] ,'filiala1' => $arrData[$IDgift]['filiala']['value'], 'id' => $IDgift );
+                    }
+*/
