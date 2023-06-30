@@ -451,7 +451,7 @@ function nescafe_preprocess_request(Request $request) {
 */
 
 function nescafe_preprocess_region__stock($page){
-
+    $user = \Drupal::currentUser();
     $roles = \Drupal::currentUser()->getRoles();
     $curr_id_for_user = \Drupal::currentUser()->id();
              $config = new Config();
@@ -503,7 +503,7 @@ function nescafe_preprocess_region__stock($page){
              }
              $arr = [];
             dump($arrData);
-            dump($arrShowF);
+            dump($user);
             if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru'){
                 $solicitate = 'Запрошено';
                 $stock_init = 'Начальный сток';
