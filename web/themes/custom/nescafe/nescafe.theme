@@ -426,7 +426,7 @@ function nescafe_preprocess_request(Request $request) {
 Страница вывода стока
 */
 
-function nescafe_preprocess_page__stock($page){
+function nescafe_preprocess_region__stock($page){
 
     $roles = \Drupal::currentUser()->getRoles();
     $curr_id_for_user = \Drupal::currentUser()->id();
@@ -445,7 +445,7 @@ function nescafe_preprocess_page__stock($page){
             $giftVal = $conn->query($getGift);
             foreach($giftVal as $gift=>$val){
             $arrData[ $val['sid'] ][ $val['name'] ] = $val;
-            //dump($val);
+            dump($val);
             //dump($val['value']);
             }
 
@@ -461,7 +461,7 @@ function nescafe_preprocess_page__stock($page){
                     }
                 }
             }
-            dump($arrShowF);
+            //dump($arrShowF);
             $arr = [];
             foreach($arrShowF as $filiala => $arrShow){
                 foreach($arrShow as $ft => $val){
@@ -469,7 +469,7 @@ function nescafe_preprocess_page__stock($page){
                 }
                 $arrUnique = array_unique($arr);
                 foreach($arrUnique as $arrVal){
-                    dump($arrVal);
+                    //dump($arrVal);
                 }
             }
            if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru'){
