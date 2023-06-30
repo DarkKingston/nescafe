@@ -467,12 +467,13 @@ function nescafe_preprocess_region__stock($page){
             foreach($arrShowF as $filiala => $arrShow){
                 foreach($arrShow as $ft => $val){
                     $arr[] = $val['name'];
+                    dump($arrShow);
                 }
                 $arrUnique = array_unique($arr);
                 foreach($arrUnique as $arrVal){
                     //dump($arrVal);
                 }
-
+            dump($arrShowF);
            if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru'){
                $solicitate = 'Запрошено';
                $stock_init = 'Начальный сток';
@@ -503,7 +504,6 @@ function nescafe_preprocess_region__stock($page){
            <tbody>
            TABLE;
            $count = 1;
-               //dump($record);
                        printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $val['name3'], $stockInit, $val['suplimentar3'], $stockDisp, $elib,$stockFinal);
 
                     $count++;
