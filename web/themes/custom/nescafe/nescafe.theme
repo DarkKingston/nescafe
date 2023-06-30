@@ -508,7 +508,7 @@ function nescafe_preprocess_region__stock($page){
            TABLE;
            $count = 1;
                //dump($record);
-                       printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $val['name'], $record->mail, $record->field_phone_value, $record->premiu, $record->livrare,$record->uid, $action);
+                       printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $val['name3'], $val['filiala3'], $record->field_phone_value, $record->premiu, $record->livrare,$record->uid, $action);
 
                     $count++;
 
