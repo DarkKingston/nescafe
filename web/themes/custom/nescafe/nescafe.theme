@@ -295,7 +295,7 @@ foreach($result2 as $record2){
                    <input type='text' name='search'>
                    <input type='submit' name='submitSearch' value='Cauta'>
                </form>";
-       print "<a href='/stats'></a>";
+       print "<a href='/stats'>".$stats."</a>";
 
    }
  /*Код с выводом наград*/
