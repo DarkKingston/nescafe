@@ -776,6 +776,9 @@ function nescafe_preprocess_region__details($details){
                       $prem = 'Приз';
                       $livrare = 'Филиал';
                       $promoCode = "Промокод";
+                      $state = 'Статус';
+                      $stateON = 'Выдан';
+                      $stateOFF = "В ожидании";
                   }
                   if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro'){
                       $name = 'Nume';
@@ -786,10 +789,13 @@ function nescafe_preprocess_region__details($details){
                       $prem = 'Premiu';
                       $livrare = 'Filiala';
                       $promoCode = "Promocod";
+                      $state = 'Statut';
+                      $stateON = 'Ridicat';
+                      $stateOFF = "In Asteptare";
                   }
 
                   $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` LEFT JOIN `promo_code` ON `users_field_data`.uid = `promo_code`.active WHERE uid != 0 AND `promo_code`.`active` = '".$_GET['id']."' ORDER BY uid ASC";
-        $sql = $sqlQuery;
+            $sql = $sqlQuery;
             //dump($sql);
             $result = $conn->query($sql);
             $result->setFetchMode(\PDO::FETCH_OBJ);
@@ -797,14 +803,24 @@ function nescafe_preprocess_region__details($details){
                           print <<<TABLE
                   <table id="table8">
                   <thead>
-                  <tr><th>ID</th><th>$name</th><th>$mail</th><th>$phone</th><th>$prem</th><th>$livrare</th><th>$promoCode</th></tr>
+                  <tr><th>ID</th><th>$name</th><th>$mail</th><th>$phone</th><th>$prem</th><th>$livrare</th><th>$promoCode</th><th>$state</th></tr>
                   </thead>
                   <tbody>
                   TABLE;
                   $count = 1;
                       foreach ($result as $record) {
+                      if($record->status == 2){
+                        $statusPrint = $statusOFF;
+                      }else{
+                        $statusPrint = '';
+                      }
+                      if($record->status == 3){
+                        $statusPrint = $statusON;
+                      }else{
+                        $statusPrint = '';
+                      }
                       //dump($record);
-                              printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $record->name, $record->mail, $record->field_phone_value, $record->premiu, $record->livrare, $record->promocode);
+                              printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $record->name, $record->mail, $record->field_phone_value, $record->premiu, $record->livrare, $record->promocode, $statusPrint);
 
                            $count++;
                       }
