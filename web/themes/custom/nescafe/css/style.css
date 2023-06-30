@@ -730,14 +730,14 @@ form .form-item label{
   padding: 12px 25px;
 }
 
-/*.field--name-field-role{*/
-/*  opacity: 0;*/
-/*  height: 1px !important;*/
-/*}*/
+.field--name-field-role{
+  opacity: 0;
+  height: 1px !important;
+}
 
-/*.ui-dialog .ui-dialog-content{*/
-/*  overflow: hidden;*/
-/*}*/
+.ui-dialog .ui-dialog-content{
+  overflow: hidden;
+}
 
 .popup_gift{
   position: absolute;
@@ -758,4 +758,16 @@ form .form-item label{
   padding: 5px;
   border-radius: 5px;
   margin-bottom: 10px;
+}
+
+.search_inp{
+  font-weight: 700;
+  font-size: 17px;
+  color: #000000;
+  background: #FFFFFF;
+  border: 1px solid #CECECE;
+  border-radius: 4px;
+  height: 45px;
+  width: 300px;
+  padding: 12px 25px;
 }
