@@ -487,15 +487,15 @@ function nescafe_preprocess_region__stock($page){
              $fil = $conn->query($filialSQL);
              foreach($fil as $filVal){}
 
-             dump($filVal['field_filiala_value']);
-             dump($filVal);
-
 
 
              $arrShowF = array();
              foreach($arrData as $IDgift => $val){
                  foreach($val as $name => $val2){
                  if($name == 'filiala' && $val2['value'] == $filVal['field_filiala_value']){
+                    dump($name);
+                    dump($val2);
+                 }
                      if( ($name == 'categoria_de_produs' && $val2['value'] == 3) ) {
                          $arrShowF[[$IDgift]['filiala']['value']][] = array( 'name3' => $arrData[$IDgift]['premiu']['value'] ,'filiala3' => $arrData[$IDgift]['filiala']['value'],'stock3' => $arrData[$IDgift]['stock']['value'],'suplimentar3' => $arrData[$IDgift]['suplimentar']['value'], 'id' => $IDgift );
                      }
@@ -507,11 +507,10 @@ function nescafe_preprocess_region__stock($page){
                       // $val['title'] = $val[''];
                          $arrShowF1[[$IDgift]['filiala']['value']][] = array( 'name1' => $arrData[$IDgift]['premiu']['value'] ,'filiala1' => $arrData[$IDgift]['filiala']['value'],'stock1' => $arrData[$IDgift]['stock']['value'],'suplimentar1' => $arrData[$IDgift]['suplimentar']['value'], 'id' => $IDgift );
                      }
-                    }
+
                  }
              }
              $arr = [];
-            dump($arrData);
             if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru'){
                 $solicitate = 'Запрошено';
                 $stock_init = 'Начальный сток';
