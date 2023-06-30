@@ -158,6 +158,7 @@ $credentials = $config->credentials('database');
               $stats = 'Сток';
               $prem = 'Приз';
               $livrare = 'Филиал';
+              $promoCode = "Промокод";
           }
           if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro'){
               $name = 'Nume';
@@ -167,6 +168,7 @@ $credentials = $config->credentials('database');
               $stats = 'Stoc';
               $prem = 'Premiu';
               $livrare = 'Filiala';
+              $promoCode = "Promocod";
           }
 
           $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` LEFT JOIN `promo_code` ON `users_field_data`.uid = `promo_code`.active WHERE uid != 0 AND `promo_code`.`active` != 0 AND `promo_code`.`status` = 2 AND `promo_code`.`status` = 3 ORDER BY uid ASC";
@@ -178,14 +180,14 @@ $sql = $sqlQuery;
                   print <<<TABLE
           <table id="table8">
           <thead>
-          <tr><th>ID</th><th>$name</th><th>$mail</th><th>$phone</th><th>$prem</th><th>$livrare</th><th>$action</th></tr>
+          <tr><th>ID</th><th>$name</th><th>$mail</th><th>$phone</th><th>$prem</th><th>$livrare</th><th>$promoCode</th><th>$action</th></tr>
           </thead>
           <tbody>
           TABLE;
           $count = 1;
               foreach ($result as $record) {
               //dump($record);
-                      printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><a href='/verify' data-id='%s' class='use-ajax webform-dialog webform-dialog-narrow btn_main action' data-dialog-type='modal'>%s</a></td></tr>\n", $count, $record->name, $record->mail, $record->field_phone_value, $record->premiu, $record->livrare,$record->uid, $action);
+                      printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><a href='/verify' data-id='%s' class='use-ajax webform-dialog webform-dialog-narrow btn_main action' data-dialog-type='modal'>%s</a></td></tr>\n", $count, $record->name, $record->mail, $record->field_phone_value, $record->premiu, $record->livrare, $record->promocode, $record->uid, $action);
 
                    $count++;
               }
