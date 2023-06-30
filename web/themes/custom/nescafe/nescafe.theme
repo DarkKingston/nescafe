@@ -495,18 +495,19 @@ function nescafe_preprocess_region__stock($page){
              $arrShowF = array();
              foreach($arrData as $IDgift => $val){
                  foreach($val as $name => $val2){
-                     if( ($name == 'categoria_de_produs' && $val2['value'] == 3) && ($name == 'filiala' && $val2['value'] == $filVal['field_filiala_value']) ) {
+                 if($name == 'filiala' && $val2['value'] == $filVal['field_filiala_value']){
+                     if( ($name == 'categoria_de_produs' && $val2['value'] == 3) ) {
                          $arrShowF[[$IDgift]['filiala']['value']][] = array( 'name3' => $arrData[$IDgift]['premiu']['value'] ,'filiala3' => $arrData[$IDgift]['filiala']['value'],'stock3' => $arrData[$IDgift]['stock']['value'],'suplimentar3' => $arrData[$IDgift]['suplimentar']['value'], 'id' => $IDgift );
                      }
-                     if( ($name == 'categoria_de_produs' && $val2['value'] == 2) && ($name == 'filiala' && $val2['value'] == $filVal['field_filiala_value']) ) {
+                     if( ($name == 'categoria_de_produs' && $val2['value'] == 2) ) {
                      // $val['title'] = $val[''];
                          $arrShowF2[[$IDgift]['filiala']['value']][] = array( 'name2' => $arrData[$IDgift]['premiu']['value'] ,'filiala2' => $arrData[$IDgift]['filiala']['value'],'stock2' => $arrData[$IDgift]['stock']['value'],'suplimentar2' => $arrData[$IDgift]['suplimentar']['value'], 'id' => $IDgift );
                      }
-                     if( ($name == 'categoria_de_produs' && $val2['value'] == 1) && ($name == 'filiala' && $val2['value'] == $filVal['field_filiala_value']) ) {
+                     if( ($name == 'categoria_de_produs' && $val2['value'] == 1)  ) {
                       // $val['title'] = $val[''];
                          $arrShowF1[[$IDgift]['filiala']['value']][] = array( 'name1' => $arrData[$IDgift]['premiu']['value'] ,'filiala1' => $arrData[$IDgift]['filiala']['value'],'stock1' => $arrData[$IDgift]['stock']['value'],'suplimentar1' => $arrData[$IDgift]['suplimentar']['value'], 'id' => $IDgift );
                      }
-
+                    }
                  }
              }
              $arr = [];
