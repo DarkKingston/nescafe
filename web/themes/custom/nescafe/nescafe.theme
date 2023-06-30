@@ -505,7 +505,7 @@ function nescafe_preprocess_region__stock($page){
                  }
              }
              $arr = [];
-            dump($arrData);
+            //dump($arrData);
             if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru'){
                 $solicitate = 'Запрошено';
                 $stock_init = 'Начальный сток';
