@@ -488,6 +488,7 @@ function nescafe_preprocess_region__stock($page){
              foreach($fil as $filVal){}
 
              dump($filVal['field_filiala_value']);
+             dump($filVal);
 
 
 
