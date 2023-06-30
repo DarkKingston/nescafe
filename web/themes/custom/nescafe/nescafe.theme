@@ -181,10 +181,10 @@ $credentials = $config->credentials('database');
         }
         if(in_array('authenticated', $roles) && in_array('manager_filiala', $roles) && !in_array('administrator', $roles)){
           if(isset($_POST['submitSearch']) && $_POST['search'] != ''){
-                $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` WHERE uid != 0 AND  `user__field_phone`.`field_phone_value` LIKE '%".$_POST['search']."%'";
+                $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` LEFT JOIN `promo_code` ON `users_field_data`.`uid` = `promo_code`.`active`  WHERE uid != 0 AND  `user__field_phone`.`field_phone_value` LIKE '%".$_POST['search']."%' AND `promo_code`.`active` != 0 AND `promo_code`.`status` = 2 ";
             //dump($_POST);
            }else{
-            $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` WHERE uid != 0 ORDER BY uid ASC";
+            $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` LEFT JOIN `promo_code` ON `users_field_data`.uid = `promo_code`.active WHERE uid != 0 AND `promo_code`.`active` != 0 AND `promo_code`.`status` = 2 ORDER BY uid ASC";
 
            }
 
@@ -283,6 +283,7 @@ foreach($result2 as $record2){
        TABLE;
        $count = 1;
            foreach ($result as $record) {
+           dump($record);
                    printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><a href='/verify' data-id='%s' class='use-ajax webform-dialog webform-dialog-narrow btn_main action' data-dialog-type='modal'>%s</a></td></tr>\n", $count, $record->name, $record->mail, $record->field_phone_value,$record->uid, $action);
 
                 $count++;
