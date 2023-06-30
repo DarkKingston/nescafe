@@ -494,9 +494,8 @@ function nescafe_preprocess_region__stock($page){
                  foreach($val as $name => $val2){
                  if($name == 'filiala' && $val2['value'] == $filVal['field_filiala_value']){
                     if( ($name == 'categoria_de_produs' && $val2['value'] == 3) ) {
-                    dump($val2);
+                        dump($val2);
                     }
-                    dump($val2);
                  }
                      if( ($name == 'categoria_de_produs' && $val2['value'] == 3) ) {
                          $arrShowF[[$IDgift]['filiala']['value']][] = array( 'name3' => $arrData[$IDgift]['premiu']['value'] ,'filiala3' => $arrData[$IDgift]['filiala']['value'],'stock3' => $arrData[$IDgift]['stock']['value'],'suplimentar3' => $arrData[$IDgift]['suplimentar']['value'], 'id' => $IDgift );
