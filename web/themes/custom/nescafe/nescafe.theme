@@ -109,10 +109,10 @@ function nescafe_preprocess_page(&$page){
             {
                 date_default_timezone_set('Europe/Chisinau');
                 // СТАНДАРТНЫЕ НАСТРОЙКИ
-                $_PID = '18190001-1B51-475D-9EAE-4B99A8916FB0';
-                $_ACCOUNT_NUMBER = '1819000149801';
+                $_PID = 'BEFB282E-A627-4765-AA4B-2E05A1725AC2';
+                $_ACCOUNT_NUMBER = '1701000149801';
                 $_UTS = time();
-                $_PASSWORD = 'KsaE8YNYqQQQHcIrbR7xxqbl3ylHk2ki';
+                $_PASSWORD = 'RH74VeY';
                 /*RStatus
                 *  0 – Request received successfully;
                 *  1 - “Processing error: <fname>=<value>” – this is an incorrect value of parameter <fname>=<value>
