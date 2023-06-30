@@ -514,46 +514,8 @@ function nescafe_preprocess_region__stock($page){
 
 
            print "</tbody>\n</table>\n";
+    }
+
+
 }
-            print '<br>';
-
-           print <<<TABLE
-           <table id="table8">
-           <thead>
-           <tr><th>$grad 2</th><th>$solicitate</th><th>$stock_init</th><th>$supliment</th><th>$stoc_dispon</th><th>$eliberate</th><th>$stoc_final</th></tr>
-           </thead>
-           <tbody>
-           TABLE;
-           $count = 1;
-               foreach ($result as $record) {
-               //dump($record);
-                       printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $record->name, $record->mail, $record->field_phone_value, $record->premiu, $record->livrare,$record->uid, $action);
-
-                    $count++;
-               }
-
-           print "</tbody>\n</table>\n";
-
-           print '<br>';
-
-           print <<<TABLE
-           <table id="table8">
-           <thead>
-           <tr><th>$grad 1</th><th>$solicitate</th><th>$stock_init</th><th>$supliment</th><th>$stoc_dispon</th><th>$eliberate</th><th>$stoc_final</th></tr>
-           </thead>
-           <tbody>
-           TABLE;
-           $count = 1;
-               foreach ($result as $record) {
-               //dump($record);
-                       printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $record->name, $record->mail, $record->field_phone_value, $record->premiu, $record->livrare,$record->uid, $action);
-
-                    $count++;
-               }
-
-           print "</tbody>\n</table>\n";
-
-
-       }
-
 }
