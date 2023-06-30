@@ -450,11 +450,11 @@ function nescafe_preprocess_request(Request $request) {
 */
 
 function nescafe_preprocess_region__stock($page){
-    $userFiliala = \Drupal::currentUser()->getFiliala();
 
-            dump($userFiliala);
     $roles = \Drupal::currentUser()->getRoles();
     $curr_id_for_user = \Drupal::currentUser()->id();
+
+
              $config = new Config();
              $credentials = $config->credentials('database');
              $dsn = sprintf('mysql:host=%s;port=%d;dbname=%s', $credentials['host'], $credentials['port'], $credentials['path']);
