@@ -429,6 +429,16 @@ function nescafe_preprocess_request(Request $request) {
 function nescafe_preprocess_page__stock($page){
 
     $roles = \Drupal::currentUser()->getRoles();
+    $curr_id_for_user = \Drupal::currentUser()->id();
+             $config = new Config();
+             $credentials = $config->credentials('database');
+             $dsn = sprintf('mysql:host=%s;port=%d;dbname=%s', $credentials['host'], $credentials['port'], $credentials['path']);
+             $conn = new \PDO($dsn, $credentials['username'], $credentials['password'], [
+                 \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
+                 \PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => TRUE,
+                 \PDO::MYSQL_ATTR_FOUND_ROWS => TRUE,
+             ]);
+
     if(in_array('authenticated', $roles) && in_array('manager_filiala', $roles) && !in_array('administrator', $roles)){
             $arrData  = array();
             $getGift = "SELECT * FROM webform_submission_data WHERE webform_id = 'cadouri'  ";
