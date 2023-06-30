@@ -477,23 +477,22 @@ function nescafe_preprocess_region__stock($page){
             }
 
 
-            // dump($arrData);
 
             $arrShowF = array();
             foreach($arrData as $IDgift => $val){
-            //dump($arrData);
                 foreach($val as $name => $val2){
                     if( $name == 'categoria_de_produs' && $val2['value'] == 3 ) {
-                    // $val['title'] = $val[''];
                         $arrShowF[[$IDgift]['filiala']['value']][] = array( 'name3' => $arrData[$IDgift]['premiu']['value'] ,'filiala3' => $arrData[$IDgift]['filiala']['value'],'stock3' => $arrData[$IDgift]['stock']['value'],'suplimentar3' => $arrData[$IDgift]['suplimentar']['value'], 'id' => $IDgift );
+                    }
+                    if( $name == 'categoria_de_produs' && $val2['value'] == 2 ) {
+                    // $val['title'] = $val[''];
+                        $arrShowF2[[$IDgift]['filiala']['value']][] = array( 'name2' => $arrData[$IDgift]['premiu']['value'] ,'filiala2' => $arrData[$IDgift]['filiala']['value'], 'id' => $IDgift );
                     }
                 }
             }
-            //dump($arrShowF);
             $arr = [];
 
 
-            //dump($arrShowF);
            if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru'){
                $solicitate = 'Запрошено';
                $stock_init = 'Начальный сток';
@@ -540,16 +539,36 @@ function nescafe_preprocess_region__stock($page){
 
            print "</tbody>\n</table>\n";
 
+            print <<<TABLE
+                      <table id="table8">
+                      <thead>
+                      <tr><th>$grad 2</th><th>$premiu</th><th>$premFil</th><th>$solicitate</th><th>$stock_init</th><th>$supliment</th><th>$stoc_dispon</th><th>$eliberate</th><th>$stoc_final</th></tr>
+                      </thead>
+                      <tbody>
+                      TABLE;
+                      $count = 1;
+                      foreach($arrShowF as $filiala => $arrShow){
+                             foreach($arrShow as $ft => $val){
+                                   $stockInit = 0;
+                                   $stockDisp = $stockInit + $val['suplimentar2'];
+                                   $elib = $countElib;
+                                   $solicit = count($arrShow);
+                                   $stockFinal = $stockDisp - $elib;
+                                  printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $val['name2'], $val['filiala2'], $solicit, $stockInit, $val['suplimentar2'], $stockDisp, $countElib,$stockFinal);
+
+                               $count++;
+                           }
+                       }
+
+                      print "</tbody>\n</table>\n";
+
 
 }
 }
 
 /*
 
-                    if( $name == 'categoria_de_produs' && $val2['value'] == 2 ) {
-                    // $val['title'] = $val[''];
-                        $arrShowF2[[$IDgift]['filiala']['value']][] = array( 'name2' => $arrData[$IDgift]['premiu']['value'] ,'filiala2' => $arrData[$IDgift]['filiala']['value'], 'id' => $IDgift );
-                    }
+
                     if( $name == 'categoria_de_produs' && $val2['value'] == 1 ) {
                     // $val['title'] = $val[''];
                         $arrShowF1[[$IDgift]['filiala']['value']][] = array( 'name1' => $arrData[$IDgift]['premiu']['value'] ,'filiala1' => $arrData[$IDgift]['filiala']['value'], 'id' => $IDgift );
