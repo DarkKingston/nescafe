@@ -265,21 +265,15 @@ foreach($result2 as $record2){
            $phone = 'Телефон';
            $action = "Подтвердить";
            $mail = 'Почта';
+            $stats = 'Статистика';
        }
        if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro'){
            $name = 'Nume';
          $phone = "Telefon";
          $action = 'Confirma';
          $mail = 'Posta';
+        $stats = 'Statistica';
        }
-
-       print "<form method='post'>
-                <input type='text' name='search'>
-                <input type='submit' name='submitSearch' value='Cauta'>
-            </form>";
-
-
-
                print <<<TABLE
        <table id="table8">
        <thead>
@@ -295,6 +289,13 @@ foreach($result2 as $record2){
            }
 
        print "</tbody>\n</table>\n";
+
+
+       print "<form method='post'>
+                   <input type='text' name='search'>
+                   <input type='submit' name='submitSearch' value='Cauta'>
+               </form>";
+       print "<a href='/stats'></a>";
 
    }
  /*Код с выводом наград*/
