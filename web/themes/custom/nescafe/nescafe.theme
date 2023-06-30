@@ -495,6 +495,8 @@ function nescafe_preprocess_region__stock($page){
                $eliberate = 'Выпуск';
                $stoc_final = 'Финальный сток';
                $grad = 'Класс';
+               $premiu = 'Приз';
+               $premFil = 'Филиал';
            }
            if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro'){
                $solicitate = 'Solicitate';
@@ -504,25 +506,26 @@ function nescafe_preprocess_region__stock($page){
                $eliberate = 'Eliberate';
                $stoc_final = 'Stoc final';
                $grad = 'Gradul';
+               $premiu = 'Premiu';
+               $premFil = 'Filiala';
            }
 
                    print <<<TABLE
            <table id="table8">
            <thead>
-           <tr><th>$grad 3</th><th>$solicitate</th><th>$stock_init</th><th>$supliment</th><th>$stoc_dispon</th><th>$eliberate</th><th>$stoc_final</th></tr>
+           <tr><th>$grad 3</th><th>$premiu</th><th>$premFil</th><th>$solicitate</th><th>$stock_init</th><th>$supliment</th><th>$stoc_dispon</th><th>$eliberate</th><th>$stoc_final</th></tr>
            </thead>
            <tbody>
            TABLE;
            $count = 1;
            foreach($arrShowF as $filiala => $arrShow){
-                  $stockInit = 0;
-                  $stockDisp = $stockInit + $val['suplimentar3'];
-                  $elib = count($arrShow);
-                  $stockFinal = $stockDisp - $elib;
-                           foreach($arrShow as $ft => $val){
-                               $arr[] = $val['name'];
-
-                       printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $val['name3'], $stockInit, $val['suplimentar3'], $stockDisp, $elib,$stockFinal);
+                  foreach($arrShow as $ft => $val){
+                        $stockInit = 0;
+                        $stockDisp = $stockInit + $val['suplimentar3'];
+                        $elib = count($arrShow);
+                        $solicit = count($arrShow);
+                        $stockFinal = $stockDisp - $elib;
+                       printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $val['name3'], $val['filial3'], $solicit, $stockInit, $val['suplimentar3'], $stockDisp, $elib,$stockFinal);
 
                     $count++;
                 }
