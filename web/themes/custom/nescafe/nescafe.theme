@@ -191,7 +191,7 @@ $credentials = $config->credentials('database');
 
           print "</tbody>\n</table>\n";
 
-       print "<a href='/stock' class='btn_main stock'>".c."</a>";
+       print "<a href='/stock' class='btn_main stock'>".$stats."</a>";
           }
     }
 
