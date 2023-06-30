@@ -153,7 +153,7 @@ $credentials = $config->credentials('database');
    if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru'){
               $name = 'Имя';
               $phone = 'Телефон';
-              $action = "Подтвердить";
+              $action = "Деталии";
               $mail = 'Почта';
               $stats = 'Сток';
               $prem = 'Приз';
@@ -162,12 +162,19 @@ $credentials = $config->credentials('database');
           if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro'){
               $name = 'Nume';
               $phone = "Telefon";
-              $action = 'Confirma';
+              $action = 'Detalii';
               $mail = 'Posta';
               $stats = 'Stoc';
               $prem = 'Premiu';
               $livrare = 'Filiala';
           }
+
+          $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` LEFT JOIN `promo_code` ON `users_field_data`.uid = `promo_code`.active WHERE uid != 0 AND `promo_code`.`active` != 0 AND `promo_code`.`status` = 2 ORDER BY uid ASC";
+$sql = $sqlQuery;
+    //dump($sql);
+    $result = $conn->query($sql);
+    $result->setFetchMode(\PDO::FETCH_OBJ);
+
                   print <<<TABLE
           <table id="table8">
           <thead>
