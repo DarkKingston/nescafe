@@ -265,26 +265,30 @@ foreach($result2 as $record2){
            $phone = 'Телефон';
            $action = "Подтвердить";
            $mail = 'Почта';
-            $stats = 'Сток';
+           $stats = 'Сток';
+           $prem = 'Приз';
+           $livrare = 'Филиал';
        }
        if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro'){
            $name = 'Nume';
-         $phone = "Telefon";
-         $action = 'Confirma';
-         $mail = 'Posta';
-        $stats = 'Stoc';
+           $phone = "Telefon";
+           $action = 'Confirma';
+           $mail = 'Posta';
+           $stats = 'Stoc';
+           $prem = 'Premiu';
+           $livrare = 'Filiala';
        }
                print <<<TABLE
        <table id="table8">
        <thead>
-       <tr><th>ID</th><th>$name</th><th>$mail</th><th>$phone</th><th>$action</th></tr>
+       <tr><th>ID</th><th>$name</th><th>$mail</th><th>$phone</th><th>$prem</th><th>$livrare</th><th>$action</th></tr>
        </thead>
        <tbody>
        TABLE;
        $count = 1;
            foreach ($result as $record) {
-           dump($record);
-                   printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><a href='/verify' data-id='%s' class='use-ajax webform-dialog webform-dialog-narrow btn_main action' data-dialog-type='modal'>%s</a></td></tr>\n", $count, $record->name, $record->mail, $record->field_phone_value,$record->uid, $action);
+           //dump($record);
+                   printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><a href='/verify' data-id='%s' class='use-ajax webform-dialog webform-dialog-narrow btn_main action' data-dialog-type='modal'>%s</a></td></tr>\n", $count, $record->name, $record->mail, $record->field_phone_value, $record->premiu, $record->livrare,$record->uid, $action);
 
                 $count++;
            }
