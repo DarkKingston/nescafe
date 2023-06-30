@@ -11,6 +11,7 @@ regions:
   header: Header
   content: Content
   stock: Stock page
+  details: Detail user page
   reglament: Content Reglament Page
   points: Points page
   contacts: Contact Page
