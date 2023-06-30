@@ -552,7 +552,7 @@ function nescafe_preprocess_region__stock($page){
                       <tbody>
                       TABLE;
                       $count = 1;
-                      foreach($arrShowF as $filiala => $arrShow){
+                      foreach($arrShowF2 as $filiala => $arrShow){
                              foreach($arrShow as $ft => $val){
                                    $stockInit = 0;
                                    $stockDisp = $stockInit + $val['suplimentar2'];
@@ -575,7 +575,7 @@ function nescafe_preprocess_region__stock($page){
                       <tbody>
                       TABLE;
                       $count = 1;
-                      foreach($arrShowF as $filiala => $arrShow){
+                      foreach($arrShowF1 as $filiala => $arrShow){
                              foreach($arrShow as $ft => $val){
                                    $stockInit = 0;
                                    $stockDisp = $stockInit + $val['suplimentar1'];
