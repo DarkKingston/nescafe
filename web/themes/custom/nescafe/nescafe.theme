@@ -454,7 +454,7 @@ function nescafe_preprocess_region__stock($page){
 
             $arrShowF = array();
             foreach($arrData as $IDgift => $val){
-            dump($arrData);
+            //dump($arrData);
                 foreach($val as $name => $val2){
                     if( $name == 'categoria_de_produs' && $val2['value'] == 3 ) {
                     // $val['title'] = $val[''];
@@ -462,7 +462,7 @@ function nescafe_preprocess_region__stock($page){
                     }
                 }
             }
-            dump($arrShowF);
+            //dump($arrShowF);
             $arr = [];
             foreach($arrShowF as $filiala => $arrShow){
                 foreach($arrShow as $ft => $val){
@@ -504,7 +504,7 @@ function nescafe_preprocess_region__stock($page){
            TABLE;
            $count = 1;
                //dump($record);
-                       printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $val['name3'], $val['filiala3'], $val['suplimentar3'], $stockInit, $stockDisp,$elib, $stockFinal);
+                       printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $val['name3'], $stockInit, $val['suplimentar3'], $stockDisp, $elib,$stockFinal);
 
                     $count++;
 
