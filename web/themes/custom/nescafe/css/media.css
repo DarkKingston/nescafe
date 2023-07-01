@@ -100,3 +100,9 @@
   }
 }
 
+@media(max-width: 350px){
+  #table8 th{
+    font-size: 0.7em;
+  }
+}
+
