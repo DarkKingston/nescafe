@@ -418,6 +418,7 @@ $arr = [];
                                     print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_gift' data-dialog-type='modal'>
                                         <div>Ne pare rau!</div>
                                         <div>Nu ati castigat nimic</div>
+                                        <div class='btn_main action closePopup'>Inchide</div>
                                     </form>
                                     ";
                                 }
@@ -429,6 +430,7 @@ $arr = [];
                                     print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_gift' data-dialog-type='modal'>
                                         <div>Ne pare rau!</div>
                                         <div>Nu ati castigat nimic</div>
+                                        <div class='btn_main action closePopup'>Inchide</div>
                                     </form>
                                     ";
                                 }
@@ -451,6 +453,7 @@ $arr = [];
                                     print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_gift' data-dialog-type='modal'>
                                         <div>Ne pare rau!</div>
                                         <div>Nu ati castigat nimic</div>
+                                        <div class='btn_main action closePopup'>Inchide</div>
                                     </form>
                                     ";
                                 }

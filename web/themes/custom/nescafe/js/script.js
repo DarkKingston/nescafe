@@ -15,6 +15,10 @@
         $('#block-webform-5').hide();
       }
 
+      $('.closePopup',context).on('click',function(){
+        $('.popup_gift').hide();
+      });
+
     }
   };
 })(jQuery);
