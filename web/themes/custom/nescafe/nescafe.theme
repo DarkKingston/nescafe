@@ -24,7 +24,7 @@ function nescafe_preprocess_webform__promo_code(&$form){
             \PDO::MYSQL_ATTR_FOUND_ROWS => TRUE,
         ]);
     if(isset($_POST['introduceti_codul_promotional'])){
-        $sqlGetPromoWebform = "SELECT * FROM webform_submission WHERE webform_id = 'promocode' AND value ='".$_POST['introduceti_codul_promotional']."'";
+        $sqlGetPromoWebform = "SELECT * FROM webform_submission_data WHERE webform_id = 'promocode' AND value ='".$_POST['introduceti_codul_promotional']."'";
         $promoResult = $conn->query($sqlGetPromoWebform);
         $promoResult->setFetchMode(\PDO::FETCH_OBJ);
         foreach($promoResult as $promoRes){}
