@@ -87,7 +87,7 @@ function nescafe_preprocess_menu__header_btn(&$logged){
 function nescafe_preprocess_page(&$page){
     //dump($page);
     $roles = \Drupal::currentUser()->getRoles();
-
+dump($roles);
         $curr_id_for_user = \Drupal::currentUser()->id();
         if(!in_array('player', $roles) && !in_array('administrator', $roles) && !in_array('manager_filiala', $roles)){
               $role_id = 'player';
