@@ -13,6 +13,7 @@ function nescafe_preprocess_links__language_block(&$lang){
 }
 
 function nescafe_preprocess_webform__promo_code(&$form){
+    if(in_array('player', $roles)){
 if(isset($_POST['introduceti_codul_promotional'])){
 
      $curr_id_for_user = \Drupal::currentUser()->id();
@@ -39,6 +40,7 @@ if(isset($_POST['introduceti_codul_promotional'])){
               //echo "ok";
              }
         }
+}
 }
 }
 
@@ -99,11 +101,7 @@ dump($roles);
         }
 }
 
-function nescafe_preprocess_webform__promo_code($promoForm){
-    if(in_array('player', $roles)){
-        print($promoForm);
-    }
-}
+
 
 
 function nescafe_preprocess_block__webform_5(&$elem){
