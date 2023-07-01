@@ -99,6 +99,12 @@ dump($roles);
         }
 }
 
+function nescafe_preprocess_webform__promo_code($promoForm){
+    if(in_array('player', $roles)){
+        print($promoForm);
+    }
+}
+
 
 function nescafe_preprocess_block__webform_5(&$elem){
 
