@@ -13,35 +13,37 @@ function nescafe_preprocess_links__language_block(&$lang){
 }
 
 function nescafe_preprocess_webform__promo_code(&$form){
+
+    $roles = \Drupal::currentUser()->getRoles();
     if(in_array('player', $roles)){
-if(isset($_POST['introduceti_codul_promotional'])){
+        if(isset($_POST['introduceti_codul_promotional'])){
 
-     $curr_id_for_user = \Drupal::currentUser()->id();
-         $config = new Config();
-         $credentials = $config->credentials('database');
-         $dsn = sprintf('mysql:host=%s;port=%d;dbname=%s', $credentials['host'], $credentials['port'], $credentials['path']);
-         $conn = new \PDO($dsn, $credentials['username'], $credentials['password'], [
-             \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
-             \PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => TRUE,
-             \PDO::MYSQL_ATTR_FOUND_ROWS => TRUE,
-         ]);
+         $curr_id_for_user = \Drupal::currentUser()->id();
+             $config = new Config();
+             $credentials = $config->credentials('database');
+             $dsn = sprintf('mysql:host=%s;port=%d;dbname=%s', $credentials['host'], $credentials['port'], $credentials['path']);
+             $conn = new \PDO($dsn, $credentials['username'], $credentials['password'], [
+                 \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
+                 \PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => TRUE,
+                 \PDO::MYSQL_ATTR_FOUND_ROWS => TRUE,
+             ]);
 
- $sql = "SELECT * FROM promo_code WHERE active = 0";
-        $result = $conn->query($sql);
-        $result->setFetchMode(\PDO::FETCH_OBJ);
+     $sql = "SELECT * FROM promo_code WHERE active = 0";
+            $result = $conn->query($sql);
+            $result->setFetchMode(\PDO::FETCH_OBJ);
 
-        if ($result) {
-        foreach ($result as $record) {
-            if($record->active == 0){
-                     $sql = "UPDATE promo_code SET active = '".$curr_id_for_user."',  data = NOW() WHERE promocode = '".$_POST['introduceti_codul_promotional']."' AND active = 0  ";
+            if ($result) {
+            foreach ($result as $record) {
+                if($record->active == 0){
+                         $sql = "UPDATE promo_code SET active = '".$curr_id_for_user."',  data = NOW() WHERE promocode = '".$_POST['introduceti_codul_promotional']."' AND active = 0  ";
+                }
+            }
+                 if($conn->query($sql)){
+                  //echo "ok";
+                 }
             }
         }
-             if($conn->query($sql)){
-              //echo "ok";
-             }
-        }
-}
-}
+    }
 }
 
 function nescafe_preprocess_menu__header_btn(&$logged){
