@@ -13,7 +13,16 @@ function nescafe_preprocess_links__language_block(&$lang){
 }
 
 function nescafe_preprocess_webform__promo_code(&$form){
+ $config = new Config();
 
+    $credentials = $config->credentials('database');
+
+        $dsn = sprintf('mysql:host=%s;port=%d;dbname=%s', $credentials['host'], $credentials['port'], $credentials['path']);
+        $conn = new \PDO($dsn, $credentials['username'], $credentials['password'], [
+            \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
+            \PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => TRUE,
+            \PDO::MYSQL_ATTR_FOUND_ROWS => TRUE,
+        ]);
     if(isset($_POST['introduceti_codul_promotional'])){
         $sqlGetPromoWebform = "SELECT * FROM webform_submission WHERE webform_id = 'promocode' AND introduceti_codul_promotional ='".$_POST['introduceti_codul_promotional']."'";
         $promoResult = $conn->query($sqlGetPromoWebform);
