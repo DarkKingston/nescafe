@@ -93,3 +93,10 @@
     display: block;
   }
 }
+
+@media(max-width: 770px){
+  .account_wrapper{
+    flex-direction: column-reverse;
+  }
+}
+
