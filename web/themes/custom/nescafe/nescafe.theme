@@ -206,7 +206,7 @@ $sql = $sqlQuery;
         //    $sqlQuery = "SELECT * FROM promo_code WHERE active <> 0";
         //}
         if(in_array('authenticated', $roles) && !in_array('administrator', $roles)){
-          $sqlQuery = "SELECT * FROM promo_code WHERE active = '".$curr_id_for_user."' ORDER BY data DESC";
+          $sqlQuery = "SELECT * FROM promo_code WHERE active = '".$curr_id_for_user."' ORDER BY data ASC";
         }
         if(in_array('authenticated', $roles) && in_array('manager_filiala', $roles) && !in_array('administrator', $roles)){
           if(isset($_POST['submitSearch']) && $_POST['search'] != ''){
