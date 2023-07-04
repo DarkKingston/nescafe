@@ -329,7 +329,7 @@ foreach($result2 as $record2){
                    <input type='text' name='search' class='search_inp'>
                    <input type='submit' name='submitSearch' value='Cauta' class='btn_main action search_btn'>
                </form>";
-       print "<div style="display:flex;flex-direction:column;"><a href='/stock' class='btn_main stock'>".$stats."</a> <a style="margin-top: 10px" href="/user/logout" class='btn_main stock'>Logout</a></div>";
+       print "<a href='/stock' class='btn_main stock'>".$stats."</a>";
 
    }
  /*Код с выводом наград*/
