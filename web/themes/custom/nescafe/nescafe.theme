@@ -502,7 +502,21 @@ $arr = [];
 
                             }
                             if($promoTotal % 15 ==0 && $userID->premiu == ''){
-                                echo "Ты учавствуешь в игре дня";
+                                $tombolaSuccess = "UPDATE promo_code SET tombola = 1, data = NOW() WHERE promocode = '".$userID->promocode."' AND tombola = 0 ";
+                                if($conn->query($tombolaSuccess)){
+                                    $getTombola = "SELECT * FROM promo_code WHERE tombola = 1";
+                                    $tombolaZil  = $conn->query($getTombola);
+                                    $ifUsers = 0;
+                                    foreach($tombolaZil as $zil){
+                                    $ifUsers++;
+                                    }
+
+                                    if($ifUsers >= 2){
+                                        $randID = rand(1,$ifUsers);
+                                        dump($zil[$randID]);
+                                        dump($randID);
+                                    }
+                                }
                             }
                             if($promoTotal % 30 == 0 && $userID->premiu == ''){
                                 echo "Ты учавствуешь в финальную игру";
