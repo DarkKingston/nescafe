@@ -698,13 +698,19 @@ function nescafe_preprocess_region__stock($page){
             <tbody>
             TABLE;
             $count = 1;
+           $solicit =0;
             foreach($arrShowF as $filiala => $arrShow){
                    foreach($arrShow as $ft => $val){
                          $stockInit = 0;
                          $stockDisp = $stockInit + $val['suplimentar3'];
                          $elib = $countElib;
-                         $solicit = count($arrShow);
                          $stockFinal = $stockDisp - $elib;
+                          $solicitSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '".$val['filiala3']."'";
+                          $sol = $conn->query($solicitSQL);
+                          foreach($solicitSQL as $solVal){
+
+                            $solicit++
+                          }
                         printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $val['name3'], $val['filiala3'], $solicit, $stockInit, $val['suplimentar3'], $stockDisp, $countElib,$stockFinal);
 
                      $count++;
@@ -721,12 +727,18 @@ function nescafe_preprocess_region__stock($page){
                        <tbody>
                        TABLE;
                        $count = 1;
+                       $solicit = 0
                        foreach($arrShowF2 as $filiala => $arrShow){
                               foreach($arrShow as $ft => $val){
                                     $stockInit = 0;
                                     $stockDisp = $stockInit + $val['suplimentar2'];
                                     $elib = $countElib;
-                                    $solicit = count($arrShow);
+                                     $solicitSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '".$val['filiala2']."'";
+                                      $sol = $conn->query($solicitSQL);
+                                      foreach($solicitSQL as $solVal){
+
+                                        $solicit++
+                                      }
                                     $stockFinal = $stockDisp - $elib;
                                    printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $val['name2'], $val['filiala2'], $solicit, $stockInit, $val['suplimentar2'], $stockDisp, $countElib,$stockFinal);
 
@@ -744,12 +756,18 @@ function nescafe_preprocess_region__stock($page){
                        <tbody>
                        TABLE;
                        $count = 1;
+                       $solicit = 0;
                        foreach($arrShowF1 as $filiala => $arrShow){
                               foreach($arrShow as $ft => $val){
                                     $stockInit = 0;
                                     $stockDisp = $stockInit + $val['suplimentar1'];
                                     $elib = $countElib;
-                                    $solicit = count($arrShow);
+                                     $solicitSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '".$val['filiala1']."'";
+                                      $sol = $conn->query($solicitSQL);
+                                      foreach($solicitSQL as $solVal){
+
+                                        $solicit++
+                                      }
                                     $stockFinal = $stockDisp - $elib;
                                    printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $val['name1'], $val['filiala1'], $solicit, $stockInit, $val['suplimentar1'], $stockDisp, $countElib,$stockFinal);
 
