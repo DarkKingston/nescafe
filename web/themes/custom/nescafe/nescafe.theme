@@ -425,7 +425,7 @@ $arr = [];
                                      }
                                  }
                             }
-                            if($promoTotal >= 10){
+                            if($promoTotal >= 10 && $userID->premiu == ''){
                             $checkPromo = "SELECT * FROM promo_code WHERE status = 10 AND active = '".$curr_id_for_user."'";
                             $checkPromoItem = $conn->query($checkPromo);
                             $checkCounter = 0;
@@ -501,10 +501,10 @@ $arr = [];
                                }
 
                             }
-                            if($total >= 15 && $total < 30){
+                            if($promoTotal % 15 ==0 && $userID->premiu == ''){
                                 echo "Ты учавствуешь в игре дня";
                             }
-                            if($total > 30){
+                            if($promoTotal % 30 == 0 && $userID->premiu == ''){
                                 echo "Ты учавствуешь в финальную игру";
                             }
         }
