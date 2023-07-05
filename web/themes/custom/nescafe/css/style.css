@@ -799,3 +799,14 @@ form .form-item label{
 .logout_btn{
   margin-top: 10px;
 }
+
+.form-item-field-reglament-value, .form-item-field-adult-value{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.form-item-field-reglament-value input, .form-item-field-adult-value input{
+  width: 15px;
+  margin-right: 5px;
+}
