@@ -954,7 +954,7 @@ function nescafe_preprocess_region__details($details){
 }
 
 /* Таблица с участниками в томболе */
-function nescafe_preprocess_page__tombola(){
+function nescafe_preprocess_region__tombola(){
 
     $roles = \Drupal::currentUser()->getRoles();
     $curr_id_for_user = \Drupal::currentUser()->id();
@@ -976,12 +976,7 @@ function nescafe_preprocess_page__tombola(){
                               $action = "Деталии";
                               $mail = 'Почта';
                               $stats = 'Сток';
-                              $prem = 'Приз';
-                              $livrare = 'Филиал';
                               $promoCode = "Промокод";
-                              $state = 'Статус';
-                              $stateON = 'Выдан';
-                              $stateOFF = "В ожидании";
                           }
                           if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro'){
                               $name = 'Nume';
@@ -989,12 +984,7 @@ function nescafe_preprocess_page__tombola(){
                               $action = 'Detalii';
                               $mail = 'Posta';
                               $stats = 'Stoc';
-                              $prem = 'Premiu';
-                              $livrare = 'Filiala';
                               $promoCode = "Promocod";
-                              $state = 'Statut';
-                              $stateON = 'Ridicat';
-                              $stateOFF = "In Asteptare";
                           }
 
                           $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` LEFT JOIN `promo_code` ON `users_field_data`.uid = `promo_code`.active WHERE uid != 0 AND `promo_code`.`active` != 0 AND tombola != 0 ORDER BY uid ASC";
@@ -1019,7 +1009,7 @@ function nescafe_preprocess_page__tombola(){
                               }else{
                                 $statusPrint = '';
                               }
-                                      printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $record->name, $record->mail, $record->field_phone_value, $record->premiu, $record->livrare, $record->promocode, $statusPrint);
+                                      printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $record->name, $record->mail, $record->field_phone_value, $record->promocode);
 
                                    $count++;
                               }
