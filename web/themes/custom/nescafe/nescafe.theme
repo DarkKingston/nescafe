@@ -709,7 +709,7 @@ function nescafe_preprocess_region__stock($page){
                           $sol = $conn->query($solicitSQL);
                           foreach($solicitSQL as $solVal){
 
-                            $solicit++
+                            $solicit++;
                           }
                         printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $val['name3'], $val['filiala3'], $solicit, $stockInit, $val['suplimentar3'], $stockDisp, $countElib,$stockFinal);
 
@@ -737,7 +737,7 @@ function nescafe_preprocess_region__stock($page){
                                       $sol = $conn->query($solicitSQL);
                                       foreach($solicitSQL as $solVal){
 
-                                        $solicit++
+                                        $solicit++;
                                       }
                                     $stockFinal = $stockDisp - $elib;
                                    printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $val['name2'], $val['filiala2'], $solicit, $stockInit, $val['suplimentar2'], $stockDisp, $countElib,$stockFinal);
@@ -766,7 +766,7 @@ function nescafe_preprocess_region__stock($page){
                                       $sol = $conn->query($solicitSQL);
                                       foreach($solicitSQL as $solVal){
 
-                                        $solicit++
+                                        $solicit++;
                                       }
                                     $stockFinal = $stockDisp - $elib;
                                    printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $val['name1'], $val['filiala1'], $solicit, $stockInit, $val['suplimentar1'], $stockDisp, $countElib,$stockFinal);
