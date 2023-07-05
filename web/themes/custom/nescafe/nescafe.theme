@@ -105,7 +105,7 @@ function nescafe_preprocess_block__webform_5(&$elem){
 }
 
 function nescafe_preprocess_region__account(&$elem){
-
+dump($_POST['introduceti_codul_promotional']);
 if(isset($_POST['introduceti_codul_promotional']) && isset($_POST['promo_send'])){
          $curr_id_for_user = \Drupal::currentUser()->id();
              $config = new Config();
