@@ -121,7 +121,6 @@ $credentials = $config->credentials('database');
     $roles = \Drupal::currentUser()->getRoles();
 
 if(isset($_POST['introduceti_codul_promotional'])){
-          dump($curr_id_for_user);
               $config = new Config();
               $credentials = $config->credentials('database');
               $dsn = sprintf('mysql:host=%s;port=%d;dbname=%s', $credentials['host'], $credentials['port'], $credentials['path']);
@@ -427,12 +426,14 @@ $arr = [];
                                  }
                             }
                             if($total >= 10){
+                            dump($total);
                             $checkPromo = "SELECT * FROM promo_code WHERE status != 10 AND active = '".$curr_id_for_user."'";
                             $checkPromoItem = $conn->query($checkPromo);
                             $checkCounter = 0;
                             foreach($checkPromoItem as $checkItem){
                                 $checkCounter++;
                             }
+                            dump('checkCounter=> '$checkCounter);
                             if($checkCounter == 0){
                                $promoSuccess = "UPDATE promo_code SET status = 1, data = NOW() WHERE promocode = '".$userID->promocode."' AND status = 0 ";
                                                                    if($conn->query($promoSuccess)){
