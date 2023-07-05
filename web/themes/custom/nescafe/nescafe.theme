@@ -104,6 +104,50 @@ function nescafe_preprocess_block__webform_5(&$elem){
         }
 }
 
+function nescafe_preprocess_page__add__promo(){
+
+          $curr_id_for_user = \Drupal::currentUser()->id();
+$config = new Config();
+
+$credentials = $config->credentials('database');
+
+    $dsn = sprintf('mysql:host=%s;port=%d;dbname=%s', $credentials['host'], $credentials['port'], $credentials['path']);
+    $conn = new \PDO($dsn, $credentials['username'], $credentials['password'], [
+        \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
+        \PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => TRUE,
+        \PDO::MYSQL_ATTR_FOUND_ROWS => TRUE,
+    ]);
+
+    $roles = \Drupal::currentUser()->getRoles();
+
+if(isset($_POST['introduceti_codul_promotional'])){
+          dump($curr_id_for_user);
+              $config = new Config();
+              $credentials = $config->credentials('database');
+              $dsn = sprintf('mysql:host=%s;port=%d;dbname=%s', $credentials['host'], $credentials['port'], $credentials['path']);
+              $conn = new \PDO($dsn, $credentials['username'], $credentials['password'], [
+                  \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
+                  \PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => TRUE,
+                  \PDO::MYSQL_ATTR_FOUND_ROWS => TRUE,
+              ]);
+
+      $sql = "SELECT * FROM promo_code WHERE active = 0";
+             $result = $conn->query($sql);
+             $result->setFetchMode(\PDO::FETCH_OBJ);
+
+             if ($result) {
+             foreach ($result as $record) {
+                 if($record->active == 0){
+                          $sql = "UPDATE promo_code SET active = '".$curr_id_for_user."',  data = NOW() WHERE promocode = '".$_POST['introduceti_codul_promotional']."' AND active = 0  ";
+                 }
+             }
+                  if($conn->query($sql)){
+                    header("Location: /account");
+                  }
+             }
+         }
+}
+
 function nescafe_preprocess_region__account(&$elem){
 $curr_id_for_user = \Drupal::currentUser()->id();
 
@@ -219,7 +263,6 @@ if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro'){
 }
 
 /*Обычный пользователь Вывод промокодов который он вводил*/
-
  if(in_array('player', $roles) && !in_array('manager_filiala', $roles) && !in_array('administrator', $roles)){
 
         print <<<TABLE
