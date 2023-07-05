@@ -516,8 +516,8 @@ $arr = [];
 
                                     if($ifUsers >= 2){
                                         $randID = rand(1,$ifUsers);
-                                        dump($tombolaZil);
                                         dump($randID);
+                                        echo rand(1,$ifUsers);
                                     }
                                 }
                             }
