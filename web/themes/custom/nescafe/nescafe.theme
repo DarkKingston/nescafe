@@ -157,7 +157,7 @@ if(isset($_POST['introduceti_codul_promotional'])){
               $prem = 'Приз';
               $livrare = 'Филиал';
               $promoCode = "Промокод";
-              $tombola = 'Томбола';
+              $tombola = 'Лотерея';
           }
           if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro'){
               $name = 'Nume';
@@ -200,6 +200,7 @@ $sql = $sqlQuery;
 /* Sql запросы по ролям */
 
         //if(in_array('administrator', $roles)) {
+        //    $sqlQuery = "SELECT * FROM promo_code WHERE active <> 0";
         //    $sqlQuery = "SELECT * FROM promo_code WHERE active <> 0";
         //}
         if(in_array('player', $roles) && !in_array('administrator', $roles)){
@@ -517,16 +518,10 @@ $arr = [];
                                     $ifUsers++;
                                         $arrID[] = $zil->active;
                                     }
-
-
-                                    dump($arrID);
-
                                     if($ifUsers >= 2){
                                         $key = array_rand($arrID);
-                                        echo 'random id => '.$arrID[$key].'; ';
                                     }
                                 }
-                                dump($promoTotal);
                             }
                             if($promoTotal % 30 == 0 && $userID->premiu == ''){
                                 echo "Ты учавствуешь в финальную игру";
