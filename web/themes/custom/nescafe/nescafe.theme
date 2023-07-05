@@ -283,6 +283,8 @@ foreach($result2 as $record2){
 
         }
         print "</tbody>\n</table>\n";
+        print "<a href='/user/logout' class='btn_main stock'>Logout</a>";
+
 }
 }
 
@@ -323,6 +325,9 @@ foreach($result2 as $record2){
            }
 
        print "</tbody>\n</table>\n";
+
+
+        print "<a href='/user/logout' class='btn_main stock'>Logout</a>";
 
 
        print "<form method='post'>
