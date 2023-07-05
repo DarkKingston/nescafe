@@ -196,7 +196,7 @@ $sql = $sqlQuery;
               }
 
           print "</tbody>\n</table>\n";
-          print "<a href='/stock' class='btn_main stock'>".$stats."</a>";
+          print "<div class='admin_btns'><a href='/stock' class='btn_main stock'>".$stats."</a> <a href='/user/logout' class='btn_main stock logout_btn'>Logout</a></div>";
 
     }
 

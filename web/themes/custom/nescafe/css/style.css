@@ -790,3 +790,12 @@ form .form-item label{
   display: flex;
   flex-direction: column-reverse;
 }
+
+.admin_btns{
+  display: flex;
+  flex-direction: column;
+}
+
+.logout_btn{
+  margin-top: 10px;
+}
