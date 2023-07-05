@@ -433,7 +433,7 @@ $arr = [];
                             foreach($checkPromoItem as $checkItem){
                                 $checkCounter++;
                             }
-                            dump('checkCounter=> .$checkCounter.');
+                            dump($checkCounter);
                             if($checkCounter == 0){
                                $promoSuccess = "UPDATE promo_code SET status = 1, data = NOW() WHERE promocode = '".$userID->promocode."' AND status = 0 ";
                                                                    if($conn->query($promoSuccess)){
