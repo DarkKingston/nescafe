@@ -801,9 +801,9 @@ form .form-item label{
 }
 
 .form-item-field-reglament-value, .form-item-field-adult-value{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
 }
 
 .form-item-field-reglament-value input, .form-item-field-adult-value input{
