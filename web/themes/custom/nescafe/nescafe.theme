@@ -426,14 +426,12 @@ $arr = [];
                                  }
                             }
                             if($promoTotal >= 10){
-                            dump($promoTotal);
                             $checkPromo = "SELECT * FROM promo_code WHERE status = 10 AND active = '".$curr_id_for_user."'";
                             $checkPromoItem = $conn->query($checkPromo);
                             $checkCounter = 0;
                             foreach($checkPromoItem as $checkItem){
                                 $checkCounter++;
                             }
-                            dump($checkCounter);
                             if($checkCounter == 0){
                                $promoSuccess = "UPDATE promo_code SET status = 1, data = NOW() WHERE promocode = '".$userID->promocode."' AND status = 0 ";
                                                                    if($conn->query($promoSuccess)){
