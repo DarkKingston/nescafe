@@ -513,7 +513,7 @@ $arr = [];
                                     $arrID = array();
                                     foreach($tombolaZil as $zil){
                                     $ifUsers++;
-                                    $arrID[] = $zil['active'];
+                                        $arrID[] = $zil->active;
                                     }
 
 
