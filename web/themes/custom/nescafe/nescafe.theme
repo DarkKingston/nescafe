@@ -770,7 +770,7 @@ function nescafe_preprocess_region__stock($page){
             <tbody>
             TABLE;
             $count = 1;
-           $solicit =0;
+            $solicit = 0;
             foreach($arrShowF as $filiala => $arrShow){
                    foreach($arrShow as $ft => $val){
                          $stockInit = 0;
@@ -780,7 +780,7 @@ function nescafe_preprocess_region__stock($page){
                           $solicitSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '".$val['filiala3']."' AND premiu = '".$val['name3']."'";
                           $sol = $conn->query($solicitSQL);
                           foreach($sol as $solVal){
-
+dump($solVal);
                             $solicit++;
                             //dump($solVal);
                           }
