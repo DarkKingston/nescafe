@@ -238,12 +238,14 @@ if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru'){
     $number = 'Выйгрыш';
     $filial = 'Филиал';
     $send = 'отправить';
+    $intro = 'Введите промокод';
 }
 if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro'){
     $promo = 'Codul Promotional';
     $number = 'Premiu';
     $filial = 'Filiala';
     $send = 'Trimite';
+    $intro = 'Introduceti codul promotional';
 }
 
 /*Обычный пользователь Вывод промокодов который он вводил*/
@@ -285,7 +287,7 @@ foreach($result2 as $record2){
 
         }
         print "</tbody>\n</table>\n";
-        print "<div class='promo_add'> <form method='post'><input type='text' class='promo_add_inp' name='introduceti_codul_promotional'> <input type='submit' value='$send' class='promo_send' name='submit_popup'></form> <a href='/user/logout' class='btn_main stock logout_btn'>Logout</a></div>";
+        print "<div class='promo_add'> <form method='post'><label>$intro</label><input type='text' class='promo_add_inp' name='introduceti_codul_promotional'> <input type='submit' value='$send' class='promo_send' name='submit_popup'></form> <a href='/user/logout' class='btn_main stock logout_btn'>Logout</a></div>";
 
 }
 }
