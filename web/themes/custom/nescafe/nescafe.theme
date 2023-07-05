@@ -526,6 +526,7 @@ $arr = [];
                                         echo 'random id => '.$arrID[$key].'; ';
                                     }
                                 }
+                                dump($promoTotal);
                             }
                             if($promoTotal % 30 == 0 && $userID->premiu == ''){
                                 echo "Ты учавствуешь в финальную игру";
