@@ -223,6 +223,7 @@ if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro'){
 
  if(isset($_POST['introduceti_codul_promotional'])){
           $curr_id_for_user = \Drupal::currentUser()->id();
+          dump($curr_id_for_user);
               $config = new Config();
               $credentials = $config->credentials('database');
               $dsn = sprintf('mysql:host=%s;port=%d;dbname=%s', $credentials['host'], $credentials['port'], $credentials['path']);
@@ -341,7 +342,7 @@ foreach($result2 as $record2){
    }
  /*Код с выводом наград*/
 
-        if(in_array('authenticated', $roles) && !in_array('manager_filiala', $roles) && !in_array('administrator', $roles)){
+        if(in_array('player', $roles) && !in_array('manager_filiala', $roles) && !in_array('administrator', $roles)){
 
 
                          $getUserID = "SELECT * FROM promo_code WHERE active != 0 ORDER BY data DESC LIMIT 1";
