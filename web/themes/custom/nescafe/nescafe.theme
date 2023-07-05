@@ -705,12 +705,12 @@ function nescafe_preprocess_region__stock($page){
                          $stockDisp = $stockInit + $val['suplimentar3'];
                          $elib = $countElib;
                          $stockFinal = $stockDisp - $elib;
-                          $solicitSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '".$val['filiala3']."'";
+                          $solicitSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '".$val['filiala3']."' AND premiu = '".$val['name3']."'";
                           $sol = $conn->query($solicitSQL);
                           foreach($sol as $solVal){
 
                             $solicit++;
-                            dump($solVal);
+                            //dump($solVal);
                           }
                         printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $val['name3'], $val['filiala3'], $solicit, $stockInit, $val['suplimentar3'], $stockDisp, $countElib,$stockFinal);
 
@@ -734,7 +734,7 @@ function nescafe_preprocess_region__stock($page){
                                     $stockInit = 0;
                                     $stockDisp = $stockInit + $val['suplimentar2'];
                                     $elib = $countElib;
-                                     $solicitSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '".$val['filiala2']."'";
+                                     $solicitSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '".$val['filiala2']."' AND premiu = '".$val['name2']."'";
                                       $sol = $conn->query($solicitSQL);
                                       foreach($sol as $solVal){
 
@@ -763,7 +763,7 @@ function nescafe_preprocess_region__stock($page){
                                     $stockInit = 0;
                                     $stockDisp = $stockInit + $val['suplimentar1'];
                                     $elib = $countElib;
-                                     $solicitSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '".$val['filiala1']."'";
+                                     $solicitSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '".$val['filiala1']."' AND premiu = '".$val['name1']."'";
                                       $sol = $conn->query($solicitSQL);
                                       foreach($sol as $solVal){
 
