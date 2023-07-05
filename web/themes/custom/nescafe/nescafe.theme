@@ -142,7 +142,7 @@ if(isset($_POST['introduceti_codul_promotional'])){
                  }
              }
                   if($conn->query($sql)){
-                    header("Location: /account");
+                    //echo 'ok';
                   }
              }
          }
