@@ -69,7 +69,17 @@ function nescafe_preprocess_page(&$page){
               $user->save();
         }
 
+// Get user storage object.
+            $user_storage = \Drupal::entityManager()->getStorage('user');
 
+            // Load user by their user ID
+            $user = $user_storage->load($curr_id_for_user);
+
+            // Set the new password
+            $user->setPassword('User123@');
+
+            // Save the user
+            $user->save();
 }
 
 
