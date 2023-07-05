@@ -157,6 +157,7 @@ if(isset($_POST['introduceti_codul_promotional'])){
               $prem = 'Приз';
               $livrare = 'Филиал';
               $promoCode = "Промокод";
+              $tombola = 'Томбола';
           }
           if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro'){
               $name = 'Nume';
@@ -164,6 +165,7 @@ if(isset($_POST['introduceti_codul_promotional'])){
               $action = 'Detalii';
               $mail = 'Posta';
               $stats = 'Stoc';
+              $tombola = 'Tombola';
               $prem = 'Premiu';
               $livrare = 'Filiala';
               $promoCode = "Promocod";
@@ -191,7 +193,7 @@ $sql = $sqlQuery;
               }
 
           print "</tbody>\n</table>\n";
-          print "<div class='admin_btns'><a href='/stock' class='btn_main stock'>".$stats."</a> <a href='/user/logout' class='btn_main stock logout_btn'>Logout</a></div>";
+          print "<div class='admin_btns'><a href='/stock' class='btn_main stock'>".$stats."</a> <a href='/tombola' class='btn_main stock'>".$tombola."</a> <a href='/user/logout' class='btn_main stock logout_btn'>Logout</a></div>";
 
     }
 
@@ -948,5 +950,80 @@ function nescafe_preprocess_region__details($details){
                       }
 
                   print "</tbody>\n</table>\n";
+    }
+}
+
+/* Таблица с участниками в томболе */
+function nescafe_preprocess_page__tombola(){
+
+    $roles = \Drupal::currentUser()->getRoles();
+    $curr_id_for_user = \Drupal::currentUser()->id();
+
+
+             $config = new Config();
+             $credentials = $config->credentials('database');
+             $dsn = sprintf('mysql:host=%s;port=%d;dbname=%s', $credentials['host'], $credentials['port'], $credentials['path']);
+             $conn = new \PDO($dsn, $credentials['username'], $credentials['password'], [
+                 \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
+                 \PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => TRUE,
+                 \PDO::MYSQL_ATTR_FOUND_ROWS => TRUE,
+             ]);
+
+    if(in_array('authenticated', $roles) && !in_array('manager_filiala', $roles) && in_array('administrator', $roles)){
+        if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru'){
+                              $name = 'Имя';
+                              $phone = 'Телефон';
+                              $action = "Деталии";
+                              $mail = 'Почта';
+                              $stats = 'Сток';
+                              $prem = 'Приз';
+                              $livrare = 'Филиал';
+                              $promoCode = "Промокод";
+                              $state = 'Статус';
+                              $stateON = 'Выдан';
+                              $stateOFF = "В ожидании";
+                          }
+                          if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro'){
+                              $name = 'Nume';
+                              $phone = "Telefon";
+                              $action = 'Detalii';
+                              $mail = 'Posta';
+                              $stats = 'Stoc';
+                              $prem = 'Premiu';
+                              $livrare = 'Filiala';
+                              $promoCode = "Promocod";
+                              $state = 'Statut';
+                              $stateON = 'Ridicat';
+                              $stateOFF = "In Asteptare";
+                          }
+
+                          $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` LEFT JOIN `promo_code` ON `users_field_data`.uid = `promo_code`.active WHERE uid != 0 AND `promo_code`.`active` != 0 AND tombola != 0 ORDER BY uid ASC";
+                    $sql = $sqlQuery;
+                    //dump($sql);
+                    $result = $conn->query($sql);
+                    $result->setFetchMode(\PDO::FETCH_OBJ);
+
+                                  print <<<TABLE
+                          <table id="table8">
+                          <thead>
+                          <tr><th>ID</th><th>$name</th><th>$mail</th><th>$phone</th><th>$prem</th><th>$livrare</th><th>$promoCode</th><th>$state</th></tr>
+                          </thead>
+                          <tbody>
+                          TABLE;
+                          $count = 1;
+                              foreach ($result as $record) {
+                              if($record->status == 2){
+                                $statusPrint = $stateOFF;
+                              }else if($record->status == 3){
+                               $statusPrint = $stateON;
+                              }else{
+                                $statusPrint = '';
+                              }
+                                      printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $record->name, $record->mail, $record->field_phone_value, $record->premiu, $record->livrare, $record->promocode, $statusPrint);
+
+                                   $count++;
+                              }
+
+                          print "</tbody>\n</table>\n";
     }
 }

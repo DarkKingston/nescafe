@@ -22,4 +22,5 @@ regions:
   register: Register
   account: Account Private Area
   add_promo: Add Promo
+  tombola: Tombola
   footer: Footer
