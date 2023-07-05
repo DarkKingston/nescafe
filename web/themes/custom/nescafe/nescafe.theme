@@ -426,8 +426,8 @@ $arr = [];
                                  }
                             }
                             if($promoTotal >= 10){
-                            dump($total);
-                            $checkPromo = "SELECT * FROM promo_code WHERE status != 10 AND active = '".$curr_id_for_user."'";
+                            dump($promoTotal);
+                            $checkPromo = "SELECT * FROM promo_code WHERE status = 10 AND active = '".$curr_id_for_user."'";
                             $checkPromoItem = $conn->query($checkPromo);
                             $checkCounter = 0;
                             foreach($checkPromoItem as $checkItem){
