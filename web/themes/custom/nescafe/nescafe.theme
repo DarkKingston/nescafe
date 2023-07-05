@@ -268,8 +268,6 @@ foreach($result2 as $record2){
 }
         foreach ($result as $record) {
 
-            dump($record);
-
             if ($result) {
                 if(!preg_match("/^([0-9])+$/", $record->promocode)){
                     $score = 2;
@@ -429,7 +427,72 @@ $arr = [];
                                  }
                             }
                             if($total >= 10 && $total < 15){
-                               echo "У тебя награда 2 степени";
+                               $promoSuccess = "UPDATE promo_code SET status = 1, data = NOW() WHERE promocode = '".$userID->promocode."' AND status = 0 ";
+                                                                   if($conn->query($promoSuccess)){
+                                                                       $arrData  = array();
+                                                                       $getGift = "SELECT * FROM webform_submission_data WHERE webform_id = 'cadouri'  ";
+                                                                       $giftVal = $conn->query($getGift);
+                                                                       foreach($giftVal as $gift=>$val){
+                                                                           $arrData[ $val['sid'] ][ $val['name'] ] = $val;
+                                                                           //dump($val);
+                                                                           //dump($val['value']);
+                                                                       }
+
+
+                                                                       // dump($arrData);
+
+                                                                       $arrShowF = array();
+                                                                       foreach($arrData as $IDgift => $val){
+                                                                           foreach($val as $name => $val2){
+                                                                               if( $name == 'categoria_de_produs' && $val2['value'] == 2 ) {
+                                                                                   // $val['title'] = $val[''];
+                                                                                   $arrShowF[[$IDgift]['filiala']['value']][] = array( 'name' => $arrData[$IDgift]['premiu']['value'] ,'filiala' => $arrData[$IDgift]['filiala']['value'], 'id' => $IDgift );
+                                                                                   }
+                                                                           }
+                                                                       }
+                               //dump($arrShowF);
+                               $arr = [];
+                                                                       foreach($arrShowF as $filiala => $arrShow){
+
+
+                                                                                               $option = '';
+                                                                                               $option2 = '';
+                                                                                                foreach($arrShow as $ft => $val){
+
+                                                                                                $arr[] = $val['name'];
+                                                                                                //dump($arrShow);
+                                                                                                   $option2 .= " <option>".$val['filiala']."</option> ";
+                                                                                                }
+                                         $arrUnique = array_unique($arr);
+                                                                                                foreach($arrUnique as $arrVal){
+                                                                                                   $option .= " <option>".$arrVal."</option> ";
+                                                                                                }
+                               //dump($arrUnique);
+                                                                           print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_gift' data-dialog-type='modal'>
+
+                                                                               <select name='premiu'>
+
+                                                                                   ".$option."
+                                                                               </select>
+                                                                               <select name='filial'>
+
+                                                                                   ".$option2."
+                                                                               </select>
+                                                                               <input type='submit' class='btn_main action' name='submitGift' value='Alege'>
+
+                                                                           </form>
+                                                                           ";
+                                                                       }
+                                                                       //dump($arrShow);
+                                                                   }
+
+                                                                   if(isset($_POST['submitGift'])){
+                                                                       $updatePromo = "UPDATE promo_code SET premiu = '".$_POST['premiu']."', livrare = '".$_POST['filial']."', status = 2 WHERE promocode = '".$userID->promocode."' AND premiu = '' AND livrare = '' ";
+                                                                        if($conn->query($updatePromo)){
+                                                                           //echo "ok";
+                                                                        }
+                                                                   }
+
                             }
                             if($total >= 15 && $total < 30){
                                 echo "Ты учавствуешь в игре дня";
