@@ -808,6 +808,7 @@ form .form-item label{
 
 .form-item-field-reglament-value input, .form-item-field-adult-value input{
   width: 15px;
+  height: 15px;
   margin-right: 5px;
 }
 .form-item-field-reglament-value label, .form-item-field-adult-value label{
