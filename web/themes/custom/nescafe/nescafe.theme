@@ -247,7 +247,7 @@ if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro'){
 }
 
 /*Обычный пользователь Вывод промокодов который он вводил*/
- if(in_array('authenticated', $roles) && !in_array('manager_filiala', $roles) && !in_array('administrator', $roles)){
+ if(in_array('player', $roles) && !in_array('manager_filiala', $roles) && !in_array('administrator', $roles)){
         print <<<TABLE
 <table id="table8">
 <thead>
