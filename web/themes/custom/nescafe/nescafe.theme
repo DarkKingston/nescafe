@@ -222,7 +222,8 @@ if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro'){
  if(in_array('player', $roles) && !in_array('manager_filiala', $roles) && !in_array('administrator', $roles)){
 
  dump($_POST['introduceti_codul_promotional']);
- if(isset($_POST['introduceti_codul_promotional']) && isset($_POST['promo_send'])){
+ if(isset($_POST['introduceti_codul_promotional'])){
+ dump('1');
           $curr_id_for_user = \Drupal::currentUser()->id();
               $config = new Config();
               $credentials = $config->credentials('database');
