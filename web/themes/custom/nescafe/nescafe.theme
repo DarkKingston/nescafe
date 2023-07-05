@@ -175,7 +175,7 @@ $sql = $sqlQuery;
         //if(in_array('administrator', $roles)) {
         //    $sqlQuery = "SELECT * FROM promo_code WHERE active <> 0";
         //}
-        if(in_array('authenticated', $roles) && !in_array('administrator', $roles)){
+        if(in_array('player', $roles) && !in_array('administrator', $roles)){
           $sqlQuery = "SELECT * FROM promo_code WHERE active = '".$curr_id_for_user."' ORDER BY data ASC";
         }
         if(in_array('authenticated', $roles) && in_array('manager_filiala', $roles) && !in_array('administrator', $roles)){
@@ -219,35 +219,8 @@ if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro'){
 }
 
 /*Обычный пользователь Вывод промокодов который он вводил*/
+
  if(in_array('player', $roles) && !in_array('manager_filiala', $roles) && !in_array('administrator', $roles)){
-
- if(isset($_POST['introduceti_codul_promotional'])){
-          $curr_id_for_user = \Drupal::currentUser()->id();
-          dump($curr_id_for_user);
-              $config = new Config();
-              $credentials = $config->credentials('database');
-              $dsn = sprintf('mysql:host=%s;port=%d;dbname=%s', $credentials['host'], $credentials['port'], $credentials['path']);
-              $conn = new \PDO($dsn, $credentials['username'], $credentials['password'], [
-                  \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
-                  \PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => TRUE,
-                  \PDO::MYSQL_ATTR_FOUND_ROWS => TRUE,
-              ]);
-
-      $sql = "SELECT * FROM promo_code WHERE active = 0";
-             $result = $conn->query($sql);
-             $result->setFetchMode(\PDO::FETCH_OBJ);
-
-             if ($result) {
-             foreach ($result as $record) {
-                 if($record->active == 0){
-                          $sql = "UPDATE promo_code SET active = '".$curr_id_for_user."',  data = NOW() WHERE promocode = '".$_POST['introduceti_codul_promotional']."' AND active = 0  ";
-                 }
-             }
-                  if($conn->query($sql)){
-                   //echo "ok";
-                  }
-             }
-         }
 
         print <<<TABLE
 <table id="table8">
@@ -286,7 +259,7 @@ foreach($result2 as $record2){
 
         }
         print "</tbody>\n</table>\n";
-        print "<div class='promo_add'> <form method='post'><div class='promo_group'><label>$intro</label><input type='text' class='promo_add_inp' name='introduceti_codul_promotional'></div> <input type='submit' value='$send' class='promo_send' name='submit_popup'></form> <a href='/user/logout' class='btn_main stock logout_btn'>Logout</a></div>";
+        print "<div class='promo_add'> <form action='/add/promo' method='post'><div class='promo_group'><label>$intro</label><input type='text' class='promo_add_inp' name='introduceti_codul_promotional'></div> <input type='submit' value='$send' class='promo_send' name='submit_popup'></form> <a href='/user/logout' class='btn_main stock logout_btn'>Logout</a></div>";
 
 }
 }
