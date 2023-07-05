@@ -997,7 +997,7 @@ function nescafe_preprocess_region__tombola(){
                                   print <<<TABLE
                           <table id="table8">
                           <thead>
-                          <tr><th>ID</th><th>$name</th><th>$mail</th><th>$phone</th><th>$prem</th><th>$livrare</th><th>$promoCode</th><th>$state</th></tr>
+                          <tr><th>ID</th><th>$name</th><th>$mail</th><th>$phone</th><th>$promoCode</th></tr>
                           </thead>
                           <tbody>
                           TABLE;
