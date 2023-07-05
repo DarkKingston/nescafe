@@ -814,3 +814,33 @@ form .form-item label{
 .form-item-field-reglament-value label, .form-item-field-adult-value label{
   margin-bottom: 0 !important;
 }
+
+.promo_add{
+  display: flex;
+  flex-direction: column;
+
+}
+
+.promo_add_inp{
+  font-weight: 700;
+  font-size: 17px;
+  color: #000000;
+  background: #FFFFFF;
+  border: 1px solid #CECECE;
+  border-radius: 4px;
+  height: 45px;
+  width: 300px;
+  padding: 12px 25px;
+}
+
+.promo_send{
+  font-weight: 700;
+  font-size: 17px;
+  color: #000000;
+  background: #FFFFFF;
+  border: 1px solid #CECECE;
+  border-radius: 4px;
+  height: 45px;
+  width: 300px;
+  margin-top: 10px;
+}
