@@ -522,10 +522,9 @@ $arr = [];
                                         $key = array_rand($arrID);
                                     }
                                 }
-                                dump($total);
                             }
                             if($total % 30 == 0 && $userID->premiu == ''){
-                                echo "Ты учавствуешь в финальную игру";
+                                //echo "Ты учавствуешь в финальную игру";
                             }
         }
     }
