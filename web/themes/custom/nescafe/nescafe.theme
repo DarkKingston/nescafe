@@ -516,7 +516,7 @@ $arr = [];
 
                                     if($ifUsers >= 2){
                                         $randID = rand(1,$ifUsers);
-                                        dump($tombolaZil[$randID]);
+                                        dump($tombolaZil);
                                         dump($randID);
                                     }
                                 }
