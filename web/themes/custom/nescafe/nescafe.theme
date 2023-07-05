@@ -427,6 +427,13 @@ $arr = [];
                                  }
                             }
                             if($total >= 10){
+                            $checkPromo = "SELECT * FROM promo_code WHERE status != 10 AND active = '".$curr_id_for_user."'";
+                            $checkPromoItem = $conn->query($checkPromo);
+                            $checkCounter = 0;
+                            foreach($checkPromoItem as $checkItem){
+                                $checkCounter++;
+                            }
+                            if($checkCounter == 0){
                                $promoSuccess = "UPDATE promo_code SET status = 1, data = NOW() WHERE promocode = '".$userID->promocode."' AND status = 0 ";
                                                                    if($conn->query($promoSuccess)){
                                                                        $arrData  = array();
@@ -487,11 +494,12 @@ $arr = [];
                                                                    }
 
                                                                    if(isset($_POST['submitGift'])){
-                                                                       $updatePromo = "UPDATE promo_code SET premiu = '".$_POST['premiu']."', livrare = '".$_POST['filial']."', status = 2 WHERE promocode = '".$userID->promocode."' AND premiu = '' AND livrare = '' ";
+                                                                       $updatePromo = "UPDATE promo_code SET premiu = '".$_POST['premiu']."', livrare = '".$_POST['filial']."', status = 10 WHERE promocode = '".$userID->promocode."' AND premiu = '' AND livrare = '' ";
                                                                         if($conn->query($updatePromo)){
                                                                            //echo "ok";
                                                                         }
                                                                    }
+                               }
 
                             }
                             if($total >= 15 && $total < 30){
