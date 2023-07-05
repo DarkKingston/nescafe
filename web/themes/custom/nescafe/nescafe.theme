@@ -286,6 +286,7 @@ foreach($result2 as $record2){
 }
         foreach ($result as $record) {
 
+            dump($record);
 
             if ($result) {
                 if(!preg_match("/^([0-9])+$/", $record->promocode)){
