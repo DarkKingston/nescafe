@@ -351,7 +351,7 @@ foreach($result2 as $record2){
                         foreach($res as $userID){
                         }
                             if($curr_id_for_user == $userID->active){
-                                if((Гарантированные призы % 7) == 0 && $userID->premiu == ''){
+                                if(($promoTotal % 7) == 0 && $userID->premiu == ''){
                                     $promoSuccess = "UPDATE promo_code SET status = 1, data = NOW() WHERE promocode = '".$userID->promocode."' AND status = 0 ";
                                     if($conn->query($promoSuccess)){
                                         $arrData  = array();
