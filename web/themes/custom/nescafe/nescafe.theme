@@ -510,14 +510,18 @@ $arr = [];
                                     $tombolaZil->setFetchMode(\PDO::FETCH_OBJ);
 
                                     $ifUsers = 0;
+                                    $arrID = array();
                                     foreach($tombolaZil as $zil){
                                     $ifUsers++;
+                                    $arrID[] = $zil['active'];
                                     }
 
+
+                                    dump($arrID);
+
                                     if($ifUsers >= 2){
-                                        $randID = rand(1,$ifUsers);
-                                        dump($randID);
-                                        echo 'Random'.rand(1,$ifUsers);
+                                        $key = array_rand($arrID);
+                                        echo 'random id => '.$arrID[$key];
                                     }
                                 }
                             }
