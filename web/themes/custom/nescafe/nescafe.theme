@@ -750,7 +750,7 @@ function nescafe_preprocess_region__stock($page){
                      }
                      if( $name == 'categoria_de_produs' && $val2['value'] == 1 ) {
                       // $val['title'] = $val[''];
-                         $arrShowF1[[$IDgift]['filiala']['value']][] = array( 'name1' => $arrData[$IDgift]['premiu']['value'] ,'filiala1' => $arrData[$IDgift]['filiala']['value'],'stock1' => $arrData[$IDgift]['stock']['value'],'suplimentar1' => $arrData[$IDgift]['suplimentar']['value'], 'id' => $IDgift );
+                         $arrShowF1[ [$IDgift]['filiala']['value'] . '_' . $arrData[$IDgift]['filiala']['value'] ][] = array( 'name1' => $arrData[$IDgift]['premiu']['value'] ,'filiala1' => $arrData[$IDgift]['filiala']['value'],'stock1' => $arrData[$IDgift]['stock']['value'],'suplimentar1' => $arrData[$IDgift]['suplimentar']['value'], 'id' => $IDgift );
                      }
 
                  }
@@ -866,6 +866,8 @@ function nescafe_preprocess_region__stock($page){
                         }
 
                        print "</tbody>\n</table>\n";
+
+                       dump($arrShowF1);
 
 
  }
