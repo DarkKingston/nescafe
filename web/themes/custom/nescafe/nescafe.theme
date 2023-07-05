@@ -517,7 +517,7 @@ $arr = [];
                                     if($ifUsers >= 2){
                                         $randID = rand(1,$ifUsers);
                                         dump($randID);
-                                        echo rand(1,$ifUsers);
+                                        echo 'Random'.rand(1,$ifUsers);
                                     }
                                 }
                             }
