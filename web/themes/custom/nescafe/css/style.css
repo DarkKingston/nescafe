@@ -810,3 +810,6 @@ form .form-item label{
   width: 15px;
   margin-right: 5px;
 }
+.form-item-field-reglament-value label, .form-item-field-adult-value label{
+  margin-bottom: 0;
+}
