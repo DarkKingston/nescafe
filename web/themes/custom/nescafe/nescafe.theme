@@ -285,7 +285,7 @@ foreach($result2 as $record2){
 
         }
         print "</tbody>\n</table>\n";
-        print "<div class='promo_add'> <form method='post'><input type='text' class='promo_add_inp' name='introduceti_codul_promotional'> <input type='submit' value='.$send.' class='promo_send' name='submit_popup'></form> <a href='/user/logout' class='btn_main stock logout_btn'>Logout</a></div>";
+        print "<div class='promo_add'> <form method='post'><input type='text' class='promo_add_inp' name='introduceti_codul_promotional'> <input type='submit' value='$send' class='promo_send' name='submit_popup'></form> <a href='/user/logout' class='btn_main stock logout_btn'>Logout</a></div>";
 
 }
 }

@@ -844,3 +844,8 @@ form .form-item label{
   width: 300px;
   margin-top: 10px;
 }
+
+.promo_add .btn_main{
+  width: 120px !important;
+  margin-left: 0 !important;
+}
