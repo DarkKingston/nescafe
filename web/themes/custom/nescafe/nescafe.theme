@@ -416,51 +416,24 @@ $arr = [];
                                     }
 
 
-                                }
-                            }else{
-                                if(isset($_POST['op'])){
-                                    print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_gift' data-dialog-type='modal'>
-                                        <div>Ne pare rau!</div>
-                                        <div>Nu ati castigat nimic</div>
-                                        <div class='btn_main action closePopup'>Inchide</div>
-                                    </form>
-                                    ";
-                                }
+                                }else{
+                                     if(isset($_POST['op'])){
+                                         print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_gift' data-dialog-type='modal'>
+                                             <div>Mai incercati!</div>
+                                             <div class='btn_main action closePopup'>Inchide</div>
+                                         </form>
+                                         ";
+                                     }
+                                 }
                             }
                             if($total >= 10 && $total < 15){
                                echo "У тебя награда 2 степени";
-                            }else{
-                                if(isset($_POST['op'])){
-                                    print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_gift' data-dialog-type='modal'>
-                                        <div>Ne pare rau!</div>
-                                        <div>Nu ati castigat nimic</div>
-                                        <div class='btn_main action closePopup'>Inchide</div>
-                                    </form>
-                                    ";
-                                }
                             }
                             if($total >= 15 && $total < 30){
                                 echo "Ты учавствуешь в игре дня";
-                            }else{
-                                if(isset($_POST['op'])){
-                                    print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_gift' data-dialog-type='modal'>
-                                        <div>Ne pare rau!</div>
-                                        <div>Nu ati castigat nimic</div>
-                                    </form>
-                                    ";
-                                }
                             }
                             if($total > 30){
                                 echo "Ты учавствуешь в финальную игру";
-                            }else{
-                                if(isset($_POST['op'])){
-                                    print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_gift' data-dialog-type='modal'>
-                                        <div>Ne pare rau!</div>
-                                        <div>Nu ati castigat nimic</div>
-                                        <div class='btn_main action closePopup'>Inchide</div>
-                                    </form>
-                                    ";
-                                }
                             }
         }
     }
