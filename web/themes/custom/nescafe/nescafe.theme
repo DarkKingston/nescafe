@@ -806,7 +806,7 @@ function nescafe_preprocess_region__stock($page){
                                     $stockInit = 0;
                                     $stockDisp = $stockInit + $val['suplimentar2'];
                                     $elib = $countElib;
-                                     $solicitSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '".$val['filiala2']."' AND premiu = '".$val['name2']."'";
+                                     $solicitSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 10 AND livrare = '".$val['filiala2']."' AND premiu = '".$val['name2']."'";
                                       $sol = $conn->query($solicitSQL);
                                       foreach($sol as $solVal){
 
