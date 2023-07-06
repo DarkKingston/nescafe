@@ -19,7 +19,7 @@
         $('.popup_gift').hide();
       });
 
-      $("#user-login-form").append('<a href="/user/password" title="Trimite instrucțiuni de resetare parolă prin e-mail." class="use-ajax webform-dialog webform-dialog-narrow btn_reset_pass" data-once="ajax" data-dialog-type="modal">Reset password</a>');
+      $("#user-login-form").append("<a class='use-ajax webform-dialog webform-dialog-narrow btn_reset_pass' data-dialog-type='modal'  href='/user/password' >Reset password</a>");
     }
   };
 })(jQuery);

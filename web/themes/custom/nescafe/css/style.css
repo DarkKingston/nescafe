@@ -867,4 +867,5 @@ form .form-item label{
   line-height: 22px;
   color: #404E55;
   margin-top: 10px;
+  display: block;
 }
