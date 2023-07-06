@@ -532,6 +532,7 @@ $arr = [];
                                                                       $key = array_rand($arrID);
                                                                     }
                                                                     dump($zil);
+                                                                    dump($arrID);
                             if($total % 30 == 0 && $userID->premiu == ''){
                                 //echo "Ты учавствуешь в финальную игру";
                             }
