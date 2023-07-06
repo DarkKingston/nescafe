@@ -19,13 +19,12 @@
         $('.popup_gift').hide();
       });
 
-      if(!$(".btn_reset_pass")){
         $("#user-login-form").append("<a class='use-ajax webform-dialog webform-dialog-narrow btn_reset_pass' data-dialog-type='modal'  href='/user/password' >Reset password</a>");
-      }
+
       var phone;
-      if($('.current_lang').text() == "RO"){
+      if($('.current_lang').html() == "RO"){
         phone = "Numar de telefon";
-      }else if ($('.current_lang').text() == "RU"){
+      }else if ($('.current_lang').html() == "RU"){
         phone = "Номер телефона";
       }
 
