@@ -515,6 +515,21 @@ $arr = [];
                                 if($conn->query($tombolaSuccess)){
                                    //echo "success";
                                 }
+
+                                $getTombola = "SELECT * FROM promo_code WHERE tombola = 1";
+                                        $tombolaZil  = $conn->query($getTombola);
+                                        $tombolaZil->setFetchMode(\PDO::FETCH_OBJ);
+
+                                        $ifUsers = 0;
+                                        $arrID = array();
+                                        foreach($tombolaZil as $zil){
+                                          $ifUsers++;
+                                          $arrID[] = $zil->active;
+                                        }
+                                        if($ifUsers >= 2){
+                                          $key = array_rand($arrID);
+                                        }
+                                        dump($arrID);
                             }
                             if($total % 30 == 0 && $userID->premiu == ''){
                                 //echo "Ты учавствуешь в финальную игру";
