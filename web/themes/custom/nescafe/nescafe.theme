@@ -614,15 +614,33 @@ function nescafe_preprocess_region__stock($page){
 
                  if($val['filiala']['value'] == $filVal['field_filiala_value']){
                      if( ($name == 'categoria_de_produs' && $val2['value'] == 3) ) {
-                         $arrShowF[[$IDgift]['filiala']['value']][] = array( 'name3' => $arrData[$IDgift]['premiu']['value'] ,'filiala3' => $arrData[$IDgift]['filiala']['value'],'stock3' => $arrData[$IDgift]['stock']['value'],'suplimentar3' => $arrData[$IDgift]['suplimentar']['value'], 'id' => $IDgift );
+                         //$arrShowF[[$IDgift]['filiala']['value']][] = array( 'name3' => $arrData[$IDgift]['premiu']['value'] ,'filiala3' => $arrData[$IDgift]['filiala']['value'],'stock3' => $arrData[$IDgift]['stock']['value'],'suplimentar3' => $arrData[$IDgift]['suplimentar']['value'], 'id' => $IDgift );
+                        $arrShowF[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['name3'] = $arrData[$IDgift]['premiu']['value'];
+                         $arrShowF[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['filiala3'] = $arrData[$IDgift]['filiala']['value'];
+                         $arrShowF[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['stock3'] +=  $arrData[$IDgift]['stock']['value'];
+                         $arrShowF[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['suplimentar3'] +=  $arrData[$IDgift]['suplimentar']['value'];
+                         $arrShowF[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['id'] +=  $IDgift;
+
                      }
                      if( ($name == 'categoria_de_produs' && $val2['value'] == 2) ) {
                      // $val['title'] = $val[''];
-                         $arrShowF2[[$IDgift]['filiala']['value']][] = array( 'name2' => $arrData[$IDgift]['premiu']['value'] ,'filiala2' => $arrData[$IDgift]['filiala']['value'],'stock2' => $arrData[$IDgift]['stock']['value'],'suplimentar2' => $arrData[$IDgift]['suplimentar']['value'], 'id' => $IDgift );
+                         //$arrShowF2[[$IDgift]['filiala']['value']][] = array( 'name2' => $arrData[$IDgift]['premiu']['value'] ,'filiala2' => $arrData[$IDgift]['filiala']['value'],'stock2' => $arrData[$IDgift]['stock']['value'],'suplimentar2' => $arrData[$IDgift]['suplimentar']['value'], 'id' => $IDgift );
+                        $arrShowF2[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['name2'] = $arrData[$IDgift]['premiu']['value'];
+                         $arrShowF2[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['filiala2'] = $arrData[$IDgift]['filiala']['value'];
+                         $arrShowF2[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['stock2'] +=  $arrData[$IDgift]['stock']['value'];
+                         $arrShowF2[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['suplimentar2'] +=  $arrData[$IDgift]['suplimentar']['value'];
+                         $arrShowF2[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['id'] +=  $IDgift;
+
                      }
                      if( ($name == 'categoria_de_produs' && $val2['value'] == 1)  ) {
                       // $val['title'] = $val[''];
-                         $arrShowF1[[$IDgift]['filiala']['value']][] = array( 'name1' => $arrData[$IDgift]['premiu']['value'] ,'filiala1' => $arrData[$IDgift]['filiala']['value'],'stock1' => $arrData[$IDgift]['stock']['value'],'suplimentar1' => $arrData[$IDgift]['suplimentar']['value'], 'id' => $IDgift );
+                         //$arrShowF1[[$IDgift]['filiala']['value']][] = array( 'name1' => $arrData[$IDgift]['premiu']['value'] ,'filiala1' => $arrData[$IDgift]['filiala']['value'],'stock1' => $arrData[$IDgift]['stock']['value'],'suplimentar1' => $arrData[$IDgift]['suplimentar']['value'], 'id' => $IDgift );
+                         $arrShowF1[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['name1'] = $arrData[$IDgift]['premiu']['value'];
+                         $arrShowF1[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['filiala1'] = $arrData[$IDgift]['filiala']['value'];
+                         $arrShowF1[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['stock1'] +=  $arrData[$IDgift]['stock']['value'];
+                         $arrShowF1[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['suplimentar1'] +=  $arrData[$IDgift]['suplimentar']['value'];
+                         $arrShowF1[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['id'] +=  $IDgift;
+
                      }
 
                     }
@@ -661,16 +679,19 @@ function nescafe_preprocess_region__stock($page){
             TABLE;
             $count = 1;
             foreach($arrShowF as $filiala => $arrShow){
-                   foreach($arrShow as $ft => $val){
                          $stockInit = 0;
-                         $stockDisp = $stockInit + $val['suplimentar3'];
+                         $stockDisp = $stockInit + $arrShow['suplimentar3'];
                          $elib = $countElib;
-                         $solicit = count($arrShow);
+                         $solicitSQL = "SELECT COUNT(id) FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '".$arrShow['filiala3']."' AND premiu = '".$arrShow['name3']."'";
+                           $sol = $conn->query($solicitSQL);
+                           foreach($sol as $solVal){
+                           $solicit = $solVal['COUNT(id)'];
+                           }
                          $stockFinal = $stockDisp - $elib;
-                        printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $val['name3'], $val['filiala3'], $solicit, $stockInit, $val['suplimentar3'], $stockDisp, $countElib,$stockFinal);
+                        printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $arrShow['name3'], $arrShow['filiala3'], $solicit, $stockInit, $arrShow['suplimentar3'], $stockDisp, $countElib,$stockFinal);
 
                      $count++;
-                 }
+
              }
 
             print "</tbody>\n</table>\n";
@@ -684,16 +705,19 @@ function nescafe_preprocess_region__stock($page){
                        TABLE;
                        $count = 1;
                        foreach($arrShowF2 as $filiala => $arrShow){
-                              foreach($arrShow as $ft => $val){
                                     $stockInit = 0;
-                                    $stockDisp = $stockInit + $val['suplimentar2'];
+                                    $stockDisp = $stockInit + $arrShow['suplimentar2'];
                                     $elib = $countElib;
-                                    $solicit = count($arrShow);
+                                    $solicitSQL = "SELECT COUNT(id) FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '".$arrShow['filiala3']."' AND premiu = '".$arrShow['name3']."'";
+                                     $sol = $conn->query($solicitSQL);
+                                     foreach($sol as $solVal){
+                                     $solicit = $solVal['COUNT(id)'];
+                                     }
                                     $stockFinal = $stockDisp - $elib;
-                                   printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $val['name2'], $val['filiala2'], $solicit, $stockInit, $val['suplimentar2'], $stockDisp, $countElib,$stockFinal);
+                                   printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $arrShow['name2'], $arrShow['filiala2'], $solicit, $stockInit, $arrShow['suplimentar2'], $stockDisp, $countElib,$stockFinal);
 
                                 $count++;
-                            }
+
                         }
 
                        print "</tbody>\n</table>\n";
@@ -707,16 +731,19 @@ function nescafe_preprocess_region__stock($page){
                        TABLE;
                        $count = 1;
                        foreach($arrShowF1 as $filiala => $arrShow){
-                              foreach($arrShow as $ft => $val){
                                     $stockInit = 0;
-                                    $stockDisp = $stockInit + $val['suplimentar1'];
+                                    $stockDisp = $stockInit + $arrShow['suplimentar1'];
                                     $elib = $countElib;
-                                    $solicit = count($arrShow);
+                                    $solicitSQL = "SELECT COUNT(id) FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '".$arrShow['filiala3']."' AND premiu = '".$arrShow['name3']."'";
+                                      $sol = $conn->query($solicitSQL);
+                                      foreach($sol as $solVal){
+                                      $solicit = $solVal['COUNT(id)'];
+                                      }
                                     $stockFinal = $stockDisp - $elib;
-                                   printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $val['name1'], $val['filiala1'], $solicit, $stockInit, $val['suplimentar1'], $stockDisp, $countElib,$stockFinal);
+                                   printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $arrShow['name1'], $arrShow['filiala1'], $solicit, $stockInit, $arrShow['suplimentar1'], $stockDisp, $countElib,$stockFinal);
 
                                 $count++;
-                            }
+
                         }
 
                        print "</tbody>\n</table>\n";
