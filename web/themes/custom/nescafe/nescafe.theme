@@ -208,6 +208,7 @@ $sql = $sqlQuery;
           <a href='/user/logout' class='btn_main stock logout_btn'>Logout</a>
           <form method='post' class='search_fil'>
              <select name='filiala_inp'>
+                 <option>Toate</option>
                  <option>Chisinau</option>
                  <option>Comrat</option>
                  <option>Edinet</option>
@@ -215,7 +216,8 @@ $sql = $sqlQuery;
                  <option>Balti</option>
              </select>
              <input type='submit' name='filSearch' value='Cauta' class='btn_main action search_filiala'>
-          </form>";
+          </form>
+          </div>";
 
     }
 
