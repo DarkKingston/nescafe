@@ -1,0 +1,49 @@
+<?php
+
+  /**
+   * @file
+   * Implementing some hook function
+   */
+
+  function drupalup_cron_cron(){
+
+    $curr_id_for_user = \Drupal::currentUser()->id();
+
+    $config = new Config();
+
+    $credentials = $config->credentials('database');
+
+    $dsn = sprintf('mysql:host=%s;port=%d;dbname=%s', $credentials['host'], $credentials['port'], $credentials['path']);
+    $conn = new \PDO($dsn, $credentials['username'], $credentials['password'], [
+      \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
+      \PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => TRUE,
+      \PDO::MYSQL_ATTR_FOUND_ROWS => TRUE,
+    ]);
+
+    $roles = \Drupal::currentUser()->getRoles();
+
+
+    $getTotal = "SELECT COUNT(id) FROM promo_code WHERE active = '".$curr_id_for_user."'";
+    foreach ($getTotal as $total){}
+
+    if($total[COUNT('id')] % 15 ==0){
+      $tombolaSuccess = "UPDATE promo_code SET tombola = 1, data = NOW() WHERE tombola = 0 ";
+      if($conn->query($tombolaSuccess)){
+        $getTombola = "SELECT * FROM promo_code WHERE tombola = 1";
+        $tombolaZil  = $conn->query($getTombola);
+        $tombolaZil->setFetchMode(\PDO::FETCH_OBJ);
+
+        $ifUsers = 0;
+        $arrID = array();
+        foreach($tombolaZil as $zil){
+          $ifUsers++;
+          $arrID[] = $zil->active;
+        }
+        if($ifUsers >= 2){
+          $key = array_rand($arrID);
+        }
+        echo 'random id user => '.$key;
+      }
+    }
+  }
+?>

@@ -1,0 +1,4 @@
+name: Drupal up cron for promo_code tombola
+description: Update database
+type: module
+core_version_requirement: ^9 || ^8
