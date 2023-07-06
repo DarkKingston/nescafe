@@ -866,6 +866,16 @@ form .form-item label{
   font-size: 14px;
   line-height: 22px;
   color: #404E55;
-  margin-top: 10px;
+  margin-top: 22px;
   display: block;
+}
+
+.search_fil{
+  margin-top: 10px;
+}
+
+.form_account_admin{
+  display: flex;
+  flex-direction: column;
+
 }
