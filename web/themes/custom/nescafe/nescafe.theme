@@ -890,10 +890,6 @@ function nescafe_preprocess_region__stock($page){
 
                        print "</tbody>\n</table>\n";
 
-                       dump($arrShowF);
-                       dump($arrShowF2);
-                       dump($arrShowF1);
-
 
  }
 
@@ -1037,11 +1033,4 @@ function nescafe_preprocess_region__tombola(){
 
                           print "</tbody>\n</table>\n";
     }
-}
-
-function nescafe_preprocess_region__content(){
-    dump($_POST);
-    dump($_SESSION);
-
-
 }
