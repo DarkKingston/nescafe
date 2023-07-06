@@ -28,14 +28,6 @@ use Drupal\user\Entity\User;
 
     $roles = \Drupal::currentUser()->getRoles();
 
-
-    $getTotalSQL = "SELECT COUNT(id) FROM promo_code WHERE active = '".$curr_id_for_user."'";
-    $getTotal  = $conn->query($getTotalSQL);
-    foreach ($getTotal as $total){}
-
-    if($total['COUNT(id)'] % 15 ==0){
-      $tombolaSuccess = "UPDATE promo_code SET tombola = 1, data = NOW() WHERE tombola = 0 ";
-      if($conn->query($tombolaSuccess)){
         $getTombola = "SELECT * FROM promo_code WHERE tombola = 1";
         $tombolaZil  = $conn->query($getTombola);
         $tombolaZil->setFetchMode(\PDO::FETCH_OBJ);
@@ -50,10 +42,8 @@ use Drupal\user\Entity\User;
           $key = array_rand($arrID);
         }
         echo 'random id user => '.$key;
-      }
-    }
 
-    $tombolaSuccess = "UPDATE promo_code SET tombola = 99 WHERE id = 30";
+    $tombolaSuccess = "UPDATE promo_code SET tombola = 99 WHERE id = '".$key."'";
     if($conn->query($tombolaSuccess)){}
   }
 ?>

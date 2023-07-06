@@ -513,19 +513,7 @@ $arr = [];
                             if($total % 15 ==0 && $userID->premiu == ''){
                                 $tombolaSuccess = "UPDATE promo_code SET tombola = 1, data = NOW() WHERE promocode = '".$userID->promocode."' AND tombola = 0 ";
                                 if($conn->query($tombolaSuccess)){
-                                    $getTombola = "SELECT * FROM promo_code WHERE tombola = 1";
-                                    $tombolaZil  = $conn->query($getTombola);
-                                    $tombolaZil->setFetchMode(\PDO::FETCH_OBJ);
-
-                                    $ifUsers = 0;
-                                    $arrID = array();
-                                    foreach($tombolaZil as $zil){
-                                    $ifUsers++;
-                                        $arrID[] = $zil->active;
-                                    }
-                                    if($ifUsers >= 2){
-                                        $key = array_rand($arrID);
-                                    }
+                                   //echo "success";
                                 }
                             }
                             if($total % 30 == 0 && $userID->premiu == ''){
