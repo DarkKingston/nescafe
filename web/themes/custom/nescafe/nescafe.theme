@@ -755,18 +755,28 @@ function nescafe_preprocess_region__stock($page){
 
                          $arrShowF[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['name3'] = $arrData[$IDgift]['premiu']['value'];
                          $arrShowF[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['filiala3'] = $arrData[$IDgift]['filiala']['value'];
-                         //$arrShowF[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['stock3'] +=  $arrData[$IDgift]['stock']['value'];
+                         $arrShowF[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['stock3'] +=  $arrData[$IDgift]['stock']['value'];
                          $arrShowF[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['suplimentar3'] +=  $arrData[$IDgift]['suplimentar']['value'];
                          $arrShowF[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['id'] +=  $IDgift;
 
                      }
                      if( $name == 'categoria_de_produs' && $val2['value'] == 2 ) {
                      // $val['title'] = $val[''];
-                         $arrShowF2[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']][] = array( 'name2' => $arrData[$IDgift]['premiu']['value'] ,'filiala2' => $arrData[$IDgift]['filiala']['value'],'stock2' => $arrData[$IDgift]['stock']['value'],'suplimentar2' => $arrData[$IDgift]['suplimentar']['value'], 'id' => $IDgift );
+                     // $arrShowF2[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']][] = array( 'name2' => $arrData[$IDgift]['premiu']['value'] ,'filiala2' => $arrData[$IDgift]['filiala']['value'],'stock2' => $arrData[$IDgift]['stock']['value'],'suplimentar2' => $arrData[$IDgift]['suplimentar']['value'], 'id' => $IDgift );
+                        $arrShowF[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['name2'] = $arrData[$IDgift]['premiu']['value'];
+                        $arrShowF[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['filiala2'] = $arrData[$IDgift]['filiala']['value'];
+                        $arrShowF[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['stock2'] +=  $arrData[$IDgift]['stock']['value'];
+                        $arrShowF[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['suplimentar2'] +=  $arrData[$IDgift]['suplimentar']['value'];
+                        $arrShowF[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['id'] +=  $IDgift;
                      }
                      if( $name == 'categoria_de_produs' && $val2['value'] == 1 ) {
                       // $val['title'] = $val[''];
-                         $arrShowF1[ $arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value'] ][] = array( 'name1' => $arrData[$IDgift]['premiu']['value'] ,'filiala1' => $arrData[$IDgift]['filiala']['value'],'stock1' => $arrData[$IDgift]['stock']['value'],'suplimentar1' => $arrData[$IDgift]['suplimentar']['value'], 'id' => $IDgift );
+                      // $arrShowF1[ $arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value'] ][] = array( 'name1' => $arrData[$IDgift]['premiu']['value'] ,'filiala1' => $arrData[$IDgift]['filiala']['value'],'stock1' => $arrData[$IDgift]['stock']['value'],'suplimentar1' => $arrData[$IDgift]['suplimentar']['value'], 'id' => $IDgift );
+                        $arrShowF[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['name1'] = $arrData[$IDgift]['premiu']['value'];
+                        $arrShowF[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['filiala1'] = $arrData[$IDgift]['filiala']['value'];
+                        $arrShowF[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['stock1'] +=  $arrData[$IDgift]['stock']['value'];
+                        $arrShowF[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['suplimentar1'] +=  $arrData[$IDgift]['suplimentar']['value'];
+                        $arrShowF[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['id'] +=  $IDgift;
                      }
 
                  }
@@ -806,10 +816,10 @@ function nescafe_preprocess_region__stock($page){
             TABLE;
             $count = 1;
             $solicit = 0;
-            /*foreach($arrShowF as $filiala => $arrShow){
-                   foreach($arrShow as $ft => $val){
+            foreach($arrShowF as $filiala => $arrShow){
+
                          $stockInit = 0;
-                         $stockDisp = $stockInit + $val['suplimentar3'];
+                         $stockDisp = $stockInit + $arrShow['suplimentar3'];
                          $elib = $countElib;
                          $stockFinal = $stockDisp - $elib;
                           $solicitSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '".$val['filiala3']."' AND premiu = '".$val['name3']."'";
@@ -817,11 +827,11 @@ function nescafe_preprocess_region__stock($page){
                           foreach($sol as $solVal){
                             $solicit++;
                           }
-                        printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $val['name3'], $val['filiala3'], $solicit, $stockInit, $val['suplimentar3'], $stockDisp, $countElib,$stockFinal);
+                        printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $arrShow['name3'], $arrShow['filiala3'], $solicit, $arrShow['suplimentar3'], 0, $stockDisp, $countElib,$stockFinal);
 
                      $count++;
-                 }
-             }*/
+
+             }
 
             print "</tbody>\n</table>\n";
 
