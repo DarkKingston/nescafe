@@ -1062,9 +1062,11 @@ function nescafe_preprocess_region__reset(){
 
 if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru'){
     $intro = 'Введите номер телефона';
+    $send = "Отправить";
 }
 if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro'){
     $intro = 'Introduceti numarul de telefon';
+    $send = "Trimite";
 }
 
     print "<div class='promo_add'> <form method='post'><div class='promo_group'><label>$intro</label><input type='text' class='promo_add_inp' name='reset_password'></div> <input type='submit' value='$send' class='promo_send' name='submit_password'></form></div>";
