@@ -19,7 +19,7 @@
         $('.popup_gift').hide();
       });
 
-        $("#user-login-form").append("<a class='use-ajax webform-dialog webform-dialog-narrow btn_reset_pass' data-dialog-type='modal'  href='/user/password' >Reset password</a>");
+        $(".btn_register").append("<a class='use-ajax webform-dialog webform-dialog-narrow btn_reset_pass' data-dialog-type='modal'  href='/user/password' >Reset password</a>");
 
       var phone;
       if($('.current_lang').html() == "RO"){
