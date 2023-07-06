@@ -19,8 +19,7 @@
         $('.popup_gift').hide();
       });
 
-      $('.request-password-link').addClass('use-ajax');
-      $("#user-login-form").append("<div id='dynamic'>asddas</div>");
+      $("#user-login-form").append('<a href="/user/password" title="Trimite instrucțiuni de resetare parolă prin e-mail." class="request-password-link use-ajax" data-once="ajax" data-dialog-type="modal">Reset password</a>');
     }
   };
 })(jQuery);
