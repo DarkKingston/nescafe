@@ -30,6 +30,7 @@
       }
 
       $(".js-form-item-name").find("label").text(phone);
+      console.log(phone);
 
     }
   };
