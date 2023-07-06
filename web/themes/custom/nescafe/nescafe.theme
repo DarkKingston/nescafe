@@ -202,7 +202,20 @@ $sql = $sqlQuery;
               }
 
           print "</tbody>\n</table>\n";
-          print "<div class='admin_btns'><a href='/stock' class='btn_main stock'>".$stats."</a> <a href='/tombola' class='btn_main stock logout_btn'>".$tombola."</a> <a href='/user/logout' class='btn_main stock logout_btn'>Logout</a></div>";
+          print "<div class='admin_btns'>
+          <a href='/stock' class='btn_main stock'>".$stats."</a>
+          <a href='/tombola' class='btn_main stock logout_btn'>".$tombola."</a>
+          <a href='/user/logout' class='btn_main stock logout_btn'>Logout</a>
+          <form method='post' class='search_fil'>
+             <option name="filiala_inp">
+                 <select>Chisinau</select>
+                 <select>Comrat</select>
+                 <select>Edinet</select>
+                 <select>Cahul</select>
+                 <select>Balti</select>
+             </option>
+             <input type='submit' name='filSearch' value='Cauta' class='btn_main action search_filiala'>
+          </form>";
 
     }
 
@@ -339,22 +352,10 @@ foreach($result2 as $record2){
        print "</tbody>\n</table>\n";
 
        print "
-            <div class='form_account_admin'>
                 <form method='post'>
                     <input type='text' name='search' class='search_inp'>
                     <input type='submit' name='submitSearch' value='Cauta' class='btn_main action search_btn'>
                 </form>
-                <form method='post' class='search_fil'>
-                    <option name="filiala_inp">
-                        <select>Chisinau</select>
-                        <select>Comrat</select>
-                        <select>Edinet</select>
-                        <select>Cahul</select>
-                        <select>Balti</select>
-                    </option>
-                    <input type='submit' name='submitSearch' value='Cauta' class='btn_main action search_filiala'>
-                </form>
-            </div>
        ";
        print "<div class='admin_btns'><a href='/stock' class='btn_main stock'>".$stats."</a> <a href='/user/logout' class='btn_main stock logout_btn'>Logout</a></div>";
 
