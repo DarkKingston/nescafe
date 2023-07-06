@@ -29,7 +29,8 @@ use Drupal\user\Entity\User;
     $roles = \Drupal::currentUser()->getRoles();
 
 
-    $getTotal = "SELECT COUNT(id) FROM promo_code WHERE active = '".$curr_id_for_user."'";
+    $getTotalSQL = "SELECT COUNT(id) FROM promo_code WHERE active = '".$curr_id_for_user."'";
+    $getTotal  = $conn->query($getTotalSQL);
     foreach ($getTotal as $total){}
 
     if($total['COUNT(id)'] % 15 ==0){
