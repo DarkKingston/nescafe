@@ -19,6 +19,7 @@
         $('.popup_gift').hide();
       });
 
+      $('.request-password-link').addClass('use-ajax');
     }
   };
 })(jQuery);
