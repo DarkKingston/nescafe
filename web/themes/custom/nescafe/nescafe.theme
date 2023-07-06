@@ -207,7 +207,7 @@ $sql = $sqlQuery;
           <a href='/tombola' class='btn_main stock logout_btn'>".$tombola."</a>
           <a href='/user/logout' class='btn_main stock logout_btn'>Logout</a>
           <form method='post' class='search_fil'>
-             <option name="filiala_inp">
+             <option name='filiala_inp'>
                  <select>Chisinau</select>
                  <select>Comrat</select>
                  <select>Edinet</select>
