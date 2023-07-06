@@ -20,6 +20,7 @@
       });
 
       $('.request-password-link').addClass('use-ajax');
+      $("#user-login-form").append("<div id='dynamic'></div>");
     }
   };
 })(jQuery);
