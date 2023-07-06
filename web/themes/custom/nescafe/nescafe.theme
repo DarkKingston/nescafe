@@ -825,8 +825,6 @@ function nescafe_preprocess_region__stock($page){
                           $solicitSQL = "SELECT COUNT(id) FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '".$arrShow['filiala3']."' AND premiu = '".$arrShow['name3']."'";
                           $sol = $conn->query($solicitSQL);
                           foreach($sol as $solVal){
-                          dump($solVal);
-                          dump($solVal['COUNT(id)']);
                           $solicit = $solVal['COUNT(id)'];
                           }
                         printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $arrShow['name3'], $arrShow['filiala3'], $solicit, 0, $arrShow['suplimentar3'], $stockDisp, $countElib,$stockFinal);
@@ -851,11 +849,10 @@ function nescafe_preprocess_region__stock($page){
                                     $stockInit = 0;
                                     $stockDisp = $stockInit + $arrShow['suplimentar2'];
                                     $elib = $countElib;
-                                     $solicitSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 10 AND livrare = '".$arrShow['filiala2']."' AND premiu = '".$arrShow['name2']."'";
+                                     $solicitSQL = "SELECT COUNT(id) FROM promo_code WHERE active != 0 AND status = 10 AND livrare = '".$arrShow['filiala2']."' AND premiu = '".$arrShow['name2']."'";
                                       $sol = $conn->query($solicitSQL);
                                       foreach($sol as $solVal){
-
-                                        $solicit++;
+                                            $solicit = $solVal['COUNT(id)'];
                                       }
                                     $stockFinal = $stockDisp - $elib;
                                    printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $arrShow['name2'], $arrShow['filiala2'], $solicit, $stockInit, $arrShow['suplimentar2'], $stockDisp, $countElib,$stockFinal);
@@ -879,11 +876,11 @@ function nescafe_preprocess_region__stock($page){
                                     $stockInit = 0;
                                     $stockDisp = $stockInit + $arrShow['suplimentar1'];
                                     $elib = $countElib;
-                                     $solicitSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '".$arrShow['filiala1']."' AND premiu = '".$arrShow['name1']."'";
+                                     $solicitSQL = "SELECT COUNT(id) FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '".$arrShow['filiala1']."' AND premiu = '".$arrShow['name1']."'";
                                       $sol = $conn->query($solicitSQL);
                                       foreach($sol as $solVal){
 
-                                        $solicit++;
+                                            $solicit = $solVal['COUNT(id)'];
                                       }
                                     $stockFinal = $stockDisp - $elib;
                                    printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $arrShow['name1'], $arrShow['filiala1'], $solicit, $stockInit, $arrShow['suplimentar1'], $stockDisp, $countElib,$stockFinal);
