@@ -32,7 +32,7 @@ use Drupal\user\Entity\User;
     $getTotal = "SELECT COUNT(id) FROM promo_code WHERE active = '".$curr_id_for_user."'";
     foreach ($getTotal as $total){}
 
-    if($total[COUNT('id')] % 15 ==0){
+    if($total['COUNT(id)'] % 15 ==0){
       $tombolaSuccess = "UPDATE promo_code SET tombola = 1, data = NOW() WHERE tombola = 0 ";
       if($conn->query($tombolaSuccess)){
         $getTombola = "SELECT * FROM promo_code WHERE tombola = 1";
