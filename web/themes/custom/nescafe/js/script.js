@@ -19,8 +19,6 @@
         $('.popup_gift').hide();
       });
 
-        $(".btn_register").append("<a class='use-ajax webform-dialog webform-dialog-narrow btn_reset_pass' data-dialog-type='modal'  href='/user/password' >Reset password</a>");
-
       let phone;
 
       let currLang = document.querySelector('.curr_lang_item').innerText;
