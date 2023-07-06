@@ -42,7 +42,7 @@ use Drupal\user\Entity\User;
           $key = array_rand($arrID);
         }
 
-    $tombolaSuccess = "UPDATE promo_code SET tombola = 99 WHERE id = '".$key."'";
+    $tombolaSuccess = "UPDATE promo_code SET tombola = 99 WHERE id = '".$arrID['key']."'";
     if($conn->query($tombolaSuccess)){}
   }
 ?>
