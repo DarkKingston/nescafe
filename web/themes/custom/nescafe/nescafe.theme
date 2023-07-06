@@ -1061,11 +1061,11 @@ function nescafe_preprocess_region__tombola(){
 function nescafe_preprocess_region__reset(){
 
 if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru'){
-    $intro = 'Введите номер телефона';
+    $intro = 'Введите номер телефона для восстановления пароля';
     $send = "Отправить";
 }
 if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro'){
-    $intro = 'Introduceti numarul de telefon';
+    $intro = 'Introduceti numarul de telefon ca sa restabiliti parola';
     $send = "Trimite";
 }
 
