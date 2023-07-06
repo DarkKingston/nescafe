@@ -21,14 +21,19 @@
 
         $(".btn_register").append("<a class='use-ajax webform-dialog webform-dialog-narrow btn_reset_pass' data-dialog-type='modal'  href='/user/password' >Reset password</a>");
 
-      var phone;
-      if($('.curr_lang_item').text() == "RO"){
+      let phone;
+
+      let currLang = document.querySelector('.curr_lang_item').innerText;
+
+      if(currLang == "RO"){
         phone = "Numar de telefon";
-      }else if ($('.curr_lang_item').text() == "RU"){
+      }else if (currLang == "RU"){
         phone = "Номер телефона";
       }
 
-      $(".js-form-item-name").find("label").text(phone);
+      console.log(currLang);
+
+      document.querySelector('.js-form-item-name label').innerText = phone;
       console.log(phone);
 
     }
