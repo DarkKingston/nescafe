@@ -1091,18 +1091,18 @@ function template_preprocess_views_mini_pager(&$variables) {
  *
  * View, named foobar. Style: unformatted. Row style: Fields. Display: Page.
  *
- * - views-view--foobar--page.html.twig
- * - views-view--page.html.twig
+ * - views-view--foobar--page--front.html.twig
+ * - views-view--page--front.html.twig
  * - views-view--foobar.html.twig
  * - views-view.html.twig
  *
- * - views-view-unformatted--foobar--page.html.twig
- * - views-view-unformatted--page.html.twig
+ * - views-view-unformatted--foobar--page--front.html.twig
+ * - views-view-unformatted--page--front.html.twig
  * - views-view-unformatted--foobar.html.twig
  * - views-view-unformatted.html.twig
  *
- * - views-view-fields--foobar--page.html.twig
- * - views-view-fields--page.html.twig
+ * - views-view-fields--foobar--page--front.html.twig
+ * - views-view-fields--page--front.html.twig
  * - views-view-fields--foobar.html.twig
  * - views-view-fields.html.twig
  *
