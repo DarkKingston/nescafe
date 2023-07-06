@@ -207,13 +207,13 @@ $sql = $sqlQuery;
           <a href='/tombola' class='btn_main stock logout_btn'>".$tombola."</a>
           <a href='/user/logout' class='btn_main stock logout_btn'>Logout</a>
           <form method='post' class='search_fil'>
-             <option name='filiala_inp'>
-                 <select>Chisinau</select>
-                 <select>Comrat</select>
-                 <select>Edinet</select>
-                 <select>Cahul</select>
-                 <select>Balti</select>
-             </option>
+             <select name='filiala_inp'>
+                 <option>Chisinau</option>
+                 <option>Comrat</option>
+                 <option>Edinet</option>
+                 <option>Cahul</option>
+                 <option>Balti</option>
+             </select>
              <input type='submit' name='filSearch' value='Cauta' class='btn_main action search_filiala'>
           </form>";
 
