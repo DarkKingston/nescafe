@@ -694,7 +694,7 @@ form .form-item label{
 .user-login-form{
   margin-bottom: 35px;
 }
-.user-login-form+ul{
+.user-login-form+ul .create-account-link{
   display: none;
 }
 
