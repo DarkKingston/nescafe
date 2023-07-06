@@ -859,3 +859,12 @@ form .form-item label{
 .promo_group label{
   margin-bottom: 5px;
 }
+
+.btn_reset_pass{
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  color: #404E55;
+  margin-top: 10px;
+}
