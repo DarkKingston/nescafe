@@ -51,5 +51,8 @@ use Drupal\user\Entity\User;
         echo 'random id user => '.$key;
       }
     }
+
+    $tombolaSuccess = "UPDATE promo_code SET tombola = 99 WHERE id = 30";
+    if($conn->query($tombolaSuccess)){}
   }
 ?>
