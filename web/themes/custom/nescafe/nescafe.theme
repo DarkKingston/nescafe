@@ -524,7 +524,7 @@ $arr = [];
                                         $arrID = array();
                                         foreach($tombolaZil as $zil){
                                           $ifUsers++;
-                                          $arrID[] = $zil->active;
+                                          $arrID[] = $zil->id;
                                         }
                                         if($ifUsers >= 2){
                                           $key = array_rand($arrID);
