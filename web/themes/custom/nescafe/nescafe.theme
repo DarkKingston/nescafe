@@ -825,8 +825,9 @@ function nescafe_preprocess_region__stock($page){
                           $solicitSQL = "SELECT COUNT(id) FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '".$arrShow['filiala3']."' AND premiu = '".$arrShow['name3']."'";
                           $sol = $conn->query($solicitSQL);
                           foreach($sol as $solVal){
-                          dump($solVal)
-                          dump($solVal['COUNT(id)'])
+                          dump($solVal);
+                          dump($solVal['COUNT(id)']);
+                          $solicit = $solVal['COUNT(id)'];
                           }
                         printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $arrShow['name3'], $arrShow['filiala3'], $solicit, 0, $arrShow['suplimentar3'], $stockDisp, $countElib,$stockFinal);
 
