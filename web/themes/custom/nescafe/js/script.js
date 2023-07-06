@@ -20,8 +20,14 @@
       });
 
       $("#user-login-form").append("<a class='use-ajax webform-dialog webform-dialog-narrow btn_reset_pass' data-dialog-type='modal'  href='/user/password' >Reset password</a>");
+      var phone;
+      if($('.current_lang').text() == "RO"){
+        phone = "Numar de telefon";
+      }else if ($('.current_lang').text() == "RU"){
+        phone = "Номер телефона";
+      }
 
-      $(".js-form-item-name").find("label").text('Phone');
+      $(".js-form-item-name").find("label").text(phone);
 
     }
   };
