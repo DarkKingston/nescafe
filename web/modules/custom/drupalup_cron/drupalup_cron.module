@@ -25,9 +25,6 @@ use Drupal\user\Entity\User;
       \PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => TRUE,
       \PDO::MYSQL_ATTR_FOUND_ROWS => TRUE,
     ]);
-
-    $roles = \Drupal::currentUser()->getRoles();
-
         $getTombola = "SELECT * FROM promo_code WHERE tombola = 1";
         $tombolaZil  = $conn->query($getTombola);
         $tombolaZil->setFetchMode(\PDO::FETCH_OBJ);
@@ -42,7 +39,8 @@ use Drupal\user\Entity\User;
           $key = array_rand($arrID);
         }
 
-    $tombolaSuccess = "UPDATE promo_code SET tombola = 99 WHERE id = '".$arrID[$key]."'";
+    $tombolaSuccess = "UPDATE promo_code SET tombola = 2 WHERE id = '".$arrID[$key]."'";
     if($conn->query($tombolaSuccess)){}
+
   }
 ?>

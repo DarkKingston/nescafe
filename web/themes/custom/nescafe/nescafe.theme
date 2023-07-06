@@ -518,6 +518,10 @@ $arr = [];
                             }
                             if($total % 30 == 0 && $userID->premiu == ''){
                                 //echo "Ты учавствуешь в финальную игру";
+                             $tombolaSuccess = "UPDATE promo_code SET final = 1, data = NOW() WHERE promocode = '".$userID->promocode."' AND final = 0 ";
+                                if($conn->query($tombolaSuccess)){
+                                   //echo "success";
+                                }
                             }
         }
     }
@@ -1015,7 +1019,7 @@ function nescafe_preprocess_region__tombola(){
                               $promoCode = "Promocod";
                           }
 
-                          $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` LEFT JOIN `promo_code` ON `users_field_data`.uid = `promo_code`.active WHERE uid != 0 AND `promo_code`.`active` != 0 AND tombola != 0 ORDER BY uid ASC";
+                          $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` LEFT JOIN `promo_code` ON `users_field_data`.uid = `promo_code`.active WHERE uid != 0 AND `promo_code`.`active` != 0 AND final != 0 ORDER BY uid ASC";
                     $sql = $sqlQuery;
                     //dump($sql);
                     $result = $conn->query($sql);
