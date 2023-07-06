@@ -529,7 +529,7 @@ $arr = [];
                                         if($ifUsers >= 2){
                                           $key = array_rand($arrID);
                                         }
-                                        dump($arrID);
+                                        dump($zil);
                             }
                             if($total % 30 == 0 && $userID->premiu == ''){
                                 //echo "Ты учавствуешь в финальную игру";
