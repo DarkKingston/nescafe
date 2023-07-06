@@ -31,7 +31,7 @@
         phone = "Номер телефона";
       }
 
-      document.querySelector('.js-form-item-name').document.querySelector('label').innerText = phone;
+      document.querySelector('.js-form-item-name').document.querySelector('label').innerHTML = phone;
 
     }
   };
