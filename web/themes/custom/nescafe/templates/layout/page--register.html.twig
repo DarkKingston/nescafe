@@ -94,8 +94,7 @@
   </footer>
 </div>{# /.layout-container #}
 
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
+<script defer>
         let login;
 
         let currLang = document.querySelector('.curr_lang_item').innerText;
@@ -106,6 +105,4 @@
             login = "Вход на сайт";
         }
         document.querySelector("#block-vkhodnasayt h2").innerHTML = login;
-    }, false);
-
 </script>
