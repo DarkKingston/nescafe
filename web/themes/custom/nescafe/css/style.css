@@ -884,7 +884,6 @@ form .form-item label{
   height: 37px;
   background: #FFFFFF;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
-  display: flex;
   justify-content: center;
   align-items: center;
   position: fixed;
@@ -892,10 +891,14 @@ form .form-item label{
   bottom: 100px;
   cursor: pointer;
   border-radius: 50%;
-  opacity: 0;
+  display: none;
   z-index: 99;
 }
 
 .user-pass>p{
   display: none;
+}
+
+.is-visible{
+  display: flex;
 }
