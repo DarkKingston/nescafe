@@ -892,3 +892,7 @@ form .form-item label{
   right: 60px;
   opacity: 0;
 }
+
+.user-pass>p{
+  display: none;
+}

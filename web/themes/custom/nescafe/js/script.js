@@ -31,8 +31,9 @@
       document.querySelector('.user-login-form .js-form-item-name label').innerHTML = phone;
 
       document.querySelector('.user-register-form .js-form-item-name label').innerHTML = phone;
+      document.querySelector('.user-pass .js-form-item-name label').innerHTML = phone;
 
-      $(function() {
+
         $(window).scroll(function(){
           if($(this).scrollTop() > 100) {
             $('.toptop').css("opacity", "1");
@@ -41,6 +42,12 @@
             $('.toptop').css("opacity", "0");
           }
         });
+
+
+      $(".toptop").click(function() {
+        $([document.documentElement, document.body]).animate({
+          scrollTop: $("body").offset().top
+        }, 1000);
       });
 
     }
