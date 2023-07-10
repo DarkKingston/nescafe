@@ -92,7 +92,7 @@ function nescafe_preprocess_page(&$page){
             curl_setopt($curl, CURLOPT_URL, $url);
 
             $result = curl_exec($curl);
-            dump($result);
+            //dump($result);
 
 }
 
