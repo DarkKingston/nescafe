@@ -130,16 +130,6 @@ function nescafe_preprocess_block__webform_5(&$elem){
         }
 }
 
-function nescafe_preprocess_form_alter(&$form, Drupal\Core\Form\FormStateInterface $form_state, $form_id){
-dump($form_id);
-    if ($form_id == 'user_login_form') {
-        //- change label for username input
-        $form['name']['#title'] = t('Your New UserName Label');
-        //- change label for password input
-        $form['pass']['#title'] = t('Your New Password Label');
-    }
-}
-
 function nescafe_preprocess_region__account(&$elem){
 $curr_id_for_user = \Drupal::currentUser()->id();
 
