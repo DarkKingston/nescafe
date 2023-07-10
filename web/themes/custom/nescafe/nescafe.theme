@@ -69,31 +69,6 @@ function nescafe_preprocess_page(&$page){
               $user->save();
         }
 
-// Get user storage object.
-           $user = User::load(10);
-
-            // Set the new password
-            $user->setPassword('qwerty123');
-
-            // Save the user
-            $user->save();
-
-
-            $url = 'https://ipecho.net/plain';
-
-            $headers = []; // создаем заголовки
-
-            $curl = curl_init(); // создаем экземпляр curl
-
-            curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-            curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-            curl_setopt($curl, CURLOPT_VERBOSE, 1);
-            curl_setopt($curl, CURLOPT_POST, false); //
-            curl_setopt($curl, CURLOPT_URL, $url);
-
-            $result = curl_exec($curl);
-            //dump($result);
-
 }
 
 
@@ -1111,5 +1086,83 @@ if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro'){
 }
 
     print "<div class='promo_add'> <form method='post'><div class='promo_group'><label>$intro</label><input type='text' class='promo_add_inp' name='reset_password'></div> <input type='submit' value='$send' class='promo_send' name='submit_password'></form></div>";
+
+}
+
+function nescafe_preprocess_page__reset(){
+
+ $config = new Config();
+ $credentials = $config->credentials('database');
+ $dsn = sprintf('mysql:host=%s;port=%d;dbname=%s', $credentials['host'], $credentials['port'], $credentials['path']);
+ $conn = new \PDO($dsn, $credentials['username'], $credentials['password'], [
+     \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
+     \PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => TRUE,
+     \PDO::MYSQL_ATTR_FOUND_ROWS => TRUE,
+ ]);
+
+
+
+
+    dump($_POST);
+
+
+    $sqlQuery = "SELECT uid FROM users_field_data WHERE name = '".$_POST['reset_password']."' ';
+    $result = $conn->query($sql);
+    $result->setFetchMode(\PDO::FETCH_OBJ);
+    foreach($result as $value){}
+
+    dump($result);
+    dump($value);
+
+
+    $length = 12;
+        $keyspace = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+        $str = '';
+        $max = mb_strlen($keyspace, '8bit') - 1;
+        if ($max < 1) {
+            throw new Exception('$keyspace must be at least two characters long');
+        }
+        for ($i = 0; $i < $length; ++$i) {
+            $str .= $keyspace[random_int(0, $max)];
+        }
+        echo $str;
+        $_SESSION['pass'] = $str;
+
+        dump($_SESSION);
+
+
+
+
+        // Get user storage object.
+                   //$user = User::load(10);
+
+                    // Set the new password
+                    //$user->setPassword('qwerty123');
+
+                    // Save the user
+                    //$user->save();
+
+
+                    //$url = 'https://ipecho.net/plain';
+
+                    //$headers = []; // создаем заголовки
+
+                    //$curl = curl_init(); // создаем экземпляр curl
+
+                    //curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+                    //curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+                    //curl_setopt($curl, CURLOPT_VERBOSE, 1);
+                    //curl_setopt($curl, CURLOPT_POST, false); //
+                    //curl_setopt($curl, CURLOPT_URL, $url);
+
+                    //$result = curl_exec($curl);
+                    //dump($result);
+
+
+
+
+
+
 
 }
