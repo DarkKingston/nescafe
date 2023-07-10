@@ -28,7 +28,11 @@
       }else if (currLang == "RU"){
         phone = "Номер телефона";
       }
-      document.querySelector('form .js-form-item-name label').innerHTML = phone;
+      document.querySelector('.user-login-form .js-form-item-name label').innerHTML = phone;
+
+      document.querySelector('.user-register-form .js-form-item-name label').innerHTML = phone;
+
+      document.querySelector('.user-pass .js-form-item-name label').innerHTML = phone;
 
 
         $(window).scroll(function(){
