@@ -890,7 +890,8 @@ form .form-item label{
   position: fixed;
   bottom: 100px;
   right: 60px;
-  opacity: 0;
+  opacity: 1;
+  cursor: pointer;
 }
 
 .user-pass>p{
