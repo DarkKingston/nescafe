@@ -95,14 +95,17 @@
 </div>{# /.layout-container #}
 
 <script>
-    let login;
+    document.addEventListener('DOMContentLoaded', function() {
+        let login;
 
-    let currLang = document.querySelector('.curr_lang_item').innerText;
+        let currLang = document.querySelector('.curr_lang_item').innerText;
 
-    if(currLang == "RO"){
-        login = "Logare pe sait";
-    }else if (currLang == "RU"){
-        login = "Вход на сайт";
-    }
-    document.querySelector("#block-vkhodnasayt h2").innerHTML = login;
+        if(currLang == "RO"){
+            login = "Logare pe sait";
+        }else if (currLang == "RU"){
+            login = "Вход на сайт";
+        }
+        document.querySelector("#block-vkhodnasayt h2").innerHTML = login;
+    }, false);
+
 </script>
