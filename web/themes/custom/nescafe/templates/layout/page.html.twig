@@ -70,6 +70,18 @@
     {{ page.header }}
   </header>
 
+  <div class="toptop">
+    <img src="/icons/toptop/arrow.svg" alt="">
+  </div>
+
+  <script>
+      $(".toptop").click(function() {
+          $([document.documentElement, document.body]).animate({
+              scrollTop: $("body").offset().top
+          }, 1000);
+      });
+  </script>
+
   <main role="main">
     <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
 
