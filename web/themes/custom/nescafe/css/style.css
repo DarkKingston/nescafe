@@ -737,7 +737,7 @@ form .form-item label{
 }
 
 .ui-dialog .ui-dialog-content{
-  overflow: hidden;
+  /*overflow: hidden;*/
 }
 
 .popup_gift{
