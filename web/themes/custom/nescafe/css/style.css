@@ -887,4 +887,7 @@ form .form-item label{
   justify-content: center;
   align-items: center;
   background: #E31D1C;
+  position: fixed;
+  bottom: 100px;
+  right: 60px;
 }
