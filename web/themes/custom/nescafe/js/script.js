@@ -33,6 +33,15 @@
       document.querySelector('.user-register-form .js-form-item-name label').innerHTML = phone;
 
 
+      let login;
+
+      if(currLang == "RO"){
+        login = "Logare pe sait";
+      }else if (currLang == "RU"){
+        login = "Вход на сайт";
+      }
+      document.querySelector("#block-vkhodnasayt h2").innerHTML = login;
+
     }
   };
 })(jQuery);
