@@ -880,18 +880,20 @@ form .form-item label{
 }
 
 .toptop{
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
+  width: 37px;
+  height: 37px;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #E31D1C;
   position: fixed;
+  right: 85px;
   bottom: 100px;
-  right: 60px;
-  opacity: 1;
   cursor: pointer;
+  border-radius: 50%;
+  opacity: 0;
+  z-index: 99;
 }
 
 .user-pass>p{

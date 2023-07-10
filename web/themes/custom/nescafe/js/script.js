@@ -28,9 +28,7 @@
       }else if (currLang == "RU"){
         phone = "Номер телефона";
       }
-
       document.querySelector('form .js-form-item-name label').innerHTML = phone;
-
 
 
         $(window).scroll(function(){
@@ -43,11 +41,12 @@
         });
 
 
-      function toptop() {
+      $(".toptop").click(function() {
         $([document.documentElement, document.body]).animate({
           scrollTop: $("body").offset().top
         }, 1000);
-      }
+      });
+
     }
   };
 })(jQuery);
