@@ -1125,12 +1125,10 @@ function nescafe_preprocess_page__reset(){
         }
         $random = random_int(0, $max);
         for ($i = 0; $i < $length; ++$i) {
-
             $str .= $keyspace[$random];
         }
-        $_SESSION['pass'] = $str;
 
-        dump($_SESSION);
+        dump($str);
 
 
 
