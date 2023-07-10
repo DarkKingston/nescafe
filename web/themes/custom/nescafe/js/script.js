@@ -35,10 +35,10 @@
       $(function() {
         $(window).scroll(function(){
           if($(this).scrollTop() > 100) {
-            $('.toptop').css("opacity", "1")
+            $('.toptop').css("opacity", "1");
           }else{
 
-            $('.toptop').css("opacity", "0")
+            $('.toptop').css("opacity", "0");
           }
         });
       });
