@@ -140,8 +140,8 @@ $sql = "SELECT * FROM cookie WHERE ip = '".$curr_id_for_user."' ";
 }else{
     if($_SESSION['cookie'] != 'accept'){
     if(isset($_POST['cookie_reject'])){
-      $_SESSION['cookie'] = 'no';
-      $hidden = '';
+      $_SESSION['cookie'] = 'accept';
+        $hidden = 'hidden';
    }
    if(isset($_POST['cookie_accept'])){
       $_SESSION['cookie'] = 'accept';
