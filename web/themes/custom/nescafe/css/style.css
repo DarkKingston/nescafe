@@ -594,26 +594,7 @@ form .form-item label{
   width: 247px;
 }
 
-#block-webform-5{
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  background: #FFFFFF;
-  border-top: 1px solid #E31D1C;
-  border-bottom: 1px solid #E31D1C;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.07);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 65px 0;
-  width: 100%;
-}
 
-.cookie form{
-  display: flex;
-  width: 311px;
-  justify-content: space-between;
-}
 
 .cookie input {
   width: 146px;
