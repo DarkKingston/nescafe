@@ -89,8 +89,19 @@ $credentials = $config->credentials('database');
                           $accept = "Accept";
                           $reject = "Nu accept";
                       }
+         if($curr_id_for_user != 0){
+                        if(isset($_POST['cookie_accept'])){
+                                      $insertCookie = "INSERT INTO cookie (ip, date)VALUES('$curr_id_for_user', NOW())";
+                                        if($conn->query($insertCookie)){
+                                           //echo "ok";
+                                        }
+                                       $_SESSION['cookie'] = 'accept';
+                                   }
+                                   if(isset($_POST['cookie_reject'])){
+                                      $_SESSION['cookie'] = 'no';
+                                   }
 
-if($curr_id_for_user != 0){
+
 $sql = "SELECT * FROM cookie WHERE ip = '".$curr_id_for_user."' ";
              $result = $conn->query($sql);
              $result->setFetchMode(\PDO::FETCH_OBJ);
@@ -126,6 +137,10 @@ $sql = "SELECT * FROM cookie WHERE ip = '".$curr_id_for_user."' ";
              }
 }else{
     if($_SESSION['cookie'] != 'accept'){
+    if(isset($_POST['cookie_reject'])){
+      $_SESSION['cookie'] = 'no';
+      $hidden = '';
+   }
         print "<div class='cookie ".$hidden."'>
             <div class='cookie_box'>
               <div class='cookie_title'>
@@ -146,18 +161,9 @@ $sql = "SELECT * FROM cookie WHERE ip = '".$curr_id_for_user."' ";
 }
 
 
-             if(isset($_POST['cookie_accept'])){
-                $insertCookie = "INSERT INTO cookie (ip, date)VALUES('$curr_id_for_user', NOW())";
-                  if($conn->query($insertCookie)){
-                     //echo "ok";
-                  }
-                 $_SESSION['cookie'] = 'accept';
-             }
-             if(isset($_POST['cookie_reject'])){
-                $_SESSION['cookie'] = 'no';
-             }
 
-                dump($_POST);
+
+                dump($_SESSION);
 
 
 
