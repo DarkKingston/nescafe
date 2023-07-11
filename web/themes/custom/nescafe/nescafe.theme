@@ -169,6 +169,7 @@ $sql = "SELECT * FROM cookie WHERE ip = '".$curr_id_for_user."' ";
 
 if(isset($_POST['reglamentAccept'])){
     $_SESSION['reglament'] = 'accept';
+    header("Location: /register");
 };
 
 if($_SESSION['reglament'] == 'accept'){
