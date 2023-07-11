@@ -80,6 +80,16 @@
          <a class='btn_reset_pass' href='/reset' >Reset password</a>
        </div>
 
+        <script>
+            if(!document.querySelector(".reglament_accept")){
+                document.querySelector('.reg_btn').addEventListener("click", () => {
+                    window.location.replace(
+                        '/reglament',
+                    );
+                });
+            }
+        </script>
+
 
 
       </div>
