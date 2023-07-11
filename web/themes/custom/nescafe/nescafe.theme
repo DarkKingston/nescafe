@@ -504,6 +504,8 @@ $arrFil = [];
 
                                         //dump($arrShow);
                                     }
+                                    $image = $config->get('gift_image');
+                                    dump($image);
                                     print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_gift' data-dialog-type='modal'>
                                             <div>
 
