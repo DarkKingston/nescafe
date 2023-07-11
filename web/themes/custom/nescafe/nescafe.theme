@@ -607,7 +607,6 @@ $arr = [];
                                                                 $checkCounter++;
                                                             }
                                                             if($checkCounter == 1){
-                                                                                                   if($conn->query($promoSuccess)){
                                                                                                        $arrData  = array();
                                                                                                        $getGift = "SELECT * FROM webform_submission_data WHERE webform_id = 'cadouri'  ";
                                                                                                        $giftVal = $conn->query($getGift);
