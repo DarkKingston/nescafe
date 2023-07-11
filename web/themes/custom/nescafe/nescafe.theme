@@ -521,13 +521,6 @@ $arr = [];
                             if($total >= 10 && $userID->premiu == ''){
 
 
-                            $media = Media::load(54);
-                           $fid = $media->getSource()->getSourceFieldValue($media);
-                           $file = File::load($fid);
-
-                           $url = $file->url();
-
-                            dump($url);
 
                             $checkPromo = "SELECT * FROM promo_code WHERE status = 10 AND active = '".$curr_id_for_user."'";
                             $checkPromoItem = $conn->query($checkPromo);
