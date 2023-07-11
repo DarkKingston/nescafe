@@ -91,13 +91,7 @@ $credentials = $config->credentials('database');
                       }
 
 
-                $sql = "SELECT * FROM cookie WHERE ip = '".$curr_id_for_user."' ";
-                $result = $conn->query($sql);
-                $result->setFetchMode(\PDO::FETCH_OBJ);
-                if ($result) {
-                    foreach ($result as $record) {
-                    }
-                    if($record){
+
                         if(empty($_COOKIE['cookie_alert'])){
                              if ($current_user->isAuthenticated()) {
                                      if($_POST['cookie_accept']){
@@ -113,26 +107,25 @@ $credentials = $config->credentials('database');
                                 }
                              }
                         }
-                    }
-                }else{
-                    print '<div class="cookie">
-                            <div class="cookie_box">
-                              <div class="cookie_title">
-                                Мы используем файлы cookie
-                              </div>
-                              <div class="cookie_subtitle">
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard
-                              </div>
-
-                              <form method="post">
-                                    <input name="cookie_reject" value="$reject">
-                                    <input name="cookie_accept" value="$accept">
-                              </form>
-
-                                </div>
-                          </div>';
-                }
                 dump($_COOKIE);
+                dump($_POST);
+
+                print '<div class="cookie">
+                        <div class="cookie_box">
+                          <div class="cookie_title">
+                            Мы используем файлы cookie
+                          </div>
+                          <div class="cookie_subtitle">
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard
+                          </div>
+
+                          <form method="post">
+                                <input name="cookie_reject" value="$reject">
+                                <input name="cookie_accept" value="$accept">
+                          </form>
+
+                            </div>
+                      </div>';
 
 }
 
