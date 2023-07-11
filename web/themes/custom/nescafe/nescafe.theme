@@ -108,7 +108,7 @@ $sql = "SELECT * FROM cookie WHERE ip = '".$curr_id_for_user."' ";
 
 
              if(isset($_POST['cookie_accept'])){
-                $insertCookie = "INSERT INTO cookie (ip, date)VALUES(`$curr_id_for_user`, NOW())";
+                $insertCookie = "INSERT INTO cookie (ip, date)VALUES('$curr_id_for_user', NOW())";
                   if($conn->query($insertCookie)){
                      //echo "ok";
                   }
