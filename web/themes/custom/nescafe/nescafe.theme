@@ -479,6 +479,7 @@ foreach($result2 as $record2){
                                         }
 //dump($arrShowF);
 $arr = [];
+$arrFil = [];
                                         foreach($arrShowF as $filiala => $arrShow){
 
 
@@ -487,8 +488,12 @@ $arr = [];
                                                                  foreach($arrShow as $ft => $val){
 
                                                                  $arr[] = $val['name'];
+                                                                 $arrFil[] = $val['filiala'];
                                                                  //dump($arrShow);
-                                                                    $option2 .= " <option>".$val['filiala']."</option> ";
+                                                                 }
+                                                                 $arrFilUnique = array_unique($arrFil);
+                                                                 foreach($arrFilUnique as $filVal){
+                                                                    $option2 .= " <option>".$filVal."</option> ";
                                                                  }
           $arrUnique = array_unique($arr);
                                                                  foreach($arrUnique as $arrVal){
@@ -499,7 +504,22 @@ $arr = [];
 
                                         //dump($arrShow);
                                     }
+                                    print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_gift' data-dialog-type='modal'>
+                                            <div>
 
+                                            </div>
+                                            <div><select name='premiu'>
+                                                ".$option."
+                                            </select>
+                                            <select name='filial'>
+
+                                                ".$option2."
+                                            </select>
+                                            </div>
+                                            <input type='submit' class='btn_main action' name='submitGift' value='Alege'>
+
+                                        </form>
+                                        ";
 
                                     if(isset($_POST['submitGift'])){
                                         $updatePromo = "UPDATE promo_code SET premiu = '".$_POST['premiu']."', livrare = '".$_POST['filial']."', status = 2 WHERE promocode = '".$userID->promocode."' AND premiu = '' AND livrare = '' ";
@@ -600,7 +620,7 @@ $arr = [];
                                                                                                }
                                                            }
 
-                            }else if($total >= 10){
+                            }else if($total >= 10 && $total % 7 != 0){
                                 $checkPromo = "SELECT * FROM promo_code WHERE status = 1 AND active = '".$curr_id_for_user."'";
                                                             $checkPromoItem = $conn->query($checkPromo);
                                                             $checkPromoItem->setFetchMode(\PDO::FETCH_OBJ);
