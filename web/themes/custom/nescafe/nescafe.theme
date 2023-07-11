@@ -91,7 +91,7 @@ $credentials = $config->credentials('database');
                       }
 
 
-                $sql = "SELECT * FROM cookie_accept WHERE ip = '".$curr_id_for_user."' ";
+                $sql = "SELECT * FROM cookie WHERE ip = '".$curr_id_for_user."' ";
                 $result = $conn->query($sql);
                 $result->setFetchMode(\PDO::FETCH_OBJ);
                 if ($result) {
