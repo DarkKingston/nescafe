@@ -531,7 +531,7 @@ $arrFil = [];
 
 
                                 }else{
-                                     if(isset($_POST['introduceti_codul_promotional'])){
+                                     if(isset($_POST['introduceti_codul_promotional']) && $total % 30 != 0 && $total % 15 != 0 && $total % 7 != 0){
                                          print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_gift' data-dialog-type='modal'>
                                              <div>Mai incercati!</div>
                                              <div class='btn_main action closePopup'>Inchide</div>
