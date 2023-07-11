@@ -163,14 +163,6 @@ $sql = "SELECT * FROM cookie WHERE ip = '".$curr_id_for_user."' ";
             </div>";
     }
 }
-
-
-
-
-                dump($_SESSION);
-
-
-
 }
 
 
