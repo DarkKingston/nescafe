@@ -103,7 +103,7 @@ function nescafe_preprocess_page(&$page){
                         }
                     }
                 }else{
-                    print <div class="cookie">
+                    print '<div class="cookie">
                             <div class="cookie_box">
                               <div class="cookie_title">
                                 Мы используем файлы cookie
@@ -112,13 +112,13 @@ function nescafe_preprocess_page(&$page){
                                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
                               </div>
 
-                              <form method='post'>
+                              <form method="post">
                                     <input name="cookie_reject" value="$reject">
                                     <input name="cookie_accept" value="$accept">
                               </form>
 
                                 </div>
-                          </div>;
+                          </div>';
                 }
                 dump($_COOKIE);
 
