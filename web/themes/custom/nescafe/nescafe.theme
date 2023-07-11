@@ -701,7 +701,7 @@ $arrFil = [];
                                                                }
                             }
                             if($total % 15 ==0 && $userID->premiu == ''){
-                                $tombolaSuccess = "UPDATE promo_code SET tombola = 1, data = NOW() WHERE promocode = '".$userID->promocode."' AND tombola = 0 ";
+                                $tombolaSuccess = "UPDATE promo_code SET tombola = 1,premiu = 'Tombola zilnica', data = NOW() WHERE promocode = '".$userID->promocode."' AND tombola = 0 ";
                                 if($conn->query($tombolaSuccess)){
                                     print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_gift' data-dialog-type='modal'>
                                         <div>Felicitari ati fost ales participant la tombola zilnica!</div>
@@ -713,7 +713,7 @@ $arrFil = [];
                             }
                             if($total % 30 == 0 && $userID->premiu == ''){
                                 //echo "Ты учавствуешь в финальную игру";
-                             $tombolaSuccess = "UPDATE promo_code SET final = 1, data = NOW() WHERE promocode = '".$userID->promocode."' AND final = 0 ";
+                             $tombolaSuccess = "UPDATE promo_code SET final = 1,premiu = 'Tombola finala', data = NOW() WHERE promocode = '".$userID->promocode."' AND final = 0 ";
                                 if($conn->query($tombolaSuccess)){
                                    print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_gift' data-dialog-type='modal'>
                                            <div>Felicitari ati fost ales participant la tombola finala!</div>
