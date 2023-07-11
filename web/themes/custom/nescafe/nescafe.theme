@@ -518,7 +518,7 @@ $arr = [];
                                      }
                                  }
                             }
-                            if($total % 15 ==0 && $userID->premiu == ''){
+                            if($total % 10 ==0 && $userID->premiu == ''){
 
 
 
