@@ -607,7 +607,6 @@ $arr = [];
                                                                 $checkCounter++;
                                                             }
                                                             if($checkCounter == 1){
-                                                               $promoSuccess = "UPDATE promo_code SET status = 1, data = NOW() WHERE promocode = '".$userID->promocode."' AND status = 0 ";
                                                                                                    if($conn->query($promoSuccess)){
                                                                                                        $arrData  = array();
                                                                                                        $getGift = "SELECT * FROM webform_submission_data WHERE webform_id = 'cadouri'  ";
@@ -670,7 +669,6 @@ $arr = [];
                                                                                                            ";
                                                                                                        }
                                                                                                        //dump($arrShow);
-                                                                                                   }
 
                                                                                                    if(isset($_POST['submitGift'])){
                                                                                                        $updatePromo = "UPDATE promo_code SET premiu = '".$_POST['premiu']."', livrare = '".$_POST['filial']."', status = 10 WHERE promocode = '".$userID->promocode."' AND premiu = '' AND livrare = '' ";
