@@ -1221,3 +1221,9 @@ if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro'){
     print "<div class='promo_add'> <form method='post'><div class='promo_group'><label>$intro</label><input type='text' class='promo_add_inp' name='reset_password'></div> <input type='submit' value='$send' class='promo_send' name='submit_password'></form></div>";
 
 }
+
+
+function nescafe_preprocess_form(&$form){
+
+    dump($form);
+}
