@@ -59,6 +59,18 @@ function nescafe_preprocess_page(&$page){
     //dump($page);
     $roles = \Drupal::currentUser()->getRoles();
 
+
+$config = new Config();
+
+$credentials = $config->credentials('database');
+
+    $dsn = sprintf('mysql:host=%s;port=%d;dbname=%s', $credentials['host'], $credentials['port'], $credentials['path']);
+    $conn = new \PDO($dsn, $credentials['username'], $credentials['password'], [
+        \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
+        \PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => TRUE,
+        \PDO::MYSQL_ATTR_FOUND_ROWS => TRUE,
+    ]);
+
         $curr_id_for_user = \Drupal::currentUser()->id();
         if(!in_array('player', $roles) && !in_array('administrator', $roles) && !in_array('manager_filiala', $roles)){
               $role_id = 'player';
