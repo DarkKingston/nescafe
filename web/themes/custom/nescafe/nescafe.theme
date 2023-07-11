@@ -505,7 +505,6 @@ $arrFil = [];
                                         //dump($arrShow);
                                     }
 
-                                    dump($config);
                                     print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_gift' data-dialog-type='modal'>
                                             <div>
 
