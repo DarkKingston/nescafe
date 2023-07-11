@@ -549,6 +549,7 @@ $arr = [];
                                                                        }
                                //dump($arrShowF);
                                $arr = [];
+                               $arrFil = []
                                                                        foreach($arrShowF as $filiala => $arrShow){
 
 
@@ -558,7 +559,11 @@ $arr = [];
                                                                                                 foreach($arrShowVal as $ft => $val){
 
                                                                                                 $arr[] = $val['name'];
-                                                                                                   $option2 .= " <option>".$val['filiala']."</option> ";
+                                                                                                $arrFil[] = $val['filiala'];
+                                                                                                }
+                                                                                                $arrFilUnique =  array_unique($arrFil);
+                                                                                                foreach($arrFilUnique as $arrValFil){
+                                                                                                   $option .= " <option>".$arrValFil."</option> ";
                                                                                                 }
                                          $arrUnique = array_unique($arr);
 
