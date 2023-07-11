@@ -555,8 +555,7 @@ $arr = [];
 
                                                                                                $option = '';
                                                                                                $option2 = '';
-                                                                                               $arrShowVal = array_unique($arrShow);
-                                                                                                foreach($arrShowVal as $ft => $val){
+                                                                                                foreach($arrShow as $ft => $val){
 
                                                                                                 $arr[] = $val['name'];
                                                                                                 $arrFil[] = $val['filiala'];
