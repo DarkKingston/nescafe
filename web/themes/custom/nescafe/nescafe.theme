@@ -107,18 +107,12 @@ $sql = "SELECT * FROM cookie WHERE ip = '".$curr_id_for_user."' ";
 
 
                         if(empty($_COOKIE['cookie_alert'])){
-                             if ($current_user->isAuthenticated()) {
-                                     if($_POST['cookie_accept']){
-                                        $insertCookie = "INSERT INTO cookie (ip, date)VALUES(`$curr_id_for_user`, NOW())";
-                                          if($conn->query($insertCookie)){
-                                             //echo "ok";
-                                          }
-                                         setcookie( "cookie_alert" , $id , time()+60*60*24*1 , '/' );
-                                     }
-                             }else{
-                                if($_POST['cookie_accept']){
-                                    setcookie( "cookie_alert" , $id , time()+60*60*24*1 , '/' );
-                                }
+                             if(isset($_POST['cookie_accept'])){
+                                $insertCookie = "INSERT INTO cookie (ip, date)VALUES(`$curr_id_for_user`, NOW())";
+                                  if($conn->query($insertCookie)){
+                                     //echo "ok";
+                                  }
+                                 setcookie( "cookie_alert" , $id , time()+60*60*24*1 , '/' );
                              }
                         }
                 dump($_COOKIE);
