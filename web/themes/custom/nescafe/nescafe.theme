@@ -90,6 +90,7 @@ $credentials = $config->credentials('database');
                           $reject = "Nu accept";
                       }
 
+if($curr_id_for_user != 0){
 $sql = "SELECT * FROM cookie WHERE ip = '".$curr_id_for_user."' ";
              $result = $conn->query($sql);
              $result->setFetchMode(\PDO::FETCH_OBJ);
@@ -123,6 +124,26 @@ $sql = "SELECT * FROM cookie WHERE ip = '".$curr_id_for_user."' ";
                         </div>
                   </div>";
              }
+}else{
+    if($_SESSION['cookie'] != 'accept'){
+        print "<div class='cookie ".$hidden."'>
+            <div class='cookie_box'>
+              <div class='cookie_title'>
+                Мы используем файлы cookie
+              </div>
+              <div class='cookie_subtitle'>
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard
+              </div>
+
+              <form method='post'>
+                    <input type='submit' name='cookie_reject' class='cookie_reject' value='".$reject."'>
+                    <input type='submit' name='cookie_accept' class='cookie_accept' value='".$accept."'>
+              </form>
+
+                </div>
+            </div>";
+    }
+}
 
 
              if(isset($_POST['cookie_accept'])){
@@ -130,7 +151,10 @@ $sql = "SELECT * FROM cookie WHERE ip = '".$curr_id_for_user."' ";
                   if($conn->query($insertCookie)){
                      //echo "ok";
                   }
-                 setcookie( "cookie_alert" , $id , time()+60*60*24*1 , '/' );
+                 $_SESSION['cookie'] = 'accept';
+             }
+             if(isset($_POST['cookie_reject'])){
+                $_SESSION['cookie'] = 'no';
              }
 
                 dump($_POST);
