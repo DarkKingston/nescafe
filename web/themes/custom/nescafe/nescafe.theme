@@ -79,10 +79,9 @@ function nescafe_preprocess_page(&$page){
                       }
 
 
-                $sql = "SELECT * FROM cookie_accept WHERE id = '".$curr_id_for_user."' ";
+                $sql = "SELECT * FROM cookie_accept WHERE ip = '".$curr_id_for_user."' ";
                 $result = $conn->query($sql);
                 $result->setFetchMode(\PDO::FETCH_OBJ);
-
                 if ($result) {
                     foreach ($result as $record) {
                     }
@@ -121,6 +120,7 @@ function nescafe_preprocess_page(&$page){
                                 </div>
                           </div>;
                 }
+                dump($_COOKIE);
 
 }
 
