@@ -609,13 +609,13 @@ form .form-item label{
   width: 100%;
 }
 
-.webform-submission-cookie-form{
+.cookie form{
   display: flex;
   width: 311px;
   justify-content: space-between;
 }
 
-.webform-submission-cookie-form .webform-button--submit {
+.cookie input {
   width: 146px;
   display: flex;
   height: 40px;
@@ -624,7 +624,7 @@ form .form-item label{
   align-items: center;
 }
 
-.webform-submission-cookie-form .cookie_reject{
+.cookie .cookie_reject{
   border-radius: 4px;
   border: 1px solid #4F4F4F;
   color: #263238;
@@ -633,7 +633,7 @@ form .form-item label{
   font-weight: 700;
 }
 
-.webform-submission-cookie-form .cookie_accept{
+.cookie .cookie_accept{
   border-radius: 4px;
   background: #7BA60A;
   color: #FFF;
@@ -917,3 +917,5 @@ form .form-item label{
   padding: 65px 0;
   width: 100%;
 }
+
+.cookie.hidden
