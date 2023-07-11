@@ -565,7 +565,7 @@ $arr = [];
                                                                                                 dump($arrFil);
                                                                                                 dump($arrFilUnique);
                                                                                                 foreach($arrFilUnique as $arrValFil){
-                                                                                                   $option .= " <option>".$arrValFil."</option> ";
+                                                                                                   $option2 .= " <option>".$arrValFil."</option> ";
                                                                                                 }
                                          $arrUnique = array_unique($arr);
 
