@@ -561,6 +561,8 @@ $arr = [];
                                                                                                    $option2 .= " <option>".$val['filiala']."</option> ";
                                                                                                 }
                                          $arrUnique = array_unique($arr);
+                                         dump($arrUnique);
+                                         dump($arr);
                                                                                                 foreach($arrUnique as $arrVal){
                                                                                                    $option .= " <option>".$arrVal."</option> ";
                                                                                                 }
