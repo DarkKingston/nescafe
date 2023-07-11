@@ -492,6 +492,7 @@ $arr = [];
                                                                  }
           $arrUnique = array_unique($arr);
                                                                  foreach($arrUnique as $arrVal){
+                                                                    $option .= " <option><img src='https://stag-yxxbuhy-qkl3gjov7gxou.eu-5.platformsh.site/system/files/webform/cadouri/139/chipiu_1.jpg'></option> ";
                                                                     $option .= " <option>".$arrVal."</option> ";
                                                                  }
 //dump($arrUnique);
