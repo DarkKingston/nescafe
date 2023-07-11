@@ -899,4 +899,6 @@ form .form-item label{
   width: 100%;
 }
 
-.cookie.hidden
+.cookie.hidden{
+  display: none;
+}
