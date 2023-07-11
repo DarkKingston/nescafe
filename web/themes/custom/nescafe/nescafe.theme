@@ -571,11 +571,9 @@ $arr = [];
 
                                                                                                 $arr[] = $val['name'];
                                                                                                 $arrFil[] = $val['filiala'];
-                                                                                                dump($val['filiala']);
+
                                                                                                 }
                                                                                                 $arrFilUnique =  array_unique($arrFil);
-                                                                                                dump($arrFil);
-                                                                                                dump($arrFilUnique);
                                                                                                 foreach($arrFilUnique as $arrValFil){
                                                                                                    $option2 .= " <option>".$arrValFil."</option> ";
                                                                                                 }
