@@ -127,8 +127,8 @@ $sql = "SELECT * FROM cookie WHERE ip = '".$curr_id_for_user."' ";
                           </div>
 
                           <form method='post'>
-                                <input type='submit' name='cookie_reject' value='".$reject."'>
-                                <input type='submit' name='cookie_accept' value='".$accept."'>
+                                <input type='submit' name='cookie_reject' class='cookie_reject' value='".$reject."'>
+                                <input type='submit' name='cookie_accept' class='cookie_accept' value='".$accept."'>
                           </form>
 
                             </div>
