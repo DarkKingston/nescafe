@@ -554,15 +554,14 @@ $arr = [];
 
                                                                                                $option = '';
                                                                                                $option2 = '';
-                                                                                                foreach($arrShow as $ft => $val){
+                                                                                               $arrShowVal = array_unique($arrShow);
+                                                                                                foreach($arrShowVal as $ft => $val){
 
                                                                                                 $arr[] = $val['name'];
-                                                                                                //dump($arrShow);
                                                                                                    $option2 .= " <option>".$val['filiala']."</option> ";
                                                                                                 }
                                          $arrUnique = array_unique($arr);
-                                         dump($arrUnique);
-                                         dump($arr);
+
                                                                                                 foreach($arrUnique as $arrVal){
                                                                                                    $option .= " <option>".$arrVal."</option> ";
                                                                                                 }
