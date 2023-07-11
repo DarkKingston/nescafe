@@ -90,6 +90,20 @@ $credentials = $config->credentials('database');
                           $reject = "Nu accept";
                       }
 
+$sql = "SELECT * FROM cookie WHERE ip = '".$curr_id_for_user."' ";
+             $result = $conn->query($sql);
+             $result->setFetchMode(\PDO::FETCH_OBJ);
+
+             if ($result) {
+             foreach ($result as $record) {
+
+             }
+             if(isset($record)){
+                $hidden = 'hidden';
+             }
+             if(empty($record)){
+                $hidden = '';
+             }
 
 
                         if(empty($_COOKIE['cookie_alert'])){
@@ -110,7 +124,7 @@ $credentials = $config->credentials('database');
                 dump($_COOKIE);
                 dump($_POST);
 
-                print '<div class="cookie">
+                print '<div class="cookie $hidden">
                         <div class="cookie_box">
                           <div class="cookie_title">
                             Мы используем файлы cookie
