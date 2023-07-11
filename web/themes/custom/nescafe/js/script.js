@@ -37,6 +37,12 @@
 
       document.querySelector('.user-register-form .js-form-item-name label').innerHTML = phone;
 
+      document.querySelector('.form-item-field-reglament-value input').disabled = true;
+      document.querySelector('.reglament_accept').addEventListener("click", () => {
+          document.querySelector('.form-item-field-reglament-value input').checked = true;
+
+      });
+
 
     }
   };
