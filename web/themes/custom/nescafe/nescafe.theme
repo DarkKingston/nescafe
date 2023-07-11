@@ -1026,7 +1026,7 @@ function nescafe_preprocess_region__details($details){
                   }
 
 
-                  $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` LEFT JOIN `promo_code` ON `users_field_data`.uid = `promo_code`.active WHERE uid != 0 AND `promo_code`.`active` = '".$_GET['id']."' ORDER BY uid ASC";
+                  $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` LEFT JOIN `promo_code` ON `users_field_data`.uid = `promo_code`.active WHERE uid != 0 AND `promo_code`.`active` = '".$_GET['id']."' AND premiu != '' ORDER BY uid ASC";
 
 
             $sql = $sqlQuery;
