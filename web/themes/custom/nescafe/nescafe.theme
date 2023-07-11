@@ -6,6 +6,8 @@ use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\user\Entity\User;
+use Drupal\media\Entity\Media;
+use Drupal\file\Entity\File;
 
 function nescafe_preprocess_links__language_block(&$lang){
     $lang['current_lang'] =  \Drupal::languageManager()->getCurrentLanguage()->getId();
@@ -518,8 +520,6 @@ $arr = [];
                             }
                             if($total >= 10 && $userID->premiu == ''){
 
-                            use Drupal\media\Entity\Media;
-                            use Drupal\file\Entity\File;
 
                             $media = Media::load(54);
                            $fid = $media->getSource()->getSourceFieldValue($media);
