@@ -499,7 +499,7 @@ $arr = [];
 
                                                 <select name='premiu'>
                                                     <option><img src='https://stag-yxxbuhy-qkl3gjov7gxou.eu-5.platformsh.site/system/files/webform/cadouri/139/chipiu_1.jpg'></option>
-                                                    ".$option."
+
                                                 </select>
                                                 <select name='filial'>
 
@@ -522,7 +522,7 @@ $arr = [];
 
 
                                 }else{
-                                     if(isset($_POST['op'])){
+                                     if(isset($_POST['introduceti_codul_promotional'])){
                                          print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_gift' data-dialog-type='modal'>
                                              <div>Mai incercati!</div>
                                              <div class='btn_main action closePopup'>Inchide</div>
