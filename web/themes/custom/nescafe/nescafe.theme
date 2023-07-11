@@ -104,6 +104,24 @@ $sql = "SELECT * FROM cookie WHERE ip = '".$curr_id_for_user."' ";
              }
              if(empty($record)){
                 $hidden = '';
+
+
+                print "<div class='cookie ".$hidden."'>
+                    <div class='cookie_box'>
+                      <div class='cookie_title'>
+                        Мы используем файлы cookie
+                      </div>
+                      <div class='cookie_subtitle'>
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard
+                      </div>
+
+                      <form method='post'>
+                            <input type='submit' name='cookie_reject' class='cookie_reject' value='".$reject."'>
+                            <input type='submit' name='cookie_accept' class='cookie_accept' value='".$accept."'>
+                      </form>
+
+                        </div>
+                  </div>";
              }
 
 
@@ -117,22 +135,7 @@ $sql = "SELECT * FROM cookie WHERE ip = '".$curr_id_for_user."' ";
 
                 dump($_POST);
 
-                print "<div class='cookie ".$hidden."'>
-                        <div class='cookie_box'>
-                          <div class='cookie_title'>
-                            Мы используем файлы cookie
-                          </div>
-                          <div class='cookie_subtitle'>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard
-                          </div>
 
-                          <form method='post'>
-                                <input type='submit' name='cookie_reject' class='cookie_reject' value='".$reject."'>
-                                <input type='submit' name='cookie_accept' class='cookie_accept' value='".$accept."'>
-                          </form>
-
-                            </div>
-                      </div>";
 
 }
 

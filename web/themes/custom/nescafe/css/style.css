@@ -841,6 +841,7 @@ form .form-item label{
   align-items: center;
   padding: 65px 0;
   width: 100%;
+  z-index: 99;
 }
 
 .cookie.hidden{
@@ -856,6 +857,7 @@ form .form-item label{
   justify-content: center;
   padding: 0;
   align-items: center;
+  cursor: pointer;
 }
 
 .cookie .cookie_reject{
@@ -864,6 +866,7 @@ form .form-item label{
   color: #263238;
   font-size: 17px;
   font-family: Roboto;
+  background: none;
   font-weight: 700;
 }
 
@@ -871,6 +874,7 @@ form .form-item label{
   border-radius: 4px;
   background: #7BA60A;
   color: #FFF;
+  border: none;
   font-size: 17px;
   font-family: Roboto;
   font-weight: 700;
