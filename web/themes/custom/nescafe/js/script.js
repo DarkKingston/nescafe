@@ -39,16 +39,11 @@
 
       document.querySelector('.form-item-field-reglament-value input').disabled = true;
 
+        document.querySelector('.reg_btn').href='/reglament';
       if(document.querySelector(".reglament_accept")){
         document.querySelector('.form-item-field-reglament-value input').checked = true;
         document.querySelector('.reg_btn').href='/user/register';
-      }else{
-        document.querySelector('.reg_btn').href='/reglament';
       }
-
-
-
-
 
     }
   };
