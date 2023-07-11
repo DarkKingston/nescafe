@@ -541,7 +541,7 @@ $arr = [];
                                                                        $arrShowF = array();
                                                                        foreach($arrData as $IDgift => $val){
                                                                            foreach($val as $name => $val2){
-                                                                               if( $name == 'categoria_de_produs' && $val2['value'] == 2 && $val2['value'] == 3) {
+                                                                               if( $name == 'categoria_de_produs' && $val2['value'] == 2 || $name == 'categoria_de_produs' && $val2['value'] == 3) {
                                                                                    // $val['title'] = $val[''];
                                                                                    $arrShowF[[$IDgift]['filiala']['value']][] = array( 'name' => $arrData[$IDgift]['premiu']['value'] ,'filiala' => $arrData[$IDgift]['filiala']['value'], 'id' => $IDgift );
                                                                                    }
