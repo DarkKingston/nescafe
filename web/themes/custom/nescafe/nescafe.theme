@@ -519,89 +519,166 @@ $arr = [];
                                  }
                             }
                             if($total % 10 ==0 && $userID->premiu == ''){
-
-
-
                             $checkPromo = "SELECT * FROM promo_code WHERE status = 10 AND status = 1 AND active = '".$curr_id_for_user."'";
-                            $checkPromoItem = $conn->query($checkPromo);
-                            $checkCounter = 0;
-                            foreach($checkPromoItem as $checkItem){
-                                $checkCounter++;
-                            }
-                            if($checkCounter == 0){
-                               $promoSuccess = "UPDATE promo_code SET status = 1, data = NOW() WHERE promocode = '".$userID->promocode."' AND status = 0 ";
-                                                                   if($conn->query($promoSuccess)){
-                                                                       $arrData  = array();
-                                                                       $getGift = "SELECT * FROM webform_submission_data WHERE webform_id = 'cadouri'  ";
-                                                                       $giftVal = $conn->query($getGift);
-                                                                       foreach($giftVal as $gift=>$val){
-                                                                           $arrData[ $val['sid'] ][ $val['name'] ] = $val;
-                                                                           //dump($val);
-                                                                           //dump($val['value']);
-                                                                       }
+                                                        $checkPromoItem = $conn->query($checkPromo);
+                                                        $checkCounter = 0;
+                                                        foreach($checkPromoItem as $checkItem){
+                                                            $checkCounter++;
+                                                        }
+                                                        if($checkCounter == 0){
+                                                           $promoSuccess = "UPDATE promo_code SET status = 1, data = NOW() WHERE promocode = '".$userID->promocode."' AND status = 0 ";
+                                                                                               if($conn->query($promoSuccess)){
+                                                                                                   $arrData  = array();
+                                                                                                   $getGift = "SELECT * FROM webform_submission_data WHERE webform_id = 'cadouri'  ";
+                                                                                                   $giftVal = $conn->query($getGift);
+                                                                                                   foreach($giftVal as $gift=>$val){
+                                                                                                       $arrData[ $val['sid'] ][ $val['name'] ] = $val;
+                                                                                                       //dump($val);
+                                                                                                       //dump($val['value']);
+                                                                                                   }
 
 
-                                                                       // dump($arrData);
+                                                                                                   // dump($arrData);
 
-                                                                       $arrShowF = array();
-                                                                       foreach($arrData as $IDgift => $val){
-                                                                           foreach($val as $name => $val2){
-                                                                               if( $name == 'categoria_de_produs' && $val2['value'] == 2 || $name == 'categoria_de_produs' && $val2['value'] == 3) {
-                                                                                   // $val['title'] = $val[''];
-                                                                                   $arrShowF[[$IDgift]['filiala']['value']][] = array( 'name' => $arrData[$IDgift]['premiu']['value'] ,'filiala' => $arrData[$IDgift]['filiala']['value'], 'id' => $IDgift );
-                                                                                   }
-                                                                           }
-                                                                       }
-                               //dump($arrShowF);
-                               $arr = [];
-                               $arrFil = [];
-                                                                       foreach($arrShowF as $filiala => $arrShow){
+                                                                                                   $arrShowF = array();
+                                                                                                   foreach($arrData as $IDgift => $val){
+                                                                                                       foreach($val as $name => $val2){
+                                                                                                           if( $name == 'categoria_de_produs' && $val2['value'] == 2 || $name == 'categoria_de_produs' && $val2['value'] == 3) {
+                                                                                                               // $val['title'] = $val[''];
+                                                                                                               $arrShowF[[$IDgift]['filiala']['value']][] = array( 'name' => $arrData[$IDgift]['premiu']['value'] ,'filiala' => $arrData[$IDgift]['filiala']['value'], 'id' => $IDgift );
+                                                                                                               }
+                                                                                                       }
+                                                                                                   }
+                                                           //dump($arrShowF);
+                                                           $arr = [];
+                                                           $arrFil = [];
+                                                                                                   foreach($arrShowF as $filiala => $arrShow){
 
 
-                                                                                               $option = '';
-                                                                                               $option2 = '';
-                                                                                                foreach($arrShow as $ft => $val){
+                                                                                                                           $option = '';
+                                                                                                                           $option2 = '';
+                                                                                                                            foreach($arrShow as $ft => $val){
 
-                                                                                                $arr[] = $val['name'];
-                                                                                                $arrFil[] = $val['filiala'];
+                                                                                                                            $arr[] = $val['name'];
+                                                                                                                            $arrFil[] = $val['filiala'];
 
-                                                                                                }
-                                                                                                $arrFilUnique =  array_unique($arrFil);
-                                                                                                foreach($arrFilUnique as $arrValFil){
-                                                                                                   $option2 .= " <option>".$arrValFil."</option> ";
-                                                                                                }
-                                         $arrUnique = array_unique($arr);
+                                                                                                                            }
+                                                                                                                            $arrFilUnique =  array_unique($arrFil);
+                                                                                                                            foreach($arrFilUnique as $arrValFil){
+                                                                                                                               $option2 .= " <option>".$arrValFil."</option> ";
+                                                                                                                            }
+                                                                     $arrUnique = array_unique($arr);
 
-                                                                                                foreach($arrUnique as $arrVal){
-                                                                                                   $option .= " <option>".$arrVal."</option> ";
-                                                                                                }
-                               //dump($arrUnique);
-                                                                           print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_gift' data-dialog-type='modal'>
+                                                                                                                            foreach($arrUnique as $arrVal){
+                                                                                                                               $option .= " <option>".$arrVal."</option> ";
+                                                                                                                            }
+                                                           //dump($arrUnique);
+                                                                                                       print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_gift' data-dialog-type='modal'>
 
-                                                                               <select name='premiu'>
+                                                                                                           <select name='premiu'>
 
-                                                                                   ".$option."
-                                                                               </select>
-                                                                               <select name='filial'>
+                                                                                                               ".$option."
+                                                                                                           </select>
+                                                                                                           <select name='filial'>
 
-                                                                                   ".$option2."
-                                                                               </select>
-                                                                               <input type='submit' class='btn_main action' name='submitGift' value='Alege'>
+                                                                                                               ".$option2."
+                                                                                                           </select>
+                                                                                                           <input type='submit' class='btn_main action' name='submitGift' value='Alege'>
 
-                                                                           </form>
-                                                                           ";
-                                                                       }
-                                                                       //dump($arrShow);
-                                                                   }
+                                                                                                       </form>
+                                                                                                       ";
+                                                                                                   }
+                                                                                                   //dump($arrShow);
+                                                                                               }
 
-                                                                   if(isset($_POST['submitGift'])){
-                                                                       $updatePromo = "UPDATE promo_code SET premiu = '".$_POST['premiu']."', livrare = '".$_POST['filial']."', status = 10 WHERE promocode = '".$userID->promocode."' AND premiu = '' AND livrare = '' ";
-                                                                        if($conn->query($updatePromo)){
-                                                                           //echo "ok";
-                                                                        }
-                                                                   }
-                               }
+                                                                                               if(isset($_POST['submitGift'])){
+                                                                                                   $updatePromo = "UPDATE promo_code SET premiu = '".$_POST['premiu']."', livrare = '".$_POST['filial']."', status = 10 WHERE promocode = '".$userID->promocode."' AND premiu = '' AND livrare = '' ";
+                                                                                                    if($conn->query($updatePromo)){
+                                                                                                       //echo "ok";
+                                                                                                    }
+                                                                                               }
+                                                           }
 
+                            }else if($total >= 10){
+                                $checkPromo = "SELECT * FROM promo_code WHERE status = 1 AND active = '".$curr_id_for_user."'";
+                                                            $checkPromoItem = $conn->query($checkPromo);
+                                                            $checkCounter = 0;
+                                                            foreach($checkPromoItem as $checkItem){
+                                                                $checkCounter++;
+                                                            }
+                                                            if($checkCounter == 1){
+                                                               $promoSuccess = "UPDATE promo_code SET status = 1, data = NOW() WHERE promocode = '".$userID->promocode."' AND status = 0 ";
+                                                                                                   if($conn->query($promoSuccess)){
+                                                                                                       $arrData  = array();
+                                                                                                       $getGift = "SELECT * FROM webform_submission_data WHERE webform_id = 'cadouri'  ";
+                                                                                                       $giftVal = $conn->query($getGift);
+                                                                                                       foreach($giftVal as $gift=>$val){
+                                                                                                           $arrData[ $val['sid'] ][ $val['name'] ] = $val;
+                                                                                                           //dump($val);
+                                                                                                           //dump($val['value']);
+                                                                                                       }
+
+
+                                                                                                       // dump($arrData);
+
+                                                                                                       $arrShowF = array();
+                                                                                                       foreach($arrData as $IDgift => $val){
+                                                                                                           foreach($val as $name => $val2){
+                                                                                                               if( $name == 'categoria_de_produs' && $val2['value'] == 2 || $name == 'categoria_de_produs' && $val2['value'] == 3) {
+                                                                                                                   // $val['title'] = $val[''];
+                                                                                                                   $arrShowF[[$IDgift]['filiala']['value']][] = array( 'name' => $arrData[$IDgift]['premiu']['value'] ,'filiala' => $arrData[$IDgift]['filiala']['value'], 'id' => $IDgift );
+                                                                                                                   }
+                                                                                                           }
+                                                                                                       }
+                                                               //dump($arrShowF);
+                                                               $arr = [];
+                                                               $arrFil = [];
+                                                                                                       foreach($arrShowF as $filiala => $arrShow){
+
+
+                                                                                                                               $option = '';
+                                                                                                                               $option2 = '';
+                                                                                                                                foreach($arrShow as $ft => $val){
+
+                                                                                                                                $arr[] = $val['name'];
+                                                                                                                                $arrFil[] = $val['filiala'];
+
+                                                                                                                                }
+                                                                                                                                $arrFilUnique =  array_unique($arrFil);
+                                                                                                                                foreach($arrFilUnique as $arrValFil){
+                                                                                                                                   $option2 .= " <option>".$arrValFil."</option> ";
+                                                                                                                                }
+                                                                         $arrUnique = array_unique($arr);
+
+                                                                                                                                foreach($arrUnique as $arrVal){
+                                                                                                                                   $option .= " <option>".$arrVal."</option> ";
+                                                                                                                                }
+                                                               //dump($arrUnique);
+                                                                                                           print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_gift' data-dialog-type='modal'>
+
+                                                                                                               <select name='premiu'>
+
+                                                                                                                   ".$option."
+                                                                                                               </select>
+                                                                                                               <select name='filial'>
+
+                                                                                                                   ".$option2."
+                                                                                                               </select>
+                                                                                                               <input type='submit' class='btn_main action' name='submitGift' value='Alege'>
+
+                                                                                                           </form>
+                                                                                                           ";
+                                                                                                       }
+                                                                                                       //dump($arrShow);
+                                                                                                   }
+
+                                                                                                   if(isset($_POST['submitGift'])){
+                                                                                                       $updatePromo = "UPDATE promo_code SET premiu = '".$_POST['premiu']."', livrare = '".$_POST['filial']."', status = 10 WHERE promocode = '".$userID->promocode."' AND premiu = '' AND livrare = '' ";
+                                                                                                        if($conn->query($updatePromo)){
+                                                                                                           //echo "ok";
+                                                                                                        }
+                                                                                                   }
+                                                               }
                             }
                             if($total % 15 ==0 && $userID->premiu == ''){
                                 $tombolaSuccess = "UPDATE promo_code SET tombola = 1, data = NOW() WHERE promocode = '".$userID->promocode."' AND tombola = 0 ";
