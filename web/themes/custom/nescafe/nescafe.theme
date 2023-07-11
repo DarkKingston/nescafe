@@ -109,7 +109,7 @@ function nescafe_preprocess_page(&$page){
                                 Мы используем файлы cookie
                               </div>
                               <div class="cookie_subtitle">
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard
                               </div>
 
                               <form method="post">
