@@ -438,7 +438,6 @@ foreach($result2 as $record2){
                         $res = $conn->query($getUserID);
                         $res->setFetchMode(\PDO::FETCH_OBJ);
                         foreach($res as $userID){
-                        }
                             if($curr_id_for_user == $userID->active){
                                 if(($promoTotal % 7) == 0 && $userID->premiu == ''){
                                     $promoSuccess = "UPDATE promo_code SET status = 1, data = NOW() WHERE promocode = '".$userID->promocode."' AND status = 0 ";
@@ -670,7 +669,7 @@ $arr = [];
                                                                                                        //dump($arrShow);
 
                                                                                                    if(isset($_POST['submitGift'])){
-                                                                                                       $updatePromo = "UPDATE promo_code SET premiu = '".$_POST['premiu']."', livrare = '".$_POST['filial']."', status = 10 WHERE promocode = '".$userID->promocode."' AND premiu = '' AND livrare = '' ";
+                                                                                                       $updatePromo = "UPDATE promo_code SET premiu = '".$_POST['premiu']."', livrare = '".$_POST['filial']."', status = 10 WHERE promocode = '".$userID->promocode."' AND premiu = '' AND livrare = '' AND status = 1 ";
                                                                                                         if($conn->query($updatePromo)){
                                                                                                            //echo "ok";
                                                                                                         }
@@ -690,6 +689,7 @@ $arr = [];
                                    //echo "success";
                                 }
                             }
+                        }
         }
     }
 
