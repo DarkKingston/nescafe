@@ -165,6 +165,14 @@ $sql = "SELECT * FROM cookie WHERE ip = '".$curr_id_for_user."' ";
             </div>";
     }
 }
+
+
+if(isset($_POST['reglamentAccept'])){
+    print "<div class="reglament_accept hidden">regaccept</div>";
+};
+
+
+
 }
 
 
@@ -1212,9 +1220,4 @@ if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro'){
 
     print "<div class='promo_add'> <form method='post'><div class='promo_group'><label>$intro</label><input type='text' class='promo_add_inp' name='reset_password'></div> <input type='submit' value='$send' class='promo_send' name='submit_password'></form></div>";
 
-}
-
-
-function nescafe_preprocess_page__reglament(){
-    dump($_POST);
 }

@@ -917,3 +917,7 @@ form .form-item label{
 .form-submit{
   cursor: pointer;
 }
+
+.reglament_accept.hidden{
+  display: none;
+}
