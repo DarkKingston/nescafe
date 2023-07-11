@@ -496,15 +496,17 @@ $arr = [];
                                                                  }
 //dump($arrUnique);
                                             print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_gift' data-dialog-type='modal'>
+                                                <div>
 
-                                                <select name='premiu'>
-                                                    <option><img src='https://stag-yxxbuhy-qkl3gjov7gxou.eu-5.platformsh.site/system/files/webform/cadouri/139/chipiu_1.jpg'></option>
-
+                                                </div>
+                                                <div><select name='premiu'>
+                                                    ".$option."
                                                 </select>
                                                 <select name='filial'>
 
                                                     ".$option2."
                                                 </select>
+                                                </div>
                                                 <input type='submit' class='btn_main action' name='submitGift' value='Alege'>
 
                                             </form>
