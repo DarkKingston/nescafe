@@ -715,7 +715,11 @@ $arrFil = [];
                                 //echo "Ты учавствуешь в финальную игру";
                              $tombolaSuccess = "UPDATE promo_code SET final = 1, data = NOW() WHERE promocode = '".$userID->promocode."' AND final = 0 ";
                                 if($conn->query($tombolaSuccess)){
-                                   //echo "success";
+                                   print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_gift' data-dialog-type='modal'>
+                                           <div>Felicitari ati fost ales participant la tombola finala!</div>
+                                           <div class='btn_main action closePopup'>Inchide</div>
+                                       </form>
+                                       ";
                                 }
                             }
         }
