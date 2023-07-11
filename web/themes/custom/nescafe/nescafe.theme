@@ -1215,3 +1215,6 @@ if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro'){
 }
 
 
+function nescafe_preprocess_page__reglament(){
+    dump($_POST);
+}
