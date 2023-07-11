@@ -522,7 +522,7 @@ $arr = [];
 
 
 
-                            $checkPromo = "SELECT * FROM promo_code WHERE status = 10 AND active = '".$curr_id_for_user."'";
+                            $checkPromo = "SELECT * FROM promo_code WHERE status = 10 AND status = 1 AND active = '".$curr_id_for_user."'";
                             $checkPromoItem = $conn->query($checkPromo);
                             $checkCounter = 0;
                             foreach($checkPromoItem as $checkItem){

@@ -913,3 +913,7 @@ form .form-item label{
   justify-content: space-between;
   align-items: center;
 }
+
+.form-submit{
+  cursor: pointer;
+}
