@@ -141,6 +141,10 @@ $sql = "SELECT * FROM cookie WHERE ip = '".$curr_id_for_user."' ";
       $_SESSION['cookie'] = 'no';
       $hidden = '';
    }
+   if(isset($_POST['cookie_accept'])){
+      $_SESSION['cookie'] = 'accept';
+      $hidden = 'hidden';
+   }
         print "<div class='cookie ".$hidden."'>
             <div class='cookie_box'>
               <div class='cookie_title'>
