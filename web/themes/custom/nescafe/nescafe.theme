@@ -168,7 +168,7 @@ $sql = "SELECT * FROM cookie WHERE ip = '".$curr_id_for_user."' ";
 
 
 if(isset($_POST['reglamentAccept'])){
-    print '<div class="reglament_accept hidden'>regaccept</div>";
+    print "<div class='reglament_accept hidden'>regaccept</div>";
 };
 
 
