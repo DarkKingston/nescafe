@@ -172,7 +172,7 @@ if(isset($_POST['reglamentAccept'])){
 };
 
 if($_SESSION['reglament'] == 'accept'){
-    print "<div class='reglament_accept hidden'>regaccept</div>";
+    print "<div class='reg_accept hidden'>regaccept</div>";
 }
 
 
