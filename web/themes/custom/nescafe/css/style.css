@@ -934,7 +934,10 @@ form .form-item label{
 .reglament_accept.hidden{
   display: none;
 }
-
+.popup_images{
+  display: flex;
+  flex-wrap: wrap;
+}
 .popup_images>img{
   width: 70px;
 }
