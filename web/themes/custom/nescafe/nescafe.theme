@@ -585,20 +585,25 @@ $arrFil = [];
 
                                                                                                                         $arr[] = $val['name'];
                                                                                                                         $arrFil[] = $val['filiala'];
-$file_storage = \Drupal::service('entity_type.manager')->getStorage('file');
-$file = $file_storage->load($val['image']);
-if ($file) {
-  $file_path = $file->getFileUri(); // Получение пути к файлу.
-  $file_name = $file->getFilename(); // Получение имени файла.
 
-}
-$string = str_replace("public://", "", $file_path);
-$arrImg .= "<img src='/sites/default/files/".$string."'>";
                                                                                                                         }
                                                                                                                         $arrFilUnique =  array_unique($arrFil);
                                                                                                                         foreach($arrFilUnique as $arrValFil){
                                                                                                                            $option2 .= " <option>".$arrValFil."</option> ";
+                                                                                                                           foreach($arrShow as $ft => $val){
+                                                                                                                            dump($arrShow);
+                                                                                                                           }
                                                                                                                         }
+                        $file_storage = \Drupal::service('entity_type.manager')->getStorage('file');
+                        $file = $file_storage->load($val['image']);
+                        if ($file) {
+                          $file_path = $file->getFileUri(); // Получение пути к файлу.
+                          $file_name = $file->getFilename(); // Получение имени файла.
+
+                        }
+                        $string = str_replace("public://", "", $file_path);
+                        $arrImg .= "<img src='/sites/default/files/".$string."'>";
+
                                                                  $arrUnique = array_unique($arr);
 
                                                                                                                         foreach($arrUnique as $arrVal){
