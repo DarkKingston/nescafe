@@ -735,6 +735,8 @@ $arrFil = [];
                             $file = $file_storage->load($fid);
                             if ($file) {
                               $file_path = $file->getFileUri(); // Получение пути к файлу.
+                              $file_path_url = $file->getFileUrl(); // Получение пути к файлу.
+                              dump($file_path_url);
                               $file_name = $file->getFilename(); // Получение имени файла.
                                 dump($file_path);
                                 dump($file_name);
