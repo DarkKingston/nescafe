@@ -2,6 +2,11 @@
 (function ($) {
   Drupal.behaviors.navbarBehavior = {
     attach: function (context, settings) {
+
+      $('.user-login-form .form-item-name input').mask('+(373)99999999');
+
+
+
       $('.burger,.mob_menu_overlay,.close_menu',context).on('click',function(){
         $('.mobile_menu').slideToggle();
         $('.mob_menu_overlay').fadeToggle();

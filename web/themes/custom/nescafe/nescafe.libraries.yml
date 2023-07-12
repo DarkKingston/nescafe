@@ -5,6 +5,7 @@ global-styling:
       css/media.css: {}
   js:
     js/script.js: {}
+    js/jquery_mask/jquery.maskedinput.min.js: {}
   dependencies:
     - core/jquery
     - core/jquery.once
