@@ -711,7 +711,7 @@ $arrFil = [];
                         $filteredArray = [];
                         foreach ($arrShow as $value) {
                             if (isUnique($filteredArray, "name", $value["name"])) {
-                                $filteredArray[] = $item;
+                                $filteredArray[] = $value;
                             }
                         }
                         dump($filteredArray);
