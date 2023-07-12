@@ -752,11 +752,11 @@ $file_storage = \Drupal::service('entity_type.manager')->getStorage('file');
                                 if($conn->query($tombolaSuccess)){
                                    print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_final' data-dialog-type='modal'>
                                            <div>Felicitari ati fost ales participant la tombola finala!</div>
-                                           <button type='submit' name='final' class='btn_main action closePopupTombola'>Inchide</button>
+                                           <div name='final' class='btn_main action closePopupTombola'>Inchide</div>
                                        </form>
                                        ";
                                     $tombolaFinSuccess = "UPDATE promo_code SET final = 2, data = NOW() WHERE promocode = '".$userID->promocode."' AND final = 1 ";
-                                       if($conn->query($tombolaFinSuccess)){}
+                                       if($conn->query($tombolaSuccess)){}
                                 }
                             }
 
