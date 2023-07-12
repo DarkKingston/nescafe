@@ -647,7 +647,7 @@ $arrFil = [];
                                                                                foreach($val as $name => $val2){
                                                                                    if( $name == 'categoria_de_produs' && $val2['value'] == 2 || $name == 'categoria_de_produs' && $val2['value'] == 3) {
                                                                                        // $val['title'] = $val[''];
-                                                                                       $arrShowF[[$IDgift]['filiala']['value']][] = array( 'name' => $arrData[$IDgift]['premiu']['value'] ,'filiala' => $arrData[$IDgift]['filiala']['value'], 'id' => $IDgift );
+                                                                                       $arrShowF[[$IDgift]['filiala']['value']][] = array( 'image' => $arrData[$IDgift]['gift_image']['value'], 'name' => $arrData[$IDgift]['premiu']['value'] ,'filiala' => $arrData[$IDgift]['filiala']['value'], 'id' => $IDgift );
                                                                                        }
                                                                                }
                                                                            }
@@ -655,6 +655,14 @@ $arrFil = [];
                                    $arr = [];
                                    $arrFil = [];
                                                                            foreach($arrShowF as $filiala => $arrShow){
+
+                                                                           $file_storage = \Drupal::service('entity_type.manager')->getStorage('file');
+                                                                                                       $fid = $arrShow['image'];
+                                                                                                       $file = $file_storage->load($fid);
+                                                                                                       if ($file) {
+                                                                                                         $file_path = $file->getFileUri(); // Получение пути к файлу.
+                                                                                                       }
+                                                                                                       $final_path = str_replace('public://', '', $file_path);
 
 
                                                                                                    $option = '';
@@ -676,6 +684,8 @@ $arrFil = [];
                                                                                                     }
                                    //dump($arrUnique);
                                                                                print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_gift' data-dialog-type='modal'>
+
+                                                                                   print "<img src='/sites/default/files/".$final_path."'>";
 
                                                                                    <select name='premiu'>
 
@@ -730,17 +740,7 @@ $arrFil = [];
                                        ";
                                 }
                             }
-                            $file_storage = \Drupal::service('entity_type.manager')->getStorage('file');
-                            $fid = 62;
-                            $file = $file_storage->load($fid);
-                            if ($file) {
-                              $file_path = $file->getFileUri(); // Получение пути к файлу.
-                              $file_name = $file->getFilename(); // Получение имени файла.
-                                dump($file_path);
-                                dump($file_name);
-                            }
-                            $final_path = str_replace('public://', '', $file_path);
-                            print "<img src='/sites/default/files/".$final_path."'>";
+
 
         }
     }
