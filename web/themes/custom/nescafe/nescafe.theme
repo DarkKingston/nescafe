@@ -271,7 +271,7 @@ $params = array(
 
   'type' => 'SendSms' ,
 
-  'phone' => '060336636' ,
+  'phone' => '37360336636' ,
 
   'message' => 'test message 🙏'
 
