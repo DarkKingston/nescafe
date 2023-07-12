@@ -608,7 +608,6 @@ $arrFil = [];
                                 $filteredArray[] = $value;
                             }
                         }
-                        dump($filteredArray);
                         foreach($filteredArray as $filteredVal){
                             $file_storage = \Drupal::service('entity_type.manager')->getStorage('file');
                             $file = $file_storage->load($filteredVal['image']);
@@ -690,17 +689,6 @@ $arrFil = [];
                                    $arrFil = [];
                                                                            foreach($arrShowF as $filiala => $arrShow){
 
-                                                                           $file_storage = \Drupal::service('entity_type.manager')->getStorage('file');
-                                                                                                   $arrImg = '';
-                                                                                                       $fid = $arrShow['image'];
-                                                                                                       $file = $file_storage->load($fid);
-                                                                                                       if ($file) {
-                                                                                                         $file_path = $file->getFileUri(); // Получение пути к файлу.
-                                                                                                       }
-                                                                                                       $final_path = str_replace('public://', '', $file_path);
-
-                                                                                                    $arrImg .= "<img src='/sites/default/files/".$final_path."'>";
-
                                                                                                    $option = '';
                                                                                                    $option2 = '';
                                                                                                     foreach($arrShow as $ft => $val){
@@ -712,6 +700,34 @@ $arrFil = [];
                                                                                                     foreach($arrFilUnique as $arrValFil){
                                                                                                        $option2 .= " <option>".$arrValFil."</option> ";
                                                                                                     }
+            function isUnique($array, $key, $value)
+            {
+                foreach ($array as $item) {
+                    if ($item[$key] === $value) {
+                        return false;
+                    }
+                }
+                return true;
+            }
+
+            // Отфильтрованный массив с уникальными элементами по полю "name"
+            $filteredArray = [];
+            foreach ($arrShow as $value) {
+                if (isUnique($filteredArray, "name", $value["name"])) {
+                    $filteredArray[] = $value;
+                }
+            }
+            foreach($filteredArray as $filteredVal){
+                $file_storage = \Drupal::service('entity_type.manager')->getStorage('file');
+                $file = $file_storage->load($filteredVal['image']);
+                if ($file) {
+                  $file_path = $file->getFileUri(); // Получение пути к файлу.
+                  $file_name = $file->getFilename(); // Получение имени файла.
+
+                }
+                $string = str_replace("public://", "", $file_path);
+                $arrImg .= "<img src='/sites/default/files/".$string."'>";
+            }
                                              $arrUnique = array_unique($arr);
 
                                                                                                     foreach($arrUnique as $arrVal){
