@@ -493,6 +493,34 @@ $arrFil = [];
                                                                  $arrFil[] = $val['filiala'];
                                                                  //dump($arrShow);
                                                                  }
+                                                                 function isUnique($array, $key, $value)
+                                                                 {
+                                                                     foreach ($array as $item) {
+                                                                         if ($item[$key] === $value) {
+                                                                             return false;
+                                                                         }
+                                                                     }
+                                                                     return true;
+                                                                 }
+
+                                                                 // Отфильтрованный массив с уникальными элементами по полю "name"
+                                                                 $filteredArray = [];
+                                                                 foreach ($arrShow as $value) {
+                                                                     if (isUnique($filteredArray, "name", $value["name"])) {
+                                                                         $filteredArray[] = $value;
+                                                                     }
+                                                                 }
+                                                                 foreach($filteredArray as $filteredVal){
+                                                                     $file_storage = \Drupal::service('entity_type.manager')->getStorage('file');
+                                                                     $file = $file_storage->load($filteredVal['image']);
+                                                                     if ($file) {
+                                                                       $file_path = $file->getFileUri(); // Получение пути к файлу.
+                                                                       $file_name = $file->getFilename(); // Получение имени файла.
+
+                                                                     }
+                                                                     $string = str_replace("public://", "", $file_path);
+                                                                     $arrImg .= "<img src='/sites/default/files/".$string."'>";
+                                                                 }
                                                                  $arrFilUnique = array_unique($arrFil);
                                                                  foreach($arrFilUnique as $filVal){
                                                                     $option2 .= " <option>".$filVal."</option> ";
@@ -508,8 +536,8 @@ $arrFil = [];
                                     }
 
                                     print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_gift' data-dialog-type='modal'>
-                                            <div>
-
+                                            <div class='popup_images'>
+                                                ".$arrImg."
                                             </div>
                                             <div><select name='premiu'>
                                                 ".$option."
