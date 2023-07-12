@@ -579,7 +579,6 @@ $arrFil = [];
 $file_storage = \Drupal::service('entity_type.manager')->getStorage('file');
        $arrImg = '';
        foreach($arrShow as $show){
-       dump($show['image']);
            $fid = $show['image'];
            $file = $file_storage->load($fid);
            if ($file) {
@@ -587,8 +586,6 @@ $file_storage = \Drupal::service('entity_type.manager')->getStorage('file');
            }
            $final_path = str_replace('public://', '', $file_path);
 
-       dump($fid);
-       dump($file_path);
         $arrImg .= "<img src='/sites/default/files/".$final_path."'>";
         }
                                                                                                                            $option = '';
