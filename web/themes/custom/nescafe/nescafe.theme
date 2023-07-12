@@ -772,7 +772,7 @@ $arrFil = [];
                                         dump($checkItem);
                                             $checkCounter++;
                                         }
-                                if($checkCounter == 0){
+                                if($checkCounter != 0){
                                     $tombolaSuccess = "UPDATE promo_code SET tombola = 1,status = 0, data = NOW() WHERE promocode = '".$userID->promocode."' AND tombola = 0 ";
                                     if($conn->query($tombolaSuccess)){
                                         print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_final' data-dialog-type='modal'>
@@ -794,7 +794,7 @@ $sqlCheck = "SELECT * FROM promo_code WHERE id = '".$userID->active."' and final
                                         dump($checkItem);
                                             $checkCounter++;
                                         }
-                                if($checkCounter == 0){
+                                if($checkCounter != 0){
                              $tombolaSuccess = "UPDATE promo_code SET final = 1, data = NOW() WHERE promocode = '".$userID->promocode."' AND final = 0 ";
                                 if($conn->query($tombolaSuccess)){
                                    print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_final' data-dialog-type='modal'>
