@@ -714,6 +714,7 @@ $arrFil = [];
                                 $filteredArray[] = $item;
                             }
                         }
+                        dump($filteredArray);
                         foreach($filteredArray as $filteredVal){
                             $file_storage = \Drupal::service('entity_type.manager')->getStorage('file');
                             $file = $file_storage->load($filteredVal['image']);
