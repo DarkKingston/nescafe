@@ -736,9 +736,10 @@ $arrFil = [];
                             if ($file) {
                               $file_path = $file->getFileUri(); // Получение пути к файлу.
                               $file_name = $file->getFilename(); // Получение имени файла.
-                            dump($file_path);
-                            dump($file_name);
+                                dump($file_path);
+                                dump($file_name);
                             }
+                            print "<img src='/system/files/' '".$file_name."' ''>";
 
         }
     }
