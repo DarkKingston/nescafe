@@ -284,8 +284,8 @@ $sql = $sqlQuery;
 
           print "</tbody>\n</table>\n";
           print "<div class='admin_btns'>
-          <a href='/tabel/principal' class='btn_main stock'>".$tabel."</a>
-          <a href='/stock' class='btn_main stock'>".$stats."</a>
+          <a href='/tabel-principal' class='btn_main stock'>".$tabel."</a>
+          <a href='/stock' class='btn_main stock logout_btn'>".$stats."</a>
           <a href='/tombola' class='btn_main stock logout_btn'>".$tombola."</a>
           <a href='/user/logout' class='btn_main stock logout_btn'>Logout</a>
           <form method='post' class='search_fil'>
