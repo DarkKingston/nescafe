@@ -546,7 +546,7 @@ $arrFil = [];
                                                         foreach($checkPromoItem as $checkItem){
                                                             $checkCounter++;
                                                         }
-                                                        if($checkCounter == 0){
+                                                        if($checkCounter != 0){
                                                            $promoSuccess = "UPDATE promo_code SET status = 1, data = NOW() WHERE promocode = '".$userID->promocode."' AND status = 0 ";
                                                                                                if($conn->query($promoSuccess)){
                                                                                                    $arrData  = array();
@@ -655,7 +655,6 @@ $arrFil = [];
                                                            }
 
                             }else if($total >= 10 && $total % 7 != 0){
-                            dump('123');
                                 $checkPromo = "SELECT * FROM promo_code WHERE status = 1 AND active = '".$curr_id_for_user."'";
                                                             $checkPromoItem = $conn->query($checkPromo);
                                                             $checkPromoItem->setFetchMode(\PDO::FETCH_OBJ);
