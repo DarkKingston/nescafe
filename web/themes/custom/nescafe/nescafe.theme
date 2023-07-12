@@ -739,7 +739,7 @@ $arrFil = [];
                                 dump($file_path);
                                 dump($file_name);
                             }
-                            print "<img src='/system/files/'.$file_path.''>";
+                            print "<img src='/system/files/".$file_path."'>";
 
         }
     }
