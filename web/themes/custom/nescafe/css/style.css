@@ -937,6 +937,7 @@ form .form-item label{
 .popup_images{
   display: flex;
   flex-wrap: wrap;
+  margin-bottom: 10px;
 }
 .popup_images>img{
   width: 70px;
