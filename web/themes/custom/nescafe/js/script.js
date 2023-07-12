@@ -4,6 +4,7 @@
     attach: function (context, settings) {
 
       $('.user-login-form .form-item-name input').mask('+(373)99999999');
+      $('.user-register-form .form-item-name input').mask('+(373)99999999');
 
 
 
