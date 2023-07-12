@@ -576,7 +576,16 @@ $arrFil = [];
                                                            $arrFil = [];
                                                                                                    foreach($arrShowF as $filiala => $arrShow){
 
+$file_storage = \Drupal::service('entity_type.manager')->getStorage('file');
+       $arrImg = '';
+           $fid = $arrShow['image'];
+           $file = $file_storage->load($fid);
+           if ($file) {
+             $file_path = $file->getFileUri(); // Получение пути к файлу.
+           }
+           $final_path = str_replace('public://', '', $file_path);
 
+        $arrImg .= "<img src='/sites/default/files/".$final_path."'>";
                                                                                                                            $option = '';
                                                                                                                            $option2 = '';
                                                                                                                             foreach($arrShow as $ft => $val){
@@ -596,7 +605,9 @@ $arrFil = [];
                                                                                                                             }
                                                            //dump($arrUnique);
                                                                                                        print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_gift' data-dialog-type='modal'>
-
+                                                                                                        <div class='popup_images'>
+                                                                                                            ".$arrImg."
+                                                                                                        </div>
                                                                                                            <select name='premiu'>
 
                                                                                                                ".$option."
