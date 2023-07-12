@@ -654,6 +654,7 @@ $arrFil = [];
                                    //dump($arrShowF);
                                    $arr = [];
                                    $arrFil = [];
+                                   $arrImg = []
                                                                            foreach($arrShowF as $filiala => $arrShow){
 
                                                                            $file_storage = \Drupal::service('entity_type.manager')->getStorage('file');
@@ -667,11 +668,12 @@ $arrFil = [];
 
                                                                                                    $option = '';
                                                                                                    $option2 = '';
+                                                                                                   $arrImg = '';
                                                                                                     foreach($arrShow as $ft => $val){
 
                                                                                                     $arr[] = $val['name'];
                                                                                                     $arrFil[] = $val['filiala'];
-
+                                                                                                    $arrImg .= <img src='/sites/default/files/".$final_path."'>;
                                                                                                     }
                                                                                                     $arrFilUnique =  array_unique($arrFil);
                                                                                                     foreach($arrFilUnique as $arrValFil){
@@ -685,7 +687,9 @@ $arrFil = [];
                                    //dump($arrUnique);
                                                                                print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_gift' data-dialog-type='modal'>
 
-                                                                                   <img src='/sites/default/files/".$final_path."'>
+                                                                                   <div class='popup_images'>
+                                                                                    ".$arrImg."
+                                                                                   </div>
 
                                                                                    <select name='premiu'>
 
