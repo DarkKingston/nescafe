@@ -543,7 +543,6 @@ $arrFil = [];
                                                 ".$option."
                                             </select>
                                             <select name='filial'>
-
                                                 ".$option2."
                                             </select>
                                             </div>
