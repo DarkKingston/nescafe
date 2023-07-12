@@ -576,40 +576,35 @@ $arrFil = [];
                                                            $arrFil = [];
                                                                                                    foreach($arrShowF as $filiala => $arrShow){
 
+
+
+                                                                                                                       $option = '';
+                                                                                                                       $option2 = '';
+                                                                                                                       $arrImg = '';
+                                                                                                                        foreach($arrShow as $ft => $val){
+
+                                                                                                                        $arr[] = [$val['image']=>$val['name']];
+                                                                                                                        $arrFil[] = $val['filiala'];
 $file_storage = \Drupal::service('entity_type.manager')->getStorage('file');
+$file = $file_storage->load($arrShow['image']);
+if ($file) {
+  $file_path = $file->getFileUri(); // Получение пути к файлу.
+  $file_name = $file->getFilename(); // Получение имени файла.
+}
+$string = str_replace("//public:", "", $file_path);
+dump($file_path);
+$arrImg .= "<img src='/sites/default/files/".$string."'>";
+                                                                                                                        }
+                                                                                                                        $arrFilUnique =  array_unique($arrFil);
+                                                                                                                        foreach($arrFilUnique as $arrValFil){
+                                                                                                                           $option2 .= " <option>".$arrValFil."</option> ";
+                                                                                                                        }
+                                                                 $arrUnique = array_unique($arr);
 
-                                                                                                   $option = '';
-                                                                                                   $option2 = '';
-                                                                                                    foreach($arrShow as $ft => $val){
-
-                                                                                                    $arr[] = [$val['image']=>$val['name']];
-                                                                                                    $arrFil[] = $val['filiala'];
-
-                                                                                                    }
-                                                                                                    $arrFilUnique =  array_unique($arrFil);
-                                                                                                    foreach($arrFilUnique as $arrValFil){
-                                                                                                       $option2 .= " <option>".$arrValFil."</option> ";
-                                                                                                    }
-                                             $arrUnique = array_unique($arr);
-
-                                                                                                    foreach($arrUnique as $fid=>$arrVal){
-                                                                                                    dump($arrUnique);
-                                                                                                    $arrImg = '';
-                                                                                                               $file = $file_storage->load($fid);
-                                                                                                               if ($file) {
-                                                                                                                 $file_path = $file->getFileUri(); // Получение пути к файлу.
-                                                                                                                 $file_name = $file->getFilename();
-                                                                                                                $arrNameImg[] = $file_name;
-
-
-                                                                                                                $final_path = str_replace('public://', '', $file_path);
-
-
-                                                                                                            $arrImg .= "<img src='/sites/default/files/".$final_path."'>";
-                                                                                                            }
-                                                                                                       $option .= " <option>".$arrVal."</option> ";
-                                                                                                    }
-                                   //dump($arrUnique);
+                                                                                                                        foreach($arrUnique as $arrVal){
+                                                                                                                           $option .= " <option>".$arrVal."</option> ";
+                                                                                                                        }
+                                                       //dump($arrUnique);
                                                                                                        print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_gift' data-dialog-type='modal'>
                                                                                                         <div class='popup_images'>
                                                                                                             ".$arrImg."
@@ -751,16 +746,10 @@ $file_storage = \Drupal::service('entity_type.manager')->getStorage('file');
                                 }
                             }
                             if($total % 30 == 0 && $userID->premiu == ''){
-                                $checkWithoutTombola = "SELECT * FROM promo_code WHERE tombola = 0 and active = '".$curr_id_for_user."' ";
-                                if($conn->query($checkWithoutTombola)){
-                                    $tombolaSuccess = "UPDATE promo_code SET final = 1, data = NOW() WHERE promocode = '".$userID->promocode."' AND final = 0 ";
-                                    if($conn->query($tombolaSuccess)){
 
-                                    }
-                                }
-                                $checkTombola = "SELECT * FROM promo_code WHERE tombola = 1";
-                                if($conn->query($checkTombola)){
-                                    print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_final' data-dialog-type='modal'>
+                             $tombolaSuccess = "UPDATE promo_code SET final = 1, data = NOW() WHERE promocode = '".$userID->promocode."' AND final = 0 ";
+                                if($conn->query($tombolaSuccess)){
+                                   print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_final' data-dialog-type='modal'>
                                            <div>Felicitari ati fost ales participant la tombola finala!</div>
                                            <div class='btn_main action closePopupTombola'>Inchide</div>
                                        </form>
@@ -768,7 +757,6 @@ $file_storage = \Drupal::service('entity_type.manager')->getStorage('file');
                                     $tombolaFinSuccess = "UPDATE promo_code SET final = 2, data = NOW() WHERE promocode = '".$userID->promocode."' AND final = 1 ";
                                        if($conn->query($tombolaSuccess)){}
                                 }
-
                             }
 
 
