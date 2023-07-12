@@ -783,8 +783,6 @@ $arrFil = [];
                                     }
                                 }
                             }
-                            dump($total % 30 == 0 );
-                            dump($total);
                             if($total % 30 == 0 && $userID->premiu == ''){
 $sqlCheck = "SELECT * FROM promo_code WHERE id = '".$userID->active."' and final = 1";
                                  $checkPromoItem = $conn->query($sqlCheck);
