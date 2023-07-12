@@ -731,7 +731,7 @@ $arrFil = [];
                                 }
                             }
                             $file_storage = \Drupal::service('entity_type.manager')->getStorage('file');
-                            $fid = 60;
+                            $fid = 62;
                             $file = $file_storage->load($fid);
                             if ($file) {
                               $file_path = $file->getFileUri(); // Получение пути к файлу.
