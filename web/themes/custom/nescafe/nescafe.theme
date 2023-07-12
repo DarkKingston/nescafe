@@ -179,117 +179,6 @@ if($_SESSION['reglament'] == 'accept'){
 
 
 
-
-function apiBulkSmsSystem( $params )
-{
-  // СТАНДАРТНЫЕ НАСТРОЙКИ
-  $_PID = '23280001-A04F-45AD-8383-A653379182C4';
-  $_ACCOUNT_NUMBER = '2328000149801';
-  $_UTS = time();
-  $_PASSWORD = 'Y6j5zAiHhk8w9lclZ1cDL9hyG7fxRPAH';
-  $result = array(
-    'status' => false ,
-    'message' => '' ,
-    'code' => 0 ,
-    'date' => '' ,
-    'balance' => ''
-  );
-  switch ( $params['type'] )
-  {
-    case 'GetBalance': // получение остаткан а счету
-      $URL = 'https://ext.123api.xyz/ED3B8F6F-A218-486B-871E-9654B1221DCA/Get_Balance.php';
-      $_PHASH = md5($_PID . $_UTS . $_ACCOUNT_NUMBER . $_PASSWORD );
-      $ar = array(
-        'PID' => $_PID , // является уникальным кодом Партнера
-        'UTS' => $_UTS ,
-        'Account' => $_ACCOUNT_NUMBER ,
-        'PHASH' => $_PHASH , // это хеш пароля
-      );
-      break;
-    case 'SendSms': // отправка сообщения
-
-      $MESSAGE = $params['message'];
-      $PHONE = $params['phone']; // формате Е.164. // 37360892310
-      $URL = 'https://ext.123api.xyz/ED3B8F6F-A218-486B-871E-9654B1221DCA/Send_SMS_Advertising.php';
-      $_PHASH = md5( $_PID . $_PASSWORD . $PHONE );
-      $ar = array(
-        'PID' => $_PID , // является уникальным кодом Партнера
-        'PHASH' => $_PHASH , // это хеш пароля
-        'DNIS' => $PHONE , // формате Е.164.
-        'ANI' => '',
-        'Alias' => 'NESCAFE',
-        'Enc' => 'UTF8',
-        'BMess' => $MESSAGE
-      );
-      $ar['BMess'] = str_replace("&", "%26", $ar['BMess']);
-      $ar['BMess'] = str_replace("+", "%2B", $ar['BMess']);
-      break;
-  }
-  $ReqString = json_encode( $ar );
-  $ch = curl_init();
-  curl_setopt( $ch , CURLOPT_URL, $URL);
-  curl_setopt( $ch , CURLOPT_RETURNTRANSFER, 1);
-  curl_setopt( $ch , CURLOPT_HEADER, 0);
-  curl_setopt( $ch , CURLOPT_SSL_VERIFYHOST, false);
-  curl_setopt( $ch , CURLOPT_SSL_VERIFYPEER, false);
-  curl_setopt( $ch , CURLOPT_POST, true);
-  curl_setopt( $ch , CURLOPT_POSTFIELDS, "Request=".$ReqString );
-  curl_setopt( $ch , CURLOPT_CONNECTTIMEOUT, 3 );
-  $data = curl_exec( $ch );
-  $result['curl_response'] = $data;
-  if ( !curl_errno( $ch ) )
-  {
-    try {
-      $data_arr = json_decode( $data , true );
-      if( $data_arr['RStatus'] == '0' )
-      {
-        $result['status'] = true;
-        // в случае проверки баланса
-        if( isset( $data_arr['RStatus'] ) ) {
-          $result['date'] = @$data_arr['Date'];
-          $result['balance'] = @$data_arr['Balance'];
-        }
-      }
-      else
-      {
-        $result['message'] = $data_arr['ErrorMessage'] . ' || NRID - ' . $data_arr['NRID'];
-        $result['code'] = $data_arr['RStatus'];
-      }
-    } catch (Exception $e) {
-      $result['message'] = 'Error json decode';
-    }
-  }
-  else
-  {
-    $result['message'] = curl_error( $ch );
-  }
-  curl_close( $ch );
-  return $result;
-}
-
-$params = array(
-
-  'type' => 'SendSms' ,
-
-  'phone' => '37360336636' ,
-
-  'message' => 'test message 🙏'
-
-);
-
-$resultSend = apiBulkSmsSystem( $params );
-
-
-dump($resultSend);
-
-
-
-
-
-
-
-
-
 }
 
 
@@ -702,19 +591,36 @@ $arrFil = [];
                                                                                                                         $arrFilUnique =  array_unique($arrFil);
                                                                                                                         foreach($arrFilUnique as $arrValFil){
                                                                                                                            $option2 .= " <option>".$arrValFil."</option> ";
-                                                                                                                           foreach($arrShow as $ft => $val){
-                                                                                                                            dump($arrShow);
-                                                                                                                           }
-                                                                                                                        }
-                        $file_storage = \Drupal::service('entity_type.manager')->getStorage('file');
-                        $file = $file_storage->load($val['image']);
-                        if ($file) {
-                          $file_path = $file->getFileUri(); // Получение пути к файлу.
-                          $file_name = $file->getFilename(); // Получение имени файла.
 
+                                                                                                                        }
+                        function isUnique($array, $key, $value)
+                        {
+                            foreach ($array as $item) {
+                                if ($item[$key] === $value) {
+                                    return false;
+                                }
+                            }
+                            return true;
                         }
-                        $string = str_replace("public://", "", $file_path);
-                        $arrImg .= "<img src='/sites/default/files/".$string."'>";
+
+                        // Отфильтрованный массив с уникальными элементами по полю "name"
+                        $filteredArray = [];
+                        foreach ($arrShow as $value) {
+                            if (isUnique($filteredArray, "name", $value["name"])) {
+                                $filteredArray[] = $item;
+                            }
+                        }
+                        foreach($filteredArray as $filteredVal){
+                            $file_storage = \Drupal::service('entity_type.manager')->getStorage('file');
+                            $file = $file_storage->load($filteredVal['image']);
+                            if ($file) {
+                              $file_path = $file->getFileUri(); // Получение пути к файлу.
+                              $file_name = $file->getFilename(); // Получение имени файла.
+
+                            }
+                            $string = str_replace("public://", "", $file_path);
+                            $arrImg .= "<img src='/sites/default/files/".$string."'>";
+                        }
 
                                                                  $arrUnique = array_unique($arr);
 
