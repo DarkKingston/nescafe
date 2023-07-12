@@ -586,6 +586,8 @@ $file_storage = \Drupal::service('entity_type.manager')->getStorage('file');
            }
            $final_path = str_replace('public://', '', $file_path);
 
+       dump($final_path);
+       dump($file_path);
         $arrImg .= "<img src='/sites/default/files/".$final_path."'>";
                                                                                                                            $option = '';
                                                                                                                            $option2 = '';
