@@ -567,7 +567,7 @@ $arrFil = [];
                                                                                                        foreach($val as $name => $val2){
                                                                                                            if( $name == 'categoria_de_produs' && $val2['value'] == 2 || $name == 'categoria_de_produs' && $val2['value'] == 3) {
                                                                                                                // $val['title'] = $val[''];
-                                                                                                               $arrShowF[[$IDgift]['filiala']['value']][] = array( 'name' => $arrData[$IDgift]['premiu']['value'] ,'filiala' => $arrData[$IDgift]['filiala']['value'], 'id' => $IDgift );
+                                                                                                               $arrShowF[[$IDgift]['filiala']['value']][] = array( 'image' => $arrData[$IDgift]['gift_image']['value'],'name' => $arrData[$IDgift]['premiu']['value'] ,'filiala' => $arrData[$IDgift]['filiala']['value'], 'id' => $IDgift );
                                                                                                                }
                                                                                                        }
                                                                                                    }
@@ -578,6 +578,7 @@ $arrFil = [];
 
 $file_storage = \Drupal::service('entity_type.manager')->getStorage('file');
        $arrImg = '';
+       dump($arrShow);
            $fid = $arrShow['image'];
            $file = $file_storage->load($fid);
            if ($file) {
