@@ -722,7 +722,6 @@ $arrFil = [];
                                         dump($checkItem);
                                             $checkCounter++;
                                         }
-                                        dump($checkCounter);
                                 if($checkCounter == 0){
                                     $tombolaSuccess = "UPDATE promo_code SET tombola = 1,status = 0, data = NOW() WHERE promocode = '".$userID->promocode."' AND tombola = 0 ";
                                     if($conn->query($tombolaSuccess)){
