@@ -574,6 +574,7 @@ $arrFil = [];
                                                            //dump($arrShowF);
                                                            $arr = [];
                                                            $arrFil = [];
+                                                           $arrIMG = [];
                                                                                                    foreach($arrShowF as $filiala => $arrShow){
 
 
@@ -583,17 +584,20 @@ $arrFil = [];
                                                                                                                        $arrImg = '';
                                                                                                                         foreach($arrShow as $ft => $val){
 
-                                                                                                                        $arr[] = [$val['image']=>$val['name']];
+                                                                                                                        $arr[] = $val['name'];
                                                                                                                         $arrFil[] = $val['filiala'];
 $file_storage = \Drupal::service('entity_type.manager')->getStorage('file');
 $file = $file_storage->load($val['image']);
 if ($file) {
   $file_path = $file->getFileUri(); // Получение пути к файлу.
   $file_name = $file->getFilename(); // Получение имени файла.
+  $arrIMG[] = $file_name;
 }
-$string = str_replace("//public:", "", $file_path);
-dump($file_path);
-$arrImg .= "<img src='/sites/default/files/".$string."'>";
+$string = str_replace("public://", "", $file_path);
+$substring = substr($string, 0, 20);
+$arrFileName = array_unique($arrIMG);
+foreach($arrFileName as $fileName){
+$arrImg .= "<img src='/sites/default/files/".$substring."/".$fileName."'>";}
                                                                                                                         }
                                                                                                                         $arrFilUnique =  array_unique($arrFil);
                                                                                                                         foreach($arrFilUnique as $arrValFil){
