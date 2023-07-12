@@ -755,10 +755,8 @@ $file_storage = \Drupal::service('entity_type.manager')->getStorage('file');
                                            <button type='submit' name='final' class='btn_main action closePopupTombola'>Inchide</button>
                                        </form>
                                        ";
-                                }
-                                if(isset($_POST['final'])){
-                                    $tombolaSuccess = "UPDATE promo_code SET final = 2, data = NOW() WHERE promocode = '".$userID->promocode."' AND final = 1 ";
-                                                                    if($conn->query($tombolaSuccess)){}
+                                    $tombolaFinSuccess = "UPDATE promo_code SET final = 2, data = NOW() WHERE promocode = '".$userID->promocode."' AND final = 1 ";
+                                       if($conn->query($tombolaFinSuccess)){}
                                 }
                             }
 
