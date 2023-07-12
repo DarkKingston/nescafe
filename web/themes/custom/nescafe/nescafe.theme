@@ -741,7 +741,7 @@ $arrFil = [];
                                 dump($file_path);
                                 dump($file_name);
                             }
-                            $final_path = str_replace('public://', '', $file_path)
+                            $final_path = str_replace('public://', '', $file_path);
                             print "<img src='/sites/default/files/".$final_path."'>";
 
         }
