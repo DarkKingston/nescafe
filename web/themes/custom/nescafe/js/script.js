@@ -3,8 +3,8 @@
   Drupal.behaviors.navbarBehavior = {
     attach: function (context, settings) {
 
-      $('.user-login-form .form-item-name input').mask('37399999999');
-      $('.user-register-form .form-item-name input').mask('37399999999');
+      // $('.user-login-form .form-item-name input').mask('37399999999');
+      // $('.user-register-form .form-item-name input').mask('37399999999');
 
 
 
