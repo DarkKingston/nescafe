@@ -496,7 +496,7 @@ TABLE;
                             $filteredArray = [];
                             foreach ($arrShow as $value) {
                                 if (isUnique($filteredArray, "name", $val["name"])) {
-                                    $filteredArray[] = $value;
+                                    $filteredArray[] = $val;
                                 }
                             }
                             foreach ($filteredArray as $filteredVal) {
