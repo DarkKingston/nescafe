@@ -709,9 +709,9 @@ $arrFil = [];
                                             $checkCounter++;
                                         }
                                 if($checkCounter == 0){
-                                    $tombolaSuccess = "UPDATE promo_code SET tombola = 1,premiu = 'Tombola zilnica',status = 2, data = NOW() WHERE promocode = '".$userID->promocode."' AND tombola = 0 ";
+                                    $tombolaSuccess = "UPDATE promo_code SET tombola = 1,status = 0, data = NOW() WHERE promocode = '".$userID->promocode."' AND tombola = 0 ";
                                     if($conn->query($tombolaSuccess)){
-                                        print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_gift' data-dialog-type='modal'>
+                                        print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_final' data-dialog-type='modal'>
                                             <div>Felicitari ati fost ales participant la tombola zilnica!</div>
                                             <div class='btn_main action closePopup'>Inchide</div>
                                         </form>

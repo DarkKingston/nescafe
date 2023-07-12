@@ -17,6 +17,7 @@
 
       $('.closePopup',context).on('click',function(){
         $('.popup_gift').hide();
+        $('.popup_final').hide();
       });
 
       let phone;
