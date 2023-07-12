@@ -677,6 +677,18 @@ form .form-item label{
   border: 1px solid #cecece;
   box-shadow: 0 2px 10px #000;
 }
+.popup_final{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 280px;
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px 25px;
+  border: 1px solid #cecece;
+  box-shadow: 0 2px 10px #000;
+}
 
 .popup_gift select{
   width: 100%;

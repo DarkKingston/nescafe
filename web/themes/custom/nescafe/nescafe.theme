@@ -540,7 +540,6 @@ $arrFil = [];
                                      }
                                  }
                             }
-                            dump($userID);
                             if($total % 10 ==0 && $userID->premiu == ''){
                             $checkPromo = "SELECT * FROM promo_code WHERE status = 10 AND status = 1 AND active = '".$curr_id_for_user."'";
                                                         $checkPromoItem = $conn->query($checkPromo);
@@ -702,20 +701,29 @@ $arrFil = [];
                                                                }
                             }
                             if($total % 15 ==0 && $userID->premiu == '' && $userID->tombola == 0){
-                                $tombolaSuccess = "UPDATE promo_code SET tombola = 1,premiu = 'Tombola zilnica',status = 2, data = NOW() WHERE promocode = '".$userID->promocode."' AND tombola = 0 ";
-                                if($conn->query($tombolaSuccess)){
-                                    print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_gift' data-dialog-type='modal'>
-                                        <div>Felicitari ati fost ales participant la tombola zilnica!</div>
-                                        <div class='btn_main action closePopup'>Inchide</div>
-                                    </form>
-                                    ";
+                                $sqlCheck = "SELECT * FROM promo_code WHERE id = '".$userID->active."' and tombola = 1";
+                                 $checkPromoItem = $conn->query($sqlCheck);
+                                        $checkPromoItem->setFetchMode(\PDO::FETCH_OBJ);
+                                        $checkCounter = 0;
+                                        foreach($checkPromoItem as $checkItem){
+                                            $checkCounter++;
+                                        }
+                                if($checkCounter == 0){
+                                    $tombolaSuccess = "UPDATE promo_code SET tombola = 1,premiu = 'Tombola zilnica',status = 2, data = NOW() WHERE promocode = '".$userID->promocode."' AND tombola = 0 ";
+                                    if($conn->query($tombolaSuccess)){
+                                        print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_gift' data-dialog-type='modal'>
+                                            <div>Felicitari ati fost ales participant la tombola zilnica!</div>
+                                            <div class='btn_main action closePopup'>Inchide</div>
+                                        </form>
+                                        ";
+                                    }
                                 }
                             }
                             if($total % 30 == 0 && $userID->premiu == ''){
-                                //echo "Ты учавствуешь в финальную игру";
-                             $tombolaSuccess = "UPDATE promo_code SET final = 1,premiu = 'Tombola finala', data = NOW() WHERE promocode = '".$userID->promocode."' AND final = 0 ";
+
+                             $tombolaSuccess = "UPDATE promo_code SET final = 1, data = NOW() WHERE promocode = '".$userID->promocode."' AND final = 0 ";
                                 if($conn->query($tombolaSuccess)){
-                                   print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_gift' data-dialog-type='modal'>
+                                   print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_final' data-dialog-type='modal'>
                                            <div>Felicitari ati fost ales participant la tombola finala!</div>
                                            <div class='btn_main action closePopup'>Inchide</div>
                                        </form>
