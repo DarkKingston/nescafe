@@ -234,6 +234,7 @@ if(isset($_POST['introduceti_codul_promotional'])){
               $livrare = 'Филиал';
               $promoCode = "Промокод";
               $tombola = 'Лотерея';
+              $tabel = 'Главный';
           }
           if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro'){
               $name = 'Nume';
@@ -245,6 +246,7 @@ if(isset($_POST['introduceti_codul_promotional'])){
               $prem = 'Premiu';
               $livrare = 'Filiala';
               $promoCode = "Promocod";
+              $tabel = 'Principal';
           }
 
           $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` LEFT JOIN `promo_code` ON `users_field_data`.uid = `promo_code`.active WHERE uid != 0 AND `promo_code`.`active` != 0 AND `promo_code`.`status` != 0 ORDER BY uid ASC";
@@ -282,6 +284,7 @@ $sql = $sqlQuery;
 
           print "</tbody>\n</table>\n";
           print "<div class='admin_btns'>
+          <a href='/tabel/principal' class='btn_main stock'>".$tabel."</a>
           <a href='/stock' class='btn_main stock'>".$stats."</a>
           <a href='/tombola' class='btn_main stock logout_btn'>".$tombola."</a>
           <a href='/user/logout' class='btn_main stock logout_btn'>Logout</a>
