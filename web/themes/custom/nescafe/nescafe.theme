@@ -1,4 +1,5 @@
 <?php
+
 use Drupal\Core\Url;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Platformsh\ConfigReader\Config;
@@ -9,62 +10,60 @@ use Drupal\user\Entity\User;
 use Drupal\media\Entity\Media;
 use Drupal\file\Entity\File;
 
-function nescafe_preprocess_links__language_block(&$lang){
+function nescafe_preprocess_links__language_block(&$lang)
+{
     $lang['current_lang'] =  \Drupal::languageManager()->getCurrentLanguage()->getId();
-
 }
 
 
-function nescafe_preprocess_menu__header_btn(&$logged){
+function nescafe_preprocess_menu__header_btn(&$logged)
+{
 
-      $current_user = \Drupal::currentUser();
-
-
-        if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru'){
-                      if ($current_user->isAnonymous()) {
-                            // Анонимный юзер...
-                              print '<div class="cookie_success" style="opacity: 0;height: 0;">ok</div>';
-                             $logged['items']['menu_link_content:782f8d36-a980-4feb-95ab-0c3a0da00875']['title'] = t('Зарегистрируйся и выиграй');
-                          }
-
-                          if ($current_user->isAuthenticated()) {
-                            // Авторизованный юзер...
-                              $routeName = new TranslatableMarkup('view.account.page_1');
-                              $logged['items']['menu_link_content:782f8d36-a980-4feb-95ab-0c3a0da00875']['title'] = t('Личный кабинет');
-                              $logged['items']['menu_link_content:782f8d36-a980-4feb-95ab-0c3a0da00875']['url'] = Url::fromRoute($routeName->getUntranslatedString());
+    $current_user = \Drupal::currentUser();
 
 
-                          }
-      }
-      if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro'){
-          if ($current_user->isAnonymous()) {
-                    // Анонимный юзер...
-                      print '<div class="cookie_success" style="opacity: 0;height: 0;">ok</div>';
-                     $logged['items']['menu_link_content:782f8d36-a980-4feb-95ab-0c3a0da00875']['title'] = t('Înregistrează-te și câștigă');
-                  }
+    if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru') {
+        if ($current_user->isAnonymous()) {
+            // Анонимный юзер...
+            print '<div class="cookie_success" style="opacity: 0;height: 0;">ok</div>';
+            $logged['items']['menu_link_content:782f8d36-a980-4feb-95ab-0c3a0da00875']['title'] = t('Зарегистрируйся и выиграй');
+        }
 
-                  if ($current_user->isAuthenticated()) {
-                    // Авторизованный юзер...
-                      $routeName = new TranslatableMarkup('view.account.page_1');
-                      $logged['items']['menu_link_content:782f8d36-a980-4feb-95ab-0c3a0da00875']['title'] = t('Cabinet personal');
-                      $logged['items']['menu_link_content:782f8d36-a980-4feb-95ab-0c3a0da00875']['url'] = Url::fromRoute($routeName->getUntranslatedString());
+        if ($current_user->isAuthenticated()) {
+            // Авторизованный юзер...
+            $routeName = new TranslatableMarkup('view.account.page_1');
+            $logged['items']['menu_link_content:782f8d36-a980-4feb-95ab-0c3a0da00875']['title'] = t('Личный кабинет');
+            $logged['items']['menu_link_content:782f8d36-a980-4feb-95ab-0c3a0da00875']['url'] = Url::fromRoute($routeName->getUntranslatedString());
+        }
+    }
+    if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro') {
+        if ($current_user->isAnonymous()) {
+            // Анонимный юзер...
+            print '<div class="cookie_success" style="opacity: 0;height: 0;">ok</div>';
+            $logged['items']['menu_link_content:782f8d36-a980-4feb-95ab-0c3a0da00875']['title'] = t('Înregistrează-te și câștigă');
+        }
 
-
-                  }
-      }
+        if ($current_user->isAuthenticated()) {
+            // Авторизованный юзер...
+            $routeName = new TranslatableMarkup('view.account.page_1');
+            $logged['items']['menu_link_content:782f8d36-a980-4feb-95ab-0c3a0da00875']['title'] = t('Cabinet personal');
+            $logged['items']['menu_link_content:782f8d36-a980-4feb-95ab-0c3a0da00875']['url'] = Url::fromRoute($routeName->getUntranslatedString());
+        }
+    }
 }
 
 /*$current_path = \Drupal::service('path.current')->getPath();*/
 
 
-function nescafe_preprocess_page(&$page){
+function nescafe_preprocess_page(&$page)
+{
     //dump($page);
     $roles = \Drupal::currentUser()->getRoles();
 
 
-$config = new Config();
+    $config = new Config();
 
-$credentials = $config->credentials('database');
+    $credentials = $config->credentials('database');
 
     $dsn = sprintf('mysql:host=%s;port=%d;dbname=%s', $credentials['host'], $credentials['port'], $credentials['path']);
     $conn = new \PDO($dsn, $credentials['username'], $credentials['password'], [
@@ -73,54 +72,53 @@ $credentials = $config->credentials('database');
         \PDO::MYSQL_ATTR_FOUND_ROWS => TRUE,
     ]);
 
-        $curr_id_for_user = \Drupal::currentUser()->id();
-        if(!in_array('player', $roles) && !in_array('administrator', $roles) && !in_array('manager_filiala', $roles)){
-              $role_id = 'player';
+    $curr_id_for_user = \Drupal::currentUser()->id();
+    if (!in_array('player', $roles) && !in_array('administrator', $roles) && !in_array('manager_filiala', $roles)) {
+        $role_id = 'player';
 
-              $user = User::load($curr_id_for_user);
+        $user = User::load($curr_id_for_user);
 
-              $user->addRole($role_id);
-              $user->save();
+        $user->addRole($role_id);
+        $user->save();
+    }
+
+    if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru') {
+        $accept = "Принять";
+        $reject = "Не принимаю";
+    }
+    if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro') {
+        $accept = "Accept";
+        $reject = "Nu accept";
+    }
+    if ($curr_id_for_user != 0) {
+        if (isset($_POST['cookie_accept'])) {
+            $insertCookie = "INSERT INTO cookie (ip, date)VALUES('$curr_id_for_user', NOW())";
+            if ($conn->query($insertCookie)) {
+                //echo "ok";
+            }
+            $_SESSION['cookie'] = 'accept';
+        }
+        if (isset($_POST['cookie_reject'])) {
+            $_SESSION['cookie'] = 'no';
         }
 
-        if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru'){
-                          $accept = "Принять";
-                          $reject = "Не принимаю";
-                      }
-                      if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro'){
-                          $accept = "Accept";
-                          $reject = "Nu accept";
-                      }
-         if($curr_id_for_user != 0){
-                        if(isset($_POST['cookie_accept'])){
-                                      $insertCookie = "INSERT INTO cookie (ip, date)VALUES('$curr_id_for_user', NOW())";
-                                        if($conn->query($insertCookie)){
-                                           //echo "ok";
-                                        }
-                                       $_SESSION['cookie'] = 'accept';
-                                   }
-                                   if(isset($_POST['cookie_reject'])){
-                                      $_SESSION['cookie'] = 'no';
-                                   }
+
+        $sql = "SELECT * FROM cookie WHERE ip = '" . $curr_id_for_user . "' ";
+        $result = $conn->query($sql);
+        $result->setFetchMode(\PDO::FETCH_OBJ);
+
+        if ($result) {
+            foreach ($result as $record) {
+            }
+        }
+        if (isset($record)) {
+            $hidden = 'hidden';
+        }
+        if (empty($record)) {
+            $hidden = '';
 
 
-$sql = "SELECT * FROM cookie WHERE ip = '".$curr_id_for_user."' ";
-             $result = $conn->query($sql);
-             $result->setFetchMode(\PDO::FETCH_OBJ);
-
-             if ($result) {
-             foreach ($result as $record) {
-
-             }
-             }
-             if(isset($record)){
-                $hidden = 'hidden';
-             }
-             if(empty($record)){
-                $hidden = '';
-
-
-                print "<div class='cookie ".$hidden."'>
+            print "<div class='cookie " . $hidden . "'>
                     <div class='cookie_box'>
                       <div class='cookie_title'>
                         Мы используем файлы cookie
@@ -130,24 +128,24 @@ $sql = "SELECT * FROM cookie WHERE ip = '".$curr_id_for_user."' ";
                       </div>
 
                       <form method='post'>
-                            <input type='submit' name='cookie_reject' class='cookie_reject' value='".$reject."'>
-                            <input type='submit' name='cookie_accept' class='cookie_accept' value='".$accept."'>
+                            <input type='submit' name='cookie_reject' class='cookie_reject' value='" . $reject . "'>
+                            <input type='submit' name='cookie_accept' class='cookie_accept' value='" . $accept . "'>
                       </form>
 
                         </div>
                   </div>";
-             }
-}else{
-    if($_SESSION['cookie'] != 'accept'){
-    if(isset($_POST['cookie_reject'])){
-      $_SESSION['cookie'] = 'accept';
-        $hidden = 'hidden';
-   }
-   if(isset($_POST['cookie_accept'])){
-      $_SESSION['cookie'] = 'accept';
-      $hidden = 'hidden';
-   }
-        print "<div class='cookie ".$hidden."'>
+        }
+    } else {
+        if ($_SESSION['cookie'] != 'accept') {
+            if (isset($_POST['cookie_reject'])) {
+                $_SESSION['cookie'] = 'accept';
+                $hidden = 'hidden';
+            }
+            if (isset($_POST['cookie_accept'])) {
+                $_SESSION['cookie'] = 'accept';
+                $hidden = 'hidden';
+            }
+            print "<div class='cookie " . $hidden . "'>
             <div class='cookie_box'>
               <div class='cookie_title'>
                 Мы используем файлы cookie
@@ -157,35 +155,34 @@ $sql = "SELECT * FROM cookie WHERE ip = '".$curr_id_for_user."' ";
               </div>
 
               <form method='post'>
-                    <input type='submit' name='cookie_reject' class='cookie_reject' value='".$reject."'>
-                    <input type='submit' name='cookie_accept' class='cookie_accept' value='".$accept."'>
+                    <input type='submit' name='cookie_reject' class='cookie_reject' value='" . $reject . "'>
+                    <input type='submit' name='cookie_accept' class='cookie_accept' value='" . $accept . "'>
               </form>
 
                 </div>
             </div>";
+        }
+    }
+
+
+    if (isset($_POST['reglamentAccept'])) {
+        $_SESSION['reglament'] = 'accept';
+        header("Location: /register");
+    };
+
+    if ($_SESSION['reglament'] == 'accept') {
+        print "<div class='reg_accept hidden'>regaccept</div>";
     }
 }
 
 
-if(isset($_POST['reglamentAccept'])){
-    $_SESSION['reglament'] = 'accept';
-    header("Location: /register");
-};
+function nescafe_preprocess_region__account(&$elem)
+{
+    $curr_id_for_user = \Drupal::currentUser()->id();
 
-if($_SESSION['reglament'] == 'accept'){
-    print "<div class='reg_accept hidden'>regaccept</div>";
-}
+    $config = new Config();
 
-
-}
-
-
-function nescafe_preprocess_region__account(&$elem){
-$curr_id_for_user = \Drupal::currentUser()->id();
-
-$config = new Config();
-
-$credentials = $config->credentials('database');
+    $credentials = $config->credentials('database');
 
     $dsn = sprintf('mysql:host=%s;port=%d;dbname=%s', $credentials['host'], $credentials['port'], $credentials['path']);
     $conn = new \PDO($dsn, $credentials['username'], $credentials['password'], [
@@ -196,97 +193,96 @@ $credentials = $config->credentials('database');
 
     $roles = \Drupal::currentUser()->getRoles();
 
-if(isset($_POST['introduceti_codul_promotional'])){
-              $config = new Config();
-              $credentials = $config->credentials('database');
-              $dsn = sprintf('mysql:host=%s;port=%d;dbname=%s', $credentials['host'], $credentials['port'], $credentials['path']);
-              $conn = new \PDO($dsn, $credentials['username'], $credentials['password'], [
-                  \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
-                  \PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => TRUE,
-                  \PDO::MYSQL_ATTR_FOUND_ROWS => TRUE,
-              ]);
+    if (isset($_POST['introduceti_codul_promotional'])) {
+        $config = new Config();
+        $credentials = $config->credentials('database');
+        $dsn = sprintf('mysql:host=%s;port=%d;dbname=%s', $credentials['host'], $credentials['port'], $credentials['path']);
+        $conn = new \PDO($dsn, $credentials['username'], $credentials['password'], [
+            \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
+            \PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => TRUE,
+            \PDO::MYSQL_ATTR_FOUND_ROWS => TRUE,
+        ]);
 
-      $sql = "SELECT * FROM promo_code WHERE active = 0";
-             $result = $conn->query($sql);
-             $result->setFetchMode(\PDO::FETCH_OBJ);
+        $sql = "SELECT * FROM promo_code WHERE active = 0";
+        $result = $conn->query($sql);
+        $result->setFetchMode(\PDO::FETCH_OBJ);
 
-             if ($result) {
-             foreach ($result as $record) {
-                 if($record->active == 0){
-                          $sql = "UPDATE promo_code SET active = '".$curr_id_for_user."',  data = NOW() WHERE promocode = '".$_POST['introduceti_codul_promotional']."' AND active = 0  ";
-                 }
-             }
-                  if($conn->query($sql)){
-                    //echo 'ok';
-                  }
-             }
-         }
+        if ($result) {
+            foreach ($result as $record) {
+                if ($record->active == 0) {
+                    $sql = "UPDATE promo_code SET active = '" . $curr_id_for_user . "',  data = NOW() WHERE promocode = '" . $_POST['introduceti_codul_promotional'] . "' AND active = 0  ";
+                }
+            }
+            if ($conn->query($sql)) {
+                //echo 'ok';
+            }
+        }
+    }
 
-/*Для администратора*/
-   if(in_array('authenticated', $roles) && in_array('administrator', $roles)){
-   if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru'){
-              $name = 'Имя';
-              $phone = 'Телефон';
-              $action = "Деталии";
-              $mail = 'Почта';
-              $stats = 'Сток';
-              $prem = 'Приз';
-              $livrare = 'Филиал';
-              $promoCode = "Промокод";
-              $tombola = 'Лотерея';
-              $tabel = 'Главный';
-          }
-          if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro'){
-              $name = 'Nume';
-              $phone = "Telefon";
-              $action = 'Detalii';
-              $mail = 'Posta';
-              $stats = 'Stoc';
-              $tombola = 'Tombola';
-              $prem = 'Premiu';
-              $livrare = 'Filiala';
-              $promoCode = "Promocod";
-              $tabel = 'Principal';
-          }
+    /*Для администратора*/
+    if (in_array('authenticated', $roles) && in_array('administrator', $roles)) {
+        if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru') {
+            $name = 'Имя';
+            $phone = 'Телефон';
+            $action = "Деталии";
+            $mail = 'Почта';
+            $stats = 'Сток';
+            $prem = 'Приз';
+            $livrare = 'Филиал';
+            $promoCode = "Промокод";
+            $tombola = 'Лотерея';
+            $tabel = 'Главный';
+        }
+        if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro') {
+            $name = 'Nume';
+            $phone = "Telefon";
+            $action = 'Detalii';
+            $mail = 'Posta';
+            $stats = 'Stoc';
+            $tombola = 'Tombola';
+            $prem = 'Premiu';
+            $livrare = 'Filiala';
+            $promoCode = "Promocod";
+            $tabel = 'Principal';
+        }
 
-          $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` LEFT JOIN `promo_code` ON `users_field_data`.uid = `promo_code`.active WHERE uid != 0 AND `promo_code`.`active` != 0 AND `promo_code`.`status` != 0 ORDER BY uid ASC";
+        $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` LEFT JOIN `promo_code` ON `users_field_data`.uid = `promo_code`.active WHERE uid != 0 AND `promo_code`.`active` != 0 AND `promo_code`.`status` != 0 ORDER BY uid ASC";
 
- if(isset($_POST['filSearch']) && $_POST['filiala_inp'] != ''){
-                            if($_POST['filiala_inp'] == 'Toate'){
-                             $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` LEFT JOIN `promo_code` ON `users_field_data`.uid = `promo_code`.active WHERE uid != 0 AND `promo_code`.`active` != 0 AND `promo_code`.`status` != 0 ORDER BY uid ASC";
-                            }else{
-                                $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` LEFT JOIN `promo_code` ON `users_field_data`.uid = `promo_code`.active WHERE uid != 0 AND `promo_code`.`active` != 0 AND `promo_code`.`status` != 0 AND `promo_code`.`livrare` = '".$_POST['filiala_inp']."' ORDER BY uid ASC";
-                            }
+        if (isset($_POST['filSearch']) && $_POST['filiala_inp'] != '') {
+            if ($_POST['filiala_inp'] == 'Toate') {
+                $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` LEFT JOIN `promo_code` ON `users_field_data`.uid = `promo_code`.active WHERE uid != 0 AND `promo_code`.`active` != 0 AND `promo_code`.`status` != 0 ORDER BY uid ASC";
+            } else {
+                $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` LEFT JOIN `promo_code` ON `users_field_data`.uid = `promo_code`.active WHERE uid != 0 AND `promo_code`.`active` != 0 AND `promo_code`.`status` != 0 AND `promo_code`.`livrare` = '" . $_POST['filiala_inp'] . "' ORDER BY uid ASC";
+            }
+        } else {
+            $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` LEFT JOIN `promo_code` ON `users_field_data`.uid = `promo_code`.active WHERE uid != 0 AND `promo_code`.`active` != 0 AND `promo_code`.`status` != 0 ORDER BY uid ASC";
+        }
 
-                       }else{
-                        $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` LEFT JOIN `promo_code` ON `users_field_data`.uid = `promo_code`.active WHERE uid != 0 AND `promo_code`.`active` != 0 AND `promo_code`.`status` != 0 ORDER BY uid ASC";
-                       }
+        $sql = $sqlQuery;
+        //dump($sql);
+        $result = $conn->query($sql);
+        $result->setFetchMode(\PDO::FETCH_OBJ);
 
-$sql = $sqlQuery;
-    //dump($sql);
-    $result = $conn->query($sql);
-    $result->setFetchMode(\PDO::FETCH_OBJ);
-
-                  print <<<TABLE
+        print <<<TABLE
           <table id="table8">
           <thead>
           <tr><th>ID</th><th>$name</th><th>$mail</th><th>$phone</th><th>$prem</th><th>$livrare</th><th>$promoCode</th><th>$action</th></tr>
           </thead>
           <tbody>
           TABLE;
-          $count = 1;
-              foreach ($result as $record) {
-              //dump($record);
-                      printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><a href='/details?id=%s' data-id='%s' class='btn_main action'>%s</a></td></tr>\n", $count, $record->name, $record->mail, $record->field_phone_value, $record->premiu, $record->livrare, $record->promocode, $record->uid, $record->uid, $action);
+        $count = 1;
+        foreach ($result as $record) {
+            //dump($record);
+            printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><a href='/details?id=%s' data-id='%s' class='btn_main action'>%s</a></td></tr>\n", $count, $record->name, $record->mail, $record->field_phone_value, $record->premiu, $record->livrare, $record->promocode, $record->uid, $record->uid, $action);
 
-                   $count++;
-              }
+            $count++;
+        }
 
-          print "</tbody>\n</table>\n";
-          print "<div class='admin_btns'>
-          <a href='/tabel-principal' class='btn_main stock'>".$tabel."</a>
-          <a href='/stock' class='btn_main stock logout_btn'>".$stats."</a>
-          <a href='/tombola' class='btn_main stock logout_btn'>".$tombola."</a>
+        print "</tbody>\n</table>\n";
+        print "<div class='admin_btns'>
+          <a href='/tabel-principal' class='btn_main stock'>" . $tabel . "</a>
+          <a href='/stock' class='btn_main stock logout_btn'>" . $stats . "</a>
+          <a href='/tombola' class='btn_main stock logout_btn'>" . $tombola . "</a>
           <a href='/user/logout' class='btn_main stock logout_btn'>Logout</a>
           <form method='post' class='search_fil'>
              <select name='filiala_inp'>
@@ -300,250 +296,243 @@ $sql = $sqlQuery;
              <input type='submit' name='filSearch' value='Cauta' class='btn_main action search_filiala'>
           </form>
           </div>";
-
     }
 
-/* Sql запросы по ролям */
+    /* Sql запросы по ролям */
 
-        //if(in_array('administrator', $roles)) {
-        //    $sqlQuery = "SELECT * FROM promo_code WHERE active <> 0";
-        //    $sqlQuery = "SELECT * FROM promo_code WHERE active <> 0";
-        //}
-        if(in_array('player', $roles) && !in_array('administrator', $roles)){
-          $sqlQuery = "SELECT * FROM promo_code WHERE active = '".$curr_id_for_user."' ORDER BY data ASC";
-
-        }
-        if(in_array('authenticated', $roles) && in_array('manager_filiala', $roles) && !in_array('administrator', $roles)){
-          if(isset($_POST['submitSearch']) && $_POST['search'] != ''){
-                $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` LEFT JOIN `promo_code` ON `users_field_data`.`uid` = `promo_code`.`active`  WHERE uid != 0 AND  `user__field_phone`.`field_phone_value` LIKE '%".$_POST['search']."%' AND `promo_code`.`active` != 0 AND `promo_code`.`status` = 2 ";
+    //if(in_array('administrator', $roles)) {
+    //    $sqlQuery = "SELECT * FROM promo_code WHERE active <> 0";
+    //    $sqlQuery = "SELECT * FROM promo_code WHERE active <> 0";
+    //}
+    if (in_array('player', $roles) && !in_array('administrator', $roles)) {
+        $sqlQuery = "SELECT * FROM promo_code WHERE active = '" . $curr_id_for_user . "' ORDER BY data ASC";
+    }
+    if (in_array('authenticated', $roles) && in_array('manager_filiala', $roles) && !in_array('administrator', $roles)) {
+        if (isset($_POST['submitSearch']) && $_POST['search'] != '') {
+            $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` LEFT JOIN `promo_code` ON `users_field_data`.`uid` = `promo_code`.`active`  WHERE uid != 0 AND  `user__field_phone`.`field_phone_value` LIKE '%" . $_POST['search'] . "%' AND `promo_code`.`active` != 0 AND `promo_code`.`status` = 2 ";
             //dump($_POST);
-           }else{
+        } else {
             $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` LEFT JOIN `promo_code` ON `users_field_data`.uid = `promo_code`.active WHERE uid != 0 AND `promo_code`.`active` != 0 AND `promo_code`.`status` = 2 ORDER BY uid ASC";
-
-           }
-
         }
+    }
 
 
 
     // Кастомный запрос по ролям приравниваю к переменной sql
-    if($sqlQuery != ''){
-    $sql = $sqlQuery;
-    //dump($sql);
-    $result = $conn->query($sql);
-    $result->setFetchMode(\PDO::FETCH_OBJ);
-    $sql2 = "SELECT * FROM promo_code WHERE active <> 0";
-    $result2 = $conn->query($sql2);
-    $result2->setFetchMode(\PDO::FETCH_OBJ);
+    if ($sqlQuery != '') {
+        $sql = $sqlQuery;
+        //dump($sql);
+        $result = $conn->query($sql);
+        $result->setFetchMode(\PDO::FETCH_OBJ);
+        $sql2 = "SELECT * FROM promo_code WHERE active <> 0";
+        $result2 = $conn->query($sql2);
+        $result2->setFetchMode(\PDO::FETCH_OBJ);
 
-    //dump($conn->query($sql));
-    if ($result) {
-if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru'){
-    $promo = 'Промо код';
-    $number = 'Выйгрыш';
-    $filial = 'Филиал';
-    $send = 'отправить';
-    $intro = 'Введите промокод';
-}
-if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro'){
-    $promo = 'Codul Promotional';
-    $number = 'Premiu';
-    $filial = 'Filiala';
-    $send = 'Trimite';
-    $intro = 'Introduceti codul promotional';
-}
+        //dump($conn->query($sql));
+        if ($result) {
+            if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru') {
+                $promo = 'Промо код';
+                $number = 'Выйгрыш';
+                $filial = 'Филиал';
+                $send = 'отправить';
+                $intro = 'Введите промокод';
+            }
+            if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro') {
+                $promo = 'Codul Promotional';
+                $number = 'Premiu';
+                $filial = 'Filiala';
+                $send = 'Trimite';
+                $intro = 'Introduceti codul promotional';
+            }
 
-/*Обычный пользователь Вывод промокодов который он вводил*/
- if(in_array('player', $roles) && !in_array('manager_filiala', $roles) && !in_array('administrator', $roles)){
+            /*Обычный пользователь Вывод промокодов который он вводил*/
+            if (in_array('player', $roles) && !in_array('manager_filiala', $roles) && !in_array('administrator', $roles)) {
 
-        print <<<TABLE
+                print <<<TABLE
 <table id="table8">
 <thead>
 <tr><th>ID</th><th>$promo</th><th>$number</th><th>$filial</th></tr>
 </thead>
 <tbody>
 TABLE;
-$count = 1;
-$score = 0;
-$total = 0;
-$promoTotal = 0;
-foreach($result2 as $record2){
-//dump($record2);
-    if(!preg_match("/^([0-9])+$/", $record2->promocode)){
-        $promoTotal += 1;
-    }else{
-        $promoTotal += 1;
-    }
-}
-        foreach ($result as $record) {
-
-            if ($result) {
-                if(!preg_match("/^([0-9])+$/", $record->promocode)){
-                    $score = 2;
-                    $total += 1;
-                }else{
-                    $score = 1;
-                    $total += 1;
+                $count = 1;
+                $score = 0;
+                $total = 0;
+                $promoTotal = 0;
+                foreach ($result2 as $record2) {
+                    //dump($record2);
+                    if (!preg_match("/^([0-9])+$/", $record2->promocode)) {
+                        $promoTotal += 1;
+                    } else {
+                        $promoTotal += 1;
+                    }
                 }
-                    printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $record->promocode, $record->premiu, $record->livrare);
+                foreach ($result as $record) {
+
+                    if ($result) {
+                        if (!preg_match("/^([0-9])+$/", $record->promocode)) {
+                            $score = 2;
+                            $total += 1;
+                        } else {
+                            $score = 1;
+                            $total += 1;
+                        }
+                        printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $record->promocode, $record->premiu, $record->livrare);
 
                         $count++;
+                    }
+                }
+                print "</tbody>\n</table>\n";
+                print "<div class='promo_add'> <form method='post'><div class='promo_group'><label>$intro</label><input type='text' class='promo_add_inp' name='introduceti_codul_promotional'></div> <input type='submit' value='$send' class='promo_send' name='submit_popup'></form> <a href='/user/logout' class='btn_main stock logout_btn'>Logout</a></div>";
             }
-
         }
-        print "</tbody>\n</table>\n";
-        print "<div class='promo_add'> <form method='post'><div class='promo_group'><label>$intro</label><input type='text' class='promo_add_inp' name='introduceti_codul_promotional'></div> <input type='submit' value='$send' class='promo_send' name='submit_popup'></form> <a href='/user/logout' class='btn_main stock logout_btn'>Logout</a></div>";
 
-}
-}
+        /* Для менеджера филиала */
+        if (in_array('authenticated', $roles) && in_array('manager_filiala', $roles) && !in_array('administrator', $roles)) {
 
-/* Для менеджера филиала */
-   if(in_array('authenticated', $roles) && in_array('manager_filiala', $roles) && !in_array('administrator', $roles)){
-
-       if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru'){
-           $name = 'Имя';
-           $phone = 'Телефон';
-           $action = "Подтвердить";
-           $mail = 'Почта';
-           $stats = 'Сток';
-           $prem = 'Приз';
-           $livrare = 'Филиал';
-       }
-       if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro'){
-           $name = 'Nume';
-           $phone = "Telefon";
-           $action = 'Confirma';
-           $mail = 'Posta';
-           $stats = 'Stoc';
-           $prem = 'Premiu';
-           $livrare = 'Filiala';
-       }
-               print <<<TABLE
+            if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru') {
+                $name = 'Имя';
+                $phone = 'Телефон';
+                $action = "Подтвердить";
+                $mail = 'Почта';
+                $stats = 'Сток';
+                $prem = 'Приз';
+                $livrare = 'Филиал';
+            }
+            if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro') {
+                $name = 'Nume';
+                $phone = "Telefon";
+                $action = 'Confirma';
+                $mail = 'Posta';
+                $stats = 'Stoc';
+                $prem = 'Premiu';
+                $livrare = 'Filiala';
+            }
+            print <<<TABLE
        <table id="table8">
        <thead>
        <tr><th>ID</th><th>$name</th><th>$mail</th><th>$phone</th><th>$prem</th><th>$livrare</th><th>$action</th></tr>
        </thead>
        <tbody>
        TABLE;
-       $count = 1;
-           foreach ($result as $record) {
-           //dump($record);
-                   printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><a href='/verify' data-id='%s' class='use-ajax webform-dialog webform-dialog-narrow btn_main action' data-dialog-type='modal'>%s</a></td></tr>\n", $count, $record->name, $record->mail, $record->field_phone_value, $record->premiu, $record->livrare,$record->uid, $action);
+            $count = 1;
+            foreach ($result as $record) {
+                //dump($record);
+                printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><a href='/verify' data-id='%s' class='use-ajax webform-dialog webform-dialog-narrow btn_main action' data-dialog-type='modal'>%s</a></td></tr>\n", $count, $record->name, $record->mail, $record->field_phone_value, $record->premiu, $record->livrare, $record->uid, $action);
 
                 $count++;
-           }
+            }
 
-       print "</tbody>\n</table>\n";
+            print "</tbody>\n</table>\n";
 
-       print "
+            print "
                 <form method='post'>
                     <input type='text' name='search' class='search_inp'>
                     <input type='submit' name='submitSearch' value='Cauta' class='btn_main action search_btn'>
                 </form>
        ";
-       print "<div class='admin_btns'><a href='/stock' class='btn_main stock'>".$stats."</a> <a href='/user/logout' class='btn_main stock logout_btn'>Logout</a></div>";
+            print "<div class='admin_btns'><a href='/stock' class='btn_main stock'>" . $stats . "</a> <a href='/user/logout' class='btn_main stock logout_btn'>Logout</a></div>";
+        }
+        /*Код с выводом наград*/
 
-   }
- /*Код с выводом наград*/
-
-        if(in_array('player', $roles) && !in_array('manager_filiala', $roles) && !in_array('administrator', $roles)){
+        if (in_array('player', $roles) && !in_array('manager_filiala', $roles) && !in_array('administrator', $roles)) {
 
 
-                         $getUserID = "SELECT * FROM promo_code WHERE active != 0 ORDER BY data DESC LIMIT 1";
-                        $res = $conn->query($getUserID);
-                        $res->setFetchMode(\PDO::FETCH_OBJ);
-                        foreach($res as $userID){
+            $getUserID = "SELECT * FROM promo_code WHERE active != 0 ORDER BY data DESC LIMIT 1";
+            $res = $conn->query($getUserID);
+            $res->setFetchMode(\PDO::FETCH_OBJ);
+            foreach ($res as $userID) {
+            }
+            if ($curr_id_for_user == $userID->active) {
+                if (($promoTotal % 7) == 0 && $userID->premiu == '') {
+                    $promoSuccess = "UPDATE promo_code SET status = 1, data = NOW() WHERE promocode = '" . $userID->promocode . "' AND status = 0 ";
+                    if ($conn->query($promoSuccess)) {
+                        $arrData  = array();
+                        $getGift = "SELECT * FROM webform_submission_data WHERE webform_id = 'cadouri'  ";
+                        $giftVal = $conn->query($getGift);
+                        foreach ($giftVal as $gift => $val) {
+                            $arrData[$val['sid']][$val['name']] = $val;
+                            //dump($val);
+                            //dump($val['value']);
                         }
-                            if($curr_id_for_user == $userID->active){
-                                if(($promoTotal % 7) == 0 && $userID->premiu == ''){
-                                    $promoSuccess = "UPDATE promo_code SET status = 1, data = NOW() WHERE promocode = '".$userID->promocode."' AND status = 0 ";
-                                    if($conn->query($promoSuccess)){
-                                        $arrData  = array();
-                                        $getGift = "SELECT * FROM webform_submission_data WHERE webform_id = 'cadouri'  ";
-                                        $giftVal = $conn->query($getGift);
-                                        foreach($giftVal as $gift=>$val){
-                                            $arrData[ $val['sid'] ][ $val['name'] ] = $val;
-                                            //dump($val);
-                                            //dump($val['value']);
-                                        }
 
 
-                                        // dump($arrData);
+                        // dump($arrData);
 
-                                        $arrShowF = array();
-                                        foreach($arrData as $IDgift => $val){
-                                            foreach($val as $name => $val2){
-                                                if( $name == 'categoria_de_produs' && $val2['value'] == 3 ) {
-                                                    // $val['title'] = $val[''];
-                                                    $arrShowF[[$IDgift]['filiala']['value']][] = array( 'name' => $arrData[$IDgift]['premiu']['value'] ,'filiala' => $arrData[$IDgift]['filiala']['value'], 'id' => $IDgift );
-                                                    }
-                                            }
-                                        }
-//dump($arrShowF);
-$arr = [];
-$arrFil = [];
-                                        foreach($arrShowF as $filiala => $arrShow){
+                        $arrShowF = array();
+                        foreach ($arrData as $IDgift => $val) {
+                            foreach ($val as $name => $val2) {
+                                if ($name == 'categoria_de_produs' && $val2['value'] == 3) {
+                                    // $val['title'] = $val[''];
+                                    $arrShowF[[$IDgift]['filiala']['value']][] = array('name' => $arrData[$IDgift]['premiu']['value'], 'filiala' => $arrData[$IDgift]['filiala']['value'], 'id' => $IDgift);
+                                }
+                            }
+                        }
+                        //dump($arrShowF);
+                        $arr = [];
+                        $arrFil = [];
+                        foreach ($arrShowF as $filiala => $arrShow) {
 
 
-                                                                $option = '';
-                                                                $option2 = '';
-                                                                 foreach($arrShow as $ft => $val){
+                            $option = '';
+                            $option2 = '';
+                            foreach ($arrShow as $ft => $val) {
 
-                                                                 $arr[] = $val['name'];
-                                                                 $arrFil[] = $val['filiala'];
-                                                                 //dump($arrShow);
-                                                                 }
-                                                                 function isUnique($array, $key, $value)
-                                                                 {
-                                                                     foreach ($array as $item) {
-                                                                         if ($item[$key] === $value) {
-                                                                             return false;
-                                                                         }
-                                                                     }
-                                                                     return true;
-                                                                 }
-
-                                                                 // Отфильтрованный массив с уникальными элементами по полю "name"
-                                                                 $filteredArray = [];
-                                                                 foreach ($arrShow as $value) {
-                                                                     if (isUnique($filteredArray, "name", $value["name"])) {
-                                                                         $filteredArray[] = $value;
-                                                                     }
-                                                                 }
-                                                                 foreach($filteredArray as $filteredVal){
-                                                                     $file_storage = \Drupal::service('entity_type.manager')->getStorage('file');
-                                                                     $file = $file_storage->load($filteredVal['image']);
-                                                                     if ($file) {
-                                                                       $file_path = $file->getFileUri(); // Получение пути к файлу.
-                                                                       $file_name = $file->getFilename(); // Получение имени файла.
-
-                                                                     }
-                                                                     $string = str_replace("public://", "", $file_path);
-                                                                     $arrImg .= "<img src='/sites/default/files/".$string."'>";
-                                                                 }
-                                                                 $arrFilUnique = array_unique($arrFil);
-                                                                 foreach($arrFilUnique as $filVal){
-                                                                    $option2 .= " <option>".$filVal."</option> ";
-                                                                 }
-          $arrUnique = array_unique($arr);
-                                                                 foreach($arrUnique as $arrVal){
-                                                                    $option .= " <option>".$arrVal."</option> ";
-                                                                 }
-                                        }
-//dump($arrUnique);
-
-                                        //dump($arrShow);
+                                $arr[] = $val['name'];
+                                $arrFil[] = $val['filiala'];
+                                //dump($arrShow);
+                            }
+                            function isUnique($array, $key, $value)
+                            {
+                                foreach ($array as $item) {
+                                    if ($item[$key] === $value) {
+                                        return false;
                                     }
+                                }
+                                return true;
+                            }
 
-                                    print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_gift' data-dialog-type='modal'>
+                            // Отфильтрованный массив с уникальными элементами по полю "name"
+                            $filteredArray = [];
+                            foreach ($arrShow as $value) {
+                                if (isUnique($filteredArray, "name", $value["name"])) {
+                                    $filteredArray[] = $value;
+                                }
+                            }
+                            foreach ($filteredArray as $filteredVal) {
+                                $file_storage = \Drupal::service('entity_type.manager')->getStorage('file');
+                                $file = $file_storage->load($filteredVal['image']);
+                                if ($file) {
+                                    $file_path = $file->getFileUri(); // Получение пути к файлу.
+                                    $file_name = $file->getFilename(); // Получение имени файла.
+
+                                }
+                                $string = str_replace("public://", "", $file_path);
+                                $arrImg .= "<img src='/sites/default/files/" . $string . "'>";
+                            }
+                            $arrFilUnique = array_unique($arrFil);
+                            foreach ($arrFilUnique as $filVal) {
+                                $option2 .= " <option>" . $filVal . "</option> ";
+                            }
+                            $arrUnique = array_unique($arr);
+                            foreach ($arrUnique as $arrVal) {
+                                $option .= " <option>" . $arrVal . "</option> ";
+                            }
+                        }
+                        //dump($arrUnique);
+
+                        //dump($arrShow);
+                    }
+
+                    print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_gift' data-dialog-type='modal'>
                                             <div class='popup_images'>
-                                                ".$arrImg."
+                                                " . $arrImg . "
                                             </div>
                                             <div><select name='premiu'>
-                                                ".$option."
+                                                " . $option . "
                                             </select>
                                             <select name='filial'>
-                                                ".$option2."
+                                                " . $option2 . "
                                             </select>
                                             </div>
                                             <input type='submit' class='btn_main action' name='submitGift' value='Alege'>
@@ -551,76 +540,180 @@ $arrFil = [];
                                         </form>
                                         ";
 
-                                    if(isset($_POST['submitGift'])){
-                                        $updatePromo = "UPDATE promo_code SET premiu = '".$_POST['premiu']."', livrare = '".$_POST['filial']."', status = 2 WHERE promocode = '".$userID->promocode."' AND premiu = '' AND livrare = '' ";
-                                         if($conn->query($updatePromo)){
-                                            //echo "ok";
-                                         }
-                                    }
-
-
-                                }else{
-                                     if(isset($_POST['introduceti_codul_promotional']) && $total % 30 != 0 && $total % 15 != 0 && $total % 7 != 0){
-                                         print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_gift' data-dialog-type='modal'>
+                    if (isset($_POST['submitGift'])) {
+                        $updatePromo = "UPDATE promo_code SET premiu = '" . $_POST['premiu'] . "', livrare = '" . $_POST['filial'] . "', status = 2 WHERE promocode = '" . $userID->promocode . "' AND premiu = '' AND livrare = '' ";
+                        if ($conn->query($updatePromo)) {
+                            //echo "ok";
+                        }
+                    }
+                } else {
+                    if (isset($_POST['introduceti_codul_promotional']) && $total % 30 != 0 && $total % 15 != 0 && $total % 7 != 0) {
+                        print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_gift' data-dialog-type='modal'>
                                              <div>Mai incercati!</div>
                                              <div class='btn_main action closePopup'>Inchide</div>
                                          </form>
                                          ";
-                                     }
-                                 }
+                    }
+                }
+            }
+            if ($total % 10 == 0 && $userID->premiu == '') {
+                $checkPromo = "SELECT * FROM promo_code WHERE status = 10 AND status = 1 AND active = '" . $curr_id_for_user . "'";
+                $checkPromoItem = $conn->query($checkPromo);
+                $checkCounter = 0;
+                foreach ($checkPromoItem as $checkItem) {
+                    $checkCounter++;
+                }
+                if ($checkCounter != 0) {
+                    $promoSuccess = "UPDATE promo_code SET status = 1, data = NOW() WHERE promocode = '" . $userID->promocode . "' AND status = 0 ";
+                    if ($conn->query($promoSuccess)) {
+                        $arrData  = array();
+                        $getGift = "SELECT * FROM webform_submission_data WHERE webform_id = 'cadouri'  ";
+                        $giftVal = $conn->query($getGift);
+                        foreach ($giftVal as $gift => $val) {
+                            $arrData[$val['sid']][$val['name']] = $val;
+                            //dump($val);
+                            //dump($val['value']);
+                        }
+
+
+                        // dump($arrData);
+
+                        $arrShowF = array();
+                        foreach ($arrData as $IDgift => $val) {
+                            foreach ($val as $name => $val2) {
+                                if ($name == 'categoria_de_produs' && $val2['value'] == 2 || $name == 'categoria_de_produs' && $val2['value'] == 3) {
+                                    // $val['title'] = $val[''];
+                                    $arrShowF[[$IDgift]['filiala']['value']][] = array('image' => $arrData[$IDgift]['gift_image']['value'], 'name' => $arrData[$IDgift]['premiu']['value'], 'filiala' => $arrData[$IDgift]['filiala']['value'], 'id' => $IDgift);
+                                }
                             }
-                            if($total % 10 ==0 && $userID->premiu == ''){
-                            $checkPromo = "SELECT * FROM promo_code WHERE status = 10 AND status = 1 AND active = '".$curr_id_for_user."'";
-                                                        $checkPromoItem = $conn->query($checkPromo);
-                                                        $checkCounter = 0;
-                                                        foreach($checkPromoItem as $checkItem){
-                                                            $checkCounter++;
-                                                        }
-                                                        if($checkCounter != 0){
-                                                           $promoSuccess = "UPDATE promo_code SET status = 1, data = NOW() WHERE promocode = '".$userID->promocode."' AND status = 0 ";
-                                                                                               if($conn->query($promoSuccess)){
-                                                                                                   $arrData  = array();
-                                                                                                   $getGift = "SELECT * FROM webform_submission_data WHERE webform_id = 'cadouri'  ";
-                                                                                                   $giftVal = $conn->query($getGift);
-                                                                                                   foreach($giftVal as $gift=>$val){
-                                                                                                       $arrData[ $val['sid'] ][ $val['name'] ] = $val;
-                                                                                                       //dump($val);
-                                                                                                       //dump($val['value']);
-                                                                                                   }
-
-
-                                                                                                   // dump($arrData);
-
-                                                                                                   $arrShowF = array();
-                                                                                                   foreach($arrData as $IDgift => $val){
-                                                                                                       foreach($val as $name => $val2){
-                                                                                                           if( $name == 'categoria_de_produs' && $val2['value'] == 2 || $name == 'categoria_de_produs' && $val2['value'] == 3) {
-                                                                                                               // $val['title'] = $val[''];
-                                                                                                               $arrShowF[[$IDgift]['filiala']['value']][] = array( 'image' => $arrData[$IDgift]['gift_image']['value'],'name' => $arrData[$IDgift]['premiu']['value'] ,'filiala' => $arrData[$IDgift]['filiala']['value'], 'id' => $IDgift );
-                                                                                                               }
-                                                                                                       }
-                                                                                                   }
-                                                           //dump($arrShowF);
-                                                           $arr = [];
-                                                           $arrFil = [];
-                                                           $arrIMG = [];
-                                                                                                   foreach($arrShowF as $filiala => $arrShow){
+                        }
+                        //dump($arrShowF);
+                        $arr = [];
+                        $arrFil = [];
+                        $arrIMG = [];
+                        foreach ($arrShowF as $filiala => $arrShow) {
 
 
 
-                                                                                                                       $option = '';
-                                                                                                                       $option2 = '';
-                                                                                                                        foreach($arrShow as $ft => $val){
+                            $option = '';
+                            $option2 = '';
+                            foreach ($arrShow as $ft => $val) {
 
-                                                                                                                        $arr[] = $val['name'];
-                                                                                                                        $arrFil[] = $val['filiala'];
+                                $arr[] = $val['name'];
+                                $arrFil[] = $val['filiala'];
+                            }
+                            $arrFilUnique =  array_unique($arrFil);
+                            foreach ($arrFilUnique as $arrValFil) {
+                                $option2 .= " <option>" . $arrValFil . "</option> ";
+                            }
+                            function isUnique($array, $key, $value)
+                            {
+                                foreach ($array as $item) {
+                                    if ($item[$key] === $value) {
+                                        return false;
+                                    }
+                                }
+                                return true;
+                            }
 
-                                                                                                                        }
-                                                                                                                        $arrFilUnique =  array_unique($arrFil);
-                                                                                                                        foreach($arrFilUnique as $arrValFil){
-                                                                                                                           $option2 .= " <option>".$arrValFil."</option> ";
+                            // Отфильтрованный массив с уникальными элементами по полю "name"
+                            $filteredArray = [];
+                            foreach ($arrShow as $value) {
+                                if (isUnique($filteredArray, "name", $value["name"])) {
+                                    $filteredArray[] = $value;
+                                }
+                            }
+                            foreach ($filteredArray as $filteredVal) {
+                                $file_storage = \Drupal::service('entity_type.manager')->getStorage('file');
+                                $file = $file_storage->load($filteredVal['image']);
+                                if ($file) {
+                                    $file_path = $file->getFileUri(); // Получение пути к файлу.
+                                    $file_name = $file->getFilename(); // Получение имени файла.
 
-                                                                                                                        }
+                                }
+                                $string = str_replace("public://", "", $file_path);
+                                $arrImg .= "<img src='/sites/default/files/" . $string . "'>";
+                            }
+
+                            $arrUnique = array_unique($arr);
+
+                            foreach ($arrUnique as $arrVal) {
+                                $option .= " <option>" . $arrVal . "</option> ";
+                            }
+                            //dump($arrUnique);
+                            print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_gift' data-dialog-type='modal'>
+                                                                                                        <div class='popup_images'>
+                                                                                                            " . $arrImg . "
+                                                                                                        </div>
+                                                                                                           <select name='premiu'>
+
+                                                                                                               " . $option . "
+                                                                                                           </select>
+                                                                                                           <select name='filial'>
+
+                                                                                                               " . $option2 . "
+                                                                                                           </select>
+                                                                                                           <input type='submit' class='btn_main action' name='submitGift' value='Alege'>
+
+                                                                                                       </form>
+                                                                                                       ";
+                        }
+                        //dump($arrShow);
+                    }
+
+                    if (isset($_POST['submitGift'])) {
+                        $updatePromo = "UPDATE promo_code SET premiu = '" . $_POST['premiu'] . "', livrare = '" . $_POST['filial'] . "', status = 10 WHERE promocode = '" . $userID->promocode . "' AND premiu = '' AND livrare = '' ";
+                        if ($conn->query($updatePromo)) {
+                            //echo "ok";
+                        }
+                    }
+                }
+            } else if ($total >= 10 && $total % 7 != 0) {
+                $checkPromo = "SELECT * FROM promo_code WHERE status = 1 AND active = '" . $curr_id_for_user . "'";
+                $checkPromoItem = $conn->query($checkPromo);
+                $checkPromoItem->setFetchMode(\PDO::FETCH_OBJ);
+                $checkCounter = 0;
+                foreach ($checkPromoItem as $checkItem) {
+                    $checkCounter++;
+                }
+                if ($checkCounter == 1) {
+                    $arrData  = array();
+                    $getGift = "SELECT * FROM webform_submission_data WHERE webform_id = 'cadouri'  ";
+                    $giftVal = $conn->query($getGift);
+                    foreach ($giftVal as $gift => $val) {
+                        $arrData[$val['sid']][$val['name']] = $val;
+                        //dump($val);
+                        //dump($val['value']);
+                    }
+
+
+                    // dump($arrData);
+
+                    $arrShowF = array();
+                    foreach ($arrData as $IDgift => $val) {
+                        foreach ($val as $name => $val2) {
+                            if ($name == 'categoria_de_produs' && $val2['value'] == 2 || $name == 'categoria_de_produs' && $val2['value'] == 3) {
+                                // $val['title'] = $val[''];
+                                $arrShowF[[$IDgift]['filiala']['value']][] = array('image' => $arrData[$IDgift]['gift_image']['value'], 'name' => $arrData[$IDgift]['premiu']['value'], 'filiala' => $arrData[$IDgift]['filiala']['value'], 'id' => $IDgift);
+                            }
+                        }
+                    }
+                    //dump($arrShowF);
+                    $arr = [];
+                    $arrFil = [];
+                    foreach ($arrShowF as $filiala => $arrShow) {
+
+                        $option = '';
+                        $option2 = '';
+                        foreach ($arrShow as $ft => $val) {
+
+                            $arr[] = $val['name'];
+                            $arrFil[] = $val['filiala'];
+                        }
+                        $arrFilUnique =  array_unique($arrFil);
+                        foreach ($arrFilUnique as $arrValFil) {
+                            $option2 .= " <option>" . $arrValFil . "</option> ";
+                        }
                         function isUnique($array, $key, $value)
                         {
                             foreach ($array as $item) {
@@ -638,721 +731,596 @@ $arrFil = [];
                                 $filteredArray[] = $value;
                             }
                         }
-                        foreach($filteredArray as $filteredVal){
+                        foreach ($filteredArray as $filteredVal) {
                             $file_storage = \Drupal::service('entity_type.manager')->getStorage('file');
                             $file = $file_storage->load($filteredVal['image']);
                             if ($file) {
-                              $file_path = $file->getFileUri(); // Получение пути к файлу.
-                              $file_name = $file->getFilename(); // Получение имени файла.
+                                $file_path = $file->getFileUri(); // Получение пути к файлу.
+                                $file_name = $file->getFilename(); // Получение имени файла.
 
                             }
                             $string = str_replace("public://", "", $file_path);
-                            $arrImg .= "<img src='/sites/default/files/".$string."'>";
+                            $arrImg .= "<img src='/sites/default/files/" . $string . "'>";
                         }
+                        $arrUnique = array_unique($arr);
 
-                                                                 $arrUnique = array_unique($arr);
-
-                                                                                                                        foreach($arrUnique as $arrVal){
-                                                                                                                           $option .= " <option>".$arrVal."</option> ";
-                                                                                                                        }
-                                                       //dump($arrUnique);
-                                                                                                       print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_gift' data-dialog-type='modal'>
-                                                                                                        <div class='popup_images'>
-                                                                                                            ".$arrImg."
-                                                                                                        </div>
-                                                                                                           <select name='premiu'>
-
-                                                                                                               ".$option."
-                                                                                                           </select>
-                                                                                                           <select name='filial'>
-
-                                                                                                               ".$option2."
-                                                                                                           </select>
-                                                                                                           <input type='submit' class='btn_main action' name='submitGift' value='Alege'>
-
-                                                                                                       </form>
-                                                                                                       ";
-                                                                                                   }
-                                                                                                   //dump($arrShow);
-                                                                                               }
-
-                                                                                               if(isset($_POST['submitGift'])){
-                                                                                                   $updatePromo = "UPDATE promo_code SET premiu = '".$_POST['premiu']."', livrare = '".$_POST['filial']."', status = 10 WHERE promocode = '".$userID->promocode."' AND premiu = '' AND livrare = '' ";
-                                                                                                    if($conn->query($updatePromo)){
-                                                                                                       //echo "ok";
-                                                                                                    }
-                                                                                               }
-                                                           }
-
-                            }else if($total >= 10 && $total % 7 != 0){
-                                $checkPromo = "SELECT * FROM promo_code WHERE status = 1 AND active = '".$curr_id_for_user."'";
-                                                            $checkPromoItem = $conn->query($checkPromo);
-                                                            $checkPromoItem->setFetchMode(\PDO::FETCH_OBJ);
-                                                            $checkCounter = 0;
-                                                            foreach($checkPromoItem as $checkItem){
-                                                                $checkCounter++;
-                                                            }
-                                                            if($checkCounter == 1){
-                                                                           $arrData  = array();
-                                                                           $getGift = "SELECT * FROM webform_submission_data WHERE webform_id = 'cadouri'  ";
-                                                                           $giftVal = $conn->query($getGift);
-                                                                           foreach($giftVal as $gift=>$val){
-                                                                               $arrData[ $val['sid'] ][ $val['name'] ] = $val;
-                                                                               //dump($val);
-                                                                               //dump($val['value']);
-                                                                           }
-
-
-                                                                           // dump($arrData);
-
-                                                                           $arrShowF = array();
-                                                                           foreach($arrData as $IDgift => $val){
-                                                                               foreach($val as $name => $val2){
-                                                                                   if( $name == 'categoria_de_produs' && $val2['value'] == 2 || $name == 'categoria_de_produs' && $val2['value'] == 3) {
-                                                                                       // $val['title'] = $val[''];
-                                                                                       $arrShowF[[$IDgift]['filiala']['value']][] = array( 'image' => $arrData[$IDgift]['gift_image']['value'], 'name' => $arrData[$IDgift]['premiu']['value'] ,'filiala' => $arrData[$IDgift]['filiala']['value'], 'id' => $IDgift );
-                                                                                       }
-                                                                               }
-                                                                           }
-                                   //dump($arrShowF);
-                                   $arr = [];
-                                   $arrFil = [];
-                                                                           foreach($arrShowF as $filiala => $arrShow){
-
-                                                                                                   $option = '';
-                                                                                                   $option2 = '';
-                                                                                                    foreach($arrShow as $ft => $val){
-
-                                                                                                    $arr[] = $val['name'];
-                                                                                                    $arrFil[] = $val['filiala'];
-                                                                                                    }
-                                                                                                    $arrFilUnique =  array_unique($arrFil);
-                                                                                                    foreach($arrFilUnique as $arrValFil){
-                                                                                                       $option2 .= " <option>".$arrValFil."</option> ";
-                                                                                                    }
-            function isUnique($array, $key, $value)
-            {
-                foreach ($array as $item) {
-                    if ($item[$key] === $value) {
-                        return false;
-                    }
-                }
-                return true;
-            }
-
-            // Отфильтрованный массив с уникальными элементами по полю "name"
-            $filteredArray = [];
-            foreach ($arrShow as $value) {
-                if (isUnique($filteredArray, "name", $value["name"])) {
-                    $filteredArray[] = $value;
-                }
-            }
-            foreach($filteredArray as $filteredVal){
-                $file_storage = \Drupal::service('entity_type.manager')->getStorage('file');
-                $file = $file_storage->load($filteredVal['image']);
-                if ($file) {
-                  $file_path = $file->getFileUri(); // Получение пути к файлу.
-                  $file_name = $file->getFilename(); // Получение имени файла.
-
-                }
-                $string = str_replace("public://", "", $file_path);
-                $arrImg .= "<img src='/sites/default/files/".$string."'>";
-            }
-                                             $arrUnique = array_unique($arr);
-
-                                                                                                    foreach($arrUnique as $arrVal){
-                                                                                                       $option .= " <option>".$arrVal."</option> ";
-                                                                                                    }
-                                   //dump($arrUnique);
-                                                                               print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_gift' data-dialog-type='modal'>
+                        foreach ($arrUnique as $arrVal) {
+                            $option .= " <option>" . $arrVal . "</option> ";
+                        }
+                        //dump($arrUnique);
+                        print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_gift' data-dialog-type='modal'>
 
                                                                                    <div class='popup_images'>
-                                                                                    ".$arrImg."
+                                                                                    " . $arrImg . "
                                                                                    </div>
 
                                                                                    <select name='premiu'>
 
-                                                                                       ".$option."
+                                                                                       " . $option . "
                                                                                    </select>
                                                                                    <select name='filial'>
 
-                                                                                       ".$option2."
+                                                                                       " . $option2 . "
                                                                                    </select>
                                                                                    <input type='submit' class='btn_main action' name='submitGift' value='Alege'>
 
                                                                                </form>
                                                                                ";
-                                                                           }
-                                                                           //dump($arrShow);
+                    }
+                    //dump($arrShow);
 
-                                                                       if(isset($_POST['submitGift'])){
-                                                                           $updatePromo = "UPDATE promo_code SET premiu = '".$_POST['premiu']."', livrare = '".$_POST['filial']."', status = 10 WHERE promocode = '".$checkItem->promocode."' AND premiu = '' AND livrare = '' AND status = 1 ";
-                                                                            if($conn->query($updatePromo)){
-                                                                               //echo "ok";
-                                                                            }
-                                                                       }
-                                                               }
-                            }
-                            if($total % 15 ==0 && $userID->premiu == '' && $userID->tombola == 0){
-                                $sqlCheck = "SELECT * FROM promo_code WHERE id = '".$userID->active."' and tombola = 1";
-                                 $checkPromoItem = $conn->query($sqlCheck);
-                                        $checkPromoItem->setFetchMode(\PDO::FETCH_OBJ);
-                                        $checkCounter = 0;
-                                        foreach($checkPromoItem as $checkItem){
-                                        dump($checkItem);
-                                            $checkCounter++;
-                                        }
-                                if($checkCounter != 0){
-                                    $tombolaSuccess = "UPDATE promo_code SET tombola = 1,status = 0, data = NOW() WHERE promocode = '".$userID->promocode."' AND tombola = 0 ";
-                                    if($conn->query($tombolaSuccess)){
-                                        print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_final' data-dialog-type='modal'>
+                    if (isset($_POST['submitGift'])) {
+                        $updatePromo = "UPDATE promo_code SET premiu = '" . $_POST['premiu'] . "', livrare = '" . $_POST['filial'] . "', status = 10 WHERE promocode = '" . $checkItem->promocode . "' AND premiu = '' AND livrare = '' AND status = 1 ";
+                        if ($conn->query($updatePromo)) {
+                            //echo "ok";
+                        }
+                    }
+                }
+            }
+            if ($total % 15 == 0 && $userID->premiu == '' && $userID->tombola == 0) {
+                $sqlCheck = "SELECT * FROM promo_code WHERE id = '" . $userID->active . "' and tombola = 1";
+                $checkPromoItem = $conn->query($sqlCheck);
+                $checkPromoItem->setFetchMode(\PDO::FETCH_OBJ);
+                $checkCounter = 0;
+                foreach ($checkPromoItem as $checkItem) {
+                    dump($checkItem);
+                    $checkCounter++;
+                }
+                if ($checkCounter != 0) {
+                    $tombolaSuccess = "UPDATE promo_code SET tombola = 1,status = 0, data = NOW() WHERE promocode = '" . $userID->promocode . "' AND tombola = 0 ";
+                    if ($conn->query($tombolaSuccess)) {
+                        print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_final' data-dialog-type='modal'>
                                             <div>Felicitari ati fost ales participant la tombola zilnica!</div>
                                             <div class='btn_main action closePopupTombola'>Inchide</div>
                                         </form>
                                         ";
-                                    }
-                                }
-                            }
-                            if($total % 30 == 0 && $userID->premiu == ''){
-$sqlCheck = "SELECT * FROM promo_code WHERE id = '".$userID->active."' and final = 1";
-                                 $checkPromoItem = $conn->query($sqlCheck);
-                                        $checkPromoItem->setFetchMode(\PDO::FETCH_OBJ);
-                                        $checkCounter = 0;
-                                        foreach($checkPromoItem as $checkItem){
-                                        dump($checkItem);
-                                            $checkCounter++;
-                                        }
-                                if($checkCounter != 0){
-                             $tombolaSuccess = "UPDATE promo_code SET final = 1, data = NOW() WHERE promocode = '".$userID->promocode."' AND final = 0 ";
-                                if($conn->query($tombolaSuccess)){
-                                   print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_final' data-dialog-type='modal'>
+                    }
+                }
+            }
+            if ($total % 30 == 0 && $userID->premiu == '') {
+                $sqlCheck = "SELECT * FROM promo_code WHERE id = '" . $userID->active . "' and final = 1";
+                $checkPromoItem = $conn->query($sqlCheck);
+                $checkPromoItem->setFetchMode(\PDO::FETCH_OBJ);
+                $checkCounter = 0;
+                foreach ($checkPromoItem as $checkItem) {
+                    dump($checkItem);
+                    $checkCounter++;
+                }
+                if ($checkCounter != 0) {
+                    $tombolaSuccess = "UPDATE promo_code SET final = 1, data = NOW() WHERE promocode = '" . $userID->promocode . "' AND final = 0 ";
+                    if ($conn->query($tombolaSuccess)) {
+                        print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_final' data-dialog-type='modal'>
                                            <div>Felicitari ati fost ales participant la tombola finala!</div>
                                            <div class='btn_main action closePopupTombola'>Inchide</div>
                                        </form>
                                        ";
-                                }}
-                            }
-
-
+                    }
+                }
+            }
         }
     }
-
-
-
 }
 
 /*
 Страница вывода стока
 */
 
-function nescafe_preprocess_region__stock($page){
+function nescafe_preprocess_region__stock($page)
+{
 
     $roles = \Drupal::currentUser()->getRoles();
     $curr_id_for_user = \Drupal::currentUser()->id();
 
 
-             $config = new Config();
-             $credentials = $config->credentials('database');
-             $dsn = sprintf('mysql:host=%s;port=%d;dbname=%s', $credentials['host'], $credentials['port'], $credentials['path']);
-             $conn = new \PDO($dsn, $credentials['username'], $credentials['password'], [
-                 \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
-                 \PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => TRUE,
-                 \PDO::MYSQL_ATTR_FOUND_ROWS => TRUE,
-             ]);
+    $config = new Config();
+    $credentials = $config->credentials('database');
+    $dsn = sprintf('mysql:host=%s;port=%d;dbname=%s', $credentials['host'], $credentials['port'], $credentials['path']);
+    $conn = new \PDO($dsn, $credentials['username'], $credentials['password'], [
+        \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
+        \PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => TRUE,
+        \PDO::MYSQL_ATTR_FOUND_ROWS => TRUE,
+    ]);
     /*
     Для менеджера
     */
-    if(in_array('authenticated', $roles) && in_array('manager_filiala', $roles) && !in_array('administrator', $roles)){
-             $arrData  = array();
-             $getGift = "SELECT * FROM webform_submission_data WHERE webform_id = 'cadouri'  ";
-             $giftVal = $conn->query($getGift);
-             foreach($giftVal as $gift=>$val){
-             $arrData[ $val['sid'] ][ $val['name'] ] = $val;
-             //dump($val);
-             //dump($val['value']);
-             }
+    if (in_array('authenticated', $roles) && in_array('manager_filiala', $roles) && !in_array('administrator', $roles)) {
+        $arrData  = array();
+        $getGift = "SELECT * FROM webform_submission_data WHERE webform_id = 'cadouri'  ";
+        $giftVal = $conn->query($getGift);
+        foreach ($giftVal as $gift => $val) {
+            $arrData[$val['sid']][$val['name']] = $val;
+            //dump($val);
+            //dump($val['value']);
+        }
 
-             $elibSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 3";
-             $elib = $conn->query($elibSQL);
-             $countElib = 0;
-             foreach($elib as $elibVal){
-                 $countElib++;
-             }
+        $elibSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 3";
+        $elib = $conn->query($elibSQL);
+        $countElib = 0;
+        foreach ($elib as $elibVal) {
+            $countElib++;
+        }
 
-             $filialSQL = "SELECT * FROM user__field_filiala WHERE revision_id = '".$curr_id_for_user."' ";
-             $fil = $conn->query($filialSQL);
-             foreach($fil as $filVal){}
+        $filialSQL = "SELECT * FROM user__field_filiala WHERE revision_id = '" . $curr_id_for_user . "' ";
+        $fil = $conn->query($filialSQL);
+        foreach ($fil as $filVal) {
+        }
 
 
 
-             $arrShowF = array();
-             foreach($arrData as $IDgift => $val){
-                 foreach($val as $name => $val2){
+        $arrShowF = array();
+        foreach ($arrData as $IDgift => $val) {
+            foreach ($val as $name => $val2) {
 
-                 if($val['filiala']['value'] == $filVal['field_filiala_value']){
-                     if( ($name == 'categoria_de_produs' && $val2['value'] == 3) ) {
-                         //$arrShowF[[$IDgift]['filiala']['value']][] = array( 'name3' => $arrData[$IDgift]['premiu']['value'] ,'filiala3' => $arrData[$IDgift]['filiala']['value'],'stock3' => $arrData[$IDgift]['stock']['value'],'suplimentar3' => $arrData[$IDgift]['suplimentar']['value'], 'id' => $IDgift );
+                if ($val['filiala']['value'] == $filVal['field_filiala_value']) {
+                    if (($name == 'categoria_de_produs' && $val2['value'] == 3)) {
+                        //$arrShowF[[$IDgift]['filiala']['value']][] = array( 'name3' => $arrData[$IDgift]['premiu']['value'] ,'filiala3' => $arrData[$IDgift]['filiala']['value'],'stock3' => $arrData[$IDgift]['stock']['value'],'suplimentar3' => $arrData[$IDgift]['suplimentar']['value'], 'id' => $IDgift );
                         $arrShowF[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['name3'] = $arrData[$IDgift]['premiu']['value'];
-                         $arrShowF[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['filiala3'] = $arrData[$IDgift]['filiala']['value'];
-                         $arrShowF[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['stock3'] +=  $arrData[$IDgift]['stock']['value'];
-                         $arrShowF[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['suplimentar3'] +=  $arrData[$IDgift]['suplimentar']['value'];
-                         $arrShowF[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['id'] +=  $IDgift;
-
-                     }
-                     if( ($name == 'categoria_de_produs' && $val2['value'] == 2) ) {
-                     // $val['title'] = $val[''];
-                         //$arrShowF2[[$IDgift]['filiala']['value']][] = array( 'name2' => $arrData[$IDgift]['premiu']['value'] ,'filiala2' => $arrData[$IDgift]['filiala']['value'],'stock2' => $arrData[$IDgift]['stock']['value'],'suplimentar2' => $arrData[$IDgift]['suplimentar']['value'], 'id' => $IDgift );
-                        $arrShowF2[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['name2'] = $arrData[$IDgift]['premiu']['value'];
-                         $arrShowF2[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['filiala2'] = $arrData[$IDgift]['filiala']['value'];
-                         $arrShowF2[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['stock2'] +=  $arrData[$IDgift]['stock']['value'];
-                         $arrShowF2[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['suplimentar2'] +=  $arrData[$IDgift]['suplimentar']['value'];
-                         $arrShowF2[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['id'] +=  $IDgift;
-
-                     }
-                     if( ($name == 'categoria_de_produs' && $val2['value'] == 1)  ) {
-                      // $val['title'] = $val[''];
-                         //$arrShowF1[[$IDgift]['filiala']['value']][] = array( 'name1' => $arrData[$IDgift]['premiu']['value'] ,'filiala1' => $arrData[$IDgift]['filiala']['value'],'stock1' => $arrData[$IDgift]['stock']['value'],'suplimentar1' => $arrData[$IDgift]['suplimentar']['value'], 'id' => $IDgift );
-                         $arrShowF1[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['name1'] = $arrData[$IDgift]['premiu']['value'];
-                         $arrShowF1[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['filiala1'] = $arrData[$IDgift]['filiala']['value'];
-                         $arrShowF1[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['stock1'] +=  $arrData[$IDgift]['stock']['value'];
-                         $arrShowF1[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['suplimentar1'] +=  $arrData[$IDgift]['suplimentar']['value'];
-                         $arrShowF1[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['id'] +=  $IDgift;
-
-                     }
-
+                        $arrShowF[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['filiala3'] = $arrData[$IDgift]['filiala']['value'];
+                        $arrShowF[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['stock3'] +=  $arrData[$IDgift]['stock']['value'];
+                        $arrShowF[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['suplimentar3'] +=  $arrData[$IDgift]['suplimentar']['value'];
+                        $arrShowF[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['id'] +=  $IDgift;
                     }
-                 }
-             }
-             $arr = [];
-            if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru'){
-                $solicitate = 'Запрошено';
-                $stock_init = 'Начальный сток';
-                $supliment = 'Дополнение';
-                $stoc_dispon = 'Наличие в стоке';
-                $eliberate = 'Выпуск';
-                $stoc_final = 'Финальный сток';
-                $grad = 'Класс';
-                $premiu = 'Приз';
-                $premFil = 'Филиал';
-            }
-            if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro'){
-                $solicitate = 'Solicitate';
-                $stock_init = 'Stoc initial';
-                $supliment = 'Suplimentar';
-                $stoc_dispon = 'Stoc disponibil';
-                $eliberate = 'Eliberate';
-                $stoc_final = 'Stoc final';
-                $grad = 'Gradul';
-                $premiu = 'Premiu';
-                $premFil = 'Filiala';
-            }
-
-                    print <<<TABLE
-            <table id="table8">
-            <thead>
-            <tr><th>$grad 3</th><th>$premiu</th><th>$premFil</th><th>$solicitate</th><th>$stock_init</th><th>$supliment</th><th>$stoc_dispon</th><th>$eliberate</th><th>$stoc_final</th></tr>
-            </thead>
-            <tbody>
-            TABLE;
-            $count = 1;
-            foreach($arrShowF as $filiala => $arrShow){
-                         $stockInit = 0;
-                         $stockDisp = $stockInit + $arrShow['suplimentar3'];
-                         $elib = $countElib;
-                         $solicitSQL = "SELECT COUNT(id) FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '".$arrShow['filiala3']."' AND premiu = '".$arrShow['name3']."'";
-                           $sol = $conn->query($solicitSQL);
-                           foreach($sol as $solVal){
-                           $solicit = $solVal['COUNT(id)'];
-                           }
-                         $stockFinal = $stockDisp - $elib;
-                        printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $arrShow['name3'], $arrShow['filiala3'], $solicit, $stockInit, $arrShow['suplimentar3'], $stockDisp, $countElib,$stockFinal);
-
-                     $count++;
-
-             }
-
-            print "</tbody>\n</table>\n";
-
-             print <<<TABLE
-                       <table id="table8">
-                       <thead>
-                       <tr><th>$grad 2</th><th>$premiu</th><th>$premFil</th><th>$solicitate</th><th>$stock_init</th><th>$supliment</th><th>$stoc_dispon</th><th>$eliberate</th><th>$stoc_final</th></tr>
-                       </thead>
-                       <tbody>
-                       TABLE;
-                       $count = 1;
-                       foreach($arrShowF2 as $filiala => $arrShow){
-                                    $stockInit = 0;
-                                    $stockDisp = $stockInit + $arrShow['suplimentar2'];
-                                    $elib = $countElib;
-                                    $solicitSQL = "SELECT COUNT(id) FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '".$arrShow['filiala3']."' AND premiu = '".$arrShow['name3']."'";
-                                     $sol = $conn->query($solicitSQL);
-                                     foreach($sol as $solVal){
-                                     $solicit = $solVal['COUNT(id)'];
-                                     }
-                                    $stockFinal = $stockDisp - $elib;
-                                   printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $arrShow['name2'], $arrShow['filiala2'], $solicit, $stockInit, $arrShow['suplimentar2'], $stockDisp, $countElib,$stockFinal);
-
-                                $count++;
-
-                        }
-
-                       print "</tbody>\n</table>\n";
-
-             print <<<TABLE
-                       <table id="table8">
-                       <thead>
-                       <tr><th>$grad 1</th><th>$premiu</th><th>$premFil</th><th>$solicitate</th><th>$stock_init</th><th>$supliment</th><th>$stoc_dispon</th><th>$eliberate</th><th>$stoc_final</th></tr>
-                       </thead>
-                       <tbody>
-                       TABLE;
-                       $count = 1;
-                       foreach($arrShowF1 as $filiala => $arrShow){
-                                    $stockInit = 0;
-                                    $stockDisp = $stockInit + $arrShow['suplimentar1'];
-                                    $elib = $countElib;
-                                    $solicitSQL = "SELECT COUNT(id) FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '".$arrShow['filiala3']."' AND premiu = '".$arrShow['name3']."'";
-                                      $sol = $conn->query($solicitSQL);
-                                      foreach($sol as $solVal){
-                                      $solicit = $solVal['COUNT(id)'];
-                                      }
-                                    $stockFinal = $stockDisp - $elib;
-                                   printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $arrShow['name1'], $arrShow['filiala1'], $solicit, $stockInit, $arrShow['suplimentar1'], $stockDisp, $countElib,$stockFinal);
-
-                                $count++;
-
-                        }
-
-                       print "</tbody>\n</table>\n";
-
-
- }
-
- /*
-    для администратора
- */
-
- if(in_array('authenticated', $roles) && !in_array('manager_filiala', $roles) && in_array('administrator', $roles)){
-             $arrData  = array();
-             $getGift = "SELECT * FROM webform_submission_data WHERE webform_id = 'cadouri'  ";
-             $giftVal = $conn->query($getGift);
-             foreach($giftVal as $gift=>$val){
-             $arrData[ $val['sid'] ][ $val['name'] ] = $val;
-             //dump($val);
-             //dump($val['value']);
-             }
-
-             $elibSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 3";
-             $elib = $conn->query($elibSQL);
-             $countElib = 0;
-             foreach($elib as $elibVal){
-                 $countElib++;
-             }
-
-
-
-             $arrShowF = array();
-             foreach($arrData as $IDgift => $val){
-                 foreach($val as $name => $val2){
-                     if( $name == 'categoria_de_produs' && $val2['value'] == 3 ) {
-                         // $arrShowF[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']][] = array( 'name3' => $arrData[$IDgift]['premiu']['value'] ,'filiala3' => $arrData[$IDgift]['filiala']['value'],'stock3' => $arrData[$IDgift]['stock']['value'],'suplimentar3' => $arrData[$IDgift]['suplimentar']['value'], 'id' => $IDgift );
-
-                         $arrShowF[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['name3'] = $arrData[$IDgift]['premiu']['value'];
-                         $arrShowF[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['filiala3'] = $arrData[$IDgift]['filiala']['value'];
-                         $arrShowF[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['stock3'] +=  $arrData[$IDgift]['stock']['value'];
-                         $arrShowF[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['suplimentar3'] +=  $arrData[$IDgift]['suplimentar']['value'];
-                         $arrShowF[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['id'] +=  $IDgift;
-
-                     }
-                     if( $name == 'categoria_de_produs' && $val2['value'] == 2 ) {
-                     // $val['title'] = $val[''];
-                     // $arrShowF2[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']][] = array( 'name2' => $arrData[$IDgift]['premiu']['value'] ,'filiala2' => $arrData[$IDgift]['filiala']['value'],'stock2' => $arrData[$IDgift]['stock']['value'],'suplimentar2' => $arrData[$IDgift]['suplimentar']['value'], 'id' => $IDgift );
+                    if (($name == 'categoria_de_produs' && $val2['value'] == 2)) {
+                        // $val['title'] = $val[''];
+                        //$arrShowF2[[$IDgift]['filiala']['value']][] = array( 'name2' => $arrData[$IDgift]['premiu']['value'] ,'filiala2' => $arrData[$IDgift]['filiala']['value'],'stock2' => $arrData[$IDgift]['stock']['value'],'suplimentar2' => $arrData[$IDgift]['suplimentar']['value'], 'id' => $IDgift );
                         $arrShowF2[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['name2'] = $arrData[$IDgift]['premiu']['value'];
                         $arrShowF2[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['filiala2'] = $arrData[$IDgift]['filiala']['value'];
                         $arrShowF2[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['stock2'] +=  $arrData[$IDgift]['stock']['value'];
                         $arrShowF2[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['suplimentar2'] +=  $arrData[$IDgift]['suplimentar']['value'];
                         $arrShowF2[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['id'] +=  $IDgift;
-                     }
-                     if( $name == 'categoria_de_produs' && $val2['value'] == 1 ) {
-                      // $val['title'] = $val[''];
-                      // $arrShowF1[ $arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value'] ][] = array( 'name1' => $arrData[$IDgift]['premiu']['value'] ,'filiala1' => $arrData[$IDgift]['filiala']['value'],'stock1' => $arrData[$IDgift]['stock']['value'],'suplimentar1' => $arrData[$IDgift]['suplimentar']['value'], 'id' => $IDgift );
+                    }
+                    if (($name == 'categoria_de_produs' && $val2['value'] == 1)) {
+                        // $val['title'] = $val[''];
+                        //$arrShowF1[[$IDgift]['filiala']['value']][] = array( 'name1' => $arrData[$IDgift]['premiu']['value'] ,'filiala1' => $arrData[$IDgift]['filiala']['value'],'stock1' => $arrData[$IDgift]['stock']['value'],'suplimentar1' => $arrData[$IDgift]['suplimentar']['value'], 'id' => $IDgift );
                         $arrShowF1[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['name1'] = $arrData[$IDgift]['premiu']['value'];
                         $arrShowF1[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['filiala1'] = $arrData[$IDgift]['filiala']['value'];
                         $arrShowF1[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['stock1'] +=  $arrData[$IDgift]['stock']['value'];
                         $arrShowF1[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['suplimentar1'] +=  $arrData[$IDgift]['suplimentar']['value'];
                         $arrShowF1[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['id'] +=  $IDgift;
-                     }
-
-                 }
-             }
-             $arr = [];
-
-
-            if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru'){
-                $solicitate = 'Запрошено';
-                $stock_init = 'Начальный сток';
-                $supliment = 'Дополнение';
-                $stoc_dispon = 'Наличие в стоке';
-                $eliberate = 'Выпуск';
-                $stoc_final = 'Финальный сток';
-                $grad = 'Класс';
-                $premiu = 'Приз';
-                $premFil = 'Филиал';
+                    }
+                }
             }
-            if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro'){
-                $solicitate = 'Solicitate';
-                $stock_init = 'Stoc initial';
-                $supliment = 'Suplimentar';
-                $stoc_dispon = 'Stoc disponibil';
-                $eliberate = 'Eliberate';
-                $stoc_final = 'Stoc final';
-                $grad = 'Gradul';
-                $premiu = 'Premiu';
-                $premFil = 'Filiala';
-            }
+        }
+        $arr = [];
+        if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru') {
+            $solicitate = 'Запрошено';
+            $stock_init = 'Начальный сток';
+            $supliment = 'Дополнение';
+            $stoc_dispon = 'Наличие в стоке';
+            $eliberate = 'Выпуск';
+            $stoc_final = 'Финальный сток';
+            $grad = 'Класс';
+            $premiu = 'Приз';
+            $premFil = 'Филиал';
+        }
+        if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro') {
+            $solicitate = 'Solicitate';
+            $stock_init = 'Stoc initial';
+            $supliment = 'Suplimentar';
+            $stoc_dispon = 'Stoc disponibil';
+            $eliberate = 'Eliberate';
+            $stoc_final = 'Stoc final';
+            $grad = 'Gradul';
+            $premiu = 'Premiu';
+            $premFil = 'Filiala';
+        }
 
-                    print <<<TABLE
+        print <<<TABLE
             <table id="table8">
             <thead>
             <tr><th>$grad 3</th><th>$premiu</th><th>$premFil</th><th>$solicitate</th><th>$stock_init</th><th>$supliment</th><th>$stoc_dispon</th><th>$eliberate</th><th>$stoc_final</th></tr>
             </thead>
             <tbody>
             TABLE;
-            $count = 1;
-            $solicit = 0;
-            foreach($arrShowF as $filiala => $arrShow){
+        $count = 1;
+        foreach ($arrShowF as $filiala => $arrShow) {
+            $stockInit = 0;
+            $stockDisp = $stockInit + $arrShow['suplimentar3'];
+            $elib = $countElib;
+            $solicitSQL = "SELECT COUNT(id) FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '" . $arrShow['filiala3'] . "' AND premiu = '" . $arrShow['name3'] . "'";
+            $sol = $conn->query($solicitSQL);
+            foreach ($sol as $solVal) {
+                $solicit = $solVal['COUNT(id)'];
+            }
+            $stockFinal = $stockDisp - $elib;
+            printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $arrShow['name3'], $arrShow['filiala3'], $solicit, $stockInit, $arrShow['suplimentar3'], $stockDisp, $countElib, $stockFinal);
 
-                         $stockInit = 0;
-                         $stockDisp = $stockInit + $arrShow['suplimentar3'];
-                         $elib = $countElib;
-                         $stockFinal = $stockDisp - $elib;
-                          $solicitSQL = "SELECT COUNT(id) FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '".$arrShow['filiala3']."' AND premiu = '".$arrShow['name3']."'";
-                          $sol = $conn->query($solicitSQL);
-                          foreach($sol as $solVal){
-                          $solicit = $solVal['COUNT(id)'];
-                          }
-                        printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $arrShow['name3'], $arrShow['filiala3'], $solicit, 0, $arrShow['suplimentar3'], $stockDisp, $countElib,$stockFinal);
+            $count++;
+        }
 
-                     $count++;
+        print "</tbody>\n</table>\n";
 
-             }
-
-            print "</tbody>\n</table>\n";
-
-             print <<<TABLE
+        print <<<TABLE
                        <table id="table8">
                        <thead>
                        <tr><th>$grad 2</th><th>$premiu</th><th>$premFil</th><th>$solicitate</th><th>$stock_init</th><th>$supliment</th><th>$stoc_dispon</th><th>$eliberate</th><th>$stoc_final</th></tr>
                        </thead>
                        <tbody>
                        TABLE;
-                       $count = 1;
-                       $solicit = 0;
-                       foreach($arrShowF2 as $filiala => $arrShow){
+        $count = 1;
+        foreach ($arrShowF2 as $filiala => $arrShow) {
+            $stockInit = 0;
+            $stockDisp = $stockInit + $arrShow['suplimentar2'];
+            $elib = $countElib;
+            $solicitSQL = "SELECT COUNT(id) FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '" . $arrShow['filiala3'] . "' AND premiu = '" . $arrShow['name3'] . "'";
+            $sol = $conn->query($solicitSQL);
+            foreach ($sol as $solVal) {
+                $solicit = $solVal['COUNT(id)'];
+            }
+            $stockFinal = $stockDisp - $elib;
+            printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $arrShow['name2'], $arrShow['filiala2'], $solicit, $stockInit, $arrShow['suplimentar2'], $stockDisp, $countElib, $stockFinal);
 
-                                    $stockInit = 0;
-                                    $stockDisp = $stockInit + $arrShow['suplimentar2'];
-                                    $elib = $countElib;
-                                     $solicitSQL = "SELECT COUNT(id) FROM promo_code WHERE active != 0 AND status = 10 AND livrare = '".$arrShow['filiala2']."' AND premiu = '".$arrShow['name2']."'";
-                                      $sol = $conn->query($solicitSQL);
-                                      foreach($sol as $solVal){
-                                            $solicit = $solVal['COUNT(id)'];
-                                      }
-                                    $stockFinal = $stockDisp - $elib;
-                                   printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $arrShow['name2'], $arrShow['filiala2'], $solicit, $stockInit, $arrShow['suplimentar2'], $stockDisp, $countElib,$stockFinal);
+            $count++;
+        }
 
-                                $count++;
+        print "</tbody>\n</table>\n";
 
-                        }
-
-                       print "</tbody>\n</table>\n";
-
-             print <<<TABLE
+        print <<<TABLE
                        <table id="table8">
                        <thead>
                        <tr><th>$grad 1</th><th>$premiu</th><th>$premFil</th><th>$solicitate</th><th>$stock_init</th><th>$supliment</th><th>$stoc_dispon</th><th>$eliberate</th><th>$stoc_final</th></tr>
                        </thead>
                        <tbody>
                        TABLE;
-                       $count = 1;
-                       $solicit = 0;
-                       foreach($arrShowF1 as $filiala => $arrShow){
-                                    $stockInit = 0;
-                                    $stockDisp = $stockInit + $arrShow['suplimentar1'];
-                                    $elib = $countElib;
-                                     $solicitSQL = "SELECT COUNT(id) FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '".$arrShow['filiala1']."' AND premiu = '".$arrShow['name1']."'";
-                                      $sol = $conn->query($solicitSQL);
-                                      foreach($sol as $solVal){
+        $count = 1;
+        foreach ($arrShowF1 as $filiala => $arrShow) {
+            $stockInit = 0;
+            $stockDisp = $stockInit + $arrShow['suplimentar1'];
+            $elib = $countElib;
+            $solicitSQL = "SELECT COUNT(id) FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '" . $arrShow['filiala3'] . "' AND premiu = '" . $arrShow['name3'] . "'";
+            $sol = $conn->query($solicitSQL);
+            foreach ($sol as $solVal) {
+                $solicit = $solVal['COUNT(id)'];
+            }
+            $stockFinal = $stockDisp - $elib;
+            printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $arrShow['name1'], $arrShow['filiala1'], $solicit, $stockInit, $arrShow['suplimentar1'], $stockDisp, $countElib, $stockFinal);
 
-                                            $solicit = $solVal['COUNT(id)'];
-                                      }
-                                    $stockFinal = $stockDisp - $elib;
-                                   printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $arrShow['name1'], $arrShow['filiala1'], $solicit, $stockInit, $arrShow['suplimentar1'], $stockDisp, $countElib,$stockFinal);
+            $count++;
+        }
 
-                                $count++;
-                        }
+        print "</tbody>\n</table>\n";
+    }
 
-                       print "</tbody>\n</table>\n";
+    /*
+    для администратора
+ */
+
+    if (in_array('authenticated', $roles) && !in_array('manager_filiala', $roles) && in_array('administrator', $roles)) {
+        $arrData  = array();
+        $getGift = "SELECT * FROM webform_submission_data WHERE webform_id = 'cadouri'  ";
+        $giftVal = $conn->query($getGift);
+        foreach ($giftVal as $gift => $val) {
+            $arrData[$val['sid']][$val['name']] = $val;
+            //dump($val);
+            //dump($val['value']);
+        }
+
+        $elibSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 3";
+        $elib = $conn->query($elibSQL);
+        $countElib = 0;
+        foreach ($elib as $elibVal) {
+            $countElib++;
+        }
 
 
- }
 
+        $arrShowF = array();
+        foreach ($arrData as $IDgift => $val) {
+            foreach ($val as $name => $val2) {
+                if ($name == 'categoria_de_produs' && $val2['value'] == 3) {
+                    // $arrShowF[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']][] = array( 'name3' => $arrData[$IDgift]['premiu']['value'] ,'filiala3' => $arrData[$IDgift]['filiala']['value'],'stock3' => $arrData[$IDgift]['stock']['value'],'suplimentar3' => $arrData[$IDgift]['suplimentar']['value'], 'id' => $IDgift );
+
+                    $arrShowF[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['name3'] = $arrData[$IDgift]['premiu']['value'];
+                    $arrShowF[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['filiala3'] = $arrData[$IDgift]['filiala']['value'];
+                    $arrShowF[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['stock3'] +=  $arrData[$IDgift]['stock']['value'];
+                    $arrShowF[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['suplimentar3'] +=  $arrData[$IDgift]['suplimentar']['value'];
+                    $arrShowF[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['id'] +=  $IDgift;
+                }
+                if ($name == 'categoria_de_produs' && $val2['value'] == 2) {
+                    // $val['title'] = $val[''];
+                    // $arrShowF2[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']][] = array( 'name2' => $arrData[$IDgift]['premiu']['value'] ,'filiala2' => $arrData[$IDgift]['filiala']['value'],'stock2' => $arrData[$IDgift]['stock']['value'],'suplimentar2' => $arrData[$IDgift]['suplimentar']['value'], 'id' => $IDgift );
+                    $arrShowF2[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['name2'] = $arrData[$IDgift]['premiu']['value'];
+                    $arrShowF2[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['filiala2'] = $arrData[$IDgift]['filiala']['value'];
+                    $arrShowF2[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['stock2'] +=  $arrData[$IDgift]['stock']['value'];
+                    $arrShowF2[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['suplimentar2'] +=  $arrData[$IDgift]['suplimentar']['value'];
+                    $arrShowF2[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['id'] +=  $IDgift;
+                }
+                if ($name == 'categoria_de_produs' && $val2['value'] == 1) {
+                    // $val['title'] = $val[''];
+                    // $arrShowF1[ $arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value'] ][] = array( 'name1' => $arrData[$IDgift]['premiu']['value'] ,'filiala1' => $arrData[$IDgift]['filiala']['value'],'stock1' => $arrData[$IDgift]['stock']['value'],'suplimentar1' => $arrData[$IDgift]['suplimentar']['value'], 'id' => $IDgift );
+                    $arrShowF1[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['name1'] = $arrData[$IDgift]['premiu']['value'];
+                    $arrShowF1[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['filiala1'] = $arrData[$IDgift]['filiala']['value'];
+                    $arrShowF1[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['stock1'] +=  $arrData[$IDgift]['stock']['value'];
+                    $arrShowF1[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['suplimentar1'] +=  $arrData[$IDgift]['suplimentar']['value'];
+                    $arrShowF1[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['id'] +=  $IDgift;
+                }
+            }
+        }
+        $arr = [];
+
+
+        if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru') {
+            $solicitate = 'Запрошено';
+            $stock_init = 'Начальный сток';
+            $supliment = 'Дополнение';
+            $stoc_dispon = 'Наличие в стоке';
+            $eliberate = 'Выпуск';
+            $stoc_final = 'Финальный сток';
+            $grad = 'Класс';
+            $premiu = 'Приз';
+            $premFil = 'Филиал';
+        }
+        if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro') {
+            $solicitate = 'Solicitate';
+            $stock_init = 'Stoc initial';
+            $supliment = 'Suplimentar';
+            $stoc_dispon = 'Stoc disponibil';
+            $eliberate = 'Eliberate';
+            $stoc_final = 'Stoc final';
+            $grad = 'Gradul';
+            $premiu = 'Premiu';
+            $premFil = 'Filiala';
+        }
+
+        print <<<TABLE
+            <table id="table8">
+            <thead>
+            <tr><th>$grad 3</th><th>$premiu</th><th>$premFil</th><th>$solicitate</th><th>$stock_init</th><th>$supliment</th><th>$stoc_dispon</th><th>$eliberate</th><th>$stoc_final</th></tr>
+            </thead>
+            <tbody>
+            TABLE;
+        $count = 1;
+        $solicit = 0;
+        foreach ($arrShowF as $filiala => $arrShow) {
+
+            $stockInit = 0;
+            $stockDisp = $stockInit + $arrShow['suplimentar3'];
+            $elib = $countElib;
+            $stockFinal = $stockDisp - $elib;
+            $solicitSQL = "SELECT COUNT(id) FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '" . $arrShow['filiala3'] . "' AND premiu = '" . $arrShow['name3'] . "'";
+            $sol = $conn->query($solicitSQL);
+            foreach ($sol as $solVal) {
+                $solicit = $solVal['COUNT(id)'];
+            }
+            printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $arrShow['name3'], $arrShow['filiala3'], $solicit, 0, $arrShow['suplimentar3'], $stockDisp, $countElib, $stockFinal);
+
+            $count++;
+        }
+
+        print "</tbody>\n</table>\n";
+
+        print <<<TABLE
+                       <table id="table8">
+                       <thead>
+                       <tr><th>$grad 2</th><th>$premiu</th><th>$premFil</th><th>$solicitate</th><th>$stock_init</th><th>$supliment</th><th>$stoc_dispon</th><th>$eliberate</th><th>$stoc_final</th></tr>
+                       </thead>
+                       <tbody>
+                       TABLE;
+        $count = 1;
+        $solicit = 0;
+        foreach ($arrShowF2 as $filiala => $arrShow) {
+
+            $stockInit = 0;
+            $stockDisp = $stockInit + $arrShow['suplimentar2'];
+            $elib = $countElib;
+            $solicitSQL = "SELECT COUNT(id) FROM promo_code WHERE active != 0 AND status = 10 AND livrare = '" . $arrShow['filiala2'] . "' AND premiu = '" . $arrShow['name2'] . "'";
+            $sol = $conn->query($solicitSQL);
+            foreach ($sol as $solVal) {
+                $solicit = $solVal['COUNT(id)'];
+            }
+            $stockFinal = $stockDisp - $elib;
+            printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $arrShow['name2'], $arrShow['filiala2'], $solicit, $stockInit, $arrShow['suplimentar2'], $stockDisp, $countElib, $stockFinal);
+
+            $count++;
+        }
+
+        print "</tbody>\n</table>\n";
+
+        print <<<TABLE
+                       <table id="table8">
+                       <thead>
+                       <tr><th>$grad 1</th><th>$premiu</th><th>$premFil</th><th>$solicitate</th><th>$stock_init</th><th>$supliment</th><th>$stoc_dispon</th><th>$eliberate</th><th>$stoc_final</th></tr>
+                       </thead>
+                       <tbody>
+                       TABLE;
+        $count = 1;
+        $solicit = 0;
+        foreach ($arrShowF1 as $filiala => $arrShow) {
+            $stockInit = 0;
+            $stockDisp = $stockInit + $arrShow['suplimentar1'];
+            $elib = $countElib;
+            $solicitSQL = "SELECT COUNT(id) FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '" . $arrShow['filiala1'] . "' AND premiu = '" . $arrShow['name1'] . "'";
+            $sol = $conn->query($solicitSQL);
+            foreach ($sol as $solVal) {
+
+                $solicit = $solVal['COUNT(id)'];
+            }
+            $stockFinal = $stockDisp - $elib;
+            printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $arrShow['name1'], $arrShow['filiala1'], $solicit, $stockInit, $arrShow['suplimentar1'], $stockDisp, $countElib, $stockFinal);
+
+            $count++;
+        }
+
+        print "</tbody>\n</table>\n";
+    }
 }
 
-function nescafe_preprocess_region__details($details){
+function nescafe_preprocess_region__details($details)
+{
 
     $roles = \Drupal::currentUser()->getRoles();
     $curr_id_for_user = \Drupal::currentUser()->id();
 
 
-             $config = new Config();
-             $credentials = $config->credentials('database');
-             $dsn = sprintf('mysql:host=%s;port=%d;dbname=%s', $credentials['host'], $credentials['port'], $credentials['path']);
-             $conn = new \PDO($dsn, $credentials['username'], $credentials['password'], [
-                 \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
-                 \PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => TRUE,
-                 \PDO::MYSQL_ATTR_FOUND_ROWS => TRUE,
-             ]);
+    $config = new Config();
+    $credentials = $config->credentials('database');
+    $dsn = sprintf('mysql:host=%s;port=%d;dbname=%s', $credentials['host'], $credentials['port'], $credentials['path']);
+    $conn = new \PDO($dsn, $credentials['username'], $credentials['password'], [
+        \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
+        \PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => TRUE,
+        \PDO::MYSQL_ATTR_FOUND_ROWS => TRUE,
+    ]);
 
 
-    if(in_array('authenticated', $roles) && !in_array('manager_filiala', $roles) && in_array('administrator', $roles)){
-        if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru'){
-                      $name = 'Имя';
-                      $phone = 'Телефон';
-                      $action = "Деталии";
-                      $mail = 'Почта';
-                      $stats = 'Сток';
-                      $prem = 'Приз';
-                      $livrare = 'Филиал';
-                      $promoCode = "Промокод";
-                      $state = 'Статус';
-                      $stateON = 'Выдан';
-                      $stateOFF = "В ожидании";
-                  }
-                  if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro'){
-                      $name = 'Nume';
-                      $phone = "Telefon";
-                      $action = 'Detalii';
-                      $mail = 'Posta';
-                      $stats = 'Stoc';
-                      $prem = 'Premiu';
-                      $livrare = 'Filiala';
-                      $promoCode = "Promocod";
-                      $state = 'Statut';
-                      $stateON = 'Ridicat';
-                      $stateOFF = "In Asteptare";
-                  }
+    if (in_array('authenticated', $roles) && !in_array('manager_filiala', $roles) && in_array('administrator', $roles)) {
+        if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru') {
+            $name = 'Имя';
+            $phone = 'Телефон';
+            $action = "Деталии";
+            $mail = 'Почта';
+            $stats = 'Сток';
+            $prem = 'Приз';
+            $livrare = 'Филиал';
+            $promoCode = "Промокод";
+            $state = 'Статус';
+            $stateON = 'Выдан';
+            $stateOFF = "В ожидании";
+        }
+        if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro') {
+            $name = 'Nume';
+            $phone = "Telefon";
+            $action = 'Detalii';
+            $mail = 'Posta';
+            $stats = 'Stoc';
+            $prem = 'Premiu';
+            $livrare = 'Filiala';
+            $promoCode = "Promocod";
+            $state = 'Statut';
+            $stateON = 'Ridicat';
+            $stateOFF = "In Asteptare";
+        }
 
 
-                  $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` LEFT JOIN `promo_code` ON `users_field_data`.uid = `promo_code`.active WHERE uid != 0 AND `promo_code`.`active` = '".$_GET['id']."' ORDER BY uid ASC";
+        $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` LEFT JOIN `promo_code` ON `users_field_data`.uid = `promo_code`.active WHERE uid != 0 AND `promo_code`.`active` = '" . $_GET['id'] . "' ORDER BY uid ASC";
 
 
-            $sql = $sqlQuery;
-            //dump($sql);
-            $result = $conn->query($sql);
-            $result->setFetchMode(\PDO::FETCH_OBJ);
+        $sql = $sqlQuery;
+        //dump($sql);
+        $result = $conn->query($sql);
+        $result->setFetchMode(\PDO::FETCH_OBJ);
 
-                          print <<<TABLE
+        print <<<TABLE
                   <table id="table8">
                   <thead>
                   <tr><th>ID</th><th>$name</th><th>$mail</th><th>$phone</th><th>$prem</th><th>$livrare</th><th>$promoCode</th><th>$state</th></tr>
                   </thead>
                   <tbody>
                   TABLE;
-                  $count = 1;
-                      foreach ($result as $record) {
-                      if($record->status == 2){
-                        $statusPrint = $stateOFF;
-                      }else if($record->status == 3){
-                       $statusPrint = $stateON;
-                      }else{
-                        $statusPrint = '';
-                      }
-                              printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $record->name, $record->mail, $record->field_phone_value, $record->premiu, $record->livrare, $record->promocode, $statusPrint);
+        $count = 1;
+        foreach ($result as $record) {
+            if ($record->status == 2) {
+                $statusPrint = $stateOFF;
+            } else if ($record->status == 3) {
+                $statusPrint = $stateON;
+            } else {
+                $statusPrint = '';
+            }
+            printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $record->name, $record->mail, $record->field_phone_value, $record->premiu, $record->livrare, $record->promocode, $statusPrint);
 
-                           $count++;
-                      }
+            $count++;
+        }
 
-                  print "</tbody>\n</table>\n";
+        print "</tbody>\n</table>\n";
     }
 }
 
 /* Таблица с участниками в томболе */
-function nescafe_preprocess_region__tombola(){
+function nescafe_preprocess_region__tombola()
+{
 
     $roles = \Drupal::currentUser()->getRoles();
     $curr_id_for_user = \Drupal::currentUser()->id();
 
 
-             $config = new Config();
-             $credentials = $config->credentials('database');
-             $dsn = sprintf('mysql:host=%s;port=%d;dbname=%s', $credentials['host'], $credentials['port'], $credentials['path']);
-             $conn = new \PDO($dsn, $credentials['username'], $credentials['password'], [
-                 \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
-                 \PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => TRUE,
-                 \PDO::MYSQL_ATTR_FOUND_ROWS => TRUE,
-             ]);
+    $config = new Config();
+    $credentials = $config->credentials('database');
+    $dsn = sprintf('mysql:host=%s;port=%d;dbname=%s', $credentials['host'], $credentials['port'], $credentials['path']);
+    $conn = new \PDO($dsn, $credentials['username'], $credentials['password'], [
+        \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
+        \PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => TRUE,
+        \PDO::MYSQL_ATTR_FOUND_ROWS => TRUE,
+    ]);
 
-    if(in_array('authenticated', $roles) && !in_array('manager_filiala', $roles) && in_array('administrator', $roles)){
-        if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru'){
-                              $name = 'Имя';
-                              $phone = 'Телефон';
-                              $action = "Деталии";
-                              $mail = 'Почта';
-                              $stats = 'Сток';
-                              $promoCode = "Промокод";
-                          }
-                          if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro'){
-                              $name = 'Nume';
-                              $phone = "Telefon";
-                              $action = 'Detalii';
-                              $mail = 'Posta';
-                              $stats = 'Stoc';
-                              $promoCode = "Promocod";
-                          }
+    if (in_array('authenticated', $roles) && !in_array('manager_filiala', $roles) && in_array('administrator', $roles)) {
+        if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru') {
+            $name = 'Имя';
+            $phone = 'Телефон';
+            $action = "Деталии";
+            $mail = 'Почта';
+            $stats = 'Сток';
+            $promoCode = "Промокод";
+        }
+        if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro') {
+            $name = 'Nume';
+            $phone = "Telefon";
+            $action = 'Detalii';
+            $mail = 'Posta';
+            $stats = 'Stoc';
+            $promoCode = "Promocod";
+        }
 
-                          $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` LEFT JOIN `promo_code` ON `users_field_data`.uid = `promo_code`.active WHERE uid != 0 AND `promo_code`.`active` != 0 AND final != 0 ORDER BY uid ASC";
-                    $sql = $sqlQuery;
-                    //dump($sql);
-                    $result = $conn->query($sql);
-                    $result->setFetchMode(\PDO::FETCH_OBJ);
+        $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` LEFT JOIN `promo_code` ON `users_field_data`.uid = `promo_code`.active WHERE uid != 0 AND `promo_code`.`active` != 0 AND final != 0 ORDER BY uid ASC";
+        $sql = $sqlQuery;
+        //dump($sql);
+        $result = $conn->query($sql);
+        $result->setFetchMode(\PDO::FETCH_OBJ);
 
-                                  print <<<TABLE
+        print <<<TABLE
                           <table id="table8">
                           <thead>
                           <tr><th>ID</th><th>$name</th><th>$mail</th><th>$phone</th><th>$promoCode</th></tr>
                           </thead>
                           <tbody>
                           TABLE;
-                          $count = 1;
-                              foreach ($result as $record) {
-                              if($record->status == 2){
-                                $statusPrint = $stateOFF;
-                              }else if($record->status == 3){
-                               $statusPrint = $stateON;
-                              }else{
-                                $statusPrint = '';
-                              }
-                                      printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $record->name, $record->mail, $record->field_phone_value, $record->promocode);
+        $count = 1;
+        foreach ($result as $record) {
+            if ($record->status == 2) {
+                $statusPrint = $stateOFF;
+            } else if ($record->status == 3) {
+                $statusPrint = $stateON;
+            } else {
+                $statusPrint = '';
+            }
+            printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $record->name, $record->mail, $record->field_phone_value, $record->promocode);
 
-                                   $count++;
-                              }
+            $count++;
+        }
 
-                          print "</tbody>\n</table>\n";
+        print "</tbody>\n</table>\n";
     }
 }
 
-function nescafe_preprocess_region__reset(){
+function nescafe_preprocess_region__reset()
+{
 
-if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru'){
-    $intro = 'Введите номер телефона для восстановления пароля';
-    $send = "Отправить";
-}
-if(\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro'){
-    $intro = 'Introduceti numarul de telefon ca sa restabiliti parola';
-    $send = "Trimite";
-}
+    if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru') {
+        $intro = 'Введите номер телефона для восстановления пароля';
+        $send = "Отправить";
+    }
+    if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro') {
+        $intro = 'Introduceti numarul de telefon ca sa restabiliti parola';
+        $send = "Trimite";
+    }
 
     print "<div class='promo_add'> <form method='post'><div class='promo_group'><label>$intro</label><input type='text' class='promo_add_inp' name='reset_password'></div> <input type='submit' value='$send' class='promo_send' name='submit_password'></form></div>";
-
 }
