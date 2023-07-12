@@ -540,6 +540,7 @@ $arrFil = [];
                                      }
                                  }
                             }
+                            dump($userID);
                             if($total % 10 ==0 && $userID->premiu == ''){
                             $checkPromo = "SELECT * FROM promo_code WHERE status = 10 AND status = 1 AND active = '".$curr_id_for_user."'";
                                                         $checkPromoItem = $conn->query($checkPromo);
