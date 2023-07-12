@@ -730,6 +730,16 @@ $arrFil = [];
                                        ";
                                 }
                             }
+                            $file_storage = \Drupal::service('entity_type.manager')->getStorage('file');
+                            $fid = 60;
+                            $file = $file_storage->load($fid);
+                            if ($file) {
+                              $file_path = $file->getFileUri(); // Получение пути к файлу.
+                              $file_name = $file->getFilename(); // Получение имени файла.
+                            dump($file_path);
+                            dump($file_name);
+                            }
+
         }
     }
 
