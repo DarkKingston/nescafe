@@ -654,7 +654,6 @@ $arrFil = [];
                                    //dump($arrShowF);
                                    $arr = [];
                                    $arrFil = [];
-                                   $arrImg = []
                                                                            foreach($arrShowF as $filiala => $arrShow){
 
                                                                            $file_storage = \Drupal::service('entity_type.manager')->getStorage('file');
