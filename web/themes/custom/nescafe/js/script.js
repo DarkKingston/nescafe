@@ -45,11 +45,11 @@
 
       document.querySelector('.user-register-form .js-form-item-name label').innerHTML = phone;
 
-      document.querySelector('.form-item-field-reglament-value input').disabled = true;
-
-      if(document.querySelector(".reg_accept")){
-        document.querySelector('.reg_btn').href='/user/register';
-      }
+      // document.querySelector('.form-item-field-reglament-value input').disabled = true;
+      //
+      // if(document.querySelector(".reg_accept")){
+      //   document.querySelector('.reg_btn').href='/user/register';
+      // }
 
       if(document.querySelector(".reg_accept")){
         document.querySelector('.reglament_accept').style.display = 'none';
