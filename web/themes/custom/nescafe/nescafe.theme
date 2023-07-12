@@ -593,7 +593,7 @@ if ($file) {
 
 }
 $string = str_replace("public://", "", $file_path);
-$arrImg .= "<img src='/sites/default/files/".$substring."'>";
+$arrImg .= "<img src='/sites/default/files/".$string."'>";
                                                                                                                         }
                                                                                                                         $arrFilUnique =  array_unique($arrFil);
                                                                                                                         foreach($arrFilUnique as $arrValFil){
