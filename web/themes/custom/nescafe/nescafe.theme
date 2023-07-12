@@ -685,7 +685,7 @@ $arrFil = [];
                                    //dump($arrUnique);
                                                                                print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_gift' data-dialog-type='modal'>
 
-                                                                                   print "<img src='/sites/default/files/".$final_path."'>";
+                                                                                   <img src='/sites/default/files/".$final_path."'>
 
                                                                                    <select name='premiu'>
 
