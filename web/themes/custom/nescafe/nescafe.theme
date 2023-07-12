@@ -581,7 +581,6 @@ $arrFil = [];
 
                                                                                                                        $option = '';
                                                                                                                        $option2 = '';
-                                                                                                                       $arrImg = '';
                                                                                                                         foreach($arrShow as $ft => $val){
 
                                                                                                                         $arr[] = $val['name'];
@@ -591,13 +590,10 @@ $file = $file_storage->load($val['image']);
 if ($file) {
   $file_path = $file->getFileUri(); // Получение пути к файлу.
   $file_name = $file->getFilename(); // Получение имени файла.
-  $arrIMG[] = $file_name;
+
 }
 $string = str_replace("public://", "", $file_path);
-$substring = substr($string, 0, 20);
-$arrFileName = array_unique($arrIMG);
-foreach($arrFileName as $fileName){
-$arrImg .= "<img src='/sites/default/files/".$substring."/".$fileName."'>";}
+$arrImg .= "<img src='/sites/default/files/".$substring."'>";
                                                                                                                         }
                                                                                                                         $arrFilUnique =  array_unique($arrFil);
                                                                                                                         foreach($arrFilUnique as $arrValFil){
