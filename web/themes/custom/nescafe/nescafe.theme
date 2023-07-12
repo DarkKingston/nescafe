@@ -586,7 +586,7 @@ $arrFil = [];
                                                                                                                         $arr[] = [$val['image']=>$val['name']];
                                                                                                                         $arrFil[] = $val['filiala'];
 $file_storage = \Drupal::service('entity_type.manager')->getStorage('file');
-$file = $file_storage->load($arrShow['image']);
+$file = $file_storage->load($val['image']);
 if ($file) {
   $file_path = $file->getFileUri(); // Получение пути к файлу.
   $file_name = $file->getFilename(); // Получение имени файла.
