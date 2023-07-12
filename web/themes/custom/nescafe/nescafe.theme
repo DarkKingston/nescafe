@@ -482,10 +482,10 @@ TABLE;
                                 $arrFil[] = $val['filiala'];
                                 //dump($arrShow);
                             }
-                            function isUnique($array, $key, $value)
+                            function isUnique($array, $key, $val)
                             {
                                 foreach ($array as $item) {
-                                    if ($item[$key] === $value) {
+                                    if ($item[$key] === $val) {
                                         return false;
                                     }
                                 }
