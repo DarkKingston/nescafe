@@ -464,7 +464,7 @@ TABLE;
                             foreach ($val as $name => $val2) {
                                 if ($name == 'categoria_de_produs' && $val2['value'] == 3) {
                                     // $val['title'] = $val[''];
-                                    $arrShowF[[$IDgift]['filiala']['value']][] = array('name' => $arrData[$IDgift]['premiu']['value'], 'filiala' => $arrData[$IDgift]['filiala']['value'], 'id' => $IDgift);
+                                    $arrShowF[[$IDgift]['filiala']['value']][] = array('image' =>$arrData[$IDgift]['gift_image']['value'],'name' => $arrData[$IDgift]['premiu']['value'], 'filiala' => $arrData[$IDgift]['filiala']['value'], 'id' => $IDgift);
                                 }
                             }
                         }
@@ -495,13 +495,11 @@ TABLE;
                             // Отфильтрованный массив с уникальными элементами по полю "name"
                             $filteredArray = [];
                             foreach ($arrShow as $value) {
-                            dump($value);
                                 if (isUnique($filteredArray, "name", $value["name"])) {
                                     $filteredArray[] = $value;
                                 }
                             }
                             foreach ($filteredArray as $filteredVal) {
-                                    dump($filteredArray);
                                 $file_storage = \Drupal::service('entity_type.manager')->getStorage('file');
                                 $file = $file_storage->load($filteredVal['image']);
                                 if ($file) {
