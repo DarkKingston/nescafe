@@ -640,6 +640,7 @@ form .form-item label{
   border-radius: 4px;
   padding: 7px 13px 7px 13px;
   border: 0;
+  width: 70px;
   cursor: pointer;
 }
 

@@ -723,7 +723,7 @@ $arrFil = [];
                                     if($conn->query($tombolaSuccess)){
                                         print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_final' data-dialog-type='modal'>
                                             <div>Felicitari ati fost ales participant la tombola zilnica!</div>
-                                            <div class='btn_main action closePopup'>Inchide</div>
+                                            <div class='btn_main action closePopupTombola'>Inchide</div>
                                         </form>
                                         ";
                                     }
@@ -735,7 +735,7 @@ $arrFil = [];
                                 if($conn->query($tombolaSuccess)){
                                    print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_final' data-dialog-type='modal'>
                                            <div>Felicitari ati fost ales participant la tombola finala!</div>
-                                           <div class='btn_main action closePopup'>Inchide</div>
+                                           <div class='btn_main action closePopupTombola'>Inchide</div>
                                        </form>
                                        ";
                                 }

@@ -17,6 +17,8 @@
 
       $('.closePopup',context).on('click',function(){
         $('.popup_gift').hide();
+      });
+      $('.closePopupTombola',context).on('click',function(){
         $('.popup_final').hide();
       });
 
