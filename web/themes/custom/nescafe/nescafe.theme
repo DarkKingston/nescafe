@@ -1542,6 +1542,15 @@ function nescafe_preprocess_region__tabel_principal(){
                 $count = 1;
                 $solicit = 0;
                 foreach ($arrShowF as $filiala => $arrShow) {
+                $file_storage = \Drupal::service('entity_type.manager')->getStorage('file');
+                $file = $file_storage->load($arrShow['image']);
+                if ($file) {
+                    $file_path = $file->getFileUri(); // Получение пути к файлу.
+                    $file_name = $file->getFilename(); // Получение имени файла.
+
+                }
+                $string = str_replace("public://", "", $file_path);
+                $arrImg = "<img src='/sites/default/files/" . $string . "'>";
                     $stockInit = 0;
                     $stockDisp = $stockInit + $arrShow['suplimentar3'];
                     $elib = $countElib;
@@ -1551,7 +1560,7 @@ function nescafe_preprocess_region__tabel_principal(){
                     foreach ($sol as $solVal) {
                         $solicit = $solVal['COUNT(id)'];
                     }
-                    printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $arrShow['image'], $arrShow['name3'], $solicit, 0, $arrShow['suplimentar3'], $stockDisp, $countElib, $stockFinal);
+                    printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $arrImg, $arrShow['name3'], $solicit, 0, $arrShow['suplimentar3'], $stockDisp, $countElib, $stockFinal);
 
                     $count++;
                 }
@@ -1568,6 +1577,16 @@ function nescafe_preprocess_region__tabel_principal(){
                 $count = 1;
                 $solicit = 0;
                 foreach ($arrShowF2 as $filiala => $arrShow) {
+
+                $file_storage = \Drupal::service('entity_type.manager')->getStorage('file');
+                $file = $file_storage->load($arrShow['image']);
+                if ($file) {
+                    $file_path = $file->getFileUri(); // Получение пути к файлу.
+                    $file_name = $file->getFilename(); // Получение имени файла.
+
+                }
+                $string = str_replace("public://", "", $file_path);
+                $arrImg = "<img src='/sites/default/files/" . $string . "'>";
                     $stockInit = 0;
                     $stockDisp = $stockInit + $arrShow['suplimentar2'];
                     $elib = $countElib;
@@ -1577,7 +1596,7 @@ function nescafe_preprocess_region__tabel_principal(){
                         $solicit = $solVal['COUNT(id)'];
                     }
                     $stockFinal = $stockDisp - $elib;
-                    printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $arrShow['image'], $arrShow['name2'], $solicit, $stockInit, $arrShow['suplimentar2'], $stockDisp, $countElib, $stockFinal);
+                    printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $arrImg, $arrShow['name2'], $solicit, $stockInit, $arrShow['suplimentar2'], $stockDisp, $countElib, $stockFinal);
 
                     $count++;
                 }
@@ -1594,6 +1613,17 @@ function nescafe_preprocess_region__tabel_principal(){
                 $count = 1;
                 $solicit = 0;
                 foreach ($arrShowF1 as $filiala => $arrShow) {
+
+                $file_storage = \Drupal::service('entity_type.manager')->getStorage('file');
+                $file = $file_storage->load($arrShow['image']);
+                if ($file) {
+                    $file_path = $file->getFileUri(); // Получение пути к файлу.
+                    $file_name = $file->getFilename(); // Получение имени файла.
+
+                }
+                $string = str_replace("public://", "", $file_path);
+                $arrImg = "<img src='/sites/default/files/" . $string . "'>";
+
                     $stockInit = 0;
                     $stockDisp = $stockInit + $arrShow['suplimentar1'];
                     $elib = $countElib;
@@ -1604,7 +1634,7 @@ function nescafe_preprocess_region__tabel_principal(){
                         $solicit = $solVal['COUNT(id)'];
                     }
                     $stockFinal = $stockDisp - $elib;
-                    printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $arrShow['image'], $arrShow['name1'], $solicit, $stockInit, $arrShow['suplimentar1'], $stockDisp, $countElib, $stockFinal);
+                    printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $arrImg, $arrShow['name1'], $solicit, $stockInit, $arrShow['suplimentar1'], $stockDisp, $countElib, $stockFinal);
 
                     $count++;
                 }
