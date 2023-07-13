@@ -1584,9 +1584,6 @@ function apiBulkSmsSystem( $params )
 
             $resultSend = apiBulkSmsSystem( $params );
 dump($resultSend);
-dump($newPass);
-dump($_POST["reset_password"]);
-dump($curr);
          }
     }
 }
