@@ -769,7 +769,7 @@ TABLE;
                                             }
 
                                             if (isset($_POST['submitGift'])) {
-                                                $updatePromo = "UPDATE promo_code SET premiu = '" . $_POST['premiu'] . "', livrare = '" . $_POST['filial'] . "', status = 10 WHERE promocode = '" . $userID->promocode . "' AND premiu = '' AND livrare = '' ";
+                                                $updatePromo = "UPDATE promo_code SET premiu = '" . $_POST['premiu'] . "', livrare = '" . $_POST['filial'] . "', status = 2 WHERE promocode = '" . $userID->promocode . "' AND premiu = '' AND livrare = '' ";
                                                 if ($conn->query($updatePromo)) {
                                                     //echo "ok";
                                                 }
