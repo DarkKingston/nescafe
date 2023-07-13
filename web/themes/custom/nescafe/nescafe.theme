@@ -1557,7 +1557,7 @@ function nescafe_preprocess_region__tabel_principal(){
                     foreach ($sol as $solVal) {
                         $solicit = $solVal['COUNT(id)'];
                     }
-                    printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $arrImg, $arrShow['name3'], $solicit, 0, $arrShow['suplimentar3'], $stockDisp, $countElib, $stockFinal);
+                    printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $arrShow['name3'], $arrImg, $arrShow['name3'], $solicit, 0, $arrShow['suplimentar3'], $stockDisp, $countElib, $stockFinal);
 
                     $count++;
                 }
@@ -1593,7 +1593,7 @@ function nescafe_preprocess_region__tabel_principal(){
                         $solicit = $solVal['COUNT(id)'];
                     }
                     $stockFinal = $stockDisp - $elib;
-                    printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $arrImg, $arrShow['name2'], $solicit, $stockInit, $arrShow['suplimentar2'], $stockDisp, $countElib, $stockFinal);
+                    printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $arrShow['name2'], $arrImg, $arrShow['name2'], $solicit, $stockInit, $arrShow['suplimentar2'], $stockDisp, $countElib, $stockFinal);
 
                     $count++;
                 }
@@ -1631,7 +1631,7 @@ function nescafe_preprocess_region__tabel_principal(){
                         $solicit = $solVal['COUNT(id)'];
                     }
                     $stockFinal = $stockDisp - $elib;
-                    printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $arrImg, $arrShow['name1'], $solicit, $stockInit, $arrShow['suplimentar1'], $stockDisp, $countElib, $stockFinal);
+                    printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $arrShow['name1'], $arrImg, $arrShow['name1'], $solicit, $stockInit, $arrShow['suplimentar1'], $stockDisp, $countElib, $stockFinal);
 
                     $count++;
                 }
