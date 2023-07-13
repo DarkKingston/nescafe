@@ -1433,3 +1433,8 @@ function nescafe_preprocess_region__reset()
 
     print "<div class='promo_add'> <form method='post'><div class='promo_group'><label>$intro</label><input type='text' class='promo_add_inp' name='reset_password'></div> <input type='submit' value='$send' class='promo_send' name='submit_password'></form></div>";
 }
+
+/* Tabel principal */
+function nescafe_preprocess_page__tabel_principal(){
+    echo "1232131213";
+}
