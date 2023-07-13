@@ -768,13 +768,14 @@ TABLE;
                                                 //dump($arrShow);
                                             }
 
-                                            if (isset($_POST['submitGift'])) {
-                                                $updatePromo = "UPDATE promo_code SET premiu = '" . $_POST['premiu'] . "', livrare = '" . $_POST['filial'] . "', status = 2 WHERE promocode = '" . $userID->promocode . "' AND premiu = '' AND livrare = '' ";
-                                                if ($conn->query($updatePromo)) {
-                                                    //echo "ok";
-                                                }
-                                            }
+
                     }
+                    if (isset($_POST['submitGift'])) {
+                            $updatePromo = "UPDATE promo_code SET premiu = '" . $_POST['premiu'] . "', livrare = '" . $_POST['filial'] . "', status = 2 WHERE promocode = '" . $userID->promocode . "' AND premiu = '' AND livrare = '' ";
+                            if ($conn->query($updatePromo)) {
+                                //echo "ok";
+                            }
+                        }
             } else if ($total > 10 && $total % 7 != 0) {
                 $checkPromo = "SELECT * FROM promo_code WHERE status = 10 AND active = '" . $curr_id_for_user . "'";
                 $checkPromoItem = $conn->query($checkPromo);
