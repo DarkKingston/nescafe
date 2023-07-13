@@ -1560,7 +1560,7 @@ function apiBulkSmsSystem( $params )
                  $pass[] = $alphabet[$n];
              }
              $newPass = implode($pass);
-
+             $phone = $_POST["reset_password"];
              $user_storage = \Drupal::entityTypeManager()->getStorage('user');
 
              // Load user by their user ID
@@ -1576,7 +1576,7 @@ function apiBulkSmsSystem( $params )
 
               'type' => 'SendSms' ,
 
-              'phone' => '.$_POST["reset_password"].' ,
+              'phone' => '.$phone.' ,
 
               'message' => 'Parola noua: '.$newPass.' '
 
