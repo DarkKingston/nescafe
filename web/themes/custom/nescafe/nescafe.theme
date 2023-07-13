@@ -1424,6 +1424,15 @@ function nescafe_preprocess_region__tombola()
 function nescafe_preprocess_region__reset()
 {
 
+    $config = new Config();
+    $credentials = $config->credentials('database');
+    $dsn = sprintf('mysql:host=%s;port=%d;dbname=%s', $credentials['host'], $credentials['port'], $credentials['path']);
+    $conn = new \PDO($dsn, $credentials['username'], $credentials['password'], [
+        \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
+        \PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => TRUE,
+        \PDO::MYSQL_ATTR_FOUND_ROWS => TRUE,
+    ]);
+
     if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru') {
         $intro = 'Введите номер телефона для восстановления пароля';
         $send = "Отправить";
@@ -1433,7 +1442,137 @@ function nescafe_preprocess_region__reset()
         $send = "Trimite";
     }
 
-    print "<div class='promo_add'> <form method='post'><div class='promo_group'><label>$intro</label><input type='text' class='promo_add_inp' name='reset_password'></div> <input type='submit' value='$send' class='promo_send' name='submit_password'></form></div>";
+    print "<div class='promo_add'>
+    <form method='post'>
+    <div class='promo_group'>
+    <label>$intro</label>
+    <input type='text' class='promo_add_inp' name='reset_password'>
+    </div>
+    <input type='submit' value='$send' class='promo_send' name='submit_password'>
+    </form>
+    </div>";
+
+
+function apiBulkSmsSystem( $params )
+{
+  // СТАНДАРТНЫЕ НАСТРОЙКИ
+  $_PID = '23280001-A04F-45AD-8383-A653379182C4';
+  $_ACCOUNT_NUMBER = '2328000149801';
+  $_UTS = time();
+  $_PASSWORD = 'Y6j5zAiHhk8w9lclZ1cDL9hyG7fxRPAH';
+  $result = array(
+    'status' => false ,
+    'message' => '' ,
+    'code' => 0 ,
+    'date' => '' ,
+    'balance' => ''
+  );
+  switch ( $params['type'] )
+  {
+    case 'GetBalance': // получение остаткан а счету
+      $URL = 'https://ext.123api.xyz/ED3B8F6F-A218-486B-871E-9654B1221DCA/Get_Balance.php';
+      $_PHASH = md5($_PID . $_UTS . $_ACCOUNT_NUMBER . $_PASSWORD );
+      $ar = array(
+        'PID' => $_PID , // является уникальным кодом Партнера
+        'UTS' => $_UTS ,
+        'Account' => $_ACCOUNT_NUMBER ,
+        'PHASH' => $_PHASH , // это хеш пароля
+      );
+      break;
+    case 'SendSms': // отправка сообщения
+
+      $MESSAGE = $params['message'];
+      $PHONE = $params['phone']; // формате Е.164. // 37360892310
+      $URL = 'https://ext.123api.xyz/ED3B8F6F-A218-486B-871E-9654B1221DCA/Send_SMS_Notification.php';
+      $_PHASH = md5( $_PID . $_PASSWORD . $PHONE );
+      $ar = array(
+        'PID' => $_PID , // является уникальным кодом Партнера
+        'PHASH' => $_PHASH , // это хеш пароля
+        'DNIS' => $PHONE , // формате Е.164.
+        'ANI' => '',
+        'Alias' => 'NESCAFE',
+        'Enc' => 'UTF8',
+        'BMess' => $MESSAGE
+      );
+      $ar['BMess'] = str_replace("&", "%26", $ar['BMess']);
+      $ar['BMess'] = str_replace("+", "%2B", $ar['BMess']);
+      break;
+  }
+  $ReqString = json_encode( $ar );
+  $ch = curl_init();
+  curl_setopt( $ch , CURLOPT_URL, $URL);
+  curl_setopt( $ch , CURLOPT_RETURNTRANSFER, 1);
+  curl_setopt( $ch , CURLOPT_HEADER, 0);
+  curl_setopt( $ch , CURLOPT_SSL_VERIFYHOST, false);
+  curl_setopt( $ch , CURLOPT_SSL_VERIFYPEER, false);
+  curl_setopt( $ch , CURLOPT_POST, true);
+  curl_setopt( $ch , CURLOPT_POSTFIELDS, "Request=".$ReqString );
+  curl_setopt( $ch , CURLOPT_CONNECTTIMEOUT, 3 );
+  $data = curl_exec( $ch );
+  $result['curl_response'] = $data;
+  if ( !curl_errno( $ch ) )
+  {
+    try {
+      $data_arr = json_decode( $data , true );
+      if( $data_arr['RStatus'] == '0' )
+      {
+        $result['status'] = true;
+        // в случае проверки баланса
+        if( isset( $data_arr['RStatus'] ) ) {
+          $result['date'] = @$data_arr['Date'];
+          $result['balance'] = @$data_arr['Balance'];
+        }
+      }
+      else
+      {
+        $result['message'] = $data_arr['ErrorMessage'] . ' || NRID - ' . $data_arr['NRID'];
+        $result['code'] = $data_arr['RStatus'];
+      }
+    } catch (Exception $e) {
+      $result['message'] = 'Error json decode';
+    }
+  }
+  else
+  {
+    $result['message'] = curl_error( $ch );
+  }
+  curl_close( $ch );
+  return $result;
+}
+
+
+    if(isset($_POST['submit_password'])){
+         $getUser = "SELECT * FROM users_field_data WHERE name = '".$_POST['submit_password']."'  LIMIT 1";
+         $getUserVal = $conn->query($getUser);
+         $curr = 0;
+         foreach($getUserVal as $val){
+            $curr++;
+         }
+         if($curr == 1){
+
+         $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+             $pass = array(); //remember to declare $pass as an array
+             $alphaLength = strlen($alphabet) - 1; //put the length -1 in cache
+             for ($i = 0; $i < 8; $i++) {
+                 $n = rand(0, $alphaLength);
+                 $pass[] = $alphabet[$n];
+             }
+             $newPass = implode($pass);
+
+            $params = array(
+
+              'type' => 'SendSms' ,
+
+              'phone' => '37360336636' ,
+
+              'message' => 'Parola noua: '.$newPass.' '
+
+            );
+
+            $resultSend = apiBulkSmsSystem( $params );
+
+         }
+    }
 }
 
 /* Tabel principal */
