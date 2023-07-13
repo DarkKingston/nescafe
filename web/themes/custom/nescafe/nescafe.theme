@@ -522,23 +522,24 @@ TABLE;
                         //dump($arrUnique);
 
                         //dump($arrShow);
+                        print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_gift' data-dialog-type='modal'>
+                                                                    <div class='popup_images'>
+                                                                        " . $arrImg . "
+                                                                    </div>
+                                                                    <div><select name='premiu'>
+                                                                        " . $option . "
+                                                                    </select>
+                                                                    <select name='filial'>
+                                                                        " . $option2 . "
+                                                                    </select>
+                                                                    </div>
+                                                                    <input type='submit' class='btn_main action' name='submitGift' value='Alege'>
+
+                                                                </form>
+                                                                ";
                     }
 
-                    print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_gift' data-dialog-type='modal'>
-                                            <div class='popup_images'>
-                                                " . $arrImg . "
-                                            </div>
-                                            <div><select name='premiu'>
-                                                " . $option . "
-                                            </select>
-                                            <select name='filial'>
-                                                " . $option2 . "
-                                            </select>
-                                            </div>
-                                            <input type='submit' class='btn_main action' name='submitGift' value='Alege'>
 
-                                        </form>
-                                        ";
 
                     if (isset($_POST['submitGift'])) {
                         $updatePromo = "UPDATE promo_code SET premiu = '" . $_POST['premiu'] . "', livrare = '" . $_POST['filial'] . "', status = 2 WHERE promocode = '" . $userID->promocode . "' AND premiu = '' AND livrare = '' ";
