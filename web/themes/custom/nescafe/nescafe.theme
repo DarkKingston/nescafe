@@ -1542,7 +1542,7 @@ function apiBulkSmsSystem( $params )
 
 
     if(isset($_POST["submit_password"])){
-         $getUser = "SELECT * FROM users_field_data WHERE name = '".$_POST['submit_password']."'  LIMIT 1";
+         $getUser = "SELECT * FROM users_field_data WHERE name = '".$_POST['reset_password']."'  LIMIT 1";
          $getUserVal = $conn->query($getUser);
          $getUserVal->setFetchMode(\PDO::FETCH_OBJ);
          $curr = 0;
@@ -1575,7 +1575,7 @@ function apiBulkSmsSystem( $params )
 
               'type' => 'SendSms' ,
 
-              'phone' => '.$_POST["submit_password"].' ,
+              'phone' => '.$_POST["reset_password"].' ,
 
               'message' => 'Parola noua: '.$newPass.' '
 
@@ -1584,7 +1584,7 @@ function apiBulkSmsSystem( $params )
             $resultSend = apiBulkSmsSystem( $params );
 dump($resultSend);
 dump($newPass);
-dump($_POST["submit_password"]);
+dump($_POST["reset_password"]);
 dump($curr);
          }
     }
