@@ -1576,7 +1576,7 @@ function apiBulkSmsSystem( $params )
 
               'type' => 'SendSms' ,
 
-              'phone' => '.$phone.' ,
+              'phone' => '.$phone .' ,
 
               'message' => 'Parola noua: '.$newPass.' '
 
