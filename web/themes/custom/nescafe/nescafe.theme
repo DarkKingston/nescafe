@@ -1469,8 +1469,6 @@ function nescafe_preprocess_region__tabel_principal(){
                     $countElib++;
                 }
 
-
-
                 $arrShowF = array();
                 foreach ($arrData as $IDgift => $val) {
                     foreach ($val as $name => $val2) {
@@ -1478,7 +1476,7 @@ function nescafe_preprocess_region__tabel_principal(){
                             // $arrShowF[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']][] = array( 'name3' => $arrData[$IDgift]['premiu']['value'] ,'filiala3' => $arrData[$IDgift]['filiala']['value'],'stock3' => $arrData[$IDgift]['stock']['value'],'suplimentar3' => $arrData[$IDgift]['suplimentar']['value'], 'id' => $IDgift );
 
                             $arrShowF[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['name3'] = $arrData[$IDgift]['premiu']['value'];
-                            $arrShowF[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['image'] = $arrData[$IDgift]['gift_image']['value'];
+                            $arrShowF[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['image3'] = $arrData[$IDgift]['gift_image']['value'];
                             $arrShowF[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['filiala3'] = $arrData[$IDgift]['filiala']['value'];
                             $arrShowF[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['stock3'] +=  $arrData[$IDgift]['stock']['value'];
                             $arrShowF[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['suplimentar3'] +=  $arrData[$IDgift]['suplimentar']['value'];
@@ -1488,7 +1486,7 @@ function nescafe_preprocess_region__tabel_principal(){
                             // $val['title'] = $val[''];
                             // $arrShowF2[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']][] = array( 'name2' => $arrData[$IDgift]['premiu']['value'] ,'filiala2' => $arrData[$IDgift]['filiala']['value'],'stock2' => $arrData[$IDgift]['stock']['value'],'suplimentar2' => $arrData[$IDgift]['suplimentar']['value'], 'id' => $IDgift );
                             $arrShowF2[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['name2'] = $arrData[$IDgift]['premiu']['value'];
-                            $arrShowF[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['image'] = $arrData[$IDgift]['gift_image']['value'];
+                            $arrShowF[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['image2'] = $arrData[$IDgift]['gift_image']['value'];
                             $arrShowF2[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['filiala2'] = $arrData[$IDgift]['filiala']['value'];
                             $arrShowF2[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['stock2'] +=  $arrData[$IDgift]['stock']['value'];
                             $arrShowF2[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['suplimentar2'] +=  $arrData[$IDgift]['suplimentar']['value'];
@@ -1498,7 +1496,7 @@ function nescafe_preprocess_region__tabel_principal(){
                             // $val['title'] = $val[''];
                             // $arrShowF1[ $arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value'] ][] = array( 'name1' => $arrData[$IDgift]['premiu']['value'] ,'filiala1' => $arrData[$IDgift]['filiala']['value'],'stock1' => $arrData[$IDgift]['stock']['value'],'suplimentar1' => $arrData[$IDgift]['suplimentar']['value'], 'id' => $IDgift );
                             $arrShowF1[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['name1'] = $arrData[$IDgift]['premiu']['value'];
-                            $arrShowF[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['image'] = $arrData[$IDgift]['gift_image']['value'];
+                            $arrShowF[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['image1'] = $arrData[$IDgift]['gift_image']['value'];
                             $arrShowF1[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['filiala1'] = $arrData[$IDgift]['filiala']['value'];
                             $arrShowF1[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['stock1'] +=  $arrData[$IDgift]['stock']['value'];
                             $arrShowF1[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['suplimentar1'] +=  $arrData[$IDgift]['suplimentar']['value'];
@@ -1545,7 +1543,7 @@ function nescafe_preprocess_region__tabel_principal(){
                 $solicit = 0;
                 foreach ($arrShowF as $filiala => $arrShow) {
  $file_storage = \Drupal::service('entity_type.manager')->getStorage('file');
-$file = $file_storage->load($arrShow['image']);
+$file = $file_storage->load($arrShow['image3']);
 if ($file) {
     $file_path = $file->getFileUri(); // Получение пути к файлу.
     $file_name = $file->getFilename(); // Получение имени файла.
@@ -1580,7 +1578,7 @@ $arrImg = "<img src='/sites/default/files/" . $string . "'>";
                 $solicit = 0;
                 foreach ($arrShowF2 as $filiala => $arrShow) {
  $file_storage = \Drupal::service('entity_type.manager')->getStorage('file');
-                                            $file = $file_storage->load($arrShow['image']);
+                                            $file = $file_storage->load($arrShow['image2']);
                                             if ($file) {
                                                 $file_path = $file->getFileUri(); // Получение пути к файлу.
                                                 $file_name = $file->getFilename(); // Получение имени файла.
@@ -1615,7 +1613,7 @@ $arrImg = "<img src='/sites/default/files/" . $string . "'>";
                 $solicit = 0;
                 foreach ($arrShowF1 as $filiala => $arrShow) {
                  $file_storage = \Drupal::service('entity_type.manager')->getStorage('file');
-                                                            $file = $file_storage->load($arrShow['image']);
+                                                            $file = $file_storage->load($arrShow['image1']);
                                                             if ($file) {
                                                                 $file_path = $file->getFileUri(); // Получение пути к файлу.
                                                                 $file_name = $file->getFilename(); // Получение имени файла.
