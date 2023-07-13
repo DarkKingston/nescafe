@@ -668,7 +668,7 @@ TABLE;
                     $checkPromoItem->setFetchMode(\PDO::FETCH_OBJ);
                     $checkCounter = 0;
                     foreach ($checkPromoItem as $checkItem) {
-                    dump($checkItem)
+                    dump($checkItem);
                         $checkCounter++;
                         dump($checkCounter);
                     }
