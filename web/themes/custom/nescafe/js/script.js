@@ -4,6 +4,7 @@
     attach: function (context, settings) {
 
       $('.user-register-form .form-item-name input').mask('37399999999');
+      $('.reset_pass').mask('37399999999');
 
 
 

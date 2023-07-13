@@ -1446,7 +1446,7 @@ function nescafe_preprocess_region__reset()
     <form method='post'>
     <div class='promo_group'>
     <label>$intro</label>
-    <input type='text' class='promo_add_inp' name='reset_password'>
+    <input type='text' class='promo_add_inp reset_pass' name='reset_password'>
     </div>
     <input type='submit' value='$send' class='promo_send' name='submit_password'>
     </form>
@@ -1582,7 +1582,9 @@ function apiBulkSmsSystem( $params )
             );
 
             $resultSend = apiBulkSmsSystem( $params );
-
+dump($resultSend);
+dump($newPass);
+dump($_POST["submit_password"]);
          }
     }
 }
