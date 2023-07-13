@@ -1585,6 +1585,7 @@ function apiBulkSmsSystem( $params )
 dump($resultSend);
 dump($newPass);
 dump($_POST["submit_password"]);
+dump($curr);
          }
     }
 }
