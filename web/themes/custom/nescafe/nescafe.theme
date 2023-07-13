@@ -203,7 +203,7 @@ function nescafe_preprocess_region__account(&$elem)
             \PDO::MYSQL_ATTR_FOUND_ROWS => TRUE,
         ]);
 
-        $sql = "SELECT * FROM promo_code WHERE active = 0";
+        $sql = "SELECT * FROM promo_code WHERE active = 0 AND promocode = '".$_POST['introduceti_codul_promotional']."' ";
         $result = $conn->query($sql);
         $result->setFetchMode(\PDO::FETCH_OBJ);
 
