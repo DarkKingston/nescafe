@@ -1561,16 +1561,7 @@ function apiBulkSmsSystem( $params )
              }
              $newPass = implode($pass);
              $phone = $_POST["reset_password"];
-             $user_storage = \Drupal::entityTypeManager()->getStorage('user');
 
-             // Load user by their user ID
-             $user = $user_storage->load($val->uid);
-
-             // Set the new password
-             $user->setPassword($newPass);
-
-             // Save the user
-             $user->save();
 
             $params = array(
 
@@ -1583,7 +1574,18 @@ function apiBulkSmsSystem( $params )
             );
 
             $resultSend = apiBulkSmsSystem( $params );
-dump($resultSend);
+if($resultSend['status'] == true){
+$user_storage = \Drupal::entityTypeManager()->getStorage('user');
+
+             // Load user by their user ID
+             $user = $user_storage->load($val->uid);
+
+             // Set the new password
+             $user->setPassword($newPass);
+
+             // Save the user
+             $user->save();
+             }
          }
     }
 }
