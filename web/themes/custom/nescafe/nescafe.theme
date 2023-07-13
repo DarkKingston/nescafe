@@ -545,6 +545,110 @@ TABLE;
                             //echo "ok";
                         }
                     }
+                }else if($total >= 7 && $total % 7 != 0){
+                                    $checkPromo = "SELECT * FROM promo_code WHERE status = 1 AND active = '" . $curr_id_for_user . "'";
+                                    $checkPromoItem = $conn->query($checkPromo);
+                                    $checkPromoItem->setFetchMode(\PDO::FETCH_OBJ);
+                                    $checkCounter = 0;
+                                    foreach ($checkPromoItem as $checkItem) {
+                                        $checkCounter++;
+                                    }
+                                    if ($checkCounter == 1) {
+                                        $arrData  = array();
+                                                                $getGift = "SELECT * FROM webform_submission_data WHERE webform_id = 'cadouri'  ";
+                                                                $giftVal = $conn->query($getGift);
+                                                                foreach ($giftVal as $gift => $val) {
+                                                                    $arrData[$val['sid']][$val['name']] = $val;
+                                                                    //dump($val);
+                                                                    //dump($val['value']);
+                                                                }
+
+
+                                                                // dump($arrData);
+
+                                                                $arrShowF = array();
+                                                                foreach ($arrData as $IDgift => $val) {
+                                                                    foreach ($val as $name => $val2) {
+                                                                        if ($name == 'categoria_de_produs' && $val2['value'] == 3) {
+                                                                            // $val['title'] = $val[''];
+                                                                            $arrShowF[[$IDgift]['filiala']['value']][] = array('image' =>$arrData[$IDgift]['gift_image']['value'],'name' => $arrData[$IDgift]['premiu']['value'], 'filiala' => $arrData[$IDgift]['filiala']['value'], 'id' => $IDgift);
+                                                                        }
+                                                                    }
+                                                                }
+                                                                $arr = [];
+                                                                $arrFil = [];
+                                                                foreach ($arrShowF as $filiala => $arrShow) {
+
+
+                                                                    $option = '';
+                                                                    $option2 = '';
+                                                                    foreach ($arrShow as $ft => $val) {
+
+                                                                        $arr[] = $val['name'];
+                                                                        $arrFil[] = $val['filiala'];
+                                                                        //dump($arrShow);
+                                                                    }
+                                                                    function isUnique($array, $key, $val)
+                                                                    {
+                                                                        foreach ($array as $item) {
+                                                                            if ($item[$key] === $val) {
+                                                                                return false;
+                                                                            }
+                                                                        }
+                                                                        return true;
+                                                                    }
+
+                                                                    // Отфильтрованный массив с уникальными элементами по полю "name"
+                                                                    $filteredArray = [];
+                                                                    foreach ($arrShow as $value) {
+                                                                        if (isUnique($filteredArray, "name", $value["name"])) {
+                                                                            $filteredArray[] = $value;
+                                                                        }
+                                                                    }
+                                                                    foreach ($filteredArray as $filteredVal) {
+                                                                        $file_storage = \Drupal::service('entity_type.manager')->getStorage('file');
+                                                                        $file = $file_storage->load($filteredVal['image']);
+                                                                        if ($file) {
+                                                                            $file_path = $file->getFileUri(); // Получение пути к файлу.
+                                                                            $file_name = $file->getFilename(); // Получение имени файла.
+
+                                                                        }
+                                                                        $string = str_replace("public://", "", $file_path);
+                                                                        $arrImg .= "<img src='/sites/default/files/" . $string . "'>";
+                                                                    }
+                                                                    $arrFilUnique = array_unique($arrFil);
+                                                                    foreach ($arrFilUnique as $filVal) {
+                                                                        $option2 .= " <option>" . $filVal . "</option> ";
+                                                                    }
+                                                                    $arrUnique = array_unique($arr);
+                                                                    foreach ($arrUnique as $arrVal) {
+                                                                        $option .= " <option>" . $arrVal . "</option> ";
+                                                                    }
+                                                                }
+
+                        print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_gift' data-dialog-type='modal'>
+                                                <div class='popup_images'>
+                                                    " . $arrImg . "
+                                                </div>
+                                                <div><select name='premiu'>
+                                                    " . $option . "
+                                                </select>
+                                                <select name='filial'>
+                                                    " . $option2 . "
+                                                </select>
+                                                </div>
+                                                <input type='submit' class='btn_main action' name='submitGift' value='Alege'>
+
+                                            </form>
+                                            ";
+
+                        if (isset($_POST['submitGift'])) {
+                            $updatePromo = "UPDATE promo_code SET premiu = '" . $_POST['premiu'] . "', livrare = '" . $_POST['filial'] . "', status = 2 WHERE promocode = '" . $userID->promocode . "' AND premiu = '' AND livrare = '' ";
+                            if ($conn->query($updatePromo)) {
+                                //echo "ok";
+                            }
+                        }
+                                    }
                 } else {
                     if (isset($_POST['introduceti_codul_promotional']) && $total % 30 != 0 && $total % 15 != 0 && $total % 7 != 0) {
                         print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_gift' data-dialog-type='modal'>
