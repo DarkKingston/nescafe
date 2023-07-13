@@ -668,7 +668,9 @@ TABLE;
                     $checkPromoItem->setFetchMode(\PDO::FETCH_OBJ);
                     $checkCounter = 0;
                     foreach ($checkPromoItem as $checkItem) {
+                    dump($checkItem)
                         $checkCounter++;
+                        dump($checkCounter);
                     }
                     if ($checkCounter == 0) {
                         $promoSuccess = "UPDATE promo_code SET status = 10, data = NOW() WHERE promocode = '" . $userID->promocode . "' AND status = 0 ";
