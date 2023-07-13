@@ -663,14 +663,7 @@ TABLE;
                 }
             }
             if ($total % 10 == 0 && $userID->premiu == '') {
-                $checkPromo = "SELECT * FROM promo_code WHERE status = 10 AND status = 1 AND active = '" . $curr_id_for_user . "'";
-                $checkPromoItem = $conn->query($checkPromo);
-                $checkCounter = 0;
-                foreach ($checkPromoItem as $checkItem) {
-                    $checkCounter++;
-                }
-                if ($checkCounter != 0) {
-                    $promoSuccess = "UPDATE promo_code SET status = 1, data = NOW() WHERE promocode = '" . $userID->promocode . "' AND status = 0 ";
+                    $promoSuccess = "UPDATE promo_code SET status = 10, data = NOW() WHERE promocode = '" . $userID->promocode . "' AND status = 0 ";
                     if ($conn->query($promoSuccess)) {
                         $arrData  = array();
                         $getGift = "SELECT * FROM webform_submission_data WHERE webform_id = 'cadouri'  ";
@@ -773,9 +766,9 @@ TABLE;
                             //echo "ok";
                         }
                     }
-                }
+
             } else if ($total >= 10 && $total % 7 != 0) {
-                $checkPromo = "SELECT * FROM promo_code WHERE status = 1 AND active = '" . $curr_id_for_user . "'";
+                $checkPromo = "SELECT * FROM promo_code WHERE status = 10 AND active = '" . $curr_id_for_user . "'";
                 $checkPromoItem = $conn->query($checkPromo);
                 $checkPromoItem->setFetchMode(\PDO::FETCH_OBJ);
                 $checkCounter = 0;
@@ -876,7 +869,7 @@ TABLE;
                     //dump($arrShow);
 
                     if (isset($_POST['submitGift'])) {
-                        $updatePromo = "UPDATE promo_code SET premiu = '" . $_POST['premiu'] . "', livrare = '" . $_POST['filial'] . "', status = 10 WHERE promocode = '" . $checkItem->promocode . "' AND premiu = '' AND livrare = '' AND status = 1 ";
+                        $updatePromo = "UPDATE promo_code SET premiu = '" . $_POST['premiu'] . "', livrare = '" . $_POST['filial'] . "', status = 2 WHERE promocode = '" . $checkItem->promocode . "' AND premiu = '' AND livrare = '' AND status = 10 ";
                         if ($conn->query($updatePromo)) {
                             //echo "ok";
                         }
