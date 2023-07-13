@@ -9,6 +9,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\user\Entity\User;
 use Drupal\media\Entity\Media;
 use Drupal\file\Entity\File;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
 
 function nescafe_preprocess_links__language_block(&$lang)
 {
@@ -1560,7 +1561,7 @@ function apiBulkSmsSystem( $params )
              }
              $newPass = implode($pass);
 
-             $user_storage = \Drupal::entityManager()->getStorage('user');
+             $user_storage = \Drupal::entityTypeManager()->getStorage('user');
 
              // Load user by their user ID
              $user = $user_storage->load($val->uid);
