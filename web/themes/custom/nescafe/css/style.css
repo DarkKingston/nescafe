@@ -942,3 +942,7 @@ form .form-item label{
 .popup_images>img{
   width: 110px;
 }
+
+table>img{
+  width: 110px;
+}
