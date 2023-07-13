@@ -1544,6 +1544,7 @@ function apiBulkSmsSystem( $params )
     if(isset($_POST['submit_password'])){
          $getUser = "SELECT * FROM users_field_data WHERE name = '".$_POST['submit_password']."'  LIMIT 1";
          $getUserVal = $conn->query($getUser);
+         $getUserVal->setFetchMode(\PDO::FETCH_OBJ);
          $curr = 0;
          foreach($getUserVal as $val){
             $curr++;
@@ -1559,11 +1560,22 @@ function apiBulkSmsSystem( $params )
              }
              $newPass = implode($pass);
 
+             $user_storage = \Drupal::entityManager()->getStorage('user');
+
+             // Load user by their user ID
+             $user = $user_storage->load($val->uid);
+
+             // Set the new password
+             $user->setPassword($newPass);
+
+             // Save the user
+             $user->save();
+
             $params = array(
 
               'type' => 'SendSms' ,
 
-              'phone' => '37360336636' ,
+              'phone' => '$_POST['submit_password']' ,
 
               'message' => 'Parola noua: '.$newPass.' '
 
