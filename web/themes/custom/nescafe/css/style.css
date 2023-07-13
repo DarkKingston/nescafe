@@ -781,6 +781,7 @@ form .form-item label{
   height: 45px;
   width: 300px;
   margin-top: 10px;
+  cursor: pointer;
 }
 
 .promo_add .btn_main{
