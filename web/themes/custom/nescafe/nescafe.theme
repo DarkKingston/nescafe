@@ -1488,6 +1488,7 @@ function nescafe_preprocess_region__tabel_principal(){
                             // $val['title'] = $val[''];
                             // $arrShowF2[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']][] = array( 'name2' => $arrData[$IDgift]['premiu']['value'] ,'filiala2' => $arrData[$IDgift]['filiala']['value'],'stock2' => $arrData[$IDgift]['stock']['value'],'suplimentar2' => $arrData[$IDgift]['suplimentar']['value'], 'id' => $IDgift );
                             $arrShowF2[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['name2'] = $arrData[$IDgift]['premiu']['value'];
+                            $arrShowF[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['image'] = $arrData[$IDgift]['gift_image']['value'];
                             $arrShowF2[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['filiala2'] = $arrData[$IDgift]['filiala']['value'];
                             $arrShowF2[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['stock2'] +=  $arrData[$IDgift]['stock']['value'];
                             $arrShowF2[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['suplimentar2'] +=  $arrData[$IDgift]['suplimentar']['value'];
@@ -1497,6 +1498,7 @@ function nescafe_preprocess_region__tabel_principal(){
                             // $val['title'] = $val[''];
                             // $arrShowF1[ $arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value'] ][] = array( 'name1' => $arrData[$IDgift]['premiu']['value'] ,'filiala1' => $arrData[$IDgift]['filiala']['value'],'stock1' => $arrData[$IDgift]['stock']['value'],'suplimentar1' => $arrData[$IDgift]['suplimentar']['value'], 'id' => $IDgift );
                             $arrShowF1[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['name1'] = $arrData[$IDgift]['premiu']['value'];
+                            $arrShowF[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['image'] = $arrData[$IDgift]['gift_image']['value'];
                             $arrShowF1[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['filiala1'] = $arrData[$IDgift]['filiala']['value'];
                             $arrShowF1[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['stock1'] +=  $arrData[$IDgift]['stock']['value'];
                             $arrShowF1[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['suplimentar1'] +=  $arrData[$IDgift]['suplimentar']['value'];
@@ -1577,7 +1579,7 @@ function nescafe_preprocess_region__tabel_principal(){
                         $solicit = $solVal['COUNT(id)'];
                     }
                     $stockFinal = $stockDisp - $elib;
-                    printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $arrShow['name2'], $arrShow['filiala2'], $solicit, $stockInit, $arrShow['suplimentar2'], $stockDisp, $countElib, $stockFinal);
+                    printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $arrShow['image'], $arrShow['filiala2'], $solicit, $stockInit, $arrShow['suplimentar2'], $stockDisp, $countElib, $stockFinal);
 
                     $count++;
                 }
@@ -1604,7 +1606,7 @@ function nescafe_preprocess_region__tabel_principal(){
                         $solicit = $solVal['COUNT(id)'];
                     }
                     $stockFinal = $stockDisp - $elib;
-                    printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $arrShow['name1'], $arrShow['filiala1'], $solicit, $stockInit, $arrShow['suplimentar1'], $stockDisp, $countElib, $stockFinal);
+                    printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $arrShow['image'], $arrShow['filiala1'], $solicit, $stockInit, $arrShow['suplimentar1'], $stockDisp, $countElib, $stockFinal);
 
                     $count++;
                 }
