@@ -1451,7 +1451,7 @@ function nescafe_preprocess_region__tabel_principal(){
         \PDO::MYSQL_ATTR_FOUND_ROWS => TRUE,
     ]);
 
-    if (in_array('authenticated', $roles) && !in_array('manager_filiala', $roles) && in_array('administrator', $roles)) {
+    if (in_array('administrator', $roles)) {
         echo "2113213";
     }
 
