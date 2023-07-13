@@ -1532,15 +1532,7 @@ function nescafe_preprocess_region__tabel_principal(){
                     $premFil = 'Cantitate';
                 }
 
-                $file_storage = \Drupal::service('entity_type.manager')->getStorage('file');
-                                            $file = $file_storage->load($arrShow['image']);
-                                            if ($file) {
-                                                $file_path = $file->getFileUri(); // Получение пути к файлу.
-                                                $file_name = $file->getFilename(); // Получение имени файла.
 
-                                            }
-                                            $string = str_replace("public://", "", $file_path);
-                                            $arrImg = "<img src='/sites/default/files/" . $string . "'>";
 
                 print <<<TABLE
                     <table id="table8">
@@ -1552,7 +1544,15 @@ function nescafe_preprocess_region__tabel_principal(){
                 $count = 1;
                 $solicit = 0;
                 foreach ($arrShowF as $filiala => $arrShow) {
+ $file_storage = \Drupal::service('entity_type.manager')->getStorage('file');
+$file = $file_storage->load($arrShow['image']);
+if ($file) {
+    $file_path = $file->getFileUri(); // Получение пути к файлу.
+    $file_name = $file->getFilename(); // Получение имени файла.
 
+}
+$string = str_replace("public://", "", $file_path);
+$arrImg = "<img src='/sites/default/files/" . $string . "'>";
                     $stockInit = 0;
                     $stockDisp = $stockInit + $arrShow['suplimentar3'];
                     $elib = $countElib;
@@ -1579,7 +1579,15 @@ function nescafe_preprocess_region__tabel_principal(){
                 $count = 1;
                 $solicit = 0;
                 foreach ($arrShowF2 as $filiala => $arrShow) {
+ $file_storage = \Drupal::service('entity_type.manager')->getStorage('file');
+                                            $file = $file_storage->load($arrShow['image']);
+                                            if ($file) {
+                                                $file_path = $file->getFileUri(); // Получение пути к файлу.
+                                                $file_name = $file->getFilename(); // Получение имени файла.
 
+                                            }
+                                            $string = str_replace("public://", "", $file_path);
+                                            $arrImg = "<img src='/sites/default/files/" . $string . "'>";
                     $stockInit = 0;
                     $stockDisp = $stockInit + $arrShow['suplimentar2'];
                     $elib = $countElib;
@@ -1606,6 +1614,15 @@ function nescafe_preprocess_region__tabel_principal(){
                 $count = 1;
                 $solicit = 0;
                 foreach ($arrShowF1 as $filiala => $arrShow) {
+                 $file_storage = \Drupal::service('entity_type.manager')->getStorage('file');
+                                                            $file = $file_storage->load($arrShow['image']);
+                                                            if ($file) {
+                                                                $file_path = $file->getFileUri(); // Получение пути к файлу.
+                                                                $file_name = $file->getFilename(); // Получение имени файла.
+
+                                                            }
+                                                            $string = str_replace("public://", "", $file_path);
+                                                            $arrImg = "<img src='/sites/default/files/" . $string . "'>";
                     $stockInit = 0;
                     $stockDisp = $stockInit + $arrShow['suplimentar1'];
                     $elib = $countElib;
