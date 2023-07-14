@@ -1346,7 +1346,7 @@ function nescafe_preprocess_region__details($details)
             } else {
                 $statusPrint = '';
             }
-            printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $record->field_name_value,$record->field_lastname_value, $record->name, $record->name, $record->premiu, $record->livrare, $record->promocode, $statusPrint);
+            printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $record->field_name_value,$record->field_lastname_value, $record->name, $record->premiu, $record->livrare, $record->promocode, $statusPrint);
 
             $count++;
         }
