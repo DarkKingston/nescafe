@@ -253,12 +253,12 @@ function nescafe_preprocess_region__account(&$elem)
 
         if (isset($_POST['filSearch']) && $_POST['filiala_inp'] != '') {
             if ($_POST['filiala_inp'] == 'Toate') {
-                $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` LEFT JOIN `promo_code` ON `users_field_data`.uid = `promo_code`.active WHERE uid != 0 AND `promo_code`.`active` != 0 AND `promo_code`.`status` != 0 AND `promo_code`.`status` != 1 ORDER BY uid ASC";
+                $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` LEFT JOIN `promo_code` ON `users_field_data`.uid = `promo_code`.active WHERE uid != 0 AND `promo_code`.`active` != 0 AND `promo_code`.`status` != 0 AND `promo_code`.`status` != 1 LEFT JOIN `user__field_name` ON `users_field_data`.`uid` = `user__field_name`.`entity_id` ORDER BY uid ASC";
             } else {
-                $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` LEFT JOIN `promo_code` ON `users_field_data`.uid = `promo_code`.active WHERE uid != 0 AND `promo_code`.`active` != 0 AND `promo_code`.`status` != 0 AND `promo_code`.`status` != 1 AND `promo_code`.`livrare` = '" . $_POST['filiala_inp'] . "' ORDER BY uid ASC";
+                $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` LEFT JOIN `promo_code` ON `users_field_data`.uid = `promo_code`.active WHERE uid != 0 AND `promo_code`.`active` != 0 AND `promo_code`.`status` != 0 AND `promo_code`.`status` != 1 AND `promo_code`.`livrare` = '" . $_POST['filiala_inp'] . "' LEFT JOIN `user__field_name` ON `users_field_data`.`uid` = `user__field_name`.`entity_id` ORDER BY uid ASC";
             }
         } else {
-            $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` LEFT JOIN `promo_code` ON `users_field_data`.uid = `promo_code`.active WHERE uid != 0 AND `promo_code`.`active` != 0 AND `promo_code`.`status` != 0 AND `promo_code`.`status` != 1 ORDER BY uid ASC";
+            $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` LEFT JOIN `promo_code` ON `users_field_data`.uid = `promo_code`.active WHERE uid != 0 AND `promo_code`.`active` != 0 AND `promo_code`.`status` != 0 AND `promo_code`.`status` != 1 LEFT JOIN `user__field_name` ON `users_field_data`.`uid` = `user__field_name`.`entity_id` ORDER BY uid ASC";
         }
 
         $sql = $sqlQuery;
@@ -276,7 +276,7 @@ function nescafe_preprocess_region__account(&$elem)
         $count = 1;
         foreach ($result as $record) {
             dump($record);
-            printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><a href='/details?id=%s' data-id='%s' class='btn_main action'>%s</a></td></tr>\n", $count, $record->name, $record->mail, $record->name, $record->premiu, $record->livrare, $record->promocode, $record->uid, $record->uid, $action);
+            printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><a href='/details?id=%s' data-id='%s' class='btn_main action'>%s</a></td></tr>\n", $count, $record->field_name_value, $record->mail, $record->name, $record->premiu, $record->livrare, $record->promocode, $record->uid, $record->uid, $action);
 
             $count++;
         }
