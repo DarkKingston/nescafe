@@ -1807,5 +1807,5 @@ function nescafe_preprocess_region__tabel_principal(){
 
 function nescafe_preprocess_block__webform_6(){
 
-    echo "231";
+    print "<div>OK</div>";
 }
