@@ -1804,8 +1804,3 @@ function nescafe_preprocess_region__tabel_principal(){
 
 }
 
-
-function nescafe_preprocess_block__webform_6(){
-
-    print "<div>OK</div>";
-}
