@@ -58,7 +58,7 @@ function nescafe_preprocess_menu__header_btn(&$logged)
 
 function nescafe_preprocess_page(&$page)
 {
-    dump($page);
+    //dump($page);
     $roles = \Drupal::currentUser()->getRoles();
 
 
