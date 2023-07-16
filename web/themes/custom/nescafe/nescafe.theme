@@ -1134,7 +1134,7 @@ function nescafe_preprocess_region__stock($page)
             $countElib++;
         }
 
-        $getFiliala = "SELECT * FROM webform_id = 'adaugarea_filiala' ";
+        $getFiliala = "SELECT * FROM webform_submission_data WHERE webform_id = 'adaugarea_filiala' ";
         $filVal = $conn->query($getFiliala);
 
 
