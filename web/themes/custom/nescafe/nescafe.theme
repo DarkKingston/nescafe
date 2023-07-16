@@ -1261,6 +1261,7 @@ function nescafe_preprocess_region__stock($page)
                        TABLE;
         $count = 1;
         $solicit = 0;
+        dump($filVal);
       foreach ($filVal as $arrFil1) {
         foreach ($arrShowF1 as $filiala => $arrShow) {
           $stockInit = 0;
