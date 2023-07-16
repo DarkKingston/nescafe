@@ -1207,7 +1207,7 @@ function nescafe_preprocess_region__stock($page)
         $solicit = 0;
         foreach ($filVal as $arrFil) {
           foreach ($arrShowF as $filiala => $arrShow) {
-            dump($arrShow);
+            dump($arrFil);
             $stockInit = 0;
             $stockDisp = $stockInit + $arrShow['suplimentar3'];
             $elib = $countElib;
@@ -1217,7 +1217,7 @@ function nescafe_preprocess_region__stock($page)
             foreach ($sol as $solVal) {
               $solicit = $solVal['COUNT(id)'];
             }
-            printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $arrShow['name3'], $arrFil['value'], $solicit, 0, $arrShow['suplimentar3'], $stockDisp, $countElib, $stockFinal);
+            printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $arrShow['name3'], $arrShow['filiala3'], $solicit, 0, $arrShow['suplimentar3'], $stockDisp, $countElib, $stockFinal);
 
             $count++;
           }
