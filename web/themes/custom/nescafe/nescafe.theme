@@ -1119,7 +1119,7 @@ function nescafe_preprocess_region__stock($page)
 
     if (in_array('authenticated', $roles) && !in_array('manager_filiala', $roles) && in_array('administrator', $roles)) {
         $arrData  = array();
-        $getGift = "SELECT * FROM webform_submission_data WHERE webform_id = 'cadouri' AND webform_id = 'adaugarea_filiala'  ";
+        $getGift = "SELECT * FROM webform_submission_data WHERE webform_id = 'cadouri' OR webform_id = 'adaugarea_filiala'  ";
         $giftVal = $conn->query($getGift);
         foreach ($giftVal as $gift => $val) {
             $arrData[$val['sid']][$val['name']] = $val;
