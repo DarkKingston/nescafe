@@ -1207,7 +1207,7 @@ function nescafe_preprocess_region__stock($page)
         $solicit = 0;
         foreach ($filVal as $arrFil) {
           foreach ($arrShowF as $filiala => $arrShow) {
-            dump($arrFil);
+            //dump($arrFil);
             $stockInit = 0;
             $stockDisp = $stockInit + $arrShow['suplimentar3'];
             $elib = $countElib;
