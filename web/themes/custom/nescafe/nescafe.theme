@@ -666,7 +666,7 @@ TABLE;
                 }
             }
             if ($total % 10 == 0 && $userID->premiu == '' && $total > 0) {
-            dump($total);
+
                     $checkPromo = "SELECT * FROM promo_code WHERE status = 10 AND active = '".$curr_id_for_user."' ";
                     $checkPromoItem = $conn->query($checkPromo);
                     $checkPromoItem->setFetchMode(\PDO::FETCH_OBJ);
@@ -895,7 +895,7 @@ TABLE;
                 $checkPromoItem->setFetchMode(\PDO::FETCH_OBJ);
                 $checkCounter = 0;
                 foreach ($checkPromoItem as $checkItem) {
-                    dump($checkItem);
+
                     $checkCounter++;
                 }
                 if ($checkCounter != 0) {
@@ -915,7 +915,7 @@ TABLE;
                 $checkPromoItem->setFetchMode(\PDO::FETCH_OBJ);
                 $checkCounter = 0;
                 foreach ($checkPromoItem as $checkItem) {
-                    dump($checkItem);
+
                     $checkCounter++;
                 }
                 if ($checkCounter != 0) {
@@ -1123,8 +1123,7 @@ function nescafe_preprocess_region__stock($page)
         $giftVal = $conn->query($getGift);
         foreach ($giftVal as $gift => $val) {
             $arrData[$val['sid']][$val['name']] = $val;
-            //dump($val);
-            //dump($val['value']);
+
         }
 
         $elibSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 3";
@@ -1207,7 +1206,6 @@ function nescafe_preprocess_region__stock($page)
         $solicit = 0;
         foreach ($filVal as $arrFil) {
           foreach ($arrShowF as $filiala => $arrShow) {
-            //dump($arrFil);
             $stockInit = 0;
             $stockDisp = $stockInit + $arrShow['suplimentar3'];
             $elib = $countElib;
