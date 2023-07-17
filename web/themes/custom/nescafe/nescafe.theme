@@ -1784,6 +1784,18 @@ function nescafe_preprocess_region__tabel_principal(){
                 $solicit = 0;
                 foreach ($arrShowF2 as $filiala => $arrShow) {
 
+
+                  foreach ($sums as $sum) {
+                    if($sum['premiu'] == $arrShow['name2']){
+                      $sum2 = $sum['total_suplimentar'] + $sum['total_initial'];
+                    }else{
+                      $sum2 = $arrShow['suplimentar2'];
+                    }
+                  }
+
+                  $supliment = $arrShow['suplimentar2'] - $sum2;
+
+
                 $file_storage = \Drupal::service('entity_type.manager')->getStorage('file');
                 $file = $file_storage->load($arrShow['image']);
                 if ($file) {
@@ -1800,7 +1812,7 @@ function nescafe_preprocess_region__tabel_principal(){
                     foreach ($sol as $solVal) {
                         $solicit = $solVal['COUNT(id)'];
                     }
-                    printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $arrShow['name2'], $arrImg, $arrShow['suplimentar2'],  0,0,0,0,0,0,0,0, 0);
+                    printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $arrShow['name2'], $arrImg, $arrShow['suplimentar2'],  0,0,0,0,0,0,0,0, $supliment);
 
                     $count++;
                 }
@@ -1817,6 +1829,18 @@ function nescafe_preprocess_region__tabel_principal(){
                 $count = 1;
                 $solicit = 0;
                 foreach ($arrShowF1 as $filiala => $arrShow) {
+
+
+
+                  foreach ($sums as $sum) {
+                    if($sum['premiu'] == $arrShow['name1']){
+                      $sum1 = $sum['total_suplimentar'] + $sum['total_initial'];
+                    }else{
+                      $sum1 = $arrShow['suplimentar1'];
+                    }
+                  }
+
+                  $supliment = $arrShow['suplimentar1'] - $sum1;
 
                 $file_storage = \Drupal::service('entity_type.manager')->getStorage('file');
                 $file = $file_storage->load($arrShow['image']);
@@ -1836,7 +1860,7 @@ function nescafe_preprocess_region__tabel_principal(){
 
                         $solicit = $solVal['COUNT(id)'];
                     }
-                    printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $arrShow['name1'], $arrImg, $arrShow['suplimentar1'],  0,0,0,0,0,0,0,0, 0);
+                    printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $arrShow['name1'], $arrImg, $arrShow['suplimentar1'],  0,0,0,0,0,0,0,0, $supliment);
 
                     $count++;
                 }
