@@ -1844,7 +1844,7 @@ function nescafe_preprocess_region__tabel_principal(){
           }
           print "</select>";
           print "<select name='gift_select' id=''>";
-          foreach ($arrShowForm as $filiala => $arrShow) {
+          foreach ($arrShowForm as $arrShow) {
             print "<option value='".$arrShow['name']."'>".$arrShow['name']."</option>";
           }
           print "</select>";
