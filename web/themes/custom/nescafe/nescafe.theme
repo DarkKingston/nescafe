@@ -1683,14 +1683,14 @@ function nescafe_preprocess_region__tabel_principal(){
 
                 if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru') {
                     $sapt = 'Неделя';
-                    $stoc_final = 'Финальный сток';
+                    $stoc_final = 'Доступный сток';
                     $grad = 'Класс';
                     $premiu = 'Изображение';
                     $premFil = 'Количество';
                 }
                 if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro') {
                     $sapt = 'Saptamana';
-                    $stoc_final = 'Stoc final';
+                    $stoc_final = 'Stoc Disponibil';
                     $grad = 'Gradul';
                     $premiu = 'Poza';
                     $premFil = 'Cantitate';
@@ -1728,16 +1728,6 @@ function nescafe_preprocess_region__tabel_principal(){
             }
           }
 
-// Output the results
-          foreach ($sums as $sum) {
-            echo "Premiu: " . $sum['premiu'] . ", Filiala: " . $sum['filiala'] . PHP_EOL;
-            echo "Total Suplimentar: " . $sum['total_suplimentar'] . PHP_EOL;
-            echo "Total Initial: " . $sum['total_initial'] . PHP_EOL;
-            echo "----------------------" . PHP_EOL;
-          }
-
-
-
                 print <<<TABLE
                     <table id="table8">
                     <thead>
@@ -1758,7 +1748,6 @@ function nescafe_preprocess_region__tabel_principal(){
                 $string = str_replace("public://", "", $file_path);
                 $arrImg = "<img src='/sites/default/files/" . $string . "'>";
                     $stockInit = 0;
-                    $stockDisp = $stockInit + $arrShow['suplimentar3'];
                     $elib = $countElib;
                     $stockFinal = $stockDisp - $elib;
                     $solicitSQL = "SELECT COUNT(id) FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '" . $arrShow['filiala3'] . "' AND premiu = '" . $arrShow['name3'] . "'";
@@ -1766,7 +1755,13 @@ function nescafe_preprocess_region__tabel_principal(){
                     foreach ($sol as $solVal) {
                         $solicit = $solVal['COUNT(id)'];
                     }
-                    printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $arrShow['name3'], $arrImg, $arrShow['suplimentar3'], 0,0,0,0,0,0,0,0, $stockFinal);
+                    $stockDisp;
+                  foreach ($sums as $sum) {
+                    if($sum['premiu'] == $arrShow['name3']){
+                      $stockDisp = $sum['total_initial'] + $sum['total_suplimentar'];
+                    }
+                  }
+                    printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $arrShow['name3'], $arrImg, $arrShow['suplimentar3'], 0,0,0,0,0,0,0,0, $stockDisp);
 
                     $count++;
                 }
