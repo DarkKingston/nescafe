@@ -539,6 +539,9 @@ TABLE;
               );
 
               $resultSend = apiBulkSmsSystem( $params );
+              dump($resultSend);
+              dump($phone);
+              dump($code);
               if($resultSend['status'] == true) {
                 if ($_POST['code_name'] == $_SESSION['code']) {
 
