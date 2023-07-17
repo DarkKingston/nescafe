@@ -535,15 +535,16 @@ TABLE;
 
               );
 
-              $resultSend = apiBulkSmsSystem( $params );
-              dump($resultSend);
+              //$resultSend = apiBulkSmsSystem( $params );
+              //dump($resultSend);
               dump($phone);
               dump($code);
             }
 
             if(isset($_POST['code_submit'])){
+dump($_POST['code_name']);
+dump($_SESSION['code']);
 
-              if($resultSend['status'] == true) {
                 if ($_POST['code_name'] == $_SESSION['code']) {
 
                   $updateStatus = "UPDATE promo_code SET status = 3 WHERE active = '" . $_POST['active_id'] . "' AND status = 2 ";
@@ -559,7 +560,7 @@ TABLE;
                            </form>";
                   }
                 }
-              }
+
             }
 
             print "
