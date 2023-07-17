@@ -1232,7 +1232,8 @@ function nescafe_preprocess_region__stock($page)
                        TABLE;
         $count = 1;
         $solicit = 0;
-dump($filVal);
+      $getFiliala = "SELECT * FROM webform_submission_data WHERE webform_id = 'adaugarea_filiala' ";
+      $filVal = $conn->query($getFiliala);
       foreach ($filVal as $arrFil2) {
         foreach ($arrShowF2 as $filiala => $arrShow) {
           $stockInit = 0;
@@ -1249,7 +1250,7 @@ dump($filVal);
           $count++;
         }
       }
-      dump($arrFil2);
+
 
         print "</tbody>\n</table>\n";
 
@@ -1262,8 +1263,8 @@ dump($filVal);
                        TABLE;
         $count = 1;
         $solicit = 0;
-        dump($filVal);
-        dump($arrFil2);
+      $getFiliala = "SELECT * FROM webform_submission_data WHERE webform_id = 'adaugarea_filiala' ";
+      $filVal = $conn->query($getFiliala);
       foreach ($filVal as $arrFil1) {
         foreach ($arrShowF1 as $filiala => $arrShow) {
           $stockInit = 0;
@@ -1272,7 +1273,6 @@ dump($filVal);
           $solicitSQL = "SELECT COUNT(id) FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '" . $arrShow['filiala1'] . "' AND premiu = '" . $arrShow['name1'] . "'";
           $sol = $conn->query($solicitSQL);
           foreach ($sol as $solVal) {
-        dump($arrFil1);
 
             $solicit = $solVal['COUNT(id)'];
           }
