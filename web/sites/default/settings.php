@@ -19,7 +19,7 @@ $settings['file_scan_ignore_directories'] = [
   'node_modules',
   'bower_components',
 ];
-ini_set('memory_limit', '500M');
+ini_set('memory_limit', '-1');
 
 // The hash_salt should be a unique random value for each application.
 // If left unset, the settings.platformsh.php file will attempt to provide one.
