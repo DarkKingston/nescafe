@@ -1219,9 +1219,9 @@ function nescafe_preprocess_region__stock($page)
 
             $count++;
           }
-        }
 
         print "</tbody>\n</table>\n";
+        }
 
         print <<<TABLE
                        <table id="table8">
@@ -1248,10 +1248,10 @@ function nescafe_preprocess_region__stock($page)
 
           $count++;
         }
-      }
 
         print "</tbody>\n</table>\n";
 
+      }
         print <<<TABLE
                        <table id="table8">
                        <thead>
@@ -1280,9 +1280,9 @@ function nescafe_preprocess_region__stock($page)
 
           $count++;
         }
-      }
 
         print "</tbody>\n</table>\n";
+      }
     }
 }
 
