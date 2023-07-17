@@ -1844,7 +1844,7 @@ function nescafe_preprocess_region__tabel_principal(){
           }
           print "</select>";
           print "<select name='gift_select' id=''>";
-          foreach ($arrShowForm as $arrShow) {
+          foreach ($arrShowForm as $filiala => $arrShow) {
             print "<option value='".$arrShow['name']."'>".$arrShow['name']."</option>";
           }
           print "</select>";
@@ -1854,7 +1854,7 @@ function nescafe_preprocess_region__tabel_principal(){
 
           if(isset($_POST['submit_supliment'])){
 dump($arrShowForm);
-            foreach ($arrShowForm as $arrShow) {
+            foreach ($arrShowForm as $filiala => $arrShow) {
               if ($arrShow['name'] == $_POST['gift_select']) {
 
                 if ($arrShow['suplimentar'] - $_POST['input_supliment'] >= 0 && $arrShow['suplimentar'] - $_POST['input_supliment'] <= $arrShow['suplimentar']) {
