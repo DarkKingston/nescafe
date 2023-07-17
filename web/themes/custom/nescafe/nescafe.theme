@@ -1673,9 +1673,9 @@ function nescafe_preprocess_region__tabel_principal(){
 
                           $arrShowForm[ $arrData[$IDgift]['premiu']['value'] ] = $arrData[$IDgift]['premiu']['value'];
                           $arrShowForm[ $arrData[$IDgift]['premiu']['value'] ] = $arrData[$IDgift]['gift_image']['value'];
-                          $arrShowForm[ $arrData[$IDgift]['premiu']['value'] ] =  $arrData[$IDgift]['stock']['value'];
-                          $arrShowForm[ $arrData[$IDgift]['premiu']['value'] ] =  $arrData[$IDgift]['suplimentar']['value'];
-                          $arrShowForm[ $arrData[$IDgift]['premiu']['value'] ] =  $IDgift;
+                          $arrShowForm[ $arrData[$IDgift]['premiu']['value'] ] +=  $arrData[$IDgift]['stock']['value'];
+                          $arrShowForm[ $arrData[$IDgift]['premiu']['value'] ] +=  $arrData[$IDgift]['suplimentar']['value'];
+                          $arrShowForm[ $arrData[$IDgift]['premiu']['value'] ] +=  $IDgift;
 
                     }
                 }
