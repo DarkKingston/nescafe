@@ -1740,8 +1740,6 @@ function nescafe_preprocess_region__tabel_principal(){
                 foreach ($arrShowF as $filiala => $arrShow) {
 
                   foreach ($sums as $sum) {
-                    dump($sum);
-                    dump($arrShow['name3']);
                     if($sum['premiu'] == $arrShow['name3']){
                       $sum3 = $sum['total_suplimentar'] + $sum['total_initial'];
                     }else{
@@ -1749,7 +1747,7 @@ function nescafe_preprocess_region__tabel_principal(){
                     }
                   }
 
-                  if($sum3 != 0){
+                  if($arrShow['suplimentar3'] - $sum3 != 0){
                     $supliment = $arrShow['suplimentar3'] - $sum3;
                   }else{
                     $supliment = $arrShow['suplimentar3'];
@@ -1798,7 +1796,7 @@ function nescafe_preprocess_region__tabel_principal(){
                       $sum2 = $arrShow['suplimentar2'];
                     }
                   }
-                  if($sum2 != 0){
+                  if($arrShow['suplimentar2'] - $sum2 != 0){
                     $supliment = $arrShow['suplimentar2'] - $sum2;
                   }else{
                     $supliment = $arrShow['suplimentar2'];
@@ -1847,7 +1845,7 @@ function nescafe_preprocess_region__tabel_principal(){
                       $sum1 = $arrShow['suplimentar1'];
                     }
                   }
-                if($sum1 != 0){
+                if($arrShow['suplimentar1'] - $sum1 != 0){
                                   $supliment = $arrShow['suplimentar1'] - $sum1;
                 }else{
                   $supliment = $arrShow['suplimentar1'];
