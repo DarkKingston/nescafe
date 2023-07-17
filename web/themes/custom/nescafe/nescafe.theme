@@ -421,12 +421,26 @@ TABLE;
             $count = 1;
             foreach ($result as $record) {
 
-                printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><a href='/verify' data-id='%s' class='use-ajax webform-dialog webform-dialog-narrow btn_main action' data-dialog-type='modal'>%s</a></td></tr>\n", $count, $record->field_name_value,$record->field_lastname_value, $record->name, $record->premiu, $record->livrare, $record->uid, $action);
+                printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><form method='post'><input type='submit' name='submit_code' value='Submit'></form></td></tr>\n", $count, $record->field_name_value,$record->field_lastname_value, $record->name, $record->premiu, $record->livrare, $record->uid);
 
                 $count++;
             }
 
             print "</tbody>\n</table>\n";
+
+            if(isset($_POST['submit_code'])){
+              print "<form method='post' class='error_popup'>
+                    <input type='text' placeholder='code' name='code_name'>
+                    <input type='submit' name='code_submit' value='Submit' onclick='closePopup()'>
+               </form>";
+            }
+
+            if(isset($_POST['code_submit'])){
+              $code = rand(1000, 9999);
+              dump($code);
+              $_SESSION['code'] = $code;
+            }
+            dump($_SESSION['code']);
 
             print "
                 <form method='post'>
