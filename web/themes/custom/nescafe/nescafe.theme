@@ -420,7 +420,7 @@ TABLE;
        TABLE;
             $count = 1;
             foreach ($result as $record) {
-                dump($record);
+
                 printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><a href='/verify' data-id='%s' class='use-ajax webform-dialog webform-dialog-narrow btn_main action' data-dialog-type='modal'>%s</a></td></tr>\n", $count, $record->field_name_value,$record->field_lastname_value, $record->name, $record->premiu, $record->livrare, $record->uid, $action);
 
                 $count++;
