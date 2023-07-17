@@ -1837,8 +1837,6 @@ function nescafe_preprocess_region__tabel_principal(){
                   foreach ($sums as $sum) {
                     if($sum['premiu'] == $arrShow['name1']){
                       $sum1 = $sum['total_suplimentar'] + $sum['total_initial'];
-                    }else{
-                      $sum1 = $arrShow['suplimentar1'];
                     }
                   }
                 if($arrShow['suplimentar1'] - $sum1 != 0){
