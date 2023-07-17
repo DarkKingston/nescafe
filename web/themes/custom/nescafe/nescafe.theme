@@ -1745,7 +1745,7 @@ function nescafe_preprocess_region__tabel_principal(){
                     }
                   }
 
-                  if($arrShow['suplimentar3'] - $sum3 != 0){
+                  if($arrShow['suplimentar3'] - $sum3 >= 0){
                     $supliment = $arrShow['suplimentar3'] - $sum3;
                   }else{
                     $supliment = $arrShow['suplimentar3'];
@@ -1792,7 +1792,7 @@ function nescafe_preprocess_region__tabel_principal(){
                       $sum2 = $sum['total_suplimentar'] + $sum['total_initial'];
                     }
                   }
-                  if($arrShow['suplimentar2'] - $sum2 != 0){
+                  if($arrShow['suplimentar2'] - $sum2 >= 0){
                     $supliment = $arrShow['suplimentar2'] - $sum2;
                   }else{
                     $supliment = $arrShow['suplimentar2'];
@@ -1839,7 +1839,7 @@ function nescafe_preprocess_region__tabel_principal(){
                       $sum1 = $sum['total_suplimentar'] + $sum['total_initial'];
                     }
                   }
-                if($arrShow['suplimentar1'] - $sum1 != 0){
+                if($arrShow['suplimentar1'] - $sum1 >= 0){
                                   $supliment = $arrShow['suplimentar1'] - $sum1;
                 }else{
                   $supliment = $arrShow['suplimentar1'];
@@ -1869,8 +1869,6 @@ function nescafe_preprocess_region__tabel_principal(){
 
                 print "</tbody>\n</table>\n";
 
-
-          $arrFil = array();
           $getFiliala = "SELECT * FROM webform_submission_data WHERE webform_id = 'adaugarea_filiala' ";
           $filVal = $conn->query($getFiliala);
           print "<div class='form_principal'><form method='post'>";
