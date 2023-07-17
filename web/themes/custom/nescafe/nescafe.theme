@@ -1743,7 +1743,7 @@ dump($arrShowS);
                     foreach ($sol as $solVal) {
                         $solicit = $solVal['COUNT(id)'];
                     }
-                    printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $arrShow['name3'], $arrImg, $arrShow['suplimentar3'], $solicit, 0, $arrShow['suplimentar3'], $stockDisp, $countElib, $stockFinal);
+                    printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $arrShow['name3'], $arrImg, $arrShow['suplimentar3'], 0,0,0,0,0,0,0,0, $stockFinal);
 
                     $count++;
                 }
@@ -1779,7 +1779,7 @@ dump($arrShowS);
                         $solicit = $solVal['COUNT(id)'];
                     }
                     $stockFinal = $stockDisp - $elib;
-                    printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $arrShow['name2'], $arrImg, $arrShow['suplimentar2'], $solicit, $stockInit, $arrShow['suplimentar2'], $stockDisp, $countElib, $stockFinal);
+                    printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $arrShow['name2'], $arrImg, $arrShow['suplimentar2'],  0,0,0,0,0,0,0,0, $stockFinal);
 
                     $count++;
                 }
@@ -1817,7 +1817,7 @@ dump($arrShowS);
                         $solicit = $solVal['COUNT(id)'];
                     }
                     $stockFinal = $stockDisp - $elib;
-                    printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $arrShow['name1'], $arrImg, $arrShow['suplimentar1'], $solicit, $stockInit, $arrShow['suplimentar1'], $stockDisp, $countElib, $stockFinal);
+                    printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $arrShow['name1'], $arrImg, $arrShow['suplimentar1'],  0,0,0,0,0,0,0,0, $stockFinal);
 
                     $count++;
                 }
