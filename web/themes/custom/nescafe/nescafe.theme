@@ -1749,7 +1749,6 @@ function nescafe_preprocess_region__tabel_principal(){
                 $arrImg = "<img src='/sites/default/files/" . $string . "'>";
                     $stockInit = 0;
                     $elib = $countElib;
-                    $stockFinal = $stockDisp - $elib;
                     $solicitSQL = "SELECT COUNT(id) FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '" . $arrShow['filiala3'] . "' AND premiu = '" . $arrShow['name3'] . "'";
                     $sol = $conn->query($solicitSQL);
                     foreach ($sol as $solVal) {
