@@ -1710,6 +1710,7 @@ function nescafe_preprocess_region__tabel_principal(){
                 $count = 1;
                 $solicit = 0;
                 foreach ($arrShowF as $filiala => $arrShow) {
+                  show($arrShow);
                 $file_storage = \Drupal::service('entity_type.manager')->getStorage('file');
                 $file = $file_storage->load($arrShow['image']);
                 if ($file) {
