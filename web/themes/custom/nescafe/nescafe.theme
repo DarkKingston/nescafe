@@ -1679,7 +1679,6 @@ function nescafe_preprocess_region__tabel_principal(){
 
                     }
                 }
-                $arr = [];
 
 
                 if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru') {
@@ -1697,6 +1696,22 @@ function nescafe_preprocess_region__tabel_principal(){
                     $premFil = 'Cantitate';
                 }
 
+          $arrStock  = array();
+          $getStock = "SELECT * FROM stock ";
+          $stockVal = $conn->query($getStock);
+
+          $arrShowS = array();
+          foreach ($arrStock as $IDstock => $val) {
+            foreach ($val as $val2) {
+              $arrShowS[ $arrStock[$IDstock]['premiu'] . '_' . $arrData[$IDstock]['filiala'] ]['premiu'] = $arrStock[$IDstock]['premiu']['value'];
+              $arrShowS[ $arrStock[$IDstock]['premiu'] . '_' . $arrData[$IDstock]['filiala'] ]['filiala'] = $arrStock[$IDstock]['gift_image']['value'];
+              $arrShowS[ $arrStock[$IDstock]['premiu'] . '_' . $arrData[$IDstock]['filiala'] ]['initial'] =  $arrStock[$IDstock]['stock']['value'];
+              $arrShowS[ $arrStock[$IDstock]['premiu'] . '_' . $arrData[$IDstock]['filiala'] ]['suplimentar'] =  $arrStock[$IDstock]['suplimentar']['value'];
+              $arrShowS[ $arrStock[$IDstock]['premiu'] . '_' . $arrData[$IDstock]['filiala'] ]['id'] =  $IDstock;
+
+            }
+          }
+dump($arrShowS);
 
 
 
