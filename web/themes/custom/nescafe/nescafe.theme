@@ -1219,9 +1219,9 @@ function nescafe_preprocess_region__stock($page)
 
             $count++;
           }
+        }
 
         print "</tbody>\n</table>\n";
-        }
 
         print <<<TABLE
                        <table id="table8">
@@ -1232,7 +1232,7 @@ function nescafe_preprocess_region__stock($page)
                        TABLE;
         $count = 1;
         $solicit = 0;
-
+dump($filVal);
       foreach ($filVal as $arrFil2) {
         foreach ($arrShowF2 as $filiala => $arrShow) {
           $stockInit = 0;
@@ -1248,10 +1248,11 @@ function nescafe_preprocess_region__stock($page)
 
           $count++;
         }
+      }
+      dump($arrFil2);
 
         print "</tbody>\n</table>\n";
 
-      }
         print <<<TABLE
                        <table id="table8">
                        <thead>
@@ -1280,9 +1281,9 @@ function nescafe_preprocess_region__stock($page)
 
           $count++;
         }
+      }
 
         print "</tbody>\n</table>\n";
-      }
     }
 }
 
