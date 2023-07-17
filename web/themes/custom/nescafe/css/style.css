@@ -973,3 +973,7 @@ form .form-item label{
 .error_popup div{
   margin-top: 10px;
 }
+
+.error_popup.hidden{
+  display: none;
+}

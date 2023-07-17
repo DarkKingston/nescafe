@@ -1915,11 +1915,11 @@ $sumVal = 0;
                     if ($conn->query($insertStock)) {
                       //echo "ok";
                     }
-                  }
-                } else {
-                  print "<div class='error_popup'>A intervenit o eroare la adaugare. Atrageti atentie la stocul disponibil
+                  }else {
+                    print "<div class='error_popup'>A intervenit o eroare la adaugare. Atrageti atentie la stocul disponibil
                             <div class='btn_main action form_btn' onclick='closePopup()'>Inchide</div>
                         </div>";
+                  }
                 }
               }
             }

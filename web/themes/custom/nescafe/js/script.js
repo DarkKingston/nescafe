@@ -57,5 +57,5 @@
 })(jQuery);
 
 function closePopup() {
-  document.querySelectorAll('.error_popup').style.display = 'none';
+  document.querySelectorAll('.error_popup').classList.add('hidden');
 }
