@@ -1856,9 +1856,8 @@ function nescafe_preprocess_region__tabel_principal(){
             $getPrem = "SELECT * FROM webform_submission_data WHERE webform_id = 'cadouri' AND name = 'premiu' OR name = 'suplimentar' AND value = '".$_POST['gift_select']."' ";
             $premVal = $conn->query($getPrem);
 
-            foreach ($arrShowForm as $filiala => $arrShow) {
+            foreach ($arrShowForm as $arrShow) {
               if ($arrShow['name3'] == $_POST['gift_select']) {
-                dump($arrShow);
 
                 if ($arrShow['suplimentar3'] - $_POST['input_supliment'] > 0 && $arrShow['suplimentar3'] - $_POST['input_supliment'] < $value['suplimentar']) {
                   dump('ok');
