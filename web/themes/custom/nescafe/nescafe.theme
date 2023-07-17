@@ -510,7 +510,7 @@ TABLE;
             $count = 1;
             foreach ($result as $record) {
 
-                printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><form method='post'><input type='hidden' value='".$record->uid."' name='active_id'> <input type='hidden' value='".$record->name."' name='form_phone'><input type='submit' name='submit_code' value='Submit' class='btn_main action search_filiala'></form></td></tr>\n", $count, $record->field_name_value,$record->field_lastname_value, $record->name, $record->premiu, $record->livrare, $record->uid);
+                printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><form method='post'><input type='hidden' value='".$record->uid."' name='active_id'> <input type='hidden' value='".$record->name."' name='form_phone'><input type='submit' name='submit_code' value='Submit' class='btn_main action search_filiala form_btn'></form></td></tr>\n", $count, $record->field_name_value,$record->field_lastname_value, $record->name, $record->premiu, $record->livrare, $record->uid);
 
                 $count++;
             }
