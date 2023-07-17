@@ -1760,7 +1760,7 @@ function nescafe_preprocess_region__tabel_principal(){
                       $stockDisp = $sum['total_initial'] + $sum['total_suplimentar'];
                     }
                     else{
-                      $stockDisp = $arrShow['name3'];
+                      $stockDisp = $arrShow['suplimentar3'];
                     }
                   }
                     printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $arrShow['name3'], $arrImg, $arrShow['suplimentar3'], 0,0,0,0,0,0,0,0, $stockDisp);
@@ -1803,7 +1803,7 @@ function nescafe_preprocess_region__tabel_principal(){
                       $stockDisp = $sum['total_initial'] + $sum['total_suplimentar'];
                     }
                     else{
-                      $stockDisp = $arrShow['name2'];
+                      $stockDisp = $arrShow['suplimentar2'];
                     }
                   }
                     printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $arrShow['name2'], $arrImg, $arrShow['suplimentar2'],  0,0,0,0,0,0,0,0, $stockDisp);
@@ -1848,7 +1848,7 @@ function nescafe_preprocess_region__tabel_principal(){
                       $stockDisp = $sum['total_initial'] + $sum['total_suplimentar'];
                     }
                     else{
-                      $stockDisp = $arrShow['name1'];
+                      $stockDisp = $arrShow['suplimentar1'];
                     }
                   }
                     printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $arrShow['name1'], $arrImg, $arrShow['suplimentar1'],  0,0,0,0,0,0,0,0, $stockDisp);
