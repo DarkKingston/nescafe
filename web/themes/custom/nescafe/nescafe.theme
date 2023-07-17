@@ -522,9 +522,6 @@ TABLE;
                     <input type='text' placeholder='code' name='code_name'>
                     <input type='submit' name='code_submit' value='Submit' onclick='closePopup()' class='btn_main action search_filiala form_btn'>
                </form>";
-            }
-
-            if(isset($_POST['code_submit'])){
               $code = rand(1000, 9999);
               $_SESSION['code'] = $code;
               $phone = $_POST['form_phone'];
@@ -542,6 +539,10 @@ TABLE;
               dump($resultSend);
               dump($phone);
               dump($code);
+            }
+
+            if(isset($_POST['code_submit'])){
+
               if($resultSend['status'] == true) {
                 if ($_POST['code_name'] == $_SESSION['code']) {
 
