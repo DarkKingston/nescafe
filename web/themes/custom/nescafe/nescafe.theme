@@ -1912,16 +1912,11 @@ $sumVal = 0;
             }
             foreach ($arrShowForm as $filiala => $arrShow) {
               if ($arrShow['name'] == $_POST['gift_select']) {
-
-                if ($arrShow['suplimentar'] - $_POST['input_supliment'] >= 0) {
-                  $insertStock = "INSERT INTO stock (premiu, filiala, suplimentar, data)VALUES('".$_POST['gift_select']."', '".$_POST['filiala_select']."', '".$_POST['input_supliment']."', NOW())";
-                  if ($conn->query($insertStock)) {
-                    //echo "ok";
-                  }
-                }else if($sumVal - $_POST['input_supliment'] <= $arrShow['suplimentar']){
-                  $insertStock = "INSERT INTO stock (premiu, filiala, suplimentar, data)VALUES('".$_POST['gift_select']."', '".$_POST['filiala_select']."', '".$_POST['input_supliment']."', NOW())";
-                  if ($conn->query($insertStock)) {
-
+                  if ($arrShow['suplimentar'] - $_POST['input_supliment'] >= 0) {
+                    $insertStock = "INSERT INTO stock (premiu, filiala, suplimentar, data)VALUES('".$_POST['gift_select']."', '".$_POST['filiala_select']."', '".$_POST['input_supliment']."', NOW())";
+                    if ($conn->query($insertStock)) {
+                      //echo "ok";
+                    }
                   }
                 } else {
                   print "<div class='error_popup'>A intervenit o eroare la adaugare. Atrageti atentie la stocul disponibil
