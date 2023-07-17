@@ -548,7 +548,10 @@ TABLE;
 
                   $updateStatus = "UPDATE promo_code SET status = 3 WHERE active = '" . $_POST['active_id'] . "' AND status = 2 ";
                   if ($conn->query($updateStatus)) {
-                    echo "Success";
+                    print "<form method='post' class='error_popup'>
+                                Success
+                                <input type='submit' name='code_submit' value='Submit' onclick='closePopup()' class='btn_main action search_filiala form_btn'>
+                           </form>";
                   }
                 }
               }
