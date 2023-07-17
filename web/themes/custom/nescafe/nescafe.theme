@@ -1859,7 +1859,7 @@ dump($arrShowForm);
             foreach ($arrShowForm as $arrShow) {
               if ($arrShow['name3'] == $_POST['gift_select']) {
 
-                if ($arrShow['suplimentar3'] - $_POST['input_supliment'] > 0 && $arrShow['suplimentar3'] - $_POST['input_supliment'] < $value['suplimentar']) {
+                if ($arrShow['suplimentar3'] - $_POST['input_supliment'] >= 0 && $arrShow['suplimentar3'] - $_POST['input_supliment'] <= $arrShow['suplimentar']) {
                   dump('ok');
                   dump($arrShow['suplimentar3'] - $_POST['input_supliment']);
                 } else {
