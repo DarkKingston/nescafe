@@ -55,3 +55,7 @@
     }
   };
 })(jQuery);
+
+function closePopup() {
+  document.querySelector('.error_popup').style.display = 'none';
+}
