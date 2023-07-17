@@ -1829,7 +1829,7 @@ function nescafe_preprocess_region__tabel_principal(){
           print "</select>";
           print "<select name='gift_select' id=''>";
           foreach ($arrShowForm as $filiala => $arrShow) {
-            print "<option value='".$arrShow['name3']."'>".$arrShow['name3']."</option>";
+            print "<option value='".$arrShow['name']."'>".$arrShow['name']."</option>";
           }
           print "</select>";
           print "<input type='number' placeholder='suplimentar' name='input_supliment'>
