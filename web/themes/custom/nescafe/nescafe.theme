@@ -1683,22 +1683,14 @@ function nescafe_preprocess_region__tabel_principal(){
 
 
                 if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru') {
-                    $solicitate = 'Запрошено';
-                    $stock_init = 'Начальный сток';
-                    $supliment = 'Дополнение';
-                    $stoc_dispon = 'Наличие в стоке';
-                    $eliberate = 'Выпуск';
+                    $sapt = 'Неделя';
                     $stoc_final = 'Финальный сток';
                     $grad = 'Класс';
                     $premiu = 'Изображение';
                     $premFil = 'Количество';
                 }
                 if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro') {
-                    $solicitate = 'Solicitate';
-                    $stock_init = 'Stoc initial';
-                    $supliment = 'Suplimentar';
-                    $stoc_dispon = 'Stoc disponibil';
-                    $eliberate = 'Eliberate';
+                    $sapt = 'Saptamana';
                     $stoc_final = 'Stoc final';
                     $grad = 'Gradul';
                     $premiu = 'Poza';
@@ -1711,7 +1703,7 @@ function nescafe_preprocess_region__tabel_principal(){
                 print <<<TABLE
                     <table id="table8">
                     <thead>
-                    <tr><th>$grad 3</th><th>$premiu</th><th>$premFil</th><th>$solicitate</th><th>$stock_init</th><th>$supliment</th><th>$stoc_dispon</th><th>$eliberate</th><th>$stoc_final</th></tr>
+                    <tr><th>$grad 3</th><th>$premiu</th><th>$premFil</th><th>$sapt 1</th><th>$sapt 2</th><th>$sapt 3</th><th>$sapt 4</th><th>$sapt 5</th><th>$sapt 6</th><th>$sapt 7</th><th>$sapt 8</th><th>$stoc_final</th></tr>
                     </thead>
                     <tbody>
                     TABLE;
@@ -1746,7 +1738,7 @@ function nescafe_preprocess_region__tabel_principal(){
                 print <<<TABLE
                                <table id="table8">
                                <thead>
-                               <tr><th>$grad 2</th><th>$premiu</th><th>$premFil</th><th>$solicitate</th><th>$stock_init</th><th>$supliment</th><th>$stoc_dispon</th><th>$eliberate</th><th>$stoc_final</th></tr>
+                               <tr><th>$grad 2</th><th>$premiu</th><th>$premFil</th><th>$sapt 1</th><th>$sapt 2</th><th>$sapt 3</th><th>$sapt 4</th><th>$sapt 5</th><th>$sapt 6</th><th>$sapt 7</th><th>$sapt 8</th><th>$stoc_final</th></tr>
                                </thead>
                                <tbody>
                                TABLE;
@@ -1782,7 +1774,7 @@ function nescafe_preprocess_region__tabel_principal(){
                 print <<<TABLE
                                <table id="table8">
                                <thead>
-                               <tr><th>$grad 1</th><th>$premiu</th><th>$premFil</th><th>$solicitate</th><th>$stock_init</th><th>$supliment</th><th>$stoc_dispon</th><th>$eliberate</th><th>$stoc_final</th></tr>
+                               <tr><th>$grad 1</th><th>$premiu</th><th>$premFil</th><th>$sapt 1</th><th>$sapt 2</th><th>$sapt 3</th><th>$sapt 4</th><th>$sapt 5</th><th>$sapt 6</th><th>$sapt 7</th><th>$sapt 8</th><th>$stoc_final</th></tr>
                                </thead>
                                <tbody>
                                TABLE;
@@ -1853,15 +1845,18 @@ function nescafe_preprocess_region__tabel_principal(){
           print "</form></div>";
 
           if(isset($_POST['submit_supliment'])){
-dump($arrShowForm);
             foreach ($arrShowForm as $filiala => $arrShow) {
               if ($arrShow['name'] == $_POST['gift_select']) {
 
                 if ($arrShow['suplimentar'] - $_POST['input_supliment'] >= 0 && $arrShow['suplimentar'] - $_POST['input_supliment'] <= $arrShow['suplimentar']) {
-                  dump('ok');
-                  dump($arrShow['suplimentar'] - $_POST['input_supliment']);
+                  $insertStock = "INSERT INTO stock (premiu, filiala, suplimentar, data)VALUES('".$_POST['gift_select']."', '".$_POST['filiala_select']."', '".$_POST['input_supliment']."', NOW())";
+                  if ($conn->query($insertStock)) {
+                    //echo "ok";
+                  }
                 } else {
-                  dump('not ok');
+                  print "<div class='error_popup'>A intervenit o eroare la adaugare. Atrageti atentie la stocul disponibil
+                            <div class='btn_main action form_btn' onclick='closePopup()'>Inchide</div>
+                        </div>";
                 }
               }
             }
