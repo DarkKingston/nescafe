@@ -1800,6 +1800,9 @@ function nescafe_preprocess_region__tabel_principal(){
                     if($sum['premiu'] == $arrShow['name3']){
                       $stockDisp = $sum['total_initial'] + $sum['total_suplimentar'];
                     }
+                    else{
+                      $stockDisp = $arrShow['name3'];
+                    }
                   }
                     printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $arrShow['name2'], $arrImg, $arrShow['suplimentar2'],  0,0,0,0,0,0,0,0, $stockDisp);
 
