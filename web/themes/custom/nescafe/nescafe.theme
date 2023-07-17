@@ -1857,15 +1857,14 @@ function nescafe_preprocess_region__tabel_principal(){
             $premVal = $conn->query($getPrem);
 
             foreach ($arrShowForm as $filiala => $arrShow) {
-              dump($arrShow);
-              dump($_POST['input_supliment']);
+              if ($arrShow['name3'] == $_POST['input_supliment']) {
+                dump($arrShow);
 
-              if($arrShow['suplimentar3'] - $_POST['input_supliment'] > 0 && $arrShow['suplimentar3'] - $_POST['input_supliment'] < $value['suplimentar']){
-                dump('ok');
-                dump($arrShow['suplimentar3'] - $_POST['input_supliment']);
-              }else{
-                dump('not ok');
-                dump($arrShow['suplimentar3'] - $_POST['input_supliment']);
+                if ($arrShow['suplimentar3'] - $_POST['input_supliment'] > 0 && $arrShow['suplimentar3'] - $_POST['input_supliment'] < $value['suplimentar']) {
+                  dump('ok');
+                } else {
+                  dump('not ok');
+                }
               }
             }
 
