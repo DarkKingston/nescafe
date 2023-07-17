@@ -1649,7 +1649,7 @@ function nescafe_preprocess_region__tabel_principal(){
                             $arrShowF[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['premiu']['value']]['name3'] = $arrData[$IDgift]['premiu']['value'];
                             $arrShowF[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['premiu']['value']]['image'] = $arrData[$IDgift]['gift_image']['value'];
                             $arrShowF[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['premiu']['value']]['stock3'] +=  $arrData[$IDgift]['stock']['value'];
-                            $arrShowF[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['premiu']['value']]['suplimentar3'] +=  $arrData[$IDgift]['suplimentar']['value'];
+                            $arrShowF[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['premiu']['value']]['suplimentar3'] +=  $arrData[$IDgift]['cantitate']['value'];
                             $arrShowF[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['premiu']['value']]['id'] +=  $IDgift;
                         }
                         if ($name == 'categoria_de_produs' && $val2['value'] == 2) {
@@ -1658,7 +1658,7 @@ function nescafe_preprocess_region__tabel_principal(){
                             $arrShowF2[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['premiu']['value']]['name2'] = $arrData[$IDgift]['premiu']['value'];
                             $arrShowF2[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['premiu']['value']]['image'] = $arrData[$IDgift]['gift_image']['value'];
                             $arrShowF2[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['premiu']['value']]['stock2'] +=  $arrData[$IDgift]['stock']['value'];
-                            $arrShowF2[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['premiu']['value']]['suplimentar2'] +=  $arrData[$IDgift]['suplimentar']['value'];
+                            $arrShowF2[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['premiu']['value']]['suplimentar2'] +=  $arrData[$IDgift]['cantitate']['value'];
                             $arrShowF2[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['premiu']['value']]['id'] +=  $IDgift;
                         }
                         if ($name == 'categoria_de_produs' && $val2['value'] == 1) {
@@ -1667,7 +1667,7 @@ function nescafe_preprocess_region__tabel_principal(){
                             $arrShowF1[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['premiu']['value']]['name1'] = $arrData[$IDgift]['premiu']['value'];
                             $arrShowF1[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['premiu']['value']]['image'] = $arrData[$IDgift]['gift_image']['value'];
                             $arrShowF1[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['premiu']['value']]['stock1'] +=  $arrData[$IDgift]['stock']['value'];
-                            $arrShowF1[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['premiu']['value']]['suplimentar1'] +=  $arrData[$IDgift]['suplimentar']['value'];
+                            $arrShowF1[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['premiu']['value']]['suplimentar1'] +=  $arrData[$IDgift]['cantitate']['value'];
                             $arrShowF1[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['premiu']['value']]['id'] +=  $IDgift;
                         }
                     }
@@ -1728,7 +1728,7 @@ function nescafe_preprocess_region__tabel_principal(){
                     foreach ($sol as $solVal) {
                         $solicit = $solVal['COUNT(id)'];
                     }
-                    printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $arrShow['name3'], $arrImg, $arrShow['name3'], $solicit, 0, $arrShow['suplimentar3'], $stockDisp, $countElib, $stockFinal);
+                    printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $arrShow['name3'], $arrImg, $arrShow['cantitate3'], $solicit, 0, $arrShow['suplimentar3'], $stockDisp, $countElib, $stockFinal);
 
                     $count++;
                 }
@@ -1764,7 +1764,7 @@ function nescafe_preprocess_region__tabel_principal(){
                         $solicit = $solVal['COUNT(id)'];
                     }
                     $stockFinal = $stockDisp - $elib;
-                    printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $arrShow['name2'], $arrImg, $arrShow['name2'], $solicit, $stockInit, $arrShow['suplimentar2'], $stockDisp, $countElib, $stockFinal);
+                    printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $arrShow['name2'], $arrImg, $arrShow['cantitate2'], $solicit, $stockInit, $arrShow['suplimentar2'], $stockDisp, $countElib, $stockFinal);
 
                     $count++;
                 }
@@ -1802,7 +1802,7 @@ function nescafe_preprocess_region__tabel_principal(){
                         $solicit = $solVal['COUNT(id)'];
                     }
                     $stockFinal = $stockDisp - $elib;
-                    printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $arrShow['name1'], $arrImg, $arrShow['name1'], $solicit, $stockInit, $arrShow['suplimentar1'], $stockDisp, $countElib, $stockFinal);
+                    printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $arrShow['name1'], $arrImg, $arrShow['cantitate1'], $solicit, $stockInit, $arrShow['suplimentar1'], $stockDisp, $countElib, $stockFinal);
 
                     $count++;
                 }
