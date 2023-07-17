@@ -1826,16 +1826,19 @@ function nescafe_preprocess_region__tabel_principal(){
           }
           dump($arrFil);
           dump($arrShowForm);
-          print "<form>
-                        <select name='filiala_select' id=''>
-                            ".$arrFil."
-                        </select>
-                        <select name='gift_select' id=''>
-                            
-                        </select>
-                        <input type='number' placeholder='suplimentar' name='input_supliment'>
-                        <input type='submit' name='submit_supliment'>
-                       </form>";
+          print "<form>";
+          
+          print "<select name='filiala_select' id=''>
+                            <option value=''>".$arrFil."</option>
+                        </select>";
+          
+          print "<select name='gift_select' id=''>
+                            <option value=''></option>
+                        </select>";
+          print "<input type='number' placeholder='suplimentar' name='input_supliment'>
+                        <input type='submit' name='submit_supliment'>";
+          print "</form>";
+          
 
             }
     }
