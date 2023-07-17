@@ -1700,18 +1700,41 @@ function nescafe_preprocess_region__tabel_principal(){
           $getStock = "SELECT * FROM stock ";
           $stockVal = $conn->query($getStock);
 
-          $arrShowS = array();
-          foreach ($arrStock as $IDstock => $val) {
-            foreach ($val as $val2) {
-              $arrShowS[ $arrStock[$IDstock]['premiu'] . '_' . $arrData[$IDstock]['filiala'] ]['premiu'] = $arrStock[$IDstock]['premiu']['value'];
-              $arrShowS[ $arrStock[$IDstock]['premiu'] . '_' . $arrData[$IDstock]['filiala'] ]['filiala'] = $arrStock[$IDstock]['gift_image']['value'];
-              $arrShowS[ $arrStock[$IDstock]['premiu'] . '_' . $arrData[$IDstock]['filiala'] ]['initial'] =  $arrStock[$IDstock]['stock']['value'];
-              $arrShowS[ $arrStock[$IDstock]['premiu'] . '_' . $arrData[$IDstock]['filiala'] ]['suplimentar'] =  $arrStock[$IDstock]['suplimentar']['value'];
-              $arrShowS[ $arrStock[$IDstock]['premiu'] . '_' . $arrData[$IDstock]['filiala'] ]['id'] =  $IDstock;
+          // Initialize an array to store the sums
+          $sums = array();
 
+// Process the data and calculate the sums
+          foreach ($stockVal as $row) {
+            $premiu = $row['premiu'];
+            $filiala = $row['filiala'];
+            $suplimentar = $row['suplimentar'];
+            $initial = $row['initial'];
+
+            // Check if the combination of premiu and filiala exists in the $sums array
+            $key = $premiu . '_' . $filiala;
+            if (!isset($sums[$key])) {
+              $sums[$key] = array(
+                'premiu' => $premiu,
+                'filiala' => $filiala,
+                'total_suplimentar' => 0,
+                'total_initial' => 0,
+              );
+            }
+
+            // Calculate the sums of suplimentar and initial for each combination
+            $sums[$key]['total_suplimentar'] += $suplimentar;
+            if ($initial !== null) {
+              $sums[$key]['total_initial'] += $initial;
             }
           }
-dump($arrShowS);
+
+// Output the results
+          foreach ($sums as $sum) {
+            echo "Premiu: " . $sum['premiu'] . ", Filiala: " . $sum['filiala'] . PHP_EOL;
+            echo "Total Suplimentar: " . $sum['total_suplimentar'] . PHP_EOL;
+            echo "Total Initial: " . $sum['total_initial'] . PHP_EOL;
+            echo "----------------------" . PHP_EOL;
+          }
 
 
 
