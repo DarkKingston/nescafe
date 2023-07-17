@@ -1821,8 +1821,6 @@ function nescafe_preprocess_region__tabel_principal(){
           $arrFil = array();
           $getFiliala = "SELECT * FROM webform_submission_data WHERE webform_id = 'adaugarea_filiala' ";
           $filVal = $conn->query($getFiliala);
-          dump($arrFil);
-          dump($arrShowForm);
           print "<form>";
           print "<select name='filiala_select' id=''>";
       foreach ($filVal as $fil){
@@ -1830,7 +1828,7 @@ function nescafe_preprocess_region__tabel_principal(){
       }
           print "</select>";
           print "<select name='gift_select' id=''>";
-          foreach ($arrShowF1 as $filiala => $arrShow) {
+          foreach ($arrShowForm as $filiala => $arrShow) {
             print "<option value='".$arrShow['name3']."'>".$arrShow['name3']."</option>";
           }
           print "</select>";
