@@ -1782,14 +1782,6 @@ function nescafe_preprocess_region__tabel_principal(){
                 $solicit = 0;
                 foreach ($arrShowF2 as $filiala => $arrShow) {
 
-                  foreach ($sums as $sum) {
-                    if($sum['premiu'] == $arrShow['name2']){
-                      $sum2 = $sum['total_suplimentar'] + $sum['total_initial'];
-                    }else{
-                      $sum2 = $arrShow['suplimentar2'];
-                    }
-                  }
-
                 $file_storage = \Drupal::service('entity_type.manager')->getStorage('file');
                 $file = $file_storage->load($arrShow['image']);
                 if ($file) {
@@ -1823,13 +1815,7 @@ function nescafe_preprocess_region__tabel_principal(){
                 $count = 1;
                 $solicit = 0;
                 foreach ($arrShowF1 as $filiala => $arrShow) {
-                  foreach ($sums as $sum) {
-                    if($sum['premiu'] == $arrShow['name1']){
-                      $sum1 = $sum['total_suplimentar'] + $sum['total_initial'];
-                    }else{
-                      $sum1 = $arrShow['suplimentar1'];
-                    }
-                  }
+
                 $file_storage = \Drupal::service('entity_type.manager')->getStorage('file');
                 $file = $file_storage->load($arrShow['image']);
                 if ($file) {
