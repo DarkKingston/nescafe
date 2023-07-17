@@ -1747,7 +1747,11 @@ function nescafe_preprocess_region__tabel_principal(){
                     }
                   }
 
-                  $supliment = $arrShow['suplimentar3'] - $sum3;
+                  if($arrShow['suplimentar3'] - $sum3 != 0){
+                    $supliment = $arrShow['suplimentar3'] - $sum3;
+                  }else{
+                    $supliment = $arrShow['suplimentar3'];
+                }
 
 
                 $file_storage = \Drupal::service('entity_type.manager')->getStorage('file');
@@ -1792,9 +1796,11 @@ function nescafe_preprocess_region__tabel_principal(){
                       $sum2 = $arrShow['suplimentar2'];
                     }
                   }
-
-                  $supliment = $arrShow['suplimentar2'] - $sum2;
-
+                  if($arrShow['suplimentar2'] - $sum2 != 0){
+                    $supliment = $arrShow['suplimentar2'] - $sum2;
+                  }else{
+                    $supliment = $arrShow['suplimentar2'];
+                }
 
                 $file_storage = \Drupal::service('entity_type.manager')->getStorage('file');
                 $file = $file_storage->load($arrShow['image']);
@@ -1839,9 +1845,11 @@ function nescafe_preprocess_region__tabel_principal(){
                       $sum1 = $arrShow['suplimentar1'];
                     }
                   }
-
-                  $supliment = $arrShow['suplimentar1'] - $sum1;
-
+                if($arrShow['suplimentar1'] - $sum1 != 0){
+                                  $supliment = $arrShow['suplimentar1'] - $sum1;
+                }else{
+                  $supliment = $arrShow['suplimentar1'];
+                }
                 $file_storage = \Drupal::service('entity_type.manager')->getStorage('file');
                 $file = $file_storage->load($arrShow['image']);
                 if ($file) {
