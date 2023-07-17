@@ -1671,11 +1671,11 @@ function nescafe_preprocess_region__tabel_principal(){
                             $arrShowF1[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['premiu']['value']]['id'] +=  $IDgift;
                         }
 
-                          $arrShowForm[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['premiu']['value']]['name3'] = $arrData[$IDgift]['premiu']['value'];
-                          $arrShowForm[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['premiu']['value']]['image'] = $arrData[$IDgift]['gift_image']['value'];
-                          $arrShowForm[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['premiu']['value']]['stock3'] +=  $arrData[$IDgift]['stock']['value'];
-                          $arrShowForm[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['premiu']['value']]['suplimentar3'] +=  $arrData[$IDgift]['suplimentar']['value'];
-                          $arrShowForm[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['premiu']['value']]['id'] +=  $IDgift;
+                          $arrShowForm[ $arrData[$IDgift]['premiu']['value'] ] = $arrData[$IDgift]['premiu']['value'];
+                          $arrShowForm[ $arrData[$IDgift]['premiu']['value'] ] = $arrData[$IDgift]['gift_image']['value'];
+                          $arrShowForm[ $arrData[$IDgift]['premiu']['value'] ] =  $arrData[$IDgift]['stock']['value'];
+                          $arrShowForm[ $arrData[$IDgift]['premiu']['value'] ] =  $arrData[$IDgift]['suplimentar']['value'];
+                          $arrShowForm[ $arrData[$IDgift]['premiu']['value'] ] =  $IDgift;
 
                     }
                 }
