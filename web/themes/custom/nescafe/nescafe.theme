@@ -1861,6 +1861,7 @@ function nescafe_preprocess_region__tabel_principal(){
 
                 if ($arrShow['suplimentar3'] - $_POST['input_supliment'] > 0 && $arrShow['suplimentar3'] - $_POST['input_supliment'] < $value['suplimentar']) {
                   dump('ok');
+                  dump($arrShow['suplimentar3'] - $_POST['input_supliment']);
                 } else {
                   dump('not ok');
                 }
