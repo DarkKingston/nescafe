@@ -1670,6 +1670,13 @@ function nescafe_preprocess_region__tabel_principal(){
                             $arrShowF1[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['premiu']['value']]['suplimentar1'] +=  $arrData[$IDgift]['suplimentar']['value'];
                             $arrShowF1[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['premiu']['value']]['id'] +=  $IDgift;
                         }
+
+                          $arrShowForm[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['premiu']['value']]['name3'] = $arrData[$IDgift]['premiu']['value'];
+                          $arrShowForm[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['premiu']['value']]['image'] = $arrData[$IDgift]['gift_image']['value'];
+                          $arrShowForm[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['premiu']['value']]['stock3'] +=  $arrData[$IDgift]['stock']['value'];
+                          $arrShowForm[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['premiu']['value']]['suplimentar3'] +=  $arrData[$IDgift]['suplimentar']['value'];
+                          $arrShowForm[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['premiu']['value']]['id'] +=  $IDgift;
+
                     }
                 }
                 $arr = [];
@@ -1697,13 +1704,14 @@ function nescafe_preprocess_region__tabel_principal(){
                     $premiu = 'Poza';
                     $premFil = 'Cantitate';
                 }
-          dump($val2);
-                $arrFil = '';
+                $arrFil = array();
           $getFiliala = "SELECT * FROM webform_submission_data WHERE webform_id = 'adaugarea_filiala' ";
           $filVal = $conn->query($getFiliala);
           foreach ($filVal as $fil){
-            $arrFil .= $fil;
+            $arrFil[] = $fil;
           }
+          dump($arrFil);
+          dump($arrShowForm);
                 print "<form>
                         <select name='filiala_select' id=''>
                             ".$arrFil."
