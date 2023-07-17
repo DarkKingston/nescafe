@@ -1740,6 +1740,8 @@ function nescafe_preprocess_region__tabel_principal(){
                 foreach ($arrShowF as $filiala => $arrShow) {
 
                   foreach ($sums as $sum) {
+                    dump($sum['premiu']);
+                    dump($arrShow['name3']);
                     if($sum['premiu'] == $arrShow['name3']){
                       $sum3 = $sum['total_suplimentar'] + $sum['total_initial'];
                     }else{
