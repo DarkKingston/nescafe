@@ -1821,7 +1821,7 @@ function nescafe_preprocess_region__tabel_principal(){
           $arrFil = array();
           $getFiliala = "SELECT * FROM webform_submission_data WHERE webform_id = 'adaugarea_filiala' ";
           $filVal = $conn->query($getFiliala);
-          print "<form>";
+          print "<div class='form_principal'><form method='post'>";
           print "<select name='filiala_select' id=''>";
       foreach ($filVal as $fil){
           print "<option value='".$fil['value']."'>".$fil['value']."</option>";
@@ -1833,8 +1833,23 @@ function nescafe_preprocess_region__tabel_principal(){
           }
           print "</select>";
           print "<input type='number' placeholder='suplimentar' name='input_supliment'>
-                        <input type='submit' name='submit_supliment'>";
+                        <input type='submit' name='submit_supliment' class='btn_main action search_filiala'>";
           print "</form>";
+
+          print "<form method='post'>";
+          print "<select name='filiala_select' id=''>";
+          foreach ($filVal as $fil){
+            print "<option value='".$fil['value']."'>".$fil['value']."</option>";
+          }
+          print "</select>";
+          print "<select name='gift_select' id=''>";
+          foreach ($arrShowForm as $filiala => $arrShow) {
+            print "<option value='".$arrShow['name3']."'>".$arrShow['name3']."</option>";
+          }
+          print "</select>";
+          print "<input type='number' placeholder='suplimentar' name='input_init'>
+                        <input type='submit' name='submit_init' class='btn_main action search_filiala'>";
+          print "</form></div>";
 
 
             }
