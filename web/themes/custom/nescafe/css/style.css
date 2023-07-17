@@ -947,3 +947,11 @@ form .form-item label{
 #table8 img{
   width: 110px;
 }
+
+.btn_main.form_btn{
+  width: unset;
+}
+
+.form_principal form:last-child{
+  margin-top: 20px;
+}

@@ -1833,9 +1833,10 @@ function nescafe_preprocess_region__tabel_principal(){
           }
           print "</select>";
           print "<input type='number' placeholder='suplimentar' name='input_supliment'>
-                        <input type='submit' name='submit_supliment' class='btn_main action search_filiala'>";
+                        <input type='submit' name='submit_supliment' class='btn_main action search_filiala form_btn'>";
           print "</form>";
-
+          $getFiliala = "SELECT * FROM webform_submission_data WHERE webform_id = 'adaugarea_filiala' ";
+          $filVal = $conn->query($getFiliala);
           print "<form method='post'>";
           print "<select name='filiala_select' id=''>";
           foreach ($filVal as $fil){
@@ -1848,7 +1849,7 @@ function nescafe_preprocess_region__tabel_principal(){
           }
           print "</select>";
           print "<input type='number' placeholder='Stoc initial' name='input_init'>
-                        <input type='submit' name='submit_init' class='btn_main action search_filiala'>";
+                        <input type='submit' name='submit_init' class='btn_main action form_btn'>";
           print "</form></div>";
 
 
