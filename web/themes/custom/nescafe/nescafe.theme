@@ -1692,7 +1692,7 @@ function nescafe_preprocess_region__tabel_principal(){
                 }
 dump($countElib);
 
-          $dataSQL = "SELECT * FROM promo_code WHERE active != 0 ORDER BY data ASC";
+          $dataSQL = "SELECT * FROM promo_code WHERE active != 0 ORDER BY data DESC";
           $data = $conn->query($dataSQL);
 
           foreach ($data as $dataVal) {
@@ -1702,7 +1702,7 @@ dump($countElib);
           $now = time(); // текущее время (метка времени)
           $your_date = strtotime($dataVal['data']); // какая-то дата в строке (1 января 2017 года)
           $datediff = $now - $your_date; // получим разность дат (в секундах)
-$week = floor($datediff / (60 * 60 * 24));
+          $week = floor($datediff / (60 * 60 * 24));
           dump($week);
 
                 $arrShowF = array();
