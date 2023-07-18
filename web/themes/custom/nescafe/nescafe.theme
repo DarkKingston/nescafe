@@ -538,6 +538,7 @@ TABLE;
               //$resultSend = apiBulkSmsSystem( $params );
               dump($code);
               $id = $_POST['active_id'];
+              $id = intval($id);
               dump($id);
             }
 
