@@ -535,7 +535,8 @@ TABLE;
 
               );
 
-              $resultSend = apiBulkSmsSystem( $params );
+              //$resultSend = apiBulkSmsSystem( $params );
+              dump($code);
             }
 
             if(isset($_POST['code_submit'])){
