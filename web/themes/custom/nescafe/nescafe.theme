@@ -538,7 +538,7 @@ TABLE;
               //$resultSend = apiBulkSmsSystem( $params );
               dump($code);
               $id = $_POST['active_id'];
-              $id = intval($id);
+              $_SESSION['id_user'] = $id;
             }
 
             if(isset($_POST['code_submit'])){
@@ -546,7 +546,8 @@ TABLE;
 
                 if ($_POST['code_name'] == $_SESSION['code']) {
 
-                  dump($id);
+                  dump($_SESSION['id_user']);
+                  dump($_POST);
 //                  $updateStatus = "UPDATE promo_code SET status = 3, data = NOW() WHERE active = '".$id."' AND status = 2 ";
 //                  if ($conn->query($updateStatus)) {
 //                    print "<form method='post' class='error_popup'>
