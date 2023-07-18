@@ -543,7 +543,7 @@ TABLE;
 
                 if ($_POST['code_name'] == $_SESSION['code']) {
 
-                  $updateStatus = "UPDATE promo_code SET status = 3, data = NOW() WHERE status = 2 ";
+                  $updateStatus = "UPDATE promo_code SET status = 3, data = NOW() WHERE active = '".$_POST['active_id']."', status = 2 ";
                   if ($conn->query($updateStatus)) {
                     print "<form method='post' class='error_popup'>
                                 Success
