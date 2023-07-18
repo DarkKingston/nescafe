@@ -1689,6 +1689,7 @@ function nescafe_preprocess_region__tabel_principal(){
                 $countElib = 0;
                 foreach ($elib as $elibVal) {
                     $countElib++;
+                    dump($elibVal);
                 }
 dump($countElib);
 
