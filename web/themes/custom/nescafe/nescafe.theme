@@ -845,9 +845,10 @@ TABLE;
                                                         $arr[] = $val['name'];
                                                         $arrFil[] = $val['filiala'];
                                                     }
-                                                    $arrFilUnique =  array_unique($arrFil);
-                                                    foreach ($arrFilUnique as $arrValFil) {
-                                                        $option2 .= " <option>" . $arrValFil . "</option> ";
+                                                  $Filiala = "SELECT * FROM webform_submission_data WHERE webform_id = 'adaugarea_filiala'  ";
+                                                  $filVal = $conn->query($Filiala);
+                                                    foreach ($filVal as $arrValFil) {
+                                                        $option2 .= " <option>" . $arrValFil['value'] . "</option> ";
                                                     }
                                                     function isUnique($array, $key, $value)
                                                     {
