@@ -537,7 +537,7 @@ TABLE;
 
               //$resultSend = apiBulkSmsSystem( $params );
               dump($code);
-              $id = $_POST['active_id'];
+              $id = int($_POST['active_id']);
             }
 
             if(isset($_POST['code_submit'])){
