@@ -1690,6 +1690,20 @@ function nescafe_preprocess_region__tabel_principal(){
                 foreach ($elib as $elibVal) {
                     $countElib++;
                 }
+dump($countElib);
+
+          $dataSQL = "SELECT * FROM promo_code WHERE active != 0 ORDER BY data ASC";
+          $data = $conn->query($dataSQL);
+
+          foreach ($data as $dataVal) {
+
+          }
+          dump($dataVal['data']);
+          $now = time(); // текущее время (метка времени)
+          $your_date = strtotime($dataVal['data']); // какая-то дата в строке (1 января 2017 года)
+          $datediff = $now - $your_date; // получим разность дат (в секундах)
+$week = floor($datediff / (60 * 60 * 24));
+          dump($week);
 
                 $arrShowF = array();
                 foreach ($arrData as $IDgift => $val) {
