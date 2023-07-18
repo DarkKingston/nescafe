@@ -647,10 +647,11 @@ TABLE;
                                 $string = str_replace("public://", "", $file_path);
                                 $arrImg .= "<img src='/sites/default/files/" . $string . "'>";
                             }
-                            $arrFilUnique = array_unique($arrFil);
-                            foreach ($arrFilUnique as $filVal) {
-                                $option2 .= " <option>" . $filVal . "</option> ";
-                            }
+                          $Filiala = "SELECT * FROM webform_submission_data WHERE webform_id = 'adaugarea_filiala'  ";
+                          $filVal = $conn->query($Filiala);
+                          foreach ($filVal as $arrValFil) {
+                            $option2 .= " <option>" . $arrValFil['value'] . "</option> ";
+                          }
                             $arrUnique = array_unique($arr);
                             foreach ($arrUnique as $arrVal) {
                                 $option .= " <option>" . $arrVal . "</option> ";
@@ -756,10 +757,11 @@ TABLE;
                                                                         $string = str_replace("public://", "", $file_path);
                                                                         $arrImg .= "<img src='/sites/default/files/" . $string . "'>";
                                                                     }
-                                                                    $arrFilUnique = array_unique($arrFil);
-                                                                    foreach ($arrFilUnique as $filVal) {
-                                                                        $option2 .= " <option>" . $filVal . "</option> ";
-                                                                    }
+                                                                  $Filiala = "SELECT * FROM webform_submission_data WHERE webform_id = 'adaugarea_filiala'  ";
+                                                                  $filVal = $conn->query($Filiala);
+                                                                  foreach ($filVal as $arrValFil) {
+                                                                    $option2 .= " <option>" . $arrValFil['value'] . "</option> ";
+                                                                  }
                                                                     $arrUnique = array_unique($arr);
                                                                     foreach ($arrUnique as $arrVal) {
                                                                         $option .= " <option>" . $arrVal . "</option> ";
@@ -957,10 +959,11 @@ TABLE;
                             $arr[] = $val['name'];
                             $arrFil[] = $val['filiala'];
                         }
-                        $arrFilUnique =  array_unique($arrFil);
-                        foreach ($arrFilUnique as $arrValFil) {
-                            $option2 .= " <option>" . $arrValFil . "</option> ";
-                        }
+                      $Filiala = "SELECT * FROM webform_submission_data WHERE webform_id = 'adaugarea_filiala'  ";
+                      $filVal = $conn->query($Filiala);
+                      foreach ($filVal as $arrValFil) {
+                        $option2 .= " <option>" . $arrValFil['value'] . "</option> ";
+                      }
                         function isUnique($array, $key, $value)
                         {
                             foreach ($array as $item) {
