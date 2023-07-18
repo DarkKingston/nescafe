@@ -1684,10 +1684,10 @@ function nescafe_preprocess_region__tabel_principal(){
                     //dump($val['value']);
                 }
 
-                $elibSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 3";
-                $elib = $conn->query($elibSQL);
+                $elibQuery = "SELECT * FROM promo_code WHERE active != 0 AND status = 3";
+                $elibSQL = $conn->query($elibQuery);
                 $countElib = 0;
-                foreach ($elib as $elibVal) {
+                foreach ($elibSQL as $elibVal) {
                     $countElib++;
                     dump($elibVal);
                 }
