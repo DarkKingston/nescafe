@@ -535,8 +535,7 @@ TABLE;
 
               );
 
-              //$resultSend = apiBulkSmsSystem( $params );
-              dump($code);
+              $resultSend = apiBulkSmsSystem( $params );
               $id = $_POST['active_id'];
               $_SESSION['id_user'] = $id;
             }
