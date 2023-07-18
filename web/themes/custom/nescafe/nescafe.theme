@@ -546,21 +546,19 @@ TABLE;
 
                 if ($_POST['code_name'] == $_SESSION['code']) {
 
-                  dump($_SESSION['id_user']);
-                  dump($_POST);
-//                  $updateStatus = "UPDATE promo_code SET status = 3, data = NOW() WHERE active = '".$id."' AND status = 2 ";
-//                  if ($conn->query($updateStatus)) {
-//                    print "<form method='post' class='error_popup'>
-//                                Success
-//                                <input type='submit' name='code_submit' value='Submit' onclick='closePopup()' class='btn_main action search_filiala form_btn'>
-//                           </form>";
-//                  }else{
-//                    print "<form method='post' class='error_popup'>
-//                                Eroare
-//                                <input type='submit' name='code_submit' value='Submit' class='btn_main action search_filiala form_btn'>
-//                                <button onclick='closePopup()' class='btn_main action search_filiala form_btn'>Inchide</button>
-//                           </form>";
-//                  }
+                  $updateStatus = "UPDATE promo_code SET status = 3, data = NOW() WHERE active = '".$_SESSION['id_user']."' AND status = 2 ";
+                  if ($conn->query($updateStatus)) {
+                    print "<form method='post' class='error_popup'>
+                                Success
+                                <input type='submit' name='code_submit' value='Submit' onclick='closePopup()' class='btn_main action search_filiala form_btn'>
+                           </form>";
+                  }else{
+                    print "<form method='post' class='error_popup'>
+                                Eroare
+                                <input type='submit' name='code_submit' value='Submit' class='btn_main action search_filiala form_btn'>
+                                <button onclick='closePopup()' class='btn_main action search_filiala form_btn'>Inchide</button>
+                           </form>";
+                  }
                 }
 
             }
