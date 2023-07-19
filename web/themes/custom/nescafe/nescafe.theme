@@ -1738,7 +1738,8 @@ function nescafe_preprocess_region__tabel_principal(){
 
             }
           }
-          dump($Week4);
+          dump($getWeek4);
+          dump($Week1);
           dump($getWeek1);
           $date = new DateTime($week4);
           $date->add(new DateInterval('P7D'));
