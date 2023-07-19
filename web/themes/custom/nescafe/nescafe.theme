@@ -1310,11 +1310,27 @@ function nescafe_preprocess_region__stock($page)
         }
         $arr = [];
 
-        $getStock = "SELECT * FROM stock";
-        $stockInfo = $conn->query($getStock);
-        foreach ($stockInfo as $info){
-          dump($info);
+      $getStock = "SELECT * FROM stock";
+      $stockInfo = $conn->query($getStock);
+
+      $combinedArray = array();
+      foreach ($stockInfo as $info) {
+        $premiuFiliala = $info['premiu'] . " - " . $info['filiala'];
+
+        if (!isset($combinedArray[$premiuFiliala])) {
+          $combinedArray[$premiuFiliala] = array(
+            'initial' => 0,
+            'suplimentar' => 0,
+            'data' => ''
+          );
         }
+
+        $combinedArray[$premiuFiliala]['initial'] += $info['initial'];
+        $combinedArray[$premiuFiliala]['suplimentar'] += $info['suplimentar'];
+        $combinedArray[$premiuFiliala]['data'] = $info['data'];
+      }
+
+      dump($combinedArray);
 
         if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru') {
             $solicitate = 'Запрошено';
