@@ -545,7 +545,7 @@ TABLE;
 
 
                 if ($_POST['code_name'] == $_SESSION['code']) {
-                }
+
                   $updateStatus = "UPDATE promo_code SET status = 3, data = NOW() WHERE active = '".$_SESSION['id_user']."' AND status = 2 AND id = '".$_SESSION['prem_id']."' ";
                   if ($conn->query($updateStatus)) {
                     print "<form method='post' class='error_popup'>
