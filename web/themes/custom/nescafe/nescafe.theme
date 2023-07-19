@@ -1699,13 +1699,85 @@ function nescafe_preprocess_region__tabel_principal(){
           foreach ($data as $dataVal) {
 
           }
-          //dump($dataVal['data']);
-          $now = time(); // текущее время (метка времени)
-          $your_date = strtotime($dataVal['data']); // какая-то дата в строке (1 января 2017 года)
-          $datediff = $now - $your_date; // получим разность дат (в секундах)
-          $week = floor($datediff / (60 * 60 * 24));
-          //dump($week);
+          $date = new DateTime($dataVal['data']);
+          $date->add(new DateInterval('P7D'));
+          $week1 = $date->format('Y-m-d H:i:s');
+          $getWeek1 = "SELECT COUNT(id) as week FROM promo_code WHERE status = 3 AND data BETWEEN '".$dataVal['data']."' AND '".$week1."'";
+          if($getWeekOne = $conn->query($getWeek1)){
+            foreach ($getWeek1 as $Week1){
 
+            }
+          }
+          $date = new DateTime($week1);
+          $date->add(new DateInterval('P7D'));
+
+          $week2 = $date->format('Y-m-d H:i:s');
+          $getWeek2 = "SELECT COUNT(id) as week FROM promo_code WHERE status = 3 AND data BETWEEN '".$week1."' AND '".$week2."'";
+          if($getWeekOne = $conn->query($getWeek2)){
+            foreach ($getWeek2 as $Week2){
+
+            }
+          }
+          $date = new DateTime($week2);
+          $date->add(new DateInterval('P7D'));
+
+          $week3 = $date->format('Y-m-d H:i:s');
+          $getWeek3 = "SELECT COUNT(id) as week FROM promo_code WHERE status = 3 AND data BETWEEN '".$week2."' AND '".$week3."'";
+          if($getWeekOne = $conn->query($getWeek3)){
+            foreach ($getWeek3 as $Week3){
+
+            }
+          }
+          $date = new DateTime($week3);
+          $date->add(new DateInterval('P7D'));
+
+          $week4 = $date->format('Y-m-d H:i:s');
+          $getWeek4 = "SELECT COUNT(id) as week FROM promo_code WHERE status = 3 AND data BETWEEN '".$week3."' AND '".$week4."'";
+          if($getWeekOne = $conn->query($getWeek4)){
+            foreach ($getWeek4 as $Week4){
+
+            }
+          }
+          $date = new DateTime($week4);
+          $date->add(new DateInterval('P7D'));
+
+          $week5 = $date->format('Y-m-d H:i:s');
+          $getWeek5 = "SELECT COUNT(id) as week FROM promo_code WHERE status = 3 AND data BETWEEN '".$week4."' AND '".$week5."'";
+          if($getWeekOne = $conn->query($getWeek5)){
+            foreach ($getWeek5 as $Week5){
+
+            }
+          }
+          $date = new DateTime($week5);
+          $date->add(new DateInterval('P7D'));
+
+          $week6 = $date->format('Y-m-d H:i:s');
+          $getWeek6 = "SELECT COUNT(id) as week FROM promo_code WHERE status = 3 AND data BETWEEN '".$week5."' AND '".$week6."'";
+          if($getWeekOne = $conn->query($getWeek6)){
+            foreach ($getWeek6 as $Week6){
+
+            }
+          }
+          $date = new DateTime($week6);
+          $date->add(new DateInterval('P7D'));
+
+          $week7 = $date->format('Y-m-d H:i:s');
+          $getWeek7 = "SELECT COUNT(id) as week FROM promo_code WHERE status = 3 AND data BETWEEN '".$week6."' AND '".$week7."'";
+          if($getWeekOne = $conn->query($getWeek7)){
+            foreach ($getWeek7 as $Week7){
+
+            }
+          }
+          $date = new DateTime($week7);
+          $date->add(new DateInterval('P7D'));
+
+          $week8 = $date->format('Y-m-d H:i:s');
+          $getWeek8 = "SELECT COUNT(id) as week FROM promo_code WHERE status = 3 AND data BETWEEN '".$week7."' AND '".$week8."'";
+          if($getWeekOne = $conn->query($getWeek8)){
+            foreach ($getWeek8 as $Week8){
+
+            }
+          }
                 $arrShowF = array();
                 foreach ($arrData as $IDgift => $val) {
                     foreach ($val as $name => $val2) {
@@ -1840,7 +1912,7 @@ function nescafe_preprocess_region__tabel_principal(){
                     foreach ($sol as $solVal) {
                         $solicit = $solVal['COUNT(id)'];
                     }
-                    printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $arrShow['name3'], $arrImg, $arrShow['suplimentar3'], 0,0,0,0,0,0,0,0, $supliment);
+                    printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $arrShow['name3'], $arrImg, $arrShow['suplimentar3'], $Week1['week1'],$Week2['week'],$Week3['week'],$Week4['week'],$Week5['week'],$Week6['week'],$Week7['week'],$Week8['week'], $supliment);
 
                     $count++;
                 }
@@ -1886,7 +1958,7 @@ function nescafe_preprocess_region__tabel_principal(){
                     foreach ($sol as $solVal) {
                         $solicit = $solVal['COUNT(id)'];
                     }
-                    printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $arrShow['name2'], $arrImg, $arrShow['suplimentar2'],  0,0,0,0,0,0,0,0, $supliment);
+                    printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $arrShow['name2'], $arrImg, $arrShow['suplimentar2'],  $Week1['week1'],$Week2['week'],$Week3['week'],$Week4['week'],$Week5['week'],$Week6['week'],$Week7['week'],$Week8['week'], $supliment);
 
                     $count++;
                 }
@@ -1934,7 +2006,7 @@ function nescafe_preprocess_region__tabel_principal(){
 
                         $solicit = $solVal['COUNT(id)'];
                     }
-                    printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $arrShow['name1'], $arrImg, $arrShow['suplimentar1'],  0,0,0,0,0,0,0,0, $supliment);
+                    printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $arrShow['name1'], $arrImg, $arrShow['suplimentar1'],  $Week1['week'],$Week2['week'],$Week3['week'],$Week4['week'],$Week5['week'],$Week6['week'],$Week7['week'],$Week8['week'], $supliment);
 
                     $count++;
                 }
