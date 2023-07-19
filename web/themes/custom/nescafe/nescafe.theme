@@ -1704,11 +1704,10 @@ function nescafe_preprocess_region__tabel_principal(){
           $week1 = $date->format('Y-m-d H:i:s');
           $count1 = 0;
           $getWeek1 = "SELECT * FROM promo_code WHERE status = 3 AND data BETWEEN '".$dataVal['data']."' AND '".$week1."'";
-          if($getWeekOne = $conn->query($getWeek1)){
-            foreach ($getWeek1 as $Week1){
-              dump($Week1);
-              $count1++;
-            }
+          $getWeekOne = $conn->query($getWeek1);
+          foreach ($getWeekOne as $Week1){
+            dump($Week1);
+            $count1++;
           }
               dump($Week1);
 
