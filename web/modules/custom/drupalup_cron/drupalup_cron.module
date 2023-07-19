@@ -42,5 +42,22 @@ use Drupal\user\Entity\User;
     $tombolaSuccess = "UPDATE promo_code SET tombola = 2 WHERE id = '".$arrID[$key]."'";
     if($conn->query($tombolaSuccess)){}
 
+    $getFinal = "SELECT * FROM promo_code WHERE final = 1";
+    $finalZil  = $conn->query($getFinal);
+    $finalZil->setFetchMode(\PDO::FETCH_OBJ);
+
+    $ifUsers = 0;
+    $arrID = array();
+    foreach($finalZil as $zil){
+      $ifUsers++;
+      $arrID[] = $zil->id;
+    }
+    if($ifUsers >= 2){
+      $key = array_rand($arrID);
+    }
+
+    $FinalSuccess = "UPDATE promo_code SET final = 2 WHERE id = '".$arrID[$key]."'";
+    if($conn->query($FinalSuccess)){}
+
   }
 ?>
