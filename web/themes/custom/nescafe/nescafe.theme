@@ -1739,7 +1739,7 @@ function nescafe_preprocess_region__tabel_principal(){
             }
           }
           dump($Week4);
-          dump($Week1);
+          dump($getWeek1);
           $date = new DateTime($week4);
           $date->add(new DateInterval('P7D'));
 
@@ -1914,7 +1914,7 @@ function nescafe_preprocess_region__tabel_principal(){
                     foreach ($sol as $solVal) {
                         $solicit = $solVal['COUNT(id)'];
                     }
-                    printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $arrShow['name3'], $arrImg, $arrShow['suplimentar3'], $Week1['week1'],$Week2['week'],$Week3['week'],$Week4['week'],$Week5['week'],$Week6['week'],$Week7['week'],$Week8['week'], $supliment);
+                    printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $arrShow['name3'], $arrImg, $arrShow['suplimentar3'], $Week1['week'],$Week2['week'],$Week3['week'],$Week4['week'],$Week5['week'],$Week6['week'],$Week7['week'],$Week8['week'], $supliment);
 
                     $count++;
                 }
@@ -1960,7 +1960,7 @@ function nescafe_preprocess_region__tabel_principal(){
                     foreach ($sol as $solVal) {
                         $solicit = $solVal['COUNT(id)'];
                     }
-                    printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $arrShow['name2'], $arrImg, $arrShow['suplimentar2'],  $Week1['week1'],$Week2['week'],$Week3['week'],$Week4['week'],$Week5['week'],$Week6['week'],$Week7['week'],$Week8['week'], $supliment);
+                    printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $arrShow['name2'], $arrImg, $arrShow['suplimentar2'],  $Week1['week'],$Week2['week'],$Week3['week'],$Week4['week'],$Week5['week'],$Week6['week'],$Week7['week'],$Week8['week'], $supliment);
 
                     $count++;
                 }
