@@ -1268,9 +1268,7 @@ function nescafe_preprocess_region__stock($page)
         $elibSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 3";
         $elib = $conn->query($elibSQL);
         $countElib = 0;
-        foreach ($elib as $elibVal) {
-            $countElib++;
-        }
+
 
         $getFiliala = "SELECT * FROM webform_submission_data WHERE webform_id = 'adaugarea_filiala' ";
         $filVal = $conn->query($getFiliala);
@@ -1385,6 +1383,11 @@ function nescafe_preprocess_region__stock($page)
               }
             }
             $stockDisp = $init + $supl;
+            foreach ($elib as $elibVal) {
+              if($elibVal['premiu'] == $arrShow['name3']) {
+                $countElib++;
+              }
+            }
             printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $arrShow['name3'], $arrFil['value'], $solicit, $init, $supl, $stockDisp, $countElib, $stockFinal);
 
             $count++;
