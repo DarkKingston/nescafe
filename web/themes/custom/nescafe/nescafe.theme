@@ -1699,87 +1699,7 @@ function nescafe_preprocess_region__tabel_principal(){
           foreach ($data as $dataVal) {
 
           }
-          $date = new DateTime($dataVal['data']);
-          $date->add(new DateInterval('P7D'));
-          $week1 = $date->format('Y-m-d H:i:s');
-          $count1 = 0;
-          $getWeek1 = "SELECT * FROM promo_code WHERE status = 3 AND data BETWEEN '".$dataVal['data']."' AND '".$week1."'";
-          $getWeekOne = $conn->query($getWeek1);
-          foreach ($getWeekOne as $Week1){
-            dump($Week1);
-            $count1++;
-          }
-              dump($Week1);
 
-          $date = new DateTime($week1);
-          $date->add(new DateInterval('P7D'));
-          $count2=0;
-          $week2 = $date->format('Y-m-d H:i:s');
-          $getWeek2 = "SELECT * FROM promo_code WHERE status = 3 AND data BETWEEN '".$week1."' AND '".$week2."'";
-          $getWeekTwo = $conn->query($getWeek2);
-            foreach ($getWeekTwo as $Week2){
-              $count2++;
-            }
-
-          $date = new DateTime($week2);
-          $date->add(new DateInterval('P7D'));
-          $count3=0;
-          $week3 = $date->format('Y-m-d H:i:s');
-          $getWeek3 = "SELECT * FROM promo_code WHERE status = 3 AND data BETWEEN '".$week2."' AND '".$week3."'";
-          $getWeekThree = $conn->query($getWeek3);
-            foreach ($getWeekThree as $Week3){
-              $count3++;
-            }
-
-          $date = new DateTime($week3);
-          $date->add(new DateInterval('P7D'));
-          $count4=0;
-          $week4 = $date->format('Y-m-d H:i:s');
-          $getWeek4 = "SELECT * FROM promo_code WHERE status = 3 AND data BETWEEN '".$week3."' AND '".$week4."'";
-          $getWeekFour = $conn->query($getWeek4);
-            foreach ($getWeekFour as $Week4){
-              $count4++;
-            }
-
-          $date = new DateTime($week4);
-          $date->add(new DateInterval('P7D'));
-          $count5=0;
-          $week5 = $date->format('Y-m-d H:i:s');
-          $getWeek5 = "SELECT * FROM promo_code WHERE status = 3 AND data BETWEEN '".$week4."' AND '".$week5."'";
-          $getWeekFive = $conn->query($getWeek5);
-            foreach ($getWeekFive as $Week5){
-              $count5++;
-            }
-
-          $date = new DateTime($week5);
-          $date->add(new DateInterval('P7D'));
-          $count6=0;
-          $week6 = $date->format('Y-m-d H:i:s');
-          $getWeek6 = "SELECT * FROM promo_code WHERE status = 3 AND data BETWEEN '".$week5."' AND '".$week6."'";
-          $getWeekSix = $conn->query($getWeek6);
-            foreach ($getWeekSix as $Week6){
-              $count6++;
-            }
-
-          $date = new DateTime($week6);
-          $date->add(new DateInterval('P7D'));
-          $count7=0;
-          $week7 = $date->format('Y-m-d H:i:s');
-          $getWeek7 = "SELECT * FROM promo_code WHERE status = 3 AND data BETWEEN '".$week6."' AND '".$week7."'";
-          $getWeekSeven = $conn->query($getWeek7);
-            foreach ($getWeekSeven as $Week7){
-              $count7++;
-            }
-
-          $date = new DateTime($week7);
-          $date->add(new DateInterval('P7D'));
-          $count8 = 0;
-          $week8 = $date->format('Y-m-d H:i:s');
-          $getWeek8 = "SELECT * FROM promo_code WHERE status = 3 AND data BETWEEN '".$week7."' AND '".$week8."'";
-          $getWeekEight = $conn->query($getWeek8);
-            foreach ($getWeekEight as $Week8){
-              $count8++;
-            }
 
                 $arrShowF = array();
                 foreach ($arrData as $IDgift => $val) {
@@ -1880,6 +1800,104 @@ function nescafe_preprocess_region__tabel_principal(){
                 $solicit = 0;
                 foreach ($arrShowF as $filiala => $arrShow) {
 
+                  $date = new DateTime($dataVal['data']);
+                  $date->add(new DateInterval('P7D'));
+                  $week1 = $date->format('Y-m-d H:i:s');
+                  $count1 = 0;
+                  $getWeek1 = "SELECT * FROM promo_code WHERE status = 3 AND data BETWEEN '".$dataVal['data']."' AND '".$week1."'";
+                  $getWeekOne = $conn->query($getWeek1);
+                  foreach ($getWeekOne as $Week1){
+                    if($Week1 == $arrShow['name3']){
+                      $count1++;
+                    }
+                  }
+
+                  $date = new DateTime($week1);
+                  $date->add(new DateInterval('P7D'));
+                  $count2=0;
+                  $week2 = $date->format('Y-m-d H:i:s');
+                  $getWeek2 = "SELECT * FROM promo_code WHERE status = 3 AND data BETWEEN '".$week1."' AND '".$week2."'";
+                  $getWeekTwo = $conn->query($getWeek2);
+                  foreach ($getWeekTwo as $Week2){
+                    if($Week2 == $arrShow['name3']){
+                      $count2++;
+                    }
+                  }
+
+                  $date = new DateTime($week2);
+                  $date->add(new DateInterval('P7D'));
+                  $count3=0;
+                  $week3 = $date->format('Y-m-d H:i:s');
+                  $getWeek3 = "SELECT * FROM promo_code WHERE status = 3 AND data BETWEEN '".$week2."' AND '".$week3."'";
+                  $getWeekThree = $conn->query($getWeek3);
+                  foreach ($getWeekThree as $Week3){
+                    if($Week3 == $arrShow['name3']){
+                      $count3++;
+                    }
+                  }
+
+                  $date = new DateTime($week3);
+                  $date->add(new DateInterval('P7D'));
+                  $count4=0;
+                  $week4 = $date->format('Y-m-d H:i:s');
+                  $getWeek4 = "SELECT * FROM promo_code WHERE status = 3 AND data BETWEEN '".$week3."' AND '".$week4."'";
+                  $getWeekFour = $conn->query($getWeek4);
+                  foreach ($getWeekFour as $Week4){
+                    if($Week4 == $arrShow['name3']){
+                      $count4++;
+                    }
+                  }
+
+                  $date = new DateTime($week4);
+                  $date->add(new DateInterval('P7D'));
+                  $count5=0;
+                  $week5 = $date->format('Y-m-d H:i:s');
+                  $getWeek5 = "SELECT * FROM promo_code WHERE status = 3 AND data BETWEEN '".$week4."' AND '".$week5."'";
+                  $getWeekFive = $conn->query($getWeek5);
+                  foreach ($getWeekFive as $Week5){
+                    if($Week5 == $arrShow['name3']){
+                      $count5++;
+                    }
+                  }
+
+                  $date = new DateTime($week5);
+                  $date->add(new DateInterval('P7D'));
+                  $count6=0;
+                  $week6 = $date->format('Y-m-d H:i:s');
+                  $getWeek6 = "SELECT * FROM promo_code WHERE status = 3 AND data BETWEEN '".$week5."' AND '".$week6."'";
+                  $getWeekSix = $conn->query($getWeek6);
+                  foreach ($getWeekSix as $Week6){
+                    if($Week6 == $arrShow['name3']){
+                      $count6++;
+                    }
+                  }
+
+                  $date = new DateTime($week6);
+                  $date->add(new DateInterval('P7D'));
+                  $count7=0;
+                  $week7 = $date->format('Y-m-d H:i:s');
+                  $getWeek7 = "SELECT * FROM promo_code WHERE status = 3 AND data BETWEEN '".$week6."' AND '".$week7."'";
+                  $getWeekSeven = $conn->query($getWeek7);
+                  foreach ($getWeekSeven as $Week7){
+                    if($Week7 == $arrShow['name3']){
+                      $count7++;
+                    }
+                  }
+
+                  $date = new DateTime($week7);
+                  $date->add(new DateInterval('P7D'));
+                  $count8 = 0;
+                  $week8 = $date->format('Y-m-d H:i:s');
+                  $getWeek8 = "SELECT * FROM promo_code WHERE status = 3 AND data BETWEEN '".$week7."' AND '".$week8."'";
+                  $getWeekEight = $conn->query($getWeek8);
+                  foreach ($getWeekEight as $Week8){
+                    if($Week8 == $arrShow['name3']){
+                      $count8++;
+                    }
+                  }
+
+
+
                   foreach ($sums as $sum) {
                     if($sum['premiu'] == $arrShow['name3']){
                       $sum3 = $sum['total_suplimentar'] + $sum['total_initial'];
@@ -1933,6 +1951,101 @@ function nescafe_preprocess_region__tabel_principal(){
                 $solicit = 0;
                 foreach ($arrShowF2 as $filiala => $arrShow) {
 
+                  $date = new DateTime($dataVal['data']);
+                  $date->add(new DateInterval('P7D'));
+                  $week1 = $date->format('Y-m-d H:i:s');
+                  $count1 = 0;
+                  $getWeek1 = "SELECT * FROM promo_code WHERE status = 3 AND data BETWEEN '".$dataVal['data']."' AND '".$week1."'";
+                  $getWeekOne = $conn->query($getWeek1);
+                  foreach ($getWeekOne as $Week1){
+                    if($Week1 == $arrShow['name2']){
+                      $count1++;
+                    }
+                  }
+
+                  $date = new DateTime($week1);
+                  $date->add(new DateInterval('P7D'));
+                  $count2=0;
+                  $week2 = $date->format('Y-m-d H:i:s');
+                  $getWeek2 = "SELECT * FROM promo_code WHERE status = 3 AND data BETWEEN '".$week1."' AND '".$week2."'";
+                  $getWeekTwo = $conn->query($getWeek2);
+                  foreach ($getWeekTwo as $Week2){
+                    if($Week2 == $arrShow['name2']){
+                      $count2++;
+                    }
+                  }
+
+                  $date = new DateTime($week2);
+                  $date->add(new DateInterval('P7D'));
+                  $count3=0;
+                  $week3 = $date->format('Y-m-d H:i:s');
+                  $getWeek3 = "SELECT * FROM promo_code WHERE status = 3 AND data BETWEEN '".$week2."' AND '".$week3."'";
+                  $getWeekThree = $conn->query($getWeek3);
+                  foreach ($getWeekThree as $Week3){
+                    if($Week3 == $arrShow['name2']){
+                      $count3++;
+                    }
+                  }
+
+                  $date = new DateTime($week3);
+                  $date->add(new DateInterval('P7D'));
+                  $count4=0;
+                  $week4 = $date->format('Y-m-d H:i:s');
+                  $getWeek4 = "SELECT * FROM promo_code WHERE status = 3 AND data BETWEEN '".$week3."' AND '".$week4."'";
+                  $getWeekFour = $conn->query($getWeek4);
+                  foreach ($getWeekFour as $Week4){
+                    if($Week4 == $arrShow['name2']){
+                      $count4++;
+                    }
+                  }
+
+                  $date = new DateTime($week4);
+                  $date->add(new DateInterval('P7D'));
+                  $count5=0;
+                  $week5 = $date->format('Y-m-d H:i:s');
+                  $getWeek5 = "SELECT * FROM promo_code WHERE status = 3 AND data BETWEEN '".$week4."' AND '".$week5."'";
+                  $getWeekFive = $conn->query($getWeek5);
+                  foreach ($getWeekFive as $Week5){
+                    if($Week5 == $arrShow['name2']){
+                      $count5++;
+                    }
+                  }
+
+                  $date = new DateTime($week5);
+                  $date->add(new DateInterval('P7D'));
+                  $count6=0;
+                  $week6 = $date->format('Y-m-d H:i:s');
+                  $getWeek6 = "SELECT * FROM promo_code WHERE status = 3 AND data BETWEEN '".$week5."' AND '".$week6."'";
+                  $getWeekSix = $conn->query($getWeek6);
+                  foreach ($getWeekSix as $Week6){
+                    if($Week6 == $arrShow['name2']){
+                      $count6++;
+                    }
+                  }
+
+                  $date = new DateTime($week6);
+                  $date->add(new DateInterval('P7D'));
+                  $count7=0;
+                  $week7 = $date->format('Y-m-d H:i:s');
+                  $getWeek7 = "SELECT * FROM promo_code WHERE status = 3 AND data BETWEEN '".$week6."' AND '".$week7."'";
+                  $getWeekSeven = $conn->query($getWeek7);
+                  foreach ($getWeekSeven as $Week7){
+                    if($Week7 == $arrShow['name2']){
+                      $count7++;
+                    }
+                  }
+
+                  $date = new DateTime($week7);
+                  $date->add(new DateInterval('P7D'));
+                  $count8 = 0;
+                  $week8 = $date->format('Y-m-d H:i:s');
+                  $getWeek8 = "SELECT * FROM promo_code WHERE status = 3 AND data BETWEEN '".$week7."' AND '".$week8."'";
+                  $getWeekEight = $conn->query($getWeek8);
+                  foreach ($getWeekEight as $Week8){
+                    if($Week8 == $arrShow['name2']){
+                      $count8++;
+                    }
+                  }
 
                   foreach ($sums as $sum) {
                     if($sum['premiu'] == $arrShow['name2']){
@@ -1978,7 +2091,101 @@ function nescafe_preprocess_region__tabel_principal(){
                 $count = 1;
                 $solicit = 0;
                 foreach ($arrShowF1 as $filiala => $arrShow) {
+                  $date = new DateTime($dataVal['data']);
+                  $date->add(new DateInterval('P7D'));
+                  $week1 = $date->format('Y-m-d H:i:s');
+                  $count1 = 0;
+                  $getWeek1 = "SELECT * FROM promo_code WHERE status = 3 AND data BETWEEN '".$dataVal['data']."' AND '".$week1."'";
+                  $getWeekOne = $conn->query($getWeek1);
+                  foreach ($getWeekOne as $Week1){
+                    if($Week1 == $arrShow['name1']){
+                      $count1++;
+                    }
+                  }
 
+                  $date = new DateTime($week1);
+                  $date->add(new DateInterval('P7D'));
+                  $count2=0;
+                  $week2 = $date->format('Y-m-d H:i:s');
+                  $getWeek2 = "SELECT * FROM promo_code WHERE status = 3 AND data BETWEEN '".$week1."' AND '".$week2."'";
+                  $getWeekTwo = $conn->query($getWeek2);
+                  foreach ($getWeekTwo as $Week2){
+                    if($Week2 == $arrShow['name1']){
+                      $count2++;
+                    }
+                  }
+
+                  $date = new DateTime($week2);
+                  $date->add(new DateInterval('P7D'));
+                  $count3=0;
+                  $week3 = $date->format('Y-m-d H:i:s');
+                  $getWeek3 = "SELECT * FROM promo_code WHERE status = 3 AND data BETWEEN '".$week2."' AND '".$week3."'";
+                  $getWeekThree = $conn->query($getWeek3);
+                  foreach ($getWeekThree as $Week3){
+                    if($Week3 == $arrShow['name1']){
+                      $count3++;
+                    }
+                  }
+
+                  $date = new DateTime($week3);
+                  $date->add(new DateInterval('P7D'));
+                  $count4=0;
+                  $week4 = $date->format('Y-m-d H:i:s');
+                  $getWeek4 = "SELECT * FROM promo_code WHERE status = 3 AND data BETWEEN '".$week3."' AND '".$week4."'";
+                  $getWeekFour = $conn->query($getWeek4);
+                  foreach ($getWeekFour as $Week4){
+                    if($Week4 == $arrShow['name1']){
+                      $count4++;
+                    }
+                  }
+
+                  $date = new DateTime($week4);
+                  $date->add(new DateInterval('P7D'));
+                  $count5=0;
+                  $week5 = $date->format('Y-m-d H:i:s');
+                  $getWeek5 = "SELECT * FROM promo_code WHERE status = 3 AND data BETWEEN '".$week4."' AND '".$week5."'";
+                  $getWeekFive = $conn->query($getWeek5);
+                  foreach ($getWeekFive as $Week5){
+                    if($Week5 == $arrShow['name1']){
+                      $count5++;
+                    }
+                  }
+
+                  $date = new DateTime($week5);
+                  $date->add(new DateInterval('P7D'));
+                  $count6=0;
+                  $week6 = $date->format('Y-m-d H:i:s');
+                  $getWeek6 = "SELECT * FROM promo_code WHERE status = 3 AND data BETWEEN '".$week5."' AND '".$week6."'";
+                  $getWeekSix = $conn->query($getWeek6);
+                  foreach ($getWeekSix as $Week6){
+                    if($Week6 == $arrShow['name1']){
+                      $count6++;
+                    }
+                  }
+
+                  $date = new DateTime($week6);
+                  $date->add(new DateInterval('P7D'));
+                  $count7=0;
+                  $week7 = $date->format('Y-m-d H:i:s');
+                  $getWeek7 = "SELECT * FROM promo_code WHERE status = 3 AND data BETWEEN '".$week6."' AND '".$week7."'";
+                  $getWeekSeven = $conn->query($getWeek7);
+                  foreach ($getWeekSeven as $Week7){
+                    if($Week7 == $arrShow['name1']){
+                      $count7++;
+                    }
+                  }
+
+                  $date = new DateTime($week7);
+                  $date->add(new DateInterval('P7D'));
+                  $count8 = 0;
+                  $week8 = $date->format('Y-m-d H:i:s');
+                  $getWeek8 = "SELECT * FROM promo_code WHERE status = 3 AND data BETWEEN '".$week7."' AND '".$week8."'";
+                  $getWeekEight = $conn->query($getWeek8);
+                  foreach ($getWeekEight as $Week8){
+                    if($Week8 == $arrShow['name1']){
+                      $count8++;
+                    }
+                  }
 
 
                   foreach ($sums as $sum) {
