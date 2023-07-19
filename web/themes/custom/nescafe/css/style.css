@@ -384,9 +384,9 @@ form>.form-item>input[type="checkbox"]{
 }
 
 .js-form-item-active{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
 }
 
 .iti input{
