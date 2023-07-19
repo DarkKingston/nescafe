@@ -1310,6 +1310,11 @@ function nescafe_preprocess_region__stock($page)
         }
         $arr = [];
 
+        $getStock = "SELECT * FROM stock";
+        $stockInfo = $conn->query($getStock);
+        foreach ($stockInfo as $info){
+          dump($info);
+        }
 
         if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru') {
             $solicitate = 'Запрошено';
