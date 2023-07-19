@@ -1691,7 +1691,7 @@ function nescafe_preprocess_region__tabel_principal(){
                 foreach ($elibSQL as $elibVal) {
                     $premii [] = $elibVal['premiu'];
                 }
-          $countedArray = array_count_values($array);
+          $countedArray = array_count_values($premii);
 
           $dataSQL = "SELECT * FROM promo_code WHERE active != 0 ORDER BY data DESC";
           $data = $conn->query($dataSQL);
