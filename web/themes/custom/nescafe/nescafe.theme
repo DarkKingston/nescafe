@@ -1810,20 +1810,18 @@ function nescafe_preprocess_region__tabel_principal(){
                       $sum3 = $sum['total_suplimentar'] + $sum['total_initial'];
                     }
                   }
-                  foreach ($countedArray as $key => $value){
-                    dump($arrShow['name3'] == $key);
-                    dump($arrShow['suplimentar3'] - $value);
-                    dump($value);
-                    if($arrShow['name3'] == $key){
-                      $supliment = $arrShow['suplimentar3'] - $value;
-                    }
-                  }
 
                   if($arrShow['suplimentar3'] - $sum3 >= 0){
                     $supliment = $arrShow['suplimentar3'] - $sum3;
                   }else{
                     $supliment = $arrShow['suplimentar3'];
                 }
+
+                  foreach ($countedArray as $key => $value){
+                    if($arrShow['name3'] == $key){
+                      $supliment = $arrShow['suplimentar3'] - $value;
+                    }
+                  }
 
 
                 $file_storage = \Drupal::service('entity_type.manager')->getStorage('file');
