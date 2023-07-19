@@ -1687,12 +1687,11 @@ function nescafe_preprocess_region__tabel_principal(){
 
                 $elibQuery = "SELECT * FROM promo_code WHERE active != 0 AND status = 3";
                 $elibSQL = $conn->query($elibQuery);
-                $countElib = 0;
+                $premii = array();
                 foreach ($elibSQL as $elibVal) {
-                    $countElib++;
-                    dump($elibVal);
+                    $premii [] = $elibVal['premiu'];
                 }
-dump($countElib);
+          $countedArray = array_count_values($array);
 
           $dataSQL = "SELECT * FROM promo_code WHERE active != 0 ORDER BY data DESC";
           $data = $conn->query($dataSQL);
@@ -1700,12 +1699,12 @@ dump($countElib);
           foreach ($data as $dataVal) {
 
           }
-          dump($dataVal['data']);
+          //dump($dataVal['data']);
           $now = time(); // текущее время (метка времени)
           $your_date = strtotime($dataVal['data']); // какая-то дата в строке (1 января 2017 года)
           $datediff = $now - $your_date; // получим разность дат (в секундах)
           $week = floor($datediff / (60 * 60 * 24));
-          dump($week);
+          //dump($week);
 
                 $arrShowF = array();
                 foreach ($arrData as $IDgift => $val) {
@@ -1809,6 +1808,14 @@ dump($countElib);
                   foreach ($sums as $sum) {
                     if($sum['premiu'] == $arrShow['name3']){
                       $sum3 = $sum['total_suplimentar'] + $sum['total_initial'];
+                    }
+                  }
+                  foreach ($countedArray as $key => $value){
+                    dump($arrShow['name3'] == $key);
+                    dump($arrShow['suplimentar3'] - $value);
+                    dump($value);
+                    if($arrShow['name3'] == $key){
+                      $supliment = $arrShow['suplimentar3'] - $value;
                     }
                   }
 
