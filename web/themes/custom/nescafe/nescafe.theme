@@ -1315,7 +1315,7 @@ function nescafe_preprocess_region__stock($page)
 
       $combinedArray = array();
       foreach ($stockInfo as $info) {
-        $premiuFiliala = $info['premiu'] . " - " . $info['filiala'];
+        $premiuFiliala = $info['premiu'] . "_" . $info['filiala'];
 
         if (!isset($combinedArray[$premiuFiliala])) {
           $combinedArray[$premiuFiliala] = array(
@@ -1330,7 +1330,11 @@ function nescafe_preprocess_region__stock($page)
         $combinedArray[$premiuFiliala]['data'] = $info['data'];
       }
 
-      dump($combinedArray);
+      foreach ($combinedArray as $arrKey => $arrValue){
+
+      }
+      dump($arrKey);
+      dump($arrValue);
 
         if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru') {
             $solicitate = 'Запрошено';
