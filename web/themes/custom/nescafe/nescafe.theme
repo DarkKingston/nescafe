@@ -510,7 +510,7 @@ TABLE;
             $count = 1;
             foreach ($result as $record) {
 
-                printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><form method='post'><input type='hidden' value='".$record->uid."' name='active_id'> <input type='hidden' value='".$record->name."' name='form_phone'><input type='submit' name='submit_code' value='Submit' class='btn_main action search_filiala form_btn'></form></td></tr>\n", $count, $record->field_name_value,$record->field_lastname_value, $record->name, $record->premiu, $record->livrare, $record->uid);
+                printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><form method='post'><input type='hidden' value='".$record->uid."' name='active_id'> <input type='hidden' value='".$record->name."' name='form_phone'><input type='hidden' value='".$record->id."' name='prem_id'><input type='submit' name='submit_code' value='Submit' class='btn_main action search_filiala form_btn'></form></td></tr>\n", $count, $record->field_name_value,$record->field_lastname_value, $record->name, $record->premiu, $record->livrare, $record->uid);
 
                 $count++;
             }
@@ -524,6 +524,7 @@ TABLE;
                </form>";
               $code = rand(1000, 9999);
               $_SESSION['code'] = $code;
+              $_SESSION['prem_id'] = $_POST['prem_id'];
               $phone = $_POST['form_phone'];
               $params = array(
 
@@ -544,8 +545,8 @@ TABLE;
 
 
                 if ($_POST['code_name'] == $_SESSION['code']) {
-
-                  $updateStatus = "UPDATE promo_code SET status = 3, data = NOW() WHERE active = '".$_SESSION['id_user']."' AND status = 2 ";
+                }
+                  $updateStatus = "UPDATE promo_code SET status = 3, data = NOW() WHERE active = '".$_SESSION['id_user']."' AND status = 2 AND id = '".$_SESSION['prem_id']."' ";
                   if ($conn->query($updateStatus)) {
                     print "<form method='post' class='error_popup'>
                                 Success
