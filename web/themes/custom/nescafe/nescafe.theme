@@ -1904,11 +1904,11 @@ function nescafe_preprocess_region__tabel_principal(){
                     }
                   }
 
-                  if($arrShow['suplimentar3'] - $sum3 >= 0){
-                    $supliment = $arrShow['suplimentar3'] - $sum3;
-                  }else{
-                    $supliment = $arrShow['suplimentar3'];
-                }
+//                  if($arrShow['suplimentar3'] - $sum3 >= 0){
+//                    $supliment = $arrShow['suplimentar3'] - $sum3;
+//                  }else{
+//                    $supliment = $arrShow['suplimentar3'];
+//                  }
 
                   foreach ($countedArray as $key => $value){
                     if($arrShow['name3'] == $key){
