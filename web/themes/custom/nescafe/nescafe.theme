@@ -1370,10 +1370,11 @@ function nescafe_preprocess_region__stock($page)
             $stockDisp = $stockInit + $arrShow['suplimentar3'];
             $elib = $countElib;
             $stockFinal = $stockDisp - $elib;
-            $solicitSQL = "SELECT COUNT(id) FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '" . $arrShow['filiala3'] . "' AND premiu = '" . $arrShow['name3'] . "'";
+            $solicitSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '" . $arrShow['filiala3'] . "' AND premiu = '" . $arrShow['name3'] . "'";
             $sol = $conn->query($solicitSQL);
+            $solicit = 0;
             foreach ($sol as $solVal) {
-              $solicit = $solVal['COUNT(id)'];
+              $solicit++;
             }
             $supl = 0;
             $init = 0;
