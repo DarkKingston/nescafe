@@ -1912,7 +1912,7 @@ function nescafe_preprocess_region__tabel_principal(){
 
                   foreach ($countedArray as $key => $value){
                     if($arrShow['name3'] == $key){
-                      $supliment = $supliment - $value;
+                      $supliment = $arrShow['suplimentar3'] - $value;
                     }
                   }
 
@@ -2052,11 +2052,16 @@ function nescafe_preprocess_region__tabel_principal(){
                       $sum2 = $sum['total_suplimentar'] + $sum['total_initial'];
                     }
                   }
-                  if($arrShow['suplimentar2'] - $sum2 >= 0){
-                    $supliment = $arrShow['suplimentar2'] - $sum2;
-                  }else{
-                    $supliment = $arrShow['suplimentar2'];
-                }
+//                  if($arrShow['suplimentar2'] - $sum2 >= 0){
+//                    $supliment = $arrShow['suplimentar2'] - $sum2;
+//                  }else{
+//                    $supliment = $arrShow['suplimentar2'];
+//                }
+                  foreach ($countedArray as $key => $value){
+                    if($arrShow['name2'] == $key){
+                      $supliment = $arrShow['suplimentar2'] - $value;
+                    }
+                  }
 
                 $file_storage = \Drupal::service('entity_type.manager')->getStorage('file');
                 $file = $file_storage->load($arrShow['image']);
@@ -2193,11 +2198,16 @@ function nescafe_preprocess_region__tabel_principal(){
                       $sum1 = $sum['total_suplimentar'] + $sum['total_initial'];
                     }
                   }
-                if($arrShow['suplimentar1'] - $sum1 >= 0){
-                                  $supliment = $arrShow['suplimentar1'] - $sum1;
-                }else{
-                  $supliment = $arrShow['suplimentar1'];
-                }
+//                if($arrShow['suplimentar1'] - $sum1 >= 0){
+//                                  $supliment = $arrShow['suplimentar1'] - $sum1;
+//                }else{
+//                  $supliment = $arrShow['suplimentar1'];
+//                }
+                  foreach ($countedArray as $key => $value){
+                    if($arrShow['name1'] == $key){
+                      $supliment = $arrShow['suplimentar1'] - $value;
+                    }
+                  }
                 $file_storage = \Drupal::service('entity_type.manager')->getStorage('file');
                 $file = $file_storage->load($arrShow['image']);
                 if ($file) {
