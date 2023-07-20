@@ -988,3 +988,9 @@ form .form-item label{
 .error_popup.hidden{
   display: none;
 }
+
+.week{
+  margin-top: 10px;
+  font-size: 22px;
+  line-height: 28px;
+}
