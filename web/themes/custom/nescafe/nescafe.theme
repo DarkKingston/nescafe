@@ -644,7 +644,6 @@ TABLE;
                               if ($file) {
                                 $file_path = $file->getFileUri(); // Получение пути к файлу.
                                 $file_name = $file->getFilename(); // Получение имени файла.
-
                               }
                               $string = str_replace("public://", "", $file_path);
                               $arrImg .= "<img src='/sites/default/files/" . $string . "'>";
@@ -728,8 +727,10 @@ TABLE;
                                                                     $option2 = '';
                                                                     foreach ($arrShow as $ft => $val) {
 
+                                                                      if($val['active'] == '1') {
                                                                         $arr[] = $val['name'];
                                                                         $arrFil[] = $val['filiala'];
+                                                                      }
                                                                         //dump($arrShow);
                                                                     }
                                                                     function isUnique($array, $key, $val)
@@ -745,9 +746,11 @@ TABLE;
                                                                     // Отфильтрованный массив с уникальными элементами по полю "name"
                                                                     $filteredArray = [];
                                                                     foreach ($arrShow as $value) {
+                                                                      if($value['active'] == '1'){
                                                                         if (isUnique($filteredArray, "name", $value["name"])) {
-                                                                            $filteredArray[] = $value;
+                                                                          $filteredArray[] = $value;
                                                                         }
+                                                                      }
                                                                     }
                                                                     foreach ($filteredArray as $filteredVal) {
                                                                         $file_storage = \Drupal::service('entity_type.manager')->getStorage('file');
@@ -848,9 +851,10 @@ TABLE;
                                                     $option = '';
                                                     $option2 = '';
                                                     foreach ($arrShow as $ft => $val) {
-
+                                                      if($val['active'] == '1') {
                                                         $arr[] = $val['name'];
                                                         $arrFil[] = $val['filiala'];
+                                                      }
                                                     }
                                                   $Filiala = "SELECT * FROM webform_submission_data WHERE webform_id = 'adaugarea_filiala'  ";
                                                   $filVal = $conn->query($Filiala);
@@ -870,9 +874,12 @@ TABLE;
                                                     // Отфильтрованный массив с уникальными элементами по полю "name"
                                                     $filteredArray = [];
                                                     foreach ($arrShow as $value) {
+                                                      if($value['active'] == '1') {
                                                         if (isUnique($filteredArray, "name", $value["name"])) {
-                                                            $filteredArray[] = $value;
+                                                          $filteredArray[] = $value;
                                                         }
+                                                      }
+
                                                     }
                                                     foreach ($filteredArray as $filteredVal) {
                                                         $file_storage = \Drupal::service('entity_type.manager')->getStorage('file');
@@ -958,9 +965,11 @@ TABLE;
                         $option = '';
                         $option2 = '';
                         foreach ($arrShow as $ft => $val) {
-
+                          if($val['active'] == '1') {
                             $arr[] = $val['name'];
                             $arrFil[] = $val['filiala'];
+                          }
+
                         }
                       $Filiala = "SELECT * FROM webform_submission_data WHERE webform_id = 'adaugarea_filiala'  ";
                       $filVal = $conn->query($Filiala);
@@ -980,9 +989,11 @@ TABLE;
                         // Отфильтрованный массив с уникальными элементами по полю "name"
                         $filteredArray = [];
                         foreach ($arrShow as $value) {
+                          if($value['active'] == '1') {
                             if (isUnique($filteredArray, "name", $value["name"])) {
-                                $filteredArray[] = $value;
+                              $filteredArray[] = $value;
                             }
+                          }
                         }
                         foreach ($filteredArray as $filteredVal) {
                             $file_storage = \Drupal::service('entity_type.manager')->getStorage('file');
