@@ -1305,27 +1305,7 @@ function nescafe_preprocess_region__stock($page)
         }
         $arr = [];
 
-      $getStock = "SELECT * FROM stock";
-      $stockInfo = $conn->query($getStock);
 
-      $combinedArray = array();
-      foreach ($stockInfo as $info) {
-        $premiuFiliala = $info['premiu'] . "_" . $info['filiala'];
-
-        if (!isset($combinedArray[$premiuFiliala])) {
-          $combinedArray[$premiuFiliala] = array(
-            'initial' => 0,
-            'suplimentar' => 0,
-            'data' => ''
-          );
-        }
-
-        $combinedArray[$premiuFiliala]['premiu'] = $info['premiu'];
-        $combinedArray[$premiuFiliala]['filiala'] = $info['filiala'];
-        $combinedArray[$premiuFiliala]['initial'] += $info['initial'];
-        $combinedArray[$premiuFiliala]['suplimentar'] += $info['suplimentar'];
-        $combinedArray[$premiuFiliala]['data'] = $info['data'];
-      }
 
         if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru') {
             $solicitate = 'Запрошено';
@@ -1361,6 +1341,27 @@ function nescafe_preprocess_region__stock($page)
         $solicit = 0;
         foreach ($filVal as $arrFil) {
           foreach ($arrShowF as $filiala => $arrShow) {
+            $getStock = "SELECT * FROM stock";
+            $stockInfo = $conn->query($getStock);
+
+            $combinedArray = array();
+            foreach ($stockInfo as $info) {
+              $premiuFiliala = $info['premiu'] . "_" . $info['filiala'];
+
+              if (!isset($combinedArray[$premiuFiliala])) {
+                $combinedArray[$premiuFiliala] = array(
+                  'initial' => 0,
+                  'suplimentar' => 0,
+                  'data' => ''
+                );
+              }
+
+              $combinedArray[$premiuFiliala]['premiu'] = $info['premiu'];
+              $combinedArray[$premiuFiliala]['filiala'] = $info['filiala'];
+              $combinedArray[$premiuFiliala]['initial'] += $info['initial'];
+              $combinedArray[$premiuFiliala]['suplimentar'] += $info['suplimentar'];
+              $combinedArray[$premiuFiliala]['data'] = $info['data'];
+            }
             $stockInit = 0;
 
             $solicitSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '" . $arrShow['filiala3'] . "' AND premiu = '" . $arrShow['name3'] . "'";
@@ -1410,6 +1411,27 @@ function nescafe_preprocess_region__stock($page)
       $filVal = $conn->query($getFiliala);
       foreach ($filVal as $arrFil2) {
         foreach ($arrShowF2 as $filiala => $arrShow) {
+          $getStock = "SELECT * FROM stock";
+          $stockInfo = $conn->query($getStock);
+
+          $combinedArray = array();
+          foreach ($stockInfo as $info) {
+            $premiuFiliala = $info['premiu'] . "_" . $info['filiala'];
+
+            if (!isset($combinedArray[$premiuFiliala])) {
+              $combinedArray[$premiuFiliala] = array(
+                'initial' => 0,
+                'suplimentar' => 0,
+                'data' => ''
+              );
+            }
+
+            $combinedArray[$premiuFiliala]['premiu'] = $info['premiu'];
+            $combinedArray[$premiuFiliala]['filiala'] = $info['filiala'];
+            $combinedArray[$premiuFiliala]['initial'] += $info['initial'];
+            $combinedArray[$premiuFiliala]['suplimentar'] += $info['suplimentar'];
+            $combinedArray[$premiuFiliala]['data'] = $info['data'];
+          }
           $solicitSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '" . $arrShow['filiala2'] . "' AND premiu = '" . $arrShow['name2'] . "'";
           $sol = $conn->query($solicitSQL);
           $solicit = 0;
@@ -1457,6 +1479,27 @@ function nescafe_preprocess_region__stock($page)
       $filVal = $conn->query($getFiliala);
       foreach ($filVal as $arrFil1) {
         foreach ($arrShowF1 as $filiala => $arrShow) {
+          $getStock = "SELECT * FROM stock";
+          $stockInfo = $conn->query($getStock);
+
+          $combinedArray = array();
+          foreach ($stockInfo as $info) {
+            $premiuFiliala = $info['premiu'] . "_" . $info['filiala'];
+
+            if (!isset($combinedArray[$premiuFiliala])) {
+              $combinedArray[$premiuFiliala] = array(
+                'initial' => 0,
+                'suplimentar' => 0,
+                'data' => ''
+              );
+            }
+
+            $combinedArray[$premiuFiliala]['premiu'] = $info['premiu'];
+            $combinedArray[$premiuFiliala]['filiala'] = $info['filiala'];
+            $combinedArray[$premiuFiliala]['initial'] += $info['initial'];
+            $combinedArray[$premiuFiliala]['suplimentar'] += $info['suplimentar'];
+            $combinedArray[$premiuFiliala]['data'] = $info['data'];
+          }
           $solicitSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '" . $arrShow['filiala1'] . "' AND premiu = '" . $arrShow['name1'] . "'";
           $sol = $conn->query($solicitSQL);
           $solicit = 0;
