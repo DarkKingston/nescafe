@@ -611,12 +611,9 @@ TABLE;
                         $arrFil = [];
                         foreach ($arrShowF as $filiala => $arrShow) {
                           if($arrShow['active'] == 1){
-
-
                             $option = '';
                             $option2 = '';
                             foreach ($arrShow as $ft => $val) {
-
                               $arr[] = $val['name'];
                               $arrFil[] = $val['filiala'];
                               //dump($arrShow);
@@ -662,7 +659,6 @@ TABLE;
                           }
                         }
                         //dump($arrUnique);
-
                         //dump($arrShow);
                         print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_gift' data-dialog-type='modal'>
                                                                     <div class='popup_images'>
