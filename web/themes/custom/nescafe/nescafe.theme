@@ -1380,7 +1380,7 @@ function nescafe_preprocess_region__stock($page)
         }
 
         print "</tbody>\n</table>\n";
-
+dump($arrShow);
     }
 
     /*
