@@ -603,7 +603,7 @@ TABLE;
                             foreach ($val as $name => $val2) {
                                 if ($name == 'categoria_de_produs' && $val2['value'] == 3) {
                                     // $val['title'] = $val[''];
-                                    $arrShowF[[$IDgift]['filiala']['value']][] = array('image' =>$arrData[$IDgift]['gift_image']['value'],'name' => $arrData[$IDgift]['premiu']['value'], 'filiala' => $arrData[$IDgift]['filiala']['value'], 'id' => $IDgift);
+                                    $arrShowF[[$IDgift]['filiala']['value']][] = array('image' =>$arrData[$IDgift]['gift_image']['value'],'active' =>$arrData[$IDgift]['active']['value'],'name' => $arrData[$IDgift]['premiu']['value'], 'filiala' => $arrData[$IDgift]['filiala']['value'], 'id' => $IDgift);
                                 }
                             }
                         }
