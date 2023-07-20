@@ -610,7 +610,7 @@ TABLE;
                         $arr = [];
                         $arrFil = [];
                         foreach ($arrShowF as $filiala => $arrShow) {
-                          dump($arrShow);
+                          dump($arrShow['active');
                           if($arrShow['active'] == '1'){
                             $option = '';
                             $option2 = '';
