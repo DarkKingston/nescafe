@@ -1126,285 +1126,183 @@ function nescafe_preprocess_region__stock($page)
 
         $filialSQL = "SELECT * FROM user__field_filiala WHERE revision_id = '" . $curr_id_for_user . "' ";
         $fil = $conn->query($filialSQL);
-        foreach ($fil as $filValue) {
+        foreach ($fil as $filVal) {
         }
 
 
-      $arrData  = array();
-      $getGift = "SELECT * FROM webform_submission_data WHERE webform_id = 'cadouri'";
-      $giftVal = $conn->query($getGift);
-      foreach ($giftVal as $gift => $val) {
-        $arrData[$val['sid']][$val['name']] = $val;
 
-      }
+        $arrShowF = array();
+        foreach ($arrData as $IDgift => $val) {
+            foreach ($val as $name => $val2) {
 
-
-
-      $getFiliala = "SELECT * FROM webform_submission_data WHERE webform_id = 'adaugarea_filiala' AND value = '".$filValue['field_filiala_value']."'";
-      $filVal = $conn->query($getFiliala);
-
-
-      $arrShowF = array();
-      foreach ($arrData as $IDgift => $val) {
-        foreach ($val as $name => $val2) {
-          if ($name == 'categoria_de_produs' && $val2['value'] == 3) {
-            // $arrShowF[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']][] = array( 'name3' => $arrData[$IDgift]['premiu']['value'] ,'filiala3' => $arrData[$IDgift]['filiala']['value'],'stock3' => $arrData[$IDgift]['stock']['value'],'suplimentar3' => $arrData[$IDgift]['suplimentar']['value'], 'id' => $IDgift );
-
-            $arrShowF[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['nume_filiala']['value']]['name3'] = $arrData[$IDgift]['premiu']['value'];
-            $arrShowF[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['nume_filiala']['value']]['filiala3'] = $arrData[$IDgift]['filiala']['value'];
-            $arrShowF[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['nume_filiala']['value']]['stock3'] +=  $arrData[$IDgift]['stock']['value'];
-            $arrShowF[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['nume_filiala']['value']]['suplimentar3'] +=  $arrData[$IDgift]['suplimentar']['value'];
-            $arrShowF[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['nume_filiala']['value']]['id'] +=  $IDgift;
-          }
-          if ($name == 'categoria_de_produs' && $val2['value'] == 2) {
-            // $val['title'] = $val[''];
-            // $arrShowF2[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']][] = array( 'name2' => $arrData[$IDgift]['premiu']['value'] ,'filiala2' => $arrData[$IDgift]['filiala']['value'],'stock2' => $arrData[$IDgift]['stock']['value'],'suplimentar2' => $arrData[$IDgift]['suplimentar']['value'], 'id' => $IDgift );
-            $arrShowF2[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['nume_filiala']['value']]['name2'] = $arrData[$IDgift]['premiu']['value'];
-            $arrShowF2[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['nume_filiala']['value']]['filiala2'] = $arrData[$IDgift]['filiala']['value'];
-            $arrShowF2[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['nume_filiala']['value']]['stock2'] +=  $arrData[$IDgift]['stock']['value'];
-            $arrShowF2[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['nume_filiala']['value']]['suplimentar2'] +=  $arrData[$IDgift]['suplimentar']['value'];
-            $arrShowF2[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['nume_filiala']['value']]['id'] +=  $IDgift;
-          }
-          if ($name == 'categoria_de_produs' && $val2['value'] == 1) {
-            // $val['title'] = $val[''];
-            // $arrShowF1[ $arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value'] ][] = array( 'name1' => $arrData[$IDgift]['premiu']['value'] ,'filiala1' => $arrData[$IDgift]['filiala']['value'],'stock1' => $arrData[$IDgift]['stock']['value'],'suplimentar1' => $arrData[$IDgift]['suplimentar']['value'], 'id' => $IDgift );
-            $arrShowF1[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['nume_filiala']['value']]['name1'] = $arrData[$IDgift]['premiu']['value'];
-            $arrShowF1[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['nume_filiala']['value']]['filiala1'] = $arrData[$IDgift]['filiala']['value'];
-            $arrShowF1[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['nume_filiala']['value']]['stock1'] +=  $arrData[$IDgift]['stock']['value'];
-            $arrShowF1[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['nume_filiala']['value']]['suplimentar1'] +=  $arrData[$IDgift]['suplimentar']['value'];
-            $arrShowF1[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['nume_filiala']['value']]['id'] +=  $IDgift;
-          }
+                if ($val['filiala']['value'] == $filVal['field_filiala_value']) {
+                    if (($name == 'categoria_de_produs' && $val2['value'] == 3)) {
+                        //$arrShowF[[$IDgift]['filiala']['value']][] = array( 'name3' => $arrData[$IDgift]['premiu']['value'] ,'filiala3' => $arrData[$IDgift]['filiala']['value'],'stock3' => $arrData[$IDgift]['stock']['value'],'suplimentar3' => $arrData[$IDgift]['suplimentar']['value'], 'id' => $IDgift );
+                        $arrShowF[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['name3'] = $arrData[$IDgift]['premiu']['value'];
+                        $arrShowF[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['filiala3'] = $arrData[$IDgift]['filiala']['value'];
+                        $arrShowF[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['stock3'] +=  $arrData[$IDgift]['stock']['value'];
+                        $arrShowF[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['suplimentar3'] +=  $arrData[$IDgift]['suplimentar']['value'];
+                        $arrShowF[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['id'] +=  $IDgift;
+                    }
+                    if (($name == 'categoria_de_produs' && $val2['value'] == 2)) {
+                        // $val['title'] = $val[''];
+                        //$arrShowF2[[$IDgift]['filiala']['value']][] = array( 'name2' => $arrData[$IDgift]['premiu']['value'] ,'filiala2' => $arrData[$IDgift]['filiala']['value'],'stock2' => $arrData[$IDgift]['stock']['value'],'suplimentar2' => $arrData[$IDgift]['suplimentar']['value'], 'id' => $IDgift );
+                        $arrShowF2[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['name2'] = $arrData[$IDgift]['premiu']['value'];
+                        $arrShowF2[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['filiala2'] = $arrData[$IDgift]['filiala']['value'];
+                        $arrShowF2[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['stock2'] +=  $arrData[$IDgift]['stock']['value'];
+                        $arrShowF2[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['suplimentar2'] +=  $arrData[$IDgift]['suplimentar']['value'];
+                        $arrShowF2[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['id'] +=  $IDgift;
+                    }
+                    if (($name == 'categoria_de_produs' && $val2['value'] == 1)) {
+                        // $val['title'] = $val[''];
+                        //$arrShowF1[[$IDgift]['filiala']['value']][] = array( 'name1' => $arrData[$IDgift]['premiu']['value'] ,'filiala1' => $arrData[$IDgift]['filiala']['value'],'stock1' => $arrData[$IDgift]['stock']['value'],'suplimentar1' => $arrData[$IDgift]['suplimentar']['value'], 'id' => $IDgift );
+                        $arrShowF1[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['name1'] = $arrData[$IDgift]['premiu']['value'];
+                        $arrShowF1[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['filiala1'] = $arrData[$IDgift]['filiala']['value'];
+                        $arrShowF1[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['stock1'] +=  $arrData[$IDgift]['stock']['value'];
+                        $arrShowF1[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['suplimentar1'] +=  $arrData[$IDgift]['suplimentar']['value'];
+                        $arrShowF1[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['id'] +=  $IDgift;
+                    }
+                }
+            }
         }
-      }
-      $arr = [];
+        $arr = [];
+        if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru') {
+            $solicitate = 'Запрошено';
+            $stock_init = 'Начальный сток';
+            $supliment = 'Дополнение';
+            $stoc_dispon = 'Наличие в стоке';
+            $eliberate = 'Выпуск';
+            $stoc_final = 'Финальный сток';
+            $grad = 'Класс';
+            $premiu = 'Приз';
+            $premFil = 'Филиал';
+        }
+        if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro') {
+            $solicitate = 'Solicitate';
+            $stock_init = 'Stoc initial';
+            $supliment = 'Suplimentar';
+            $stoc_dispon = 'Stoc disponibil';
+            $eliberate = 'Eliberate';
+            $stoc_final = 'Stoc final';
+            $grad = 'Gradul';
+            $premiu = 'Premiu';
+            $premFil = 'Filiala';
+        }
 
-
-
-      if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru') {
-        $solicitate = 'Запрошено';
-        $stock_init = 'Начальный сток';
-        $supliment = 'Дополнение';
-        $stoc_dispon = 'Наличие в стоке';
-        $eliberate = 'Выпуск';
-        $stoc_final = 'Финальный сток';
-        $grad = 'Класс';
-        $premiu = 'Приз';
-        $premFil = 'Филиал';
-      }
-      if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro') {
-        $solicitate = 'Solicitate';
-        $stock_init = 'Stoc initial';
-        $supliment = 'Suplimentar';
-        $stoc_dispon = 'Stoc disponibil';
-        $eliberate = 'Eliberate';
-        $stoc_final = 'Stoc final';
-        $grad = 'Gradul';
-        $premiu = 'Premiu';
-        $premFil = 'Filiala';
-      }
-
-      print <<<TABLE
+        print <<<TABLE
             <table id="table8">
             <thead>
             <tr><th>$grad 3</th><th>$premiu</th><th>$premFil</th><th>$solicitate</th><th>$stock_init</th><th>$supliment</th><th>$stoc_dispon</th><th>$eliberate</th><th>$stoc_final</th></tr>
             </thead>
             <tbody>
             TABLE;
-      $count = 1;
-      $solicit = 0;
-      foreach ($filVal as $arrFil) {
-        foreach ($arrShowF as $filiala => $arrShow) {
-          $getStock = "SELECT * FROM stock";
-          $stockInfo = $conn->query($getStock);
+        $count = 1;
+      foreach ($arrShowF as $filiala => $arrShow) {
+        $getStock = "SELECT * FROM stock";
+        $stockInfo = $conn->query($getStock);
 
-          $combinedArray = array();
-          foreach ($stockInfo as $info) {
-            $premiuFiliala = $info['premiu'] . "_" . $info['filiala'];
+        $combinedArray = array();
+        foreach ($stockInfo as $info) {
+          $premiuFiliala = $info['premiu'] . "_" . $info['filiala'];
 
-            if (!isset($combinedArray[$premiuFiliala])) {
-              $combinedArray[$premiuFiliala] = array(
-                'initial' => 0,
-                'suplimentar' => 0,
-                'data' => ''
-              );
-            }
-
-            $combinedArray[$premiuFiliala]['premiu'] = $info['premiu'];
-            $combinedArray[$premiuFiliala]['filiala'] = $info['filiala'];
-            $combinedArray[$premiuFiliala]['initial'] += $info['initial'];
-            $combinedArray[$premiuFiliala]['suplimentar'] += $info['suplimentar'];
-            $combinedArray[$premiuFiliala]['data'] = $info['data'];
+          if (!isset($combinedArray[$premiuFiliala])) {
+            $combinedArray[$premiuFiliala] = array(
+              'initial' => 0,
+              'suplimentar' => 0,
+              'data' => ''
+            );
           }
-          $stockInit = 0;
 
-          $solicitSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '" . $arrFil['value'] . "' AND premiu = '" . $arrShow['name3'] . "'";
-          $sol = $conn->query($solicitSQL);
-          $solicit = 0;
-          foreach ($sol as $solVal) {
-            $solicit++;
-          }
-          $supl = 0;
-          $initStock = 0;
-          foreach ($combinedArray as $arrKey => $arrValue){
-            if($arrValue['premiu'] == $arrShow['name3'] && $arrValue['filiala'] == $arrFil['value']){
-              $supl = $arrValue['suplimentar'];
-              $initStock = $arrValue['initial'];
-            }
-          }
-          $stockDisp = $initStock + $supl;
-
-          $elibSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 3";
-          $elib = $conn->query($elibSQL);
-          $countElib = 0;
-          foreach ($elib as $elibVal) {
-            if($elibVal['premiu'] == $arrShow['name3']) {
-              $countElib++;
-            }
-          }
-          $stockFinal = $stockDisp - $countElib;
-          printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $arrShow['name3'], $arrFil['value'], $solicit, $initStock, $supl, $stockDisp, $countElib, $stockFinal);
-
-          $count++;
+          $combinedArray[$premiuFiliala]['premiu'] = $info['premiu'];
+          $combinedArray[$premiuFiliala]['filiala'] = $info['filiala'];
+          $combinedArray[$premiuFiliala]['initial'] += $info['initial'];
+          $combinedArray[$premiuFiliala]['suplimentar'] += $info['suplimentar'];
+          $combinedArray[$premiuFiliala]['data'] = $info['data'];
         }
+        $stockInit = 0;
+
+        $solicitSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '" . $arrFil['value'] . "' AND premiu = '" . $arrShow['name3'] . "'";
+        $sol = $conn->query($solicitSQL);
+        $solicit = 0;
+        foreach ($sol as $solVal) {
+          $solicit++;
+        }
+        $supl = 0;
+        $initStock = 0;
+        foreach ($combinedArray as $arrKey => $arrValue){
+          if($arrValue['premiu'] == $arrShow['name3'] && $arrValue['filiala'] == $arrFil['value']){
+            $supl = $arrValue['suplimentar'];
+            $initStock = $arrValue['initial'];
+          }
+        }
+        $stockDisp = $initStock + $supl;
+
+        $elibSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 3";
+        $elib = $conn->query($elibSQL);
+        $countElib = 0;
+        foreach ($elib as $elibVal) {
+          if($elibVal['premiu'] == $arrShow['name3']) {
+            $countElib++;
+          }
+        }
+        $stockFinal = $stockDisp - $countElib;
+        printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $arrShow['name3'], $arrFil['value'], $solicit, $initStock, $supl, $stockDisp, $countElib, $stockFinal);
+
+        $count++;
       }
 
-      print "</tbody>\n</table>\n";
+        print "</tbody>\n</table>\n";
 
-      print <<<TABLE
+        print <<<TABLE
                        <table id="table8">
                        <thead>
                        <tr><th>$grad 2</th><th>$premiu</th><th>$premFil</th><th>$solicitate</th><th>$stock_init</th><th>$supliment</th><th>$stoc_dispon</th><th>$eliberate</th><th>$stoc_final</th></tr>
                        </thead>
                        <tbody>
                        TABLE;
-      $count = 1;
-      $solicit = 0;
-      $getFiliala = "SELECT * FROM webform_submission_data WHERE webform_id = 'adaugarea_filiala' AND value = '".$filValue['field_filiala_value']."' ";
-      $filVal = $conn->query($getFiliala);
-      foreach ($filVal as $arrFil2) {
+        $count = 1;
         foreach ($arrShowF2 as $filiala => $arrShow) {
-          $getStock = "SELECT * FROM stock";
-          $stockInfo = $conn->query($getStock);
-
-          $combinedArray = array();
-          foreach ($stockInfo as $info) {
-            $premiuFiliala = $info['premiu'] . "_" . $info['filiala'];
-
-            if (!isset($combinedArray[$premiuFiliala])) {
-              $combinedArray[$premiuFiliala] = array(
-                'initial' => 0,
-                'suplimentar' => 0,
-                'data' => ''
-              );
+            $stockInit = 0;
+            $stockDisp = $stockInit + $arrShow['suplimentar2'];
+            $elib = $countElib;
+            $solicitSQL = "SELECT COUNT(id) FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '" . $arrShow['filiala3'] . "' AND premiu = '" . $arrShow['name3'] . "'";
+            $sol = $conn->query($solicitSQL);
+            foreach ($sol as $solVal) {
+                $solicit = $solVal['COUNT(id)'];
             }
+            $stockFinal = $stockDisp - $elib;
+            printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $arrShow['name2'], $arrShow['filiala2'], $solicit, $stockInit, $arrShow['suplimentar2'], $stockDisp, $countElib, $stockFinal);
 
-            $combinedArray[$premiuFiliala]['premiu'] = $info['premiu'];
-            $combinedArray[$premiuFiliala]['filiala'] = $info['filiala'];
-            $combinedArray[$premiuFiliala]['initial'] += $info['initial'];
-            $combinedArray[$premiuFiliala]['suplimentar'] += $info['suplimentar'];
-            $combinedArray[$premiuFiliala]['data'] = $info['data'];
-          }
-          $solicitSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '" . $arrFil2['value'] . "' AND premiu = '" . $arrShow['name2'] . "'";
-          $sol = $conn->query($solicitSQL);
-          $solicit = 0;
-          foreach ($sol as $solVal) {
-            $solicit++;
-          }
-          $supl = 0;
-          $initStock = 0;
-          foreach ($combinedArray as $arrKey => $arrValue){
-            if($arrValue['premiu'] == $arrShow['name2'] && $arrValue['filiala'] == $arrFil2['value']){
-              $supl = $arrValue['suplimentar'];
-              $initStock = $arrValue['initial'];
-            }
-          }
-          $stockDisp = $initStock + $supl;
-
-          $elibSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 3";
-          $elib = $conn->query($elibSQL);
-          $countElib = 0;
-          foreach ($elib as $elibVal) {
-            if($elibVal['premiu'] == $arrShow['name2']) {
-              $countElib++;
-            }
-          }
-          $stockFinal = $stockDisp - $countElib;
-          printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $arrShow['name2'], $arrFil2['value'], $solicit, $initStock, $supl, $stockDisp, $countElib, $stockFinal);
-
-          $count++;
+            $count++;
         }
-      }
 
+        print "</tbody>\n</table>\n";
 
-      print "</tbody>\n</table>\n";
-
-      print <<<TABLE
+        print <<<TABLE
                        <table id="table8">
                        <thead>
                        <tr><th>$grad 1</th><th>$premiu</th><th>$premFil</th><th>$solicitate</th><th>$stock_init</th><th>$supliment</th><th>$stoc_dispon</th><th>$eliberate</th><th>$stoc_final</th></tr>
                        </thead>
                        <tbody>
                        TABLE;
-      $count = 1;
-      $solicit = 0;
-      dump($filValue);
-      $getFiliala = "SELECT * FROM webform_submission_data WHERE webform_id = 'adaugarea_filiala' AND value = '".$filValue['field_filiala_value']."'";
-      $filVal = $conn->query($getFiliala);
-      foreach ($filVal as $arrFil1) {
+        $count = 1;
         foreach ($arrShowF1 as $filiala => $arrShow) {
-          $getStock = "SELECT * FROM stock";
-          $stockInfo = $conn->query($getStock);
-
-          $combinedArray = array();
-          foreach ($stockInfo as $info) {
-            $premiuFiliala = $info['premiu'] . "_" . $info['filiala'];
-
-            if (!isset($combinedArray[$premiuFiliala])) {
-              $combinedArray[$premiuFiliala] = array(
-                'initial' => 0,
-                'suplimentar' => 0,
-                'data' => ''
-              );
+            $stockInit = 0;
+            $stockDisp = $stockInit + $arrShow['suplimentar1'];
+            $elib = $countElib;
+            $solicitSQL = "SELECT COUNT(id) FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '" . $arrShow['filiala3'] . "' AND premiu = '" . $arrShow['name3'] . "'";
+            $sol = $conn->query($solicitSQL);
+            foreach ($sol as $solVal) {
+                $solicit = $solVal['COUNT(id)'];
             }
+            $stockFinal = $stockDisp - $elib;
+            printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $arrShow['name1'], $arrShow['filiala1'], $solicit, $stockInit, $arrShow['suplimentar1'], $stockDisp, $countElib, $stockFinal);
 
-            $combinedArray[$premiuFiliala]['premiu'] = $info['premiu'];
-            $combinedArray[$premiuFiliala]['filiala'] = $info['filiala'];
-            $combinedArray[$premiuFiliala]['initial'] += $info['initial'];
-            $combinedArray[$premiuFiliala]['suplimentar'] += $info['suplimentar'];
-            $combinedArray[$premiuFiliala]['data'] = $info['data'];
-          }
-          $solicitSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '" . $arrFil1['value'] . "' AND premiu = '" . $arrShow['name1'] . "'";
-          $sol = $conn->query($solicitSQL);
-          $solicit = 0;
-          foreach ($sol as $solVal) {
-            $solicit++;
-          }
-          $supl = 0;
-          $initStock = 0;
-          foreach ($combinedArray as $arrKey => $arrValue){
-            if($arrValue['premiu'] == $arrShow['name1'] && $arrValue['filiala'] == $arrFil1['value']){
-              $supl = $arrValue['suplimentar'];
-              $initStock = $arrValue['initial'];
-            }
-          }
-          $stockDisp = $initStock + $supl;
-
-          $elibSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 3";
-          $elib = $conn->query($elibSQL);
-          $countElib = 0;
-          foreach ($elib as $elibVal) {
-            if($elibVal['premiu'] == $arrShow['name1']) {
-              $countElib++;
-            }
-          }
-          $stockFinal = $stockDisp - $countElib;
-          printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $arrShow['name1'], $arrFil1['value'], $solicit, $initStock, $supl, $stockDisp, $countElib, $stockFinal);
-
-          $count++;
+            $count++;
         }
-      }
 
-      print "</tbody>\n</table>\n";
+        print "</tbody>\n</table>\n";
+
     }
 
     /*
