@@ -610,13 +610,13 @@ TABLE;
                         $arr = [];
                         $arrFil = [];
                         foreach ($arrShowF as $filiala => $arrShow) {
-                          dump($arrShow['active']);
-                          if($arrShow['active'] == '1'){
                             $option = '';
                             $option2 = '';
                             foreach ($arrShow as $ft => $val) {
-                              $arr[] = $val['name'];
-                              $arrFil[] = $val['filiala'];
+                              if($val['active'] == '1'){
+                                $arr[] = $val['name'];
+                                $arrFil[] = $val['filiala'];
+                              }
                               //dump($arrShow);
                             }
                             function isUnique($array, $key, $val)
@@ -632,8 +632,10 @@ TABLE;
                             // Отфильтрованный массив с уникальными элементами по полю "name"
                             $filteredArray = [];
                             foreach ($arrShow as $value) {
-                              if (isUnique($filteredArray, "name", $value["name"])) {
-                                $filteredArray[] = $value;
+                              if($val['active'] == '1'){
+                                if (isUnique($filteredArray, "name", $value["name"])) {
+                                  $filteredArray[] = $value;
+                                }
                               }
                             }
                             foreach ($filteredArray as $filteredVal) {
@@ -657,7 +659,7 @@ TABLE;
                             foreach ($arrUnique as $arrVal) {
                               $option .= " <option>" . $arrVal . "</option> ";
                             }
-                          }
+
                         }
                         //dump($arrUnique);
                         //dump($arrShow);
