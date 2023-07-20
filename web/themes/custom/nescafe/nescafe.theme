@@ -610,55 +610,56 @@ TABLE;
                         $arr = [];
                         $arrFil = [];
                         foreach ($arrShowF as $filiala => $arrShow) {
+                          if($arrShow['active'] == 1){
 
 
                             $option = '';
                             $option2 = '';
                             foreach ($arrShow as $ft => $val) {
 
-                                $arr[] = $val['name'];
-                                $arrFil[] = $val['filiala'];
-                                //dump($arrShow);
+                              $arr[] = $val['name'];
+                              $arrFil[] = $val['filiala'];
+                              //dump($arrShow);
                             }
                             function isUnique($array, $key, $val)
                             {
-                                foreach ($array as $item) {
-                                    if ($item[$key] === $val) {
-                                        return false;
-                                    }
+                              foreach ($array as $item) {
+                                if ($item[$key] === $val) {
+                                  return false;
                                 }
-                                return true;
+                              }
+                              return true;
                             }
 
                             // Отфильтрованный массив с уникальными элементами по полю "name"
                             $filteredArray = [];
                             foreach ($arrShow as $value) {
-                                if (isUnique($filteredArray, "name", $value["name"])) {
-                                    $filteredArray[] = $value;
-                                }
+                              if (isUnique($filteredArray, "name", $value["name"])) {
+                                $filteredArray[] = $value;
+                              }
                             }
                             foreach ($filteredArray as $filteredVal) {
-                                $file_storage = \Drupal::service('entity_type.manager')->getStorage('file');
-                                $file = $file_storage->load($filteredVal['image']);
-                                if ($file) {
-                                    $file_path = $file->getFileUri(); // Получение пути к файлу.
-                                    $file_name = $file->getFilename(); // Получение имени файла.
+                              $file_storage = \Drupal::service('entity_type.manager')->getStorage('file');
+                              $file = $file_storage->load($filteredVal['image']);
+                              if ($file) {
+                                $file_path = $file->getFileUri(); // Получение пути к файлу.
+                                $file_name = $file->getFilename(); // Получение имени файла.
 
-                                }
-                                $string = str_replace("public://", "", $file_path);
-                                $arrImg .= "<img src='/sites/default/files/" . $string . "'>";
+                              }
+                              $string = str_replace("public://", "", $file_path);
+                              $arrImg .= "<img src='/sites/default/files/" . $string . "'>";
                             }
 
-                          dump($arrShowF);
-                          $Filiala = "SELECT * FROM webform_submission_data WHERE webform_id = 'adaugarea_filiala'  ";
-                          $filVal = $conn->query($Filiala);
-                          foreach ($filVal as $arrValFil) {
-                            $option2 .= " <option>" . $arrValFil['value'] . "</option> ";
-                          }
+                            $Filiala = "SELECT * FROM webform_submission_data WHERE webform_id = 'adaugarea_filiala'  ";
+                            $filVal = $conn->query($Filiala);
+                            foreach ($filVal as $arrValFil) {
+                              $option2 .= " <option>" . $arrValFil['value'] . "</option> ";
+                            }
                             $arrUnique = array_unique($arr);
                             foreach ($arrUnique as $arrVal) {
-                                $option .= " <option>" . $arrVal . "</option> ";
+                              $option .= " <option>" . $arrVal . "</option> ";
                             }
+                          }
                         }
                         //dump($arrUnique);
 
