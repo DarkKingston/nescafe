@@ -1128,14 +1128,13 @@ function nescafe_preprocess_region__stock($page)
         $fil = $conn->query($filialSQL);
         foreach ($fil as $filValue) {
         }
-      dump($filValue);
 
 
         $arrShowF = array();
         foreach ($arrData as $IDgift => $val) {
             foreach ($val as $name => $val2) {
 
-                if ($val['filiala']['value'] == $filValue['field_filiala_value']) {
+
                     if (($name == 'categoria_de_produs' && $val2['value'] == 3)) {
                         //$arrShowF[[$IDgift]['filiala']['value']][] = array( 'name3' => $arrData[$IDgift]['premiu']['value'] ,'filiala3' => $arrData[$IDgift]['filiala']['value'],'stock3' => $arrData[$IDgift]['stock']['value'],'suplimentar3' => $arrData[$IDgift]['suplimentar']['value'], 'id' => $IDgift );
                         $arrShowF[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['name3'] = $arrData[$IDgift]['premiu']['value'];
@@ -1162,7 +1161,7 @@ function nescafe_preprocess_region__stock($page)
                         $arrShowF1[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['suplimentar1'] +=  $arrData[$IDgift]['suplimentar']['value'];
                         $arrShowF1[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['id'] +=  $IDgift;
                     }
-                }
+
             }
         }
         $arr = [];
