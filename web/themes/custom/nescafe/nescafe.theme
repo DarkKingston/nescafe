@@ -1459,7 +1459,44 @@ function nescafe_preprocess_region__stock($page)
             $premFil = 'Filiala';
         }
 
-        print <<<TABLE
+      $date = new DateTime($dataVal['data']);
+      $date->add(new DateInterval('P7D'));
+      $week1 = $date->format('Y-m-d H:i:s');
+
+      $date = new DateTime($week1);
+      $date->add(new DateInterval('P7D'));
+      $week2 = $date->format('Y-m-d H:i:s');
+
+      $date = new DateTime($week2);
+      $date->add(new DateInterval('P7D'));
+      $week3 = $date->format('Y-m-d H:i:s');
+
+      $date = new DateTime($week3);
+      $date->add(new DateInterval('P7D'));
+      $week4 = $date->format('Y-m-d H:i:s');
+
+      $date = new DateTime($week4);
+      $date->add(new DateInterval('P7D'));
+      $week5 = $date->format('Y-m-d H:i:s');
+
+      $date = new DateTime($week5);
+      $date->add(new DateInterval('P7D'));
+      $week6 = $date->format('Y-m-d H:i:s');
+
+      $date = new DateTime($week6);
+      $date->add(new DateInterval('P7D'));
+      $week7 = $date->format('Y-m-d H:i:s');
+
+
+      $date = new DateTime($week7);
+      $date->add(new DateInterval('P7D'));
+      $week8 = $date->format('Y-m-d H:i:s');
+
+
+
+
+
+      print <<<TABLE
             <table id="table8">
             <thead>
             <tr><th>$grad 3</th><th>$premiu</th><th>$premFil</th><th>$solicitate</th><th>$stock_init</th><th>$supliment</th><th>$stoc_dispon</th><th>$eliberate</th><th>$stoc_final</th></tr>
@@ -1470,7 +1507,7 @@ function nescafe_preprocess_region__stock($page)
         $solicit = 0;
         foreach ($filVal as $arrFil) {
           foreach ($arrShowF as $filiala => $arrShow) {
-            $getStock = "SELECT * FROM stock";
+            $getStock = "SELECT * FROM stock WHERE data BETWEEN '".$week1."' AND '".$week2."'";
             $stockInfo = $conn->query($getStock);
 
             $combinedArray = array();
@@ -1493,7 +1530,7 @@ function nescafe_preprocess_region__stock($page)
             }
             $stockInit = 0;
 
-            $solicitSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '" . $arrFil['value'] . "' AND premiu = '" . $arrShow['name3'] . "'";
+            $solicitSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '" . $arrFil['value'] . "' AND premiu = '" . $arrShow['name3'] . "' AND data BETWEEN '".$week1."' AND '".$week2."'";
             $sol = $conn->query($solicitSQL);
             $solicit = 0;
             foreach ($sol as $solVal) {
@@ -1509,7 +1546,7 @@ function nescafe_preprocess_region__stock($page)
             }
             $stockDisp = $initStock + $supl;
 
-            $elibSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 3";
+            $elibSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 3 AND data BETWEEN '".$week1."' AND '".$week2."'";
             $elib = $conn->query($elibSQL);
             $countElib = 0;
             foreach ($elib as $elibVal) {
@@ -1539,7 +1576,7 @@ function nescafe_preprocess_region__stock($page)
       $filVal = $conn->query($getFiliala);
       foreach ($filVal as $arrFil2) {
         foreach ($arrShowF2 as $filiala => $arrShow) {
-          $getStock = "SELECT * FROM stock";
+          $getStock = "SELECT * FROM stock WHERE data BETWEEN '".$week1."' AND '".$week2."'";
           $stockInfo = $conn->query($getStock);
 
           $combinedArray = array();
@@ -1560,7 +1597,7 @@ function nescafe_preprocess_region__stock($page)
             $combinedArray[$premiuFiliala]['suplimentar'] += $info['suplimentar'];
             $combinedArray[$premiuFiliala]['data'] = $info['data'];
           }
-          $solicitSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '" . $arrFil2['value'] . "' AND premiu = '" . $arrShow['name2'] . "'";
+          $solicitSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '" . $arrFil2['value'] . "' AND premiu = '" . $arrShow['name2'] . "' AND data BETWEEN '".$week1."' AND '".$week2."'";
           $sol = $conn->query($solicitSQL);
           $solicit = 0;
           foreach ($sol as $solVal) {
@@ -1576,7 +1613,7 @@ function nescafe_preprocess_region__stock($page)
           }
           $stockDisp = $initStock + $supl;
 
-          $elibSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 3";
+          $elibSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 3 AND data BETWEEN '".$week1."' AND '".$week2."'";
           $elib = $conn->query($elibSQL);
           $countElib = 0;
           foreach ($elib as $elibVal) {
@@ -1607,7 +1644,7 @@ function nescafe_preprocess_region__stock($page)
       $filVal = $conn->query($getFiliala);
       foreach ($filVal as $arrFil1) {
         foreach ($arrShowF1 as $filiala => $arrShow) {
-          $getStock = "SELECT * FROM stock";
+          $getStock = "SELECT * FROM stock WHERE data BETWEEN '".$week1."' AND '".$week2."'";
           $stockInfo = $conn->query($getStock);
 
           $combinedArray = array();
@@ -1628,7 +1665,7 @@ function nescafe_preprocess_region__stock($page)
             $combinedArray[$premiuFiliala]['suplimentar'] += $info['suplimentar'];
             $combinedArray[$premiuFiliala]['data'] = $info['data'];
           }
-          $solicitSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '" . $arrFil1['value'] . "' AND premiu = '" . $arrShow['name1'] . "'";
+          $solicitSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '" . $arrFil1['value'] . "' AND premiu = '" . $arrShow['name1'] . "' AND data BETWEEN '".$week1."' AND '".$week2."'";
           $sol = $conn->query($solicitSQL);
           $solicit = 0;
           foreach ($sol as $solVal) {
@@ -1644,7 +1681,7 @@ function nescafe_preprocess_region__stock($page)
           }
           $stockDisp = $initStock + $supl;
 
-          $elibSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 3";
+          $elibSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 3 AND data BETWEEN '".$week1."' AND '".$week2."'";
           $elib = $conn->query($elibSQL);
           $countElib = 0;
           foreach ($elib as $elibVal) {
@@ -1660,6 +1697,212 @@ function nescafe_preprocess_region__stock($page)
       }
 
         print "</tbody>\n</table>\n";
+
+      print "Saptamana 1";
+
+      print <<<TABLE
+            <table id="table8">
+            <thead>
+            <tr><th>$grad 3</th><th>$premiu</th><th>$premFil</th><th>$solicitate</th><th>$stock_init</th><th>$supliment</th><th>$stoc_dispon</th><th>$eliberate</th><th>$stoc_final</th></tr>
+            </thead>
+            <tbody>
+            TABLE;
+      $count = 1;
+      $solicit = 0;
+      foreach ($filVal as $arrFil) {
+        foreach ($arrShowF as $filiala => $arrShow) {
+          $getStock = "SELECT * FROM stock WHERE data BETWEEN '".$week2."' AND '".$week3."'";
+          $stockInfo = $conn->query($getStock);
+
+          $combinedArray = array();
+          foreach ($stockInfo as $info) {
+            $premiuFiliala = $info['premiu'] . "_" . $info['filiala'];
+
+            if (!isset($combinedArray[$premiuFiliala])) {
+              $combinedArray[$premiuFiliala] = array(
+                'initial' => 0,
+                'suplimentar' => 0,
+                'data' => ''
+              );
+            }
+
+            $combinedArray[$premiuFiliala]['premiu'] = $info['premiu'];
+            $combinedArray[$premiuFiliala]['filiala'] = $info['filiala'];
+            $combinedArray[$premiuFiliala]['initial'] += $info['initial'];
+            $combinedArray[$premiuFiliala]['suplimentar'] += $info['suplimentar'];
+            $combinedArray[$premiuFiliala]['data'] = $info['data'];
+          }
+          $stockInit = 0;
+
+          $solicitSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '" . $arrFil['value'] . "' AND premiu = '" . $arrShow['name3'] . "' AND data BETWEEN '".$week2."' AND '".$week3."'";
+          $sol = $conn->query($solicitSQL);
+          $solicit = 0;
+          foreach ($sol as $solVal) {
+            $solicit++;
+          }
+          $supl = 0;
+          $initStock = 0;
+          foreach ($combinedArray as $arrKey => $arrValue){
+            if($arrValue['premiu'] == $arrShow['name3'] && $arrValue['filiala'] == $arrFil['value']){
+              $supl = $arrValue['suplimentar'];
+              $initStock = $arrValue['initial'];
+            }
+          }
+          $stockDisp = $initStock + $supl;
+
+          $elibSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 3 AND data BETWEEN '".$week2."' AND '".$week3."'";
+          $elib = $conn->query($elibSQL);
+          $countElib = 0;
+          foreach ($elib as $elibVal) {
+            if($elibVal['premiu'] == $arrShow['name3']) {
+              $countElib++;
+            }
+          }
+          $stockFinal = $stockDisp - $countElib;
+          printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $arrShow['name3'], $arrFil['value'], $solicit, $initStock, $supl, $stockDisp, $countElib, $stockFinal);
+
+          $count++;
+        }
+      }
+
+      print "</tbody>\n</table>\n";
+
+      print <<<TABLE
+                       <table id="table8">
+                       <thead>
+                       <tr><th>$grad 2</th><th>$premiu</th><th>$premFil</th><th>$solicitate</th><th>$stock_init</th><th>$supliment</th><th>$stoc_dispon</th><th>$eliberate</th><th>$stoc_final</th></tr>
+                       </thead>
+                       <tbody>
+                       TABLE;
+      $count = 1;
+      $solicit = 0;
+      $getFiliala = "SELECT * FROM webform_submission_data WHERE webform_id = 'adaugarea_filiala' ";
+      $filVal = $conn->query($getFiliala);
+      foreach ($filVal as $arrFil2) {
+        foreach ($arrShowF2 as $filiala => $arrShow) {
+          $getStock = "SELECT * FROM stock WHERE data BETWEEN '".$week2."' AND '".$week3."'";
+          $stockInfo = $conn->query($getStock);
+
+          $combinedArray = array();
+          foreach ($stockInfo as $info) {
+            $premiuFiliala = $info['premiu'] . "_" . $info['filiala'];
+
+            if (!isset($combinedArray[$premiuFiliala])) {
+              $combinedArray[$premiuFiliala] = array(
+                'initial' => 0,
+                'suplimentar' => 0,
+                'data' => ''
+              );
+            }
+
+            $combinedArray[$premiuFiliala]['premiu'] = $info['premiu'];
+            $combinedArray[$premiuFiliala]['filiala'] = $info['filiala'];
+            $combinedArray[$premiuFiliala]['initial'] += $info['initial'];
+            $combinedArray[$premiuFiliala]['suplimentar'] += $info['suplimentar'];
+            $combinedArray[$premiuFiliala]['data'] = $info['data'];
+          }
+          $solicitSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '" . $arrFil2['value'] . "' AND premiu = '" . $arrShow['name2'] . "' AND data BETWEEN '".$week2."' AND '".$week3."'";
+          $sol = $conn->query($solicitSQL);
+          $solicit = 0;
+          foreach ($sol as $solVal) {
+            $solicit++;
+          }
+          $supl = 0;
+          $initStock = 0;
+          foreach ($combinedArray as $arrKey => $arrValue){
+            if($arrValue['premiu'] == $arrShow['name2'] && $arrValue['filiala'] == $arrFil2['value']){
+              $supl = $arrValue['suplimentar'];
+              $initStock = $arrValue['initial'];
+            }
+          }
+          $stockDisp = $initStock + $supl;
+
+          $elibSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 3 AND data BETWEEN '".$week2."' AND '".$week3."'";
+          $elib = $conn->query($elibSQL);
+          $countElib = 0;
+          foreach ($elib as $elibVal) {
+            if($elibVal['premiu'] == $arrShow['name2']) {
+              $countElib++;
+            }
+          }
+          $stockFinal = $stockDisp - $countElib;
+          printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $arrShow['name2'], $arrFil2['value'], $solicit, $initStock, $supl, $stockDisp, $countElib, $stockFinal);
+
+          $count++;
+        }
+      }
+
+
+      print "</tbody>\n</table>\n";
+
+      print <<<TABLE
+                       <table id="table8">
+                       <thead>
+                       <tr><th>$grad 1</th><th>$premiu</th><th>$premFil</th><th>$solicitate</th><th>$stock_init</th><th>$supliment</th><th>$stoc_dispon</th><th>$eliberate</th><th>$stoc_final</th></tr>
+                       </thead>
+                       <tbody>
+                       TABLE;
+      $count = 1;
+      $solicit = 0;
+      $getFiliala = "SELECT * FROM webform_submission_data WHERE webform_id = 'adaugarea_filiala' ";
+      $filVal = $conn->query($getFiliala);
+      foreach ($filVal as $arrFil1) {
+        foreach ($arrShowF1 as $filiala => $arrShow) {
+          $getStock = "SELECT * FROM stock WHERE data BETWEEN '".$week2."' AND '".$week3."'";
+          $stockInfo = $conn->query($getStock);
+
+          $combinedArray = array();
+          foreach ($stockInfo as $info) {
+            $premiuFiliala = $info['premiu'] . "_" . $info['filiala'];
+
+            if (!isset($combinedArray[$premiuFiliala])) {
+              $combinedArray[$premiuFiliala] = array(
+                'initial' => 0,
+                'suplimentar' => 0,
+                'data' => ''
+              );
+            }
+
+            $combinedArray[$premiuFiliala]['premiu'] = $info['premiu'];
+            $combinedArray[$premiuFiliala]['filiala'] = $info['filiala'];
+            $combinedArray[$premiuFiliala]['initial'] += $info['initial'];
+            $combinedArray[$premiuFiliala]['suplimentar'] += $info['suplimentar'];
+            $combinedArray[$premiuFiliala]['data'] = $info['data'];
+          }
+          $solicitSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '" . $arrFil1['value'] . "' AND premiu = '" . $arrShow['name1'] . "' AND data BETWEEN '".$week2."' AND '".$week3."'";
+          $sol = $conn->query($solicitSQL);
+          $solicit = 0;
+          foreach ($sol as $solVal) {
+            $solicit++;
+          }
+          $supl = 0;
+          $initStock = 0;
+          foreach ($combinedArray as $arrKey => $arrValue){
+            if($arrValue['premiu'] == $arrShow['name1'] && $arrValue['filiala'] == $arrFil1['value']){
+              $supl = $arrValue['suplimentar'];
+              $initStock = $arrValue['initial'];
+            }
+          }
+          $stockDisp = $initStock + $supl;
+
+          $elibSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 3 AND data BETWEEN '".$week2."' AND '".$week3."'";
+          $elib = $conn->query($elibSQL);
+          $countElib = 0;
+          foreach ($elib as $elibVal) {
+            if($elibVal['premiu'] == $arrShow['name1']) {
+              $countElib++;
+            }
+          }
+          $stockFinal = $stockDisp - $countElib;
+          printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $arrShow['name1'], $arrFil1['value'], $solicit, $initStock, $supl, $stockDisp, $countElib, $stockFinal);
+
+          $count++;
+        }
+      }
+
+      print "</tbody>\n</table>\n";
+
+      print "Saptamana 2";
     }
 }
 
