@@ -1347,6 +1347,7 @@ function nescafe_preprocess_region__stock($page)
                        TABLE;
       $count = 1;
       $solicit = 0;
+      dump($filValue);
       $getFiliala = "SELECT * FROM webform_submission_data WHERE webform_id = 'adaugarea_filiala' AND value = '".$filValue['field_filiala_value']."'";
       $filVal = $conn->query($getFiliala);
       foreach ($filVal as $arrFil1) {
