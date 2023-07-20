@@ -607,6 +607,7 @@ TABLE;
                                 }
                             }
                         }
+                        show($arrShowF);
                         $arr = [];
                         $arrFil = [];
                         foreach ($arrShowF as $filiala => $arrShow) {
