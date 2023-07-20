@@ -2406,7 +2406,7 @@ $sumVal = 0;
             foreach ($arrShowForm as $filiala => $arrShow) {
               if ($arrShow['name'] == $_POST['gift_select']) {
                 if ($arrShow['suplimentar'] - $_POST['input_init'] >= 0) {
-                  $insertStock = "INSERT INTO stock (premiu, filiala, suplimentar, data)VALUES('".$_POST['gift_select']."', '".$_POST['filiala_select']."', '".$_POST['input_init']."', NOW())";
+                  $insertStock = "INSERT INTO stock (premiu, filiala, initial, data)VALUES('".$_POST['gift_select']."', '".$_POST['filiala_select']."', '".$_POST['input_init']."', NOW())";
                   if ($conn->query($insertStock)) {
                     //echo "ok";
                   }
