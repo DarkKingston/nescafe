@@ -1364,7 +1364,7 @@ function nescafe_preprocess_region__stock($page)
             }
             $stockInit = 0;
 
-            $solicitSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '" . $arrShow['filiala3'] . "' AND premiu = '" . $arrShow['name3'] . "'";
+            $solicitSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '" . $arrFil['value'] . "' AND premiu = '" . $arrShow['name3'] . "'";
             $sol = $conn->query($solicitSQL);
             $solicit = 0;
             foreach ($sol as $solVal) {
@@ -1431,7 +1431,7 @@ function nescafe_preprocess_region__stock($page)
             $combinedArray[$premiuFiliala]['suplimentar'] += $info['suplimentar'];
             $combinedArray[$premiuFiliala]['data'] = $info['data'];
           }
-          $solicitSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '" . $arrShow['filiala2'] . "' AND premiu = '" . $arrShow['name2'] . "'";
+          $solicitSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '" . $arrFil2['value'] . "' AND premiu = '" . $arrShow['name2'] . "'";
           $sol = $conn->query($solicitSQL);
           $solicit = 0;
           foreach ($sol as $solVal) {
@@ -1499,7 +1499,7 @@ function nescafe_preprocess_region__stock($page)
             $combinedArray[$premiuFiliala]['suplimentar'] += $info['suplimentar'];
             $combinedArray[$premiuFiliala]['data'] = $info['data'];
           }
-          $solicitSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '" . $arrShow['filiala1'] . "' AND premiu = '" . $arrShow['name1'] . "'";
+          $solicitSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '" . $arrFil1['value'] . "' AND premiu = '" . $arrShow['name1'] . "'";
           $sol = $conn->query($solicitSQL);
           $solicit = 0;
           foreach ($sol as $solVal) {
