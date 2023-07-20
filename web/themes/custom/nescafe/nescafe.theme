@@ -1375,8 +1375,7 @@ function nescafe_preprocess_region__stock($page)
             foreach ($combinedArray as $arrKey => $arrValue){
               if($arrValue['premiu'] == $arrShow['name3'] && $arrValue['filiala'] == $arrFil['value']){
                 $supl = $arrValue['suplimentar'];
-                $initStock = $arrValue['inital'];
-                dump($arrValue['inital']);
+                $initStock = $arrValue['initial'];
               }
             }
             $stockDisp = $initStock + $supl;
@@ -1443,7 +1442,7 @@ function nescafe_preprocess_region__stock($page)
           foreach ($combinedArray as $arrKey => $arrValue){
             if($arrValue['premiu'] == $arrShow['name2'] && $arrValue['filiala'] == $arrFil2['value']){
               $supl = $arrValue['suplimentar'];
-              $initStock = $arrValue['inital'];
+              $initStock = $arrValue['initial'];
             }
           }
           $stockDisp = $initStock + $supl;
@@ -1511,7 +1510,7 @@ function nescafe_preprocess_region__stock($page)
           foreach ($combinedArray as $arrKey => $arrValue){
             if($arrValue['premiu'] == $arrShow['name1'] && $arrValue['filiala'] == $arrFil1['value']){
               $supl = $arrValue['suplimentar'];
-              $initStock = $arrValue['inital'];
+              $initStock = $arrValue['initial'];
             }
           }
           $stockDisp = $initStock + $supl;
