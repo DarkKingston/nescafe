@@ -632,7 +632,7 @@ TABLE;
                             // Отфильтрованный массив с уникальными элементами по полю "name"
                             $filteredArray = [];
                             foreach ($arrShow as $value) {
-                              if($val['active'] == '1'){
+                              if($value['active'] == '1'){
                                 if (isUnique($filteredArray, "name", $value["name"])) {
                                   $filteredArray[] = $value;
                                 }
