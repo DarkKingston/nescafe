@@ -1409,16 +1409,32 @@ function nescafe_preprocess_region__stock($page)
       $filVal = $conn->query($getFiliala);
       foreach ($filVal as $arrFil2) {
         foreach ($arrShowF2 as $filiala => $arrShow) {
-          $stockInit = 0;
-          $stockDisp = $stockInit + $arrShow['suplimentar2'];
-          $elib = $countElib;
-          $solicitSQL = "SELECT COUNT(id) FROM promo_code WHERE active != 0 AND status = 10 AND livrare = '" . $arrShow['filiala2'] . "' AND premiu = '" . $arrShow['name2'] . "'";
+          $solicitSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '" . $arrShow['filiala2'] . "' AND premiu = '" . $arrShow['name2'] . "'";
           $sol = $conn->query($solicitSQL);
+          $solicit = 0;
           foreach ($sol as $solVal) {
-            $solicit = $solVal['COUNT(id)'];
+            $solicit++;
           }
-          $stockFinal = $stockDisp - $elib;
-          printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $arrShow['name2'], $arrFil2['value'], $solicit, $stockInit, $arrShow['suplimentar2'], $stockDisp, $countElib, $stockFinal);
+          $supl = 0;
+          $init = 0;
+          foreach ($combinedArray as $arrKey => $arrValue){
+            if($arrValue['premiu'] == $arrShow['name2'] && $arrValue['filiala'] == $arrFil2['value']){
+              $supl = $arrValue['suplimentar'];
+              $init = $arrValue['inital'];
+            }
+          }
+          $stockDisp = $init + $supl;
+
+          $elibSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 3";
+          $elib = $conn->query($elibSQL);
+          $countElib = 0;
+          foreach ($elib as $elibVal) {
+            if($elibVal['premiu'] == $arrShow['name2']) {
+              $countElib++;
+            }
+          }
+          $stockFinal = $stockDisp - $countElib;
+          printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $arrShow['name2'], $arrFil2['value'], $solicit, $init, $supl, $stockDisp, $countElib, $stockFinal);
 
           $count++;
         }
@@ -1440,17 +1456,32 @@ function nescafe_preprocess_region__stock($page)
       $filVal = $conn->query($getFiliala);
       foreach ($filVal as $arrFil1) {
         foreach ($arrShowF1 as $filiala => $arrShow) {
-          $stockInit = 0;
-          $stockDisp = $stockInit + $arrShow['suplimentar1'];
-          $elib = $countElib;
-          $solicitSQL = "SELECT COUNT(id) FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '" . $arrShow['filiala1'] . "' AND premiu = '" . $arrShow['name1'] . "'";
+          $solicitSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '" . $arrShow['filiala1'] . "' AND premiu = '" . $arrShow['name1'] . "'";
           $sol = $conn->query($solicitSQL);
+          $solicit = 0;
           foreach ($sol as $solVal) {
-
-            $solicit = $solVal['COUNT(id)'];
+            $solicit++;
           }
-          $stockFinal = $stockDisp - $elib;
-          printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $arrShow['name1'], $arrFil1['value'], $solicit, $stockInit, $arrShow['suplimentar1'], $stockDisp, $countElib, $stockFinal);
+          $supl = 0;
+          $init = 0;
+          foreach ($combinedArray as $arrKey => $arrValue){
+            if($arrValue['premiu'] == $arrShow['name1'] && $arrValue['filiala'] == $arrFil1['value']){
+              $supl = $arrValue['suplimentar'];
+              $init = $arrValue['inital'];
+            }
+          }
+          $stockDisp = $init + $supl;
+
+          $elibSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 3";
+          $elib = $conn->query($elibSQL);
+          $countElib = 0;
+          foreach ($elib as $elibVal) {
+            if($elibVal['premiu'] == $arrShow['name1']) {
+              $countElib++;
+            }
+          }
+          $stockFinal = $stockDisp - $countElib;
+          printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $arrShow['name1'], $arrFil1['value'], $solicit, $init, $supl, $stockDisp, $countElib, $stockFinal);
 
           $count++;
         }
