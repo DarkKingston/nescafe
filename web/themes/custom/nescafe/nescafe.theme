@@ -2959,7 +2959,7 @@ dump($week1);
         $solicit = 0;
         foreach ($filVal as $arrFil) {
           foreach ($arrShowF as $filiala => $arrShow) {
-            $getStock = "SELECT * FROM stock WHERE data BETWEEN '".$week1."' AND '".$week2."'";
+            $getStock = "SELECT * FROM stock WHERE data BETWEEN '".$dataVal['data']."' AND '".$week1."'";
             $stockInfo = $conn->query($getStock);
 
             $combinedArray = array();
@@ -2982,7 +2982,7 @@ dump($week1);
             }
             $stockInit = 0;
 
-            $solicitSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '" . $arrFil['value'] . "' AND premiu = '" . $arrShow['name3'] . "' AND data BETWEEN '".$week1."' AND '".$week2."'";
+            $solicitSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '" . $arrFil['value'] . "' AND premiu = '" . $arrShow['name3'] . "' AND data BETWEEN '".$dataVal['data']."' AND '".$week1."'";
             $sol = $conn->query($solicitSQL);
             $solicit = 0;
             foreach ($sol as $solVal) {
@@ -2998,7 +2998,7 @@ dump($week1);
             }
             $stockDisp = $initStock + $supl;
 
-            $elibSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 3 AND data BETWEEN '".$week1."' AND '".$week2."'";
+            $elibSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 3 AND data BETWEEN '".$dataVal['data']."' AND '".$week1."'";
             $elib = $conn->query($elibSQL);
             $countElib = 0;
             foreach ($elib as $elibVal) {
@@ -3028,7 +3028,7 @@ dump($week1);
       $filVal = $conn->query($getFiliala);
       foreach ($filVal as $arrFil2) {
         foreach ($arrShowF2 as $filiala => $arrShow) {
-          $getStock = "SELECT * FROM stock WHERE data BETWEEN '".$week1."' AND '".$week2."'";
+          $getStock = "SELECT * FROM stock WHERE data BETWEEN '".$dataVal['data']."' AND '".$week1."'";
           $stockInfo = $conn->query($getStock);
 
           $combinedArray = array();
@@ -3049,7 +3049,7 @@ dump($week1);
             $combinedArray[$premiuFiliala]['suplimentar'] += $info['suplimentar'];
             $combinedArray[$premiuFiliala]['data'] = $info['data'];
           }
-          $solicitSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '" . $arrFil2['value'] . "' AND premiu = '" . $arrShow['name2'] . "' AND data BETWEEN '".$week1."' AND '".$week2."'";
+          $solicitSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '" . $arrFil2['value'] . "' AND premiu = '" . $arrShow['name2'] . "' AND data BETWEEN '".$dataVal['data']."' AND '".$week1."'";
           $sol = $conn->query($solicitSQL);
           $solicit = 0;
           foreach ($sol as $solVal) {
@@ -3065,7 +3065,7 @@ dump($week1);
           }
           $stockDisp = $initStock + $supl;
 
-          $elibSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 3 AND data BETWEEN '".$week1."' AND '".$week2."'";
+          $elibSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 3 AND data BETWEEN '".$dataVal['data']."' AND '".$week1."'";
           $elib = $conn->query($elibSQL);
           $countElib = 0;
           foreach ($elib as $elibVal) {
@@ -3096,7 +3096,7 @@ dump($week1);
       $filVal = $conn->query($getFiliala);
       foreach ($filVal as $arrFil1) {
         foreach ($arrShowF1 as $filiala => $arrShow) {
-          $getStock = "SELECT * FROM stock WHERE data BETWEEN '".$week1."' AND '".$week2."'";
+          $getStock = "SELECT * FROM stock WHERE data BETWEEN '".$dataVal['data']."' AND '".$week1."'";
           $stockInfo = $conn->query($getStock);
 
           $combinedArray = array();
@@ -3117,7 +3117,7 @@ dump($week1);
             $combinedArray[$premiuFiliala]['suplimentar'] += $info['suplimentar'];
             $combinedArray[$premiuFiliala]['data'] = $info['data'];
           }
-          $solicitSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '" . $arrFil1['value'] . "' AND premiu = '" . $arrShow['name1'] . "' AND data BETWEEN '".$week1."' AND '".$week2."'";
+          $solicitSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '" . $arrFil1['value'] . "' AND premiu = '" . $arrShow['name1'] . "' AND data BETWEEN '".$dataVal['data']."' AND '".$week1."'";
           $sol = $conn->query($solicitSQL);
           $solicit = 0;
           foreach ($sol as $solVal) {
@@ -3133,7 +3133,7 @@ dump($week1);
           }
           $stockDisp = $initStock + $supl;
 
-          $elibSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 3 AND data BETWEEN '".$week1."' AND '".$week2."'";
+          $elibSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 3 AND data BETWEEN '".$dataVal['data']."' AND '".$week1."'";
           $elib = $conn->query($elibSQL);
           $countElib = 0;
           foreach ($elib as $elibVal) {
