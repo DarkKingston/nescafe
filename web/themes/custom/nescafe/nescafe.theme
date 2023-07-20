@@ -1189,80 +1189,282 @@ function nescafe_preprocess_region__stock($page)
             $premFil = 'Filiala';
         }
 
-        print <<<TABLE
+//        print <<<TABLE
+//            <table id="table8">
+//            <thead>
+//            <tr><th>$grad 3</th><th>$premiu</th><th>$premFil</th><th>$solicitate</th><th>$stock_init</th><th>$supliment</th><th>$stoc_dispon</th><th>$eliberate</th><th>$stoc_final</th></tr>
+//            </thead>
+//            <tbody>
+//            TABLE;
+//        $count = 1;
+//        foreach ($arrShowF as $filiala => $arrShow) {
+//            $stockInit = 0;
+//            $stockDisp = $stockInit + $arrShow['suplimentar3'];
+//            $elib = $countElib;
+//            $solicitSQL = "SELECT COUNT(id) FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '" . $arrShow['filiala3'] . "' AND premiu = '" . $arrShow['name3'] . "'";
+//            $sol = $conn->query($solicitSQL);
+//            foreach ($sol as $solVal) {
+//                $solicit = $solVal['COUNT(id)'];
+//            }
+//            $stockFinal = $stockDisp - $elib;
+//            printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $arrShow['name3'], $arrShow['filiala3'], $solicit, $stockInit, $arrShow['suplimentar3'], $stockDisp, $countElib, $stockFinal);
+//
+//            $count++;
+//        }
+//
+//        print "</tbody>\n</table>\n";
+//
+//        print <<<TABLE
+//                       <table id="table8">
+//                       <thead>
+//                       <tr><th>$grad 2</th><th>$premiu</th><th>$premFil</th><th>$solicitate</th><th>$stock_init</th><th>$supliment</th><th>$stoc_dispon</th><th>$eliberate</th><th>$stoc_final</th></tr>
+//                       </thead>
+//                       <tbody>
+//                       TABLE;
+//        $count = 1;
+//        foreach ($arrShowF2 as $filiala => $arrShow) {
+//            $stockInit = 0;
+//            $stockDisp = $stockInit + $arrShow['suplimentar2'];
+//            $elib = $countElib;
+//            $solicitSQL = "SELECT COUNT(id) FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '" . $arrShow['filiala3'] . "' AND premiu = '" . $arrShow['name3'] . "'";
+//            $sol = $conn->query($solicitSQL);
+//            foreach ($sol as $solVal) {
+//                $solicit = $solVal['COUNT(id)'];
+//            }
+//            $stockFinal = $stockDisp - $elib;
+//            printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $arrShow['name2'], $arrShow['filiala2'], $solicit, $stockInit, $arrShow['suplimentar2'], $stockDisp, $countElib, $stockFinal);
+//
+//            $count++;
+//        }
+//
+//        print "</tbody>\n</table>\n";
+//
+//        print <<<TABLE
+//                       <table id="table8">
+//                       <thead>
+//                       <tr><th>$grad 1</th><th>$premiu</th><th>$premFil</th><th>$solicitate</th><th>$stock_init</th><th>$supliment</th><th>$stoc_dispon</th><th>$eliberate</th><th>$stoc_final</th></tr>
+//                       </thead>
+//                       <tbody>
+//                       TABLE;
+//        $count = 1;
+//        foreach ($arrShowF1 as $filiala => $arrShow) {
+//            $stockInit = 0;
+//            $stockDisp = $stockInit + $arrShow['suplimentar1'];
+//            $elib = $countElib;
+//            $solicitSQL = "SELECT COUNT(id) FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '" . $arrShow['filiala3'] . "' AND premiu = '" . $arrShow['name3'] . "'";
+//            $sol = $conn->query($solicitSQL);
+//            foreach ($sol as $solVal) {
+//                $solicit = $solVal['COUNT(id)'];
+//            }
+//            $stockFinal = $stockDisp - $elib;
+//            printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $arrShow['name1'], $arrShow['filiala1'], $solicit, $stockInit, $arrShow['suplimentar1'], $stockDisp, $countElib, $stockFinal);
+//
+//            $count++;
+//        }
+//
+//        print "</tbody>\n</table>\n";
+      print <<<TABLE
             <table id="table8">
             <thead>
             <tr><th>$grad 3</th><th>$premiu</th><th>$premFil</th><th>$solicitate</th><th>$stock_init</th><th>$supliment</th><th>$stoc_dispon</th><th>$eliberate</th><th>$stoc_final</th></tr>
             </thead>
             <tbody>
             TABLE;
-        $count = 1;
+      $count = 1;
+      $solicit = 0;
+      foreach ($filVal as $arrFil) {
         foreach ($arrShowF as $filiala => $arrShow) {
-            $stockInit = 0;
-            $stockDisp = $stockInit + $arrShow['suplimentar3'];
-            $elib = $countElib;
-            $solicitSQL = "SELECT COUNT(id) FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '" . $arrShow['filiala3'] . "' AND premiu = '" . $arrShow['name3'] . "'";
-            $sol = $conn->query($solicitSQL);
-            foreach ($sol as $solVal) {
-                $solicit = $solVal['COUNT(id)'];
+          $getStock = "SELECT * FROM stock";
+          $stockInfo = $conn->query($getStock);
+
+          $combinedArray = array();
+          foreach ($stockInfo as $info) {
+            $premiuFiliala = $info['premiu'] . "_" . $info['filiala'];
+
+            if (!isset($combinedArray[$premiuFiliala])) {
+              $combinedArray[$premiuFiliala] = array(
+                'initial' => 0,
+                'suplimentar' => 0,
+                'data' => ''
+              );
             }
-            $stockFinal = $stockDisp - $elib;
-            printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $arrShow['name3'], $arrShow['filiala3'], $solicit, $stockInit, $arrShow['suplimentar3'], $stockDisp, $countElib, $stockFinal);
 
-            $count++;
+            $combinedArray[$premiuFiliala]['premiu'] = $info['premiu'];
+            $combinedArray[$premiuFiliala]['filiala'] = $info['filiala'];
+            $combinedArray[$premiuFiliala]['initial'] += $info['initial'];
+            $combinedArray[$premiuFiliala]['suplimentar'] += $info['suplimentar'];
+            $combinedArray[$premiuFiliala]['data'] = $info['data'];
+          }
+          $stockInit = 0;
+
+          $solicitSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '" . $arrFil['value'] . "' AND premiu = '" . $arrShow['name3'] . "'";
+          $sol = $conn->query($solicitSQL);
+          $solicit = 0;
+          foreach ($sol as $solVal) {
+            $solicit++;
+          }
+          $supl = 0;
+          $initStock = 0;
+          foreach ($combinedArray as $arrKey => $arrValue){
+            if($arrValue['premiu'] == $arrShow['name3'] && $arrValue['filiala'] == $arrFil['value']){
+              $supl = $arrValue['suplimentar'];
+              $initStock = $arrValue['initial'];
+            }
+          }
+          $stockDisp = $initStock + $supl;
+
+          $elibSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 3";
+          $elib = $conn->query($elibSQL);
+          $countElib = 0;
+          foreach ($elib as $elibVal) {
+            if($elibVal['premiu'] == $arrShow['name3']) {
+              $countElib++;
+            }
+          }
+          $stockFinal = $stockDisp - $countElib;
+          printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $arrShow['name3'], $arrFil['value'], $solicit, $initStock, $supl, $stockDisp, $countElib, $stockFinal);
+
+          $count++;
         }
+      }
 
-        print "</tbody>\n</table>\n";
+      print "</tbody>\n</table>\n";
 
-        print <<<TABLE
+      print <<<TABLE
                        <table id="table8">
                        <thead>
                        <tr><th>$grad 2</th><th>$premiu</th><th>$premFil</th><th>$solicitate</th><th>$stock_init</th><th>$supliment</th><th>$stoc_dispon</th><th>$eliberate</th><th>$stoc_final</th></tr>
                        </thead>
                        <tbody>
                        TABLE;
-        $count = 1;
+      $count = 1;
+      $solicit = 0;
+      $getFiliala = "SELECT * FROM webform_submission_data WHERE webform_id = 'adaugarea_filiala' ";
+      $filVal = $conn->query($getFiliala);
+      foreach ($filVal as $arrFil2) {
         foreach ($arrShowF2 as $filiala => $arrShow) {
-            $stockInit = 0;
-            $stockDisp = $stockInit + $arrShow['suplimentar2'];
-            $elib = $countElib;
-            $solicitSQL = "SELECT COUNT(id) FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '" . $arrShow['filiala3'] . "' AND premiu = '" . $arrShow['name3'] . "'";
-            $sol = $conn->query($solicitSQL);
-            foreach ($sol as $solVal) {
-                $solicit = $solVal['COUNT(id)'];
+          $getStock = "SELECT * FROM stock";
+          $stockInfo = $conn->query($getStock);
+
+          $combinedArray = array();
+          foreach ($stockInfo as $info) {
+            $premiuFiliala = $info['premiu'] . "_" . $info['filiala'];
+
+            if (!isset($combinedArray[$premiuFiliala])) {
+              $combinedArray[$premiuFiliala] = array(
+                'initial' => 0,
+                'suplimentar' => 0,
+                'data' => ''
+              );
             }
-            $stockFinal = $stockDisp - $elib;
-            printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $arrShow['name2'], $arrShow['filiala2'], $solicit, $stockInit, $arrShow['suplimentar2'], $stockDisp, $countElib, $stockFinal);
 
-            $count++;
+            $combinedArray[$premiuFiliala]['premiu'] = $info['premiu'];
+            $combinedArray[$premiuFiliala]['filiala'] = $info['filiala'];
+            $combinedArray[$premiuFiliala]['initial'] += $info['initial'];
+            $combinedArray[$premiuFiliala]['suplimentar'] += $info['suplimentar'];
+            $combinedArray[$premiuFiliala]['data'] = $info['data'];
+          }
+          $solicitSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '" . $arrFil2['value'] . "' AND premiu = '" . $arrShow['name2'] . "'";
+          $sol = $conn->query($solicitSQL);
+          $solicit = 0;
+          foreach ($sol as $solVal) {
+            $solicit++;
+          }
+          $supl = 0;
+          $initStock = 0;
+          foreach ($combinedArray as $arrKey => $arrValue){
+            if($arrValue['premiu'] == $arrShow['name2'] && $arrValue['filiala'] == $arrFil2['value']){
+              $supl = $arrValue['suplimentar'];
+              $initStock = $arrValue['initial'];
+            }
+          }
+          $stockDisp = $initStock + $supl;
+
+          $elibSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 3";
+          $elib = $conn->query($elibSQL);
+          $countElib = 0;
+          foreach ($elib as $elibVal) {
+            if($elibVal['premiu'] == $arrShow['name2']) {
+              $countElib++;
+            }
+          }
+          $stockFinal = $stockDisp - $countElib;
+          printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $arrShow['name2'], $arrFil2['value'], $solicit, $initStock, $supl, $stockDisp, $countElib, $stockFinal);
+
+          $count++;
         }
+      }
 
-        print "</tbody>\n</table>\n";
 
-        print <<<TABLE
+      print "</tbody>\n</table>\n";
+
+      print <<<TABLE
                        <table id="table8">
                        <thead>
                        <tr><th>$grad 1</th><th>$premiu</th><th>$premFil</th><th>$solicitate</th><th>$stock_init</th><th>$supliment</th><th>$stoc_dispon</th><th>$eliberate</th><th>$stoc_final</th></tr>
                        </thead>
                        <tbody>
                        TABLE;
-        $count = 1;
+      $count = 1;
+      $solicit = 0;
+      $getFiliala = "SELECT * FROM webform_submission_data WHERE webform_id = 'adaugarea_filiala' ";
+      $filVal = $conn->query($getFiliala);
+      foreach ($filVal as $arrFil1) {
         foreach ($arrShowF1 as $filiala => $arrShow) {
-            $stockInit = 0;
-            $stockDisp = $stockInit + $arrShow['suplimentar1'];
-            $elib = $countElib;
-            $solicitSQL = "SELECT COUNT(id) FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '" . $arrShow['filiala3'] . "' AND premiu = '" . $arrShow['name3'] . "'";
-            $sol = $conn->query($solicitSQL);
-            foreach ($sol as $solVal) {
-                $solicit = $solVal['COUNT(id)'];
+          $getStock = "SELECT * FROM stock";
+          $stockInfo = $conn->query($getStock);
+
+          $combinedArray = array();
+          foreach ($stockInfo as $info) {
+            $premiuFiliala = $info['premiu'] . "_" . $info['filiala'];
+
+            if (!isset($combinedArray[$premiuFiliala])) {
+              $combinedArray[$premiuFiliala] = array(
+                'initial' => 0,
+                'suplimentar' => 0,
+                'data' => ''
+              );
             }
-            $stockFinal = $stockDisp - $elib;
-            printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $arrShow['name1'], $arrShow['filiala1'], $solicit, $stockInit, $arrShow['suplimentar1'], $stockDisp, $countElib, $stockFinal);
 
-            $count++;
+            $combinedArray[$premiuFiliala]['premiu'] = $info['premiu'];
+            $combinedArray[$premiuFiliala]['filiala'] = $info['filiala'];
+            $combinedArray[$premiuFiliala]['initial'] += $info['initial'];
+            $combinedArray[$premiuFiliala]['suplimentar'] += $info['suplimentar'];
+            $combinedArray[$premiuFiliala]['data'] = $info['data'];
+          }
+          $solicitSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '" . $arrFil1['value'] . "' AND premiu = '" . $arrShow['name1'] . "'";
+          $sol = $conn->query($solicitSQL);
+          $solicit = 0;
+          foreach ($sol as $solVal) {
+            $solicit++;
+          }
+          $supl = 0;
+          $initStock = 0;
+          foreach ($combinedArray as $arrKey => $arrValue){
+            if($arrValue['premiu'] == $arrShow['name1'] && $arrValue['filiala'] == $arrFil1['value']){
+              $supl = $arrValue['suplimentar'];
+              $initStock = $arrValue['initial'];
+            }
+          }
+          $stockDisp = $initStock + $supl;
+
+          $elibSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 3";
+          $elib = $conn->query($elibSQL);
+          $countElib = 0;
+          foreach ($elib as $elibVal) {
+            if($elibVal['premiu'] == $arrShow['name1']) {
+              $countElib++;
+            }
+          }
+          $stockFinal = $stockDisp - $countElib;
+          printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $arrShow['name1'], $arrFil1['value'], $solicit, $initStock, $supl, $stockDisp, $countElib, $stockFinal);
+
+          $count++;
         }
+      }
 
-        print "</tbody>\n</table>\n";
+      print "</tbody>\n</table>\n";
+
     }
 
     /*
