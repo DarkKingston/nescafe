@@ -1375,6 +1375,7 @@ function nescafe_preprocess_region__stock($page)
               if($arrValue['premiu'] == $arrShow['name3'] && $arrValue['filiala'] == $arrFil['value']){
                 $supl = $arrValue['suplimentar'];
                 $initStock = $arrValue['inital'];
+                dump($arrValue['inital']);
               }
             }
             $stockDisp = $initStock + $supl;
