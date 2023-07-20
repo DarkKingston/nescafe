@@ -2382,7 +2382,7 @@ $sumVal = 0;
 
             $combinedArray = array();
             foreach ($stockInfo as $info) {
-              $premiuFiliala = $info['premiu'] . "_" . $info['filiala'];
+              $premiuFiliala = $info['premiu'];
 
               if (!isset($combinedArray[$premiuFiliala])) {
                 $combinedArray[$premiuFiliala] = array(
@@ -2393,7 +2393,6 @@ $sumVal = 0;
               }
 
               $combinedArray[$premiuFiliala]['premiu'] = $info['premiu'];
-              $combinedArray[$premiuFiliala]['filiala'] = $info['filiala'];
               $combinedArray[$premiuFiliala]['initial'] += $info['initial'];
               $combinedArray[$premiuFiliala]['suplimentar'] += $info['suplimentar'];
               $combinedArray[$premiuFiliala]['data'] = $info['data'];
@@ -2401,7 +2400,7 @@ $sumVal = 0;
             $supl = 0;
             $initStock = 0;
             foreach ($combinedArray as $arrKey => $arrValue){
-              if($arrValue['premiu'] == $_POST['gift_select'] && $arrValue['filiala'] == $_POST['filiala_select']){
+              if($arrValue['premiu'] == $_POST['gift_select']){
                 $supl = $arrValue['suplimentar'];
                 $initStock = $arrValue['initial'];
               }
@@ -2434,7 +2433,7 @@ $sumVal = 0;
 
             $combinedArray = array();
             foreach ($stockInfo as $info) {
-              $premiuFiliala = $info['premiu'] . "_" . $info['filiala'];
+              $premiuFiliala = $info['premiu'];
 
               if (!isset($combinedArray[$premiuFiliala])) {
                 $combinedArray[$premiuFiliala] = array(
@@ -2445,7 +2444,6 @@ $sumVal = 0;
               }
 
               $combinedArray[$premiuFiliala]['premiu'] = $info['premiu'];
-              $combinedArray[$premiuFiliala]['filiala'] = $info['filiala'];
               $combinedArray[$premiuFiliala]['initial'] += $info['initial'];
               $combinedArray[$premiuFiliala]['suplimentar'] += $info['suplimentar'];
               $combinedArray[$premiuFiliala]['data'] = $info['data'];
@@ -2453,7 +2451,7 @@ $sumVal = 0;
             $supl = 0;
             $initStock = 0;
             foreach ($combinedArray as $arrKey => $arrValue){
-              if($arrValue['premiu'] == $_POST['gift_select'] && $arrValue['filiala'] == $_POST['filiala_select']){
+              if($arrValue['premiu'] == $_POST['gift_select']){
                 $supl = $arrValue['suplimentar'];
                 $initStock = $arrValue['initial'];
               }
