@@ -607,7 +607,6 @@ TABLE;
                                 }
                             }
                         }
-                        show($arrShowF);
                         $arr = [];
                         $arrFil = [];
                         foreach ($arrShowF as $filiala => $arrShow) {
@@ -649,6 +648,8 @@ TABLE;
                                 $string = str_replace("public://", "", $file_path);
                                 $arrImg .= "<img src='/sites/default/files/" . $string . "'>";
                             }
+
+                          dump($arrShowF);
                           $Filiala = "SELECT * FROM webform_submission_data WHERE webform_id = 'adaugarea_filiala'  ";
                           $filVal = $conn->query($Filiala);
                           foreach ($filVal as $arrValFil) {
