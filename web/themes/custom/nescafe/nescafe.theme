@@ -3662,6 +3662,10 @@ function nescafe_preprocess_region__tabel_principal(){
                     foreach ($sol as $solVal) {
                         $solicit = $solVal['COUNT(id)'];
                     }
+                    if($supliment == 0){
+                      $updateGift = "UPDATE webform_submission_data SET value = 0 WHERE webform_id = 'cadouri' AND sid = '".$arrShow['sid']."' AND name = 'active' ";
+                      if($conn->query($updateGift));
+                    }
                     printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $arrShow['name3'], $arrImg, $arrShow['suplimentar3'], $count1,$count2,$count3,$count4,$count5,$count6,$count7,$count8, $supliment);
 
                     $count++;
@@ -3809,6 +3813,13 @@ function nescafe_preprocess_region__tabel_principal(){
                     foreach ($sol as $solVal) {
                         $solicit = $solVal['COUNT(id)'];
                     }
+
+
+                  if($supliment == 0){
+                    $updateGift = "UPDATE webform_submission_data SET value = 0 WHERE webform_id = 'cadouri' AND sid = '".$arrShow['sid']."' AND name = 'active' ";
+                    if($conn->query($updateGift));
+                  }
+
                     printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $arrShow['name2'], $arrImg, $arrShow['suplimentar2'],  $count1,$count2,$count3,$count4,$count5,$count6,$count7,$count8, $supliment);
 
                     $count++;
@@ -3957,6 +3968,10 @@ function nescafe_preprocess_region__tabel_principal(){
 
                         $solicit = $solVal['COUNT(id)'];
                     }
+                  if($supliment == 0){
+                    $updateGift = "UPDATE webform_submission_data SET value = 0 WHERE webform_id = 'cadouri' AND sid = '".$arrShow['sid']."' AND name = 'active' ";
+                    if($conn->query($updateGift));
+                  }
                     printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $arrShow['name1'], $arrImg, $arrShow['suplimentar1'],  $count1,$count2,$count3,$count4,$count5,$count6,$count7,$count8, $supliment);
 
                     $count++;
