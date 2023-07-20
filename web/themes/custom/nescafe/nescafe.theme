@@ -2377,6 +2377,36 @@ function nescafe_preprocess_region__tabel_principal(){
           print "</form></div>";
 $sumVal = 0;
           if(isset($_POST['submit_supliment'])){
+            $getStock = "SELECT * FROM stock";
+            $stockInfo = $conn->query($getStock);
+
+            $combinedArray = array();
+            foreach ($stockInfo as $info) {
+              $premiuFiliala = $info['premiu'] . "_" . $info['filiala'];
+
+              if (!isset($combinedArray[$premiuFiliala])) {
+                $combinedArray[$premiuFiliala] = array(
+                  'initial' => 0,
+                  'suplimentar' => 0,
+                  'data' => ''
+                );
+              }
+
+              $combinedArray[$premiuFiliala]['premiu'] = $info['premiu'];
+              $combinedArray[$premiuFiliala]['filiala'] = $info['filiala'];
+              $combinedArray[$premiuFiliala]['initial'] += $info['initial'];
+              $combinedArray[$premiuFiliala]['suplimentar'] += $info['suplimentar'];
+              $combinedArray[$premiuFiliala]['data'] = $info['data'];
+            }
+            $supl = 0;
+            $initStock = 0;
+            foreach ($combinedArray as $arrKey => $arrValue){
+              if($arrValue['premiu'] == $_POST['gift_select'] && $arrValue['filiala'] == $_POST['filiala_select']){
+                $supl = $arrValue['suplimentar'];
+                $initStock = $arrValue['initial'];
+              }
+            }
+
             foreach ($sums as $sum) {
               if($sum['premiu'] == $_POST['gift_select']){
                 $sumVal += $sum['suplimentar'];
@@ -2384,7 +2414,7 @@ $sumVal = 0;
             }
             foreach ($arrShowForm as $filiala => $arrShow) {
               if ($arrShow['name'] == $_POST['gift_select']) {
-                if ($arrShow['suplimentar'] - $_POST['input_supliment'] >= 0) {
+                if ($arrShow['suplimentar'] - (($supl + $initStock) - ($_POST['input_supliment'])) >= 0) {
                   $insertStock = "INSERT INTO stock (premiu, filiala, suplimentar, data)VALUES('".$_POST['gift_select']."', '".$_POST['filiala_select']."', '".$_POST['input_supliment']."', NOW())";
                   if ($conn->query($insertStock)) {
                     //echo "ok";
@@ -2398,6 +2428,35 @@ $sumVal = 0;
             }
           }
           if(isset($_POST['submit_init'])){
+            $getStock = "SELECT * FROM stock";
+            $stockInfo = $conn->query($getStock);
+
+            $combinedArray = array();
+            foreach ($stockInfo as $info) {
+              $premiuFiliala = $info['premiu'] . "_" . $info['filiala'];
+
+              if (!isset($combinedArray[$premiuFiliala])) {
+                $combinedArray[$premiuFiliala] = array(
+                  'initial' => 0,
+                  'suplimentar' => 0,
+                  'data' => ''
+                );
+              }
+
+              $combinedArray[$premiuFiliala]['premiu'] = $info['premiu'];
+              $combinedArray[$premiuFiliala]['filiala'] = $info['filiala'];
+              $combinedArray[$premiuFiliala]['initial'] += $info['initial'];
+              $combinedArray[$premiuFiliala]['suplimentar'] += $info['suplimentar'];
+              $combinedArray[$premiuFiliala]['data'] = $info['data'];
+            }
+            $supl = 0;
+            $initStock = 0;
+            foreach ($combinedArray as $arrKey => $arrValue){
+              if($arrValue['premiu'] == $_POST['gift_select'] && $arrValue['filiala'] == $_POST['filiala_select']){
+                $supl = $arrValue['suplimentar'];
+                $initStock = $arrValue['initial'];
+              }
+            }
             foreach ($sums as $sum) {
               if($sum['premiu'] == $_POST['gift_select']){
                 $sumVal += $sum['suplimentar'];
@@ -2405,7 +2464,7 @@ $sumVal = 0;
             }
             foreach ($arrShowForm as $filiala => $arrShow) {
               if ($arrShow['name'] == $_POST['gift_select']) {
-                if ($arrShow['suplimentar'] - $_POST['input_init'] >= 0) {
+                if ($arrShow['suplimentar'] - (($supl + $initStock) - ($_POST['input_init'])) >= 0) {
                   $insertStock = "INSERT INTO stock (premiu, filiala, initial, data)VALUES('".$_POST['gift_select']."', '".$_POST['filiala_select']."', '".$_POST['input_init']."', NOW())";
                   if ($conn->query($insertStock)) {
                     //echo "ok";
