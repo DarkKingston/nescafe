@@ -1459,6 +1459,13 @@ function nescafe_preprocess_region__stock($page)
             $premFil = 'Filiala';
         }
 
+      $dataSQL = "SELECT * FROM promo_code WHERE active != 0 ORDER BY data DESC";
+      $data = $conn->query($dataSQL);
+
+      foreach ($data as $dataVal) {
+
+      }
+
       $date = new DateTime($dataVal['data']);
       $date->add(new DateInterval('P7D'));
       $week1 = $date->format('Y-m-d H:i:s');
