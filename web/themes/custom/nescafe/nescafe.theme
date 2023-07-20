@@ -2165,7 +2165,7 @@ function nescafe_preprocess_region__tabel_principal(){
 //                  }else{
 //                    $supliment = $arrShow['suplimentar2'];
 //                }
-                  $supliment = 0;
+                  $supliment = $arrShow['suplimentar2'];
                   foreach ($countedArray as $key => $value){
                     if($arrShow['name2'] == $key){
                       $supliment = $arrShow['suplimentar2'] - $value;
@@ -2312,7 +2312,7 @@ function nescafe_preprocess_region__tabel_principal(){
 //                }else{
 //                  $supliment = $arrShow['suplimentar1'];
 //                }
-                  $supliment = 0;
+                  $supliment = $arrShow['suplimentar1'];
                   foreach ($countedArray as $key => $value){
                     if($arrShow['name1'] == $key){
                       $supliment = $arrShow['suplimentar1'] - $value;
