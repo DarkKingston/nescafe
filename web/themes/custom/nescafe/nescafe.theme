@@ -1126,7 +1126,7 @@ function nescafe_preprocess_region__stock($page)
 
         $filialSQL = "SELECT * FROM user__field_filiala WHERE revision_id = '" . $curr_id_for_user . "' ";
         $fil = $conn->query($filialSQL);
-        foreach ($fil as $filVal) {
+        foreach ($fil as $filValue) {
         }
 
 
@@ -1140,7 +1140,7 @@ function nescafe_preprocess_region__stock($page)
 
 
 
-      $getFiliala = "SELECT * FROM webform_submission_data WHERE webform_id = 'adaugarea_filiala' AND value = '".$filVal['field_filiala_value']."'";
+      $getFiliala = "SELECT * FROM webform_submission_data WHERE webform_id = 'adaugarea_filiala' AND value = '".$filValue['field_filiala_value']."'";
       $filVal = $conn->query($getFiliala);
 
 
@@ -1279,7 +1279,7 @@ function nescafe_preprocess_region__stock($page)
                        TABLE;
       $count = 1;
       $solicit = 0;
-      $getFiliala = "SELECT * FROM webform_submission_data WHERE webform_id = 'adaugarea_filiala' AND value = '".$filVal['field_filiala_value']."' ";
+      $getFiliala = "SELECT * FROM webform_submission_data WHERE webform_id = 'adaugarea_filiala' AND value = '".$filValue['field_filiala_value']."' ";
       $filVal = $conn->query($getFiliala);
       foreach ($filVal as $arrFil2) {
         foreach ($arrShowF2 as $filiala => $arrShow) {
@@ -1347,7 +1347,7 @@ function nescafe_preprocess_region__stock($page)
                        TABLE;
       $count = 1;
       $solicit = 0;
-      $getFiliala = "SELECT * FROM webform_submission_data WHERE webform_id = 'adaugarea_filiala' AND value = '".$filVal['field_filiala_value']."'";
+      $getFiliala = "SELECT * FROM webform_submission_data WHERE webform_id = 'adaugarea_filiala' AND value = '".$filValue['field_filiala_value']."'";
       $filVal = $conn->query($getFiliala);
       foreach ($filVal as $arrFil1) {
         foreach ($arrShowF1 as $filiala => $arrShow) {
