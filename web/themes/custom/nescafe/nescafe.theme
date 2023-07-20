@@ -1466,6 +1466,7 @@ function nescafe_preprocess_region__stock($page)
 
       }
       dump($dataVal);
+
       $date = new DateTime($dataVal['data']);
       $date->add(new DateInterval('P7D'));
       $week1 = $date->format('Y-m-d H:i:s');
