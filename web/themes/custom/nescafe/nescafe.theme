@@ -3475,14 +3475,14 @@ function nescafe_preprocess_region__tabel_principal(){
                     $sapt = 'Неделя';
                     $stoc_final = 'Доступный сток';
                     $grad = 'Класс';
-                    $premiu = 'Изображение';
+                    $premiuPoza = 'Изображение';
                     $premFil = 'Количество';
                 }
                 if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro') {
                     $sapt = 'Saptamana';
                     $stoc_final = 'Stoc Disponibil';
                     $grad = 'Gradul';
-                    $premiu = 'Poza';
+                    $premiuPoza = 'Poza';
                     $premFil = 'Cantitate';
                 }
 
@@ -3521,7 +3521,7 @@ function nescafe_preprocess_region__tabel_principal(){
                 print <<<TABLE
                     <table id="table8">
                     <thead>
-                    <tr><th>$grad 3</th><th>$premiu</th><th>$premFil</th><th>$sapt 1</th><th>$sapt 2</th><th>$sapt 3</th><th>$sapt 4</th><th>$sapt 5</th><th>$sapt 6</th><th>$sapt 7</th><th>$sapt 8</th><th>$stoc_final</th></tr>
+                    <tr><th>$grad 3</th><th>$premiuPoza</th><th>$premFil</th><th>$sapt 1</th><th>$sapt 2</th><th>$sapt 3</th><th>$sapt 4</th><th>$sapt 5</th><th>$sapt 6</th><th>$sapt 7</th><th>$sapt 8</th><th>$stoc_final</th></tr>
                     </thead>
                     <tbody>
                     TABLE;
@@ -3676,7 +3676,7 @@ function nescafe_preprocess_region__tabel_principal(){
                 print <<<TABLE
                                <table id="table8">
                                <thead>
-                               <tr><th>$grad 2</th><th>$premiu</th><th>$premFil</th><th>$sapt 1</th><th>$sapt 2</th><th>$sapt 3</th><th>$sapt 4</th><th>$sapt 5</th><th>$sapt 6</th><th>$sapt 7</th><th>$sapt 8</th><th>$stoc_final</th></tr>
+                               <tr><th>$grad 2</th><th>$premiuPoza</th><th>$premFil</th><th>$sapt 1</th><th>$sapt 2</th><th>$sapt 3</th><th>$sapt 4</th><th>$sapt 5</th><th>$sapt 6</th><th>$sapt 7</th><th>$sapt 8</th><th>$stoc_final</th></tr>
                                </thead>
                                <tbody>
                                TABLE;
@@ -3830,7 +3830,7 @@ function nescafe_preprocess_region__tabel_principal(){
                 print <<<TABLE
                                <table id="table8">
                                <thead>
-                               <tr><th>$grad 1</th><th>$premiu</th><th>$premFil</th><th>$sapt 1</th><th>$sapt 2</th><th>$sapt 3</th><th>$sapt 4</th><th>$sapt 5</th><th>$sapt 6</th><th>$sapt 7</th><th>$sapt 8</th><th>$stoc_final</th></tr>
+                               <tr><th>$grad 1</th><th>$premiuPoza</th><th>$premFil</th><th>$sapt 1</th><th>$sapt 2</th><th>$sapt 3</th><th>$sapt 4</th><th>$sapt 5</th><th>$sapt 6</th><th>$sapt 7</th><th>$sapt 8</th><th>$stoc_final</th></tr>
                                </thead>
                                <tbody>
                                TABLE;
