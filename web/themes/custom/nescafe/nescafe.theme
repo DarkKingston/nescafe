@@ -611,7 +611,7 @@ TABLE;
                         $arrFil = [];
                         foreach ($arrShowF as $filiala => $arrShow) {
                           dump($arrShow);
-                          if($arrShow['active'] == 1){
+                          if($arrShow['active'] == '1'){
                             $option = '';
                             $option2 = '';
                             foreach ($arrShow as $ft => $val) {
