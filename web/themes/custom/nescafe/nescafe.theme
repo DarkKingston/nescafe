@@ -807,7 +807,7 @@ TABLE;
                     }
                 }
             }
-            if ($total % 10 == 0 && $userID->premiu == '' && $total > 0) {
+            if ($total % 10 == 0 && $userID->premiu == '') {
 
                     $checkPromo = "SELECT * FROM promo_code WHERE status = 10 AND active = '".$curr_id_for_user."' ";
                     $checkPromoItem = $conn->query($checkPromo);
