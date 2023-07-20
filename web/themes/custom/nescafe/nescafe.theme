@@ -1221,7 +1221,7 @@ function nescafe_preprocess_region__stock($page)
         }
         $stockInit = 0;
 
-        $solicitSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '" . $arrFil['value'] . "' AND premiu = '" . $arrShow['name3'] . "'";
+        $solicitSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '" . $arrShow['filiala3'] . "' AND premiu = '" . $arrShow['name3'] . "'";
         $sol = $conn->query($solicitSQL);
         $solicit = 0;
         foreach ($sol as $solVal) {
@@ -1230,7 +1230,7 @@ function nescafe_preprocess_region__stock($page)
         $supl = 0;
         $initStock = 0;
         foreach ($combinedArray as $arrKey => $arrValue){
-          if($arrValue['premiu'] == $arrShow['name3'] && $arrValue['filiala'] == $arrFil['value']){
+          if($arrValue['premiu'] == $arrShow['name3'] && $arrValue['filiala'] == $arrShow['filiala3']){
             $supl = $arrValue['suplimentar'];
             $initStock = $arrValue['initial'];
           }
