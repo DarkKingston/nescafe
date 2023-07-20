@@ -1128,7 +1128,7 @@ function nescafe_preprocess_region__stock($page)
         $fil = $conn->query($filialSQL);
         foreach ($fil as $filValue) {
         }
-
+      dump($filValue);
 
 
         $arrShowF = array();
