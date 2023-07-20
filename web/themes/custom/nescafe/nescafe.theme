@@ -1722,7 +1722,6 @@ function nescafe_preprocess_region__stock($page)
         foreach ($arrShowF as $filiala => $arrShow) {
           $getStock = "SELECT * FROM stock WHERE data BETWEEN '".$week7."' AND '".$week8."'";
           $stockInfo = $conn->query($getStock);
-dump($getStock);
           $combinedArray = array();
           foreach ($stockInfo as $info) {
             $premiuFiliala = $info['premiu'] . "_" . $info['filiala'];
