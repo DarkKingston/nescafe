@@ -1126,7 +1126,7 @@ function nescafe_preprocess_region__stock($page)
 
         $filialSQL = "SELECT * FROM user__field_filiala WHERE revision_id = '" . $curr_id_for_user . "' ";
         $fil = $conn->query($filialSQL);
-        foreach ($fil as $filVal) {
+        foreach ($fil as $filValue) {
         }
 
 
@@ -1135,7 +1135,7 @@ function nescafe_preprocess_region__stock($page)
         foreach ($arrData as $IDgift => $val) {
             foreach ($val as $name => $val2) {
 
-                if ($val['filiala']['value'] == $filVal['field_filiala_value']) {
+                if ($val['filiala']['value'] == $filValue['field_filiala_value']) {
                     if (($name == 'categoria_de_produs' && $val2['value'] == 3)) {
                         //$arrShowF[[$IDgift]['filiala']['value']][] = array( 'name3' => $arrData[$IDgift]['premiu']['value'] ,'filiala3' => $arrData[$IDgift]['filiala']['value'],'stock3' => $arrData[$IDgift]['stock']['value'],'suplimentar3' => $arrData[$IDgift]['suplimentar']['value'], 'id' => $IDgift );
                         $arrShowF[$arrData[$IDgift]['premiu']['value'] . '_' . $arrData[$IDgift]['filiala']['value']]['name3'] = $arrData[$IDgift]['premiu']['value'];
@@ -1198,7 +1198,7 @@ function nescafe_preprocess_region__stock($page)
             TABLE;
         $count = 1;
       foreach ($arrShowF as $filiala => $arrShow) {
-        $getStock = "SELECT * FROM stock";
+        $getStock = "SELECT * FROM stock WHERE filiala = '".$filValue['field_filiala_value']."'";
         $stockInfo = $conn->query($getStock);
 
         $combinedArray = array();
@@ -1221,7 +1221,7 @@ function nescafe_preprocess_region__stock($page)
         }
         $stockInit = 0;
 
-        $solicitSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '" . $arrShow['filiala3'] . "' AND premiu = '" . $arrShow['name3'] . "'";
+        $solicitSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '" . $filValue['field_filiala_value'] . "' AND premiu = '" . $arrShow['name3'] . "'";
         $sol = $conn->query($solicitSQL);
         $solicit = 0;
         foreach ($sol as $solVal) {
@@ -1230,7 +1230,7 @@ function nescafe_preprocess_region__stock($page)
         $supl = 0;
         $initStock = 0;
         foreach ($combinedArray as $arrKey => $arrValue){
-          if($arrValue['premiu'] == $arrShow['name3'] && $arrValue['filiala'] == $arrShow['filiala3']){
+          if($arrValue['premiu'] == $arrShow['name3'] && $arrValue['filiala'] == $filValue['field_filiala_value']){
             $supl = $arrValue['suplimentar'];
             $initStock = $arrValue['initial'];
           }
@@ -1246,7 +1246,7 @@ function nescafe_preprocess_region__stock($page)
           }
         }
         $stockFinal = $stockDisp - $countElib;
-        printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $arrShow['name3'], $arrShow['filiala3'], $solicit, $initStock, $supl, $stockDisp, $countElib, $stockFinal);
+        printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $arrShow['name3'], $filValue['field_filiala_value'], $solicit, $initStock, $supl, $stockDisp, $countElib, $stockFinal);
 
         $count++;
       }
@@ -1262,7 +1262,7 @@ function nescafe_preprocess_region__stock($page)
                        TABLE;
       $count = 1;
       foreach ($arrShowF2 as $filiala => $arrShow) {
-        $getStock = "SELECT * FROM stock";
+        $getStock = "SELECT * FROM stock WHERE filiala = '".$filValue['field_filiala_value']."'";
         $stockInfo = $conn->query($getStock);
 
         $combinedArray = array();
@@ -1285,7 +1285,7 @@ function nescafe_preprocess_region__stock($page)
         }
         $stockInit = 0;
 
-        $solicitSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '" . $arrShow['filiala2'] . "' AND premiu = '" . $arrShow['name2'] . "'";
+        $solicitSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '" . $filValue['field_filiala_value'] . "' AND premiu = '" . $arrShow['name2'] . "'";
         $sol = $conn->query($solicitSQL);
         $solicit = 0;
         foreach ($sol as $solVal) {
@@ -1294,7 +1294,7 @@ function nescafe_preprocess_region__stock($page)
         $supl = 0;
         $initStock = 0;
         foreach ($combinedArray as $arrKey => $arrValue){
-          if($arrValue['premiu'] == $arrShow['name2'] && $arrValue['filiala'] == $arrShow['filiala2']){
+          if($arrValue['premiu'] == $arrShow['name2'] && $arrValue['filiala'] == $filValue['field_filiala_value']){
             $supl = $arrValue['suplimentar'];
             $initStock = $arrValue['initial'];
           }
@@ -1310,7 +1310,7 @@ function nescafe_preprocess_region__stock($page)
           }
         }
         $stockFinal = $stockDisp - $countElib;
-        printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $arrShow['name2'], $arrShow['filiala2'], $solicit, $initStock, $supl, $stockDisp, $countElib, $stockFinal);
+        printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $arrShow['name2'], $filValue['field_filiala_value'], $solicit, $initStock, $supl, $stockDisp, $countElib, $stockFinal);
 
         $count++;
         }
@@ -1326,7 +1326,7 @@ function nescafe_preprocess_region__stock($page)
                        TABLE;
       $count = 1;
       foreach ($arrShowF1 as $filiala => $arrShow) {
-        $getStock = "SELECT * FROM stock";
+        $getStock = "SELECT * FROM stock WHERE filiala = '".$filValue['field_filiala_value']."' ";
         $stockInfo = $conn->query($getStock);
 
         $combinedArray = array();
@@ -1349,7 +1349,7 @@ function nescafe_preprocess_region__stock($page)
         }
         $stockInit = 0;
 
-        $solicitSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '" . $arrShow['filiala1'] . "' AND premiu = '" . $arrShow['name1'] . "'";
+        $solicitSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '" . $filValue['field_filiala_value'] . "' AND premiu = '" . $arrShow['name1'] . "'";
         $sol = $conn->query($solicitSQL);
         $solicit = 0;
         foreach ($sol as $solVal) {
@@ -1358,7 +1358,7 @@ function nescafe_preprocess_region__stock($page)
         $supl = 0;
         $initStock = 0;
         foreach ($combinedArray as $arrKey => $arrValue){
-          if($arrValue['premiu'] == $arrShow['name1'] && $arrValue['filiala'] == $arrShow['filiala1']){
+          if($arrValue['premiu'] == $arrShow['name1'] && $arrValue['filiala'] == $filValue['field_filiala_value']){
             $supl = $arrValue['suplimentar'];
             $initStock = $arrValue['initial'];
           }
@@ -1374,13 +1374,12 @@ function nescafe_preprocess_region__stock($page)
           }
         }
         $stockFinal = $stockDisp - $countElib;
-        printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $arrShow['name1'], $arrShow['filiala1'], $solicit, $initStock, $supl, $stockDisp, $countElib, $stockFinal);
+        printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $arrShow['name1'], $filValue['field_filiala_value'], $solicit, $initStock, $supl, $stockDisp, $countElib, $stockFinal);
 
         $count++;
         }
 
         print "</tbody>\n</table>\n";
-dump($arrShow);
     }
 
     /*
