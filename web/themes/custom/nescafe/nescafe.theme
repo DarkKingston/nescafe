@@ -2414,7 +2414,9 @@ $sumVal = 0;
             }
             foreach ($arrShowForm as $filiala => $arrShow) {
               if ($arrShow['name'] == $_POST['gift_select']) {
-                if ($arrShow['suplimentar'] - (($supl + $initStock) - ($_POST['input_supliment'])) >= 0) {
+                if ($arrShow['suplimentar'] - (($supl + $initStock) + ($_POST['input_supliment'])) >= 0) {
+                  dump($arrShow['suplimentar']);
+                  dump((($supl + $initStock) + ($_POST['input_supliment'])));
                   $insertStock = "INSERT INTO stock (premiu, filiala, suplimentar, data)VALUES('".$_POST['gift_select']."', '".$_POST['filiala_select']."', '".$_POST['input_supliment']."', NOW())";
                   if ($conn->query($insertStock)) {
                     //echo "ok";
@@ -2477,14 +2479,7 @@ $sumVal = 0;
               }
             }
           }
-
-
-
           }
-
-
             }
-
-
 }
 
