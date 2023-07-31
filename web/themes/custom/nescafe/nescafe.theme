@@ -1071,6 +1071,7 @@ dump($userID->final);
 
                     $checkCounter++;
                 }
+dump($checkItem);
                 dump($checkCounter);
                 if ($checkCounter == 0) {
                     $tombolaSuccess = "UPDATE promo_code SET final = 1, data = NOW() WHERE promocode = '" . $userID->promocode . "' AND final = 0 ";
