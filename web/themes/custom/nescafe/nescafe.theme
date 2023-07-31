@@ -1062,6 +1062,7 @@ TABLE;
                 }
             }
             if ($total % 30 == 0 && $userID->premiu == '' && $userID->final == 0) {
+dump($userID->final);
                 $sqlCheck = "SELECT * FROM promo_code WHERE id = '" . $userID->active . "' and final = 1";
                 $checkPromoItem = $conn->query($sqlCheck);
                 $checkPromoItem->setFetchMode(\PDO::FETCH_OBJ);
@@ -1070,6 +1071,7 @@ TABLE;
 
                     $checkCounter++;
                 }
+                dump($checkCounter);
                 if ($checkCounter == 0) {
                     $tombolaSuccess = "UPDATE promo_code SET final = 1, data = NOW() WHERE promocode = '" . $userID->promocode . "' AND final = 0 ";
                     if ($conn->query($tombolaSuccess)) {
