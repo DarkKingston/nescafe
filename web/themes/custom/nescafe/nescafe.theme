@@ -807,7 +807,7 @@ TABLE;
                     }
                 }
             }
-            if ($total % 10 == 0 && $userID->premiu == '') {
+            if ($total >= 10 && $total % 10 == 0 && $userID->premiu == '') {
 
                     $checkPromo = "SELECT * FROM promo_code WHERE status = 10 AND active = '".$curr_id_for_user."' ";
                     $checkPromoItem = $conn->query($checkPromo);
@@ -1041,7 +1041,7 @@ TABLE;
                     }
                 }
             }
-            if ($total % 15 == 0 && $userID->premiu == '' && $userID->tombola == 0) {
+            if ($total >= 15 && $total % 15 == 0 && $userID->premiu == '' && $userID->tombola == 0) {
                 $sqlCheck = "SELECT * FROM promo_code WHERE id = '" . $userID->active . "' and tombola = 1";
                 $checkPromoItem = $conn->query($sqlCheck);
                 $checkPromoItem->setFetchMode(\PDO::FETCH_OBJ);
@@ -1061,7 +1061,7 @@ TABLE;
                     }
                 }
             }
-            if ($total % 30 == 0 && $userID->premiu == '') {
+            if ($total >= 30 && $total % 30 == 0 && $userID->premiu == '') {
                 $sqlCheck = "SELECT * FROM promo_code WHERE id = '" . $userID->active . "' and final = 1";
                 $checkPromoItem = $conn->query($sqlCheck);
                 $checkPromoItem->setFetchMode(\PDO::FETCH_OBJ);
