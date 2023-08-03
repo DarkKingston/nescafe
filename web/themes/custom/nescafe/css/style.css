@@ -657,6 +657,11 @@ form .form-item label{
   margin: 0 auto;
 }
 
+.form_btn{
+  display: unset;
+  margin: unset;
+}
+
 .center, .error_popup{
   text-align: center;
 }
