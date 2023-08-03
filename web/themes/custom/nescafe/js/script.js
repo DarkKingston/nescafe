@@ -24,6 +24,9 @@
       $('.closePopup',context).on('click',function(){
         $('.popup_gift').hide();
       });
+      $('.closeError',context).on('click',function(){
+        $('.error_popup').hide();
+      });
       $('.closePopupTombola',context).on('click',function(){
         $('.popup_final').hide();
       });
@@ -55,7 +58,3 @@
     }
   };
 })(jQuery);
-
-function closePopup() {
-  document.querySelectorAll('.error_popup').classList.add('hidden');
-}
