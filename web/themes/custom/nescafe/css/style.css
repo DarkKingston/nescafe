@@ -994,7 +994,7 @@ form .form-item label{
 }
 
 .error_popup div{
-  margin-top: 10px;
+  margin-top: 10px !important;
 }
 
 .error_popup.hidden{
