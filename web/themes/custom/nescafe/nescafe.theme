@@ -1052,23 +1052,13 @@ TABLE;
                 }
             }
             if ($total % 30 == 0 && $userID->final == 0) {
-                $sqlCheck = "SELECT * FROM promo_code WHERE id = '" . $userID->active . "' and final = 1";
-                $checkPromoItem = $conn->query($sqlCheck);
-                $checkPromoItem->setFetchMode(\PDO::FETCH_OBJ);
-                $checkCounter = 0;
-                foreach ($checkPromoItem as $checkItem) {
-
-                    $checkCounter++;
-                }
-                if ($checkCounter != 0) {
-                    $tombolaSuccess = "UPDATE promo_code SET final = 1, data = NOW() WHERE promocode = '" . $userID->promocode . "' AND final = 0 ";
-                    if ($conn->query($tombolaSuccess)) {
-                        print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_final' data-dialog-type='modal'>
-                                           <div>Felicitari ati fost ales participant la tombola finala!</div>
-                                           <div class='btn_main action closePopupTombola'>Inchide</div>
-                                       </form>
-                                       ";
-                    }
+                $tombolaSuccess = "UPDATE promo_code SET final = 1, data = NOW() WHERE promocode = '" . $userID->promocode . "' AND final = 0 ";
+                if ($conn->query($tombolaSuccess)) {
+                    print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_final' data-dialog-type='modal'>
+                                       <div>Felicitari ati fost ales participant la tombola finala!</div>
+                                       <div class='btn_main action closePopupTombola'>Inchide</div>
+                                   </form>
+                                   ";
                 }
             }
         }
