@@ -317,6 +317,7 @@ ul>li{
   padding: 13px 23px 12px 27px;
   border: 0;
   cursor: pointer;
+
 }
 
 .reglament_accept button{
@@ -652,6 +653,7 @@ form .form-item label{
   border: 0;
   width: 70px;
   cursor: pointer;
+  margin: 0 auto;
 }
 
 .ui-dialog .ui-dialog-buttonset button{
