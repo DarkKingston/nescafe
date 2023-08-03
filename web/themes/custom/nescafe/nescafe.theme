@@ -3486,7 +3486,7 @@ function nescafe_preprocess_region__details($details)
             $name = 'Имя';
             $phone = 'Телефон';
             $action = "Деталии";
-            $mail = 'Почта';
+            $mail = 'Фамилия';
             $stats = 'Сток';
             $prem = 'Приз';
             $livrare = 'Филиал';
@@ -3499,7 +3499,7 @@ function nescafe_preprocess_region__details($details)
             $name = 'Nume';
             $phone = "Telefon";
             $action = 'Detalii';
-            $mail = 'Posta';
+            $mail = 'Prenume';
             $stats = 'Stoc';
             $prem = 'Premiu';
             $livrare = 'Filiala';
@@ -3577,7 +3577,7 @@ function nescafe_preprocess_region__tombola()
             $promoCode = "Promocod";
         }
 
-        $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` LEFT JOIN `promo_code` ON `users_field_data`.uid = `promo_code`.active WHERE uid != 0 AND `promo_code`.`active` != 0 AND final != 0 ORDER BY uid ASC";
+        $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `user__field_name` ON `users_field_data`.`uid` = `user__field_name`.`revision_id` LEFT JOIN `promo_code` ON `users_field_data`.uid = `promo_code`.active WHERE uid != 0 AND `promo_code`.`active` != 0 AND final != 0 ORDER BY uid ASC";
         $sql = $sqlQuery;
         //dump($sql);
         $result = $conn->query($sql);
@@ -3599,7 +3599,7 @@ function nescafe_preprocess_region__tombola()
             } else {
                 $statusPrint = '';
             }
-            printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $record->name, $record->mail, $record->field_phone_value, $record->promocode);
+            printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $record->field_name_value, $record->mail, $record->name, $record->promocode);
 
             $count++;
         }
