@@ -800,7 +800,7 @@ TABLE;
                 } else {
                     if (isset($_POST['introduceti_codul_promotional']) && $total % 30 != 0 && $total % 15 != 0 && $total % 7 != 0) {
                         print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_gift' data-dialog-type='modal'>
-                                             <div>Mai incercati!</div>
+                                             <div class='center'>Mai incercati!</div>
                                              <div class='btn_main action closePopup'>Inchide</div>
                                          </form>
                                          ";
@@ -1045,7 +1045,7 @@ TABLE;
                 $tombolaSuccess = "UPDATE promo_code SET tombola = 1,status = 0, data = NOW() WHERE promocode = '" . $userID->promocode . "' AND tombola = 0 ";
                 if ($conn->query($tombolaSuccess)) {
                     print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_final' data-dialog-type='modal'>
-                                        <div>Felicitari ati fost ales participant la tombola zilnica!</div>
+                                        <div  class='center'>Felicitari ati fost ales participant la tombola zilnica!</div>
                                         <div class='btn_main action closePopupTombola'>Inchide</div>
                                     </form>
                                     ";
@@ -1055,7 +1055,7 @@ TABLE;
                 $tombolaSuccess = "UPDATE promo_code SET final = 1, data = NOW() WHERE promocode = '" . $userID->promocode . "' AND final = 0 ";
                 if ($conn->query($tombolaSuccess)) {
                     print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_final' data-dialog-type='modal'>
-                                       <div>Felicitari ati fost ales participant la tombola finala!</div>
+                                       <div class='center'>Felicitari ati fost ales participant la tombola finala!</div>
                                        <div class='btn_main action closePopupTombola'>Inchide</div>
                                    </form>
                                    ";

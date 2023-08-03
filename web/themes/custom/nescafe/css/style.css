@@ -657,6 +657,10 @@ form .form-item label{
   margin: 0 auto;
 }
 
+.center, .error_popup{
+  text-align: center;
+}
+
 .ui-dialog .ui-dialog-buttonset button{
   font-weight: 700;
   font-size: 17px !important;
