@@ -173,10 +173,12 @@ function nescafe_preprocess_page(&$page)
     }
 
     if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru') {
+        $cookie = "Мы используем cookies для улучшения вашего опыта использования сайта.";
         $accept = "Принять";
         $reject = "Не принимаю";
     }
     if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro') {
+        $cookie = "Folosim cookies pentru a îmbunătăți experiența ta de utilizare a site-ului.";
         $accept = "Accept";
         $reject = "Nu accept";
     }
@@ -211,7 +213,7 @@ function nescafe_preprocess_page(&$page)
             print "<div class='cookie " . $hidden . "'>
                     <div class='cookie_box'>
                       <div class='cookie_title'>
-                        Мы используем файлы cookie
+                        ".$cookie."
                       </div>
                       <div class='cookie_subtitle'>
                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard
