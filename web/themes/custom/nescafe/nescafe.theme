@@ -317,7 +317,7 @@ function nescafe_preprocess_region__account(&$elem)
             $name = 'Имя';
             $last_name = "Фамилия";
             $phone = 'Телефон';
-            $action = "Деталии";
+            $action = "Детали";
             $stats = 'Сток';
             $prem = 'Приз';
             $livrare = 'Филиал';
@@ -3518,7 +3518,7 @@ function nescafe_preprocess_region__details($details)
         if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru') {
             $name = 'Имя';
             $phone = 'Телефон';
-            $action = "Деталии";
+            $action = "Детали";
             $mail = 'Фамилия';
             $stats = 'Сток';
             $prem = 'Приз';
@@ -3596,7 +3596,7 @@ function nescafe_preprocess_region__tombola()
         if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru') {
             $name = 'Имя';
             $phone = 'Телефон';
-            $action = "Деталии";
+            $action = "Детали";
             $mail = 'Почта';
             $stats = 'Сток';
             $promoCode = "Промокод";
