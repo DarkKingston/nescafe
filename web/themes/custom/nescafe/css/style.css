@@ -1024,3 +1024,7 @@ form .form-item label{
 .hour{
   margin-top: 0;
 }
+
+.messages--error{
+  display: none;
+}
