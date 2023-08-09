@@ -33,17 +33,24 @@
 
       let phone;
       let login;
-
+      let reset;
+      let loginLink;
       let currLang = document.querySelector('.curr_lang_item').innerText;
 
       if(currLang == "RO"){
         phone = "Numar de telefon";
-        login = "Logare pe sait";
+        login = "Înregistrare/Autentificare";
+        reset = "Resetează parola";
+        loginLink = "Înregistrare";
       }else if (currLang == "RU"){
         phone = "Номер телефона";
-        login = "Вход на сайт";
+        login = "Регистрация/Вход";
+        reset = "Восстановить пароль";
+        loginLink = "Регистрация";
       }
       document.querySelector("#block-vkhodnasayt h2").innerHTML = login;
+      document.querySelector("#login-link").innerHTML = loginLink;
+      document.querySelector(".btn_reset_pass").innerHTML = reset;
 
       document.querySelector('.user-login-form .js-form-item-name label').innerHTML = phone;
 
