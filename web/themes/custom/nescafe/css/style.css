@@ -1016,3 +1016,11 @@ form .form-item label{
 .account_wrapper.search_btn{
   display: unset;
 }
+
+.city{
+  margin-bottom: 5px;
+}
+
+.hour{
+  margin-top: 0;
+}
