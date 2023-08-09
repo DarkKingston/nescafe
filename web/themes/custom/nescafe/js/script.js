@@ -34,20 +34,48 @@
       let phone;
       let login;
       let reset;
+      let name;
+      let last_name;
       let loginLink;
+      let label;
+      let email;
+      let pass;
+      let pass2;
+      let confirm;
       let currLang = document.querySelector('.curr_lang_item').innerText;
 
       if(currLang == "RO"){
+        label = "Creează un cont nou";
+        name = "Nume";
+        last_name = "Prenume";
+        email = "Adresă de e-mail";
+        pass = "Parola";
+        pass2 = "Confirmare parolă";
+        confirm = "Verificare parolă:";
         phone = "Numar de telefon";
         login = "Înregistrare/Autentificare";
         reset = "Resetează parola";
         loginLink = "Înregistrare";
       }else if (currLang == "RU"){
+        label = "Создать новый аккаунт";
+        name = "Фамилия";
+        last_name = "Имя";
+        email = "Адрес электронной почты";
+        pass = "Пароль";
+        pass2 = "Подтверждение пароля";
+        confirm = "Проверка пароля:";
         phone = "Номер телефона";
         login = "Регистрация/Вход";
         reset = "Восстановить пароль";
         loginLink = "Регистрация";
       }
+      document.querySelector(".ui-dialog .ui-dialog-title").innerHTML = label;
+      document.querySelector(".field--name-field-name label").innerHTML = name;
+      document.querySelector(".field--name-field-lastname label").innerHTML = email;
+      document.querySelector(".form-item-mail label").innerHTML = last_name;
+      document.querySelector(".form-item-pass label").innerHTML = pass;
+      document.querySelector(".form-item-pass-pass2 label").innerHTML = pass2;
+      document.querySelector(".password-confirm-message").innerHTML = confirm;
       document.querySelector("#block-vkhodnasayt h2").innerHTML = login;
       document.querySelector("#login-link").innerHTML = loginLink;
       document.querySelector(".btn_reset_pass").innerHTML = reset;
