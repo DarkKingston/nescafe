@@ -1012,3 +1012,7 @@ form .form-item label{
 .password-strength{
   display: none;
 }
+
+.account_wrapper.search_btn{
+  display: unset;
+}
