@@ -1088,7 +1088,7 @@ TABLE;
                     }
                 }
             }
-            if ($total % 15 == 0 && $userID->tombola == 0) {
+            if ($total > 0 && $total % 15 == 0 && $userID->tombola == 0) {
                 $tombolaSuccess = "UPDATE promo_code SET tombola = 1,status = 0, data = NOW() WHERE promocode = '" . $userID->promocode . "' AND tombola = 0 ";
                 if ($conn->query($tombolaSuccess)) {
                     print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_final' data-dialog-type='modal'>
@@ -1098,7 +1098,7 @@ TABLE;
                                     ";
                 }
             }
-            if ($total % 30 == 0 && $userID->final == 0) {
+            if ($total > 0 && $total % 30 == 0 && $userID->final == 0) {
               dump("total".$total);
               dump("Total % 30".$total % 30);
               dump("UserID->final".$userID->final);
