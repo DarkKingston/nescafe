@@ -370,23 +370,45 @@ function nescafe_preprocess_region__account(&$elem)
             $count++;
         }
 
+      if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru') {
+        $all = 'Все';
+        $chis = 'Кишинев';
+        $comr = 'Комрат';
+        $edinet = 'Единец';
+        $cahul = 'Кагул';
+        $balt = 'Бельцы';
+        $sort = 'Сортировка по филиалу';
+        $logout = 'Выход';
+        $search = 'Поиск';
+      }
+      if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro') {
+        $sort = 'Sortare după filială';
+        $all = 'Toate';
+        $chis = 'Chișinău';
+        $comr = 'Comrat';
+        $edinet = 'Edineț';
+        $cahul = 'Cahul';
+        $balt = 'Bălți';
+        $logout = 'Ieșire';
+        $search = 'Caută';
+      }
         print "</tbody>\n</table>\n";
         print "<div class='admin_btns'>
           <a href='/tabel-principal' class='btn_main stock'>" . $tabel . "</a>
           <a href='/stock' class='btn_main stock logout_btn'>" . $stats . "</a>
           <a href='/tombola' class='btn_main stock logout_btn'>" . $tombola . "</a>
-          <a href='/user/logout' class='btn_main stock logout_btn'>Logout</a>
-          <div class='text_content search_fil'>Sortare dupa filiala</div>
+          <a href='/user/logout' class='btn_main stock logout_btn'>".$logout."</a>
+          <div class='text_content search_fil'>".$sort."</div>
           <form method='post'>
              <select name='filiala_inp'>
-                 <option>Toate</option>
-                 <option>Chisinau</option>
-                 <option>Comrat</option>
-                 <option>Edinet</option>
-                 <option>Cahul</option>
-                 <option>Balti</option>
+                 <option>".$all."</option>
+                 <option>".$chis."</option>
+                 <option>".$comr."</option>
+                 <option>".$edinet."</option>
+                 <option>".$cahul."</option>
+                 <option>".$balt."</option>
              </select>
-             <input type='submit' name='filSearch' value='Cauta' class='btn_main action search_filiala'>
+             <input type='submit' name='filSearch' value='".$search."' class='btn_main action search_filiala'>
           </form>
           </div>";
     }
