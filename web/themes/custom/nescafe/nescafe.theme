@@ -1099,9 +1099,6 @@ TABLE;
                 }
             }
             if ($total > 0 && $total % 30 == 0 && $userID->final == 0) {
-              dump("total".$total);
-              dump("Total % 30".$total % 30);
-              dump("UserID->final".$userID->final);
                 $tombolaSuccess = "UPDATE promo_code SET final = 1, data = NOW() WHERE promocode = '" . $userID->promocode . "' AND final = 0 ";
                 if ($conn->query($tombolaSuccess)) {
                     print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_final' data-dialog-type='modal'>
