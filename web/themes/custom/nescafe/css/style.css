@@ -1013,7 +1013,7 @@ form .form-item label{
   display: none;
 }
 
-.account_wrapper.search_btn{
+.account_wrapper .search_btn{
   display: unset;
 }
 
