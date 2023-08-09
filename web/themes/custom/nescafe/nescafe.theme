@@ -240,7 +240,7 @@ function nescafe_preprocess_page(&$page)
             print "<div class='cookie " . $hidden . "'>
             <div class='cookie_box'>
               <div class='cookie_title'>
-                Мы используем файлы cookie
+                ".$cookie."
               </div>
               <div class='cookie_subtitle'>
                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard
