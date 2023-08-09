@@ -42,6 +42,7 @@
       let pass;
       let pass2;
       let confirm;
+      let reglament;
       let currLang = document.querySelector('.curr_lang_item').innerText;
 
       if(currLang == "RO"){
@@ -56,6 +57,7 @@
         login = "Înregistrare/Autentificare";
         reset = "Resetează parola";
         loginLink = "Înregistrare";
+        reglament = "Am luat cunoștință cu regulamentul";
       }else if (currLang == "RU"){
         label = "Создать новый аккаунт";
         name = "Фамилия";
@@ -67,6 +69,7 @@
         phone = "Номер телефона";
         login = "Регистрация/Вход";
         reset = "Восстановить пароль";
+        reglament = "Ознакомился с регламентом";
         loginLink = "Регистрация";
       }
       document.querySelector(".ui-dialog .ui-dialog-title").innerHTML = label;
@@ -79,6 +82,7 @@
       document.querySelector("#block-vkhodnasayt h2").innerHTML = login;
       document.querySelector("#login-link").innerHTML = loginLink;
       document.querySelector(".btn_reset_pass").innerHTML = reset;
+      document.querySelector(".reglamentAccept").innerHTML = reglament;
 
       document.querySelector('.user-login-form .js-form-item-name label').innerHTML = phone;
 
