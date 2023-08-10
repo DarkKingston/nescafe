@@ -657,6 +657,7 @@ form .form-item label{
   width: 70px;
   cursor: pointer;
   display: flex;
+  text-align: center;
   margin: 0 auto;
 }
 
