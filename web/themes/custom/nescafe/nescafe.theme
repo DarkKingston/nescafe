@@ -1169,7 +1169,7 @@ TABLE;
                                               </div>
                                          </form>
                                          ";
-              $updatePromo = "UPDATE promo_code SET premiu = '" . $_POST['premiu'] . "', livrare = '" . $_POST['filial'] . "' WHERE promocode = '" . $userID->promocode . "' AND status = 1 ";
+              $updatePromo = "UPDATE promo_code SET premiu = '" . $_POST['premiu'] . "', livrare = '" . $_POST['filial'] . "' WHERE promocode = '" . $userID->promocode . "' AND status = 10 ";
               if ($conn->query($updatePromo)) {
 
               }
@@ -1321,7 +1321,7 @@ TABLE;
                                               </div>
                                          </form>
                                          ";
-                $updatePromo = "UPDATE promo_code SET premiu = '" . $_POST['premiu'] . "', livrare = '" . $_POST['filial'] . "' WHERE promocode = '" . $userID->promocode . "' AND status = 1 ";
+                $updatePromo = "UPDATE promo_code SET premiu = '" . $_POST['premiu'] . "', livrare = '" . $_POST['filial'] . "' WHERE promocode = '" . $userID->promocode . "' AND status = 10 ";
                 if ($conn->query($updatePromo)) {
 
                 }
