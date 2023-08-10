@@ -53,7 +53,7 @@
         pass = "Parola";
         pass2 = "Confirmare parolă";
         confirm = "Verificare parolă:";
-        phone = "Numar de telefon";
+        phone = "Numărul de telefon";
         login = "Înregistrare/Autentificare";
         reset = "Resetează parola";
         loginLink = "Înregistrare";
