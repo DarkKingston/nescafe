@@ -119,6 +119,9 @@
       if(document.querySelector(".reg_accept")){
         document.querySelector('.reglament_accept').style.display = 'none';
       }
+      if ($('.popup_gift').length > 0) {
+        $('.nonactive_user').css('display', 'none');
+      }
     }
   };
 })(jQuery);
