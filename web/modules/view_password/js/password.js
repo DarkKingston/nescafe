@@ -8,7 +8,7 @@
 
   Drupal.behaviors.pwd = {
     attach(context) {
-      var span_classes_custom = drupalSettings.view_password.span_classes || '';
+      var span_classes_custom = 'password-field' || '';
 
       $(once('view_password_button', '.pwd-see [type=password]', context))
         .after(
