@@ -837,15 +837,19 @@ TABLE;
                                              <div class='center'>".$txt1. " ".$_POST['premiu']." ". $txt2 ." ".$_POST['filial']."</div>
                                              <div class='popup_gift_btns' style='display: flex;justify-content: center; text-align: center'>
                                              <input type='submit' name='acceptPrem' class='btn_main action' value='Da' style='margin-right: 5px;'>
-                                             <input type='reset' class='btn_main action' value='Nu'>
+                                             <input type='submit' name='ignorePrem' class='btn_main action' value='Nu'>
                                               </div>
                                          </form>
                                          ";
                   if(isset($_POST['acceptPrem'])){
                     $updatePromo = "UPDATE promo_code SET premiu = '" . $_POST['premiu'] . "', livrare = '" . $_POST['filial'] . "', status = 2 WHERE promocode = '" . $userID->promocode . "' AND premiu = '' AND livrare = '' ";
+                    dump($_POST['premiu']);
                     if ($conn->query($updatePromo)) {
                       header("Location: /account");
                     }
+                  }
+                  if(isset($_POST['ignorePrem'])){
+                    header("Location: /account");
                   }
                 }
 
@@ -973,7 +977,7 @@ TABLE;
                                              <div class='center'>".$txt1. " ".$_POST['premiu']." ". $txt2 ." ".$_POST['filial']."</div>
                                              <div class='popup_gift_btns' style='display: flex;justify-content: center; text-align: center'>
                                              <input type='submit' name='acceptPrem' class='btn_main action' value='Da' style='margin-right: 5px;'>
-                                             <input type='reset' class='btn_main action' value='Nu'>
+                                             <input type='submit' name='ignorePrem' class='btn_main action' value='Nu'>
                                               </div>
                                          </form>
                                          ";
@@ -982,6 +986,9 @@ TABLE;
                                           if ($conn->query($updatePromo)) {
                                             header("Location: /account");
                                           }
+                                        }
+                                        if(isset($_POST['ignorePrem'])){
+                                          header("Location: /account");
                                         }
                                       }
                                     }
@@ -1132,7 +1139,7 @@ TABLE;
                                              <div class='center'>".$txt1. " ".$_POST['premiu']." ". $txt2 ." ".$_POST['filial']."</div>
                                              <div class='popup_gift_btns' style='display: flex;justify-content: center; text-align: center'>
                                              <input type='submit' name='acceptPrem' class='btn_main action' value='Da' style='margin-right: 5px;'>
-                                             <input type='reset' class='btn_main action' value='Nu'>
+                                             <input type='submit' name='ignorePrem' class='btn_main action' value='Nu'>
                                               </div>
                                          </form>
                                          ";
@@ -1142,6 +1149,9 @@ TABLE;
                  header("Location: /account");
                }
              }
+              if(isset($_POST['ignorePrem'])){
+                header("Location: /account");
+              }
             }
           }
           else if ($total > 10 && $total % 7 != 0) {
@@ -1270,7 +1280,7 @@ TABLE;
                                              <div class='center'>".$txt1. " ".$_POST['premiu']." ". $txt2 ." ".$_POST['filial']."</div>
                                              <div class='popup_gift_btns' style='display: flex;justify-content: center; text-align: center'>
                                              <input type='submit' name='acceptPrem' class='btn_main action' value='Da' style='margin-right: 5px;'>
-                                             <input type='reset' class='btn_main action' value='Nu'>
+                                             <input type='submit' name='ignorePrem' class='btn_main action' value='Nu'>
                                               </div>
                                          </form>
                                          ";
@@ -1279,6 +1289,9 @@ TABLE;
                   if ($conn->query($updatePromo)) {
                     header("Location: /account");
                   }
+                }
+                if(isset($_POST['ignorePrem'])){
+                  header("Location: /account");
                 }
               }
             }
