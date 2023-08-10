@@ -164,7 +164,7 @@ function nescafe_preprocess_page(&$page)
   $curr_id_for_user = \Drupal::currentUser()->id();
   $user = User::load(40);
 
-  $sql = "SELECT * FROM user__field_active_account WHERE entity_id = 41 LIMIT 1";
+  $sql = "SELECT * FROM user__field_active_account WHERE entity_id = 40 LIMIT 1";
   $resultSql = $conn->query($sql);
   foreach ($resultSql as $record) {
     if (empty($record)) {
@@ -178,7 +178,7 @@ function nescafe_preprocess_page(&$page)
 // Сохранение сущности пользователя.
       $user->save();
 
-    } else {
+    } else {dump($record);
       // Поле field_active_account присутствует у пользователя.
       // Вы можете выполнить необходимые действия здесь.
       echo 'tat ok account active';
