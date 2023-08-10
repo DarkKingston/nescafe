@@ -72,43 +72,43 @@
         reglament = "Ознакомился с регламентом";
         loginLink = "Регистрация";
       }
-      if(document.querySelector('.user-login-form .js-form-item-name label')){
+      if(document.querySelector('.user-login-form .js-form-item-name label') != null){
         document.querySelector('.user-login-form .js-form-item-name label').innerHTML = phone;
       }
-      if(document.querySelector('.user-register-form .js-form-item-name label')){
+      if(document.querySelector('.user-register-form .js-form-item-name label') != null){
         document.querySelector('.user-register-form .js-form-item-name label').innerHTML = phone;
       }
-      if(document.querySelector(".ui-dialog .ui-dialog-title")){
+      if(document.querySelector(".ui-dialog .ui-dialog-title") != null){
         document.querySelector(".ui-dialog .ui-dialog-title").innerHTML = label;
       }
-      if(document.querySelector(".field--name-field-name label")){
+      if(document.querySelector(".field--name-field-name label") != null){
         document.querySelector(".field--name-field-name label").innerHTML = name;
       }
-      if(document.querySelector(".field--name-field-lastname label")){
+      if(document.querySelector(".field--name-field-lastname label") != null){
         document.querySelector(".field--name-field-lastname label").innerHTML = email;
       }
-      if(document.querySelector(".form-item-mail label")){
+      if(document.querySelector(".form-item-mail label") != null){
         document.querySelector(".form-item-mail label").innerHTML = last_name;
       }
-      if(document.querySelector(".form-item-pass label")){
+      if(document.querySelector(".form-item-pass label") != null){
         document.querySelector(".form-item-pass label").innerHTML = pass;
       }
-      if(document.querySelector(".form-item-pass-pass2 label")){
+      if(document.querySelector(".form-item-pass-pass2 label") != null){
         document.querySelector(".form-item-pass-pass2 label").innerHTML = pass2;
       }
-      if(document.querySelector(".password-confirm-message")){
+      if(document.querySelector(".password-confirm-message") != null){
         document.querySelector(".password-confirm-message").innerHTML = confirm;
       }
-      if(document.querySelector("#block-vkhodnasayt h2")){
+      if(document.querySelector("#block-vkhodnasayt h2") != null){
         document.querySelector("#block-vkhodnasayt h2").innerHTML = login;
       }
-      if(document.querySelector("#login-link")){
+      if(document.querySelector("#login-link") != null){
         document.querySelector("#login-link").innerHTML = loginLink;
       }
-      if(document.querySelector(".btn_reset_pass")){
+      if(document.querySelector(".btn_reset_pass") != null){
         document.querySelector(".btn_reset_pass").innerHTML = reset;
       }
-      if(document.querySelector(".reglamentAccept")){
+      if(document.querySelector(".reglamentAccept") != null){
         document.querySelector(".reglamentAccept").innerHTML = reglament;
       }
 
