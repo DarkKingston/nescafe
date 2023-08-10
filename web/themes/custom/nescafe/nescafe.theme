@@ -173,15 +173,17 @@ function nescafe_preprocess_page(&$page)
   }
   if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru') {
     $codeSubmit = "Введите код из SMS";
+    $errSubmit = "Вы ввели неправильный код";
   }
   if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro') {
     $codeSubmit = "Introduceți codul din SMS";
+    $errSubmit = "Ați introdus cod greșit";
   }
     if ($counter == 0) {
         print "<form method='post' class='nonactive_user'>
                     <div class=''>".$codeSubmit."</div>
                     <input type='text' placeholder='code' name='code_name'>
-                    <input type='submit' style='display:flex; justify-content: center;' name='code_submit' value='Submit' onclick='closePopup()' class='btn_main action search_filiala form_btn'>
+                    <input type='submit' style='display:flex; justify-content: center;' name='verify_submit' value='Submit' onclick='closePopup()' class='btn_main action search_filiala form_btn'>
                </form>";
         $code = rand(1000, 9999);
         $_SESSION['code'] = $code;
@@ -202,7 +204,7 @@ function nescafe_preprocess_page(&$page)
         $_SESSION['id_user'] = $id;
 
 
-      if(isset($_POST['code_submit'])){
+      if(isset($_POST['verify_submit'])){
 
         if ($_POST['code_name'] == $_SESSION['code']) {
           $user = User::load($curr_id_for_user);
@@ -211,6 +213,12 @@ function nescafe_preprocess_page(&$page)
           header("Location: /account");
         }
 
+      }else{
+        print "<form method='post' class='nonactive_user'>
+                    <div class=''>".$errSubmit."</div>
+                    <input type='text' placeholder='code' name='code_name'>
+                    <input type='submit' style='display:flex; justify-content: center;' name='verify_submit' value='Submit' class='btn_main action search_filiala form_btn'>
+               </form>";
       }
 
 
