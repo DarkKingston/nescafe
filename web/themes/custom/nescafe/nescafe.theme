@@ -179,7 +179,7 @@ function nescafe_preprocess_page(&$page)
     $codeSubmit = "Introduceți codul din SMS";
     $errSubmit = "Ați introdus cod greșit";
   }
-    if ($counter == 0) {
+    if ($counter == 0 && $curr_id_for_user != 0) {
         print "<form method='post' class='nonactive_user'>
                     <div class=''>".$codeSubmit."</div>
                     <input type='text' placeholder='code' name='code_name'>
@@ -211,14 +211,14 @@ function nescafe_preprocess_page(&$page)
           $user->set('field_active_account', 1);
           $user->save();
           header("Location: /account");
-        }
-
-      }else{
-        print "<form method='post' class='nonactive_user'>
+        }else{
+          print "<form method='post' class='nonactive_user'>
                     <div class=''>".$errSubmit."</div>
                     <input type='text' placeholder='code' name='code_name'>
                     <input type='submit' style='display:flex; justify-content: center;' name='verify_submit' value='Submit' class='btn_main action search_filiala form_btn'>
                </form>";
+        }
+
       }
 
 
