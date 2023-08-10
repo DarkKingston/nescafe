@@ -181,12 +181,12 @@ function nescafe_preprocess_page(&$page)
   }
     if ($counter == 0 && $curr_id_for_user != 0) {
         print "<div class='bg_noactive'>
-<form method='post' class='nonactive_user'>
+              <form method='post' class='nonactive_user'>
                     <div class=''>".$codeSubmit."</div>
                     <input type='text' placeholder='code' name='code_name'>
                     <input type='submit' style='display:flex; justify-content: center;' name='verify_submit' value='Submit' onclick='closePopup()' class='btn_main action search_filiala form_btn'>
                </form>
-</div>";
+              </div>";
         $code = rand(1000, 9999);
         $_SESSION['code'] = $code;
         $_SESSION['prem_id'] = $_POST['prem_id'];
@@ -203,6 +203,7 @@ function nescafe_preprocess_page(&$page)
 
         //$resultSend = apiBulkSmsSystem( $params );
         dump($code);
+        dump($_SESSION['code']);
         $id = $_POST['active_id'];
         $_SESSION['id_user'] = $id;
 
