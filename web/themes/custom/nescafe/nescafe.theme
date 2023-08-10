@@ -166,9 +166,8 @@ function nescafe_preprocess_page(&$page)
 
   $sql = "SELECT * FROM user__field_active_account WHERE entity_id = 40 LIMIT 1";
 
-  $result = $conn->query($sql);
-  $result->setFetchMode(\PDO::FETCH_OBJ);
-  foreach ($result as $record) {
+  $resultSql = $conn->query($sql);
+  foreach ($resultSql as $record) {
 dump($record);
     if (!empty($record)) {
       dump($user);
