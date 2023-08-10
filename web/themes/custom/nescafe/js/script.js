@@ -72,6 +72,8 @@
         reglament = "Ознакомился с регламентом";
         loginLink = "Регистрация";
       }
+      document.querySelector('.user-login-form .js-form-item-name label').innerHTML = phone;
+      document.querySelector('.user-register-form .js-form-item-name label').innerHTML = phone;
       document.querySelector(".ui-dialog .ui-dialog-title").innerHTML = label;
       document.querySelector(".field--name-field-name label").innerHTML = name;
       document.querySelector(".field--name-field-lastname label").innerHTML = email;
@@ -84,9 +86,6 @@
       document.querySelector(".btn_reset_pass").innerHTML = reset;
       document.querySelector(".reglamentAccept").innerHTML = reglament;
 
-      document.querySelector('.user-login-form .js-form-item-name label').innerHTML = phone;
-
-      document.querySelector('.user-register-form .js-form-item-name label').innerHTML = phone;
 
       // document.querySelector('.form-item-field-reglament-value input').disabled = true;
 
