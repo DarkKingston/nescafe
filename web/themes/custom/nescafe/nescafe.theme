@@ -841,6 +841,7 @@ TABLE;
                                               </div>
                                          </form>
                                          ";
+                  dump($_POST);
                   if(isset($_POST['acceptPrem'])){
                     $updatePromo = "UPDATE promo_code SET premiu = '" . $_POST['premiu'] . "', livrare = '" . $_POST['filial'] . "', status = 2 WHERE promocode = '" . $userID->promocode . "' AND premiu = '' AND livrare = '' ";
                     dump($_POST['premiu']);
@@ -980,7 +981,7 @@ TABLE;
                                              <input type='submit' name='ignorePrem' class='btn_main action' value='Nu'>
                                               </div>
                                          </form>
-                                         ";
+                                         ";dump($_POST);
                                         if(isset($_POST['acceptPrem'])){
                                           $updatePromo = "UPDATE promo_code SET premiu = '" . $_POST['premiu'] . "', livrare = '" . $_POST['filial'] . "', status = 2 WHERE promocode = '" . $userID->promocode . "' AND premiu = '' AND livrare = '' ";
                                           dump($_POST['premiu']);
