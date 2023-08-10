@@ -983,6 +983,7 @@ TABLE;
                                          ";
                                         if(isset($_POST['acceptPrem'])){
                                           $updatePromo = "UPDATE promo_code SET premiu = '" . $_POST['premiu'] . "', livrare = '" . $_POST['filial'] . "', status = 2 WHERE promocode = '" . $userID->promocode . "' AND premiu = '' AND livrare = '' ";
+                                          dump($_POST['premiu']);
                                           if ($conn->query($updatePromo)) {
 
                                           }
