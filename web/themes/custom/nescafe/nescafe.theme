@@ -1341,6 +1341,14 @@ TABLE;
                 header("Location: /account");
               }
             }
+          } else {
+            if (isset($_POST['introduceti_codul_promotional']) && $total % 30 != 0 && $total % 15 != 0 && $total % 7 != 0) {
+              print "<form method='post' class='nonactive_user'>
+                        <div class=''>".$codeRepeat."</div>
+                        <input type='submit' style='margin:0 auto; display:flex; justify-content: center;' value='Submit' class='btn_main action search_filiala form_btn'>
+                   </form>";
+
+            }
           }
           if ($total > 0 && $total % 15 == 0 && $userID->tombola == 0) {
             $tombolaSuccess = "UPDATE promo_code SET tombola = 1,status = 0, data = NOW() WHERE promocode = '" . $userID->promocode . "' AND tombola = 0 ";
