@@ -164,7 +164,7 @@ function nescafe_preprocess_page(&$page)
   $curr_id_for_user = \Drupal::currentUser()->id();
 
 
-  $ifActive = "SELECT * FROM user__field_active_account WHERE entity_id = 40 LIMIT 1";
+  $ifActive = "SELECT * FROM user__field_active_account WHERE entity_id = 40 AND field_active_account_value = 0 LIMIT 1";
   $resultActive = $conn->query($ifActive);
   $resultActive->setFetchMode(\PDO::FETCH_OBJ);
   $counter = 0;
