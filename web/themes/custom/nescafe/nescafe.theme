@@ -799,7 +799,14 @@ TABLE;
                         }
                         //dump($arrUnique);
                         //dump($arrShow);
+                      if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru') {
+                        $label = "Выберите приз из списка ниже";
+                      }
+                      if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro') {
+                        $label = "Alege premiul din lista de mai jos";
+                      }
                         print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_gift' data-dialog-type='modal'>
+                                                                    ".$label."
                                                                     <div class='popup_images'>
                                                                         " . $arrImg . "
                                                                     </div>
@@ -911,8 +918,14 @@ TABLE;
                                                                         $option .= " <option>" . $arrVal . "</option> ";
                                                                     }
                                                                 }
-
+                                      if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru') {
+                                        $label = "Выберите приз из списка ниже";
+                                      }
+                                      if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro') {
+                                        $label = "Alege premiul din lista de mai jos";
+                                      }
                         print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_gift' data-dialog-type='modal'>
+                                                ".$label."
                                                 <div class='popup_images'>
                                                     " . $arrImg . "
                                                 </div>
@@ -1038,7 +1051,14 @@ TABLE;
                     $option .= " <option>" . $arrVal . "</option> ";
                   }
                   //dump($arrUnique);
+                  if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru') {
+                    $label = "Выберите приз из списка ниже";
+                  }
+                  if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro') {
+                    $label = "Alege premiul din lista de mai jos";
+                  }
                   print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_gift' data-dialog-type='modal'>
+".$label."
                                                                                                                                 <div class='popup_images'>
                                                                                                                                     " . $arrImg . "
                                                                                                                                 </div>
@@ -1152,8 +1172,14 @@ TABLE;
                   $option .= " <option>" . $arrVal . "</option> ";
                 }
                 //dump($arrUnique);
+                if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru') {
+                  $label = "Выберите приз из списка ниже";
+                }
+                if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro') {
+                  $label = "Alege premiul din lista de mai jos";
+                }
                 print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_gift' data-dialog-type='modal'>
-
+                                                                                    ".$label."
                                                                                    <div class='popup_images'>
                                                                                     " . $arrImg . "
                                                                                    </div>
