@@ -827,8 +827,10 @@ TABLE;
                 if (isset($_POST['submitGift'])) {
                   print "<form class='popup_gift'>
                                              <div class='center'>Sunteti siguri ca ati ales premiul ".$_POST['premiu']." si sa fie ridicat la filiala ".$_POST['filial']."</div>
-                                             <input type='submit' name='acceptPrem' class='btn_main action closePopup' value='Da'>
-                                             <input type='sumbit' class='btn_main action closePopup' value='Nu'>
+                                             <div class='popup_gift_btns' style='display: flex;justify-content: center; text-align: center'>
+                                             <input type='submit' name='acceptPrem' class='btn_main action' value='Da' style='margin-right: 5px;'>
+                                             <input type='sumbit' class='btn_main action' value='Nu'>
+                                              </div>
                                          </form>
                                          ";
                   if(isset($_POST['acceptPrem'])){
@@ -953,8 +955,10 @@ TABLE;
                                       if (isset($_POST['submitGift'])) {
                                         print "<form class='popup_gift'>
                                              <div class='center'>Sunteti siguri ca ati ales premiul ".$_POST['premiu']." si sa fie ridicat la filiala ".$_POST['filial']."</div>
-                                             <input type='submit' name='acceptPrem' class='btn_main action closePopup' value='Da'>
-                                             <input type='sumbit' class='btn_main action closePopup' value='Nu'>
+                                             <div class='popup_gift_btns' style='display: flex;justify-content: center; text-align: center'>
+                                             <input type='submit' name='acceptPrem' class='btn_main action' value='Da' style='margin-right: 5px;'>
+                                             <input type='sumbit' class='btn_main action' value='Nu'>
+                                              </div>
                                          </form>
                                          ";
                                         if(isset($_POST['acceptPrem'])){
@@ -1102,8 +1106,10 @@ TABLE;
             if (isset($_POST['submitGift'])) {
               print "<form class='popup_gift'>
                                              <div class='center'>Sunteti siguri ca ati ales premiul ".$_POST['premiu']." si sa fie ridicat la filiala ".$_POST['filial']."</div>
-                                             <input type='submit' name='acceptPrem' class='btn_main action closePopup' value='Da'>
-                                             <input type='sumbit' class='btn_main action closePopup' value='Nu'>
+                                             <div class='popup_gift_btns' style='display: flex;justify-content: center; text-align: center'>
+                                             <input type='submit' name='acceptPrem' class='btn_main action' value='Da' style='margin-right: 5px;'>
+                                             <input type='sumbit' class='btn_main action' value='Nu'>
+                                              </div>
                                          </form>
                                          ";
              if(isset($_POST['acceptPrem'])){
@@ -1229,10 +1235,12 @@ TABLE;
               //dump($arrShow);
 
               if (isset($_POST['submitGift'])) {
-                print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_gift' data-dialog-type='modal'>
+                print "<form class='popup_gift'>
                                              <div class='center'>Sunteti siguri ca ati ales premiul ".$_POST['premiu']." si sa fie ridicat la filiala ".$_POST['filial']."</div>
-                                             <input type='submit' name='acceptPrem' class='btn_main action closePopup' value='Da'>
-                                             <input type='sumbit' class='btn_main action closePopup' value='Nu'>
+                                             <div class='popup_gift_btns' style='display: flex;justify-content: center; text-align: center'>
+                                             <input type='submit' name='acceptPrem' class='btn_main action' value='Da' style='margin-right: 5px;'>
+                                             <input type='sumbit' class='btn_main action' value='Nu'>
+                                              </div>
                                          </form>
                                          ";
                 if(isset($_POST['acceptPrem'])){
