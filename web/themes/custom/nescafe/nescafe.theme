@@ -833,7 +833,7 @@ TABLE;
                   $txt2 = "și ridicarea la filiala";
                 }
                 if (isset($_POST['submitGift'])) {
-                  print "<form class='popup_gift'>
+                  print "<form method='POST' class='popup_gift'>
                                              <div class='center'>".$txt1. " ".$_POST['premiu']." ". $txt2 ." ".$_POST['filial']."</div>
                                              <div class='popup_gift_btns' style='display: flex;justify-content: center; text-align: center'>
                                              <input type='submit' name='acceptPrem' class='btn_main action' value='Da' style='margin-right: 5px;'>
@@ -844,7 +844,7 @@ TABLE;
                   if(isset($_POST['acceptPrem'])){
                     $updatePromo = "UPDATE promo_code SET premiu = '" . $_POST['premiu'] . "', livrare = '" . $_POST['filial'] . "', status = 2 WHERE promocode = '" . $userID->promocode . "' AND premiu = '' AND livrare = '' ";
                     if ($conn->query($updatePromo)) {
-                      //echo "ok";
+                      header("Location: /account");
                     }
                   }
                 }
@@ -969,7 +969,7 @@ TABLE;
                                         $txt2 = "și ridicarea la filiala";
                                       }
                                       if (isset($_POST['submitGift'])) {
-                                        print "<form class='popup_gift'>
+                                        print "<form method='POST' class='popup_gift'>
                                              <div class='center'>".$txt1. " ".$_POST['premiu']." ". $txt2 ." ".$_POST['filial']."</div>
                                              <div class='popup_gift_btns' style='display: flex;justify-content: center; text-align: center'>
                                              <input type='submit' name='acceptPrem' class='btn_main action' value='Da' style='margin-right: 5px;'>
@@ -980,7 +980,7 @@ TABLE;
                                         if(isset($_POST['acceptPrem'])){
                                           $updatePromo = "UPDATE promo_code SET premiu = '" . $_POST['premiu'] . "', livrare = '" . $_POST['filial'] . "', status = 2 WHERE promocode = '" . $userID->promocode . "' AND premiu = '' AND livrare = '' ";
                                           if ($conn->query($updatePromo)) {
-                                            //echo "ok";
+                                            header("Location: /account");
                                           }
                                         }
                                       }
@@ -1096,7 +1096,7 @@ TABLE;
                     $label = "Alege premiul din lista de mai jos";
                     $confirm = "Alege";
                   }
-                  print "<form class='popup_gift'>
+                  print "<form method='POST' class='popup_gift'>
 ".$label."
                                                                                                                                 <div class='popup_images'>
                                                                                                                                     " . $arrImg . "
@@ -1128,7 +1128,7 @@ TABLE;
               $txt2 = "și ridicarea la filiala";
             }
             if (isset($_POST['submitGift'])) {
-              print "<form class='popup_gift'>
+              print "<form method='POST' class='popup_gift'>
                                              <div class='center'>".$txt1. " ".$_POST['premiu']." ". $txt2 ." ".$_POST['filial']."</div>
                                              <div class='popup_gift_btns' style='display: flex;justify-content: center; text-align: center'>
                                              <input type='submit' name='acceptPrem' class='btn_main action' value='Da' style='margin-right: 5px;'>
@@ -1139,7 +1139,7 @@ TABLE;
              if(isset($_POST['acceptPrem'])){
                $updatePromo = "UPDATE promo_code SET premiu = '" . $_POST['premiu'] . "', livrare = '" . $_POST['filial'] . "', status = 2 WHERE promocode = '" . $userID->promocode . "' AND premiu = '' AND livrare = '' ";
                if ($conn->query($updatePromo)) {
-                 //echo "ok";
+                 header("Location: /account");
                }
              }
             }
@@ -1277,7 +1277,7 @@ TABLE;
                 if(isset($_POST['acceptPrem'])){
                   $updatePromo = "UPDATE promo_code SET premiu = '" . $_POST['premiu'] . "', livrare = '" . $_POST['filial'] . "', status = 2 WHERE promocode = '" . $userID->promocode . "' AND premiu = '' AND livrare = '' ";
                   if ($conn->query($updatePromo)) {
-                    //echo "ok";
+                    header("Location: /account");
                   }
                 }
               }
