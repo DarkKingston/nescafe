@@ -162,28 +162,24 @@ function nescafe_preprocess_page(&$page)
   ]);
 
   $curr_id_for_user = \Drupal::currentUser()->id();
-  $user = User::load(40);
+
 
   $sql = "SELECT * FROM user__field_active_account WHERE entity_id = 40 LIMIT 1";
   $resultSql = $conn->query($sql);
+  $counter = 0;
   foreach ($resultSql as $record) {
-    if (empty($record)) {
-      dump($user);dump($record);
-      // Загрузка сущности пользователя по ID.
-      // Замените $user_id на фактический ID пользователя.
-
-// Установка значения поля field_active_account.
+    $counter++;
+  }
+    if ($counter == 0) {
+      $user = User::load(40);
       $user->set('field_active_account', 1);
-
-// Сохранение сущности пользователя.
       $user->save();
-
-    } else {dump($record);
+    } else {
       // Поле field_active_account присутствует у пользователя.
       // Вы можете выполнить необходимые действия здесь.
       echo 'tat ok account active';
     }
-  }
+
 
 
     //dump($page);
