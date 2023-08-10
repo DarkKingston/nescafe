@@ -845,7 +845,7 @@ TABLE;
                     $updatePromo = "UPDATE promo_code SET premiu = '" . $_POST['premiu'] . "', livrare = '" . $_POST['filial'] . "', status = 2 WHERE promocode = '" . $userID->promocode . "' AND premiu = '' AND livrare = '' ";
                     dump($_POST['premiu']);
                     if ($conn->query($updatePromo)) {
-                      header("Location: /account");
+
                     }
                   }
                   if(isset($_POST['ignorePrem'])){
@@ -984,7 +984,7 @@ TABLE;
                                         if(isset($_POST['acceptPrem'])){
                                           $updatePromo = "UPDATE promo_code SET premiu = '" . $_POST['premiu'] . "', livrare = '" . $_POST['filial'] . "', status = 2 WHERE promocode = '" . $userID->promocode . "' AND premiu = '' AND livrare = '' ";
                                           if ($conn->query($updatePromo)) {
-                                            header("Location: /account");
+
                                           }
                                         }
                                         if(isset($_POST['ignorePrem'])){
@@ -1146,7 +1146,7 @@ TABLE;
              if(isset($_POST['acceptPrem'])){
                $updatePromo = "UPDATE promo_code SET premiu = '" . $_POST['premiu'] . "', livrare = '" . $_POST['filial'] . "', status = 2 WHERE promocode = '" . $userID->promocode . "' AND premiu = '' AND livrare = '' ";
                if ($conn->query($updatePromo)) {
-                 header("Location: /account");
+
                }
              }
               if(isset($_POST['ignorePrem'])){
@@ -1287,7 +1287,7 @@ TABLE;
                 if(isset($_POST['acceptPrem'])){
                   $updatePromo = "UPDATE promo_code SET premiu = '" . $_POST['premiu'] . "', livrare = '" . $_POST['filial'] . "', status = 2 WHERE promocode = '" . $userID->promocode . "' AND premiu = '' AND livrare = '' ";
                   if ($conn->query($updatePromo)) {
-                    header("Location: /account");
+
                   }
                 }
                 if(isset($_POST['ignorePrem'])){
