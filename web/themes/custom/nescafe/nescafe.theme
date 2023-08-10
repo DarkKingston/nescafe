@@ -1176,7 +1176,7 @@ TABLE;
 
             }
             if(isset($_POST['acceptPrem'])){
-              $updatePromo = "UPDATE promo_code SET status = 2 WHERE active = '" . $curr_id_for_user . "' AND status=1";
+              $updatePromo = "UPDATE promo_code SET status = 2 WHERE active = '" . $curr_id_for_user . "' AND status=10";
 
               if ($conn->query($updatePromo)) {
 
@@ -1328,7 +1328,7 @@ TABLE;
 
               }
               if(isset($_POST['acceptPrem'])){
-                $updatePromo = "UPDATE promo_code SET status = 2 WHERE active = '" . $curr_id_for_user . "' AND status=1";
+                $updatePromo = "UPDATE promo_code SET status = 2 WHERE active = '" . $curr_id_for_user . "' AND status=10";
 
                 if ($conn->query($updatePromo)) {
 
