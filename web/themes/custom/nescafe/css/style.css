@@ -1026,6 +1026,16 @@ form .form-item label{
   display: none;
 }
 
+.bg_noactive{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
 .week{
   margin-top: 10px;
   font-size: 22px;
