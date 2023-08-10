@@ -1017,7 +1017,7 @@ TABLE;
                                       }
                                     }
                 } else {
-                    if (isset($_POST['introduceti_codul_promotional']) && $userID->status == 2) {
+                    if (isset($_POST['introduceti_codul_promotional']) && $total % 30 != 0 && $total % 15 != 0 && $total % 7 != 0) {
                         print "<form method='post' class='nonactive_user'>
                         <div class=''>".$codeRepeat."</div>
                         <input type='submit' style='margin:0 auto; display:flex; justify-content: center;' value='Submit' class='btn_main action search_filiala form_btn'>
@@ -1342,7 +1342,7 @@ TABLE;
               }
             }
           } else {
-            if (isset($_POST['introduceti_codul_promotional'])  && $userID->status == 2) {
+            if (isset($_POST['introduceti_codul_promotional']) && $total % 30 != 0 && $total % 15 != 0 && $total % 7 != 0) {
               print "<form method='post' class='nonactive_user'>
                         <div class=''>".$codeRepeat."</div>
                         <input type='submit' style='margin:0 auto; display:flex; justify-content: center;' value='Submit' class='btn_main action search_filiala form_btn'>
