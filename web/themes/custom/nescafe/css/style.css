@@ -1028,3 +1028,13 @@ form .form-item label{
 .messages--error{
   display: none !important;
 }
+
+form .form-item {
+  position: relative;
+}
+
+button.shwpd{
+  position: absolute;
+  left: 300px;
+  top: 40px;
+}
