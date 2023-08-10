@@ -147,19 +147,39 @@ function nescafe_preprocess_menu__header_btn(&$logged)
 
 function nescafe_preprocess_page(&$page)
 {
+  $roles = \Drupal::currentUser()->getRoles();
 
 
-// Загрузка сущности пользователя по ID.
-  $user = User::load(40); // Замените $user_id на фактический ID пользователя.
+  $config = new Config();
 
-// Проверка наличия поля field_active_account.
-  if ($user->hasField('field_active_account')) {
+  $credentials = $config->credentials('database');
+
+  $dsn = sprintf('mysql:host=%s;port=%d;dbname=%s', $credentials['host'], $credentials['port'], $credentials['path']);
+  $conn = new \PDO($dsn, $credentials['username'], $credentials['password'], [
+    \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
+    \PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => TRUE,
+    \PDO::MYSQL_ATTR_FOUND_ROWS => TRUE,
+  ]);
+
+  $curr_id_for_user = \Drupal::currentUser()->id();
+  $user = User::load(40);
+
+  $sql = "SELECT * FROM user__field_active_account WHERE entity_id = 40 ";
+
+  $result = $conn->query($sql);
+  $result->setFetchMode(\PDO::FETCH_OBJ);
+
+  if (!$result) {
+    dump($user);
+    // Загрузка сущности пользователя по ID.
+    // Замените $user_id на фактический ID пользователя.
 
 // Установка значения поля field_active_account.
     $user->set('field_active_account', 1);
 
 // Сохранение сущности пользователя.
     $user->save();
+
   } else {
     // Поле field_active_account присутствует у пользователя.
     // Вы можете выполнить необходимые действия здесь.
@@ -168,21 +188,7 @@ function nescafe_preprocess_page(&$page)
 
 
     //dump($page);
-    $roles = \Drupal::currentUser()->getRoles();
 
-
-    $config = new Config();
-
-    $credentials = $config->credentials('database');
-
-    $dsn = sprintf('mysql:host=%s;port=%d;dbname=%s', $credentials['host'], $credentials['port'], $credentials['path']);
-    $conn = new \PDO($dsn, $credentials['username'], $credentials['password'], [
-        \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
-        \PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => TRUE,
-        \PDO::MYSQL_ATTR_FOUND_ROWS => TRUE,
-    ]);
-
-    $curr_id_for_user = \Drupal::currentUser()->id();
     if (!in_array('player', $roles) && !in_array('administrator', $roles) && !in_array('manager_filiala', $roles)) {
         $role_id = 'player';
 
