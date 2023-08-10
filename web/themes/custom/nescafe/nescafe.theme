@@ -472,15 +472,15 @@ function nescafe_preprocess_region__account(&$elem)
                 $promo = 'Промо код';
                 $number = 'Выйгрыш';
                 $filial = 'Филиал';
-                $send = 'отправить';
-                $intro = 'Введите промокод';
+                $send = 'Проверить';
+                $intro = 'Вводите промо-код';
             }
             if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro') {
                 $promo = 'Codul Promotional';
                 $number = 'Premiu';
                 $filial = 'Filiala';
-                $send = 'Trimite';
-                $intro = 'Introduceti codul promotional';
+                $send = 'Verifică';
+                $intro = 'Întroduceți codul promoțional';
             }
 
             /*Обычный пользователь Вывод промокодов который он вводил*/
