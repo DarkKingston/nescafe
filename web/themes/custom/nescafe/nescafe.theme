@@ -211,6 +211,7 @@ function nescafe_preprocess_page(&$page)
                   $user = User::load($curr_id_for_user);
                   $user->set('field_active_account', 1);
                   $user->save();
+                  unset($_SESSION["code"]);
                   header("Location: /account");
                 }else{
                   print "<div class='bg_noactive'>
