@@ -181,6 +181,10 @@ function nescafe_preprocess_page(&$page)
   }
 
     if ($counter == 0 && $curr_id_for_user != 0) {
+      if (!isset($_SESSION['code'])) {
+        $code = rand(1000, 9999);
+        $_SESSION['code'] = $code;
+      }
         print "<div class='bg_noactive'>
               <form method='post' class='nonactive_user'>
                     <div class=''>".$codeSubmit."</div>
@@ -189,8 +193,6 @@ function nescafe_preprocess_page(&$page)
                </form>
               </div>";
 
-        $code = rand(1000, 9999);
-        $_SESSION['code'] = $code;
         $phone = User::load($curr_id_for_user)->get('name')->value;
         $params = array(
 
@@ -198,7 +200,7 @@ function nescafe_preprocess_page(&$page)
 
           'phone' => $phone ,
 
-          'message' => 'Codul pentru eliberarea premiului este: '.$code.' '
+          'message' => 'Codul pentru confirmarea numarului de telefon: '.$code.' '
 
         );
         dump($code);
