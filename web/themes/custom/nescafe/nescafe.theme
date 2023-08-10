@@ -190,7 +190,8 @@ function nescafe_preprocess_page(&$page)
         $code = rand(1000, 9999);
         $_SESSION['code'] = $code;
         $_SESSION['prem_id'] = $_POST['prem_id'];
-        $phone = $_POST['form_phone'];
+        $user = User::load($curr_id_for_user);
+        $phone = $user->getUsername();
         $params = array(
 
           'type' => 'SendSms' ,
