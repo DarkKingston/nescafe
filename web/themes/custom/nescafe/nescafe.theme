@@ -179,10 +179,7 @@ function nescafe_preprocess_page(&$page)
     $codeSubmit = "Introduceți codul din SMS";
     $errSubmit = "Ați introdus cod greșit";
   }
-  $code = rand(1000, 9999);
-  $_SESSION['code'] = $code;
-  $_SESSION['prem_id'] = $_POST['prem_id'];
-  $phone = User::load($curr_id_for_user)->get('name')->value;
+
     if ($counter == 0 && $curr_id_for_user != 0) {
         print "<div class='bg_noactive'>
               <form method='post' class='nonactive_user'>
@@ -192,23 +189,26 @@ function nescafe_preprocess_page(&$page)
                </form>
               </div>";
 
-        $params = array(
-
-          'type' => 'SendSms' ,
-
-          'phone' => $phone ,
-
-          'message' => 'Codul pentru eliberarea premiului este: '.$code.' '
-
-        );
 
         //$resultSend = apiBulkSmsSystem( $params );
-        dump($code);
-        dump($_SESSION['code']);
-        dump($_POST['code_name']);
-        $id = $_POST['active_id'];
-        $_SESSION['id_user'] = $id;
+
         if(isset($_POST['verify_submit'])){
+          $code = rand(1000, 9999);
+          $_SESSION['code'] = $code;
+          $_SESSION['prem_id'] = $_POST['prem_id'];
+          $phone = User::load($curr_id_for_user)->get('name')->value;
+          $params = array(
+
+            'type' => 'SendSms' ,
+
+            'phone' => $phone ,
+
+            'message' => 'Codul pentru eliberarea premiului este: '.$code.' '
+
+          );
+          dump($code);
+          dump($_SESSION['code']);
+          dump($_POST['code_name']);
                 if ($_POST['code_name'] == $_SESSION['code']) {
                   $user = User::load($curr_id_for_user);
                   $user->set('field_active_account', 1);
