@@ -162,6 +162,8 @@ function nescafe_preprocess_page(&$page)
 // Сохранение сущности пользователя.
     $user->save();
   } else {
+    // Поле field_active_account присутствует у пользователя.
+    // Вы можете выполнить необходимые действия здесь.
     echo 'tat ok account active';
   }
 
