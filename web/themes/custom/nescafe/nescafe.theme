@@ -150,7 +150,7 @@ function nescafe_preprocess_page(&$page)
 
 
 // Загрузка сущности пользователя по ID.
-  $user = User::load($user_id); // Замените $user_id на фактический ID пользователя.
+  $user = User::load(40); // Замените $user_id на фактический ID пользователя.
 
 // Проверка наличия поля field_active_account.
   if (!$user->hasField('field_active_account')) {
