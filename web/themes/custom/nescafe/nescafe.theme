@@ -208,9 +208,6 @@ function nescafe_preprocess_page(&$page)
         $id = $_POST['active_id'];
         $_SESSION['id_user'] = $id;
 
-
-      if(isset($_POST['verify_submit'])){
-
         if ($_POST['code_name'] == $_SESSION['code']) {
           $user = User::load($curr_id_for_user);
           $user->set('field_active_account', 1);
@@ -224,7 +221,7 @@ function nescafe_preprocess_page(&$page)
                </form></div>";
         }
 
-      }
+
 
 
     } else {
