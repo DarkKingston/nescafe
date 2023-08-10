@@ -1079,3 +1079,6 @@ button.shwpd{
   top: 40px;
 }
 
+.popup_gift .nonactive_user{
+  display: none;
+}
