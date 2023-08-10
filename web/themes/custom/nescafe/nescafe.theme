@@ -169,6 +169,7 @@ function nescafe_preprocess_page(&$page)
   $result = $conn->query($sql);
   $result->setFetchMode(\PDO::FETCH_OBJ);
   foreach ($result as $record) {
+dump($record);
     if (!empty($record)) {
       dump($user);
       // Загрузка сущности пользователя по ID.
