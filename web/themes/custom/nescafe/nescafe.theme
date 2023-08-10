@@ -154,7 +154,6 @@ function nescafe_preprocess_page(&$page)
 
 // Проверка наличия поля field_active_account.
   if (!$user->hasField('field_active_account')) {
-    $user = User::load(40);
 
 // Установка значения поля field_active_account.
     $user->set('field_active_account', 1);
