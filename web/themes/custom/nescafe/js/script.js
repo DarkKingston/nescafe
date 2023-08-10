@@ -57,7 +57,7 @@
         login = "Înregistrare/Autentificare";
         reset = "Resetează parola";
         loginLink = "Înregistrare";
-        reglament = "Am luat cunoștință cu regulamentul";
+        reglament = "<input type='checkbox'> Am luat cunoștință cu regulamentul";
       }else if (currLang == "RU"){
         label = "Создать новый аккаунт";
         name = "Фамилия";
@@ -69,7 +69,7 @@
         phone = "Номер телефона";
         login = "Регистрация/Вход";
         reset = "Восстановить пароль";
-        reglament = "Ознакомился с регламентом";
+        reglament = "<input type='checkbox'> Ознакомился с регламентом";
         loginLink = "Регистрация";
       }
       if(document.querySelector('.user-login-form .js-form-item-name label') != null){
