@@ -174,10 +174,12 @@ function nescafe_preprocess_page(&$page)
   if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru') {
     $codeSubmit = "Введите код из SMS";
     $errSubmit = "Вы ввели неправильный код";
+    $btnText = "Введите еще раз";
   }
   if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro') {
     $codeSubmit = "Introduceți codul din SMS";
     $errSubmit = "Ați introdus cod greșit";
+    $btnText = "Introduceți încă o dată";
   }
 
     if ($counter == 0 && $curr_id_for_user != 0) {
@@ -188,7 +190,7 @@ function nescafe_preprocess_page(&$page)
               <form method='post' class='nonactive_user'>
                     <div class=''>".$codeSubmit."</div>
                     <input type='text' placeholder='code' name='code_name' style='margin-top: 10px; margin-bottom: 10px;'>
-                    <input type='submit' style='display:flex; justify-content: center;' name='verify_submit' value='Submit' onclick='closePopup()' class='btn_main action search_filiala form_btn'>
+                    <input type='submit' style='margin:0 auto;display:flex; justify-content: center;' name='verify_submit' value='Submit' onclick='closePopup()' class='btn_main action search_filiala form_btn'>
                </form>
               </div>";
 
@@ -214,11 +216,11 @@ function nescafe_preprocess_page(&$page)
                   unset($_SESSION["code"]);
                   header("Location: /account");
                 }else{
+                  unset($_SESSION["code"]);
                   print "<div class='bg_noactive'>
                   <form method='post' class='nonactive_user'>
                         <div class=''>".$errSubmit."</div>
-                        <input type='text' placeholder='code' name='code_name' style='margin-top: 10px; margin-bottom: 10px;'>
-                        <input type='submit' style='display:flex; justify-content: center;' name='verify_submit' value='Submit' onclick='closePopup()' class='btn_main action search_filiala form_btn'>
+                        <input type='submit' style='margin:0 auto; display:flex; justify-content: center;' value='".$btnText."' onclick='closePopup()' class='btn_main action search_filiala form_btn'>
                    </form>
                   </div>";
                 }
