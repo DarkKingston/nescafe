@@ -801,9 +801,11 @@ TABLE;
                         //dump($arrShow);
                       if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru') {
                         $label = "Выберите приз из списка ниже";
+                        $confirm = "Подтвердить";
                       }
                       if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro') {
                         $label = "Alege premiul din lista de mai jos";
+                        $confirm = "Alege";
                       }
                         print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_gift' data-dialog-type='modal'>
                                                                     ".$label."
@@ -817,7 +819,7 @@ TABLE;
                                                                         " . $option2 . "
                                                                     </select>
                                                                     </div>
-                                                                    <input type='submit' class='btn_main action' name='submitGift' value='Alege'>
+                                                                    <input type='submit' class='btn_main action' name='submitGift' value='".$confirm."'>
 
                                                                 </form>
                                                                 ";
@@ -920,9 +922,11 @@ TABLE;
                                                                 }
                                       if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru') {
                                         $label = "Выберите приз из списка ниже";
+                                        $confirm = "Подтвердить";
                                       }
                                       if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro') {
                                         $label = "Alege premiul din lista de mai jos";
+                                        $confirm = "Alege";
                                       }
                         print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_gift' data-dialog-type='modal'>
                                                 ".$label."
@@ -936,7 +940,7 @@ TABLE;
                                                     " . $option2 . "
                                                 </select>
                                                 </div>
-                                                <input type='submit' class='btn_main action' name='submitGift' value='Alege'>
+                                                <input type='submit' class='btn_main action' name='submitGift' value='".$confirm."'>
 
                                             </form>
                                             ";
@@ -1053,9 +1057,11 @@ TABLE;
                   //dump($arrUnique);
                   if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru') {
                     $label = "Выберите приз из списка ниже";
+                    $confirm = "Подтвердить";
                   }
                   if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro') {
                     $label = "Alege premiul din lista de mai jos";
+                    $confirm = "Alege";
                   }
                   print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_gift' data-dialog-type='modal'>
 ".$label."
@@ -1070,7 +1076,7 @@ TABLE;
 
                                                                                                                                        " . $option2 . "
                                                                                                                                    </select>
-                                                                                                                                   <input type='submit' class='btn_main action' name='submitGift' value='Alege'>
+                                                                                                                                   <input type='submit' class='btn_main action' name='submitGift' value='".$confirm."'>
 
                                                                                                                                </form>
                                                                                                                                ";
@@ -1174,9 +1180,11 @@ TABLE;
                 //dump($arrUnique);
                 if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru') {
                   $label = "Выберите приз из списка ниже";
+                  $confirm = "Подтвердить";
                 }
                 if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro') {
                   $label = "Alege premiul din lista de mai jos";
+                  $confirm = "Alege";
                 }
                 print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_gift' data-dialog-type='modal'>
                                                                                     ".$label."
@@ -1192,7 +1200,7 @@ TABLE;
 
                                                                                        " . $option2 . "
                                                                                    </select>
-                                                                                   <input type='submit' class='btn_main action' name='submitGift' value='Alege'>
+                                                                                   <input type='submit' class='btn_main action' name='submitGift' value='".$confirm."'>
 
                                                                                </form>
                                                                                ";
