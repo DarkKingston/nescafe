@@ -168,7 +168,7 @@ function nescafe_preprocess_page(&$page)
   $resultSql = $conn->query($sql);
   foreach ($resultSql as $record) {
     if (empty($record)) {
-      dump($user);
+      dump($user);dump($record);
       // Загрузка сущности пользователя по ID.
       // Замените $user_id на фактический ID пользователя.
 
