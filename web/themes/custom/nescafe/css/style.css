@@ -1037,6 +1037,13 @@ form .form-item label{
   background: rgba(0,0,0,0.4);
 }
 
+.bg_noactive form{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
 .week{
   margin-top: 10px;
   font-size: 22px;
@@ -1071,3 +1078,4 @@ button.shwpd{
   left: 300px;
   top: 40px;
 }
+
