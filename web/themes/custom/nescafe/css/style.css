@@ -1065,10 +1065,6 @@ form .form-item label{
   margin-top: 0;
 }
 
-.messages--error{
-  display: none !important;
-}
-
 form .form-item {
   position: relative;
 }
