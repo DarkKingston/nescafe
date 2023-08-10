@@ -153,7 +153,7 @@ function nescafe_preprocess_page(&$page)
   $user = User::load(40); // Замените $user_id на фактический ID пользователя.
 
 // Проверка наличия поля field_active_account.
-  if (!$user->hasField('field_active_account')) {
+  if ($user->hasField('field_active_account')) {
 
 // Установка значения поля field_active_account.
     $user->set('field_active_account', 1);
@@ -161,7 +161,6 @@ function nescafe_preprocess_page(&$page)
 // Сохранение сущности пользователя.
     $user->save();
   } else {
-    dump($user->hasField('field_active_account'));
     // Поле field_active_account присутствует у пользователя.
     // Вы можете выполнить необходимые действия здесь.
     echo 'tat ok account active';
