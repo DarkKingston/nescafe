@@ -147,6 +147,25 @@ function nescafe_preprocess_menu__header_btn(&$logged)
 
 function nescafe_preprocess_page(&$page)
 {
+
+
+// Загрузка сущности пользователя по ID.
+  $user = User::load($user_id); // Замените $user_id на фактический ID пользователя.
+
+// Проверка наличия поля field_active_account.
+  if (!$user->hasField('field_active_account')) {
+    $user = User::load(40);
+
+// Установка значения поля field_active_account.
+    $user->set('field_active_account', 1);
+
+// Сохранение сущности пользователя.
+    $user->save();
+  } else {
+    echo 'tat ok account active';
+  }
+
+
     //dump($page);
     $roles = \Drupal::currentUser()->getRoles();
 
