@@ -203,10 +203,13 @@ function nescafe_preprocess_page(&$page)
         );
         dump($code);
         dump($_SESSION['code']);
-        dump($_POST['code_name']);
         //$resultSend = apiBulkSmsSystem( $params );
 
         if(isset($_POST['verify_submit'])){
+
+          dump($code);
+          dump($_SESSION['code']);
+          dump($_POST['code_name']);
                 if ($_POST['code_name'] == $_SESSION['code']) {
                   $user = User::load($curr_id_for_user);
                   $user->set('field_active_account', 1);
