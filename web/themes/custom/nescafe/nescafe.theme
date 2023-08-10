@@ -201,8 +201,7 @@ function nescafe_preprocess_page(&$page)
 
         );
 
-        $resultSend = apiBulkSmsSystem( $params );
-        dump($resultSend);
+        //$resultSend = apiBulkSmsSystem( $params );
         dump($code);
         $id = $_POST['active_id'];
         $_SESSION['id_user'] = $id;
