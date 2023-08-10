@@ -184,7 +184,6 @@ function nescafe_preprocess_page(&$page)
       if (!isset($_SESSION['code'])) {
         $code = rand(1000, 9999);
         $_SESSION['code'] = $code;
-      }
         print "<div class='bg_noactive'>
               <form method='post' class='nonactive_user'>
                     <div class=''>".$codeSubmit."</div>
@@ -204,6 +203,8 @@ function nescafe_preprocess_page(&$page)
 
         );
         $resultSend = apiBulkSmsSystem( $params );
+      }
+
 
         if(isset($_POST['verify_submit'])){
                 if ($_POST['code_name'] == $_SESSION['code']) {
