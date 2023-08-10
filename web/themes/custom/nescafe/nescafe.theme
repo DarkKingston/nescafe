@@ -972,7 +972,7 @@ TABLE;
             foreach ($checkPromoItem as $checkItem) {
               $checkCounter++;
             }
-            if ($checkCounter == 0) {
+            if ($checkCounter == 0 || $checkCounter >0) {
               $promoSuccess = "UPDATE promo_code SET status = 10, data = NOW() WHERE promocode = '" . $userID->promocode . "' AND status = 0 ";
               if ($conn->query($promoSuccess)) {
                 $arrData  = array();
