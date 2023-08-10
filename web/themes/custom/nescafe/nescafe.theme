@@ -807,9 +807,8 @@ TABLE;
                         $label = "Alege premiul din lista de mai jos";
                         $confirm = "Alege";
                       }
-                      if($userID->status != 2) {
                         print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_gift' data-dialog-type='modal'>
-                                                                    " . $label . "
+                                                                    ".$label."
                                                                     <div class='popup_images'>
                                                                         " . $arrImg . "
                                                                     </div>
@@ -820,11 +819,10 @@ TABLE;
                                                                         " . $option2 . "
                                                                     </select>
                                                                     </div>
-                                                                    <input type='submit' class='btn_main action' name='submitGift' value='" . $confirm . "'>
+                                                                    <input type='submit' class='btn_main action' name='submitGift' value='".$confirm."'>
 
                                                                 </form>
                                                                 ";
-                      }
                     }
                 if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru') {
                   $txt1 = "Вы уверены в выборе приза";
@@ -959,9 +957,9 @@ TABLE;
                                         $label = "Alege premiul din lista de mai jos";
                                         $confirm = "Alege";
                                       }
-                                      if($userID->status != 2) {
-                                        print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_gift' data-dialog-type='modal'>
-                                                " . $label . "
+
+                        print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_gift' data-dialog-type='modal'>
+                                                ".$label."
                                                 <div class='popup_images'>
                                                     " . $arrImg . "
                                                 </div>
@@ -972,11 +970,11 @@ TABLE;
                                                     " . $option2 . "
                                                 </select>
                                                 </div>
-                                                <input type='submit' class='btn_main action' name='submitGift' value='" . $confirm . "'>
+                                                <input type='submit' class='btn_main action' name='submitGift' value='".$confirm."'>
 
                                             </form>
                                             ";
-                                      }
+
                                       if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru') {
                                         $txt1 = "Вы уверены в выборе приза";
                                         $txt2 = "и получении его в филиале";
@@ -1340,14 +1338,6 @@ TABLE;
               if(isset($_POST['ignorePrem'])){
                 header("Location: /account");
               }
-            }
-          } else {
-            if (isset($_POST['introduceti_codul_promotional']) && $total % 30 != 0 && $total % 15 != 0 && $total % 7 != 0) {
-              print "<form method='post' class='nonactive_user'>
-                        <div class=''>".$codeRepeat."</div>
-                        <input type='submit' style='margin:0 auto; display:flex; justify-content: center;' value='Submit' class='btn_main action search_filiala form_btn'>
-                   </form>";
-
             }
           }
           if ($total > 0 && $total % 15 == 0 && $userID->tombola == 0) {

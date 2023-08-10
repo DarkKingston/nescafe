@@ -3,8 +3,8 @@
   Drupal.behaviors.navbarBehavior = {
     attach: function (context, settings) {
 
-      $('.user-register-form .form-item-name input').mask('37399999999');
-      $('.reset_pass').mask('37399999999');
+      $('.user-register-form .form-item-name input').mask('+37399999999');
+      $('.reset_pass').mask('+37399999999');
 
 
 
@@ -30,7 +30,9 @@
       $('.closePopupTombola',context).on('click',function(){
         $('.popup_final').hide();
       });
-
+      if ($('.popup_gift').length > 0) {
+        $('.nonactive_user').css('display', 'none');
+      }
       let phone;
       let login;
       let reset;
@@ -119,9 +121,7 @@
       if(document.querySelector(".reg_accept")){
         document.querySelector('.reglament_accept').style.display = 'none';
       }
-      if ($('.popup_gift').length > 0) {
-        $('.nonactive_user').css('display', 'none');
-      }
+
     }
   };
 })(jQuery);
