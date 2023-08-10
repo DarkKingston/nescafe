@@ -824,15 +824,20 @@ TABLE;
                                                                 </form>
                                                                 ";
                     }
-
-
-
-                    if (isset($_POST['submitGift'])) {
-                        $updatePromo = "UPDATE promo_code SET premiu = '" . $_POST['premiu'] . "', livrare = '" . $_POST['filial'] . "', status = 2 WHERE promocode = '" . $userID->promocode . "' AND premiu = '' AND livrare = '' ";
-                        if ($conn->query($updatePromo)) {
-                            //echo "ok";
-                        }
+                if (isset($_POST['submitGift'])) {
+                  print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_gift' data-dialog-type='modal'>
+                                             <div class='center'>Sunteti siguri ca ati ales premiul ".POST['premiu']." si sa fie ridicat la filiala ".$_POST['filial']."</div>
+                                             <input type='submit' name='acceptPrem' class='btn_main action closePopup' value='Da'>
+                                             <input type='sumbit' class='btn_main action closePopup' value='Nu'>
+                                         </form>
+                                         ";
+                  if(isset($_POST['acceptPrem'])){
+                    $updatePromo = "UPDATE promo_code SET premiu = '" . $_POST['premiu'] . "', livrare = '" . $_POST['filial'] . "', status = 2 WHERE promocode = '" . $userID->promocode . "' AND premiu = '' AND livrare = '' ";
+                    if ($conn->query($updatePromo)) {
+                      //echo "ok";
                     }
+                  }
+                }
 
                 }
               else if($total >= 7 && $total % 7 != 0){
@@ -945,12 +950,20 @@ TABLE;
                                             </form>
                                             ";
 
-                        if (isset($_POST['submitGift'])) {
-                            $updatePromo = "UPDATE promo_code SET premiu = '" . $_POST['premiu'] . "', livrare = '" . $_POST['filial'] . "', status = 2 WHERE promocode = '" . $checkItem->promocode . "' AND premiu = '' AND livrare = '' ";
-                            if ($conn->query($updatePromo)) {
-                                //echo "ok";
-                            }
-                        }
+                                      if (isset($_POST['submitGift'])) {
+                                        print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_gift' data-dialog-type='modal'>
+                                             <div class='center'>Sunteti siguri ca ati ales premiul ".POST['premiu']." si sa fie ridicat la filiala ".$_POST['filial']."</div>
+                                             <input type='submit' name='acceptPrem' class='btn_main action closePopup' value='Da'>
+                                             <input type='sumbit' class='btn_main action closePopup' value='Nu'>
+                                         </form>
+                                         ";
+                                        if(isset($_POST['acceptPrem'])){
+                                          $updatePromo = "UPDATE promo_code SET premiu = '" . $_POST['premiu'] . "', livrare = '" . $_POST['filial'] . "', status = 2 WHERE promocode = '" . $userID->promocode . "' AND premiu = '' AND livrare = '' ";
+                                          if ($conn->query($updatePromo)) {
+                                            //echo "ok";
+                                          }
+                                        }
+                                      }
                                     }
                 } else {
                     if (isset($_POST['introduceti_codul_promotional']) && $total % 30 != 0 && $total % 15 != 0 && $total % 7 != 0) {
@@ -1087,10 +1100,18 @@ TABLE;
 
             }
             if (isset($_POST['submitGift'])) {
-              $updatePromo = "UPDATE promo_code SET premiu = '" . $_POST['premiu'] . "', livrare = '" . $_POST['filial'] . "', status = 2 WHERE promocode = '" . $userID->promocode . "' AND premiu = '' AND livrare = '' ";
-              if ($conn->query($updatePromo)) {
-                //echo "ok";
-              }
+              print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_gift' data-dialog-type='modal'>
+                                             <div class='center'>Sunteti siguri ca ati ales premiul ".POST['premiu']." si sa fie ridicat la filiala ".$_POST['filial']."</div>
+                                             <input type='submit' name='acceptPrem' class='btn_main action closePopup' value='Da'>
+                                             <input type='sumbit' class='btn_main action closePopup' value='Nu'>
+                                         </form>
+                                         ";
+             if(isset($_POST['acceptPrem'])){
+               $updatePromo = "UPDATE promo_code SET premiu = '" . $_POST['premiu'] . "', livrare = '" . $_POST['filial'] . "', status = 2 WHERE promocode = '" . $userID->promocode . "' AND premiu = '' AND livrare = '' ";
+               if ($conn->query($updatePromo)) {
+                 //echo "ok";
+               }
+             }
             }
           }
           else if ($total > 10 && $total % 7 != 0) {
@@ -1208,9 +1229,17 @@ TABLE;
               //dump($arrShow);
 
               if (isset($_POST['submitGift'])) {
-                $updatePromo = "UPDATE promo_code SET premiu = '" . $_POST['premiu'] . "', livrare = '" . $_POST['filial'] . "', status = 2 WHERE promocode = '" . $checkItem->promocode . "' AND premiu = '' AND livrare = '' AND status = 10 ";
-                if ($conn->query($updatePromo)) {
-                  //echo "ok";
+                print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_gift' data-dialog-type='modal'>
+                                             <div class='center'>Sunteti siguri ca ati ales premiul ".POST['premiu']." si sa fie ridicat la filiala ".$_POST['filial']."</div>
+                                             <input type='submit' name='acceptPrem' class='btn_main action closePopup' value='Da'>
+                                             <input type='sumbit' class='btn_main action closePopup' value='Nu'>
+                                         </form>
+                                         ";
+                if(isset($_POST['acceptPrem'])){
+                  $updatePromo = "UPDATE promo_code SET premiu = '" . $_POST['premiu'] . "', livrare = '" . $_POST['filial'] . "', status = 2 WHERE promocode = '" . $userID->promocode . "' AND premiu = '' AND livrare = '' ";
+                  if ($conn->query($updatePromo)) {
+                    //echo "ok";
+                  }
                 }
               }
             }
