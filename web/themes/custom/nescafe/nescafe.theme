@@ -164,13 +164,15 @@ function nescafe_preprocess_page(&$page)
   $curr_id_for_user = \Drupal::currentUser()->id();
 
 
-  $sql = "SELECT * FROM user__field_active_account WHERE entity_id = 40 LIMIT 1";
-  $resultSql = $conn->query($sql);
+  $ifActive = "SELECT * FROM user__field_active_account WHERE entity_id = 40 LIMIT 1";
+  $resultActive = $conn->query($ifActive);
+  $resultActive->setFetchMode(\PDO::FETCH_OBJ);
   $counter = 0;
-  foreach ($resultSql as $record) {
+  foreach ($resultActive as $recordActive) {
     $counter++;
   }
     if ($counter == 0) {
+      dump($counter);
       $user = User::load(40);
       $user->set('field_active_account', 1);
       $user->save();
@@ -868,8 +870,8 @@ TABLE;
                 } else {
                     if (isset($_POST['introduceti_codul_promotional']) && $total % 30 != 0 && $total % 15 != 0 && $total % 7 != 0) {
                         print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_gift' data-dialog-type='modal'>
-                                             <div class='center'>Mai incercati!</div>
-                                             <div class='btn_main action closePopup'>Inchide</div>
+                                             <div class='center'>Cod înregistrat cu success!</div>
+                                             <div class='btn_main action closePopup'>Închide</div>
                                          </form>
                                          ";
                     }
@@ -995,7 +997,8 @@ TABLE;
                                 //echo "ok";
                             }
                         }
-            } else if ($total > 10 && $total % 7 != 0) {
+            }
+            else if ($total > 10 && $total % 7 != 0) {
                 $checkPromo = "SELECT * FROM promo_code WHERE status = 10 AND active = '" . $curr_id_for_user . "'";
                 $checkPromoItem = $conn->query($checkPromo);
                 $checkPromoItem->setFetchMode(\PDO::FETCH_OBJ);
@@ -1113,8 +1116,8 @@ TABLE;
                 $tombolaSuccess = "UPDATE promo_code SET tombola = 1,status = 0, data = NOW() WHERE promocode = '" . $userID->promocode . "' AND tombola = 0 ";
                 if ($conn->query($tombolaSuccess)) {
                     print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_final' data-dialog-type='modal'>
-                                        <div  class='center'>Felicitari ati fost ales participant la tombola zilnica!</div>
-                                        <div class='btn_main action closePopupTombola'>Inchide</div>
+                                        <div  class='center'>Felicitări, ați fost ales participant la tombola zilnică!</div>
+                                        <div class='btn_main action closePopupTombola'>Închide</div>
                                     </form>
                                     ";
                 }
@@ -1123,8 +1126,8 @@ TABLE;
                 $tombolaSuccess = "UPDATE promo_code SET final = 1, data = NOW() WHERE promocode = '" . $userID->promocode . "' AND final = 0 ";
                 if ($conn->query($tombolaSuccess)) {
                     print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_final' data-dialog-type='modal'>
-                                       <div class='center'>Felicitari ati fost ales participant la tombola finala!</div>
-                                       <div class='btn_main action closePopupTombola'>Inchide</div>
+                                       <div class='center'>Felicitări, ați fost ales participant la tombola finală!</div>
+                                       <div class='btn_main action closePopupTombola'>Închide</div>
                                    </form>
                                    ";
                 }
