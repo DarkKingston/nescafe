@@ -179,18 +179,19 @@ function nescafe_preprocess_page(&$page)
     $codeSubmit = "Introduceți codul din SMS";
     $errSubmit = "Ați introdus cod greșit";
   }
+  $code = rand(1000, 9999);
+  $_SESSION['code'] = $code;
+  $_SESSION['prem_id'] = $_POST['prem_id'];
+  $phone = User::load($curr_id_for_user)->get('name')->value;
     if ($counter == 0 && $curr_id_for_user != 0) {
         print "<div class='bg_noactive'>
               <form method='post' class='nonactive_user'>
                     <div class=''>".$codeSubmit."</div>
-                    <input type='text' placeholder='code' name='code_name'>
+                    <input type='text' placeholder='code' name='code_name' style='margin-top: 10px; margin-bottom: 10px;'>
                     <input type='submit' style='display:flex; justify-content: center;' name='verify_submit' value='Submit' onclick='closePopup()' class='btn_main action search_filiala form_btn'>
                </form>
               </div>";
-        $code = rand(1000, 9999);
-        $_SESSION['code'] = $code;
-        $_SESSION['prem_id'] = $_POST['prem_id'];
-        $phone = User::load($curr_id_for_user)->get('name')->value;
+
         $params = array(
 
           'type' => 'SendSms' ,
@@ -207,20 +208,14 @@ function nescafe_preprocess_page(&$page)
         dump($_POST['code_name']);
         $id = $_POST['active_id'];
         $_SESSION['id_user'] = $id;
-
-        if ($_POST['code_name'] == $_SESSION['code']) {
-          $user = User::load($curr_id_for_user);
-          $user->set('field_active_account', 1);
-          $user->save();
-          header("Location: /account");
-        }else{
-          print "<div class='bg_noactive'><form method='post' class='nonactive_user'>
-                    <div class=''>".$errSubmit."</div>
-                    <input type='text' placeholder='code' name='code_name'>
-                    <input type='submit' style='display:flex; justify-content: center;' name='verify_submit' value='Submit' class='btn_main action search_filiala form_btn'>
-               </form></div>";
+        if(isset($_POST['verify_submit'])){
+                if ($_POST['code_name'] == $_SESSION['code']) {
+                  $user = User::load($curr_id_for_user);
+                  $user->set('field_active_account', 1);
+                  $user->save();
+                  header("Location: /account");
+                }
         }
-
 
 
 
