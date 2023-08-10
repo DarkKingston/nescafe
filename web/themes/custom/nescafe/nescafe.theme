@@ -374,6 +374,13 @@ function nescafe_preprocess_region__account(&$elem)
             \PDO::MYSQL_ATTR_FOUND_ROWS => TRUE,
         ]);
 
+      if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru') {
+        $codeRepeat = "Этот код уже был введен.";
+      }
+      if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro') {
+        $codeRepeat = "Acest cod deja a fost introdus.";
+      }
+
         $sql = "SELECT * FROM promo_code WHERE active = 0 AND promocode = '".$_POST['introduceti_codul_promotional']."' ";
         $result = $conn->query($sql);
         $result->setFetchMode(\PDO::FETCH_OBJ);
@@ -382,6 +389,11 @@ function nescafe_preprocess_region__account(&$elem)
             foreach ($result as $record) {
                 if ($record->active == 0) {
                     $sql = "UPDATE promo_code SET active = '" . $curr_id_for_user . "',  data = NOW() WHERE promocode = '" . $_POST['introduceti_codul_promotional'] . "' AND active = 0  ";
+                }else{
+                  print "<form method='post' class='nonactive_user'>
+                        <div class=''>".$codeRepeat."</div>
+                        <input type='submit' style='margin:0 auto; display:flex; justify-content: center;' value='Submit' class='btn_main action search_filiala form_btn'>
+                   </form>";
                 }
             }
             if ($conn->query($sql)) {
