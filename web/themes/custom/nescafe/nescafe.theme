@@ -164,28 +164,29 @@ function nescafe_preprocess_page(&$page)
   $curr_id_for_user = \Drupal::currentUser()->id();
   $user = User::load(40);
 
-  $sql = "SELECT * FROM user__field_active_account WHERE entity_id = 40 ";
+  $sql = "SELECT * FROM user__field_active_account WHERE entity_id = 40 LIMIT 1";
 
   $result = $conn->query($sql);
   $result->setFetchMode(\PDO::FETCH_OBJ);
-
-  if (!empty($result)) {
-    dump($user);
-    // Загрузка сущности пользователя по ID.
-    // Замените $user_id на фактический ID пользователя.
+  foreach ($result as $record) {
+    if (!empty($record)) {
+      dump($user);
+      // Загрузка сущности пользователя по ID.
+      // Замените $user_id на фактический ID пользователя.
 
 // Установка значения поля field_active_account.
-    $user->set('field_active_account', 1);
+      $user->set('field_active_account', 1);
 
 // Сохранение сущности пользователя.
-    $user->save();
+      $user->save();
 
-  } else {
-    dump($user);
-    dump($result);
-    // Поле field_active_account присутствует у пользователя.
-    // Вы можете выполнить необходимые действия здесь.
-    echo 'tat ok account active';
+    } else {
+      dump($user);
+      dump($record);
+      // Поле field_active_account присутствует у пользователя.
+      // Вы можете выполнить необходимые действия здесь.
+      echo 'tat ok account active';
+    }
   }
 
 
