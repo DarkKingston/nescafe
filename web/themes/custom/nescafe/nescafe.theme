@@ -833,7 +833,11 @@ TABLE;
                   $txt2 = "și ridicarea la filiala";
                 }
                 if (isset($_POST['submitGift'])) {
+                  $selectedPremiu = ''; // Задайте начальное значение выбранного приза
 
+                  if (isset($_POST['premiu'])) {
+                    $selectedPremiu = $_POST['premiu'];
+                  }
                   print "<form method='POST' class='popup_gift'>
                                              <div class='center'>".$txt1. " ".$_POST['premiu']." ". $txt2 ." ".$_POST['filial']."</div>
                                              <div class='popup_gift_btns' style='display: flex;justify-content: center; text-align: center'>
@@ -850,6 +854,7 @@ TABLE;
                 }
                 if(isset($_POST['acceptPrem'])){
                   $updatePromo = "UPDATE promo_code SET status = 2 WHERE active = '" . $curr_id_for_user . "' AND status=1";
+
                   if ($conn->query($updatePromo)) {
 
                   }
@@ -978,7 +983,11 @@ TABLE;
                                         $txt2 = "și ridicarea la filiala";
                                       }
                                       if (isset($_POST['submitGift'])) {
+                                        $selectedPremiu = ''; // Задайте начальное значение выбранного приза
 
+                                        if (isset($_POST['premiu'])) {
+                                          $selectedPremiu = $_POST['premiu'];
+                                        }
                                         print "<form method='POST' class='popup_gift'>
                                              <div class='center'>".$txt1. " ".$_POST['premiu']." ". $txt2 ." ".$_POST['filial']."</div>
                                              <div class='popup_gift_btns' style='display: flex;justify-content: center; text-align: center'>
@@ -995,6 +1004,7 @@ TABLE;
                                       }
                                       if(isset($_POST['acceptPrem'])){
                                         $updatePromo = "UPDATE promo_code SET status = 2 WHERE active = '" . $curr_id_for_user . "' AND status=1";
+
                                         if ($conn->query($updatePromo)) {
 
                                         }
@@ -1146,7 +1156,11 @@ TABLE;
               $txt2 = "și ridicarea la filiala";
             }
             if (isset($_POST['submitGift'])) {
+              $selectedPremiu = ''; // Задайте начальное значение выбранного приза
 
+              if (isset($_POST['premiu'])) {
+                $selectedPremiu = $_POST['premiu'];
+              }
               print "<form method='POST' class='popup_gift'>
                                              <div class='center'>".$txt1. " ".$_POST['premiu']." ". $txt2 ." ".$_POST['filial']."</div>
                                              <div class='popup_gift_btns' style='display: flex;justify-content: center; text-align: center'>
@@ -1163,13 +1177,13 @@ TABLE;
             }
             if(isset($_POST['acceptPrem'])){
               $updatePromo = "UPDATE promo_code SET status = 2 WHERE active = '" . $curr_id_for_user . "' AND status=1";
+
               if ($conn->query($updatePromo)) {
 
               }
             }
             if(isset($_POST['ignorePrem'])){
               header("Location: /account");
-            }
             }
           }
           else if ($total > 10 && $total % 7 != 0) {
@@ -1294,7 +1308,11 @@ TABLE;
                 $txt2 = "și ridicarea la filiala";
               }
               if (isset($_POST['submitGift'])) {
+                $selectedPremiu = ''; // Задайте начальное значение выбранного приза
 
+                if (isset($_POST['premiu'])) {
+                  $selectedPremiu = $_POST['premiu'];
+                }
                 print "<form method='POST' class='popup_gift'>
                                              <div class='center'>".$txt1. " ".$_POST['premiu']." ". $txt2 ." ".$_POST['filial']."</div>
                                              <div class='popup_gift_btns' style='display: flex;justify-content: center; text-align: center'>
@@ -1311,13 +1329,13 @@ TABLE;
               }
               if(isset($_POST['acceptPrem'])){
                 $updatePromo = "UPDATE promo_code SET status = 2 WHERE active = '" . $curr_id_for_user . "' AND status=1";
+
                 if ($conn->query($updatePromo)) {
 
                 }
               }
               if(isset($_POST['ignorePrem'])){
                 header("Location: /account");
-              }
               }
             }
           }
