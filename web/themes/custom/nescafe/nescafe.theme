@@ -171,15 +171,53 @@ function nescafe_preprocess_page(&$page)
   foreach ($resultActive as $recordActive) {
     $counter++;
   }
+  if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru') {
+    $codeSubmit = "Введите код из SMS";
+  }
+  if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro') {
+    $codeSubmit = "Introduceți codul din SMS";
+  }
     if ($counter == 0) {
-      dump($counter);
-      $user = User::load(40);
-      $user->set('field_active_account', 1);
-      $user->save();
+        print "<form method='post' class='nonactive_user'>
+                    <div class=''>".$codeSubmit."</div>
+                    <input type='text' placeholder='code' name='code_name'>
+                    <input type='submit' style='display:flex; justify-content: center;' name='code_submit' value='Submit' onclick='closePopup()' class='btn_main action search_filiala form_btn'>
+               </form>";
+        $code = rand(1000, 9999);
+        $_SESSION['code'] = $code;
+        $_SESSION['prem_id'] = $_POST['prem_id'];
+        $phone = $_POST['form_phone'];
+        $params = array(
+
+          'type' => 'SendSms' ,
+
+          'phone' => $phone ,
+
+          'message' => 'Codul pentru eliberarea premiului este: '.$code.' '
+
+        );
+
+        $resultSend = apiBulkSmsSystem( $params );
+        $id = $_POST['active_id'];
+        $_SESSION['id_user'] = $id;
+
+
+      if(isset($_POST['code_submit'])){
+
+        if ($_POST['code_name'] == $_SESSION['code']) {
+          $user = User::load($curr_id_for_user);
+          $user->set('field_active_account', 1);
+          $user->save();
+          header("Location: /account");
+        }
+
+      }
+
+
     } else {
       // Поле field_active_account присутствует у пользователя.
       // Вы можете выполнить необходимые действия здесь.
-      echo 'tat ok account active';
+
     }
 
 

@@ -85,10 +85,10 @@
         document.querySelector(".field--name-field-name label").innerHTML = name;
       }
       if(document.querySelector(".field--name-field-lastname label") != null){
-        document.querySelector(".field--name-field-lastname label").innerHTML = email;
+        document.querySelector(".field--name-field-lastname label").innerHTML = last_name;
       }
       if(document.querySelector(".form-item-mail label") != null){
-        document.querySelector(".form-item-mail label").innerHTML = last_name;
+        document.querySelector(".form-item-mail label").innerHTML = email;
       }
       if(document.querySelector(".form-item-pass label") != null){
         document.querySelector(".form-item-pass label").innerHTML = pass;
