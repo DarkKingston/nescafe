@@ -6,8 +6,6 @@
       $('.user-register-form .form-item-name input').mask('37399999999');
       $('.reset_pass').mask('37399999999');
 
-      $('.user-register-form .form-item-name input').html('<span>+</span>');
-      $('.reset_pass').html('<span>+</span>');
 
 
 

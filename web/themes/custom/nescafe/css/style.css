@@ -1079,3 +1079,13 @@ button.shwpd{
 .popup_gift + .nonactive_user{
   display: none;
 }
+
+.username.form-text{
+  padding-left: 10px;
+}
+
+.username.form-text::before{
+  content: '+';
+  display: block;
+
+}
