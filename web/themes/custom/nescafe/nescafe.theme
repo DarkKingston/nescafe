@@ -376,9 +376,13 @@ function nescafe_preprocess_region__account(&$elem)
 
       if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru') {
         $codeRepeat = "Этот код уже был введен.";
+        $codeSuccess = "Код успешно зарегестрирован!";
+        $codeClose = "Закрыть";
       }
       if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro') {
         $codeRepeat = "Acest cod deja a fost introdus.";
+        $codeSuccess = "Cod înregistrat cu success!";
+        $codeClose = "Închide";
       }
 
         $sql = "SELECT * FROM promo_code WHERE active = 0 AND promocode = '".$_POST['introduceti_codul_promotional']."' ";
@@ -391,8 +395,8 @@ function nescafe_preprocess_region__account(&$elem)
                     $sql = "UPDATE promo_code SET active = '" . $curr_id_for_user . "',  data = NOW() WHERE promocode = '" . $_POST['introduceti_codul_promotional'] . "' AND active = 0  ";
 
                   print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_gift' data-dialog-type='modal'>
-                                             <div class='center'>Cod înregistrat cu success!</div>
-                                             <div class='btn_main action closePopup'>Închide</div>
+                                             <div class='center'>".$codeSuccess."</div>
+                                             <div class='btn_main action closePopup'>".$codeClose."</div>
                                          </form>
                                          ";
                 }
