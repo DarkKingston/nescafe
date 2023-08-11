@@ -1093,3 +1093,17 @@ button.shwpd{
   top: 37px;
   left: 10px;
 }
+.promo_reset_pass{
+  position: relative;
+}
+
+
+.promo_reset_pass::before{
+  content: '+';
+  display: block;
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  top: 37px;
+  left: 10px;
+}

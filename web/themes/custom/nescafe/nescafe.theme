@@ -3930,7 +3930,7 @@ function nescafe_preprocess_region__reset()
 
     print "<div class='promo_add'>
     <form method='post'>
-    <div class='promo_group'>
+    <div class='promo_group promo_reset_pass'>
     <label>$intro</label>
     <input type='text' class='promo_add_inp reset_pass' name='reset_password'>
     </div>
