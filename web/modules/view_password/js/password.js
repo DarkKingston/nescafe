@@ -12,7 +12,7 @@
 
       $(once('view_password_button', '.pwd-see [type=password]', context))
         .after(
-        `<button type="button" class="shwpd ${span_classes_custom} eye-close" aria-label="${drupalSettings.view_password.showPasswordLabel}"></button>`
+        `<span>+</span><button type="button" class="shwpd ${span_classes_custom} eye-close" aria-label="${drupalSettings.view_password.showPasswordLabel}"></button>`
       );
       $(once('view_password', '.shwpd', context))
         .on('click', function() {
