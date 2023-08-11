@@ -611,7 +611,7 @@ TABLE;
                 $stats = 'Сток';
                 $prem = 'Приз';
                 $livrare = 'Филиал';
-                $codeTxt = 'Introduceți codul din mesaj';
+                $codeTxt = 'Введите код из сообщения';
             }
             if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro') {
                 $name = 'Nume';
@@ -621,7 +621,7 @@ TABLE;
                 $stats = 'Stoc';
                 $prem = 'Premiu';
                 $livrare = 'Filiala';
-                $codeTxt = 'Введите код из сообщения';
+                $codeTxt = 'Introduceți codul din mesaj';
             }
             print <<<TABLE
        <table id="table8">
