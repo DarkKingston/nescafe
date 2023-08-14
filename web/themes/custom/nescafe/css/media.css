@@ -52,6 +52,12 @@
   [role=banner] {
     padding-top: 30px;
   }
+  .map_wrapper{
+    flex-direction: column;
+  }
+  #map{
+    width: 100%;
+  }
 }
 
 @media(max-width: 460px){
