@@ -21,6 +21,9 @@
   .map_text{
      width: 290px;
   }
+  #map{
+    margin-right: 15px;
+  }
 }
 
 @media(max-width: 760px){
@@ -30,7 +33,6 @@
   #map{
     width: 100%;
     height: 500px;
-    margin-right: 15px;
   }
 
   .map_text .title_page{
