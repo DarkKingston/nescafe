@@ -38,6 +38,13 @@
   .footer_menu li{
     padding-bottom: 5px;
   }
+  .map_wrapper{
+    flex-direction: column;
+  }
+  #map{
+    width: 100%;
+    height: 500px;
+  }
 }
 
 @media (max-width: 599.98px){
@@ -57,13 +64,6 @@
   }
   [role=banner] {
     padding-top: 30px;
-  }
-  .map_wrapper{
-    flex-direction: column;
-  }
-  #map{
-    width: 100%;
-    height: 500px;
   }
 }
 
