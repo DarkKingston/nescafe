@@ -18,13 +18,11 @@
     margin: 0 auto;
     justify-content: center;
   }
+  .map_text{
+     width: 100%;
+   }
 }
 
-@media(max-width: 680px){
-  .map_text{
-    width: 100%;
-  }
-}
 
 @media(max-width: 602px){
   .winners_photos{
