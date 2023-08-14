@@ -23,19 +23,7 @@
   }
 }
 
-
-@media(max-width: 602px){
-  .winners_photos{
-    justify-content: center;
-  }
-  .footer_menu{
-    display: flex;
-    flex-direction: column;
-  }
-
-  .footer_menu li{
-    padding-bottom: 5px;
-  }
+@media(max-width: 720px){
   .map_wrapper{
     flex-direction: column;
   }
@@ -49,6 +37,21 @@
     font-size: 24px;
     line-height: 26px;
     margin-bottom: 10px;
+  }
+}
+
+
+@media(max-width: 602px){
+  .winners_photos{
+    justify-content: center;
+  }
+  .footer_menu{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .footer_menu li{
+    padding-bottom: 5px;
   }
 }
 
