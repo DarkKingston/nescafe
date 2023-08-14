@@ -19,11 +19,11 @@
     justify-content: center;
   }
   .map_text{
-     width: 100%;
+     width: 290px;
   }
 }
 
-@media(max-width: 720px){
+@media(max-width: 760px){
   .map_wrapper{
     flex-direction: column;
   }
