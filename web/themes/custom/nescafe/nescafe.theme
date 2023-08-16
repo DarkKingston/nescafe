@@ -4735,6 +4735,20 @@ function nescafe_preprocess_region__tabel_principal(){
 
           $getFiliala = "SELECT * FROM webform_submission_data WHERE webform_id = 'adaugarea_filiala' ";
           $filVal = $conn->query($getFiliala);
+          if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru') {
+            $send = 'Отправить';
+            $placeholder = "Начальный сток";
+            $placeholder2 = "Дополнительно";
+            $errPlace = "При добавлении произошла ошибка. Обратите внимание на наличие на складе";
+            $closeErr = 'Закрыть';
+          }
+          if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro') {
+            $send = 'Trimite';
+            $placeholder = "Stoc initial";
+            $placeholder2 = "Suplimentar";
+            $errPlace = "A intervenit o eroare la adaugare. Atrageti atentie la stocul disponibil";
+            $closeErr = 'Inchide';
+          }
           print "<div class='form_principal'><form method='post'>";
           print "<select name='filiala_select' id=''>";
       foreach ($filVal as $fil){
@@ -4746,8 +4760,8 @@ function nescafe_preprocess_region__tabel_principal(){
             print "<option value='".$arrShow['name']."'>".$arrShow['name']."</option>";
           }
           print "</select>";
-          print "<input type='number' placeholder='suplimentar' name='input_supliment'>
-                        <input type='submit' name='submit_supliment' class='btn_main action search_filiala form_btn'>";
+          print "<input type='number' placeholder='".$placeholder2."' name='input_supliment'>
+                        <input type='submit' name='submit_supliment' class='btn_main action search_filiala form_btn' value='".$send."'>";
           print "</form>";
           $getFiliala = "SELECT * FROM webform_submission_data WHERE webform_id = 'adaugarea_filiala' ";
           $filVal = $conn->query($getFiliala);
@@ -4762,8 +4776,8 @@ function nescafe_preprocess_region__tabel_principal(){
             print "<option value='".$arrShow['name']."'>".$arrShow['name']."</option>";
           }
           print "</select>";
-          print "<input type='number' placeholder='Stoc initial' name='input_init'>
-                        <input type='submit' name='submit_init' class='btn_main action search_filiala form_btn'>";
+          print "<input type='number' placeholder='".$placeholder."' name='input_init'>
+                        <input type='submit' name='submit_init' class='btn_main action search_filiala form_btn' value='".$send."'>";
           print "</form></div>";
 $sumVal = 0;
           if(isset($_POST['submit_supliment'])){
@@ -4810,8 +4824,8 @@ $sumVal = 0;
                     //echo "ok";
                   }
                 }else {
-                  print "<div class='error_popup'>A intervenit o eroare la adaugare. Atrageti atentie la stocul disponibil
-                            <div class='btn_main action form_btn closeError'>Inchide</div>
+                  print "<div class='error_popup'>".$errPlace."
+                            <div class='btn_main action form_btn closeError'>".$closeErr."</div>
                         </div>";
                 }
               }
