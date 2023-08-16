@@ -4873,8 +4873,8 @@ $sumVal = 0;
                     //echo "ok";
                   }
                 }else {
-                  print "<div class='error_popup'>A intervenit o eroare la adaugare. Atrageti atentie la stocul disponibil
-                            <div class='btn_main action form_btn closeError'>Inchide</div>
+                  print "<div class='error_popup'>".$errPlace."
+                            <div class='btn_main action form_btn closeError'>".$closeErr."</div>
                         </div>";
                 }
               }
