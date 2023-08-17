@@ -3953,7 +3953,7 @@ function nescafe_preprocess_region__details($details)
             $livrare = 'Филиал';
             $promoCode = "Промокод";
             $state = 'Статус';
-            $stateON = 'Выдан -> ';
+            $stateON = 'Выдан в -> ';
             $stateOFF = "В ожидании";
         }
         if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro') {
@@ -3966,7 +3966,7 @@ function nescafe_preprocess_region__details($details)
             $livrare = 'Filiala';
             $promoCode = "Promocod";
             $state = 'Statut';
-            $stateON = 'Ridicat -> ';
+            $stateON = 'Ridicat în -> ';
             $stateOFF = "In Asteptare";
         }
 
