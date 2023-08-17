@@ -538,7 +538,6 @@ function nescafe_preprocess_region__account(&$elem)
         $sql2 = "SELECT * FROM promo_code WHERE active <> 0";
         $result2 = $conn->query($sql2);
         $result2->setFetchMode(\PDO::FETCH_OBJ);
-dump($result);
         //dump($conn->query($sql));
         if ($result) {
             if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru') {
