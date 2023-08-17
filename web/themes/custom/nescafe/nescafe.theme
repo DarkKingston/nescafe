@@ -602,7 +602,7 @@ TABLE;
                         $statusPrint = '';
                       }
 
-                        printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $record->promocode, $record->premiu, $record->livrare, $statusPrint.$result->filiala_elib);
+                        printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $record->promocode, $record->premiu, $record->livrare, $statusPrint.$record->filiala_elib);
 
                         $count++;
                     }
