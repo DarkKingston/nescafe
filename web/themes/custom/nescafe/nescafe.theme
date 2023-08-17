@@ -548,7 +548,7 @@ dump($result);
                 $send = 'Проверить';
                 $intro = 'Вводите промо-код';
                 $status = 'Статус';
-                $stateON = "Выдан в -> ".$result->filiala_elib."";
+                $stateON = "Выдан в -> ";
                 $stateOFF = "В ожидании";
             }
             if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro') {
@@ -558,7 +558,7 @@ dump($result);
                 $send = 'Verifică';
                 $intro = 'Întroduceți codul promoțional';
                 $status = 'Statut';
-                $stateON = "Ridicat în -> ".$result->filiala_elib."";
+                $stateON = "Ridicat în -> ";
                 $stateOFF = "În Asteptare";
             }
 
@@ -602,7 +602,7 @@ TABLE;
                         $statusPrint = '';
                       }
 
-                        printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $record->promocode, $record->premiu, $record->livrare, $statusPrint);
+                        printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $record->promocode, $record->premiu, $record->livrare, $statusPrint.$result->filiala_elib);
 
                         $count++;
                     }
