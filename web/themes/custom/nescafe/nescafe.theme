@@ -547,6 +547,9 @@ function nescafe_preprocess_region__account(&$elem)
                 $filial = 'Филиал';
                 $send = 'Проверить';
                 $intro = 'Вводите промо-код';
+                $status = 'Статус';
+                $stateON = 'Выдан';
+                $stateOFF = "В ожидании";
             }
             if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro') {
                 $promo = 'Codul Promotional';
@@ -554,6 +557,9 @@ function nescafe_preprocess_region__account(&$elem)
                 $filial = 'Filiala';
                 $send = 'Verifică';
                 $intro = 'Întroduceți codul promoțional';
+                $status = 'Statut';
+                $stateON = 'Ridicat';
+                $stateOFF = "În Asteptare";
             }
 
             /*Обычный пользователь Вывод промокодов который он вводил*/
@@ -562,7 +568,7 @@ function nescafe_preprocess_region__account(&$elem)
                 print <<<TABLE
 <table id="table8">
 <thead>
-<tr><th>ID</th><th>$promo</th><th>$number</th><th>$filial</th></tr>
+<tr><th>ID</th><th>$promo</th><th>$number</th><th>$filial</th>$status<th></th></tr>
 </thead>
 <tbody>
 TABLE;
@@ -588,7 +594,15 @@ TABLE;
                             $score = 1;
                             $total += 1;
                         }
-                        printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $record->promocode, $record->premiu, $record->livrare);
+                      if ($record->status == 2) {
+                        $statusPrint = $stateOFF;
+                      } else if ($record->status == 3) {
+                        $statusPrint = $stateON;
+                      } else {
+                        $statusPrint = '';
+                      }
+
+                        printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $record->promocode, $record->premiu, $record->livrare, $statusPrint);
 
                         $count++;
                     }
