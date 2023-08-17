@@ -686,7 +686,7 @@ TABLE;
 
 
                 if ($_POST['code_name'] == $_SESSION['code']) {
-                  $getMyFilala = "SELECT * FROM user__field__filiala WHERE entity_id = '".$curr_id_for_user."' ";
+                  $getMyFilala = "SELECT * FROM user__field_filiala WHERE entity_id = '".$curr_id_for_user."' ";
                   $resultFil = $conn->query($getMyFilala);
                   $resultFil->setFetchMode(\PDO::FETCH_OBJ);
                   foreach($resultFil as $fil_res){}
