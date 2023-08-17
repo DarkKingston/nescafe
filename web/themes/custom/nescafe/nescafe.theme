@@ -3953,7 +3953,7 @@ function nescafe_preprocess_region__details($details)
             $livrare = 'Филиал';
             $promoCode = "Промокод";
             $state = 'Статус';
-            $stateON = 'Выдан';
+            $stateON = 'Выдан -> ';
             $stateOFF = "В ожидании";
         }
         if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro') {
@@ -3966,7 +3966,7 @@ function nescafe_preprocess_region__details($details)
             $livrare = 'Filiala';
             $promoCode = "Promocod";
             $state = 'Statut';
-            $stateON = 'Ridicat';
+            $stateON = 'Ridicat -> ';
             $stateOFF = "In Asteptare";
         }
 
@@ -3994,7 +3994,7 @@ function nescafe_preprocess_region__details($details)
             } else {
                 $statusPrint = '';
             }
-            printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $record->field_name_value,$record->field_lastname_value, $record->name, $record->premiu, $record->livrare, $record->promocode, $statusPrint);
+            printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n", $count, $record->field_name_value,$record->field_lastname_value, $record->name, $record->premiu, $record->livrare, $record->promocode, $statusPrint.$record->filiala_elib);
 
             $count++;
         }
