@@ -568,7 +568,7 @@ function nescafe_preprocess_region__account(&$elem)
                 print <<<TABLE
 <table id="table8">
 <thead>
-<tr><th>ID</th><th>$promo</th><th>$number</th><th>$filial</th>$status<th></th></tr>
+<tr><th>ID</th><th>$promo</th><th>$number</th><th>$filial</th><th>$status</th></tr>
 </thead>
 <tbody>
 TABLE;
