@@ -608,14 +608,49 @@ TABLE;
                 }
               if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru') {
                 $logout = 'Выход';
+                $zilTombolaTxt = "Вы являетесь участником ежедневной лотереи";
+                $finTombolaTxt = "Вы являетесь участником финального розыгрыша";
               }
               if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro') {
                 $logout = 'Ieșire';
+                $zilTombolaTxt = "Sunteți participant la tombola zilnică";
+                $finTombolaTxt = "Sunteți participant la tombolă finală";
+              }
+              $checkTombola = "SELECT * FROM promo_code WHERE tombola = 1 AND active = '".$curr_id_for_user."' ";
+              $resultcheckTombola = $conn->query($checkTombola);
+              $resultcheckTombola->setFetchMode(\PDO::FETCH_OBJ);
+              $checkCounterTombola = 0;
+              foreach($resultcheckTombola as $resCheck){
+                $checkCounterTombola++;
+              }
+              $checkTombolaFin = "SELECT * FROM promo_code WHERE final = 1 AND active = '".$curr_id_for_user."' ";
+              $resultcheckTombolaFin = $conn->query($checkTombolaFin);
+              $resultcheckTombolaFin->setFetchMode(\PDO::FETCH_OBJ);
+              $checkCounterTombolaFin = 0;
+              foreach($resultcheckTombola as $resCheck){
+                $checkCounterTombolaFin++;
+              }
+              $tombolaZilnica = "";
+              if($checkCounterTombola > 0){
+                $tombolaZilnica = "<div>".$zilTombolaTxt."</div>";
+              }
+              $tombolaFinala = "";
+              if($checkCounterTombolaFin > 0){
+                $tombolaFinala = "<div>".$finTombolaTxt."</div>";
               }
                 print "</tbody>\n</table>\n";
-                print "<div class='promo_add'> <form method='post'><div class='promo_group'><label>$intro</label><input type='text' class='promo_add_inp' name='introduceti_codul_promotional'></div> <input type='submit' value='$send' class='promo_send' name='submit_popup'></form> <a href='/user/logout' class='btn_main stock logout_btn'>".$logout."</a></div>";
+                print "<div class='promo_add'> 
+                        <form method='post'>
+                          <div class='promo_group'><label>$intro</label><input type='text' class='promo_add_inp' name='introduceti_codul_promotional'></div> 
+                          <input type='submit' value='$send' class='promo_send' name='submit_popup'>
+                        </form> 
+                        <a href='/user/logout' class='btn_main stock logout_btn'>".$logout."</a>
+                        ".$tombolaZilnica."
+                        ".$tombolaFinala."
+                      </div>";
             }
         }
+
 
         /* Для менеджера филиала */
         if (in_array('authenticated', $roles) && in_array('manager_filiala', $roles) && !in_array('administrator', $roles)) {

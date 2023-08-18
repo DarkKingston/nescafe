@@ -25,30 +25,19 @@ use Drupal\user\Entity\User;
       \PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => TRUE,
       \PDO::MYSQL_ATTR_FOUND_ROWS => TRUE,
     ]);
-        $getTombola = "SELECT * FROM promo_code WHERE tombola = 1";
-        $tombolaZil  = $conn->query($getTombola);
-        $tombolaZil->setFetchMode(\PDO::FETCH_OBJ);
-
-        $ifUsers = 0;
-        $arrID = array();
-        foreach($tombolaZil as $zil){
-          $ifUsers++;
-          $arrID[] = $zil->id;
-        }
-        if($ifUsers >= 2){
-          $key = array_rand($arrID);
-        }
-
-    $tombolaSuccess = "UPDATE promo_code SET tombola = 2 WHERE id = '".$arrID[$key]."'";
-    if($conn->query($tombolaSuccess)){}
-
-    $getFinal = "SELECT * FROM promo_code WHERE final = 1";
-    $finalZil  = $conn->query($getFinal);
-    $finalZil->setFetchMode(\PDO::FETCH_OBJ);
+    $getTombolaParticipant = "SELECT * FROM promo_code WHERE tombola = 2";
+    $tombolaZilParticipant = $conn->query($getTombolaParticipant);
+    $tombolaZilParticipant->setFetchMode(\PDO::FETCH_OBJ);
+    foreach ($tombolaZilParticipant as $participant){
+        $IDwinner[] = $participant->active;
+    }
+    $getTombola = "SELECT * FROM promo_code WHERE tombola = 1 AND active NOT IN ('".implode(',', $IDwinner)."')";
+    $tombolaZil  = $conn->query($getTombola);
+    $tombolaZil->setFetchMode(\PDO::FETCH_OBJ);
 
     $ifUsers = 0;
     $arrID = array();
-    foreach($finalZil as $zil){
+    foreach($tombolaZil as $zil){
       $ifUsers++;
       $arrID[] = $zil->id;
     }
@@ -56,8 +45,10 @@ use Drupal\user\Entity\User;
       $key = array_rand($arrID);
     }
 
-    $FinalSuccess = "UPDATE promo_code SET final = 2 WHERE id = '".$arrID[$key]."'";
-    if($conn->query($FinalSuccess)){}
+    $tombolaSuccess = "UPDATE promo_code SET tombola = 2 WHERE id = '".$arrID[$key]."'";
+    if($conn->query($tombolaSuccess)){}
+
+
 
   }
 ?>
