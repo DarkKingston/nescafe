@@ -632,11 +632,11 @@ TABLE;
               }
               $tombolaZilnica = "";
               if($checkCounterTombola > 0){
-                $tombolaZilnica = "<div>".$zilTombolaTxt."</div>";
+                $tombolaZilnica = "<div style='font-size: 16px; font-weight: 600; margin-top: 15px;'>".$zilTombolaTxt."</div>";
               }
               $tombolaFinala = "";
               if($checkCounterTombolaFin > 0){
-                $tombolaFinala = "<div>".$finTombolaTxt."</div>";
+                $tombolaFinala = "<div style='font-size: 16px; font-weight: 600; margin-top: 10px;'>".$finTombolaTxt."</div>";
               }
                 print "</tbody>\n</table>\n";
                 print "<div class='promo_add'> 
