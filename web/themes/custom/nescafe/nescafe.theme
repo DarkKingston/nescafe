@@ -633,6 +633,10 @@ TABLE;
                 foreach($resultcheckTombola as $resCheck){
                   $checkCounterTombola++;
                 }
+                $tombolaZilnica = "";
+                if($checkCounterTombola > 0){
+                  $tombolaZilnica = "<div style='font-size: 19px;color: #E31D1C; font-weight: 600; margin-top: 15px;'>".$zilTombolaTxt."</div>";
+                }
               }
 
               $checkTombolaFin = "SELECT * FROM promo_code WHERE final = 1 AND active = '".$curr_id_for_user."' ";
@@ -642,13 +646,10 @@ TABLE;
               foreach($resultcheckTombola as $resCheck){
                 $checkCounterTombolaFin++;
               }
-              $tombolaZilnica = "";
-              if($checkCounterTombola > 0){
-                $tombolaZilnica = "<div style='font-size: 16px; font-weight: 600; margin-top: 15px;'>".$zilTombolaTxt."</div>";
-              }
+
               $tombolaFinala = "";
               if($checkCounterTombolaFin > 0){
-                $tombolaFinala = "<div style='font-size: 16px; font-weight: 600; margin-top: 10px;'>".$finTombolaTxt."</div>";
+                $tombolaFinala = "<div style='font-size: 19px;color: #E31D1C; font-weight: 600; margin-top: 10px;'>".$finTombolaTxt."</div>";
               }
                 print "</tbody>\n</table>\n";
                 print "<div class='promo_add'> 
