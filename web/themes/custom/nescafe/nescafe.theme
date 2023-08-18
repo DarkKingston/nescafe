@@ -648,6 +648,13 @@ TABLE;
                         ".$tombolaZilnica."
                         ".$tombolaFinala."
                       </div>";
+              $getTombolaParticipant = "SELECT * FROM promo_code WHERE tombola = 2";
+              $tombolaZilParticipant = $conn->query($getTombolaParticipant);
+              $tombolaZilParticipant->setFetchMode(\PDO::FETCH_OBJ);
+              foreach ($tombolaZilParticipant as $participant){
+                $IDwinner[] = $participant->active;
+              }
+              dump("SELECT * FROM promo_code WHERE tombola = 1 AND active NOT IN ('".implode(',', $IDwinner)."')");
             }
         }
 
