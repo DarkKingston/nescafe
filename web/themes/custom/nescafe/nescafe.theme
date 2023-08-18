@@ -1398,10 +1398,14 @@ TABLE;
             if ($conn->query($tombolaSuccess)) {
               print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_final' data-dialog-type='modal'>
                                         <div  class='center'>".$txtone."</div>
-                                        <div class='btn_main action closePopupTombola'>".$txtClose."</div>
+                                        <input class='btn_main action closePopupTombola' value='".$txtClose."' name='closeTombola'>
                                     </form>
                                     ";
             }
+            if(isset($_POST['closeTombola'])){
+              header("Location: /account");
+            }
+
           }else if($total >= 15 && $userID->tombola == 2 && $userID->premiu == ''){
             $promoSuccess = "UPDATE promo_code SET status = 1, data = NOW() WHERE promocode = '" . $userID->promocode . "' AND status = 0 ";
             if ($conn->query($promoSuccess)) {
@@ -1549,9 +1553,12 @@ TABLE;
             if ($conn->query($tombolaSuccess)) {
               print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_final' data-dialog-type='modal'>
                                        <div class='center'>".$txtone."</div>
-                                       <div class='btn_main action closePopupTombola'>".$txtClose."</div>
+                                       <input class='btn_main action closePopupTombola' value='".$txtClose."' name='closeTombola'>
                                    </form>
                                    ";
+            }
+            if(isset($_POST['closeTombola'])){
+              header("Location: /account");
             }
           }
         }
