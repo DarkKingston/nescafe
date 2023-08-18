@@ -549,6 +549,7 @@ function nescafe_preprocess_region__account(&$elem)
                 $status = 'Статус';
                 $stateON = "Выдан в -> ";
                 $stateOFF = "В ожидании";
+                $reset = "Обновить информацию";
             }
             if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro') {
                 $promo = 'Codul Promotional';
@@ -559,6 +560,7 @@ function nescafe_preprocess_region__account(&$elem)
                 $status = 'Statut';
                 $stateON = "Ridicat în -> ";
                 $stateOFF = "În Asteptare";
+                $reset = "Reîmprospăteaza informația";
             }
 
             /*Обычный пользователь Вывод промокодов который он вводил*/
