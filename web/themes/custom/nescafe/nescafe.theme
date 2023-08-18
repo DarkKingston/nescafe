@@ -645,7 +645,7 @@ TABLE;
               $resultcheckTombolaFin = $conn->query($checkTombolaFin);
               $resultcheckTombolaFin->setFetchMode(\PDO::FETCH_OBJ);
               $checkCounterTombolaFin = 0;
-              foreach($resultcheckTombola as $resCheck){
+              foreach($resultcheckTombolaFin as $resCheck2){
                 $checkCounterTombolaFin++;
               }
 
