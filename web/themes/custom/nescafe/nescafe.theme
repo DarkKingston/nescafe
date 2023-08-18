@@ -568,7 +568,7 @@ function nescafe_preprocess_region__account(&$elem)
 <table id="table8">
 
 <thead>
-<tr><th><input type="submit" style="cursor: pointer;background: none;border: none;" value="Reset"></th></tr>
+<tr><th><input type="submit" style="cursor: pointer;background: none;border: none; font-size: 17px; font-weight: 700; color: #fff;" value="Reset"></th></tr>
 <tr><th>ID</th><th>$promo</th><th>$number</th><th>$filial</th><th>$status</th></tr>
 </thead>
 <tbody>
