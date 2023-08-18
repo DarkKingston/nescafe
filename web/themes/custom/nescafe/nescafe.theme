@@ -566,6 +566,7 @@ function nescafe_preprocess_region__account(&$elem)
 
                 print <<<TABLE
 <table id="table8">
+<legend><button type="submit"><img src="/images/reset.svg" alt=""></button></legend>
 <thead>
 <tr><th>ID</th><th>$promo</th><th>$number</th><th>$filial</th><th>$status</th></tr>
 </thead>
@@ -616,13 +617,23 @@ TABLE;
                 $zilTombolaTxt = "Sunteți participant la tombola zilnică";
                 $finTombolaTxt = "Sunteți participant la tombolă finală";
               }
-              $checkTombola = "SELECT * FROM promo_code WHERE tombola = 1 AND active = '".$curr_id_for_user."' ";
-              $resultcheckTombola = $conn->query($checkTombola);
-              $resultcheckTombola->setFetchMode(\PDO::FETCH_OBJ);
-              $checkCounterTombola = 0;
+              $checkTombola2 = "SELECT * FROM promo_code WHERE tombola = 2 AND active = '".$curr_id_for_user."' ";
+              $resultcheckTombola2 = $conn->query($checkTombola2);
+              $resultcheckTombola2->setFetchMode(\PDO::FETCH_OBJ);
+              $checkCounterTombola2 = 0;
               foreach($resultcheckTombola as $resCheck){
-                $checkCounterTombola++;
+                $checkCounterTombola2++;
               }
+              if($checkCounterTombola2 == 0){
+                $checkTombola = "SELECT * FROM promo_code WHERE tombola = 1 AND active = '".$curr_id_for_user."' ";
+                $resultcheckTombola = $conn->query($checkTombola);
+                $resultcheckTombola->setFetchMode(\PDO::FETCH_OBJ);
+                $checkCounterTombola = 0;
+                foreach($resultcheckTombola as $resCheck){
+                  $checkCounterTombola++;
+                }
+              }
+
               $checkTombolaFin = "SELECT * FROM promo_code WHERE final = 1 AND active = '".$curr_id_for_user."' ";
               $resultcheckTombolaFin = $conn->query($checkTombolaFin);
               $resultcheckTombolaFin->setFetchMode(\PDO::FETCH_OBJ);
@@ -678,7 +689,6 @@ TABLE;
             }
             print <<<TABLE
        <table id="table8">
-       <legend><button type="submit"><img src="/images/reset.svg" alt=""></button></legend>
        <thead>
        <tr><th>ID</th><th>$name</th><th>$mail</th><th>$phone</th><th>$prem</th><th>$livrare</th><th>$action</th></tr>
        </thead>
@@ -1375,10 +1385,18 @@ TABLE;
           }
           if ($total > 0 && $total % 15 == 0 && $userID->tombola == 0  && $userID->premiu == '') {
             $tombolaSuccess = "UPDATE promo_code SET tombola = 1,status = 0, data = NOW() WHERE promocode = '" . $userID->promocode . "' AND tombola = 0 ";
+            if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru') {
+              $txtone = "Поздравляем, Вы стали участником ежедневного розыгрыша!";
+              $txtClose = "Закрыть";
+            }
+            if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro') {
+              $txtone = "Felicitări, ați fost ales participant la tombola zilnică!";
+              $txtClose = "Închide";
+            }
             if ($conn->query($tombolaSuccess)) {
               print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_final' data-dialog-type='modal'>
-                                        <div  class='center'>Felicitări, ați fost ales participant la tombola zilnică!</div>
-                                        <div class='btn_main action closePopupTombola'>Închide</div>
+                                        <div  class='center'>".$txtone."</div>
+                                        <div class='btn_main action closePopupTombola'>".$txtClose."</div>
                                     </form>
                                     ";
             }
