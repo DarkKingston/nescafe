@@ -654,7 +654,6 @@ TABLE;
               foreach ($tombolaZilParticipant as $participant){
                 $IDwinner[] = $participant->active;
               }
-              dump("SELECT * FROM promo_code WHERE tombola = 1 AND active NOT IN ('".implode(',', $IDwinner)."')");
             }
         }
 
@@ -780,6 +779,18 @@ TABLE;
             $res->setFetchMode(\PDO::FETCH_OBJ);
             foreach ($res as $userID) {
             }
+
+
+          function isUnique($array, $key, $val)
+          {
+            foreach ($array as $item) {
+              if ($item[$key] === $val) {
+                return false;
+              }
+            }
+            return true;
+          }
+
             if ($curr_id_for_user == $userID->active) {
               if (($promoTotal % 7) == 0 && $userID->status != 2 && $promoTotal > 0) {
 
@@ -817,15 +828,6 @@ TABLE;
                         $arrFil[] = $val['filiala'];
                       }
                       //dump($arrShow);
-                    }
-                    function isUnique($array, $key, $val)
-                    {
-                      foreach ($array as $item) {
-                        if ($item[$key] === $val) {
-                          return false;
-                        }
-                      }
-                      return true;
                     }
 
                     // Отфильтрованный массив с уникальными элементами по полю "name"
@@ -970,15 +972,6 @@ TABLE;
                                                                         $arrFil[] = $val['filiala'];
                                                                       }
                                                                         //dump($arrShow);
-                                                                    }
-                                                                    function isUnique($array, $key, $val)
-                                                                    {
-                                                                        foreach ($array as $item) {
-                                                                            if ($item[$key] === $val) {
-                                                                                return false;
-                                                                            }
-                                                                        }
-                                                                        return true;
                                                                     }
 
                                                                     // Отфильтрованный массив с уникальными элементами по полю "name"
@@ -1141,15 +1134,6 @@ TABLE;
                   foreach ($filVal as $arrValFil) {
                     $option2 .= " <option>" . $arrValFil['value'] . "</option> ";
                   }
-                  function isUnique($array, $key, $value)
-                  {
-                    foreach ($array as $item) {
-                      if ($item[$key] === $value) {
-                        return false;
-                      }
-                    }
-                    return true;
-                  }
 
                   // Отфильтрованный массив с уникальными элементами по полю "name"
                   $filteredArray = [];
@@ -1296,15 +1280,6 @@ TABLE;
                 foreach ($filVal as $arrValFil) {
                   $option2 .= " <option>" . $arrValFil['value'] . "</option> ";
                 }
-                function isUnique($array, $key, $value)
-                {
-                  foreach ($array as $item) {
-                    if ($item[$key] === $value) {
-                      return false;
-                    }
-                  }
-                  return true;
-                }
 
                 // Отфильтрованный массив с уникальными элементами по полю "name"
                 $filteredArray = [];
@@ -1446,15 +1421,6 @@ TABLE;
                     $arrFil[] = $val['filiala'];
                   }
                   //dump($arrShow);
-                }
-                function isUnique($array, $key, $val)
-                {
-                  foreach ($array as $item) {
-                    if ($item[$key] === $val) {
-                      return false;
-                    }
-                  }
-                  return true;
                 }
 
                 // Отфильтрованный массив с уникальными элементами по полю "name"
