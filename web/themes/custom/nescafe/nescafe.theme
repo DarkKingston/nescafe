@@ -566,7 +566,7 @@ function nescafe_preprocess_region__account(&$elem)
 
                 print <<<TABLE
 <table id="table8">
-<legend><button type="submit"><img src="/images/reset.svg" alt=""></button></legend>
+<legend><button type="submit" style="background: none;border: none;"><img src="/themes/custom/nescafe/images/reset.svg" alt=""></button></legend>
 <thead>
 <tr><th>ID</th><th>$promo</th><th>$number</th><th>$filial</th><th>$status</th></tr>
 </thead>
