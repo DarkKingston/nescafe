@@ -678,6 +678,7 @@ TABLE;
             }
             print <<<TABLE
        <table id="table8">
+       <legend><button type="submit"><img src="/images/reset.svg" alt=""></button></legend>
        <thead>
        <tr><th>ID</th><th>$name</th><th>$mail</th><th>$phone</th><th>$prem</th><th>$livrare</th><th>$action</th></tr>
        </thead>
@@ -1517,10 +1518,18 @@ TABLE;
           }
           if ($total > 0 && $total % 30 == 0 && $userID->final == 0) {
             $tombolaSuccess = "UPDATE promo_code SET final = 1, data = NOW() WHERE promocode = '" . $userID->promocode . "' AND final = 0 ";
+            if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru') {
+              $txtone = "Поздравляем, Вы стали участником финального розыгрыша!";
+              $txtClose = "Закрыть";
+            }
+            if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro') {
+              $txtone = "Felicitări, ați fost ales participant la tombola finală!";
+              $txtClose = "Închide";
+            }
             if ($conn->query($tombolaSuccess)) {
               print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_final' data-dialog-type='modal'>
-                                       <div class='center'>Felicitări, ați fost ales participant la tombola finală!</div>
-                                       <div class='btn_main action closePopupTombola'>Închide</div>
+                                       <div class='center'>".$txtone."</div>
+                                       <div class='btn_main action closePopupTombola'>".$txtClose."</div>
                                    </form>
                                    ";
             }
