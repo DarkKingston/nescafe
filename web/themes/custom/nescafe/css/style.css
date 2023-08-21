@@ -654,7 +654,7 @@ form .form-item label{
   border-radius: 4px;
   padding: 7px 13px 7px 13px;
   border: 0;
-  width: 70px;
+  width: 130px;
   cursor: pointer;
   display: flex;
   text-align: center;
@@ -664,6 +664,7 @@ form .form-item label{
 .btn_main.search_filiala {
   display: unset;
   margin: unset;
+  text-align: center;
 }
 
 .center, .error_popup{
