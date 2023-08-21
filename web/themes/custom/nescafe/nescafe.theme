@@ -468,7 +468,8 @@ function nescafe_preprocess_region__account(&$elem)
 
       if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru') {
         $all = 'Все';
-        $chis = 'Chișinău';
+        $chis = 'Chișinău Bonus';
+        $chis1 = 'Chișinău NR1';
         $comr = 'Comrat';
         $edinet = 'Edineț';
         $cahul = 'Cahul';
@@ -480,7 +481,8 @@ function nescafe_preprocess_region__account(&$elem)
       if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro') {
         $sort = 'Sortare după filială';
         $all = 'Toate';
-        $chis = 'Chișinău';
+        $chis = 'Chișinău Bonus';
+        $chis1 = 'Chișinău NR1';
         $comr = 'Comrat';
         $edinet = 'Edineț';
         $cahul = 'Cahul';
@@ -499,6 +501,7 @@ function nescafe_preprocess_region__account(&$elem)
              <select name='filiala_inp'>
                  <option>".$all."</option>
                  <option>".$chis."</option>
+                 <option>".$chis1."</option>
                  <option>".$comr."</option>
                  <option>".$edinet."</option>
                  <option>".$cahul."</option>
