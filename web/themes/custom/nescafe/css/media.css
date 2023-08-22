@@ -138,6 +138,10 @@
   #block-image-step .prize_adaptive img{
     display: block;
   }
+  #table8 th form input{
+    font-size: 13px;
+  }
+
 }
 
 @media(max-width: 770px){
@@ -146,6 +150,7 @@
   }
 }
 @media(max-width: 380px){
+
   #table8 th{
     font-size: 0.7em;
   }
