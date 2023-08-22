@@ -82,14 +82,14 @@
         document.querySelector('.user-login-form .js-form-item-name label').innerHTML = phone;
       }
       if(document.querySelector(".logged") != null){
-        if(document.querySelector('.mobile_btn') != null){
-          document.querySelector('.mobile_btn a').innerHTML = loggedText;
-          document.querySelector('.mobile_btn a').href="/account";
+        if(document.querySelector('.mobile_menu .mobile_btn') != null){
+          document.querySelector('.mobile_menu .mobile_btn a').innerHTML = loggedText;
+          document.querySelector('.mobile_menu .mobile_btn a').href="/account";
         }
       }else{
-        if(document.querySelector('.mobile_btn') != null){
-          document.querySelector('.mobile_btn a').innerHTML = registerText;
-          document.querySelector('.mobile_btn a').href="/register";
+        if(document.querySelector('.mobile_menu .mobile_btn') != null){
+          document.querySelector('.mobile_menu .mobile_btn a').innerHTML = registerText;
+          document.querySelector('.mobile_menu .mobile_btn a').href="/register";
         }
       }
       if(document.querySelector('.user-register-form .js-form-item-name label') != null){
