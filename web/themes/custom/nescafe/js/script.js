@@ -6,9 +6,6 @@
       $('.user-register-form .form-item-name input').mask('37399999999');
       $('.reset_pass').mask('37399999999');
 
-
-
-
       $('.burger,.mob_menu_overlay,.close_menu',context).on('click',function(){
         $('.mobile_menu').slideToggle();
         $('.mob_menu_overlay').fadeToggle();
@@ -47,6 +44,7 @@
       let pass2;
       let confirm;
       let reglament;
+      let loggedText;
       let currLang = document.querySelector('.curr_lang_item').innerText;
 
       if(currLang == "RO"){
@@ -62,6 +60,7 @@
         reset = "Resetează parola";
         loginLink = "Înregistrare";
         registerText = "Înregistrează-te și câștigă";
+        loggedText = "Cabinet personal";
         reglament = "<input type='checkbox'> Am luat cunoștință cu regulamentul";
       }else if (currLang == "RU"){
         label = "Создать новый аккаунт";
@@ -74,6 +73,7 @@
         phone = "Номер телефона";
         login = "Регистрация/Вход";
         reset = "Восстановить пароль";
+        loggedText = "Личный кабинет";
         registerText = "Зарегистрируйся и выиграй";
         reglament = "<input type='checkbox'> Ознакомился с регламентом";
         loginLink = "Регистрация";
@@ -81,8 +81,14 @@
       if(document.querySelector('.user-login-form .js-form-item-name label') != null){
         document.querySelector('.user-login-form .js-form-item-name label').innerHTML = phone;
       }
-      if(document.querySelector('.mobile_btn') != null){
-        document.querySelector('.mobile_btn').innerHTML = registerText;
+      if(document.querySelector(".logged") != null){
+        if(document.querySelector('.mobile_btn') != null){
+          document.querySelector('.mobile_btn a').innerHTML = loggedText;
+        }
+      }else{
+        if(document.querySelector('.mobile_btn') != null){
+          document.querySelector('.mobile_btn a').innerHTML = registerText;
+        }
       }
       if(document.querySelector('.user-register-form .js-form-item-name label') != null){
         document.querySelector('.user-register-form .js-form-item-name label').innerHTML = phone;

@@ -147,6 +147,10 @@ function nescafe_preprocess_menu__header_btn(&$logged)
 
 function nescafe_preprocess_page(&$page)
 {
+  $current_user = \Drupal::currentUser();
+  if ($current_user->isAuthenticated()) {
+    print "<div class='logged hidden'>.</div>";
+  }
   $roles = \Drupal::currentUser()->getRoles();
 
 

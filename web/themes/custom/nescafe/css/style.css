@@ -1003,7 +1003,7 @@ form .form-item label{
   margin-top: 10px !important;
 }
 
-.error_popup.hidden{
+.error_popup.hidden, .logged.hidden{
   display: none;
 }
 
