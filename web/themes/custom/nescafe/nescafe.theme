@@ -292,9 +292,6 @@ function nescafe_preprocess_page(&$page)
                       <div class='cookie_title'>
                         ".$cookie."
                       </div>
-//                      <div class='cookie_subtitle'>
-//                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard
-//                      </div>
 
                       <form method='post'>
                             <input type='submit' name='cookie_reject' class='cookie_reject' value='" . $reject . "'>
@@ -318,9 +315,6 @@ function nescafe_preprocess_page(&$page)
             <div class='cookie_box'>
               <div class='cookie_title'>
                 ".$cookie."
-              </div>
-              <div class='cookie_subtitle'>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard
               </div>
 
               <form method='post'>
