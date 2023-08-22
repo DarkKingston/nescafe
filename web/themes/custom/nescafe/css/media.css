@@ -68,6 +68,9 @@
     font-size: 13px;
     margin: 0;
   }
+  .mobile_btn a:hover{
+    color: #fff;
+  }
   .langs_select{
     margin-left: 10px;
   }
