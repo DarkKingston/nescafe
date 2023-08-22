@@ -376,7 +376,7 @@ function nescafe_preprocess_region__account(&$elem)
       }
       if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro') {
         $codeRepeat = "Acest cod deja a fost introdus.";
-        $codeSuccess = "Cod înregistrat cu success!";
+        $codeSuccess = "Cod înregistrat cu succes!";
         $codeClose = "Închide";
       }
 
@@ -550,7 +550,7 @@ function nescafe_preprocess_region__account(&$elem)
                 $reset = "Обновить информацию";
             }
             if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro') {
-                $promo = 'Codul Promotional';
+                $promo = 'Codul Promoțional';
                 $number = 'Premiu';
                 $filial = 'Filiala';
                 $send = 'Verifică';
@@ -742,7 +742,7 @@ TABLE;
                   $updateStatus = "UPDATE promo_code SET status = 3, filiala_elib = '".$fil_res->field_filiala_value."'  WHERE active = '".$_SESSION['id_user']."' AND status = 2 AND id = '".$_SESSION['prem_id']."' ";
                   if ($conn->query($updateStatus)) {
                     print "<form method='post' class='error_popup'>
-                                Success
+                                Succes
                                 <input type='submit' name='code_submit' value='Submit' onclick='closePopup()' class='btn_main action search_filiala form_btn'>
                            </form>";
                   }else{
@@ -872,11 +872,11 @@ TABLE;
                   //dump($arrUnique);
                   //dump($arrShow);
                   if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru') {
-                    $label = "Выберите приз из списка ниже";
+                    $label = "Выберите приз из списка ниже:";
                     $confirm = "Подтвердить";
                   }
                   if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro') {
-                    $label = "Alege premiul din lista de mai jos";
+                    $label = "Alege premiul din lista de mai jos:";
                     $confirm = "Alege";
                   }
                   print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_gift' data-dialog-type='modal'>
@@ -901,8 +901,8 @@ TABLE;
                   $txt2 = "и получении его в филиале";
                 }
                 if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro') {
-                  $txt1 = "Sunteți sigur în alegerea premiului";
-                  $txt2 = "și ridicarea la filiala";
+                  $txt1 = "Ești sigur că vrei să alegi premiul";
+                  $txt2 = "cu ridicare la filiala";
                 }
                 if (isset($_POST['submitGift'])) {
                   $selectedPremiu = ''; // Задайте начальное значение выбранного приза
