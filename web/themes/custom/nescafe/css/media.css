@@ -145,10 +145,13 @@
     flex-direction: column-reverse;
   }
 }
-
-@media(max-width: 350px){
+@media(max-width: 380px){
   #table8 th{
     font-size: 0.7em;
+  }
+  #table8 td{
+    padding: 3px;
+    font-size: 10px;
   }
 }
 
