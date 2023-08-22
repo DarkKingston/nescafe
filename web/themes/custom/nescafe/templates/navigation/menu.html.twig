@@ -46,6 +46,11 @@
       <div class="auth_btn mobile_btn">
         <a href="/ro/register" data-drupal-link-system-path="register">Înregistrează-te și câștigă</a>
       </div>
+      {% for item in items %}
+        <div class="auth_btn">
+          {{ link(item.title, item.url) }}
+        </div>
+      {% endfor %}
     </li>
   </ul>
   {% endif %}
