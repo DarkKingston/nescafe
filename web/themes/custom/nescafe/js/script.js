@@ -38,6 +38,7 @@
       let login;
       let reset;
       let name;
+      let registerText;
       let last_name;
       let loginLink;
       let label;
@@ -60,6 +61,7 @@
         login = "Înregistrare/Autentificare";
         reset = "Resetează parola";
         loginLink = "Înregistrare";
+        registerText = "Înregistrează-te și câștigă";
         reglament = "<input type='checkbox'> Am luat cunoștință cu regulamentul";
       }else if (currLang == "RU"){
         label = "Создать новый аккаунт";
@@ -72,11 +74,15 @@
         phone = "Номер телефона";
         login = "Регистрация/Вход";
         reset = "Восстановить пароль";
+        registerText = "Зарегистрируйся и выиграй";
         reglament = "<input type='checkbox'> Ознакомился с регламентом";
         loginLink = "Регистрация";
       }
       if(document.querySelector('.user-login-form .js-form-item-name label') != null){
         document.querySelector('.user-login-form .js-form-item-name label').innerHTML = phone;
+      }
+      if(document.querySelector('.mobile_btn') != null){
+        document.querySelector('.mobile_btn').innerHTML = registerText;
       }
       if(document.querySelector('.user-register-form .js-form-item-name label') != null){
         document.querySelector('.user-register-form .js-form-item-name label').innerHTML = phone;
