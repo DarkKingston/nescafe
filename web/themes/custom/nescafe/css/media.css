@@ -57,7 +57,7 @@
   }
 }
 @media(min-width: 599px){
-  .mobile_btn{
+  .menu_links .mobile_btn{
     display: none;
   }
 }
@@ -65,14 +65,14 @@
   .auth_btn{
     display: none;
   }
-  .mobile_menu .mobile_btn{
+  .mobile_menu .menu_links .mobile_btn{
     display: block;
   }
-  .mobile_menu .mobile_btn a{
+  .mobile_menu .menu_links .mobile_btn a{
     font-size: 13px;
     margin: 0;
   }
-  .mobile_menu .mobile_btn a:hover{
+  .mobile_menu .menu_links .mobile_btn a:hover{
     color: #fff;
   }
   .langs_select{
