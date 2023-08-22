@@ -61,6 +61,9 @@
   .auth_btn{
     display: none;
   }
+  .mobile_btn{
+    display: block;
+  }
   .langs_select{
     margin-left: 10px;
   }
