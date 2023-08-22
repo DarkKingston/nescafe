@@ -64,6 +64,10 @@
   .mobile_btn{
     display: block;
   }
+  .mobile_btn a{
+    font-size: 13px;
+    margin: 0;
+  }
   .langs_select{
     margin-left: 10px;
   }
