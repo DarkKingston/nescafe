@@ -89,6 +89,15 @@
   [role=banner] {
     padding-top: 30px;
   }
+  #table8 th:first-child{
+    text-align: center;
+  }
+  #table8 th{
+    padding: 10px 0;
+  }
+  #table8 td{
+    padding: 7px;
+  }
 }
 
 @media(max-width: 460px){
