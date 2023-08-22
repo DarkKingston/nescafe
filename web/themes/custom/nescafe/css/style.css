@@ -1109,3 +1109,19 @@ button.shwpd{
   top: 37px;
   left: 10px;
 }
+
+.form_search_txt{
+  text-align: center;
+  margin: 0 auto;
+}
+.form_search_form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  m0-align-items: flex-start;
+}
+
+.form_search_form .search_filiala{
+  margin-top: 10px;
+}

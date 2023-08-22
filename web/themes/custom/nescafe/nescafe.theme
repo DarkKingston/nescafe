@@ -491,8 +491,8 @@ function nescafe_preprocess_region__account(&$elem)
           <a href='/stock' class='btn_main stock logout_btn'>" . $stats . "</a>
           <a href='/tombola' class='btn_main stock logout_btn'>" . $tombola . "</a>
           <a href='/user/logout' class='btn_main stock logout_btn'>".$logout."</a>
-          <div class='text_content search_fil'>".$sort."</div>
-          <form method='post'>
+          <div class='text_content search_fil form_search_txt'>".$sort."</div>
+          <form method='post' class='form_search_form'>
              <select name='filiala_inp'>
                  <option>".$all."</option>
                  <option>".$chis."</option>
