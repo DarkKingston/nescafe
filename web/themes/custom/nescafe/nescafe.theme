@@ -632,7 +632,7 @@ TABLE;
                 $checkCounterTombola2++;
               }
               if($checkCounterTombola2 == 0){
-                $checkTombola = "SELECT * FROM promo_code WHERE tombola = 1 AND active = '".$curr_id_for_user."' ";
+                $checkTombola = "SELECT * FROM promo_code WHERE tombola > 0 AND active = '".$curr_id_for_user."' ";
                 $resultcheckTombola = $conn->query($checkTombola);
                 $resultcheckTombola->setFetchMode(\PDO::FETCH_OBJ);
                 $checkCounterTombola = 0;
@@ -640,7 +640,7 @@ TABLE;
                   $checkCounterTombola++;
                 }
                 $tombolaZilnica = "";
-                if($checkCounterTombola > 0){
+                if($checkCounterTombola == 1){
                   $tombolaZilnica = "<div style='font-size: 19px;color: #E31D1C; font-weight: 600; margin-top: 15px;'>".$zilTombolaTxt."</div>";
                 }
               }
