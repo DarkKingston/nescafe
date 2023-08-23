@@ -522,7 +522,7 @@ function nescafe_preprocess_region__account(&$elem)
     }
     if (in_array('authenticated', $roles) && in_array('manager_filiala', $roles) && !in_array('administrator', $roles)) {
         if (isset($_POST['submitSearch']) && $_POST['search'] != '') {
-            $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `promo_code` ON `users_field_data`.uid = `promo_code`.active  LEFT JOIN `user__field_name` ON `users_field_data`.`uid` = `user__field_name`.`entity_id` LEFT JOIN `user__field_lastname` ON `users_field_data`.`uid` = `user__field_lastname`.`entity_id`  WHERE uid != 0 AND  `users_field_data`.`name` LIKE '%" . $_POST['search'] . "%' AND `promo_code`.`active` != 0 AND `promo_code`.`status` = 2 ";
+            $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `promo_code` ON `users_field_data`.uid = `promo_code`.active  LEFT JOIN `user__field_name` ON `users_field_data`.`uid` = `user__field_name`.`entity_id` LEFT JOIN `user__field_lastname` ON `users_field_data`.`uid` = `user__field_lastname`.`entity_id`  WHERE uid != 0 AND  `users_field_data`.`name` LIKE '%" . $_POST['search'] . "%' AND `promo_code`.`active` != 0 AND `promo_code`.`status` = 2 AND `promo_code`.`statusTombola` != 3 ";
             //dump($_POST);
         } else {
             $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `promo_code` ON `users_field_data`.uid = `promo_code`.active  LEFT JOIN `user__field_name` ON `users_field_data`.`uid` = `user__field_name`.`entity_id` LEFT JOIN `user__field_lastname` ON `users_field_data`.`uid` = `user__field_lastname`.`entity_id` WHERE uid != 0 AND `promo_code`.`active` != 0 AND `promo_code`.`status` = 2 ORDER BY uid ASC";
@@ -632,7 +632,7 @@ TABLE;
                 $checkCounterTombola2++;
               }
               if($checkCounterTombola2 == 0){
-                $checkTombola = "SELECT * FROM promo_code WHERE tombola > 0 AND active = '".$curr_id_for_user."' ";
+                $checkTombola = "SELECT * FROM promo_code WHERE tombola > 1 AND active = '".$curr_id_for_user."' ";
                 $resultcheckTombola = $conn->query($checkTombola);
                 $resultcheckTombola->setFetchMode(\PDO::FETCH_OBJ);
                 $checkCounterTombola = 0;
@@ -640,7 +640,7 @@ TABLE;
                   $checkCounterTombola++;
                 }
                 $tombolaZilnica = "";
-                if($checkCounterTombola == 1){
+                if($checkCounterTombola == 0){
                   $tombolaZilnica = "<div style='font-size: 19px;color: #E31D1C; font-weight: 600; margin-top: 15px;'>".$zilTombolaTxt."</div>";
                 }
               }
@@ -719,7 +719,9 @@ TABLE;
        TABLE;
             $count = 1;
             foreach ($result as $record) {
-
+                if($record->statusTombola == 2){
+                  printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><form method='post'><input type='hidden' value='".$record->uid."' name='active_id'> <input type='hidden' value='".$record->name."' name='form_phone'><input type='hidden' value='".$record->id."' name='prem_id'><input type='submit' name='submit_code_tombola' value='Submit' class='btn_main action search_filiala form_btn'></form></td></tr>\n", $count, $record->field_name_value,$record->field_lastname_value, $record->name, $record->premiuTombola, $record->livrareTombola, $record->uid);
+                }
                 printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><form method='post'><input type='hidden' value='".$record->uid."' name='active_id'> <input type='hidden' value='".$record->name."' name='form_phone'><input type='hidden' value='".$record->id."' name='prem_id'><input type='submit' name='submit_code' value='Submit' class='btn_main action search_filiala form_btn'></form></td></tr>\n", $count, $record->field_name_value,$record->field_lastname_value, $record->name, $record->premiu, $record->livrare, $record->uid);
 
                 $count++;
@@ -728,6 +730,30 @@ TABLE;
             print "</tbody>\n</table>\n";
 
             if(isset($_POST['submit_code'])){
+              print "<form method='post' class='error_popup'>
+                    <div class=''>".$codeTxt."</div>
+                    <input type='text' placeholder='code' name='code_name'>
+                    <input type='submit' style='display:flex; justify-content: center;' name='code_submit' value='Submit' onclick='closePopup()' class='btn_main action search_filiala form_btn'>
+               </form>";
+              $code = rand(1000, 9999);
+              $_SESSION['code'] = $code;
+              $_SESSION['prem_id'] = $_POST['prem_id'];
+              $phone = $_POST['form_phone'];
+              $params = array(
+
+                'type' => 'SendSms' ,
+
+                'phone' => $phone ,
+
+                'message' => 'Codul pentru eliberarea premiului este: '.$code.' '
+
+              );
+
+              $resultSend = apiBulkSmsSystem( $params );
+              $id = $_POST['active_id'];
+              $_SESSION['id_user'] = $id;
+            }
+            if(isset($_POST['submit_code_tombola'])){
               print "<form method='post' class='error_popup'>
                     <div class=''>".$codeTxt."</div>
                     <input type='text' placeholder='code' name='code_name'>
@@ -760,7 +786,7 @@ TABLE;
                   $resultFil = $conn->query($getMyFilala);
                   $resultFil->setFetchMode(\PDO::FETCH_OBJ);
                   foreach($resultFil as $fil_res){}
-                  $updateStatus = "UPDATE promo_code SET status = 3, filiala_elib = '".$fil_res->field_filiala_value."'  WHERE active = '".$_SESSION['id_user']."' AND status = 2 AND id = '".$_SESSION['prem_id']."' ";
+                  $updateStatus = "UPDATE promo_code SET statusTombola = 3, filiala_elib = '".$fil_res->field_filiala_value."'  WHERE active = '".$_SESSION['id_user']."' AND statusTombola = 2 AND id = '".$_SESSION['prem_id']."' ";
                   if ($conn->query($updateStatus)) {
                     print "<form method='post' class='error_popup'>
                                 Succes
