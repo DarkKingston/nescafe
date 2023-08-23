@@ -1392,11 +1392,11 @@ TABLE;
           if ($total > 0 && $total % 15 == 0 && $userID->tombola == 0  && $userID->premiu == '') {
             $tombolaSuccess = "UPDATE promo_code SET tombola = 1,status = 0, data = NOW() WHERE promocode = '" . $userID->promocode . "' AND tombola = 0 ";
             if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru') {
-              $txtone = "Поздравляем, Вы стали участником ежедневного розыгрыша!";
+              $txtone = "Поздравляем, Вы участник ежедневного розыгрыша!";
               $txtClose = "Закрыть";
             }
             if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro') {
-              $txtone = "Felicitări, ați fost ales participant la tombola zilnică!";
+              $txtone = "Felicitări, sunteți participant la tombola zilnică!";
               $txtClose = "Închide";
             }
             if ($conn->query($tombolaSuccess)) {
@@ -1410,7 +1410,8 @@ TABLE;
               header("Location: /account");
             }
 
-          }else if($total >= 15 && $userID->tombola == 2 && $userID->premiu == ''){
+          }
+          else if($total >= 15 && $userID->tombola == 2 && $userID->premiu == ''){
             $promoSuccess = "UPDATE promo_code SET status = 1, data = NOW() WHERE promocode = '" . $userID->promocode . "' AND status = 0 ";
             if ($conn->query($promoSuccess)) {
               $arrData  = array();
@@ -1547,11 +1548,11 @@ TABLE;
           if ($total > 0 && $total % 30 == 0 && $userID->final == 0) {
             $tombolaSuccess = "UPDATE promo_code SET final = 1, data = NOW() WHERE promocode = '" . $userID->promocode . "' AND final = 0 ";
             if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru') {
-              $txtone = "Поздравляем, Вы стали участником финального розыгрыша!";
+              $txtone = "Поздравляем, Вы участник финального розыгрыша!";
               $txtClose = "Закрыть";
             }
             if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro') {
-              $txtone = "Felicitări, ați fost ales participant la tombola finală!";
+              $txtone = "Felicitări, sunteți participant la tombola finală!";
               $txtClose = "Închide";
             }
             if ($conn->query($tombolaSuccess)) {
@@ -4942,4 +4943,3 @@ $sumVal = 0;
           }
             }
 }
-
