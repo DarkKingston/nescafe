@@ -616,13 +616,15 @@ TABLE;
                 $logout = 'Выход';
                 $zilTombolaTxt = "Вы являетесь участником ежедневной лотереи";
                 $finTombolaTxt = "Вы являетесь участником финального розыгрыша";
+                $winTombolaTxt = "Вы выиграли кофемашину. Вы можете забрать ее в филиале: ";
               }
               if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro') {
                 $logout = 'Ieșire';
                 $zilTombolaTxt = "Sunteți participant la tombola zilnică";
                 $finTombolaTxt = "Sunteți participant la tombolă finală";
+                $winTombolaTxt = "Ați câștigat un aparat de cafea. Îl puteți ridică la filiala: ";
               }
-              $checkTombola2 = "SELECT * FROM promo_code WHERE tombola = 2 AND active = '".$curr_id_for_user."' ";
+              $checkTombola2 = "SELECT * FROM promo_code WHERE tombola = 2 AND statusTombola = 0 AND active = '".$curr_id_for_user."' ";
               $resultcheckTombola2 = $conn->query($checkTombola2);
               $resultcheckTombola2->setFetchMode(\PDO::FETCH_OBJ);
               $checkCounterTombola2 = 0;
@@ -655,6 +657,20 @@ TABLE;
               if($checkCounterTombolaFin > 0){
                 $tombolaFinala = "<div style='font-size: 19px;color: #E31D1C; font-weight: 600; margin-top: 10px;'>".$finTombolaTxt."</div>";
               }
+
+              $checkTombolaWin = "SELECT * FROM promo_code WHERE tombola = 2 AND active = '".$curr_id_for_user."' AND statusTombola = 2 ";
+              $resultcheckTombolaWin = $conn->query($checkTombolaWin);
+              $resultcheckTombolaWin->setFetchMode(\PDO::FETCH_OBJ);
+              $checkCounterTombolaWin = 0;
+              foreach($resultcheckTombolaWin as $tombolaWinItem){
+                $checkCounterTombolaWin++;
+              }
+
+              $tombolaWin = "";
+              if($checkCounterTombolaWin == 1){
+                $tombolaWin = "<div style='font-size: 19px;color: #E31D1C; font-weight: 600; margin-top: 10px;'>".$winTombolaTxt."</div>";
+              }
+
                 print "</tbody>\n</table>\n";
                 print "<div class='promo_add'> 
                         <form method='post'>
@@ -663,6 +679,7 @@ TABLE;
                         </form> 
                         <a href='/user/logout' class='btn_main stock logout_btn'>".$logout."</a>
                         ".$tombolaZilnica."
+                        ".$tombolaWin.$tombolaWinItem->filialaTombola."
                         ".$tombolaFinala."
                       </div>";
 
