@@ -1511,7 +1511,7 @@ TABLE;
                                                                         " . $option2 . "
                                                                     </select>
                                                                     </div>
-                                                                    <input type='submit' class='btn_main action' name='submitGift' value='".$confirm."'>
+                                                                    <input type='submit' class='btn_main action' name='submitGiftTombola' value='".$confirm."'>
 
                                                                 </form>
                                                                 ";
@@ -1524,7 +1524,7 @@ TABLE;
                 $txt1 = "Ești sigur că vrei să alegi premiul";
                 $txt2 = "și ridicarea la filiala";
               }
-              if (isset($_POST['submitGift'])) {
+              if (isset($_POST['submitGiftTombola'])) {
                 $selectedPremiu = ''; // Задайте начальное значение выбранного приза
 
                 if (isset($_POST['premiu'])) {
@@ -1533,8 +1533,8 @@ TABLE;
                 print "<form method='POST' class='popup_gift'>
                                              <div class='center'>".$txt1. " ".$_POST['premiu']." ". $txt2 ." ".$_POST['filial']."</div>
                                              <div class='popup_gift_btns' style='display: flex;justify-content: center; text-align: center'>
-                                             <input type='submit' name='acceptPrem' class='btn_main action' value='Da' style='margin-right: 5px;'>
-                                             <input type='submit' name='ignorePrem' class='btn_main action' value='Nu'>
+                                             <input type='submit' name='acceptPremTombola' class='btn_main action' value='Da' style='margin-right: 5px;'>
+                                             <input type='submit' name='ignorePremTombola' class='btn_main action' value='Nu'>
                                               </div>
                                          </form>
                                          ";
@@ -1544,14 +1544,14 @@ TABLE;
                 }
 
               }
-              if(isset($_POST['acceptPrem'])){
+              if(isset($_POST['acceptPremTombola'])){
                 $updatePromo = "UPDATE promo_code SET statusTombola = 2 WHERE active = '" . $curr_id_for_user . "' AND statusTombola=1";
 
                 if ($conn->query($updatePromo)) {
                   header("Location: /account");
                 }
               }
-              if(isset($_POST['ignorePrem'])){
+              if(isset($_POST['ignorePremTombola'])){
                 header("Location: /account");
               }
             }
