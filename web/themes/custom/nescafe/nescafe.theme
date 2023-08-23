@@ -668,7 +668,7 @@ TABLE;
 
               $tombolaWin = "";
               if($checkCounterTombolaWin == 1){
-                $tombolaWin = "<div style='font-size: 19px;color: #E31D1C; font-weight: 600; margin-top: 10px;'>".$winTombolaTxt."</div>";
+                $tombolaWin = "<div style='font-size: 19px;color: #E31D1C; font-weight: 600; margin-top: 10px;'>".$winTombolaTxt.$tombolaWinItem->filialaTombola."</div>";
               }
 
                 print "</tbody>\n</table>\n";
@@ -679,7 +679,7 @@ TABLE;
                         </form> 
                         <a href='/user/logout' class='btn_main stock logout_btn'>".$logout."</a>
                         ".$tombolaZilnica."
-                        ".$tombolaWin.$tombolaWinItem->filialaTombola."
+                        ".$tombolaWin."
                         ".$tombolaFinala."
                       </div>";
 
