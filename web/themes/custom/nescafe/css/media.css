@@ -89,6 +89,10 @@
   [role=banner] {
     padding-top: 30px;
   }
+
+}
+
+@media(max-width: 450px){
   #table8 th:first-child{
     text-align: center;
   }
