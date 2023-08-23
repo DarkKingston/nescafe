@@ -31,7 +31,11 @@ use Drupal\user\Entity\User;
     foreach ($tombolaZilParticipant as $participant){
         $IDwinner[] = $participant->active;
     }
-    $getTombola = "SELECT * FROM promo_code WHERE tombola = 1 AND active NOT IN ('".implode(',', $IDwinner)."')";
+    $aditionalWhere = "";
+    if(!empty($IDwinner)){
+    $aditionalWhere = "AND active NOT IN ('".implode(',', $IDwinner)."')";
+    }
+    $getTombola = "SELECT * FROM promo_code WHERE tombola = 1 $aditionalWhere ";
     $tombolaZil  = $conn->query($getTombola);
     $tombolaZil->setFetchMode(\PDO::FETCH_OBJ);
 
