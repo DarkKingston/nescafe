@@ -1555,7 +1555,7 @@ TABLE;
                                               </div>
                                          </form>
                                          ";
-                $updatePromo = "UPDATE promo_code SET premiuTombola = '" . $_POST['premiu'] . "', filialaTombola = '" . $_POST['filial'] . "', statusTombola = 2 WHERE promocode = '" . $userID->promocode . "' AND statusTombola = 1 ";
+                $updatePromo = "UPDATE promo_code SET premiuTombola = '" . $_POST['premiu'] . "', filialaTombola = '" . $_POST['filial'] . "', statusTombola = 2 WHERE promocode = '" . $userID->promocode . "' AND statusTombola = 0 AND tombola = 2 AND active = '".$curr_id_for_user."' ";
                 if ($conn->query($updatePromo)) {
                   if(isset($_POST['acceptPremTombola'])){
                     $updatePromo = "UPDATE promo_code SET statusTombola = 2 WHERE active = '" . $curr_id_for_user . "' AND statusTombola=1";
