@@ -1438,7 +1438,7 @@ TABLE;
               $counterPopup++;
             }
             if($counterPopup == 1){
-              $promoSuccess = "UPDATE promo_code SET statusTombola = 1, data = NOW() WHERE active = '" . $userID->active . "' AND tombola = 2 AND statusTombola = 0 ";
+              $promoSuccess = "UPDATE promo_code SET data = NOW() WHERE active = '" . $userID->active . "' AND tombola = 2 AND statusTombola = 0 ";
               if ($conn->query($promoSuccess)) {
                 $arrData  = array();
                 $getGift = "SELECT * FROM webform_submission_data WHERE webform_id = 'cadouri'  ";
