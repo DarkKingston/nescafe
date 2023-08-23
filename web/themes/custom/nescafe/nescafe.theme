@@ -1540,20 +1540,20 @@ TABLE;
                                          ";
                 $updatePromo = "UPDATE promo_code SET premiuTombola = '" . $_POST['premiu'] . "', filialaTombola = '" . $_POST['filial'] . "' WHERE promocode = '" . $userID->promocode . "' AND statusTombola = 1 ";
                 if ($conn->query($updatePromo)) {
+                  if(isset($_POST['acceptPremTombola'])){
+                    $updatePromo = "UPDATE promo_code SET statusTombola = 2 WHERE active = '" . $curr_id_for_user . "' AND statusTombola=1";
 
+                    if ($conn->query($updatePromo)) {
+                      header("Location: /account");
+                    }
+                  }
+                  if(isset($_POST['ignorePremTombola'])){
+                    header("Location: /account");
+                  }
                 }
 
               }
-              if(isset($_POST['acceptPremTombola'])){
-                $updatePromo = "UPDATE promo_code SET statusTombola = 2 WHERE active = '" . $curr_id_for_user . "' AND statusTombola=1";
 
-                if ($conn->query($updatePromo)) {
-                  header("Location: /account");
-                }
-              }
-              if(isset($_POST['ignorePremTombola'])){
-                header("Location: /account");
-              }
             }
 
           }
