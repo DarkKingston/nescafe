@@ -1158,6 +1158,7 @@ TABLE;
 
                   }
                   foreach ($filteredArray as $filteredVal) {
+dump($filteredVal);
                     $file_storage = \Drupal::service('entity_type.manager')->getStorage('file');
                     $file = $file_storage->load($filteredVal['image']);
                     if ($file) {
@@ -1172,7 +1173,6 @@ TABLE;
                   $arrUnique = array_unique($arr);
 
                   foreach ($arrUnique as $arrVal) {
-                    dump($arrVal);
                     $option .= " <option>" . $arrVal . "</option> ";
                   }
                   //dump($arrUnique);
@@ -1244,7 +1244,152 @@ TABLE;
               header("Location: /account");
             }
           }
+          else if ($total > 10 && $total % 7 != 0  && $userID->status != 2) {
+            $checkPromo = "SELECT * FROM promo_code WHERE status = 10 AND active = '" . $curr_id_for_user . "'";
+            $checkPromoItem = $conn->query($checkPromo);
+            $checkPromoItem->setFetchMode(\PDO::FETCH_OBJ);
+            $checkCounter = 0;
+            foreach ($checkPromoItem as $checkItem) {
+              $checkCounter++;
+            }
+            if ($checkCounter == 1) {
+              $arrData  = array();
+              $getGift = "SELECT * FROM webform_submission_data WHERE webform_id = 'cadouri'  ";
+              $giftVal = $conn->query($getGift);
+              foreach ($giftVal as $gift => $val) {
+                $arrData[$val['sid']][$val['name']] = $val;
+                //dump($val);
+                //dump($val['value']);
+              }
 
+
+              // dump($arrData);
+
+              $arrShowF = array();
+              foreach ($arrData as $IDgift => $val) {
+                foreach ($val as $name => $val2) {
+                  if ($name == 'categoria_de_produs' && $val2['value'] == 2 || $name == 'categoria_de_produs' && $val2['value'] == 3) {
+                    // $val['title'] = $val[''];
+                    $arrShowF[[$IDgift]['filiala']['value']][] = array('image' => $arrData[$IDgift]['gift_image']['value'], 'name' => $arrData[$IDgift]['premiu']['value'],'active' => $arrData[$IDgift]['active']['value'], 'filiala' => $arrData[$IDgift]['filiala']['value'], 'id' => $IDgift);
+                  }
+                }
+              }
+              //dump($arrShowF);
+              $arr = [];
+              $arrFil = [];
+              foreach ($arrShowF as $filiala => $arrShow) {
+
+                $option = '';
+                $option2 = '';
+                foreach ($arrShow as $ft => $val) {
+                  if($val['active'] == '1') {
+                    $arr[] = $val['name'];
+                    $arrFil[] = $val['filiala'];
+                  }
+
+                }
+                $Filiala = "SELECT * FROM webform_submission_data WHERE webform_id = 'adaugarea_filiala'  ";
+                $filVal = $conn->query($Filiala);
+                foreach ($filVal as $arrValFil) {
+                  $option2 .= " <option>" . $arrValFil['value'] . "</option> ";
+                }
+
+                // Отфильтрованный массив с уникальными элементами по полю "name"
+                $filteredArray = [];
+                foreach ($arrShow as $value) {
+                  if($value['active'] == '1') {
+                    if (isUnique($filteredArray, "name", $value["name"])) {
+                      $filteredArray[] = $value;
+                    }
+                  }
+                }
+                foreach ($filteredArray as $filteredVal) {
+                  $file_storage = \Drupal::service('entity_type.manager')->getStorage('file');
+                  $file = $file_storage->load($filteredVal['image']);
+                  if ($file) {
+                    $file_path = $file->getFileUri(); // Получение пути к файлу.
+                    $file_name = $file->getFilename(); // Получение имени файла.
+
+                  }
+                  $string = str_replace("public://", "", $file_path);
+                  $arrImg .= "<img src='/sites/default/files/" . $string . "'>";
+                }
+                $arrUnique = array_unique($arr);
+
+                foreach ($arrUnique as $arrVal) {
+                  $option .= " <option>" . $arrVal . "</option> ";
+                }
+                //dump($arrUnique);
+                if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru') {
+                  $label = "Выберите приз из списка ниже";
+                  $confirm = "Подтвердить";
+                }
+                if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro') {
+                  $label = "Alege premiul din lista de mai jos";
+                  $confirm = "Alege";
+                }
+                if($userID->status != 2) {
+                  print "<form method='POST' class='use-ajax webform-dialog webform-dialog-narrow popup_gift' data-dialog-type='modal'>
+                                                                                    " . $label . "
+                                                                                   <div class='popup_images'>
+                                                                                    " . $arrImg . "
+                                                                                   </div>
+
+                                                                                   <select name='premiu'>
+
+                                                                                       " . $option . "
+                                                                                   </select>
+                                                                                   <select name='filial'>
+
+                                                                                       " . $option2 . "
+                                                                                   </select>
+                                                                                   <input type='submit' class='btn_main action' name='submitGift' value='" . $confirm . "'>
+
+                                                                               </form>
+                                                                               ";
+                }
+              }
+              //dump($arrShow);
+              if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru') {
+                $txt1 = "Вы уверены в выборе приза";
+                $txt2 = "и получении его в филиале";
+              }
+              if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro') {
+                $txt1 = "Ești sigur că vrei să alegi premiul";
+                $txt2 = "și ridicarea la filiala";
+              }
+              if (isset($_POST['submitGift'])) {
+                $selectedPremiu = ''; // Задайте начальное значение выбранного приза
+
+                if (isset($_POST['premiu'])) {
+                  $selectedPremiu = $_POST['premiu'];
+                }
+                print "<form method='POST' class='popup_gift'>
+                                             <div class='center'>".$txt1. " ".$_POST['premiu']." ". $txt2 ." ".$_POST['filial']."</div>
+                                             <div class='popup_gift_btns' style='display: flex;justify-content: center; text-align: center'>
+                                             <input type='submit' name='acceptPrem' class='btn_main action' value='Da' style='margin-right: 5px;'>
+                                             <input type='submit' name='ignorePrem' class='btn_main action' value='Nu'>
+                                              </div>
+                                         </form>
+                                         ";
+                $updatePromo = "UPDATE promo_code SET premiu = '" . $_POST['premiu'] . "', livrare = '" . $_POST['filial'] . "' WHERE promocode = '" . $userID->promocode . "' AND status = 10 ";
+                if ($conn->query($updatePromo)) {
+
+                }
+
+              }
+              if(isset($_POST['acceptPrem'])){
+                $updatePromo = "UPDATE promo_code SET status = 2 WHERE active = '" . $curr_id_for_user . "' AND status=10";
+
+                if ($conn->query($updatePromo)) {
+                  header("Location: /account");
+                }
+              }
+              if(isset($_POST['ignorePrem'])){
+                header("Location: /account");
+              }
+            }
+          }
           if ($total > 0 && $total % 15 == 0 && $userID->tombola == 0  && $userID->premiu == '') {
             $tombolaSuccess = "UPDATE promo_code SET tombola = 1,status = 0, data = NOW() WHERE promocode = '" . $userID->promocode . "' AND tombola = 0 ";
             if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru') {
