@@ -1392,7 +1392,7 @@ TABLE;
             }
           }
           if ($total > 0 && $total % 15 == 0 && $userID->tombola == 0  && $userID->premiu == '') {
-            $tombolaSuccess = "UPDATE promo_code SET tombola = 1,status = 0, data = NOW() WHERE promocode = '" . $userID->promocode . "' AND tombola = 0 ";
+            $tombolaSuccess = "UPDATE promo_code SET tombola = 1,statusTombola = 0, data = NOW() WHERE promocode = '" . $userID->promocode . "' AND tombola = 0 ";
             if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru') {
               $txtone = "Поздравляем, Вы участник ежедневного розыгрыша!";
               $txtClose = "Закрыть";
