@@ -1414,7 +1414,7 @@ TABLE;
 
           }
           else if($total >= 15){
-            $promoSuccess = "UPDATE promo_code SET status = 1, data = NOW() WHERE active = '" . $userID->active . "' AND tombola = 2 AND status = 0 ";
+            $promoSuccess = "UPDATE promo_code SET statusTombola = 1, data = NOW() WHERE active = '" . $userID->active . "' AND tombola = 2 AND statusTombola = 0 ";
             if ($conn->query($promoSuccess)) {
               $arrData  = array();
               $getGift = "SELECT * FROM webform_submission_data WHERE webform_id = 'cadouri'  ";
@@ -1530,14 +1530,14 @@ TABLE;
                                               </div>
                                          </form>
                                          ";
-              $updatePromo = "UPDATE promo_code SET premiu = '" . $_POST['premiu'] . "', livrare = '" . $_POST['filial'] . "' WHERE promocode = '" . $userID->promocode . "' AND status = 1 ";
+              $updatePromo = "UPDATE promo_code SET premiuTombola = '" . $_POST['premiu'] . "', filialaTombola = '" . $_POST['filial'] . "' WHERE promocode = '" . $userID->promocode . "' AND statusTombola = 1 ";
               if ($conn->query($updatePromo)) {
 
               }
 
             }
             if(isset($_POST['acceptPrem'])){
-              $updatePromo = "UPDATE promo_code SET status = 2 WHERE active = '" . $curr_id_for_user . "' AND status=1";
+              $updatePromo = "UPDATE promo_code SET statusTombola = 2 WHERE active = '" . $curr_id_for_user . "' AND statusTombola=1";
 
               if ($conn->query($updatePromo)) {
                 header("Location: /account");
