@@ -92,12 +92,12 @@
 
 }
 
-@media(max-width: 450px){
+@media(max-width: 470px){
   #table8 th:first-child{
     text-align: center;
   }
   #table8 th{
-    padding: 10px 0;
+    padding: 10px 5px;
   }
   #table8 td{
     padding: 7px;
