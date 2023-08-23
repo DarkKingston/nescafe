@@ -1158,7 +1158,6 @@ TABLE;
 
                   }
                   foreach ($filteredArray as $filteredVal) {
-dump($filteredVal);
                     $file_storage = \Drupal::service('entity_type.manager')->getStorage('file');
                     $file = $file_storage->load($filteredVal['image']);
                     if ($file) {
@@ -1184,6 +1183,8 @@ dump($filteredVal);
                     $label = "Alege premiul din lista de mai jos";
                     $confirm = "Alege";
                   }
+                  dump($arrImg);
+
                   if($userID->status != 2){
                   print "<form method='POST' class='popup_gift'>
 ".$label."
