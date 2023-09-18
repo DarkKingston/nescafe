@@ -1,6 +1,0 @@
-ln_c_power_reviews.admin_settings_form:
-  route_name: ln_c_power_reviews.admin_settings_form
-  title: Power Reviews Configurations
-  description: 'Enter the credentials to connect to the PowerReviews API'
-  base_route: ln_c_power_reviews.admin_settings_form
-

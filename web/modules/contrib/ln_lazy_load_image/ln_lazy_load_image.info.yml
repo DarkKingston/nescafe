@@ -1,9 +1,0 @@
-name: 'Ln Lazy Load Image'
-description: 'Lazy loading of image in rich text editor and image field.'
-type: module
-core: 8.x
-core_version_requirement: ^8 || ^9
-version: 8.x-1.0.1
-dependencies:
-  - 'drupal:image'
-  - 'drupal:filter'

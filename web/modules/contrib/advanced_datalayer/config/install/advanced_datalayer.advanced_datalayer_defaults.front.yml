@@ -1,6 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-id: front
-label: 'Front page'
-tags: {  }

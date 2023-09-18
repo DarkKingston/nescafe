@@ -1,8 +1,0 @@
-entity.classy_paragraphs_style.collection:
-  title: 'Classy paragraphs style'
-  route_name: entity.classy_paragraphs_style.collection
-  base_route: entity.classy_paragraphs_style.collection
-entity.classy_group.collection:
-  title: 'Classy group'
-  route_name: entity.classy_group.collection
-  base_route: entity.classy_paragraphs_style.collection

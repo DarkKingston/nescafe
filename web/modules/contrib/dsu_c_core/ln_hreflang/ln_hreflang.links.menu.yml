@@ -1,6 +1,0 @@
-ln_hreflang.hreflang:
-  title: "LightNest HrefLang Settings"
-  description: 'Lightnest Hreflang settings.'
-  parent: dsu_c_core.settings
-  route_name: ln_hreflang.hreflang
-  weight: 40

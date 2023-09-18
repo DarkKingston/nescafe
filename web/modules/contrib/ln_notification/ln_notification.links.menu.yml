@@ -1,5 +1,0 @@
-entity.fcm_subscription.collection:
-  title: 'Lightnest Firebase subscriptions'
-  parent: dsu_c_core.settings
-  route_name: entity.fcm_subscription.collection
-  description: 'View the list of FCM subscriptions.'

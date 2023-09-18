@@ -1,7 +1,0 @@
-ln_ciamlite.settings:
-  path: '/admin/config/lightnest/ciamlite'
-  defaults:
-    _form: '\Drupal\ln_ciamlite\Form\LnCiamliteSettingsForm'
-    _title: 'LightNest Ciamlite Configuration'
-  requirements:
-    _permission: 'access administration pages'

@@ -1,6 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-id: dsu_text_position_bottom_center
-label: 'Bottom center'
-classes: "vertical_bottom\r\nhorizontal_position_center"

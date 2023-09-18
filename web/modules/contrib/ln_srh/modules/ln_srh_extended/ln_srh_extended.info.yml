@@ -1,7 +1,0 @@
-name: Lightnest SRH extended
-description: 'Provide a extended module for recipes, with basic fields.'
-type: module
-core_version_requirement: ^8.8 || ^9
-package: Lightnest
-dependencies:
-  - ln_srh_standard:ln_srh_standard

@@ -1,6 +1,0 @@
-spacer:
-  version: 1.x
-  css:
-    component:
-       css/ln_c_spacer.css: {}
-

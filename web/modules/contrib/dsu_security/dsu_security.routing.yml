@@ -1,7 +1,0 @@
-dsu_security.settings_form:
-  path: '/admin/config/lightnest/dsu-security'
-  defaults:
-    _title: 'Lightnest Security: Settings Form'
-    _form: '\Drupal\dsu_security\Form\SecuritySettingsForm'
-  requirements:
-    _permission: 'administer dsu security'

@@ -1,9 +1,0 @@
-@import '../../../../mixins';
-
-.render-pr-review-display {
-    margin: 0 auto;
-    padding: 20px 35px;
-    @include breakpoint(col-lg) {
-        max-width: 85vw;
-    }
-}

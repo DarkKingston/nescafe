@@ -1,9 +1,0 @@
-ln-c-power-reviews-library:
-  version: 1.x
-  header: true
-  css:
-    theme:
-      css/powerreviews.css: {}
-  js:
-    js/ln-c-power-reviews-connector.js: {}
-    //ui.powerreviews.com/stable/4.1/ui.js: {type: external}

@@ -1,8 +1,0 @@
-ln-c-buy-now-tracking:
-  footer: true
-  version: 1.x
-  js:
-    assets/js/ln_c_buy_now_component_tracking.js:
-  dependencies:
-    - core/jquery
-    - core/drupal

@@ -1,9 +1,0 @@
-name: Lightnest SRH Schema
-description: 'Provide a schema for recipes from schema.org.'
-type: module
-core_version_requirement: ^8.8 || ^9
-package: Lightnest
-dependencies:
-  - ln_srh
-  - schema_metatag
-  - schema_recipe

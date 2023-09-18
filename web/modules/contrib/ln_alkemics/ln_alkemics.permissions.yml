@@ -1,7 +1,0 @@
-'ln_alkemics access import page':
-  title: 'Access the import page'
-  description: 'Allows access to the import page.'
-
-'administer alkemics':
-  title: 'Administer Alkemics'
-  description: 'Allows to administer Alkemics settings.'

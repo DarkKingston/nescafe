@@ -1,6 +1,0 @@
-entity.classy_group.add_form:
-  route_name: 'entity.classy_group.add_form'
-  title: 'Add Classy group'
-  appears_on:
-    - entity.classy_group.collection
-

@@ -1,5 +1,0 @@
-accordion:
-  version: 1.x
-  css:
-    theme:
-      css/dsu_c_accordion.css: {}

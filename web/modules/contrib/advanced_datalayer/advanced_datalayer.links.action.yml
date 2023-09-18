@@ -1,5 +1,0 @@
-entity.advanced_datalayer_defaults.add_form:
-  route_name: 'entity.advanced_datalayer_defaults.add_form'
-  title: 'Add default datalayer tags'
-  appears_on:
-    - entity.advanced_datalayer_defaults.collection

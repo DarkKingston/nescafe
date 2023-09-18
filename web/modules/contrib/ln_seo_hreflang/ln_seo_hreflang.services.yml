@@ -1,4 +1,0 @@
-services:
-  ln_seo_hreflang.utils:
-    class: Drupal\ln_seo_hreflang\Services\LnHreflangUtils
-    arguments: [ '@entity_type.manager', '@path.current', '@request_stack', '@path_alias.manager']

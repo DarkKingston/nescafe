@@ -1,8 +1,0 @@
-fusepump-library:
-  version: 1.0.0
-  js:
-    https://brand-ecommerce-assets.fusepump.com/bootstraper/bootstraper.js: {type: external, minified: true}
-fusepump-connector:
-  version: 1.0.0
-  js:
-    js/fusepump-connector.js: {}

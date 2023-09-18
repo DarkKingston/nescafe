@@ -1,6 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-formId: comment_dsu_ratings_reviews_comment_type_form
-captchaType: recaptcha/reCAPTCHA
-label: 'DSU Ratings and Reviews Comment'

@@ -1,6 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-id: dsu_text_position_bottom_left
-label: 'Bottom left'
-classes: "vertical_bottom\r\nhorizontal_position_left"

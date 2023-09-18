@@ -1,7 +1,0 @@
-ln_hreflang.hreflang:
-  path: '/admin/config/lightnest/ln-hreflang/hreflang'
-  defaults:
-    _title: 'LightNest HrefLang Settings'
-    _form: '\Drupal\ln_hreflang\Form\LnHrefLangConfigForm'
-  requirements:
-    _permission: 'administer site configuration'

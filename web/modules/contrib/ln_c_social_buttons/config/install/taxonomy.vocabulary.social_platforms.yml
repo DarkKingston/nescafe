@@ -1,8 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-name: 'Social Platforms'
-vid: social_platforms
-description: 'Social Platforms.'
-hierarchy: 0
-weight: 0

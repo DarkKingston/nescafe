@@ -1,6 +1,0 @@
----
-drupal/lightning_core:
-  core_matrix:
-    8.8.x:
-      version: 5.x
-      version_dev: 5.x-dev

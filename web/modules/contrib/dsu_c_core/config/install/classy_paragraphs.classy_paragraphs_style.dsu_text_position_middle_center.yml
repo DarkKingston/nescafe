@@ -1,6 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-id: dsu_text_position_middle_center
-label: 'Middle center'
-classes: "vertical_middle\r\nhorizontal_position_center"

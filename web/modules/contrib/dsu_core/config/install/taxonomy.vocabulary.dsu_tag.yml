@@ -1,8 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-name: Tag
-vid: dsu_tag
-description: ''
-hierarchy: 0
-weight: 0

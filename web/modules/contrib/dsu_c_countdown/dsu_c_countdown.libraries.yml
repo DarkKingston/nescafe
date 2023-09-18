@@ -1,5 +1,0 @@
-countdown:
-  version: 1.x
-  css:
-    theme:
-      assets/css/dsu-c-countdown.css: {}

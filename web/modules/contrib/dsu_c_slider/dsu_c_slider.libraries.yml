@@ -1,5 +1,0 @@
-slider:
-  version: 1.x
-  css:
-    component:
-      css/dsu_c_slider.css: {}

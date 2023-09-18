@@ -1,6 +1,0 @@
-ln_srh.config:
-  title: 'LightNest Smart Recipe Hub (SRH)'
-  description: 'LightNest Smart Recipe Hub integration'
-  parent: dsu_c_core.settings
-  route_name: ln_srh.config
-  weight: 20

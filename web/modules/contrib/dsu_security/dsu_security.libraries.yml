@@ -1,6 +1,0 @@
-dsu_security:
-  js:
-    js/dsu_security.js: {}
-  dependencies:
-    - core/jquery
-    - core/drupal

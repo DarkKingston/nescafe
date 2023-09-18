@@ -1,8 +1,0 @@
-price-spider-library:
-  version: 1.0.0
-  js:
-    //cdn.pricespider.com/1/lib/ps-widget.js: { weight: -4, type: external, minified: true, async: true }
-price-spider-connector:
-  version: 1.0.0
-  js:
-    js/price-spider-connector.js: {}

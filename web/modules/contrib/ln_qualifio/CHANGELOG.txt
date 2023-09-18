@@ -1,4 +1,0 @@
-# Changelog
-
-## 1.0.1
-- H's should be implemented inside the DIV instead of above.

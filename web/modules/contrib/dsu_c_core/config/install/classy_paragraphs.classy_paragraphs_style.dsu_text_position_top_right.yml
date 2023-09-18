@@ -1,6 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-id: dsu_text_position_top_right
-label: 'Top right'
-classes: "vertical_top\r\nhorizontal_position_right"

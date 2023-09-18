@@ -1,6 +1,0 @@
-services:
-  dsu_multitheme.theme.negotiator:
-    class: Drupal\dsu_multitheme\Theme\MultipleThemeNegotiator
-    arguments: ['@config.factory', '@path_alias.manager', '@router.admin_context','@path.current']
-    tags:
-      - {name: theme_negotiator, priority: 1000}

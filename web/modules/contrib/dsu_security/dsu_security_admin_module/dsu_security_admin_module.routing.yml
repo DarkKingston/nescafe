@@ -1,9 +1,0 @@
-dsu_security_admin_module.auth_redirect_form:
-  path: '/admin/config/lightnest/dsu-security-admin-module/authredirect'
-  defaults:
-    _form: '\Drupal\dsu_security_admin_module\Form\AuthRedirectForm'
-    _title: 'Lightnest disable auth form'
-  requirements:
-    _permission: 'administer site configuration'
-  options:
-    _admin_route: 'TRUE'

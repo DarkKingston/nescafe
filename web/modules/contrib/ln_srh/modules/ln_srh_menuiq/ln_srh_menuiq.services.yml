@@ -1,4 +1,0 @@
-services:
-  ln_srh_menuiq.helper:
-    class: Drupal\ln_srh_menuiq\Services\SRHMyMenuIQHelper
-    arguments: ['@srh','@config.factory','@cache.data']

@@ -1,6 +1,0 @@
-ln_bazaarvoice.admin_settings_form:
-  route_name: ln_bazaarvoice.admin_settings_form
-  title: Bazaarvoice
-  description: 'Configure for Bazaarvoice integration'
-  parent: dsu_c_core.settings
-  weight: 1

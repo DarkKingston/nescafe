@@ -1,7 +1,0 @@
-<?php
-
-/**
- * Implements hook_update().
- * Reimporting default module config and updating ln_alkemics field for update
- * features.
- */

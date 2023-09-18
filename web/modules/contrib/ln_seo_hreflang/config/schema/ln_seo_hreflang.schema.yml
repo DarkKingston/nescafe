@@ -1,5 +1,0 @@
-# Schema for the configuration files of the Ln SEO Hreflang module.
-
-action.configuration.ln_hreflang_delete_action:
-  type: action_configuration_default
-  label: 'Delete hreflang configuration'

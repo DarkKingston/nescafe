@@ -1,4 +1,0 @@
-# Changelog
-
-## 1.1.0
-- Update content for new dsu_c_text version

@@ -1,7 +1,0 @@
-contactus-styling:
-  version: 1.x
-  css:
-    component:
-      css/ln_contactus_block.css: {}
-  js:
-    'js/ln_contactus_block.js': {}

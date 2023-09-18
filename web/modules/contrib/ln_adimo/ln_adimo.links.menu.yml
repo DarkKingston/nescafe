@@ -1,6 +1,0 @@
-ln_adimo.migrate.admin.form:
-  title: LightNest Adimo
-  description: 'Adimo Mass Uploader'
-  route_name: ln_adimo.migrate.admin.form
-  parent: dsu_c_core.settings
-  weight: 25

@@ -1,7 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-id: accordions_and_tabs
-label: 'Accordions and Tabs'
-description: ''
-weight: -10

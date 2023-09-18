@@ -1,6 +1,0 @@
-ln_seo_hreflang_content.import:
-  title: 'Hreflang import'
-  route_name: ln_seo_hreflang_content.import.form
-  description: 'Hreflang import'
-  parent: entity.ln_hreflang.collection
-  weight: 99

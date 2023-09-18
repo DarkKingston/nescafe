@@ -1,6 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-id: dsu_classy_content_light_color
-label: 'Light Color'
-classes: white-text

@@ -1,5 +1,0 @@
-social-buttons:
-  version: 1.x
-  css:
-    component:
-      css/ln_c_social_buttons.css: {}

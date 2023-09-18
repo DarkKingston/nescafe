@@ -1,7 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-id: dsu_product_creator
-label: 'Product creator'
-weight: 9
-is_admin: null

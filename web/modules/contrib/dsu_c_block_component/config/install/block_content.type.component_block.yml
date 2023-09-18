@@ -1,7 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-id: component_block
-label: 'Component Block'
-revision: 0
-description: 'Manage Block level Component.'

@@ -1,7 +1,0 @@
-ln_seo_hreflang_content.import.form:
-  path: '/admin/config/lightnest/ln-seo-hreflang/import'
-  defaults:
-    _form: 'Drupal\ln_seo_hreflang_content\Form\ImportHreflangForm'
-    _title: 'Hreflang import'
-  requirements:
-    _permission: 'administer hreflang content'

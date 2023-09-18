@@ -1,6 +1,0 @@
-ln_sample_content.admin:
-  title: 'LightNest Sample Content Configuration'
-  description: 'Configuration for the Lightnest Sample Content module'
-  parent: dsu_c_core.settings
-  route_name: ln_sample_content.create_content
-  weight: 0

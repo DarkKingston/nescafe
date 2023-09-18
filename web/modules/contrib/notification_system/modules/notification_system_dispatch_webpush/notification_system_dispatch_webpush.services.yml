@@ -1,8 +1,0 @@
-services:
-  notification_system_dispatch_webpush:
-    class: Drupal\notification_system_dispatch_webpush\WebPushClient
-    arguments: ['@entity_type.manager', '@logger.factory', '@config.factory']
-
-  notification_system_dispatch_webpush.apple:
-    class: Drupal\notification_system_dispatch_webpush\AppleWebPushClient
-    arguments: ['@config.factory', '@entity_type.manager', '@logger.factory', '@file_system', '@database']

@@ -1,9 +1,0 @@
-langcode: en
-status: true
-dependencies:
-  module:
-    - ln_campaign
-id: ln_campaign.teaser
-label: Teaser
-targetEntityType: ln_campaign
-cache: true

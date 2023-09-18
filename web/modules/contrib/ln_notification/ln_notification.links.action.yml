@@ -1,6 +1,0 @@
-ln_notification_add_notification_action:
-  route_name: ln_notification.fcm_form_add
-  title: 'Add Firebase Notification'
-  appears_on:
-    - view.lightnest_fcm_notifications.page_fcm_list
-  class: \Drupal\ln_notification\Plugin\Menu\LocalAction\LnNotificationAddLocalAction

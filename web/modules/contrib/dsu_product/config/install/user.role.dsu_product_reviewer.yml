@@ -1,7 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-id: dsu_product_reviewer
-label: 'Product reviewer'
-weight: 10
-is_admin: null

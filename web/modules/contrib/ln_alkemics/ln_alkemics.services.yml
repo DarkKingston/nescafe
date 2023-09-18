@@ -1,6 +1,0 @@
-services:
-  ln_alkemics.importer:
-    class: Drupal\ln_alkemics\Controller\Importer
-    arguments:
-      - '@config.factory'
-      - '@serialization.json'

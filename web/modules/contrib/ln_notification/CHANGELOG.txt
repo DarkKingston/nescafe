@@ -1,7 +1,0 @@
-# Changelog
-
-## 1.0.1
-- Include manifest.json only if module settings exist
-
-## 1.0.0
-- Initial module version

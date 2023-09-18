@@ -1,7 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-id: layout
-label: Layout
-description: ''
-weight: -10

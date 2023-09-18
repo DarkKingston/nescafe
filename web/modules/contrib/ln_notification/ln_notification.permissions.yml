@@ -1,7 +1,0 @@
-administer fcm subscriptions:
-  title: 'Administer FCM Subscriptions'
-  description: 'Allows CRUD operations for the FCM Subscriptions.'
-
-administer fcm notifications:
-  title: 'Administer FCM Notifications'
-  description: 'Allows creating FCM Notifications.'

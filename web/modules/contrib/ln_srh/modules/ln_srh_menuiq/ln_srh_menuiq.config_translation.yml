@@ -1,5 +1,0 @@
-ln_srh_menuiq.settings:
-  title: 'MyMenuIQ Settings'
-  base_route_name: ln_srh_menuiq.settings
-  names:
-    - ln_srh_menuiq.settings

@@ -1,7 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-id: carousels_galleries
-label: 'Carousels & Galleries'
-description: ''
-weight: -10

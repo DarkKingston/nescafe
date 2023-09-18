@@ -1,6 +1,0 @@
-dsu_security_admin_module.auth_redirect_form:
-  title: 'Lightnest Access Admin Login Page'
-  route_name: dsu_security_admin_module.auth_redirect_form
-  description: 'Configure access restrictions to the admin login page.'
-  parent: dsu_c_core.settings
-  weight: 38

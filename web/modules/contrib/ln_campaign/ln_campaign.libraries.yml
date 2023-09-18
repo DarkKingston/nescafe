@@ -1,4 +1,0 @@
-ln_campaign_csv:
-  css:
-    component:
-      css/component/ln_campaign_csv.css: {}

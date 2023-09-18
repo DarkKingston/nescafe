@@ -1,5 +1,0 @@
-ln_srh_full.sync_complements:
-  title: SRH Sync Complements  
-  route_name: ln_srh_full.sync_complements
-  parent: dsu_c_core.settings
-  weight: 21

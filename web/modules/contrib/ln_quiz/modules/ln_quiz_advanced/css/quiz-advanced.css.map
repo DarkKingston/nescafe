@@ -1,1 +1,0 @@
-{"version":3,"sources":["quiz-advanced.css"],"names":[],"mappings":"AAAA,mBAAmB;AACnB;EACE;IACE,YAAY;IACZ,YAAY,EAAE,EAAE","file":"quiz-advanced.css","sourcesContent":["/* Advanced Quiz */\n@media screen and (max-width: 992px) {\n  .paragraph--type-quiz.ds-2col .group-left, .paragraph--type-quiz.ds-2col .group-right {\n    width: 100%;\n    float: none; } }\n"]}

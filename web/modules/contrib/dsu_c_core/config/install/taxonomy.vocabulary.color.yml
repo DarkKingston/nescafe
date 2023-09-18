@@ -1,8 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-name: Color
-vid: color
-description: 'Add component button colors'
-hierarchy: 0
-weight: 0

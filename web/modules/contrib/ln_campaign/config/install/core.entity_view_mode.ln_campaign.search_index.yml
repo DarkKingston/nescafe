@@ -1,9 +1,0 @@
-langcode: en
-status: false
-dependencies:
-  module:
-    - ln_campaign
-id: ln_campaign.search_index
-label: 'Search index'
-targetEntityType: ln_campaign
-cache: true

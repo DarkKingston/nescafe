@@ -1,5 +1,0 @@
-entity.ln_hreflang.collection:
-  title: LightNest SEO hreflang
-  description: LightNest SEO hreflang.
-  parent: dsu_c_core.settings
-  route_name: entity.ln_hreflang.collection

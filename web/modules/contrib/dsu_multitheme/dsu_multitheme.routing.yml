@@ -1,7 +1,0 @@
-dsu_multitheme.settings_form:
-  path: '/admin/config/system/dsu_multitheme'
-  defaults:
-    _title: 'Multiple Theme Negotiator'
-    _form: 'Drupal\dsu_multitheme\Form\MultipleThemeNegotiatorSettingsForm'
-  requirements:
-    _permission: 'administer site configuration'

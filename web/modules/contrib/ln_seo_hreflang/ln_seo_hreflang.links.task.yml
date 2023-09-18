@@ -1,9 +1,0 @@
-entity.ln_hreflang.edit_form:
-  title: Edit
-  route_name: entity.ln_hreflang.edit_form
-  base_route: entity.ln_hreflang.canonical
-entity.ln_hreflang.delete_form:
-  title: Delete
-  route_name: entity.ln_hreflang.delete_form
-  base_route: entity.ln_hreflang.canonical
-  weight: 10

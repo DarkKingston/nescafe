@@ -1,4 +1,0 @@
-services:
-  ln_bazaarvoice.utils:
-    class: Drupal\ln_bazaarvoice\Service\LnBazaarvoiceService
-    arguments: ['@config.factory', '@language_manager', '@token']

@@ -1,6 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-id: dsu_c_sideimagetext_image_left
-label: Left
-classes: image-left

@@ -1,4 +1,0 @@
-services:
-  ln_ciamlite.helper:
-    class: Drupal\ln_ciamlite\Services\CiamLiteHelper
-    arguments: ['@config.factory']

@@ -1,4 +1,0 @@
-administer advanced datalayer defaults settings:
-  title: 'Administer advanced datalayer defaults settings'
-  description: 'Control the default settings of datalayer tags.'
-  restrict access: TRUE
