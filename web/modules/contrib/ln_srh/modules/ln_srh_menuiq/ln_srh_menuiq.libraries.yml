@@ -1,0 +1,32 @@
+main:
+  version: 1.x
+  css:
+    theme:
+      https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;400&display=swap:
+        type: external
+        minified: false
+        attributes:
+          defer: true
+          async: true
+    component:
+      css/style.css: {}
+  js:
+    js/main.js: { }
+  dependencies:
+    - core/jquery.ui.tabs
+    - core/jquery
+    - core/jquery.once
+    - core/drupal
+    - core/drupalSettings
+    - core/drupal.ajax
+    - ln_srh_menuiq/menuiq_commands
+
+menuiq_commands:
+  js:
+    js/menuiq-commands.js: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.once
+    - core/drupal
+    - core/drupalSettings
+    - core/drupal.ajax

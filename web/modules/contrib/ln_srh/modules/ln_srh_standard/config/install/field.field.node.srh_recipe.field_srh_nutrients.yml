@@ -1,0 +1,78 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_srh_nutrients
+    - node.type.srh_recipe
+    - paragraphs.paragraphs_type.srh_nutrient
+  module:
+    - entity_reference_revisions
+  enforced:
+    module:
+      - ln_srh_standard
+id: node.srh_recipe.field_srh_nutrients
+field_name: field_srh_nutrients
+entity_type: node
+bundle: srh_recipe
+label: 'Nutrients'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      srh_nutrient: srh_nutrient
+    target_bundles_drag_drop:
+      layout_25_25_50:
+        weight: 17
+        enabled: false
+      layout_25_50_25:
+        weight: 18
+        enabled: false
+      layout_25_75:
+        weight: 19
+        enabled: false
+      layout_33_66:
+        weight: 20
+        enabled: false
+      layout_50_25_25:
+        weight: 21
+        enabled: false
+      layout_66_33:
+        weight: 22
+        enabled: false
+      layout_75_25:
+        weight: 23
+        enabled: false
+      layout_columns_1:
+        weight: 24
+        enabled: false
+      layout_columns_2:
+        weight: 25
+        enabled: false
+      layout_columns_20:
+        weight: 26
+        enabled: false
+      layout_columns_3:
+        weight: 27
+        enabled: false
+      layout_columns_4:
+        weight: 28
+        enabled: false
+      srh_ingredient:
+        weight: 29
+        enabled: false
+      srh_nutrient:
+        enabled: true
+        weight: 30
+      srh_step:
+        weight: 31
+        enabled: false
+      srh_tip:
+        weight: 32
+        enabled: false
+field_type: entity_reference_revisions

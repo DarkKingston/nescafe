@@ -1,0 +1,75 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.quiz_question_wrong
+    - field.field.paragraph.quiz_question.field_quiz_answers
+    - field.field.paragraph.quiz_question.field_quiz_description
+    - field.field.paragraph.quiz_question.field_quiz_failed_msg
+    - field.field.paragraph.quiz_question.field_quiz_success_msg
+    - field.field.paragraph.quiz_question.field_quiz_title
+    - paragraphs.paragraphs_type.quiz_question
+  module:
+    - ds
+    - text
+  enforced:
+    module:
+      - ln_quiz
+third_party_settings:
+  ds:
+    layout:
+      id: ds_1col
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        label: ''
+        wrappers:
+          ds_content: div
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+        classes:
+          layout_class: {  }
+    regions:
+      ds_content:
+        - ln_quiz_title
+        - ln_quiz_question_check_label
+        - field_quiz_failed_msg
+        - ln_quiz_next_question
+    fields:
+      ln_quiz_next_question:
+        plugin_id: ln_quiz_next_question
+        weight: 3
+        label: hidden
+        formatter: default
+      ln_quiz_question_check_label:
+        plugin_id: ln_quiz_question_check_label
+        weight: 1
+        label: hidden
+        formatter: default
+        settings:
+          text: 'Better luck next time!'
+      ln_quiz_title:
+        plugin_id: ln_quiz_title
+        weight: 0
+        label: hidden
+        formatter: default
+id: paragraph.quiz_question.quiz_question_wrong
+targetEntityType: paragraph
+bundle: quiz_question
+mode: quiz_question_wrong
+content:
+  field_quiz_failed_msg:
+    type: text_default
+    weight: 2
+    region: ds_content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_quiz_answers: true
+  field_quiz_description: true
+  field_quiz_success_msg: true
+  field_quiz_title: true

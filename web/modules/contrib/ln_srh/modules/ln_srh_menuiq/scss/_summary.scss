@@ -1,0 +1,243 @@
+.panel-combination {
+  display: none;
+  margin-top: 20px;
+  background-color: #3b2d1c;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  box-shadow: 0px -2px 7px 0 rgba(0, 0, 0, 0.3);
+  padding-bottom: 50px;
+  padding-top: 28px;
+  position: relative;
+  z-index: 0;
+
+  .my-menu-iq.full-summary & {
+    display: block;
+  }
+
+  .main-recipe,
+  .sidedishes-selected {
+    margin: 30px auto;
+    max-width: 95%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    @media (max-width: 768px) {
+      display: block;
+    }
+  }
+
+  .srh-sidedish {
+    width: 90%;
+    margin-right: 4px;
+    margin-left: 4px;
+    margin-bottom: 8px;
+    border: 0 !important;
+
+    @media (min-width: 769px) {
+      width: calc(25% - 8px);
+      &:first-child {
+        margin-left: 63px;
+      }
+
+      &:nth-child(3) {
+        margin-right: 63px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      margin-left: auto;
+      margin-right: auto;
+
+      .srh-sidedish-attributes, .srh-sidedish-toggle-attributes, .score-diff {
+        display: none !important;
+      }
+
+      .field--type-image {
+        position: static !important;
+
+        &:after {
+          display: none;
+        }
+      }
+
+      .field--name-field-srh-media {
+        width: 50px;
+        margin-right: 20px;
+        border-radius: 10px;
+        flex: 0 0 50px;
+      }
+    }
+
+    .paragraph--type-srh-sidedish {
+      height: 190px;
+      @media (max-width: 768px) {
+        flex-direction: row;
+        align-items: center;
+        padding: 4px 72px 4px 4px;
+        height: 56px;
+        background-color: #5f4d3b;
+        box-shadow: 4px 3px 2px 0 rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+      }
+    }
+
+    .title {
+      margin-bottom: 5px;
+      margin-top: 16px;
+      font-size: 25px;
+      opacity: .8;
+      color: #fff;
+      text-align: center;
+      padding-top: 9px;
+    }
+  }
+
+  .srh-add-sidedish-panel {
+    cursor: pointer;
+    background: url("../images/add-sidedish-box.svg") #5F4D3B center center / cover no-repeat;
+    @media (max-width: 768px) {
+      height: 56px;
+      background-color: #5f4d3b;
+      box-shadow: 4px 3px 2px 0 rgba(0, 0, 0, 0.5);
+      border-radius: 10px;
+      background-size: 50%;
+    }
+  }
+
+  .score-diff {
+    flex: 0 0 22px !important;
+    text-align: center;
+    width: 22px !important;
+    height: 22px !important;
+    padding-top: 5px !important;
+    font-size: 9px !important;
+    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.09);
+    border-radius: 999px;
+  }
+
+  .srh-sidedish-action {
+    top: 0 !important;
+    right: 0 !important;
+    background-size: 60% !important;
+    @media (max-width: 768px) {
+      top: 50% !important;
+      margin-top: -20px;
+    }
+  }
+
+  .srh-sidedish-attributes {
+    flex-direction: column;
+    margin-top: 10px;
+  }
+
+  .field--name-srh-sidedish-duration,
+  .field--name-srh-sidedish-difficulty {
+    font-size: 10px !important;
+
+    &:before {
+      width: 19px !important;
+      height: 19px !important;
+    }
+  }
+
+}
+
+.srh-view-summary-w {
+  display: none;
+  text-align: center;
+  &.show {
+    display: block;
+  }
+  .categories & {
+    margin-bottom: 20px;
+  }
+  .my-menu-iq.summary .menu-sidedishes > & {
+    display: none;
+  }
+}
+
+.srh-view-summary-info {
+  color: #d8d8d8;
+  font-size: 11px;
+  margin-top: 10px;
+}
+
+button.srh-toggle-summary {
+  margin-top: 10px;
+  margin-bottom: 15px;
+  padding: 10px;
+  background: #f9d59d;
+  border: 0;
+  box-shadow: 4px 3px 2px 0 rgba(0, 0, 0, 50%);
+  color: #3e2c1a;
+  font-size: 17px;
+  text-align: center;
+  border-radius: 10px;
+
+  &:hover,
+  &:focus,
+  &:active {
+    background: #f9d59d;
+    color: #5f4d3b;
+  }
+}
+
+.my-menu-iq .field--name-field-srh-adimo {
+  text-align: center;
+
+  .adimo-container, .adimoWidget, button, a {
+    background-color: transparent !important;
+    cursor: pointer;
+
+    span {
+      margin: auto;
+      background-color: #f9d59d;
+      display: inline-block;
+      width: auto;
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 19px;
+      border-radius: 10px;
+      padding: 8px 13px;
+      border: none;
+      color: #3e2b1a;
+      text-align: center;
+      font-weight: 500;
+
+      @media (max-width: 768px) {
+        width: 80%;
+      }
+
+      &::before {
+        width: 33px;
+        height: 22px;
+        content: "";
+        display: inline-block;
+        margin-bottom: -5px;
+        background-repeat: no-repeat;
+        background-position: 0;
+        background-image: url(../images/cart.png);
+      }
+
+      &:hover {
+        background-color: #f9d59d;
+      }
+    }
+  }
+}
+
+.my-menu-iq.full-summary {
+  .menu-sidedishes, .info-button, .srh-toggle-summary {
+    display: none;
+  }
+  .close-full-summary {
+    display: block;
+  }
+}
+
+.my-menu-iq .categories .tab-content {
+  display: none;
+}
+.my-menu-iq.summary .categories .tab-content {
+  display: flex;
+}

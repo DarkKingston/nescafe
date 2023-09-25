@@ -1,0 +1,15 @@
+# Schema for the configuration files of the text_summary_options module.
+
+field.field.*.*.*.third_party.text_summary_options:
+  type: mapping
+  label: 'Text area with a summary display format settings'
+  mapping:
+    show_summary:
+      type: boolean
+      label: 'Show summary by default'
+    summary_help:
+      type: string
+      label: 'Summary Help'
+    summary_placeholder:
+      type: string
+      label: 'Summary Placeholder'

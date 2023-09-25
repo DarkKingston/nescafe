@@ -1,0 +1,6 @@
+langcode: en
+status: true
+dependencies: {  }
+id: dsu_c_sideimagetext_image_right
+label: Right
+classes: image-right

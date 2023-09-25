@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - lightning_core
+    - media
+third_party_settings:
+  lightning_core:
+    description: ''
+id: media.entity_browser_thumbnail
+label: 'Entity Browser Thumbnail'
+targetEntityType: media
+cache: true

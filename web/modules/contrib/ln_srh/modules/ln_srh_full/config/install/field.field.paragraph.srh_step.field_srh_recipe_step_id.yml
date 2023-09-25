@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_srh_recipe_step_id
+    - paragraphs.paragraphs_type.srh_step
+  enforced:
+    module:
+      - ln_srh_full
+id: paragraph.srh_step.field_srh_recipe_step_id
+field_name: field_srh_recipe_step_id
+entity_type: paragraph
+bundle: srh_step
+label: 'SRH recipe Step Id'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

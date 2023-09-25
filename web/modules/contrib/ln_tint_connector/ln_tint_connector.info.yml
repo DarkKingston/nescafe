@@ -1,0 +1,11 @@
+name: 'Lightnest Components: Tint'
+description: 'Lightnest components: Tint Integration'
+type: module
+version: 9.x-2.0.0
+core_version_requirement: '^8.9 || ^9'
+dependencies:
+  - 'drupal:field'
+  - 'drupal:text'
+  - 'paragraphs:paragraphs'
+  - 'paragraphs_ee:paragraphs_ee'
+package: 'Lightnest Components'

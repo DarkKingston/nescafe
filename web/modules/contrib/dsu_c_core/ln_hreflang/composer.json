@@ -1,0 +1,12 @@
+{
+  "name": "lightnest/ln_hreflang",
+  "description": "Lightnest hreflang module to add the hreflang attribute.",
+  "type": "drupal-module",
+  "keywords": [
+    "hreflang",
+	"seo"
+  ],
+  "require": {
+    "drupal/core": "^8 || ^9"
+  }
+}

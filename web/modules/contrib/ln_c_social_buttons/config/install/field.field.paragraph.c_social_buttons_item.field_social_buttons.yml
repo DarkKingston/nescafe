@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_social_buttons
+    - paragraphs.paragraphs_type.c_social_buttons_item
+  module:
+    - link
+id: paragraph.c_social_buttons_item.field_social_buttons
+field_name: field_social_buttons
+entity_type: paragraph
+bundle: c_social_buttons_item
+label: 'Social Links'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 1
+field_type: link

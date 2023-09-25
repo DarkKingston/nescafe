@@ -1,0 +1,11 @@
+.adimo-site-container .adimo-site-inner {
+    max-width: 500px;
+}
+
+.adimo-site-container .adimo-site-iframe {
+    width: 100%;
+    height: 400px;
+    display: block;
+    border: none;
+    background: transparent;
+}

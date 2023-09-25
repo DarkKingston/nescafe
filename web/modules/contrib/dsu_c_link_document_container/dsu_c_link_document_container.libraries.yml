@@ -1,0 +1,14 @@
+link-container:
+  version: 1.x
+  css:
+    component:
+      css/dsu_c_link_document_container.css: {}
+link-container-tracking:
+  footer: true
+  version: 1.x
+  js:
+    assets/js/link-container_tracking.js:
+  dependencies:
+    - core/jquery
+    - core/drupal
+

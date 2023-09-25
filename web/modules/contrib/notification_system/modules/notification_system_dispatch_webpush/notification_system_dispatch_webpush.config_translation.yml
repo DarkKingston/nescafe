@@ -1,0 +1,5 @@
+notification_system_dispatch_webpush.settings:
+  title: 'Notification System Dispatch Webpush Settings'
+  base_route_name: notification_system_dispatch.settings
+  names:
+    - notification_system_dispatch_webpush.settings

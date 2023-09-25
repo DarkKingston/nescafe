@@ -1,0 +1,55 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a paragraph.
+ *
+ * Available variables:
+ * - gallery: .
+ * - gallery_preview: .
+ * - parent_paragraph: .
+ *
+ * @see template_preprocess_paragraph()
+ *
+ * @ingroup themeable
+ */
+#}
+
+{% set classes = [
+    'paragraph',
+] %}
+{% block paragraph %}
+    {% block content %}
+        {% for key,value in gallery %}
+            <li
+                    class="gallery_{{ value.field_title_positions }}"
+                    data-thumb="{{ value.thumbnail_url }}"
+                    data-thumb_alt="{{ value.thumbnail_alt }}"
+                    data-thumb-style="{{ value.thumbnail_style }}"
+                    data-poster="{{ value.image_url }}">
+                <div class="caption">
+                    {% if value.field_c_title %}
+                    {% if value.field_c_gallery_item_title_style %}
+                    {% set title_tag=value.field_c_gallery_item_title_style %}
+                    <{{ title_tag }} class="image-gallery-text__sub-title {{ value.paragraph_classes }}"> {{ value.field_c_title }}</{{ title_tag }}>
+                {% else %}
+                    <h2 class="image-gallery-text__sub-title {{ value.paragraph_classes }}">{{ value.field_c_title }}</h2>
+                {% endif %}
+
+                {% endif %}
+                </div>
+                {% if value.video_url is not empty %}
+                    {{ value.field_c_gallery_video_embed_url }}
+                {% else %}
+                    {% set image_classes = ['slide-image'] %}
+                    {% set imageBuild = addResponsiveImageStyle(value.image_uri, 'crop_dsu_c_gallery_large_large', 'dsu_galley_image_style', image_classes) %}
+                    {% if imageBuild is not empty %}
+                        {{ imageBuild }}
+                    {% else %}
+                        {{ value.field_c_image }}
+                    {% endif %}
+                {% endif %}
+            </li>
+        {% endfor %}
+    {% endblock %}
+{% endblock paragraph %}
+

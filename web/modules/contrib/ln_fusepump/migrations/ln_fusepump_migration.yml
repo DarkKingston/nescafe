@@ -1,0 +1,17 @@
+id: ln_fusepump_migration
+migration_tags:
+  - CSV
+  - DSU
+  - WunderMan
+  - Fusempump
+migration_group: ln_fusepump_imports
+label: 'Lightnest WunderMan migration by NID'
+source:
+  plugin: csv
+  path: /migrations/wunderman_example/wunderman_by_nid.csv
+  ids: [wunderman_id]
+  delimiter: ','
+process:
+  wunderman_id: wunderman_id
+destination:
+  plugin: 'ln_fusepump_field_destination'

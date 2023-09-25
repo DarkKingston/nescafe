@@ -1,0 +1,90 @@
+<?php
+
+use Drupal\user\Entity\Role;
+use Drupal\Core\Session\AccountInterface;
+
+/**
+ * Implements hook_install().
+ */
+function dsu_ratings_reviews_install() {
+  _dsu_ratings_reviews_set_permissions();
+}
+
+/**
+ * Existing installations get permissions and dependencies.
+ */
+function dsu_ratings_reviews_update_8001() {
+  _dsu_ratings_reviews_set_permissions();
+  _dsu_ratings_reviews_enable_modules_second_version();
+}
+
+/**
+ * Set default comment and reply permissions for roles.
+ */
+function _dsu_ratings_reviews_set_permissions() {
+  _dsu_ratings_reviews_set_permissions_role(AccountInterface::ANONYMOUS_ROLE, [
+    'access comments',
+    'access content',
+    'flag dsu ratings comment unuseful',
+    'flag dsu ratings comment useful',
+    'unflag dsu ratings comment unuseful',
+    'unflag dsu ratings comment unuseful',
+    'view media',
+  ]);
+  _dsu_ratings_reviews_set_permissions_role(AccountInterface::AUTHENTICATED_ROLE, [
+    'access comments',
+    'access content',
+    'create dsu_comment_image media',
+    'flag dsu ratings comment unuseful',
+    'flag dsu ratings comment useful',
+    'post comments',
+    'unflag dsu ratings comment unuseful',
+    'unflag dsu ratings comment unuseful',
+    'view media',
+  ]);
+}
+
+/**
+ * @param string $role
+ *   Name of the role.
+ * @param array $permissions
+ *   List of permissions to grant.
+ *
+ * @throws \Drupal\Core\Entity\EntityStorageException
+ */
+function _dsu_ratings_reviews_set_permissions_role($role, $permissions) {
+  /** @var Role $role */
+  $role = Role::load($role);
+
+  if ($role) {
+    foreach ($permissions as $permission) {
+      $role->grantPermission($permission);
+    }
+    $role->save();
+  }
+}
+
+/**
+ * Dependencies updates for 2.0 module version.
+ */
+function _dsu_ratings_reviews_enable_modules_second_version() {
+  $module_installer = \Drupal::service('module_installer');
+  $module_installer->install(['fivestar', 'votingapi', 'flag', 'colorbox', 'recaptcha']);
+}
+
+
+/**
+ * Create new marketing_optin field && Update configs
+ */
+function dsu_ratings_reviews_update_9101() {
+  \Drupal::service('dsu_core.config_replace')->rewriteModuleConfig('dsu_ratings_reviews');
+
+  /** @var \Drupal\Core\Entity\EntityDefinitionUpdateManagerInterface $entity_definition_update_manager */
+  $entity_definition_update_manager = \Drupal::entityDefinitionUpdateManager();
+
+  /** @var \Drupal\Core\Entity\EntityFieldManagerInterface $field_manager */
+  $field_manager = \Drupal::service('entity_field.manager');
+  if($field_definition = $field_manager->getFieldStorageDefinitions('comment')['field_dsu_marketing_opt_in']){
+    $entity_definition_update_manager->installFieldStorageDefinition('field_dsu_marketing_opt_in', 'comment', 'dsu_ratings_reviews', $field_definition);
+  }
+}

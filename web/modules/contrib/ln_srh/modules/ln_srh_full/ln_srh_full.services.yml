@@ -1,0 +1,9 @@
+services:
+  ln_srh_full.flag_subscribers:
+    class: Drupal\ln_srh_full\EventSubscriber\SRHFlagLetsCookItSubscriber
+    tags:
+      - { name: event_subscriber }
+  ln_srh_full.complement_utils:
+    class: Drupal\ln_srh_full\Services\SRHComplementUtils
+    arguments: [ '@plugin.manager.srh_process','@config.factory','@entity_type.manager','@logger.factory','@srh','@datetime.time','@state','@queue','@plugin.manager.queue_worker' ]
+  

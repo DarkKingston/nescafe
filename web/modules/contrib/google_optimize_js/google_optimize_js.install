@@ -1,0 +1,15 @@
+<?php
+
+/**
+ * @file
+ * Contains install, update, and uninstall hooks.
+ */
+
+/**
+ * Implements hook_uninstall().
+ */
+function google_optimize_js_uninstall() {
+  \Drupal::configFactory()
+    ->getEditable('google_optimize_js.settings')
+    ->delete();
+}

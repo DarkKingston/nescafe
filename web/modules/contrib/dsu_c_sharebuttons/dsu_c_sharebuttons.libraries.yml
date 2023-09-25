@@ -1,0 +1,8 @@
+share-buttons:
+  version: 1.x
+  css:
+    theme:
+      css/dsu_c_sharebuttons.css: {}
+  js:
+    js/dsu_c_sharebuttons.js: {}
+

@@ -1,0 +1,16 @@
+{
+	"name": "lightnest/ln_contactus_block",
+	"description": "Provides a contactus form in block.",
+	"type": "drupal-module",
+	"minimum-stability": "dev",
+	"prefer-stable": true,
+	"keywords": [
+		"contact_us",
+		"webform",
+		"client_validation"
+	],
+	"require": {
+		"drupal/clientside_validation": "^1.0",
+		"drupal/core": "^8 || ^9"
+	}
+}

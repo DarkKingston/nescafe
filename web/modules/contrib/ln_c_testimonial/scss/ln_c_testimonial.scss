@@ -1,0 +1,19 @@
+.paragraph--type--c-testimonial {
+    & .testimonial-heading-container {
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+        & .field--name-field-c-testimonial-heading {
+            color : #63513D;
+            margin-bottom: 24px;
+        }
+        & .field--name-field-c-testimonial-sub-heading {
+            margin-bottom: 24px;
+            font-size: 23px;
+            font-weight: 400;
+            line-height: 37px;
+            color: #63513d;
+        }
+    }
+    
+}

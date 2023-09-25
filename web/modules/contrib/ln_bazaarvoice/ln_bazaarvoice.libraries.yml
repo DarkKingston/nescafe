@@ -1,0 +1,9 @@
+embed:
+  version: VERSION
+  js:
+    js/ln-bazaarvoice.js: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.once
+    - core/drupal
+    - core/drupalSettings

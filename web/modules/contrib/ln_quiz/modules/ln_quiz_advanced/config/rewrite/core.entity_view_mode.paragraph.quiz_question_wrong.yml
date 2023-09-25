@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.quiz_question_wrong
+label: 'Quiz question wrong'
+targetEntityType: paragraph
+cache: true

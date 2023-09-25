@@ -1,0 +1,23 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.layout_columns_1.field_column_first
+    - paragraphs.paragraphs_type.layout_columns_1
+  module:
+    - entity_reference_revisions
+id: paragraph.layout_columns_1.default
+targetEntityType: paragraph
+bundle: layout_columns_1
+mode: default
+content:
+  field_column_first:
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
+hidden: {  }

@@ -1,0 +1,77 @@
+<?php
+
+/**
+ * Implements hook_page_attachments().
+ */
+function ln_price_spider_preprocess_field(array &$variables) {
+  if ($variables['field_type'] == 'field_price_spider') {
+
+    $price_spider_id = $variables['element'][0]['#price_spider_id'];
+    $html_id = $variables['element'][0]['#html_id'];
+
+    $variables['#attached']['drupalSettings']['ln_price_spider'][$html_id] = $price_spider_id;
+
+  }
+}
+
+/**
+ * Implements HOOK_preprocess_theme().
+ */
+function ln_price_spider_theme($existing, $type, $theme, $path) {
+  return [
+    'price-spider-button' => [
+      'variables' => [
+        'price_spider_id' => NULL,
+        'html_id'         => NULL,
+      ],
+    ],
+  ];
+}
+
+
+/**
+ * Implements hook_page_attachments().
+ */
+function ln_price_spider_page_attachments(array &$page) {
+
+  // Get Config Settings.
+  $ln_price_spider_config = \Drupal::config('ln_price_spider.settings');
+
+  // Get current language of site.
+  $price_spider_site_lang = \Drupal::service('ln_price_spider')
+    ->getPriceSpiderLangCode();
+
+  // Get country code based on language.
+  $price_spider_country = \Drupal::service('ln_price_spider')
+    ->getPriceSpiderCountryCode($price_spider_site_lang);
+
+  // Create country and language metatag.
+  $country = [
+    '#tag'        => 'meta',
+    '#attributes' => [
+      'name'    => "ps-country",
+      'content' => !empty($ln_price_spider_config->get('ps-country')) ? $ln_price_spider_config->get('ps-country') : $price_spider_country,
+    ],
+  ];
+
+  $language = [
+    '#tag'        => 'meta',
+    '#attributes' => [
+      'name'    => "ps-language",
+      'content' => !empty($ln_price_spider_config->get('ps-language')) ? $ln_price_spider_config->get('ps-language') : $price_spider_site_lang,
+    ],
+  ];
+
+  $key = [
+    '#tag'        => 'meta',
+    '#attributes' => [
+      'name'    => "ps-key",
+      'content' => !empty($ln_price_spider_config->get('ps-key')) ? $ln_price_spider_config->get('ps-key') : '3344-5cb4a424ad45c0000cfdfa9e',
+    ],
+  ];
+
+  // Price spider additional Meta tag.
+  $page['#attached']['html_head'][] = [$country, 'country'];
+  $page['#attached']['html_head'][] = [$language, 'language'];
+  $page['#attached']['html_head'][] = [$key, 'key'];
+}

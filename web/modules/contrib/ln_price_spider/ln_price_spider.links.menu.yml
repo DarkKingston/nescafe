@@ -1,0 +1,20 @@
+ln_price_spider.index:
+  title: LightNest PriceSpider
+  description: LightNest PriceSpider modules.
+  parent: dsu_c_core.settings
+  route_name: ln_price_spider.index
+  weight: 35
+
+ln_price_spider.admin_settings_form:
+  route_name: ln_price_spider.admin_settings_form
+  title: PriceSpider Configuration
+  description: 'Configure for Lightnest Price Spider'
+  parent: ln_price_spider.index
+  weight: 1
+
+ln_price_spider.migrate.admin.form:
+  route_name: ln_price_spider.migrate.admin.form
+  title: PriceSpider Mass Uploader
+  description: 'Configure for Lightnest Price Spider Mass Uploader'
+  parent: ln_price_spider.index
+  weight: 5

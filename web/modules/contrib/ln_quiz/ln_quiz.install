@@ -1,0 +1,37 @@
+<?php
+
+/**
+ * @file
+ * Install, update, and uninstall functions for the ln_quiz config.
+ */
+
+
+/**
+ * Implements hook_update().
+ * DWDL-3011 : Multiple Choices.
+ * Create new Quiz Answer fields to paragraph && Update configs
+ */
+function ln_quiz_update_9101() {
+  \Drupal::service('dsu_core.config_replace')->rewriteModuleConfig('ln_quiz');
+  if(\Drupal::service('module_handler')->moduleExists('ln_quiz_advanced')){
+    \Drupal::service('dsu_core.config_replace')->rewriteModuleConfig('ln_quiz_advanced', 'rewrite');
+  }
+
+  /** @var \Drupal\Core\Entity\EntityDefinitionUpdateManagerInterface $entity_definition_update_manager */
+  $entity_definition_update_manager = \Drupal::entityDefinitionUpdateManager();
+  /** @var \Drupal\Core\Entity\EntityFieldManagerInterface $field_manager */
+  $field_manager = \Drupal::service('entity_field.manager');
+
+  if($field_definition = $field_manager->getFieldStorageDefinitions('paragraph')['field_quiz_answers']){
+    $entity_definition_update_manager->installFieldStorageDefinition('field_quiz_answers', 'paragraph', 'ln_quiz', $field_definition);
+  }
+}
+
+/**
+ * Implements hook_update().
+ * DWDL-3236 : Enhacemnents on Quiz component.
+ * Remove mandatary field && Update configs
+ */
+function ln_quiz_update_9102() {
+  \Drupal::service('dsu_core.config_replace')->rewriteModuleConfig('ln_quiz');
+}

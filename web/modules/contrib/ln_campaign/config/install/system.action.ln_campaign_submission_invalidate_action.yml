@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - webform
+id: ln_campaign_submission_invalidate_action
+label: 'Change to Invalidate status'
+type: webform_submission
+plugin: ln_campaign_submission_invalidate_action
+configuration: {  }

@@ -1,0 +1,45 @@
+<?php
+
+/**
+ * @file
+ * Module file for the Lightnest SEO hreflang module.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_field_widget_form_alter().
+ */
+function ln_seo_hreflang_field_widget_form_alter(&$element, FormStateInterface $form_state, $context) {
+  $field_definition = $context['items']->getFieldDefinition();
+  $field_name = $field_definition->getName();
+  $entity_type = $field_definition->getTargetEntityTypeId();
+
+  if ($entity_type === 'ln_hreflang') {
+    if ($field_name === 'path') {
+      $element['value']['#field_prefix'] = \Drupal::service('router.request_context')->getCompleteBaseUrl();
+      $element['value']['#description'] = t('Specify the existing path you wish to alias. For example: /node/28, /forum/1, /taxonomy/term/1.');
+    }
+  }
+}
+
+
+/**
+ * Implements hook_page_attachments().
+ */
+function ln_seo_hreflang_page_attachments(array &$attachments) {
+  /** @var \Drupal\ln_seo_hreflang\Entity\LnHreflangInterface $hreflang */
+  foreach (\Drupal::service('ln_seo_hreflang.utils')->getCurrentHreflangs() as $hreflang){
+    /** @var \Drupal\ln_seo_hreflang\Plugin\Field\FieldType\LnHreflang $link */
+    foreach ($hreflang->getLinks() as $link){
+      $attachments['#attached']['html_head_link'][] = [
+        [
+          'rel' => 'alternate',
+          'hreflang' => $link->getLang(),
+          'href' => $link->getUrl()->toString(),
+        ],
+        TRUE,
+      ];
+    }
+  }
+}

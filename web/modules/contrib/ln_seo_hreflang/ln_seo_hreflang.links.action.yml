@@ -1,0 +1,5 @@
+ln_hreflang.add_form:
+  route_name: entity.ln_hreflang.add_form
+  title: 'Add hreflang'
+  appears_on:
+    - entity.ln_hreflang.collection

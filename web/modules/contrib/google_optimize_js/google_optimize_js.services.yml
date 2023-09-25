@@ -1,0 +1,13 @@
+services:
+  google_optimize_js.config:
+    class: \Drupal\Core\Config\ImmutableConfig
+    factory: config.factory:get
+    arguments: ['google_optimize_js.settings']
+  google_optimize_js.inclusion:
+    class: Drupal\google_optimize_js\Inclusion
+    arguments:
+      - '@google_optimize_js.config'
+      - '@router.admin_context'
+      - '@path.current'
+      - '@path_alias.manager'
+      - '@path.matcher'

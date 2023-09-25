@@ -1,0 +1,48 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.c_spacer.field_divider_height
+    - field.field.paragraph.c_spacer.field_margin_bottom
+    - field.field.paragraph.c_spacer.field_margin_top
+    - field.field.paragraph.c_spacer.field_type_of_divider
+    - paragraphs.paragraphs_type.c_spacer
+id: paragraph.c_spacer.default
+targetEntityType: paragraph
+bundle: c_spacer
+mode: default
+content:
+  field_divider_height:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_margin_bottom:
+    weight: 3
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_margin_top:
+    weight: 2
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_type_of_divider:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

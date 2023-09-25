@@ -1,0 +1,15 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs_ee
+third_party_settings:
+  paragraphs_ee:
+    paragraphs_categories:
+      integration: integration
+id: ln_qualifio
+label: 'Content: Qualifio'
+icon_uuid: null
+icon_default: null
+description: 'Qualifio connector to connecto to the Qualifio third-party campaign creator.'
+behavior_plugins: {  }

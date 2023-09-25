@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - ln_srh_full
+name: 'SRH Tagging'
+vid: srh_tagging
+description: ''
+weight: 0

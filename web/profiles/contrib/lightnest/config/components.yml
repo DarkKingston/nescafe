@@ -1,0 +1,120 @@
+dsu_c_accordion:
+  id: "dsu_c_accordion"
+  name: "Lightnest Accordion"
+  description: "Installs content which allows you to explore features."
+  default_checked: "0"
+  disabled: FALSE
+ln_c_cardgrid:
+  id: "ln_c_cardgrid"
+  name: "LightNest Component:Card Grid"
+  description: "Allows to create card grid component."
+  default_checked: "0"
+  disabled: FALSE
+ln_c_buy_now_component:
+  id: "ln_c_buy_now_component"
+  name: "Lightnest Buy Now Component"
+  description: "Lightnest Buy Now Component."
+  default_checked: "0"
+  disabled: FALSE
+dsu_c_countdown:
+  id: "dsu_c_countdown"
+  name: "Lightnest Components: Countdown"
+  description: "Provides Countdown paragraphs and related configuration."
+  default_checked: "0"
+  disabled: FALSE
+dsu_c_entitycycle:
+  id: "dsu_c_entitycycle"
+  name: "Lightnest Components: Entity Cycle"
+  description: "Allows to create a cycle between different user-selected entities."
+  default_checked: "0"
+  disabled: FALSE
+dsu_c_gallery:
+  id: "dsu_c_gallery"
+  name: "Lightnest Components: Gallery"
+  description: "Allows to create a gallery with thumbnails and videos."
+  default_checked: "0"
+  disabled: FALSE
+dsu_c_image:
+  id: "dsu_c_image"
+  name: "Lightnest Components: Image"
+  description: "Includes configurations for Image Block Paragraph type and related field settings."
+  default_checked: "0"
+  disabled: FALSE
+dsu_c_link_document_container:
+  id: "dsu_c_link_document_container"
+  name: "Lightnest Components: Link/Document Container"
+  description: "Allows to create a list with links and documents."
+  default_checked: "0"
+  disabled: FALSE
+ln_quiz:
+  id: "ln_quiz"
+  name: "Lightnest Components: Quiz"
+  description: "Provide a quiz generator."
+  default_checked: "0"
+  disabled: FALSE
+dsu_c_sharebuttons:
+  id: "dsu_c_sharebuttons"
+  name: "Lightnest Components: Share Buttons"
+  description: "Allows to create a bar with share buttons."
+  default_checked: "0"
+  disabled: FALSE
+dsu_c_slider:
+  id: "dsu_c_slider"
+  name: "Lightnest Components: Slider"
+  description: "Allows to create a carousel component."
+  default_checked: "0"
+  disabled: FALSE
+ln_c_social_buttons:
+  id: "ln_c_social_buttons"
+  name: "Lightnest Components: Social Buttons"
+  description: "Provides Social buttons component."
+  default_checked: "0"
+  disabled: FALSE
+ln_c_spacer:
+  id: "ln_c_spacer"
+  name: "Lightnest Components: Spacer"
+  description: "Allow to create space between two components."
+  default_checked: "0"
+  disabled: FALSE
+dsu_c_tabbedcontent:
+  id: "dsu_c_tabbedcontent"
+  name: "Lightnest Components: Tabbed Content"
+  description: "Allows to create a layout with tabs, that at the same time can contain components."
+  default_checked: "0"
+  disabled: FALSE
+dsu_c_teasercycle:
+  id: "dsu_c_teasercycle"
+  name: "Lightnest Components: Teaser Cycle"
+  description: "Allows to create teasers and cycle through them."
+  default_checked: "0"
+  disabled: FALSE
+dsu_c_text:
+  id: "dsu_c_text"
+  name: "Lightnest Components: Text"
+  description: "Allows to create a component with simple text."
+  default_checked: "0"
+  disabled: FALSE
+dsu_c_sideimagetext:
+  id: "dsu_c_sideimagetext"
+  name: "Lightnest Components: Text + Image"
+  description: "Allows to create a component with text and an image next to it."
+  default_checked: "0"
+  disabled: FALSE
+ln_tint_connector:
+  id: "ln_tint_connector"
+  name: "Lightnest Components: Tint"
+  description: "Lightnest components: Tint Integration."
+  default_checked: "0"
+  disabled: FALSE
+ln_c_webform:
+  id: "ln_c_webform"
+  name: "Lightnest components: Webform"
+  description: "Provides webform as a paragraph."
+  default_checked: "0"
+  disabled: FALSE
+ln_quiz_advanced:
+  id: "ln_quiz_advanced"
+  name: "Lightnest Quiz Advanced"
+  description: "Provides a default style to the quiz view."
+  default_checked: "0"
+  disabled: FALSE

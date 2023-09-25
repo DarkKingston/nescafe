@@ -1,0 +1,26 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_c_document_upload
+    - paragraphs.paragraphs_type.c_document
+  module:
+    - file
+id: paragraph.c_document.field_c_document_upload
+field_name: field_c_document_upload
+entity_type: paragraph
+bundle: c_document
+label: 'Document upload'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'pdf doc xls jpg png xlsx docx'
+  max_filesize: ''
+  description_field: false
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: file

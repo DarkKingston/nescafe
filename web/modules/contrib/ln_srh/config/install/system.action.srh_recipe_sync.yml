@@ -1,0 +1,12 @@
+id: srh_recipe_sync
+label: 'Resynchronize selected recipes'
+status: true
+langcode: en
+type: node
+plugin: srh_recipe_sync
+dependencies:
+  module:
+    - node
+  enforced:
+    module:
+      - ln_srh

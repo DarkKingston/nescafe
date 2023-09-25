@@ -1,0 +1,12 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - ln_srh_standard
+id: srh_nutrient
+label: 'SRH Nutrient'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

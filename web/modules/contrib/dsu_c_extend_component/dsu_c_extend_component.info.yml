@@ -1,0 +1,15 @@
+name: 'Lightnest components: Extend component'
+description: 'Allows to add paragraph category to use in Paragraph types.'
+type: module
+core: 8.x
+core_version_requirement: ^8 || ^9
+version: 9.x-1.1.0
+package: Lightnest
+dependencies:
+  - paragraphs
+  - paragraphs_features
+  - paragraphs_browser
+  - paragraphs_ee
+  - paragraphs_sets
+libraries:
+  - dsu_c_extend_component/general

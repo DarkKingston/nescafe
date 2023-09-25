@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_srh_is_active
+    - paragraphs.paragraphs_type.srh_step
+  enforced:
+    module:
+      - ln_srh_extended
+id: paragraph.srh_step.field_srh_is_active
+field_name: field_srh_is_active
+entity_type: paragraph
+bundle: srh_step
+label: 'SRH is active'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,18 @@
+# Changelog
+-----------
+## 1.6.1
+- Apply changes for refactor ln_datalayer module
+
+## 1.6.0
+- Update datalayer for GA4
+
+## 1.5.0
+- Refactor Component Core: Remove id field for generic one.
+
+## 1.4.1
+- rel attribute added if target exist on anchor tag.
+- Made text button full section clickable.
+
+## 1.3.5 (May 11, 2020)
+- Created one entity reference field "field_document" in paragraph name "c_document" for document upload.
+- Hide the exsisting field "field_c_document_upload" from "Manage Form display" and "Manage display".

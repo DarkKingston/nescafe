@@ -1,0 +1,9 @@
+name: 'Lightnest Components: Entity compare'
+type: module
+description: 'Allows creating the Entity Compare component.'
+package: 'Lightnest Components'
+core_version_requirement: ^9.3 || ^10
+version: 9.x-1.0.0
+dependencies:
+  - dsu_c_core:dsu_c_core (>1.7.0)
+  - paragraphs

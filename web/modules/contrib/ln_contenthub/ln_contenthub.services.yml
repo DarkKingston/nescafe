@@ -1,0 +1,9 @@
+services:
+  ln_contenthub.ln_contenthub_services:
+    class: 'Drupal\ln_contenthub\ContentHubServices'
+    arguments: ['@http_client', '@config.factory']
+
+  ln_contenthub.event_subscriber:
+    class: Drupal\ln_contenthub\EventSubscriber\ContentHubSubscriber
+    tags:
+    - {name: event_subscriber}

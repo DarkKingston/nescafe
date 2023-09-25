@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_dsu_subtitle
+    - node.type.dsu_article
+_core:
+  default_config_hash: LwmT6IgBrPGwXuYioDK3fYphJyZFT8cm8VHCMyY41bQ
+id: node.dsu_article.field_dsu_subtitle
+field_name: field_dsu_subtitle
+entity_type: node
+bundle: dsu_article
+label: Subtitle
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

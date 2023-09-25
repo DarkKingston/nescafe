@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_srh_duration
+    - paragraphs.paragraphs_type.srh_sport
+  enforced:
+    module:
+      - ln_srh_full
+id: paragraph.srh_sport.field_srh_duration
+field_name: field_srh_duration
+entity_type: paragraph
+bundle: srh_sport
+label: 'SRH Time'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

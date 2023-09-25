@@ -1,0 +1,96 @@
+langcode: en
+status: true
+config_replace: replace
+dependencies:
+  config:
+    - field.field.paragraph.srh_ingredient.field_c_title
+    - field.field.paragraph.srh_ingredient.field_srh_ingredient
+    - field.field.paragraph.srh_ingredient.field_srh_is_nestle_product
+    - field.field.paragraph.srh_ingredient.field_srh_preparation_hint
+    - field.field.paragraph.srh_ingredient.field_srh_quantity
+    - field.field.paragraph.srh_ingredient.field_srh_tips
+    - field.field.paragraph.srh_ingredient.field_srh_unit_type
+    - paragraphs.paragraphs_type.srh_ingredient
+  enforced:
+    module:
+      - ln_srh_basic
+  module:
+    - ln_srh
+    - paragraphs
+id: paragraph.srh_ingredient.default
+targetEntityType: paragraph
+bundle: srh_ingredient
+mode: default
+content:
+  field_c_title:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_srh_ingredient:
+    weight: 1
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_srh_is_nestle_product:
+    weight: 4
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+
+  field_srh_preparation_hint:
+    weight: 3
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_srh_quantity:
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+    type: srh_quantity_widget
+    region: content
+  field_srh_tips:
+    type: paragraphs
+    weight: 6
+    settings:
+      title: Tip
+      title_plural: Tips
+      edit_mode: closed
+      closed_mode: summary
+      autocollapse: all
+      closed_mode_threshold: 0
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: srh_tip
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings: {  }
+    region: content
+  field_srh_unit_type:
+    weight: 5
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+hidden:
+  created: true
+  status: true

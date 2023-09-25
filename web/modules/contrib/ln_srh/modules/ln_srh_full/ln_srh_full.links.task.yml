@@ -1,0 +1,15 @@
+ln_srh_full.complement_mapping:
+  route_name: ln_srh_full.complement_mapping
+  title: 'Complement Mapping'
+  base_route: ln_srh.config
+
+ln_srh_full.sync_complements:
+  route_name: ln_srh_full.sync_complements
+  title: 'Sync Complements'
+  base_route: ln_srh.config
+
+ln_srh_full.sync_node_complement:
+  route_name: ln_srh_full.sync_node_complement
+  title: 'SRH Sync'
+  base_route: entity.node.canonical
+  weight: 100

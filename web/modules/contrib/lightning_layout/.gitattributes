@@ -1,0 +1,4 @@
+/logs export-ignore
+/*.sh export-ignore
+/.travis.yml export-ignore
+/tests/fixtures export-ignore

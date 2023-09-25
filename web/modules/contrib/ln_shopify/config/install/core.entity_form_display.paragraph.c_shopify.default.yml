@@ -1,0 +1,31 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.c_shopify.field_horizontal_aligment
+    - field.field.paragraph.c_shopify.field_shopify_content
+    - paragraphs.paragraphs_type.c_shopify
+  module:
+    - text
+id: paragraph.c_shopify.default
+targetEntityType: paragraph
+bundle: c_shopify
+mode: default
+content:
+  field_horizontal_aligment:
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_shopify_content:
+    weight: 3
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textfield
+    region: content
+hidden:
+  created: true
+  status: true

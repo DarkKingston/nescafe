@@ -1,0 +1,8 @@
+lazy_load_image:
+  version: 1.x
+  js:
+    //afarkas.github.io/lazysizes/lazysizes.min.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/jquery.once

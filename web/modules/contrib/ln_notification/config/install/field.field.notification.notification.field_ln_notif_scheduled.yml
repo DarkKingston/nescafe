@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.notification.field_ln_notif_scheduled
+  module:
+    - notification_system_database
+    - smart_date
+id: notification.notification.field_ln_notif_scheduled
+field_name: field_ln_notif_scheduled
+entity_type: notification
+bundle: notification
+label: 'Send on'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    default_duration: 60
+    default_duration_increments: "30\r\n60|1 hour\r\n90\r\n120|2 hours\r\ncustom"
+    default_date_type: next_hour
+    default_date: ''
+default_value_callback: ''
+settings: {  }
+field_type: smartdate

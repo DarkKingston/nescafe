@@ -1,0 +1,13 @@
+# Protect files and directories from prying eyes.
+RedirectMatch 404 \.(engine|inc|info|install|make|module|profile|test|po|sh|.sql|theme|tpl(\.php)?|xtmpl)(||\.sw[op]|\.bak|\.orig|\.save)?$|(\..|Entries.|Repository|Root|Tag|Template|composer\.(json|lock))$|#.#$|\.php(|\.sw[op]|\.bak|\.orig\.save)$
+
+# Prevent site fingerprinting via release related files.
+RedirectMatch 404 (LICENSE|CHANGELOG|MAINTAINERS|INSTALL|README|license|readme|changelog|UPGRADE|upgrade|composer).*\.txt$
+RedirectMatch 404 composer\..*
+RedirectMatch 404 update.php
+RedirectMatch 404 web.config
+RedirectMatch 404 modules/simpletest/.*
+
+# Block access to test files
+RedirectMatch 404 ^/(.)/(test|tests)/(.)$
+RedirectMatch 404 ^/(scripts|modules|themes)/.*\.(html|txt|php|script)$

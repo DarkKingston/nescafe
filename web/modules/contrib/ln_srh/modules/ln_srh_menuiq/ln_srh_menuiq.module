@@ -1,0 +1,72 @@
+<?php
+
+use Drupal\ln_srh\Form\SRHFieldMapping;
+use Drupal\ln_srh\SRHConstants;
+use Drupal\ln_srh_menuiq\SRHMyMenuIQConstants;
+
+/**
+ * Implements hook_theme().
+ */
+function ln_srh_menuiq_theme($existing, $type, $theme, $path){
+  return [
+    'srh_mymenuiq' => [
+      'template'  => 'srh-mymenuiq',
+      'variables' => [
+        'main_score' => NULL,
+        'current_score' => NULL,
+        'categories' => NULL,
+        'panels' => NULL,
+        'recipe' => NULL,
+        'sidedishes_current_recipe' => NULL,
+        'adimo' => NULL,
+      ]
+    ],
+    'srh_mymenuiq_sidedish' => [
+      'template'  => 'srh-mymenuiq-sidedish',
+      'variables' => [
+        'sidedish' => NULL,
+      ]
+    ],
+    'srh_mymenuiq_energy_bars' => [
+      'template'  => 'srh-mymenuiq-energy-bars',
+      'variables' => [
+        'bars' => NULL,
+      ]
+    ],
+    'srh_mymenuiq_accordion_info' => [
+      'template'  => 'srh-mymenuiq-accordion-info',
+      'variables' => [
+        'about' => NULL,
+        'energy' => NULL,
+      ]
+    ],
+    'srh_mymenuiq_balance_info' => [
+      'template'  => 'srh-mymenuiq-balance-info',
+      'variables' => [
+        'balance' => NULL,
+      ]
+    ]
+  ];
+}
+
+/**
+ * Implements hook_modules_installed().
+ */
+function ln_srh_menuiq_modules_installed($modules) {
+  // Add mapping for adimo field when ln_adimo is being installed.
+  if (in_array('ln_adimo', $modules)) {
+    /** @var \Drupal\Core\Config\Config $config */
+    $config = \Drupal::configFactory()->getEditable(SRHFieldMapping::SETTINGS);
+    $config->set(SRHConstants::SRH_RECIPE_BUNDLE . '.' . SRHMyMenuIQConstants::SRH_RECIPE_ADIMO_FIELD, [
+      'enable_mapping' => 1,
+      'plugin' => [
+        'id' => 'srh_process_adimo',
+        'settings' => [
+          'srh_source_field' => 'adimoTouchpointId',
+          'integration_type' => 5 // Enhanced Recipe Lightbox
+        ],
+      ],
+    ]);
+    $config->save();
+  }
+}

@@ -1,0 +1,6 @@
+status: true
+dependencies: {  }
+id: social_buttons
+label: 'Social Buttons'
+revision: 1
+description: 'Create social buttons block.'

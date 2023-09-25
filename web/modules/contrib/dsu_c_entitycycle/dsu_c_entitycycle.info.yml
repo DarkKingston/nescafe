@@ -1,0 +1,18 @@
+name: 'Lightnest Components: Entity Cycle'
+description: 'Allows to create a cycle between different user-selected entities.'
+type: module
+core: 8.x
+core_version_requirement: ^8 || ^9
+dependencies:
+  - entity_reference_revisions
+  - field
+  - image
+  - node
+  - options
+  - options_table
+  - paragraphs
+  - slick
+  - slick_entityreference
+  - dsu_c_core
+package: 'Lightnest Components'
+version: 8.x-2.1.0

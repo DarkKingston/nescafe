@@ -1,0 +1,128 @@
+/**
+ * @file
+ * This file is used to style the Content Hub browser.
+ */
+
+/** Search form */
+#edit-widget-search .form-type-search {
+  float: left;
+  margin: 0 0.75em 0 0;
+}
+
+#edit-widget-search .ajax-progress-fullscreen {
+  z-index : 500;
+  position: absolute;
+}
+
+#edit-widget-search .ajax-progress-background-mask {
+  position: absolute;
+  width:100%;
+  height:100%;
+  top:0;
+  left:0;
+  background:#000;
+  opacity:0.5;
+  z-index:499;
+}
+
+
+/** Search results */
+.ln_contenthub-search-results {
+  margin: 0 auto;
+  width: 100% !important;
+  text-align: center;
+}
+
+/** Result items */
+.ln_contenthub-grid-item {
+  margin: 0 0 1em 0;
+  position: relative;
+  border: 10px solid #ebebeb;
+  transition: border-color .6s;
+  display: inline-block;
+  vertical-align: top;
+  width: 40%;
+}
+.ln_contenthub-grid-item.checked {
+  border-color: #ed5;
+}
+
+.ln_contenthub-grid-item:hover {
+  cursor: pointer;
+}
+
+.ln_contenthub-grid-item img {
+  vertical-align: bottom;
+  width: 100%;
+  height: auto;
+}
+
+.ln_contenthub-grid-item img::selection {
+  background: transparent;
+}
+
+.ln_contenthub-grid-item .form-type-checkbox {
+  display: none;
+}
+
+.ln_contenthub-grid-item.checked::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  background: transparent url(../images/selected.svg) no-repeat center;
+  animation: selected 1.5s 1;
+  opacity: 0;
+}
+
+.ln_contenthub-grid-item.checked:after {
+  background-size: 80px 80px;
+}
+
+@media screen and (min-width: 350px) {
+  #edit-widget-search .search_submit {
+    width: 30%;
+  }
+
+  .ln_contenthub-grid-item {
+    width: 18%;
+  }
+}
+
+@media screen and (min-width: 465px) {
+  #edit-widget-search .form-type-search {
+    width: 40%;
+  }
+
+  #edit-widget-search .search_submit {
+    height: 62px;
+    float: left;
+    position: relative;
+  }
+
+  #edit-widget-search .search_submit .button {
+    position: absolute;
+    bottom: 0;
+    margin-left: 1em;
+  }
+
+  .ln_contenthub-grid-item {
+    width: 20%;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  #edit-widget-search .search_submit {
+    bottom: 0.25em;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .ln_contenthub-grid-item {
+    width: 22%;
+  }
+}
+
+

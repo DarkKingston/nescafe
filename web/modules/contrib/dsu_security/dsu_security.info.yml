@@ -1,0 +1,22 @@
+name: 'Lightnest Security'
+description: 'This module will setup the site security configurations to be compliant with Nestle DSU Standard'
+type: module
+core: 8.x
+core_version_requirement: ^8 || ^9
+version: 9.x-2.12.0
+package: Lightnest
+dependencies:
+  - autologout
+  - login_security
+  - password_policy
+  - seckit
+  - session_limit
+  - password_policy_length
+  - password_policy_characters
+  - password_policy_character_types
+  - password_policy_history
+  - password_policy_username
+  - prlp
+  - dsu_c_core
+  - noreferrer
+  - file_upload_secure_validator:file_upload_secure_validator

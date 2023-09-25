@@ -1,0 +1,51 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_column_second
+    - paragraphs.paragraphs_type.layout_columns_3
+  module:
+    - entity_reference_revisions
+id: paragraph.layout_columns_3.field_column_second
+field_name: field_column_second
+entity_type: paragraph
+bundle: layout_columns_3
+label: 'Second column'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles: null
+    target_bundles_drag_drop:
+      c_image:
+        enabled: true
+        weight: 10
+      c_slide:
+        weight: 11
+        enabled: false
+      c_slider:
+        enabled: true
+        weight: 12
+      c_title_text_image:
+        enabled: true
+        weight: 13
+      c_title_text_link_image:
+        enabled: true
+        weight: 14
+      content_text:
+        enabled: true
+        weight: 15
+      content_title_text:
+        enabled: true
+        weight: 16
+      layout_columns_2:
+        weight: 17
+        enabled: false
+      layout_columns_3:
+        weight: 18
+        enabled: false
+field_type: entity_reference_revisions

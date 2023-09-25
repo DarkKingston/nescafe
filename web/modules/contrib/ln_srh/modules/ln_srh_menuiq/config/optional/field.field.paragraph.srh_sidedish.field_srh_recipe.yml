@@ -1,0 +1,31 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_srh_recipe
+    - node.type.srh_recipe
+    - paragraphs.paragraphs_type.srh_sidedish
+  enforced:
+    module:
+      - ln_srh_menuiq
+id: paragraph.srh_sidedish.field_srh_recipe
+field_name: field_srh_recipe
+entity_type: paragraph
+bundle: srh_sidedish
+label: 'SRH Recipe'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      srh_recipe: srh_recipe
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

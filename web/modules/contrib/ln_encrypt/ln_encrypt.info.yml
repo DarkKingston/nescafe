@@ -1,0 +1,12 @@
+name: 'Lightnest components: Encryption'
+description: 'Provides field encryption.'
+type: module
+core: 8.x
+core_version_requirement: ^8 || ^9
+version: 8.x-1.0.2
+dependencies:
+  - encrypt
+  - field_encrypt
+  - key
+  - real_aes
+package: 'Lightnest Components'

@@ -1,0 +1,15 @@
+# Changelog
+-----------
+
+## 1.3.2
+- Fix datalayer use
+
+## 1.3.1
+- Apply changes for refactor ln_datalayer module
+
+## 1.3.0
+- Update datalayer for GA4
+
+## 1.2.8 (Sep 16, 2021)
+- rel attribute added if target exist on anchor tag.
+- google plus button removed.

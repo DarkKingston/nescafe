@@ -1,0 +1,36 @@
+id: ln_hreflang_import
+label: 'Create/Update Hreflang'
+migration_group: ln_seo_hreflang_content
+dependencies:
+  enforced:
+    module:
+      - ln_seo_hreflang_content
+
+source:
+  plugin: 'csv'
+  path: '/modules/contrib/ln_seo_hreflang/modules/ln_seo_hreflang_content/migrations/data/hreflangs.csv'
+  delimiter: ';'
+  enclosure: '"'
+  header_offset: 0
+  ids:
+    - Path
+  fields:
+    -
+      name: Path
+      label: 'Path'
+    -
+      name: Links
+      label: 'Links'
+
+process:
+  path: Path
+  links:
+    plugin: sub_process
+    source: Links
+    process:
+      uri: uri
+      lang: lang
+
+destination:
+  plugin: entity:ln_hreflang
+  validate: true

@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+id: establishment
+label: Establishment
+category: 'ln_campaign'
+likert: false
+options: ''

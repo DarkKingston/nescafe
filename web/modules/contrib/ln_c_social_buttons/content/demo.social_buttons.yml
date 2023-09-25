@@ -1,0 +1,61 @@
+type: c_socialbuttons
+component_description: SOCIAL BUTTONS
+field_c_title: Connect with Us
+field_social_buttons_item:
+  paragraph:
+    item_0:
+      type: c_social_buttons_item
+      field_social_link_platform:
+        tax_term_name:
+          vid: social_platforms
+          name: Sample media 1
+          custom_field:
+            field_color_code: '#00acee'
+            field_c_icon:
+              image_name: twitter.png
+              image_title: Twitter
+      field_social_buttons:
+        links:
+          item_0:
+            uri: https://twitter.com/nestle
+            title: Nestlé Corporate
+            options:
+              attributes:
+                target: _blank
+          item_1:
+            uri: https://twitter.com/NestleCareers
+            title: Nestlé Careers
+            options:
+              attributes:
+                target: _blank
+          item_2:
+            uri: https://twitter.com/NestleCare
+            title: Consumer Care
+            options:
+              attributes:
+                target: _blank
+    item_2:
+      type: c_social_buttons_item
+      field_social_link_platform:
+        tax_term_name:
+          vid: social_platforms
+          name: Sample media 2
+          custom_field:
+            field_color_code: '#3b5998'
+            field_c_icon:
+              image_name: facebook.png
+              image_title: Facebook
+      field_social_buttons:
+        links:
+          item_0:
+            uri: https://www.facebook.com/Nestle?brandloc=DISABLE
+            title: Nestlé Corporate
+            options:
+              attributes:
+                target: _blank
+          item_1:
+            uri: https://www.facebook.com/NestleCareers
+            title: Nestlé Careers
+            options:
+              attributes:
+                target: _blank

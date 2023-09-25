@@ -1,0 +1,14 @@
+{
+    "name": "lightnest/ln_pdh",
+    "description": "Adds the integration from Drupal to PDH.",
+    "type": "drupal-module",
+    "keywords": [
+        "content",
+        "paragraphs",
+        "pdh"
+    ],
+    "require": {
+        "drupal/core": "^8 || ^9"
+    },
+    "license": "GPL-2.0+"
+}

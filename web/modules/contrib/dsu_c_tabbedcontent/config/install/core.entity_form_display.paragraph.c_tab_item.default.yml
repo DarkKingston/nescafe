@@ -1,0 +1,89 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - entity_browser.browser.media_browser
+    - field.field.paragraph.c_tab_item.field_button_color
+    - field.field.paragraph.c_tab_item.field_c_image
+    - field.field.paragraph.c_tab_item.field_c_title
+    - field.field.paragraph.c_tab_item.field_column_first
+    - paragraphs.paragraphs_type.c_tab_item
+  module:
+    - paragraphs
+    - entity_browser
+    - paragraphs_ee
+    - paragraphs_features
+    - paragraphs_previewer
+    - paragraphs_sets
+id: paragraph.c_tab_item.default
+targetEntityType: paragraph
+bundle: c_tab_item
+mode: default
+content:
+  field_button_color:
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_c_image:
+    type: entity_browser_entity_reference
+    weight: 2
+    settings:
+      entity_browser: media_browser
+      field_widget_display: rendered_entity
+      field_widget_edit: true
+      field_widget_remove: true
+      selection_mode: selection_append
+      field_widget_display_settings:
+        view_mode: thumbnail
+      open: true
+      field_widget_replace: false
+    region: content
+    third_party_settings: {  }
+  field_c_title:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_column_first:
+    weight: 3
+    settings:
+      title: 'Tab Content'
+      title_plural: 'Tab Content'
+      edit_mode: closed
+      closed_mode: preview
+      autocollapse: none
+      closed_mode_threshold: '0'
+      add_mode: modal
+      form_display_mode: default
+      default_paragraph_type: _none
+      features:
+        duplicate: duplicate
+        collapse_edit_all: collapse_edit_all
+        add_above: 0
+    third_party_settings:
+      paragraphs_features:
+        add_in_between: true
+        show_drag_and_drop: true
+        delete_confirmation: false
+        split_text: false
+      paragraphs_sets:
+        paragraphs_sets:
+          default_set: _none
+          use_paragraphs_sets: false
+          sets_allowed: {  }
+      paragraphs_ee:
+        paragraphs_ee:
+          dialog_style: tiles
+          easy_access_count: 0
+          dialog_off_canvas: false
+    type: paragraphs_previewer
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

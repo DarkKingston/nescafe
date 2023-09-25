@@ -1,0 +1,15 @@
+ln_adimo.migrate.admin.form:
+  path: '/admin/config/lightnest/ln-adimo/field-update'
+  defaults:
+    _form: 'Drupal\ln_adimo\Form\LnAdimoUpdateFieldForm'
+    _title: 'Lightnest Adimo Mass Uploader'
+  requirements:
+    _permission: 'administer site configuration'
+
+ln_adimo.admin.config:
+  path: '/admin/config/lightnest/ln-adimo/config'
+  defaults:
+    _title: 'Adimo Miscellaneous Configuration'
+    _form: '\Drupal\ln_adimo\Form\AdimoConfigForm'
+  requirements:
+    _permission: 'access administration pages'

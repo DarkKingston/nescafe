@@ -1,0 +1,17 @@
+$ln_c_spacer_line_short_width: 70% !default;
+$ln_c_spacer_background_color: #aaa !default;
+
+.paragraph--type--c-spacer {
+    .spacer {
+        display: block;
+        overflow: hidden;
+        clear: both;
+        margin: 0 auto;
+        width: 100%;
+        background: $ln_c_spacer_background_color;
+    }
+
+    .line-short {
+        width: $ln_c_spacer_line_short_width;
+    }
+}

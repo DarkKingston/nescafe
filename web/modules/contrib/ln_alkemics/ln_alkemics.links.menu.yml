@@ -1,0 +1,20 @@
+ln_alkemics.index:
+  title: LightNest Alkemics
+  description: Various settings for altering the behavior of LightNest Alkemics modules.
+  parent: system.admin_config
+  route_name: ln_alkemics.index
+  weight: 27
+
+ln_alkemics.admin:
+  title: 'Alkemics Connector Configuration'
+  description: 'Configuration for the Lightnest Alkemics'
+  parent: ln_alkemics.index
+  route_name: ln_alkemics.config
+  weight: 1
+
+ln_alkemics.action:
+  title: 'Alkemics Manual Importer'
+  description: 'Import Products from the Alkemics to local'
+  parent: ln_alkemics.index
+  route_name: ln_alkemics.action
+  weight: 2

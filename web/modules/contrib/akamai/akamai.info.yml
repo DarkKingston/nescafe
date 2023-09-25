@@ -1,0 +1,17 @@
+name: Akamai
+type: module
+description: 'Cache Control integration with Akamai CDN. Akamai is a registered trademark of Akamai Technologies, Inc.'
+core_version_requirement: ^8.8 || ^9
+package: Other
+configure: akamai.settings
+recommends:
+  - purge:purge
+  - purge_queuer_url:purge_queuer_url
+  - key:key
+test_dependencies:
+  - token:token
+
+# Information added by Drupal.org packaging script on 2021-11-03
+version: '4.0.1'
+project: 'akamai'
+datestamp: 1635965189

@@ -1,0 +1,468 @@
+langcode: en
+status: open
+dependencies:
+  module:
+    - clientside_validation
+third_party_settings:
+  clientside_validation:
+    clientside_validation: true
+weight: 0
+open: null
+close: null
+uid: 1
+template: false
+archive: false
+id: contact_us
+title: 'Leave us a message'
+description: 'Provides Engage Contact us form as a block'
+category: ''
+elements: |-
+  processed_text_01:
+    '#type': processed_text
+    '#text': |
+      <h2 class="form-title">Leave us a message</h2>
+
+      <p class="form-mandatory-msg"><span style="color:red;">*</span>Mandatory Fields</p>
+    '#format': rich_text
+  form_wrapper:
+    '#type': webform_section
+    '#title': 'Selected Options'
+    '#attributes':
+      class:
+        - content-wrapper
+    what_would_you_like_to_contact_us_about_today_:
+      '#type': select
+      '#title': 'What would you like to contact us about today?'
+      '#options':
+        Compliment: Compliment
+        Complaint: Complaint
+        Question: Question
+      '#empty_option': 'Select a contact reason'
+      '#required': true
+      '#required_error': 'Please select the subject'
+    complaint_about:
+      '#type': select
+      '#title': 'A complaint about... '
+      '#options':
+        'Product and packaging': 'Product and packaging'
+        'Service and supply': 'Service and supply'
+        'About our site': 'About our site'
+        'General complaint': 'General complaint'
+      '#empty_option': 'Select a contact reason'
+      '#required': true
+      '#required_error': 'Please select the reason topic'
+      '#states':
+        visible:
+          ':input[name="what_would_you_like_to_contact_us_about_today_"]':
+            value: Complaint
+    question_about:
+      '#type': select
+      '#title': 'A question about...'
+      '#options':
+        'Product and packaging': 'Product and packaging'
+        'Service and supply': 'Service and supply'
+        'Job enquiry': 'Job enquiry'
+        'Promotions, samples and coupons': 'Promotions, samples and coupons'
+        'About the website': 'About the website'
+        'Media enquiry': 'Media enquiry'
+        'Investor enquiry': 'Investor enquiry'
+        'Society and environment': 'Society and environment'
+        'Doing business with Nestlé': 'Doing business with Nestlé'
+        'Sponsorship and donations': 'Sponsorship and donations'
+        Other: Other
+      '#empty_option': 'Select a contact reason'
+      '#required': true
+      '#required_error': 'Please select the reason topic'
+      '#states':
+        visible:
+          ':input[name="what_would_you_like_to_contact_us_about_today_"]':
+            value: Question
+    processed_text_02:
+      '#type': processed_text
+      '#states':
+        visible:
+          - ':input[name="complaint_about"]':
+              value: 'Product and packaging'
+          - xor
+          - ':input[name="complaint_about"]':
+              value: 'Service and supply'
+      '#text': |
+        <p><strong>​Tip:</strong>&nbsp;We&nbsp;do our best to get back to all e-mails&nbsp;as soon as we can. However if your request is <strong>urgent </strong>please telephone your local consumer services team. Find the number in our directory of <a href="/AboutUs/globalpresence/Pages/Global_Presence.aspx">Nestlé numbers worldwide</a></p>
+      '#format': rich_text
+    processed_text_03:
+      '#type': processed_text
+      '#states':
+        visible:
+          - ':input[name="question_about"]':
+              value: 'Product and packaging'
+          - xor
+          - ':input[name="question_about"]':
+              value: 'Service and supply'
+      '#text': |
+        <p>​<strong>Tip: </strong>We will do our best to get back to you as soon as we can. However if your request is <strong>urgent </strong>please telephone your local consumer services team. Find the number in our directory of <a href="/AboutUs/globalpresence/Pages/Global_Presence.aspx">Nestlé numbers worldwide</a></p>
+      '#format': rich_text
+    processed_text_04:
+      '#type': processed_text
+      '#states':
+        visible:
+          ':input[name="question_about"]':
+            value: 'Investor enquiry'
+      '#text': '<p>&#8203;<strong>Tip: </strong>We will do our best to get back to you as soon as we can. If your request is urgent then please telephone one of our <a href="/2012_Investors/Contacts/Pages/Contact.aspx">Investor Relations team.</a></p>'
+      '#format': rich_text
+    processed_text_05:
+      '#type': processed_text
+      '#states':
+        visible:
+          ':input[name="question_about"]':
+            value: 'Media enquiry'
+      '#text': |
+        <p>&#8203;<strong>Privacy disclosure:</strong> Your personal data will be used as set out in the <a href="/AboutUs/BusinessPrinciples/privacy/Privacy-notice#Q4" target="_blank">Privacy Notice</a>.</p>
+        <p>&#8203;<strong>Tip:</strong> We will do our best to get back to you as soon as we can. However if you are working to a tight deadline please telephone one of our <a href="/Media/media-contacts/Pages/home.aspx">Corporate Media Relations team</a>.</p>
+      '#format': rich_text
+    processed_text_06:
+      '#type': processed_text
+      '#states':
+        visible:
+          ':input[name="question_about"]':
+            value: 'Job enquiry'
+      '#text': |
+        <p><strong>Tip: </strong>If you would like to apply for a job or send your CV for future positions then please visit our dedicated <a href="https://jobs.nestle.com/en/jobs/search-jobs" target="_blank">job search page</a>.</p>
+      '#format': rich_text
+    your_message:
+      '#type': textarea
+      '#title': 'Your message'
+      '#required': true
+      '#required_error': 'Please include a message'
+    attach_a_file_2mb_limit_:
+      '#type': managed_file
+      '#title': 'Attach a file (2MB limit)'
+      '#multiple': true
+      '#title_display': inline
+      '#description_display': invisible
+      '#max_filesize': '2'
+    country:
+      '#type': select
+      '#title': 'Where are you?'
+      '#prepopulate': true
+      '#options': country_names
+      '#empty_option': 'Select a location'
+      '#required': true
+      '#required_error': 'Please select your location'
+    product_description:
+      '#type': textfield
+      '#title': 'Product name'
+      '#placeholder': 'Product name'
+      '#autocomplete': 'off'
+      '#states':
+        visible:
+          ':input[name="complaint_about"]':
+            value: 'Product and packaging'
+    batchcode:
+      '#type': textfield
+      '#title': 'Batch code'
+      '#placeholder': 'Batch code'
+      '#autocomplete': 'off'
+      '#states':
+        visible:
+          ':input[name="complaint_about"]':
+            value: 'Product and packaging'
+      '#required': true
+    barcode:
+      '#type': textfield
+      '#title': 'Product code'
+      '#placeholder': 'Product code'
+      '#states':
+        visible:
+          ':input[name="complaint_about"]':
+            value: 'Product and packaging'
+    your_first_name:
+      '#type': textfield
+      '#title': 'Your first name'
+      '#placeholder': 'First name'
+      '#autocomplete': 'off'
+    your_last_name:
+      '#type': textfield
+      '#title': 'Your last name'
+      '#placeholder': 'Last name'
+      '#autocomplete': 'off'
+  contact_wrapper:
+    '#type': webform_section
+    '#title': 'Contact Details'
+    '#attributes':
+      class:
+        - content-wrapper
+    preferred_channel:
+      '#type': select
+      '#title': 'How would you like us to get in touch with you?'
+      '#options':
+        email: Email
+        phone: Phone
+      '#required': true
+      '#required_error': 'Please select preferred channel'
+    email_me:
+      '#type': email
+      '#title': 'Email me'
+      '#placeholder': email@address.com
+      '#autocomplete': 'off'
+      '#required': true
+      '#required_error': 'Please check your e-mail address is correct.'
+    container:
+      '#type': container
+      country_code_field:
+        '#type': textfield
+        '#title': 'Call me'
+        '#placeholder': '+ Country code'
+        '#autocomplete': 'off'
+        '#states':
+          visible:
+            ':input[name="preferred_channel"]':
+              value: phone
+      contact_number:
+        '#type': tel
+        '#title': 'Call me'
+        '#placeholder': 'Telephone Number'
+        '#states':
+          visible:
+            ':input[name="preferred_channel"]':
+              value: phone
+    privacy_agreement:
+      '#type': checkbox
+      '#title': 'I understand that Nestl&eacute; will protect my data as outlined in the&nbsp;<a href="https://www.nestle.com/aboutus/businessprinciples/privacy/privacy-notice" target="_blank" title="Privacy Notice">Privacy Notice</a>'
+      '#title_display': after
+      '#description_display': invisible
+      '#required': true
+      '#required_error': 'Please read the terms and conditions'
+    captcha:
+      '#type': captcha
+      '#captcha_type': recaptcha/reCAPTCHA
+    actions:
+      '#type': webform_actions
+      '#title': 'Submit button(s)'
+      '#submit__label': SEND
+  send_to_engage:
+    '#type': hidden
+    '#title': 'Send to engage'
+    '#default_value': '0'
+  exclusion_list:
+    '#type': hidden
+    '#title': 'Exclusion list'
+  business_email:
+    '#type': hidden
+    '#title': 'business email'
+    '#default_value': '[site:mail]'
+css: ''
+javascript: ''
+settings:
+  ajax: false
+  ajax_scroll_top: form
+  page: true
+  page_submit_path: ''
+  page_confirm_path: ''
+  form_title: source_entity
+  form_submit_once: false
+  form_open_message: ''
+  form_close_message: ''
+  form_exception_message: ''
+  form_previous_submissions: false
+  form_confidential: false
+  form_confidential_message: ''
+  form_convert_anonymous: false
+  form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_prepopulate_source_entity_required: false
+  form_prepopulate_source_entity_type: ''
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
+  form_disable_autocomplete: false
+  form_novalidate: false
+  form_disable_inline_errors: false
+  form_required: false
+  form_autofocus: false
+  form_details_toggle: false
+  form_reset: false
+  form_access_denied: default
+  form_access_denied_title: ''
+  form_access_denied_message: ''
+  form_access_denied_attributes: {  }
+  form_file_limit: ''
+  submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
+  submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
+  submission_views: {  }
+  submission_views_replace:
+    webform_routes: {  }
+    node_routes: {  }
+  submission_user_columns: {  }
+  submission_user_duplicate: false
+  submission_access_denied: default
+  submission_access_denied_title: ''
+  submission_access_denied_message: ''
+  submission_access_denied_attributes: {  }
+  previous_submission_message: ''
+  previous_submissions_message: ''
+  autofill: false
+  autofill_message: ''
+  autofill_excluded_elements: {  }
+  wizard_progress_bar: true
+  wizard_progress_pages: false
+  wizard_progress_percentage: false
+  wizard_progress_link: false
+  wizard_start_label: ''
+  wizard_preview_link: false
+  wizard_confirmation: true
+  wizard_confirmation_label: ''
+  wizard_track: ''
+  preview: 0
+  preview_label: ''
+  preview_title: ''
+  preview_message: ''
+  preview_attributes: {  }
+  preview_excluded_elements: {  }
+  preview_exclude_empty: true
+  preview_exclude_empty_checkbox: false
+  draft: none
+  draft_multiple: false
+  draft_auto_save: false
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  confirmation_type: page
+  confirmation_url: ''
+  confirmation_title: ''
+  confirmation_message: "<h1>Thank you</h1>\r\nYour message has been forwarded successfully and will be answered as soon as possible. Please be advised that this response may be delayed by weekends and public holidays.<br />\r\n<br />\r\nIn the meantime, we hope you enjoy visiting this website."
+  confirmation_attributes: {  }
+  confirmation_back: false
+  confirmation_back_label: ''
+  confirmation_back_attributes: {  }
+  confirmation_exclude_query: false
+  confirmation_exclude_token: false
+  limit_total: null
+  limit_total_interval: null
+  limit_total_message: ''
+  limit_total_unique: false
+  limit_user: null
+  limit_user_interval: null
+  limit_user_message: ''
+  limit_user_unique: false
+  entity_limit_total: null
+  entity_limit_total_interval: null
+  entity_limit_user: null
+  entity_limit_user_interval: null
+  purge: none
+  purge_days: null
+  results_disabled: false
+  results_disabled_ignore: false
+  token_update: false
+  form_remote_addr: true
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+    permissions: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  administer:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  test:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  configuration:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+handlers:
+  settings:
+    id: settings
+    handler_id: settings
+    label: Settings
+    notes: ''
+    status: true
+    conditions:
+      enabled:
+        ':input[name="send_to_engage"]':
+          value: '1'
+    weight: 0
+    settings:
+      debug: ''
+      preview_title: ''
+      preview_message: ''
+      confirmation_url: ''
+      confirmation_title: ''
+      confirmation_message: ''
+      results_disabled: '1'
+  email:
+    id: email
+    handler_id: email
+    label: Email
+    notes: ''
+    status: true
+    conditions:
+      enabled:
+        ':input[name="send_to_engage"]':
+          value: '0'
+    weight: 0
+    settings:
+      states:
+        - completed
+      to_mail: '[webform_submission:values:business_email:raw]'
+      to_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      from_mail: _default
+      from_options: {  }
+      from_name: _default
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      subject: 'Webform submission: Contact-us'
+      body: "<p>Submitted on [webform_submission:created]</p>\r\n<p>Submitted values are:</p>\r\n[webform_submission:values]"
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      exclude_attachments: false
+      html: true
+      attachments: false
+      twig: false
+      theme_name: ''
+      parameters: {  }
+      debug: false
+variants: {  }

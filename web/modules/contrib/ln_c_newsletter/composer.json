@@ -1,0 +1,13 @@
+{
+  "name": "lightnest/ln_c_newsletter",
+  "description": "Lightnest Newsletter Component.",
+  "type": "drupal-module",
+  "keywords": [
+    "newsletter",
+    "neswletter signup",
+    "frontend"
+  ],
+  "require": {
+    "drupal/core": "^8.7.7 || ^9"
+  }
+}

@@ -1,0 +1,20 @@
+name: 'Lightnest Components: Teaser Cycle'
+description: 'Allows to create teasers and cycle through them.'
+type: module
+core: 8.x
+core_version_requirement: ^8 || ^9
+dependencies:
+  - dsu_c_core
+  - entity_browser
+  - entity_reference_revisions
+  - field
+  - link
+  - media
+  - options
+  - options_table
+  - paragraphs
+  - slick
+  - slick_paragraphs
+  - text
+package: 'Lightnest Components'
+version: 8.x-1.2.0

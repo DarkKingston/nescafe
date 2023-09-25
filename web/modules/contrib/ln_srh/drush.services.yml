@@ -1,0 +1,10 @@
+services:
+  ln_srh.commands:
+    class: \Drupal\ln_srh\Commands\SyncRecipesQueue
+    tags:
+      - { name: drush.command }
+  ln_srh.synchronize_recipes:
+    class: \Drupal\ln_srh\Commands\SynchronizeRecipes
+    arguments: ['@srh', '@ln_srh.utils']
+    tags:
+      - { name: drush.command }

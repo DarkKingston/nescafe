@@ -1,0 +1,11 @@
+ln_campaign.type_add:
+  route_name: entity.ln_campaign_type.add_form
+  title: 'Add campaign type'
+  appears_on:
+    - entity.ln_campaign_type.collection
+
+ln_campaign.add_page:
+  route_name: entity.ln_campaign.add_page
+  title: 'Add campaign'
+  appears_on:
+    - entity.ln_campaign.collection

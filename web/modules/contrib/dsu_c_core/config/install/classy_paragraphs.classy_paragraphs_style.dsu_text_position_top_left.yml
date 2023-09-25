@@ -1,0 +1,6 @@
+langcode: en
+status: true
+dependencies: {  }
+id: dsu_text_position_top_left
+label: 'Top left'
+classes: "vertical_top\r\nhorizontal_position_left"

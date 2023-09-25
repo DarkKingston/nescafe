@@ -1,0 +1,10 @@
+.embedded-entity .align-center {
+  display: block; }
+
+.video-embed-field-lazy .row {
+  display: block;
+  margin: 0; }
+
+button.video-embed-field-lazy-play {
+  border: none;
+  outline: none; }

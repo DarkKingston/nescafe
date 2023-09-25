@@ -1,0 +1,41 @@
+<?php
+
+/**
+ * @file
+ * Contains dsu_security_user_profile.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Url;
+
+/**
+ * Implements hook_help().
+ */
+function dsu_security_user_profile_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the dsu_security_user_profile module.
+    case 'help.page.dsu_security_user_profile':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Allows to specify the URL that you will be redirected after registration to your site and to remove user UID on user edit page.') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_link_alter().
+ */
+function dsu_security_user_profile_link_alter(&$variables) {
+  // Update user edit URl with custom URl for security purpose.
+  $url = $variables['url'];
+  if ($url->isRouted() && $url->getRouteName() == 'entity.user.edit_form' && $variables['text'] == "Edit profile") {
+    $updated_url = Url::fromRoute('dsu_security_user_profile.edit_my_profile');
+    $variables['url'] = $updated_url;
+  }
+  if ($url->isRouted() && ($url->getRouteName() == 'entity.user.canonical' || $url->getRouteName() == 'user.page') && $variables['text'] == "View profile") {
+    $updated_url = Url::fromRoute('dsu_security_user_profile.my_profile');
+    $variables['url'] = $updated_url;
+  }
+}

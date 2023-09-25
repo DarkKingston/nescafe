@@ -1,0 +1,14 @@
+<?php
+
+/**
+ * @file
+ * Install, update, and uninstall functions for context_advanced_datalayer.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function context_advanced_datalayer_install() {
+  // Set the weight to 1000.
+  module_set_weight('context_advanced_datalayer', 1000);
+}

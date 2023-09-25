@@ -1,0 +1,16 @@
+{
+	"name": "lightnest/ln_c_webform",
+	"description": "Provides webform as a paragraph.",
+	"type": "drupal-module",
+	"minimum-stability": "dev",
+	"prefer-stable": true,
+	"keywords": [
+		"webform",
+		"paragraph",
+		"client_validation"
+	],
+	"require": {
+		"drupal/entity_class_formatter": "^1.0",
+		"drupal/core": "^8 || ^9"
+	}
+}

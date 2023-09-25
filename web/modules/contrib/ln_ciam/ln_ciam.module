@@ -1,0 +1,91 @@
+<?php
+
+/**
+ * @file
+ * Hook implementations for the Ciam module.
+ */
+
+use Drupal\ln_ciam\LnCiamConstants;
+
+/**
+ * Implements hook_gigya_global_parameters_alter().
+ */
+function ln_ciam_gigya_global_parameters_alter(array &$gigya_global_parameters) {
+}
+
+/**
+ * Implements hook_gigya_lang_alter().
+ */
+function ln_ciam_gigya_lang_alter(&$lang) {
+}
+
+/**
+ * Implements hook_gigya_raas_settings_alter().
+ */
+function ln_ciam_gigya_raas_settings_alter(array &$raas_login, array &$raas_register) {
+}
+
+/**
+ * Implements hook_gigya_raas_profile_settings_alter().
+ */
+function ln_ciam_gigya_raas_profile_settings_alter(array &$raas_profile) {
+}
+
+/**
+ * Decode a JSON string into an array.
+ *
+ * @return array
+ *   Return an array.
+ *
+ * @throws JsonException
+ */
+function ln_ciam_json_decode($jsonString, $assoc = TRUE, $depth = 512) {
+  try {
+    return json_decode($jsonString, $assoc, $depth, JSON_THROW_ON_ERROR);
+  }
+  catch (Exception $e) {
+    \Drupal::logger('ln_CIAM')->error($e->getMessage());
+    return $e->getMessage();
+  }
+}
+
+
+/**
+ * Implements hook_page_attachments().
+ *
+ * @param array $attachments
+ */
+function ln_ciam_page_attachments(array &$attachments) {
+  if (!empty(Drupal::config('gigya.settings')->get('gigya.gigya_api_key'))
+      && Drupal::config('gigya.global')->get('gigya.enableRaaS')) {
+
+    $config = \Drupal::config('ln_ciam.settings');
+    $info = \Drupal::service('extension.list.module')->getExtensionInfo('ln_ciam');
+
+    if($config->get('enable_login')){
+      $attachments['#attached']['library'][] = 'ln_ciam/gigya_api';
+      $attachments['#attached']['drupalSettings']['ln_ciam']['customScreenSets']['.' . LnCiamConstants::LINK_LOGIN_CSS_CLASS] = [
+        'display_type' => 'popup',
+        'screenSet' => $config->get('login_screenset'),
+        'startScreen' => $config->get('login_screen')
+      ];
+      $attachments['#attached']['drupalSettings']['ln_ciam']['data'] = [
+        'module_name' => $info['name'],
+        'module_version' => $info['version'],
+      ];
+    }
+
+    if($config->get('enable_register')){
+      $attachments['#attached']['library'][] = 'ln_ciam/gigya_api';
+      $attachments['#attached']['drupalSettings']['ln_ciam']['customScreenSets']['.' . LnCiamConstants::LINK_REGISTER_CSS_CLASS] = [
+        'display_type' => 'popup',
+        'screenSet' => $config->get('register_screenset'),
+        'startScreen' => $config->get('register_screen')
+      ];
+      $attachments['#attached']['drupalSettings']['ln_ciam']['data'] = [
+        'module_name' => $info['name'],
+        'module_version' => $info['version'],
+      ];
+    }
+  }
+}

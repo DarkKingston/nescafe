@@ -1,0 +1,17 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.srh_recipe.field_srh_id
+    - node.type.srh_recipe
+  module:
+    - user
+id: node.srh_recipe.teaser
+targetEntityType: node
+bundle: srh_recipe
+mode: teaser
+content:
+hidden:
+  field_srh_id: true
+  links: true

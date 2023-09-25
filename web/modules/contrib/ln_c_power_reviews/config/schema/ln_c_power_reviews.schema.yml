@@ -1,0 +1,19 @@
+ln_c_power_reviews.settings:
+  type: mapping
+  label: 'Lightnest Power Reviews Settings'
+  mapping:
+    pr_api_key_read:
+      type: string
+      label: 'PR API KEY Read'
+    pr_api_key_write:
+      type: string
+      label: 'PR API KEY Write'
+    pr_locale:
+      type: string
+      label: 'PR LOCALE'
+    pr_merchant_group_id:
+      type: string
+      label: 'PR MERCHANT GROUP ID'
+    pr_merchant_id:
+      type: string
+      label: 'PR MERCHANT ID'

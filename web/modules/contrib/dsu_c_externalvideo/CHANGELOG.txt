@@ -1,0 +1,9 @@
+# Changelog
+
+## 2.2.1
+- Apply changes for refactor ln_datalayer module
+## 2.2.0
+- Update datalayer for GA4
+
+## 2.1.0
+- Refactor Component Core: Remove id field for generic one

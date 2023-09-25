@@ -1,0 +1,9 @@
+type: c_share_buttons
+component_description: SHARE BUTTONS
+field_c_select_media:
+  0: facebook_share
+  1: linkedin
+  2: twitter
+  3: pinterest
+  4: email
+

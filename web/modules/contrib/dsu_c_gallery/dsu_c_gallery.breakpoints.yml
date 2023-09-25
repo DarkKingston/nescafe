@@ -1,0 +1,29 @@
+dsu_c_gallery.small:
+  label: small
+  mediaQuery: '(min-width: 0px)'
+  weight: 0
+  multipliers:
+    - 1x
+
+
+dsu_c_gallery.medium:
+  label: medium
+  mediaQuery: '(min-width: 468px) and (max-width: 768px)'
+  weight: 1
+  multipliers:
+    - 1x
+
+
+dsu_c_gallery.medium_tablet:
+  label: medium_tablet
+  mediaQuery: '(min-width: 768px)'
+  weight: 1
+  multipliers:
+    - 1x
+
+dsu_c_gallery.large:
+  label: large
+  mediaQuery: '(min-width: 992px)'
+  weight: 2
+  multipliers:
+    - 1x

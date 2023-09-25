@@ -1,0 +1,81 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.quiz.field_quiz_description
+    - field.field.paragraph.quiz.field_quiz_image
+    - field.field.paragraph.quiz.field_quiz_questions
+    - field.field.paragraph.quiz.field_quiz_summary
+    - field.field.paragraph.quiz.field_quiz_title
+    - image.style.large
+    - paragraphs.paragraphs_type.quiz
+  enforced:
+    module:
+      - ln_quiz
+  module:
+    - ds
+    - media
+    - text
+third_party_settings:
+  ds:
+    layout:
+      id: ds_2col
+      library: ds/ds_2col
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        label: ''
+        wrappers:
+          left: div
+          right: div
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+        classes:
+          layout_class: {  }
+    regions:
+      left:
+        - field_quiz_image
+      right:
+        - field_quiz_title
+        - field_quiz_description
+        - ln_quiz_start
+    fields:
+      ln_quiz_start:
+        plugin_id: ln_quiz_start
+        weight: 3
+        label: hidden
+        formatter: default
+id: paragraph.quiz.default
+targetEntityType: paragraph
+bundle: quiz
+mode: default
+content:
+  field_quiz_description:
+    type: text_default
+    weight: 2
+    region: right
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+  field_quiz_image:
+    type: media_thumbnail
+    weight: 0
+    label: hidden
+    settings:
+      image_style: large
+      image_link: ''
+    third_party_settings: {  }
+    region: left
+  field_quiz_title:
+    type: string
+    weight: 1
+    region: right
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+hidden:
+  field_quiz_questions: true
+  field_quiz_summary: true

@@ -1,0 +1,60 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - entity_browser.browser.media_browser
+    - field.field.paragraph.c_document.field_c_document_upload
+    - field.field.paragraph.c_document.field_c_image
+    - field.field.paragraph.c_document.field_c_title
+    - field.field.paragraph.c_document.field_document
+    - paragraphs.paragraphs_type.c_document
+  module:
+    - entity_browser
+id: paragraph.c_document.default
+targetEntityType: paragraph
+bundle: c_document
+mode: default
+content:
+  field_c_image:
+    weight: 2
+    settings:
+      entity_browser: media_browser
+      field_widget_display: rendered_entity
+      field_widget_edit: true
+      field_widget_remove: true
+      open: true
+      selection_mode: selection_append
+      field_widget_display_settings:
+        view_mode: thumbnail
+      field_widget_replace: false
+    third_party_settings: {  }
+    type: entity_browser_entity_reference
+    region: content
+  field_c_title:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_document:
+    type: entity_browser_entity_reference
+    weight: 1
+    region: content
+    settings:
+      entity_browser: media_browser
+      field_widget_display: rendered_entity
+      field_widget_display_settings:
+        view_mode: thumbnail
+      field_widget_edit: true
+      field_widget_remove: true
+      open: true
+      selection_mode: selection_append
+      field_widget_replace: false
+    third_party_settings: {  }
+hidden:
+  created: true
+  field_c_document_upload: true
+  status: true
+  uid: true

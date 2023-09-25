@@ -1,0 +1,32 @@
+<?php
+
+/**
+ * Implements hook_page_attachments().
+ */
+function ln_fusepump_preprocess_field(array &$variables) {
+  if ($variables['field_type'] == 'field_fusepump') {
+
+    // Add library for fusepump render.
+    $variables['#attached']['library'][] = 'ln_fusepump/fusepump-library';
+    $variables['#attached']['library'][] = 'ln_fusepump/fusepump-connector';
+
+    // Check for each element and reference in twig.
+    $fusepump_id = $variables['element'][0]['#values']['fusepump_id'];
+    $html_id = $variables['element'][0]['#values']['html_id'];
+
+    // Twig variables values.
+    $variables['#attached']['drupalSettings']['ln_fusepump'][$html_id] = $fusepump_id;
+
+  }
+}
+
+/**
+ * Implements HOOK_preprocess_theme().
+ */
+function ln_fusepump_theme($existing, $type, $theme, $path) {
+  return [
+    'fusepumpbutton' => [
+      'variables' => ['html_id' => 0],
+    ],
+  ];
+}

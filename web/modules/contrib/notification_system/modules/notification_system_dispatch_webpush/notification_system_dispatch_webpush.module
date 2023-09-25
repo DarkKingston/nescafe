@@ -1,0 +1,87 @@
+<?php
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Language\LanguageInterface;
+use Drupal\Core\Url;
+
+/**
+ * Implements hook_library_info_alter().
+ */
+function notification_system_dispatch_webpush_library_info_alter(&$libraries, $extension) {
+  // Add required drupalSettings values for the notification_system_dispatch_webpush/lib library.
+  if ($extension === 'notification_system_dispatch_webpush' && isset($libraries['lib'])) {
+    $language_none = \Drupal::languageManager()->getLanguage(LanguageInterface::LANGCODE_NOT_APPLICABLE);
+
+    $libraries['lib']['drupalSettings']['notificationSystemDispatchWebpush'] = [
+      'applicationServerKey' => Drupal::config('notification_system_dispatch_webpush.settings')->get('vapid_public_key'),
+      'serviceWorkerUrl' => Url::fromRoute('notification_system_dispatch_webpush.serviceworker')->toString(),
+      'apiUrl' => Url::fromRoute('web_push_api.subscription')->toString(),
+      'appleEnabled' => (bool) Drupal::config('notification_system_dispatch_webpush.settings')->get('apple_enabled'),
+      'appleServiceUrl' => Url::fromRoute('notification_system_dispatch_webpush.apple')
+        ->setOption('language', $language_none)
+        ->setAbsolute(TRUE)
+        ->toString(),
+      'appleUserTokenUrl' => Url::fromRoute('notification_system_dispatch_webpush.apple_usertoken')
+        ->setAbsolute(TRUE)
+        ->toString(),
+      'appleWebPushId' => Drupal::config('notification_system_dispatch_webpush.settings')->get('apple_website_push_id'),
+    ];
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function notification_system_dispatch_webpush_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  switch ($form_id) {
+    case 'notification_system_dispatch_usersettings':
+      // Add webpush configuration to the DispatchUserSettings form.
+      $classes = ' hidden';
+
+      if ($form['dispatcher_webpush']['#default_value'] == true) {
+        $classes = '';
+      }
+
+      $form['dispatcher_webpush']['#suffix'] = '<div class="notification-system-dispatch-webpush'. $classes .'"></div>';
+      $form['#attached']['library'][] = 'notification_system_dispatch_webpush/usersettings_block';
+      break;
+  }
+}
+
+
+/**
+ * Implements hook_theme().
+ */
+function notification_system_dispatch_webpush_theme($existing, $type, $theme, $path) {
+  return [
+    'notification_system_dispatch_webpush_popup' => [
+      'variables' => [
+        'info' => NULL,
+        'button_enable' => NULL,
+        'button_later' => NULL,
+        'button_cancel' => NULL,
+        'ask_later_days' => NULL,
+      ],
+    ],
+  ];
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_delete().
+ */
+function notification_system_dispatch_webpush_user_delete(Drupal\Core\Entity\EntityInterface $entity) {
+  // Delete user tokens when a user is deleted.
+  /** @var \Drupal\Core\Database\Connection $database */
+  $database = \Drupal::service('database');
+  $database->delete('notification_system_dispatch_webpush_apple_user_tokens')
+    ->condition('uid', $entity->id())
+    ->execute();
+
+  // Delete apple registrations when a user is deleted.
+  $storage = \Drupal::entityTypeManager()->getStorage('apple_registration');
+  $registrations = $storage->loadByProperties([
+    'uid' => $entity->id(),
+  ]);
+  $storage->delete($registrations);
+
+}

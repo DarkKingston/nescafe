@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.srh_recipe.field_srh_id
+    - node.type.srh_recipe
+  module:
+    - user
+id: node.srh_recipe.default
+targetEntityType: node
+bundle: srh_recipe
+mode: default
+content:
+hidden:
+  field_srh_id: true
+  links: true

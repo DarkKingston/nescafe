@@ -1,0 +1,14 @@
+name: 'Lightnest Components: Countdown'
+description: 'Provides Countdown paragraphs and related configuration.'
+type: module
+core: 8.x
+core_version_requirement: ^8 || ^9
+version: 8.x-1.0.8
+dependencies:
+  - block_content
+  - datetime
+  - field
+  - field_timer
+  - options
+  - paragraphs
+package: 'Lightnest Components'

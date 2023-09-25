@@ -1,0 +1,23 @@
+bundle: ln_c
+excluded:
+  - core.entity_form_display.block_content.basic.default
+  - core.entity_form_display.node.page.default
+  - core.entity_view_display.block_content.basic.default
+  - core.entity_view_display.node.page.default
+  - core.entity_view_display.node.page.teaser
+  - field.field.block_content.basic.body
+  - field.field.node.page.field_meta_tags
+  - field.field.node.page.body
+  - field.storage.block_content.body
+  - field.storage.node.field_meta_tags
+  - block_content.type.basic
+  - user.role.administrator
+  - user.role.landing_page_creator
+  - user.role.landing_page_reviewer
+  - core.entity_view_mode.block.token
+  - core.entity_view_mode.block_content.token
+  - core.entity_view_mode.contact_message.token
+  - core.entity_view_mode.file.token
+  - core.entity_view_mode.menu_link_content.token
+  - taxonomy.vocabulary.dsu_tags
+required: true

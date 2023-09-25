@@ -1,0 +1,35 @@
+<?php
+
+/**
+ * @file
+ * Contains ln_c_webform.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function ln_c_webform_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the ln_c_webform module.
+    case 'help.page.ln_c_webform':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Provides webform as a paragraph.') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+/**
+ * Implements HOOK_theme().
+ */
+function ln_c_webform_theme($existing, $type, $theme, $path) {
+  return [
+    'paragraph__forms' => [
+      'template' => 'paragraph--forms',
+      'base hook' => 'paragraphs',
+    ],
+  ];
+}

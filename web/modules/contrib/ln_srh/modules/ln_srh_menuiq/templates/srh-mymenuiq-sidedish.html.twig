@@ -1,0 +1,13 @@
+{% set classes = [
+  'srh-sidedish',
+  'sidedish-' ~ sidedish.id,
+  sidedish.is_current_recipe ? 'sidedish-current-recipe',
+  sidedish.is_selected ? 'selected'
+] %}
+{% if sidedish.id %}
+ {% set attributes = attributes.setAttribute('data-id', sidedish.id) %}
+{% endif %}
+
+<div{{ attributes.addClass(classes) }} data-category="{{ sidedish.category }}" data-score="{{ sidedish.score_diff }}" data-name="{{ sidedish.name }}" data-type="{{ sidedish.type }}">
+  {{ sidedish.entity }}
+</div>

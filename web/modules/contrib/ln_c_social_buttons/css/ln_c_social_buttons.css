@@ -1,0 +1,63 @@
+.field--name-field-social-buttons-item {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+.paragraph--type--c-socialbuttons h2 {
+    text-align: center;
+}
+
+.field--name-field-social-buttons-item .box-social {
+    padding: 0 20px;
+    max-width: 142.5px;
+}
+
+.field--name-field-social-buttons-item .box-social-inner {
+    width: 100%;
+    height: auto;
+}
+
+.field--name-field-social-buttons-item a.icon-link {
+    display: inline-block;
+    border-radius: 100%;
+    padding: 14px;
+    max-width: 75%;
+    background: #d3d3d3;
+}
+
+.field--name-field-social-buttons-item a.icon-link img {
+    display: block;
+    max-width: 100%;
+    max-height: none;
+    height: auto;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.field--name-field-social-buttons-item .icon-link {
+    position: relative;
+}
+
+.field--name-field-social-buttons-item .icon-link:hover .bg-layer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    left: 0;
+    top: 0;
+    z-index: 1;
+
+}
+
+.field--name-field-social-buttons-item .more-links {
+    color: #60646c;
+    display: block;
+    text-align: center;
+    visibility: hidden;
+}
+
+.box-social-inner:hover .more-links {
+    visibility: visible
+}

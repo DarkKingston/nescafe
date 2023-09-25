@@ -1,0 +1,6 @@
+dsu_security.admin:
+  title: "LightNest Security"
+  description: 'Configure DSU security'
+  parent: dsu_c_core.settings
+  route_name: dsu_security.settings_form
+  weight: 140

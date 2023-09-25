@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_horizontal_aligment
+    - paragraphs.paragraphs_type.c_shopify
+  module:
+    - options
+id: paragraph.c_shopify.field_horizontal_aligment
+field_name: field_horizontal_aligment
+entity_type: paragraph
+bundle: c_shopify
+label: 'Horizontal Alignment'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

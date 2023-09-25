@@ -1,0 +1,48 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.srh_tool.field_srh_cloudfront_media
+    - field.field.taxonomy_term.srh_tool.field_srh_id
+    - field.field.taxonomy_term.srh_tool.field_srh_media_gallery
+    - field.field.taxonomy_term.srh_tool.field_srh_tips
+    - image.style.thumbnail
+    - taxonomy.vocabulary.srh_tool
+  enforced:
+    module:
+      - ln_srh_extended
+  module:
+    - ds
+third_party_settings:
+  ds:
+    layout:
+      id: layout_onecol
+      library: layout_discovery/onecol
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        label: ''
+    regions:
+      content:
+        - field_srh_media_gallery
+id: taxonomy_term.srh_tool.default
+targetEntityType: taxonomy_term
+bundle: srh_tool
+mode: default
+content:
+  field_srh_media_gallery:
+    type: media_thumbnail
+    weight: 0
+    label: hidden
+    settings:
+      image_style: thumbnail
+      image_link: ''
+    third_party_settings:
+      ds:
+        ds_limit: '1'
+    region: content
+hidden:
+  description: true
+  field_srh_id: true
+  field_srh_tips: true
+  field_srh_cloudfront_media: true

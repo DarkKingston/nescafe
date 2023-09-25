@@ -1,0 +1,12 @@
+id: srh_complement_sync
+label: 'Resynchronize selected complements'
+status: true
+langcode: en
+type: node
+plugin: srh_complement_sync
+dependencies:
+  module:
+    - node
+  enforced:
+    module:
+      - ln_srh

@@ -1,0 +1,13 @@
+ln_price_spider.settings:
+  type: mapping
+  label: 'Lightnest Price Spider Settings'
+  mapping:
+    ps-language:
+      type: string
+      label: 'PS Language'
+    ps-country:
+      type: string
+      label: 'PS Country'
+    ps-key:
+      type: string
+      label: 'PS Key'

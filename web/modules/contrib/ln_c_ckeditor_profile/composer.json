@@ -1,0 +1,163 @@
+{
+	"name": "lightnest/ln_c_ckeditor_profile",
+	"description": "Provides default basic ckeditor options with lightnest profile.",
+	"type": "drupal-module",
+	"keywords": [
+		"Drupal",
+		"json",
+		"schema"
+	],
+	"homepage": "https://drupal.org/project/schemata",
+	"license": "GPL-2.0+",
+	"prefer-stable": true,
+	"minimum-stability": "dev",
+	"config": {
+		"sort-packages": true
+	},
+	"scripts": {
+		"phpcs": "phpcs --standard=tests/phpcs.xml",
+		"phpcbf": "phpcbf --standard=tests/phpcs.xml",
+		"lint": "parallel-lint -e php,module,install,profile,theme,inc --exclude vendor/ --blame .",
+		"quality": [
+			"@lint",
+			"@phpcs"
+		]
+	},
+	"repositories": {
+		"font": {
+			"type": "package",
+			"package": {
+				"name": "ckeditor-plugin/font",
+				"version": "4.10.1",
+				"type": "drupal-library",
+				"dist": {
+					"url": "https://download.ckeditor.com/font/releases/font_4.10.1.zip",
+					"type": "zip"
+				},
+				"require": {
+					"composer/installers": "^1.2.0"
+				}
+			}
+		},
+		"w8tcha": {
+			"type": "package",
+			"package": {
+				"name": "w8tcha/ckeditor-wordcount-plugin",
+				"version": "v1.17.6",
+				"type": "drupal-library",
+				"dist": {
+					"url": "https://github.com/w8tcha/CKEditor-WordCount-Plugin/archive/v1.17.6.zip",
+					"type": "zip"
+				},
+				"require": {
+					"composer/installers": "^1.2.0"
+				}
+			}
+		},
+		"colorbutton": {
+			"type": "package",
+			"package": {
+				"name": "ckeditor/colorbutton",
+				"version": "4.14.1",
+				"type": "drupal-library",
+				"dist": {
+					"url": "https://download.ckeditor.com/colorbutton/releases/colorbutton_4.14.1.zip",
+					"type": "zip"
+				},
+				"require": {
+					"composer/installers": "^1.2.0"
+				}
+			}
+		},
+		"panelbutton": {
+			"type": "package",
+			"package": {
+				"name": "ckeditor/panelbutton",
+				"version": "4.14.1",
+				"type": "drupal-library",
+				"dist": {
+					"url": "https://download.ckeditor.com/panelbutton/releases/panelbutton_4.14.1.zip",
+					"type": "zip"
+				},
+				"require": {
+					"composer/installers": "^1.2.0"
+				}
+			}
+		},
+		"fakeobjects": {
+			"type": "package",
+			"package": {
+				"name": "ckeditor/fakeobjects",
+				"version": "4.14.1",
+				"type": "drupal-library",
+				"dist": {
+					"url": "https://download.ckeditor.com/fakeobjects/releases/fakeobjects_4.14.1.zip",
+					"type": "zip"
+				},
+				"require": {
+					"composer/installers": "^1.2.0"
+				}
+			}
+		},
+		"link": {
+			"type": "package",
+			"package": {
+				"name": "ckeditor/link",
+				"version": "4.14.1",
+				"type": "drupal-library",
+				"dist": {
+					"url": "https://download.ckeditor.com/link/releases/link_4.14.1.zip",
+					"type": "zip"
+				},
+				"require": {
+					"composer/installers": "^1.2.0"
+				}
+			}
+		},
+		"drupal": {
+			"type": "composer",
+			"url": "https://packages.drupal.org/8"
+		},
+		"asset-packagist": {
+			"type": "composer",
+			"url": "https://asset-packagist.org"
+		}
+	},
+	"require": {
+		"drupal/ckeditor_entity_link": "^1.1",
+		"drupal/linkit": "^6.0",
+		"drupal/editor_advanced_link": "^1.8",
+		"drupal/editor_file": "^1.5",
+		"drupal/ckwordcount": "^1.1",
+		"drupal/colorbutton": "^1.2",
+		"drupal/ckeditor_font": "^1.1",
+		"drupal/htmlawed":"^4.0",
+		"drupal/htmlpurifier":"^1.0"
+
+	},
+	"extra": {
+		"enable-patching": true,
+		"installer-paths": {
+			"docroot/libraries/ckeditor-wordcount-plugin": [
+				"type:drupal-library",
+				"w8tcha/ckeditor-wordcount-plugin"
+			],
+			"docroot/libraries/colorbutton": [
+				"type:drupal-library",
+				"ckeditor/colorbutton"
+			],
+			"docroot/libraries/panelbutton": [
+				"type:drupal-library",
+				"ckeditor/panelbutton"
+			],
+			"docroot/libraries/fakeobjects": [
+				"type:drupal-library",
+				"ckeditor/fakeobjects"
+			],
+			"docroot/libraries/link": [
+				"type:drupal-library",
+				"ckeditor/link"
+			]
+		}
+	}
+}

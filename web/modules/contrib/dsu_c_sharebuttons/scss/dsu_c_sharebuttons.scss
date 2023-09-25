@@ -1,0 +1,9 @@
+$dsu_c_sharebuttons_width: 30px !default;
+$dsu_c_sharebuttons_height: 30px !default;
+
+.social-media-icon {
+  img {
+    width: $dsu_c_sharebuttons_width;
+    height: $dsu_c_sharebuttons_height;
+  }
+}

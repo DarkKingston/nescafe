@@ -1,0 +1,45 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.c_slider.field_c_subitems
+    - paragraphs.paragraphs_type.c_slider
+  module:
+    - slick_paragraphs
+id: paragraph.c_slider.default
+targetEntityType: paragraph
+bundle: c_slider
+mode: default
+content:
+  field_c_subitems:
+    type: slick_paragraphs_vanilla
+    label: hidden
+    settings:
+      optionset: default
+      view_mode: default
+      cache: 60
+      current_view_mode: default
+      skin: fullwidth
+      fx: ''
+      lazy: ''
+      loading: lazy
+      preload: false
+      style: ''
+      overridables:
+        autoplay: '0'
+        dots: dots
+        infinite: infinite
+        arrows: arrows
+        draggable: '0'
+        mouseWheel: '0'
+        randomize: '0'
+        variableWidth: '0'
+      override: true
+      skin_arrows: ''
+      skin_dots: ''
+      use_theme_field: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  search_api_excerpt: true

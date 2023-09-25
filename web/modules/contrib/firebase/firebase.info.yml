@@ -1,0 +1,15 @@
+name: Firebase Cloud Messaging (FCM)
+type: module
+description: 'Provides a service to send notifications via Google Firebase.'
+package: Firebase
+configure: firebase.configuration
+core_version_requirement: ^8 || ^9
+
+dependencies:
+  - drupal:system (>=8.3.0)
+core: '8.x'
+
+# Information added by Drupal.org packaging script on 2021-04-15
+version: '3.0.0'
+project: 'firebase'
+datestamp: 1618494681

@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_media_ln_contenthub_name
+    - media.type.content_hub_document
+id: media.content_hub_document.field_media_ln_contenthub_name
+field_name: field_media_ln_contenthub_name
+entity_type: media
+bundle: content_hub_document
+label: 'Content Hub Name'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

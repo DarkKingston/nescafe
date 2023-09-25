@@ -1,0 +1,42 @@
+<?php
+
+/**
+ * @file
+ * Hook implementations for the PDH module.
+ */
+
+/**
+ * Implements hook_cron().
+ */
+function ln_pdh_cron() {
+
+  // PDH Cron queue jobs.
+  $config = \Drupal::service('config.factory')->getEditable('ln_pdh.settings');
+
+  // Get activate cron toggle options value.
+  $cron_active = $config->get('sync.status');
+
+  // Check last interval time.
+  $interval = $config->get('sync.cron_interval');
+  $last_run = \Drupal::state()->get('ln_pdh.last_execution', time() - $interval - 1);
+
+  // Updated last cron and added in existing queue.
+  if ($cron_active == 1 && ($last_run <= time() - $interval)) {
+    $importer = \Drupal::service('ln_pdh.importer');
+    if (!$importer->testConnection()) {
+      \Drupal::logger('ln_pdh_cron')->error('Unable to connect to the PDH server. Products can not be synchronized');
+    }
+    // Add products to the index queue.
+    $queue = \Drupal::queue('ln_pdh_queue_importer');
+    $since_date = \DateTime::createFromFormat('U', $last_run);
+    $products = \Drupal::service('ln_pdh.importer')->getProducts($since_date);
+    foreach ($products as $product) {
+      // SimpleXmlElement can't be serialized, so we transform it to Object.
+      $item = json_decode(json_encode($product));
+      $queue->createItem($item);
+    }
+
+    // Set for next execution queue.
+    \Drupal::state()->set('ln_pdh.last_execution', time());
+  }
+}

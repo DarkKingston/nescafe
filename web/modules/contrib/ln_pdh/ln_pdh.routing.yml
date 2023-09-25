@@ -1,0 +1,31 @@
+ln_pdh.index:
+  path: '/admin/config/lightnest/ln-pdh'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'Lightnest PDH'
+  requirements:
+    _permission: 'Administer PDH'
+
+ln_pdh.config:
+  path: '/admin/config/lightnest/ln-pdh/config'
+  defaults:
+    _form: '\Drupal\ln_pdh\Form\PdhSettingsForm'
+    _title: 'PDH connector configuration'
+  requirements:
+    _permission: 'Administer PDH'
+
+ln_pdh.action:
+  path: '/admin/config/lightnest/ln-pdh/importer'
+  defaults:
+    _title: 'Import products from PDH'
+    _form: '\Drupal\ln_pdh\Form\PdhImporterForm'
+  requirements:
+    _permission: 'ln_pdh access import page'
+
+ln_pdh.mapping:
+  path: '/admin/config/lightnest/ln-pdh/mapping'
+  defaults:
+    _form: '\Drupal\ln_pdh\Form\PdhMappingForm'
+    _title: 'PDH Product Field Mapping'
+  requirements:
+    _permission: 'Administer PDH'

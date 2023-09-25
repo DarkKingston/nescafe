@@ -1,0 +1,9 @@
+entity.ln_hreflang.collection:
+  title: List
+  route_name: entity.ln_hreflang.collection
+  base_route: entity.ln_hreflang.collection
+
+ln_seo_hreflang_content.import.form:
+  title: Import
+  route_name: ln_seo_hreflang_content.import.form
+  base_route: entity.ln_hreflang.collection

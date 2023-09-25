@@ -1,0 +1,40 @@
+dsu_ratings_reviews.admin.index:
+  title: "Lightnest Ratings & Reviews"
+  description: Various settings for altering the behavior of LightNest Ratings and Reviews module.
+  parent: dsu_c_core.settings
+  route_name: dsu_ratings_reviews.admin.index
+
+dsu_ratings_reviews.admin.config:
+  title: "Lightnest Ratings & Reviews Settings"
+  description: 'Lightnest Ratings & Reviews Settings'
+  route_name: dsu_ratings_reviews.admin.config
+  parent: dsu_ratings_reviews.admin.index
+  weight: 0
+
+dsu_ratings_reviews.admin.dashboard:
+  title: "Lightnest Ratings & Reviews Dashboard"
+  description: 'Lightnest Ratings & reviews Dashboard'
+  route_name: dsu_ratings_reviews.admin.dashboard
+  parent: dsu_ratings_reviews.admin.index
+  weight: 1
+
+# Moderator external menu. Outside "administer site" LightNest config.
+dsu_ratings_reviews.moderator.index:
+  title: "Lightnest Ratings & Reviews"
+  description: Various settings for altering the behavior of LightNest Ratings and Reviews module.
+  parent: system.admin
+  route_name: dsu_ratings_reviews.moderator.index
+
+dsu_ratings_reviews.moderator.config:
+  title: "Lightnest Ratings & Reviews Settings"
+  description: 'Lightnest Ratings & Reviews Settings'
+  route_name: dsu_ratings_reviews.moderator.config
+  parent: dsu_ratings_reviews.moderator.index
+  weight: 0
+
+dsu_ratings_reviews.moderator.dashboard:
+  title: "Lightnest Ratings & Reviews Dashboard"
+  description: 'Lightnest Ratings & reviews Dashboard'
+  route_name: dsu_ratings_reviews.moderator.dashboard
+  parent: dsu_ratings_reviews.moderator.index
+  weight: 1

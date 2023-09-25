@@ -1,0 +1,14 @@
+{
+    "name": "lightnest/ln_qualifio",
+    "description": "Integration from Drupal to Qualifio.",
+    "type": "drupal-module",
+    "keywords": [
+        "content",
+        "qualifio",
+        "paragraphs",
+        "frontend"
+    ],
+    "extra": {
+		"enable-patching": true
+	}
+}

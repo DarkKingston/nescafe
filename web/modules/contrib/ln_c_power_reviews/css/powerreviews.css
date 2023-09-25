@@ -1,0 +1,6 @@
+.render-pr-review-display {
+    margin: 0 auto;
+    padding: 20px 35px; }
+@media (min-width: 992px) {
+    .render-pr-review-display {
+        max-width: 85vw; } }

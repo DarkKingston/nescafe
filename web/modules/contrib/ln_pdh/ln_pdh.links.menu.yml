@@ -1,0 +1,27 @@
+ln_pdh.index:
+  title: LightNest PDH
+  description: Various settings for altering the behavior of LightNest PDH modules.
+  parent: dsu_c_core.settings
+  route_name: ln_pdh.index
+  weight: 27
+
+ln_pdh.admin:
+  title: 'PDH Connector Configuration'
+  description: 'Configuration for the Lightnest PDH'
+  parent: ln_pdh.index
+  route_name: ln_pdh.config
+  weight: 1
+
+ln_pdh.mapping:
+  title: 'PDH Product Field Mapping'
+  description: 'Configuration of optional fields'
+  parent: ln_pdh.index
+  route_name: ln_pdh.mapping
+  weight: 2
+
+ln_pdh.action:
+  title: 'PDH Manual Importer'
+  description: 'Import Products from the PDH to local'
+  parent: ln_pdh.index
+  route_name: ln_pdh.action
+  weight: 3

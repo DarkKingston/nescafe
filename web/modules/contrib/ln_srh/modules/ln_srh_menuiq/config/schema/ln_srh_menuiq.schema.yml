@@ -1,0 +1,127 @@
+ln_srh_menuiq.settings:
+  type: config_object
+  label: 'MyMenuIQ Settings'
+  mapping:
+    balance:
+      type: mapping
+      label: 'Balance'
+      mapping:
+        improvement:
+          type: srh_balance
+          label: 'Improvement'
+        great:
+          type: srh_balance
+          label: 'Great'
+        good:
+          type: srh_balance
+          label: 'Great'
+    teaser:
+      type: mapping
+      label: 'Panel Teaser'
+      mapping:
+        title:
+          type: label
+          label: 'Title'
+    expanded:
+      type: mapping
+      label: 'Panel Expanded'
+      mapping:
+        title:
+          type: label
+          label: 'Title'
+        info_button_text:
+          type: label
+          label: 'Info Button Text'
+        menu_sidedishes:
+          type: mapping
+          label: 'Menu SideDishes'
+          mapping:
+            title:
+              type: label
+              label: 'Title'
+            add_meal_text:
+              type: label
+              label: 'Add Meal Text'
+            add_text:
+              type: label
+              label: 'Add Text'
+            message_success:
+              type: label
+              label: 'Message Success'
+    info:
+      type: mapping
+      label: 'Panel Info'
+      mapping:
+        about:
+          type: mapping
+          label: 'About'
+          mapping:
+            title:
+              type: label
+              label: 'Title'
+            menu:
+              type: mapping
+              label: 'Menu'
+              mapping:
+                title:
+                  type: label
+                  label: 'Title'
+                description:
+                  type: text_format
+                  label: 'Description'
+            score_mean:
+              type: mapping
+              label: 'Score Mean'
+              mapping:
+                title:
+                  type: label
+                  label: 'Title'
+                description:
+                  type: text_format
+                  label: 'Description'
+        energy_info:
+          type: mapping
+          label: 'Energy Info'
+          mapping:
+            title:
+              type: label
+              label: 'Title'
+            description:
+              type: text_format
+              label: 'Description'
+        nutritional_tips:
+          type: mapping
+          label: 'Nutritional Tips'
+          mapping:
+            title:
+              type: label
+              label: 'Title'
+            tips:
+              type: sequence
+              label: 'Tips'
+              sequence:
+                - type: text_format
+                  label: 'Text'
+srh_balance:
+  type: mapping
+  mapping:
+    title:
+      type: label
+      label: 'Title'
+    subtitle:
+      type: label
+      label: 'Subtitle'
+    description:
+      type: text_format
+      label: 'Description'
+    max:
+      type: integer
+      label: 'Max'
+    min:
+      type: integer
+      label: 'Min'
+    color:
+      type: string
+      label: 'color'
+
+

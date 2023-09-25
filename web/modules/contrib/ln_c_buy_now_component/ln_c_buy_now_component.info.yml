@@ -1,0 +1,14 @@
+name: 'Lightnest Buy Now Component'
+description: 'Lightnest Buy Now Component'
+type: module
+core: 8.x
+core_version_requirement: '^8 || ^9'
+dependencies:
+  - field
+  - ln_adimo
+  - ln_fusepump
+  - ln_price_spider
+  - options
+  - paragraphs
+version: 9.x-1.1.1
+package: 'Lightnest Components'

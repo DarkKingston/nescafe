@@ -1,0 +1,49 @@
+<?php
+
+use Drupal\field\Entity\FieldStorageConfig;
+use Drupal\field\Entity\FieldConfig;
+
+/**
+ * Create Field field_srh_cloudfront_media on tips
+ */
+function ln_srh_standard_update_8001(&$sandbox) {
+  $module_path = drupal_get_path('module','ln_srh_standard');
+  /** @var \Drupal\ln_srh\Services\ConfigReplace $configReplaceHelper */
+  $configReplaceHelper = \Drupal::service('ln_srh.config_replacer');
+  // Create Field field_srh_cloudfront_media on tips
+  $configReplaceHelper->createFieldStorageConfigByYml($module_path . '/config/install/field.storage.paragraph.field_srh_cloudfront_media.yml');
+  $configReplaceHelper->createFieldConfigByYml($module_path . '/config/optional/field.field.paragraph.srh_tip.field_srh_cloudfront_media.yml');
+  $configReplaceHelper->addFieldToEntityFormDisplayConfigByYml($module_path . '/config/optional/core.entity_form_display.paragraph.srh_tip.default.yml','field_srh_cloudfront_media','field.field.paragraph.srh_tip.field_srh_cloudfront_media');
+}
+
+/**
+ * Create Field field_srh_media on ingredient.
+ */
+function ln_srh_standard_update_8002(&$sandbox) {
+  // Code for field_srh_media field has been moved to srh_full module
+}
+
+/**
+ * Fix Field field_srh_media on ingredient.
+ */
+function ln_srh_standard_update_8003(&$sandbox) {
+  // If ln_srh_full is enabled we don't need to do anything.
+  if (\Drupal::service('module_handler')->moduleExists('ln_srh_full')) {
+    return;
+  }
+
+  // Delete field storage for field_srh_media if ln_srh_extended module is not installed.
+  if (!\Drupal::service('module_handler')->moduleExists('ln_srh_extended')) {
+    $field = FieldStorageConfig::loadByName('paragraph', 'field_srh_media');
+    if ($field) {
+      $field->delete();
+    }
+  }
+  else {
+    // Remove field from srh_ingredient paragraph.
+    $field = FieldConfig::loadByName('paragraph', 'srh_ingredient', 'field_srh_media');
+    if ($field) {
+      $field->delete();
+    }
+  }
+}

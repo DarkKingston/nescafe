@@ -1,0 +1,8 @@
+bundle: ln_c
+excluded:
+  - field.storage.node.field_dsu_file_attachments
+  - field.storage.node.field_dsu_image
+  - field.storage.node.field_dsu_published_date
+  - field.storage.node.field_dsu_subtitle
+  - field.storage.node.field_dsu_tags
+required: true

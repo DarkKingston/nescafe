@@ -1,0 +1,56 @@
+<?php
+
+/**
+ * @file
+ * Main functions and hooks of example_advanced_datalayer module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function example_advanced_datalayer_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Module help for the example_advanced_datalayer module.
+    case 'help.page.example_advanced_datalayer':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Example module for advanced_datalayer.') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_page_attachments().
+ *
+ * Calculate device on JS side.
+ */
+function example_advanced_datalayer_page_attachments(array &$attachments) {
+
+  $datalayer_manager = \Drupal::service('advanced_datalayer.manager');
+  $datalayer_tags = $datalayer_manager->getGlobalDatalayerTags();
+
+  // Check if we have any datalayer tags, possibly it is disabled.
+  if (!empty($datalayer_tags) && advanced_datalayer_is_current_route_supported()) {
+
+    $module_handler = \Drupal::service('module_handler');
+    $module_path = $module_handler->getModule('example_advanced_datalayer')->getPath();
+
+    // Attache script to add dynamic JS data in datalayer tag.
+    $attachments['#attached']['html_head'][] = [
+      [
+        '#type' => 'html_tag',
+        '#tag' => 'script',
+        '#attributes' => [
+          'type' => 'text/javascript',
+          'src' => '/' . $module_path . '/js/example_advanced_datalayer.js',
+        ],
+        '#weight' => -95,
+      ],
+      'example_advanced_datalayer',
+    ];
+  }
+}

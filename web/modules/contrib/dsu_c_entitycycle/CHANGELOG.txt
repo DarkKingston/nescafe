@@ -1,0 +1,4 @@
+# Changelog
+
+## 2.1.0
+- Refactor Component Core: Remove id field for generic one

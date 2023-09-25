@@ -1,0 +1,28 @@
+# Changelog
+
+## 2.0.5 (May 21, 2020)
+
+- Add disabling server indexing options while importing alkemics product.
+- Added api or hook_alter to add aditional product information.
+- Please use drush cr to call same hook in your custom module if UI Cache clear doesn't work.
+- Added custom permissions & Schema file in config.
+
+
+## 2.0.4 (May 04, 2020)
+
+- Removed unused fields and dependency from modules.
+- Added Features bundle so we can import check changes in existing config or database exist.
+
+
+## Steps:
+- Check Features UI module should enable on your site.
+- Go to "admin/config/development/features"
+- Choose "Lightnest component or DSU component" Bundle type.
+- Find "Lightnest Alkemics" in the list.
+- Click on missing link and import missing files.
+- After import missing files. Newly created fields will be import in database.
+- Now go to "admin/config/development/features/diff/ln_alkemics" and import specific difference of files.
+
+##Validation
+- Go to dsu_product content type and confirms all fields visibility.
+- Config and import items to confirm all is works fine.

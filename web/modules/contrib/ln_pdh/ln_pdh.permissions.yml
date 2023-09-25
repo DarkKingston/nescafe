@@ -1,0 +1,7 @@
+'ln_pdh access import page':
+  title: 'Access the import page'
+  description: 'Allows access to the import page.'
+
+'administer pdh':
+  title: 'Administer PDH'
+  description: 'Allows to administer PDH settings.'

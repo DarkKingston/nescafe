@@ -1,0 +1,38 @@
+<?php
+
+use Drupal\ln_c_entity_compare\Entity\Bundle\LnCEntityCompareBundle;
+use Drupal\ln_c_entity_compare\Entity\Bundle\LnCEntityCompareBundleInterface;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+
+/**
+ * @file
+ * Primary module hooks for Lightnest Entity Compare Component module.
+ */
+
+/**
+ * Implements hook_entity_bundle_info_alter().
+ */
+function ln_c_entity_compare_entity_bundle_info_alter(array &$bundles): void {
+  if (isset($bundles['paragraph']['ln_c_entity_compare'])) {
+    $bundles['paragraph']['ln_c_entity_compare']['class'] = LnCEntityCompareBundle::class;
+  }
+}
+
+/**
+ * Implements hook_theme()
+ *
+ * @return array
+ */
+function ln_c_entity_compare_theme() {
+  return [
+    'ln_c_entity_compare_tables' => [
+      'variables' => [
+        'paragraph' => NULL,
+        'settings' => NULL,
+        'available_entities' => NULL,
+        'rows' => NULL,
+      ],
+    ],
+  ];
+}

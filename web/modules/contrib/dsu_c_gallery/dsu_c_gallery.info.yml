@@ -1,0 +1,18 @@
+name: "Lightnest Components: Gallery"
+description: 'Allows to create a gallery with thumbnails and videos.'
+type: module
+core: 8.x
+core_version_requirement: ^8 || ^9
+dependencies:
+  - dsu_c_core
+  - entity_browser
+  - entity_reference_revisions
+  - field
+  - file
+  - image
+  - media
+  - paragraphs
+  - slick
+  - video_embed_field
+package: 'Lightnest Components'
+version: 8.x-1.4.1

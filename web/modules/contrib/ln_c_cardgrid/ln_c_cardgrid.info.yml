@@ -1,0 +1,20 @@
+name: 'Ligtnest Grid Card Component'
+package: 'Lightnest Components'
+description: 'Ligtnest Grid Card Component'
+type: module
+version: 9.x-2.2.0
+core: 8.x
+core_version_requirement: ^8 || ^9 || ^10
+dependencies:
+  - classy_paragraphs
+  - dsu_c_core
+  - entity_reference_revisions
+  - field
+  - inline_entity_form
+  - link
+  - node
+  - options
+  - paragraphs
+  - text
+  - link_attributes
+

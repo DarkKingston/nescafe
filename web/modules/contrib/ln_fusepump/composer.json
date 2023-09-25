@@ -1,0 +1,19 @@
+{
+  "name": "lightnest/ln_fusepump",
+  "description": "Adds the integration from Drupal to Fusepump.",
+  "type": "drupal-module",
+  "keywords": [
+    "content",
+    "paragraphs",
+    "frontend"
+  ],
+  "repositories": {
+    "drupal": {
+      "type": "composer",
+      "url": "https://packages.drupal.org/8"
+    }
+  },
+  "require": {
+    "drupal/migrate_source_csv": "^3.2"
+  }
+}

@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_ln_c_pr_display_comp_type
+    - paragraphs.paragraphs_type.ln_c_power_reviews
+  module:
+    - options
+id: paragraph.ln_c_power_reviews.field_ln_c_pr_display_comp_type
+field_name: field_ln_c_pr_display_comp_type
+entity_type: paragraph
+bundle: ln_c_power_reviews
+label: 'Display Components'
+description: 'The following components can be added to the page. To add more than one Display Component, add another component to the page.'
+required: true
+translatable: false
+default_value:
+  -
+    value: pr_review_display
+default_value_callback: ''
+settings: {  }
+field_type: list_string

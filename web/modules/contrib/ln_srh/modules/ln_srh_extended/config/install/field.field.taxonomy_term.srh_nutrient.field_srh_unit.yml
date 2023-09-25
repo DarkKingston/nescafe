@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_srh_unit
+    - taxonomy.vocabulary.srh_nutrient
+  enforced:
+    module:
+      - ln_srh_extended
+id: taxonomy_term.srh_nutrient.field_srh_unit
+field_name: field_srh_unit
+entity_type: taxonomy_term
+bundle: srh_nutrient
+label: 'SRH Unit'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

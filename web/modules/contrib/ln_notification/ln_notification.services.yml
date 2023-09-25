@@ -1,0 +1,23 @@
+services:
+  ln_notification:
+    class: Drupal\ln_notification\FcmClient
+    arguments:
+      - '@entity_type.manager'
+      - '@logger.factory'
+      - '@config.factory'
+      - '@http_client'
+      - '@firebase.message'
+      - '@firebase.topic_manager'
+      - '@file_url_generator'
+  ln_notification.manager:
+    class: Drupal\ln_notification\LnNotificationManager
+    arguments:
+      - '@datetime.time'
+      - '@logger.channel.ln_notification'
+      - '@entity_type.manager'
+      - '@notification_system'
+      - '@plugin.manager.notification_system_dispatcher'
+  logger.channel.ln_notification:
+    class: Drupal\Core\Logger\LoggerChannel
+    factory: logger.factory:get
+    arguments: ['ln_notification']

@@ -1,0 +1,16 @@
+services:
+  ln_datalayer.datasets:
+    class: Drupal\ln_datalayer\LnDatalayerDatasets
+    arguments: ['@extension.list.module','@module_handler']
+  ln_datalayer.flash_bag:
+    class: Drupal\ln_datalayer\Session\DatalayerEventsBag
+    tags:
+      - { name: session_bag }
+  ln_datalayer.events:
+    class: Drupal\ln_datalayer\Services\DatalayerEvents
+    arguments: [ '@ln_datalayer.flash_bag', '@page_cache_kill_switch' ]
+  ln_datalayer.event_subscriber:
+    class: Drupal\ln_datalayer\EventSubscriber\DatalayerEventResponseSubscriber
+    arguments: ['@ln_datalayer.events']
+    tags:
+      - { name: 'event_subscriber' }

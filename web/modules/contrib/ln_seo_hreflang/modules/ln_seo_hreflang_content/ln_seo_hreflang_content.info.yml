@@ -1,0 +1,10 @@
+name: Lightnest SEO hreflang content
+type: module
+description: 'Manage the ln_hreflang content.'
+package: Lightnest
+core: 8.x
+core_version_requirement: ^8 || ^9
+dependencies:
+  - ln_seo_hreflang:ln_seo_hreflang
+  - drupal:migrate
+  - migrate_source_csv:migrate_source_csv

@@ -1,0 +1,75 @@
+<?php
+
+use Drupal\field\Entity\FieldStorageConfig;
+use Drupal\Core\Entity\Sql\SqlContentEntityStorage;
+use Drupal\ln_srh\Form\SRHConnectionSettings;
+use Drupal\ln_srh\Form\SRHFieldMapping;
+use Drupal\ln_srh\SRHConstants;
+
+/**
+ * Implements hook_uninstall().
+ */
+function ln_srh_uninstall($is_syncing){
+  FieldStorageConfig::loadByName('node', 'field_srh_id')->delete();
+}
+
+/**
+ * Change update quantity field on ingredients
+ */
+function ln_srh_update_8001(&$sandbox) {
+  $manager = \Drupal::entityDefinitionUpdateManager();
+  $field_map = \Drupal::service('entity_field.manager')->getFieldMapByFieldType('srh_quantity');
+  foreach ($field_map as $entity_type_id => $fields) {
+    foreach (array_keys($fields) as $field_name) {
+      $field_storage_definition = $manager->getFieldStorageDefinition($field_name, $entity_type_id);
+      $storage = \Drupal::entityTypeManager()->getStorage($entity_type_id);
+      if ($storage instanceof SqlContentEntityStorage) {
+        $table_mapping = $storage->getTableMapping([
+          $field_name => $field_storage_definition,
+        ]);
+        $table_names = $table_mapping->getDedicatedTableNames();
+        $columns = $table_mapping->getColumnNames($field_name);
+        foreach ($table_names as $table_name) {
+          $field_schema = $field_storage_definition->getSchema();
+          $schema = \Drupal::database()->schema();
+          $field_exists = $schema->fieldExists($table_name, $columns['quantity']);
+          $table_exists = $schema->tableExists($table_name);
+          if ($field_exists && $table_exists) {
+            $field_schema['columns']['quantity']['type'] = 'float';
+            $field_schema['columns']['display']['type'] = 'float';
+            $field_schema['columns']['grams']['type'] = 'float';
+            $schema->changeField($table_name,$columns['quantity'],$columns['quantity'],$field_schema['columns']['quantity']);
+            $schema->changeField($table_name,$columns['display'],$columns['display'],$field_schema['columns']['display']);
+            $schema->changeField($table_name,$columns['grams'],$columns['grams'],$field_schema['columns']['grams']);
+          }
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Change keys used by cron recipes sync. Refactor field mapping config structure.
+ */
+function ln_srh_update_8002(&$sandbox) {
+  $state = \Drupal::state();
+  $localesSync = $state->get('ln_srh_locales_sync', []);
+  $state->set('ln_srh_recipes_locales_sync', $localesSync);
+
+  // Rename enable_sync config to enable_recipes_sync
+  $configFactory = \Drupal::configFactory();
+  $enableSync = $configFactory->get(SRHConnectionSettings::SETTINGS)->get('enable_sync');
+  if ($enableSync) {
+    $configFactory->getEditable(SRHConnectionSettings::SETTINGS)
+      ->set('enable_recipes_sync', $enableSync)
+      ->clear('enable_sync')
+      ->save();
+  }
+
+  //Refactor field mapping config structure.
+  $fieldMapping = $configFactory->get(SRHFieldMapping::SETTINGS)->getRawData();
+  $fieldMapping = [SRHConstants::SRH_RECIPE_BUNDLE => $fieldMapping];
+  $configFactory->getEditable(SRHFieldMapping::SETTINGS)
+    ->setData($fieldMapping)
+    ->save();
+}

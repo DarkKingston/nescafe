@@ -1,0 +1,13 @@
+<?php
+
+/**
+ * Implements hook_theme().
+ */
+function ln_srh_standard_theme($existing, $type, $theme, $path){
+  return [
+    'field__node__field_srh_steps' => [
+      'template' => 'field--node--field-srh-steps',
+      'base hook' => 'field--node--field-srh-steps'
+    ]
+  ];
+}

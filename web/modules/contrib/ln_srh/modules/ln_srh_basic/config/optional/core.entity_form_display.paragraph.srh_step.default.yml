@@ -1,0 +1,27 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.srh_step.field_c_text
+    - paragraphs.paragraphs_type.srh_step
+  enforced:
+    module:
+      - ln_srh_basic
+  module:
+    - text
+id: paragraph.srh_step.default
+targetEntityType: paragraph
+bundle: srh_step
+mode: default
+content:
+  field_c_text:
+    weight: 0
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+hidden:
+  created: true
+  status: true

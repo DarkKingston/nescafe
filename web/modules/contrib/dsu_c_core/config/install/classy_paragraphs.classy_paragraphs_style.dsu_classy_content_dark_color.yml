@@ -1,0 +1,6 @@
+langcode: en
+status: true
+dependencies: {  }
+id: dsu_classy_content_dark_color
+label: 'Dark Color'
+classes: dark-text

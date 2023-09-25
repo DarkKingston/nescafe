@@ -1,0 +1,136 @@
+<?php
+
+/**
+ * @file
+ * Provides install, update, and uninstall functions.
+ */
+
+use Drupal\Core\Language\LanguageInterface;
+use Drupal\advanced_datalayer\AdvancedDatalayerDefaultsInterface;
+
+/**
+ * Uninstall Datalayer module.
+ */
+function ln_datalayer_update_8001(&$sandbox) {
+  // No need more contrib Datalayer module.
+  \Drupal::service('module_installer')->install(['advanced_datalayer']);
+  // Enable base module.
+  \Drupal::service('module_installer')->uninstall(['datalayer']);
+}
+
+/**
+ * Convert datalayer old config data to new structure.
+ */
+function ln_datalayer_update_8102(&$sandbox) {
+  $old_config = \Drupal::service('config.factory')->getEditable('ln_datalayer.settings');
+  $language_manager = \Drupal::service('language_manager');
+  $default_language = $language_manager->getDefaultLanguage(LanguageInterface::LANGCODE_SITE_DEFAULT);
+  $configs_mapping = [
+    'brand' => 'brand',
+    'sub_brand' => 'subBrand',
+    'zone' => 'zone',
+    'country' => 'country',
+    'language' => 'language',
+    'business' => 'business',
+    'siteType' => 'siteType',
+    'technology' => 'technology',
+    'properties' => 'properties',
+    'digi_pi_id' => 'digiPiID',
+    'business_unit' => 'businessUnit',
+    'conversion_page_type' => 'conversionPageType',
+    'property_status' => 'propertyStatus',
+    'go_live_date' => 'goLiveDate',
+    'target_audience' => 'targetAudience',
+    'site_category' => 'siteCategory',
+    'page_subsection' => 'pageSubsection',
+    'website_url_' . $default_language->getId() => 'websiteUrl',
+  ];
+
+  $new_tags = [];
+  foreach ($configs_mapping as $old_name => $new_name) {
+    $old_value = $old_config->get($old_name);
+    $new_tags[$new_name] = $old_value;
+    $old_config->clear($old_name);
+  }
+  $new_tags['event'] = 'fireTags';
+  $datalayer_entity_manager = \Drupal::entityTypeManager()->getStorage('advanced_datalayer_defaults');
+  $datalayer_defaults = $datalayer_entity_manager->load('global');
+  $datalayer_defaults->set('tags', $new_tags);
+  $datalayer_defaults->save();
+
+  // Add translations for site URL tag for multilingual sites.
+  $languages = $language_manager->getLanguages();
+  if (count($languages) > 1) {
+    foreach ($languages as $lancode => $language) {
+      if ($lancode !== $default_language->getId()) {
+        $old_value = $old_config->get('website_url_' . $lancode);
+        $datalayer_translation = $language_manager->getLanguageConfigOverride($lancode, 'advanced_datalayer.advanced_datalayer_defaults.global');
+        if ($old_value) {
+          $datalayer_translation->set('tags', ['websiteUrl' => $old_value]);
+          $datalayer_translation->save();
+          $old_config->clear('website_url_' . $lancode);
+        }
+      }
+    }
+  }
+  $old_config->save();
+}
+
+/**
+ * Remove deprecated datalayer tags.
+ */
+function ln_datalayer_update_8103(&$sandbox) {
+  $tags_to_delete = [
+    'countGroupTagString',
+    'floodlightAdvertiserID',
+    'hasCheckout',
+    'hasCouponPrint',
+    'hasEcommerce',
+    'hasLogin',
+    'hasSignup',
+    'loginStatus',
+    'pageType',
+    'salesGroupTagString',
+    'userID_Hit',
+    'videoType',
+  ];
+
+  $language_manager = \Drupal::service('language_manager');
+  $default_language = $language_manager->getDefaultLanguage(LanguageInterface::LANGCODE_SITE_DEFAULT);
+  $languages = $language_manager->getLanguages();
+
+  $datalayer_ids = \Drupal::entityQuery('advanced_datalayer_defaults')->execute();
+  $datalayer_entity_manager = \Drupal::entityTypeManager()->getStorage('advanced_datalayer_defaults');
+  $datalayer_defaults = $datalayer_entity_manager->loadMultiple($datalayer_ids);
+
+  // Remove deprecated tags.
+  foreach ($datalayer_defaults as $datalayer_default) {
+    if ($datalayer_default instanceof AdvancedDatalayerDefaultsInterface) {
+      $tags = $datalayer_default->get('tags');
+      foreach ($tags_to_delete as $tag) {
+        unset($tags[$tag]);
+      }
+      $datalayer_default->set('tags', $tags);
+      $datalayer_default->save();
+    }
+  }
+
+  // Remove translations for deprecated tags for multilingual sites.
+  if (count($languages) > 1) {
+    foreach ($languages as $lancode => $language) {
+      if ($lancode !== $default_language->getId()) {
+        foreach ($datalayer_ids as $datalayer_id) {
+          $datalayer_translation = $language_manager->getLanguageConfigOverride($lancode, 'advanced_datalayer.advanced_datalayer_defaults.' . $datalayer_id);
+          if ($datalayer_translation instanceof AdvancedDatalayerDefaultsInterface) {
+            $translated_tags = $datalayer_translation->get('tags');
+            foreach ($tags_to_delete as $tag) {
+              unset($translated_tags[$tag]);
+            }
+            $datalayer_translation->set('tags', $translated_tags);
+            $datalayer_translation->save();
+          }
+        }
+      }
+    }
+  }
+}

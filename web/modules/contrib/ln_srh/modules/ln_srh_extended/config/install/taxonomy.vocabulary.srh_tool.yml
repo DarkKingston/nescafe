@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - ln_srh_extended
+name: 'SRH Tool'
+vid: srh_tool
+description: ''
+weight: 0

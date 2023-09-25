@@ -1,0 +1,31 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_srh_brand
+    - node.type.srh_recipe
+    - taxonomy.vocabulary.srh_brand
+  enforced:
+    module:
+      - ln_srh_full
+id: node.srh_recipe.field_srh_brand
+field_name: field_srh_brand
+entity_type: node
+bundle: srh_recipe
+label: 'SRH Brand'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      srh_brand: srh_brand
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,17 @@
+ln_alkemics:
+  alkemics_api_endpoint_token_url: 'https://apis.alkemics.com/auth/v2/token'
+  alkemics_api_product_search_endpoint: 'https://apis.alkemics.com/public/v1/products/list'
+  alkemics_api_endpoint_url: 'https://apis.alkemics.com/public/v1/products'
+  alkemics_api_client_id: 'f5588c68e3bb552d36cffe084c48078d3c8bea46'
+  alkemics_api_client_secret: '5f8f0ee3798b8eaa0c82adc83a380a3d12fa16b9'
+  alkemics_api_user_username: ''
+  alkemics_api_user_password: ''
+  alkemics_api_target_market_id: ''
+  alkemics_api_target_brand_id: ''
+  alkemics_api_target_market_keyword: 'Maggi'
+  alkemics_connect_interval: '86400'
+  alkemics_connect_isnew: '604800'
+  alkemics_periodic_import_time_interval: FALSE
+  alkemics_periodic_import_enabled: '0'
+  alkemics_indexing_server: ''
+  alkemics_api_market_gtin: ''

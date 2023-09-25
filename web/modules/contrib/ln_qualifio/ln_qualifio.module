@@ -1,0 +1,42 @@
+<?php
+
+/**
+ * @file
+ * This module enables basic qualifio functionality.
+ *
+ * Site owers can add campaign to desired page.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function ln_qualifio_theme($existing, $type, $theme, $path) {
+  $theme = [];
+  $theme['qualifio'] = [
+    'variables'      => [
+      'language'         => NULL,
+      'qualifiointegrationType' => NULL,
+      'campaigntitle' => NULL,
+      'qualifioscript' => NULL,
+    ],
+    'template'       => 'qualifio',
+    'render element' => 'element',
+    'path'           => $path . '/templates',
+
+  ];
+
+  $theme['paragraph__ln_qualifio'] = [
+    'template' => 'paragraph--ln-qualifio',
+    'base hook' => 'paragraphs',
+    'path'      => $path . '/templates',
+  ];
+
+  return $theme;
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for paragraph.html.twig.
+ */
+function ln_qualifio_preprocess_paragraph(&$variables) {
+  /* TODO */
+}

@@ -1,0 +1,118 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.srh_complement.body
+    - field.field.node.srh_complement.field_srh_id
+    - field.field.node.srh_complement.field_srh_ingredients
+    - field.field.node.srh_complement.field_srh_media_gallery
+    - field.field.node.srh_complement.field_srh_nutrients
+    - node.type.srh_complement
+  module:
+    - ds
+    - field_group
+    - ln_srh
+    - ln_srh_full
+    - text
+    - user
+third_party_settings:
+  ds:
+    layout:
+      id: srh_one_column_stacked
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        label: ''
+    regions:
+      header:
+        - field_srh_media_gallery
+      body_middle:
+        - body
+        - field_srh_ingredients
+        - group_ingredients
+        - group_nutrition
+        - field_srh_nutrients
+  field_group:
+    group_ingredients:
+      children:
+        - field_srh_ingredients
+      parent_name: ''
+      weight: 2
+      format_type: html_element
+      region: body_middle
+      format_settings:
+        id: ''
+        classes: ''
+        element: section
+        show_label: true
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+      label: Ingredients
+    group_nutrition:
+      children:
+        - field_srh_nutrients
+      parent_name: ''
+      weight: 3
+      format_type: html_element
+      region: body_middle
+      format_settings:
+        id: ''
+        classes: ''
+        element: section
+        show_label: true
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+      label: Nutrition
+id: node.srh_complement.default
+targetEntityType: node
+bundle: srh_complement
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+    region: body_middle
+  field_srh_ingredients:
+    weight: 1
+    label: hidden
+    settings:
+      view_mode: full
+      ignore_groups: '1'
+      show_change_display: '1'
+      show_portion_spinner: '1'
+      link: false
+    third_party_settings:
+      ds:
+        ds_limit: ''
+    type: srh_ingredients_full
+    region: body_middle
+  field_srh_media_gallery:
+    weight: 0
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: header
+  field_srh_nutrients:
+    weight: 4
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: srh_nutrients_table
+    region: body_middle
+hidden:
+  field_srh_id: true
+  langcode: true
+  links: true
+  search_api_excerpt: true

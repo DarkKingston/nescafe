@@ -1,0 +1,48 @@
+dsu_c_core.settings:
+  path: '/admin/config/lightnest'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: Lightnest
+  requirements:
+    _permission: 'true'
+
+# ClassyGroup routing definition
+entity.classy_group.collection:
+  path: '/admin/structure/classy_paragraphs_style/group'
+  defaults:
+    _entity_list: 'classy_group'
+    _title: 'Classy group'
+  requirements:
+    _permission: 'administer site configuration'
+  options:
+    _admin_route: TRUE
+
+entity.classy_group.add_form:
+  path: '/admin/structure/classy_paragraphs_style/group/add'
+  defaults:
+    _entity_form: 'classy_group.add'
+    _title: 'Add Classy group'
+  requirements:
+    _permission: 'administer site configuration'
+  options:
+    _admin_route: TRUE
+
+entity.classy_group.edit_form:
+  path: '/admin/structure/classy_paragraphs_style/group/{classy_group}'
+  defaults:
+    _entity_form: 'classy_group.edit'
+    _title: 'Edit Classy group'
+  requirements:
+    _permission: 'administer site configuration'
+  options:
+    _admin_route: TRUE
+
+entity.classy_group.delete_form:
+  path: '/admin/structure/classy_paragraphs_style/group/{classy_group}/delete'
+  defaults:
+    _entity_form: 'classy_group.delete'
+    _title: 'Delete Classy group'
+  requirements:
+    _permission: 'administer site configuration'
+  options:
+    _admin_route: TRUE

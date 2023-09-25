@@ -1,0 +1,18 @@
+.dsu-gallery {
+  padding: 0 20px; }
+  .dsu-gallery .dsu-gallery-full-preview {
+    margin-bottom: 30px;
+    text-align: center; }
+  .dsu-gallery .dsu-gallery-item {
+    display: none; }
+  .dsu-gallery .dsu-gallery-full-preview img {
+    margin: 0 auto; }
+  .dsu-gallery .slick-dotted.slick-slider {
+    padding-bottom: 15px; }
+  .dsu-gallery .slick__slide {
+    margin: 0 5px; }
+  .dsu-gallery .slick-prev:before, .dsu-gallery .slick-next:before {
+    color: #000; }
+  .dsu-gallery .slick img {
+    width: auto;
+    max-width: 100%; }

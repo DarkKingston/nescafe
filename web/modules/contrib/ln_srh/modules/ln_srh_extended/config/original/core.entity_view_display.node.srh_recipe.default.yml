@@ -1,0 +1,317 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.srh_recipe.body
+    - field.field.node.srh_recipe.field_meta_tags
+    - field.field.node.srh_recipe.field_srh_chef
+    - field.field.node.srh_recipe.field_srh_difficulty
+    - field.field.node.srh_recipe.field_srh_id
+    - field.field.node.srh_recipe.field_srh_ingredients
+    - field.field.node.srh_recipe.field_srh_media_gallery
+    - field.field.node.srh_recipe.field_srh_menuiqscore
+    - field.field.node.srh_recipe.field_srh_nutrients
+    - field.field.node.srh_recipe.field_srh_steps
+    - field.field.node.srh_recipe.field_srh_cloudfront_medias
+    - field.field.node.srh_recipe.field_srh_tips
+    - image.style.srh_full_width
+    - node.type.srh_recipe
+  module:
+    - ds
+    - entity_reference_revisions
+    - field_group
+    - ln_srh
+    - slick
+    - taxonomy
+    - text
+    - user
+third_party_settings:
+  ds:
+    layout:
+      id: srh_one_column_stacked
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        label: ''
+    regions:
+      header:
+        - field_srh_media_gallery
+      body_middle:
+        - group_basic_recipe_details
+        - field_srh_nutrients
+        - node_title
+        - group_tags
+        - body
+        - group_nutrition_facts
+        - group_footer_basic_recipe_detail
+        - srh_steps_duration
+        - field_srh_difficulty
+        - field_srh_chef
+        - group_ingredients
+        - group_steps
+        - field_srh_ingredients
+        - field_srh_steps
+    fields:
+      srh_steps_duration:
+        plugin_id: srh_steps_duration
+        weight: 6
+        label: hidden
+        formatter: default
+      node_title:
+        plugin_id: node_title
+        weight: 3
+        label: hidden
+        formatter: default
+        settings:
+          'link class': ''
+          wrapper: h1
+          class: ''
+          link: false
+  field_group:
+    group_nutrition_facts:
+      children:
+        - field_srh_nutrients
+      parent_name: ''
+      weight: 6
+      format_type: html_element
+      region: body_middle
+      format_settings:
+        element: section
+        show_label: true
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+        id: ''
+        classes: 'recipe__section nutrition-facts'
+      label: 'Nutrition Facts'
+    group_basic_recipe_details:
+      children:
+        - node_title
+        - group_tags
+        - body
+        - group_footer_basic_recipe_detail
+      parent_name: ''
+      weight: 2
+      format_type: html_element
+      region: body_middle
+      format_settings:
+        element: section
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+        id: ''
+        classes: recipe__section
+      label: 'Basic Recipe Details'
+    group_ingredients:
+      children:
+        - field_srh_ingredients
+      parent_name: ''
+      weight: 7
+      format_type: html_element
+      region: body_middle
+      format_settings:
+        element: section
+        show_label: true
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+        id: ''
+        classes: recipe__section
+      label: Ingredients
+    group_steps:
+      children:
+        - field_srh_steps
+      parent_name: ''
+      weight: 8
+      format_type: html_element
+      region: body_middle
+      format_settings:
+        element: section
+        show_label: true
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+        id: ''
+        classes: recipe__section
+      label: Steps
+    group_tags:
+      children:
+        - srh_steps_duration
+        - field_srh_difficulty
+      parent_name: group_basic_recipe_details
+      weight: 4
+      format_type: html_element
+      region: body_middle
+      format_settings:
+        id: ''
+        classes: recipe__tags
+        element: div
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+      label: Tags
+    group_footer_basic_recipe_detail:
+      children:
+        - field_srh_chef
+      parent_name: group_basic_recipe_details
+      weight: 6
+      format_type: html_element
+      region: body_middle
+      format_settings:
+        id: ''
+        classes: footer__details
+        element: div
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+      label: 'Footer Basic Recipe Details'
+id: node.srh_recipe.default
+targetEntityType: node
+bundle: srh_recipe
+mode: default
+content:
+  body:
+    type: text_default
+    weight: 5
+    region: body_middle
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+  field_srh_chef:
+    type: string
+    weight: 7
+    region: body_middle
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  field_srh_difficulty:
+    weight: 7
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: body_middle
+  field_srh_ingredients:
+    type: entity_reference_revisions_entity_view
+    weight: 15
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings:
+      ds:
+        ds_limit: ''
+    region: body_middle
+  field_srh_media_gallery:
+    type: slick_media
+    weight: 0
+    region: header
+    label: hidden
+    settings:
+      style: ''
+      optionset: srh_media_gallery_slider
+      optionset_thumbnail: ''
+      skin: ''
+      skin_thumbnail: ''
+      image_style: srh_full_width
+      responsive_image_style: ''
+      thumbnail_effect: ''
+      thumbnail_position: ''
+      media_switch: ''
+      box_style: ''
+      thumbnail_style: ''
+      box_media_style: ''
+      ratio: ''
+      box_caption: ''
+      view_mode: default
+      box_caption_custom: ''
+      grid: null
+      grid_medium: null
+      grid_small: null
+      visible_items: null
+      image: ''
+      title: ''
+      link: ''
+      layout: ''
+      class: ''
+      cache: 0
+      current_view_mode: default
+      vanilla: false
+      background: false
+      caption:
+        title: '0'
+        alt: '0'
+      use_theme_field: false
+      preserve_keys: false
+      override: false
+      overridables:
+        arrows: '0'
+        autoplay: '0'
+        dots: '0'
+        draggable: '0'
+        infinite: '0'
+        mouseWheel: '0'
+        randomize: '0'
+        variableWidth: '0'
+      thumbnail: ''
+      thumbnail_caption: ''
+      skin_arrows: ''
+      skin_dots: ''
+      fx: ''
+      icon: ''
+      _uri: ''
+      breakpoints: {  }
+      sizes: ''
+      grid_header: ''
+      id: ''
+      overlay: ''
+    third_party_settings:
+      ds:
+        ds_limit: ''
+  field_srh_nutrients:
+    type: srh_nutrients_table
+    weight: 2
+    region: body_middle
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      ds:
+        ds_limit: ''
+  field_srh_steps:
+    type: entity_reference_revisions_entity_view
+    weight: 17
+    region: body_middle
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings:
+      ds:
+        ds_limit: ''
+hidden:
+  field_meta_tags: true
+  field_srh_id: true
+  field_srh_tips: true
+  langcode: true
+  links: true
+  search_api_excerpt: true
+  field_srh_menuiqscore: true
+  field_srh_cloudfront_medias: true

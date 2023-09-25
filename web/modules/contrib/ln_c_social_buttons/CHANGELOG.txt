@@ -1,0 +1,29 @@
+# Changelog
+
+## 1.1.2
+- Error in ln_c_social_buttons_preprocess_paragraph
+
+## 1.1.1
+- Added paragraph features too enhance editorial experience.
+- Go to admin/config/development/features/edit/dsu_c_slider
+- Import latest configuration.
+- rel attribute added if target exist on anchor tag.
+
+## 1.0.8 (November 08, 2020)
+
+- Added a new block name called social button.
+
+
+## Steps:
+- Check Features UI module should enable on your site.
+- Go to "admin/config/development/features"
+- Choose "Lightnest Components" Bundle type.
+- Find "Lightnest Components: Social Buttons" in the list.
+- Click on missing link and import missing files.
+- After import missing files. Newly created block will be import in database.
+- Now go to "/admin/config/development/features/diff/ln_c_social_buttons" and import specific difference of files.
+
+##Validation
+- Create the content for Social Buttons block '/block/add/social_buttons'.
+- Place the block in a specific region '/admin/structure/block'.
+- Block will appear with the default design of the Social block component.

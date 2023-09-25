@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+name: Category
+vid: dsu_category
+description: 'Provides a taxonomy for categorising products.'
+hierarchy: 0
+weight: 0

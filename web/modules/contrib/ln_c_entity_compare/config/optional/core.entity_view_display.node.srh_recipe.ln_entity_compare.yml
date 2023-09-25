@@ -1,0 +1,275 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.ln_entity_compare
+    - field.field.node.srh_recipe.body
+    - field.field.node.srh_recipe.field_meta_tags
+    - field.field.node.srh_recipe.field_srh_chef
+    - field.field.node.srh_recipe.field_srh_cloudfront_medias
+    - field.field.node.srh_recipe.field_srh_difficulty
+    - field.field.node.srh_recipe.field_srh_id
+    - field.field.node.srh_recipe.field_srh_ingredients
+    - field.field.node.srh_recipe.field_srh_media_gallery
+    - field.field.node.srh_recipe.field_srh_menuiqscore
+    - field.field.node.srh_recipe.field_srh_nutrients
+    - field.field.node.srh_recipe.field_srh_steps
+    - field.field.node.srh_recipe.field_srh_tips
+    - image.style.crop_dsu_c_gallery_image_medium
+    - node.type.srh_recipe
+  module:
+    - advanced_text_formatter
+    - ds
+    - entity_reference_revisions
+    - field_group
+    - layout_builder
+    - ln_srh
+    - media
+    - panelizer
+    - user
+third_party_settings:
+  field_group:
+    group_nutrition_facts:
+      children: {  }
+      label: 'Nutrition Facts'
+      parent_name: ''
+      region: hidden
+      weight: 27
+      format_type: html_element
+      format_settings:
+        classes: 'recipe__section nutrition-facts'
+        id: ''
+        element: section
+        show_label: true
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+    group_basic_recipe_details:
+      children:
+        - group_tags
+        - group_footer_basic_recipe_detail
+      label: 'Basic Recipe Details'
+      parent_name: ''
+      region: hidden
+      weight: 26
+      format_type: html_element
+      format_settings:
+        classes: recipe__section
+        id: ''
+        element: section
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+    group_ingredients:
+      children: {  }
+      label: Ingredients
+      parent_name: ''
+      region: hidden
+      weight: 28
+      format_type: html_element
+      format_settings:
+        classes: recipe__section
+        id: ''
+        element: section
+        show_label: true
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+    group_steps:
+      children: {  }
+      label: Steps
+      parent_name: ''
+      region: hidden
+      weight: 29
+      format_type: html_element
+      format_settings:
+        classes: recipe__section
+        id: ''
+        element: section
+        show_label: true
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+    group_tags:
+      children: {  }
+      label: Tags
+      parent_name: group_basic_recipe_details
+      region: hidden
+      weight: 4
+      format_type: html_element
+      format_settings:
+        classes: recipe__tags
+        id: ''
+        element: div
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+    group_footer_basic_recipe_detail:
+      children: {  }
+      label: 'Footer Basic Recipe Details'
+      parent_name: group_basic_recipe_details
+      region: hidden
+      weight: 6
+      format_type: html_element
+      format_settings:
+        classes: footer__details
+        id: ''
+        element: div
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+  layout_builder:
+    enabled: false
+    allow_custom: false
+  panelizer:
+    enable: false
+    custom: false
+    allow: false
+    default: default
+  ds:
+    layout:
+      id: ds_1col
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        classes:
+          layout_class: {  }
+        wrappers:
+          ds_content: div
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+        label: ''
+    regions:
+      ds_content:
+        - node_title
+        - field_srh_media_gallery
+        - field_srh_difficulty
+        - field_srh_chef
+        - body
+        - field_srh_ingredients
+        - field_srh_nutrients
+    fields:
+      node_title:
+        plugin_id: node_title
+        weight: 0
+        label: above
+        formatter: default
+        settings:
+          link: true
+          'link class': ''
+          wrapper: h3
+          class: ''
+_core:
+  default_config_hash: HVjLQ6K77eAwkl-gVOOf4xfThjtmAzC_71iXcDLwowQ
+id: node.srh_recipe.ln_entity_compare
+targetEntityType: node
+bundle: srh_recipe
+mode: ln_entity_compare
+content:
+  body:
+    type: advanced_text
+    label: above
+    settings:
+      trim_length: '600'
+      ellipsis: '1'
+      word_boundary: '1'
+      use_summary: '1'
+      filter: input
+      format: plain_text
+      allowed_html:
+        - a
+        - b
+        - br
+        - dd
+        - dl
+        - dt
+        - em
+        - i
+        - li
+        - ol
+        - p
+        - strong
+        - u
+        - ul
+      token_replace: 0
+      autop: 0
+    third_party_settings: {  }
+    weight: 4
+    region: ds_content
+  field_srh_chef:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 3
+    region: ds_content
+  field_srh_difficulty:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 2
+    region: ds_content
+  field_srh_ingredients:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings:
+      ds:
+        ds_limit: ''
+    weight: 5
+    region: ds_content
+  field_srh_media_gallery:
+    type: media_thumbnail
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: crop_dsu_c_gallery_image_medium
+      image_loading:
+        attribute: lazy
+    third_party_settings:
+      ds:
+        ds_limit: ''
+    weight: 1
+    region: ds_content
+  field_srh_nutrients:
+    type: srh_nutrients_table
+    label: above
+    settings: {  }
+    third_party_settings:
+      ds:
+        ds_limit: ''
+    weight: 6
+    region: ds_content
+hidden:
+  field_meta_tags: true
+  field_srh_cloudfront_medias: true
+  field_srh_id: true
+  field_srh_menuiqscore: true
+  field_srh_steps: true
+  field_srh_tips: true
+  langcode: true
+  links: true
+  search_api_excerpt: true

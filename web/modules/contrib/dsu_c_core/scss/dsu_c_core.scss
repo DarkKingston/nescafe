@@ -1,0 +1,49 @@
+.embedded-entity {
+  &.align-center {
+    float:none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &.align-left {
+    float:none;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  &.align-right {
+    float:none;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+}
+
+table[align=center] {
+  float:none;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+table[align=left] {
+  float:none;
+  margin-left: 0px;
+  margin-right: auto;
+}
+
+table[align=right] {
+  float:none;
+  margin-left: auto;
+  margin-right: 0px;
+}
+
+.cke_editable img {
+  width: 100%;
+}
+
+.js .paragraph-type, .js .paragraph-type-title {
+  flex-basis: auto;
+  overflow: visible !important;
+}

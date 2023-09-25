@@ -1,0 +1,30 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.social_buttons
+    - field.storage.block_content.field_social_buttons
+    - paragraphs.paragraphs_type.c_socialbuttons
+  module:
+    - entity_reference_revisions
+id: block_content.social_buttons.field_social_buttons
+field_name: field_social_buttons
+entity_type: block_content
+bundle: social_buttons
+label: 'Social Buttons'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      c_socialbuttons: c_socialbuttons
+    target_bundles_drag_drop:
+      c_socialbuttons:
+        enabled: true
+        weight: 78
+field_type: entity_reference_revisions

@@ -1,0 +1,41 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a paragraph.
+ *
+ * Available variables:
+ * - gallery: .
+ * - gallery_preview: .
+ * - parent_paragraph: .
+ *
+ * @see template_preprocess_paragraph()
+ *
+ * @ingroup themeable
+ */
+#}
+
+{% set classes = [
+  'paragraph',
+  'paragraph--type--' ~ paragraph.bundle|clean_class,
+  view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+] %}
+{% block paragraph %}
+	<div{{attributes.addClass(classes)}}>
+		{% block content %}
+			<div class="testimonial-heading-container">
+				{% if content.field_c_testimonial_head_style[0]['#markup'] %}
+					{% set title_tag=content.field_c_testimonial_head_style[0]['#markup'] %}
+					<{{title_tag}}>
+						{{ content.field_c_testimonial_heading }}
+					</{{title_tag}}>
+				{% else %}
+					{{ content.field_c_testimonial_heading }}
+				{% endif %}
+				{{ content.field_c_testimonial_sub_heading}}
+			</div>
+			<div class="testimonial-item-wrapper">
+				{{ content.field_c_testimonial_item }}
+			</div>
+		{% endblock %}
+	</div>
+{% endblock paragraph %}

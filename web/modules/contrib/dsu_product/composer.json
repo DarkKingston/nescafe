@@ -1,0 +1,13 @@
+{
+  "name": "lightnest/dsu_product",
+  "description": "Creates a DSU standardized product.",
+  "type": "drupal-module",
+  "keywords": [
+    "content"
+  ],
+  "require": {
+    "drupal/core": "^8 || ^9",
+    "drupal/metatag": "^1.10",
+    "drupal/schema_metatag": "^2.1"
+  }
+}

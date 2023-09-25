@@ -1,0 +1,10 @@
+services:
+  ln_srh_full.commands:
+    class: \Drupal\ln_srh_full\Commands\SyncComplementsQueue
+    tags:
+      - { name: drush.command }
+  ln_srh_full.synchronize_complements:
+    class: \Drupal\ln_srh_full\Commands\SynchronizeComplements
+    arguments: ['@srh', '@ln_srh_full.complement_utils']
+    tags:
+      - { name: drush.command }

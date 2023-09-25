@@ -1,0 +1,102 @@
+type: layout_columns_4
+component_description: SPACER COMPONENT
+field_column_first:
+  paragraph:
+    item_0:
+      type: c_text
+      field_c_advanced_subtitle:
+        value: "NO SPACER"
+        html_tag: h2
+      classy:
+        target_id: dsu_text_position_middle_left
+    item_1:
+      type: c_image
+      field_c_image:
+        image_name: nido-800.jpg
+        image_title: Nido
+    item_2:
+      type: c_spacer
+      field_divider_height: 0
+      field_margin_bottom: 0
+      field_margin_top: 0
+      field_type_of_divider:
+    item_3:
+      type: c_image
+      field_c_image:
+        image_name: nan-800.jpg
+        image_title: Nan
+field_column_second:
+  paragraph:
+    item_0:
+      type: c_text
+      field_c_advanced_subtitle:
+        value: "SPACER - NO DIVIDER LINE"
+        html_tag: h2
+      classy:
+        target_id: dsu_text_position_middle_left
+    item_1:
+      type: c_image
+      field_c_image:
+        image_name: nido-800.jpg
+        image_title: Nido
+    item_2:
+      type: c_spacer
+      field_divider_height: 0
+      field_margin_bottom: 40
+      field_margin_top: 40
+      field_type_of_divider: line
+    item_3:
+      type: c_image
+      field_c_image:
+        image_name: nan-800.jpg
+        image_title: Nan
+field_column_third:
+  paragraph:
+    item_0:
+      type: c_text
+      field_c_advanced_subtitle:
+        value: "SPACER - DIVIDER LINE 3 PTS"
+        html_tag: h2
+      classy:
+        target_id: dsu_text_position_middle_left
+    item_1:
+      type: c_image
+      field_c_image:
+        image_name: nido-800.jpg
+        image_title: Nido
+    item_2:
+      type: c_spacer
+      field_divider_height: 3
+      field_margin_bottom: 40
+      field_margin_top: 40
+      field_type_of_divider: line
+    item_3:
+      type: c_image
+      field_c_image:
+        image_name: nan-800.jpg
+        image_title: Nan
+field_column_fourth:
+  paragraph:
+    item_0:
+      type: c_text
+      field_c_advanced_subtitle:
+        value: "SPACER - FULL WIDTH DIVIDER 8 PTS"
+        html_tag: h2
+      classy:
+        target_id: dsu_text_position_middle_left
+    item_1:
+      type: c_image
+      field_c_image:
+        image_name: nido-800.jpg
+        image_title: Nido
+    item_2:
+      type: c_spacer
+      field_divider_height: 8
+      field_margin_bottom: 40
+      field_margin_top: 40
+      field_type_of_divider: line_full_width
+    item_3:
+      type: c_image
+      field_c_image:
+        image_name: nan-800.jpg
+        image_title: Nan

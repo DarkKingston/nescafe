@@ -1,0 +1,31 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_srh_ingredient
+    - paragraphs.paragraphs_type.srh_ingredient
+    - taxonomy.vocabulary.srh_ingredient
+  enforced:
+    module:
+      - ln_srh_basic
+id: paragraph.srh_ingredient.field_srh_ingredient
+field_name: field_srh_ingredient
+entity_type: paragraph
+bundle: srh_ingredient
+label: 'SRH Ingredient'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      srh_ingredient: srh_ingredient
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

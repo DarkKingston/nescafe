@@ -1,0 +1,12 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - key.key.user_field_encryption
+  module:
+    - real_aes
+id: field_encryption_aes_profile
+label: 'Field Encryption AES profile'
+encryption_method: real_aes
+encryption_key: user_field_encryption
+encryption_method_configuration: {  }

@@ -1,0 +1,6 @@
+ln_qualifio.admin.form:
+  title: LightNest Qualifio
+  description: 'LightNest Qualifio Settings'
+  route_name: ln_qualifio.admin.form
+  parent: dsu_c_core.settings
+  weight: 26

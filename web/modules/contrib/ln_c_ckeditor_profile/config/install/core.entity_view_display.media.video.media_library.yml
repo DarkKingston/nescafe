@@ -1,0 +1,54 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.media_library
+    - field.field.media.video.field_media_in_library
+    - field.field.media.video.field_media_video_embed_field
+    - field.field.media.video.field_show_in_lightbox
+    - field.field.media.video.field_show_in_media_library
+    - image.style.medium
+    - media.type.video
+  module:
+    - image
+id: media.video.media_library
+targetEntityType: media
+bundle: video
+mode: media_library
+content:
+  created:
+    type: timestamp
+    weight: 0
+    region: content
+    label: hidden
+    settings:
+      date_format: medium
+      custom_date_format: ''
+      timezone: ''
+    third_party_settings: {  }
+  thumbnail:
+    type: image
+    label: hidden
+    settings:
+      image_style: medium
+      image_link: ''
+    weight: 1
+    third_party_settings: {  }
+    region: content
+  uid:
+    type: entity_reference_label
+    weight: 2
+    region: content
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+hidden:
+  field_media_in_library: true
+  field_media_video_embed_field: true
+  field_show_in_lightbox: true
+  field_show_in_media_library: true
+  image: true
+  langcode: true
+  name: true
+  search_api_excerpt: true

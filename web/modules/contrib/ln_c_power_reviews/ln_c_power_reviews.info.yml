@@ -1,0 +1,12 @@
+name: 'Lightnest PowerReviews connector'
+package: 'Lightnest Components'
+version: 8.x-1.0.2
+description: 'Adds the integration from Drupal to PowerReviews API.'
+type: module
+core_version_requirement: '^8.9 || ^9'
+dependencies:
+  - 'drupal:field'
+  - 'drupal:options'
+  - 'dsu_c_core:dsu_c_core'
+  - 'paragraphs:paragraphs'
+configure: ln_c_power_reviews.admin_settings_form

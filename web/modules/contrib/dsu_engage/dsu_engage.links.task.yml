@@ -1,0 +1,11 @@
+dsu_engage.admin_settings_form:
+  route_name: dsu_engage.admin_settings_form
+  title: Engage Settings
+  weight: 5
+  base_route: dsu_engage.admin_settings_form
+
+dsu_engage.admin_tool_tips_settings_form:
+  route_name: dsu_engage.admin_tool_tips_settings_form
+  title: Engage ToolTip settings
+  weight: 10
+  base_route: dsu_engage.admin_settings_form

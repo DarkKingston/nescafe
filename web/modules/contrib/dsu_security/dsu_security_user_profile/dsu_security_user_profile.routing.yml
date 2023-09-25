@@ -1,0 +1,24 @@
+# Create a custom URL for user profile update.
+dsu_security_user_profile.edit_my_profile:
+  path: '/my-profile/edit'
+  defaults:
+    _controller: '\Drupal\dsu_security_user_profile\Controller\CurrentUserPathsController::editUserProfile'
+  requirements:
+    _user_is_logged_in: 'TRUE'
+
+# Select roles for changing the user profile path.
+dsu_security_user_profile.settings_form:
+  path: '/admin/config/lightnest/dsu-security-admin-module/profile-update-settings'
+  defaults:
+    _form: '\Drupal\dsu_security_user_profile\Form\SettingsForm'
+    _title: 'LightNest Security: Select Roles where to block UID in Edit page URL'
+  requirements:
+    _permission: 'administer site configuration'
+
+#Create a custom URL for user profile.
+dsu_security_user_profile.my_profile:
+  path: '/my-profile'
+  defaults:
+    _controller: '\Drupal\dsu_security_user_profile\Controller\CurrentUserPathsController::userProfile'
+  requirements:
+    _user_is_logged_in: 'TRUE'

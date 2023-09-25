@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - ln_srh_full
+name: 'SRH Sport'
+vid: srh_sport
+description: ''
+weight: 0

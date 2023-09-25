@@ -1,0 +1,64 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.layout_columns_20.field_column_fifth
+    - field.field.paragraph.layout_columns_20.field_column_first
+    - field.field.paragraph.layout_columns_20.field_column_fourth
+    - field.field.paragraph.layout_columns_20.field_column_second
+    - field.field.paragraph.layout_columns_20.field_column_third
+    - paragraphs.paragraphs_type.layout_columns_20
+  module:
+    - entity_reference_revisions
+id: paragraph.layout_columns_20.default
+targetEntityType: paragraph
+bundle: layout_columns_20
+mode: default
+content:
+  field_column_fifth:
+    type: entity_reference_revisions_entity_view
+    weight: 4
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  field_column_first:
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
+  field_column_fourth:
+    weight: 3
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
+  field_column_second:
+    weight: 1
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
+  field_column_third:
+    weight: 2
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
+hidden:
+  search_api_excerpt: true

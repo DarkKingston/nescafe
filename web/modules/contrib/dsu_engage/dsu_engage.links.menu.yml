@@ -1,0 +1,21 @@
+dsu_engage.index:
+  title: 'Engage Contact'
+  description: Various settings for altering the behavior of Engage modules.
+  parent: dsu_c_core.settings
+  route_name: dsu_engage.index
+  weight: 20
+
+dsu_engage.admin_settings_form:
+  title: 'Engage Settings'
+  route_name: dsu_engage.admin_settings_form
+  description: 'Configure Engage parameters'
+  parent: dsu_engage.index
+  weight: 10
+
+dsu_engage.admin_tool_tips_settings_form:
+  route_name: dsu_engage.admin_tool_tips_settings_form
+  title: 'Engage Tooltip Settings'
+  description: 'Configure for Engage Tooltip settings'
+  parent: dsu_engage.index
+  weight: 15
+

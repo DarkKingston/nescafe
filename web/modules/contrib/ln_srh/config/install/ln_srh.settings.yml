@@ -1,0 +1,9 @@
+author: '1'
+url: 'https://api.aws.nestle.recipes'
+channel_id: ''
+apikey: ''
+market_code: ''
+locales: []
+enable_sync: 1
+interval_time: '1'
+pages_to_sync: '10'

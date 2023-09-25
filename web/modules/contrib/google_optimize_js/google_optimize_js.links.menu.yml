@@ -1,0 +1,5 @@
+google_optimize_js.settings:
+  title: 'Google Optimize'
+  description: 'Administer the Google Optimize Settings.'
+  route_name: google_optimize_js.settings
+  parent: system.admin_config_system

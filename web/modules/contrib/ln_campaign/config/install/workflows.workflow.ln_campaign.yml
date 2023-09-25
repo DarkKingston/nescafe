@@ -1,0 +1,52 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - ln_campaign
+id: ln_campaign
+label: Campaign
+type: ln_campaign_workflows_element
+type_settings:
+  states:
+    ln_campaign_invalid:
+      label: Invalid
+      weight: 2
+    ln_campaign_paid:
+      label: Paid
+      weight: 3
+    ln_campaign_pending:
+      label: Pending
+      weight: 0
+    ln_campaign_valid:
+      label: Valid
+      weight: 1
+  transitions:
+    ln_campaign_invalidation:
+      label: Invalidation
+      from:
+        - ln_campaign_paid
+        - ln_campaign_pending
+        - ln_campaign_valid
+      to: ln_campaign_invalid
+      weight: 1
+    ln_campaign_validation:
+      label: Validation
+      from:
+        - ln_campaign_pending
+      to: ln_campaign_valid
+      weight: 2
+    ln_campaign_paid:
+      label: Paid
+      from:
+        - ln_campaign_valid
+      to: ln_campaign_paid
+      weight: 3
+    ln_campaign_pending:
+      label: Pending
+      from:
+        - ln_campaign_invalid
+        - ln_campaign_paid
+        - ln_campaign_valid
+      to: ln_campaign_pending
+      weight: 4
+  initial_state: ln_campaign_pending

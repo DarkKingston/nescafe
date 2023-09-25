@@ -1,0 +1,6 @@
+entity.ln_hreflang.multiple_delete_confirm:
+  path: '/admin/config/lightnest/ln-seo-hreflang/delete'
+  defaults:
+    _form: '\Drupal\ln_seo_hreflang\Form\LnHreflangDeleteMultipleForm'
+  requirements:
+    _permission: 'administer hreflang content'

@@ -1,0 +1,61 @@
+ln_notification.serviceworker:
+  path: '/firebase-messaging-sw.js'
+  defaults:
+    _title: 'Service Worker'
+    _controller: '\Drupal\ln_notification\Controller\FcmController::serviceWorker'
+  requirements:
+    _permission: 'access content'
+
+ln_notification.manifest:
+  path: /manifest.json
+  defaults:
+    _controller: '\Drupal\ln_notification\Controller\FcmController::manifest'
+  requirements:
+    _access: 'TRUE'
+
+ln_notification.subscription:
+  path: '/ln-notification/subscription'
+  defaults:
+    _controller: '\Drupal\ln_notification\Controller\FcmController::subscription'
+  methods:
+    - POST
+    - PATCH
+    - DELETE
+  requirements:
+    # The Push API subscriptions can be created for anonymous users too. If
+    # someone decides to share this then we'll bother them by our notifications.
+    _access: 'TRUE'
+
+entity.fcm_subscription.collection:
+  path: '/admin/config/lightnest/ln-notification'
+  defaults:
+    _title: 'Lightnest Firebase subscriptions'
+    _entity_list: fcm_subscription
+  requirements:
+    _permission: 'administer fcm subscriptions'
+  options:
+    _admin_route: TRUE
+
+ln_notification.fcm_form_add:
+  path: '/admin/content/fcm-notification/add'
+  defaults:
+    _controller: '\Drupal\ln_notification\Controller\FcmController::form'
+    _title: 'Add Firebase Notification'
+  requirements:
+    _permission: 'administer fcm notifications'
+  options:
+    _admin_route: TRUE
+
+ln_notification.fcm_form_edit:
+  path: '/admin/content/fcm-notification/{notification}/edit'
+  defaults:
+    _controller: '\Drupal\ln_notification\Controller\FcmController::form'
+    _title: 'Edit Firebase Notification'
+  requirements:
+    _permission: 'administer fcm notifications'
+  options:
+    _admin_route: TRUE
+    parameters:
+      notification:
+        type: entity:notification
+

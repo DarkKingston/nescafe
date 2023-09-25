@@ -1,0 +1,5 @@
+administer apple registration entities:
+  title: 'Administer Apple registration entities'
+  description: 'Allow to access the administration form to configure Apple registration entities.'
+  restrict access: true
+

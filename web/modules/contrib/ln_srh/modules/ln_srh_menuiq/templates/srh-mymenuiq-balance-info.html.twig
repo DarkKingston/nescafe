@@ -1,0 +1,11 @@
+{% for id, item in balance %}
+  <div class="title-wrapper">
+    <div class="color" style="background-color: {{ balance[id].color }}"></div>
+    {% if balance[id].title %}
+      <div class="title">{{ balance[id].title|t }} ({{ balance[id].min }} - {{ balance[id].max }})</div>
+    {% endif %}
+  </div>
+  {% if balance[id].description.value %}
+    <div class="description">{{ balance[id].description.value|t }}</div>
+  {% endif %}
+{% endfor %}

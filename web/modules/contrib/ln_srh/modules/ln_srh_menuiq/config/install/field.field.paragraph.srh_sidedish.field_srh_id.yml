@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_srh_id
+    - paragraphs.paragraphs_type.srh_sidedish
+  enforced:
+    module:
+      - ln_srh_menuiq
+id: paragraph.srh_sidedish.field_srh_id
+field_name: field_srh_id
+entity_type: paragraph
+bundle: srh_sidedish
+label: 'SRH Id'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

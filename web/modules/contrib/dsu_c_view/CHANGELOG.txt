@@ -1,0 +1,11 @@
+# Changelog
+-----------
+
+## 1.2.1
+- Remove drupal/text_summary_options unused dependency
+
+## 1.2.0
+- Update configs for new dsu_c_text version
+
+## 1.1.0
+- Refactor Component Core: Remove id field for generic one.

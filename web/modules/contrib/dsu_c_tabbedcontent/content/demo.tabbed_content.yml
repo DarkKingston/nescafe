@@ -1,0 +1,67 @@
+type: c_tabbed_content
+component_description: Tabbed content
+field_c_tab_item:
+  paragraph:
+    item_0:
+      type: c_tab_item
+      field_column_first:
+        paragraph:
+          item_0:
+            type: c_text
+            field_c_advanced_title:
+              value: "Cortado organic sit filter"
+              html_tag: h1
+            field_c_advanced_subtitle:
+              value: "Affogato dark extra americano instant cultivar shop latte crema sugar turkish"
+              html_tag: h2
+            field_c_text: "Spoon sit whipped aged pumpkin spice foam id cinnamon et whipped macchiato. Medium cup body half and half seasonal cream coffee sweet. Mazagran french press, sweet viennese plunger pot arabica beans whipped. Sugar id, medium, dark robust to go espresso café au lait.
+
+            Est, et brewed, saucer fair trade a robusta whipped plunger pot. So to go galão dark coffee strong white spoon medium. Id qui crema galão in, strong cultivar in single origin rich. Saucer caramelization steamed sit steamed, as lungo redeye cultivar breve chicory lungo.
+
+            Cortado organic sit filter, cup organic irish at eu mazagran dark carajillo. Affogato dark extra americano instant cultivar shop latte crema sugar turkish. Organic, sweet percolator id cinnamon et crema organic siphon. Et coffee cup, extra et robusta aged doppio decaffeinated robusta."
+      field_c_title: Tab 1
+      field_c_image:
+        image_name: icon-shopping-cart.jpg
+        image_title: shopping cart
+    item_1:
+      type: c_tab_item
+      field_column_first:
+        paragraph:
+          item_0:
+            type: c_text
+            field_c_advanced_title:
+              value: "Black chicory percolator"
+              html_tag: h1
+            field_c_advanced_subtitle:
+              value: "Robust aged at caramelization breve aromatic, crema variety coffee"
+              html_tag: h2
+            field_c_text: "Coffee galão affogato flavour, variety, brewed, extra aged a espresso, fair trade aftertaste cinnamon, ut, body redeye barista that shop.
+
+            Irish white, cup et coffee, robust aged at caramelization breve aromatic, crema variety coffee java kopi-luwak breve roast, caffeine coffee so coffee dripper. Affogato chicory, so, single shot froth, rich single origin steamed seasonal steamed, sweet carajillo aromatic cortado ut, cup, spoon turkish coffee, coffee dark qui instant redeye. Iced pumpkin spice wings foam dripper americano, a, sweet macchiato arabica kopi-luwak, percolator mug, caramelization, ut blue mountain cup crema id foam.
+
+            Black chicory percolator decaffeinated turkish grinder to go, beans caffeine qui, aged caffeine medium skinny qui filter, fair trade french press cup sit affogato sweet. Cup redeye, qui, affogato, acerbic, at chicory robust americano, spoon, plunger pot, dripper coffee lungo qui macchiato."
+      field_c_image:
+        image_name: icon-image.jpg
+        image_title: Image icon
+      field_c_title: Tab 2
+    item_2:
+      type: c_tab_item
+      field_column_first:
+        paragraph:
+          item_0:
+            type: c_text
+            field_c_advanced_title:
+              value: "Whipped froth acerbic black mocha"
+              html_tag: h1
+            field_c_advanced_subtitle:
+              value: "A mazagran, so, dripper extraction breve viennese variety"
+              html_tag: h2
+            field_c_text: "Extraction affogato, irish, as single origin espresso in mazagran. Whipped froth acerbic black mocha barista half and half. Single origin filter extra, so bar, seasonal that flavour grounds mug medium. Percolator sweet latte irish extraction acerbic blue mountain cup single shot.
+
+            Extra, sweet doppio, black saucer so pumpkin spice, at percolator beans flavour americano. Extraction, foam affogato, crema sit id seasonal black sugar. Aged beans percolator cappuccino extraction cultivar grounds. Fair trade, skinny rich, percolator, robust foam wings arabica extraction.
+
+            Dark skinny, turkish, arabica affogato single origin instant arabica. A robust, wings at cortado white milk. A mazagran, so, dripper extraction breve viennese variety. Doppio dripper eu that ut spoon iced at to go foam."
+      field_c_image:
+        image_name: gerber-organic.jpg
+        image_title: Gerber Organic
+      field_c_title: Tab 3

@@ -1,0 +1,77 @@
+# Changelog
+
+## 1.8.0
+- Create settings field for paragraphs configs
+- Fix metatag dependency
+
+## 1.7.0
+- Update slick dependency for accessibility improvement
+
+
+## 1.6.0
+- Remove old classys
+- Update content for new dsu_c_text version
+
+## 1.5.0
+- Refactor Component Core General Fields
+- Don't allow select child components on component page
+
+## 1.4.0
+- Added paragraph features too enhance editorial experience.
+- Go to admin/config/development/features/edit/dsu_c_slider
+- Import latest configuration.
+- t() added for translation.
+
+## 1.3.10 for Drupal 9
+- We enable the paragraphs_previewer for core module.
+- Enable or revert the features config of dsu_c_core module
+- Specifically we changed in dsu_component_page content type in the field of component set manage form display these configs
+    - field_components:
+    type: paragraphs_previewer
+    settings:
+      title: Component
+      title_plural: Component
+      edit_mode: closed
+      closed_mode: preview
+      autocollapse: all
+      closed_mode_threshold: '0'
+      add_mode: modal
+      form_display_mode: default
+      default_paragraph_type: _none
+      features:
+        duplicate: duplicate
+        collapse_edit_all: collapse_edit_all
+
+## 1.3.9 for Drupal 9
+- We enable the Twig Tweak and ImageWidgetCrop for core module.
+
+## 1.3.8 for Drupal 9
+- We enable the paragraph editor feature for core module.
+- Please go to extend list and enable dsu_c_extend_component
+- Also enable or revert the features config of dsu_c_core module
+- Specifically we changed in dsu_component_page content type in the field of component set manage form display these configs
+    - widget paragraph experimental
+     title: Component
+      title_plural: Component
+      edit_mode: closed
+      closed_mode: preview
+      autocollapse: none
+      closed_mode_threshold: 0
+      add_mode: modal
+      form_display_mode: default
+      default_paragraph_type: _none
+      features:
+        add_above: add_above
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+
+
+## 1.x for Drupal 9
+
+- Enable the field_group module if not enabled.
+- Go to '/admin/config/development/features/diff/' and import the diff.
+    - Update the widget of 'CTA Button URL' field from 'Link (with attributes)' to 'Link with target' on 'Manage form display'.
+- Uninstall the link_target module.
+
+##Validation
+- Add the component on a page and validate.

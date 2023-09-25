@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_button_color
+    - paragraphs.paragraphs_type.c_link
+    - taxonomy.vocabulary.color
+id: paragraph.c_link.field_button_color
+field_name: field_button_color
+entity_type: paragraph
+bundle: c_link
+label: 'Button Color'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      color: color
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

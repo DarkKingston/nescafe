@@ -1,0 +1,269 @@
+<?php
+	/**
+	 * @file    Hooks for this module
+	 */
+
+	use Drupal\gigya\Helper\GigyaHelper;
+	use Drupal\gigya_raas\Helper\GigyaRaasHelper;
+	use Drupal\gigya_user_deletion\Helper\GigyaUserDeletionHelper;
+
+	/**
+	 * Implements hook_page_attachments().
+	 *
+	 * @param array $attachments
+	 */
+	function gigya_user_deletion_page_attachments(array &$attachments) {
+		Drupal::moduleHandler()->invoke('gigya_user_deletion', 'job_cron');
+	}
+
+	function delete_uid_queue_name() {
+		return 'delete_uid_queue';
+	}
+
+	/**
+	 * Implements hook_cron().
+	 */
+	function gigya_user_deletion_cron() {
+		$enable_job = Drupal::config('gigya_user_deletion.job')->get('gigya_user_deletion.enableJob');
+
+		/* Get counters from DB or set 0 if null */
+		$counter_succeeded = Drupal::state()->get('gigya_deletion_job.counter_succeeded', 0);
+		$counter_failed = Drupal::state()->get('gigya_deletion_job.counter_failed', 0);
+
+		$success_message = "User successfully deleted from CMS - Drupal UID: @drupalUid, Gigya UID: @gigyaUid";
+		if ($enable_job)
+		{
+			Drupal::logger('gigya_user_deletion')->info('Gigya user deletion cron started');
+
+			$gigyaHelper = new GigyaHelper();
+			$gigyaRaasHelper = new GigyaRaasHelper();
+			$userDeletionHelper = new GigyaUserDeletionHelper();
+
+			/* Job frequency */
+			$job_frequency = Drupal::config('gigya_user_deletion.job')->get('gigya_user_deletion.jobFrequency');
+			/* Deletion type */
+			$deletion_type = Drupal::config('gigya_user_deletion.job')->get('gigya_user_deletion.deletionType');
+			/* Request time */
+			$request_time = Drupal::time()->getRequestTime();
+			/* Get last run */
+			$last_run = Drupal::state()->get('gigya_deletion_job.last_run', 0);
+			
+			/* Create new queues */
+			$queue_file = Drupal::queue('job_queue_file');
+			$queue_file->createQueue();
+			$queue_users = Drupal::queue('job_queue_users');
+			$queue_users->createQueue();
+
+			/* If x seconds passed since last time add file to queue_file */
+			if (($request_time - $last_run) > $job_frequency)
+			{
+				/* Get files from S3 */
+				$files = $userDeletionHelper->getFileList();
+				$queue_file = Drupal::queue('job_queue_file');
+				$last_run = Drupal::state()->get('gigya_deletion_job.last_run', 0);
+
+				/* Add files to queue */
+				$files_added = array();
+				if (!empty($files))
+				{
+					foreach ($files as $file) {
+						$files_processed = Drupal::database()
+							->select('gigya_user_deletion')
+							->fields('gigya_user_deletion', [
+								'filename',
+							])
+							->orderBy('filename', 'ASC')
+							->execute()
+							->fetchCol();
+
+						/* Add item - file to queue_file and DB */
+						$file_name = ((array) $file)['Key'];
+						if (!in_array($file_name, $files_processed))
+						{
+							if (!empty(pathinfo($file_name)['extension']) and pathinfo($file_name)['extension'] === 'csv') {
+								$queue_file->createItem($file);
+								$files_added[] = $file_name;
+								try {
+									/* Insert processed files into DB */
+									Drupal::database()
+										->merge('gigya_user_deletion')
+										->key('filename', $file_name)
+										->insertFields([
+											'filename'       => $file_name,
+											'time_processed' => time(),
+										])
+										->updateFields([
+											'time_processed' => time(),
+										])
+										->execute();
+								} catch (\Exception $e) {
+									Drupal::logger('gigya_user_deletion')
+										->error('Unable to insert file name: ' . $file_name . ' to database.');
+								}
+							}
+						}
+					}
+				}
+
+				/* Save counter value on DB and add to log */
+				$queue_files_counter = $queue_file->numberOfItems();
+				Drupal::state()
+				  ->set('gigya_deletion_job.queue_files_counter', $queue_files_counter);
+				Drupal::logger('gigya_user_deletion')
+				  ->info($queue_files_counter . ' files added to the queue on ' . date('Y-m-d \a\t H:i:s', Drupal::time()
+					  ->getRequestTime()) . ': ' . implode(', ', $files_added));
+			}
+
+			/* If queue_file is not empty take item (file) and add all users to queue_users */
+			$max_retry_attempts = $retry_attempts = 10;
+			while ($queue_file->numberOfItems() > 0 and $retry_attempts > 0) {
+				$item_file = $queue_file->claimItem();
+
+				if ($item_file !== FALSE) {
+					$item_array = (array) $item_file;
+					$file       = $item_array['data']['Key'];
+					if ($file !== NULL) {
+						$accounts = $userDeletionHelper->getUsers($file);
+						foreach ($accounts as $account) {
+							foreach ($account as $gigya_uid) {
+								/* Add item - account to queue_users */
+								$item_user = ['gigya_uid' => $gigya_uid];
+								$queue_users->createItem($item_user);
+							}
+						}
+					}
+				}
+				else {
+					$retry_attempts--;
+
+					if ($retry_attempts === 0) {
+						Drupal::logger('gigya_user_deletion')->error('Error retrieving files or users to delete from the Drupal queue after '
+							. $max_retry_attempts
+							. ' retries. Please try manually emptying the queue and re-running the job. If this problem persists, please contact support.');
+					}
+				}
+
+				/* Remove the file from the queue_file */
+				$queue_file->deleteItem($item_file);
+			}
+
+			/* Update last run when file queue is empty */
+			Drupal::state()->set('gigya_deletion_job.last_run', $request_time);
+
+			/* Claim uid from queue_users and delete it */
+			while ($item_user = $queue_users->claimItem())
+			{
+					$item_array = (array) $item_user;
+
+					$uid = $item_array['data']['gigya_uid'];
+					if ($user = $gigyaRaasHelper->getDrupalUidByGigyaUid($uid)) { /* Gigya user found in Drupal */
+						try {
+							$drupal_uid = $user->get('uid')->value;
+							if ($deletion_type === 'hard') {
+								Drupal::entityTypeManager()->getStorage('user')->load($drupal_uid)->delete();
+								$counter_succeeded++;
+								Drupal::state()
+								  ->set('gigya_deletion_job.counter_succeeded', $counter_succeeded);
+								Drupal::logger('gigya_user_deletion')
+								  ->notice($success_message, [
+									'@drupalUid' => $drupal_uid,
+									'@gigyaUid' => $uid,
+								  ]);
+							}
+							elseif ($deletion_type === 'soft') {
+								Drupal::service('user.data')
+								  ->set('gigya_user_deletion', $drupal_uid, 'is_deleted', TRUE);
+								Drupal::service('user.data')
+								  ->set('gigya_user_deletion', $drupal_uid, 'deleted_time', time());
+								$counter_succeeded++;
+								Drupal::state()
+									->set('gigya_deletion_job.counter_succeeded', $counter_succeeded);
+							}
+						} catch (\Exception $e) {
+							Drupal::logger('gigya_user_deletion')
+							  ->error('Failed to delete UID ' . $user->get('uid')->value . ' from CMS with error - ' . $e);
+							$counter_failed++;
+							Drupal::state()
+							  ->set('gigya_deletion_job.counter_failed', $counter_failed);
+						}
+					}
+					else { /* Gigya user not found in Drupal */
+						Drupal::logger('gigya_user_deletion')
+						  ->warning('Failed to delete UID ' . $uid . ' from CMS with error - user does not exist');
+						$counter_failed++;
+						Drupal::state()
+						  ->set('gigya_deletion_job.counter_failed', $counter_failed);
+					}
+
+					$queue_users->deleteItem($item_user);
+			}
+
+			if (($queue_users->numberOfItems() == 0) && ($queue_file->numberOfItems() == 0)) {
+				$message_start = 'The user deletion job scheduled to run for ' . $_SERVER['SERVER_NAME'] . ' on ' . date('F j, Y \a\t H:i:s', $request_time);
+
+				/* If full or partial success */
+				if ($counter_succeeded > 0) {
+					$total = $counter_failed + $counter_succeeded;
+
+					/* If completed with errors */
+					if ($counter_failed > 0) {
+						$subject = 'User deletion job completed with errors';
+						$message = $message_start . ' completed with errors. ' . $counter_succeeded . ' out of ' . $total . ' users were deleted.';
+						Drupal::logger('gigya_user_deletion')->warning($message);
+					}
+					/* Send email on success */
+					else {
+						$subject = 'Users deleted successfully';
+						$message = $message_start . ' completed successfully. ' . $counter_succeeded . ' out of ' . $total . ' users were deleted.';
+						Drupal::logger('gigya_user_deletion')->info($message);
+					}
+
+					$to = Drupal::config('gigya_user_deletion.job')
+						->get('gigya_user_deletion.emailOnSuccess');
+					$userDeletionHelper->sendEmail($subject, $message, $to);
+				}
+				/* If job failed, send email (send email on failure) */
+				elseif ($counter_failed > 0) {
+					$subject = 'Failed to delete users';
+					$message = $message_start . ' has failed. No users were deleted or marked for deletion.';
+
+					Drupal::logger('gigya_user_deletion')->error($message);
+
+					$to = Drupal::config('gigya_user_deletion.job')
+						->get('gigya_user_deletion.emailOnFailure');
+					$userDeletionHelper->sendEmail($subject, $message, $to);
+				}
+				/* No records processed */
+				else {
+					$message = $message_start . ' has finished running. No users were processed: either no new users were detected, or not enough time passed between runs.';
+					Drupal::logger('gigya_user_deletion')->info($message);
+				}
+
+				/* Reset counters on DB */
+				Drupal::state()->set('gigya_deletion_job.counter_succeeded', 0);
+				Drupal::state()->set('gigya_deletion_job.counter_failed', 0);
+			} else { /* There is a problem with processing the queue */
+				Drupal::logger('gigya_user_deletion')
+					->warning('Gigya user deletion cron finished running, but still has records left to process. Either the queue was too large or there are corrupted items that cannot be processed. Please run the cron again. If the problem persists, please check the Drupal queue for issues. Items remaining in the user queue: ' . $queue_users->numberOfItems() . '. Items remaining in the file queue: ' . $queue_file->numberOfItems() . '.');
+			}
+		}
+		else {
+			Drupal::logger('gigya_user_deletion')
+				->warning('Gigya user deletion cron installed but not enabled. No action taken.');
+		}
+	}
+
+	/**
+	 * Implement hook_mail()
+	 *
+	 * {@inheritdoc}
+	 */
+	function gigya_user_deletion_mail($key, &$message, $params) {
+		$options = array(
+			'langcode' => $message['langcode'],
+		);
+
+		$message['from'] = Drupal::config('system.site')->get('mail');
+		$message['subject'] = t($params['subject'], array(), $options);
+		$message['body'][] = $params['message'];
+	}

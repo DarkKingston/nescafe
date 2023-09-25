@@ -1,0 +1,22 @@
+uuid: 03504269-f5c7-46e7-8c21-5d05ca0dd391
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_show_in_lightbox
+    - media.type.external_video
+id: media.external_video.field_show_in_lightbox
+field_name: field_show_in_lightbox
+entity_type: media
+bundle: external_video
+label: 'Show In Lightbox'
+description: ''
+required: false
+translatable: false
+default_value:
+  - value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

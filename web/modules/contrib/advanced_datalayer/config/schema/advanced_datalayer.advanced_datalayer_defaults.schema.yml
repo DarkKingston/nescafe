@@ -1,0 +1,15 @@
+advanced_datalayer.advanced_datalayer_defaults.*:
+  type: config_entity
+  label: 'Advanced datalayer defaults'
+  mapping:
+    id:
+      type: string
+      label: 'ID'
+    label:
+      type: label
+      label: 'Type'
+    tags:
+      type: sequence
+      label: 'Tags'
+      sequence:
+        type: advanced_datalayer.advanced_datalayer_tag.[%key]

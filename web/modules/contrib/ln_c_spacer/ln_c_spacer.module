@@ -1,0 +1,64 @@
+<?php
+
+/**
+ * @file
+ * Contains ln_c_spacer.module.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function ln_c_spacer_theme($existing, $type, $theme, $path) {
+  return [
+    'paragraph__c_spacer' => [
+      'template' => 'paragraph--c-spacer',
+      'base hook' => 'paragraphs',
+    ],
+  ];
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for paragraph.html.twig.
+ */
+function ln_c_spacer_preprocess_paragraph(&$variables) {
+  if ($variables['paragraph']->getType() == 'c_spacer') {
+    $variables['#attached']['library'][] = 'ln_c_spacer/spacer';
+  }
+}
+
+/**
+ * Implements hook_field_widget_WIDGET_TYPE_form_alter().
+ */
+function ln_c_spacer_field_widget_entity_reference_paragraphs_form_alter(array &$element, &$form_state, $context) {
+  if ($element['#paragraph_type'] == 'c_spacer') {
+    $field_name = $element['subform']['field_type_of_divider'];
+	// Dynamically get field name.
+    $selector = sprintf(':input[name="%s[%d][subform][field_type_of_divider]"]', $field_name['#parents'][0], $field_name['#parents'][1]);
+    // Hide field_divider_height/line_height field. If devider type is none/blank.
+	$element['subform']['field_divider_height']['#states'] = [
+		'invisible' => [$selector => ['value' => '_none'],],
+    ];
+  }
+}
+
+/**
+ * Implements hook_ln_sample_content().
+ */
+function ln_c_spacer_ln_sample_content() {
+    /** @var \Drupal\Core\Extension\ModuleHandlerInterface $module_handler */
+    $module_handler = \Drupal::service('module_handler');
+    /** @var \Drupal\Core\Extension\Extension $module_object */
+    $module_object = $module_handler->getModule(basename(__FILE__, '.module'));
+    $module_name = $module_object->getName();
+
+    $source = drupal_get_path('module', $module_name) . '/content';
+    /** @var \Drupal\Core\File\FileSystemInterface $file_system */
+    $file_system = \Drupal::service('file_system');
+    $files = $file_system->scanDirectory($source, '/demo.*\.(yml)$/');
+    $yaml_file_path = NULL;
+    foreach ($files as $file) {
+        $yaml_file_path[] = '/content/' . $file->filename;
+    }
+
+    return $yaml_file_path;
+}

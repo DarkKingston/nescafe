@@ -1,0 +1,12 @@
+.paragraph--type--c-spacer .spacer {
+  display: block;
+  overflow: hidden;
+  clear: both;
+  margin: 0 auto;
+  width: 100%;
+  background: #aaa;
+}
+
+.paragraph--type--c-spacer .line-short {
+  width: 70%;
+}

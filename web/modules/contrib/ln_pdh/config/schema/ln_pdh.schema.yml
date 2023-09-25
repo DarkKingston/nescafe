@@ -1,0 +1,49 @@
+ln_pdh.settings:
+  type: config_object
+  mapping:
+    auth:
+      type: mapping
+      mapping:
+        endpoint_url:
+          type: uri
+          label: PDH endpoint URL
+        client:
+          type: string
+          label: PDH client
+        country:
+          type: string
+          label: PDH country
+        certificate_path:
+          type: string
+          label: PDH certificate path
+        passphrase:
+          type: string
+          label: PDH passphrase
+        brand_id:
+          type: string
+          label: Brand ID
+        langcode:
+          type: string
+          label: Langcode
+    sync:
+      type: mapping
+      mapping:
+        status:
+          type: boolean
+          label: PDH sync status
+        cron_interval:
+          type: integer
+          label: PDH sync cron interval
+    map:
+      type: sequence
+      orderby: key
+      sequence:
+        type: mapping
+        label: 'Fields'
+        mapping:
+          enabled:
+            type: boolean
+          source:
+            type: string
+          destination:
+            type: string

@@ -1,0 +1,8 @@
+{
+  "name": "lightnest/dsu_c_entitycycle",
+  "type": "drupal-module",
+  "require": {
+    "drupal/options_table": "^2.0",
+    "drupal/core": "^8 || ^9"
+  }
+}

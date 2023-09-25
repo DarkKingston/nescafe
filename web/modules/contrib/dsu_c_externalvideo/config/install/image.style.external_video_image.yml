@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: external_video_image
+label: 'External video image (1440 X 720)'
+effects:
+  3bf9773e-9b7e-4917-ba9e-79277b14868e:
+    uuid: 3bf9773e-9b7e-4917-ba9e-79277b14868e
+    id: focal_point_scale_and_crop
+    weight: 2
+    data:
+      width: 1440
+      height: 720
+      crop_type: focal_point

@@ -1,0 +1,30 @@
+gallery:
+  version: 1.x
+  css:
+    component:
+      css/dsu_c_gallery.css: {}
+  js:
+    'js/dsu_c_gallery.js': {}
+  dependencies:
+    - core/drupal
+    - core/jquery
+    - slick/slick
+    - slick/slick.theme
+
+gallery-item:
+  version: 1.x
+  css:
+    component:
+      css/dsu_c_gallery_item.css: {}
+
+dsu-gallery:
+  version: 1.x
+  css:
+    component:
+      css/dsu_gallery.css: {}
+  js:
+    'js/dsu_gallery.js': {}
+  dependencies:
+    - core/drupal
+    - core/jquery
+    - slick/slick.theme

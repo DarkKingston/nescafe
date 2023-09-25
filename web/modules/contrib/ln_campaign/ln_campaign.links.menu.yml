@@ -1,0 +1,10 @@
+entity.ln_campaign.collection:
+  title: 'Campaign'
+  parent: system.admin_content
+  description: 'Manage and CRUD actions on Campaign.'
+  route_name: entity.ln_campaign.collection
+entity.ln_campaign_type.collection:
+  title: 'Campaign types'
+  parent: system.admin_structure
+  description: 'Manage and CRUD actions on Campaign type.'
+  route_name: entity.ln_campaign_type.collection

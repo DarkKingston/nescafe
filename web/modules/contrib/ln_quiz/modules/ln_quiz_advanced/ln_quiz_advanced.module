@@ -1,0 +1,29 @@
+<?php
+
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+
+/**
+ * Implements hook_ENTITY_TYPE_view_alter().
+ */
+function ln_quiz_advanced_paragraph_view_alter(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display) {
+  if($entity->bundle() == 'quiz'){
+    $build['#attached']['library'][] = 'ln_quiz_advanced/quiz-advanced';
+  }
+}
+
+/**
+ * Implements hook_module_preinstall().
+ *
+ * Allow config to be rewritten before a module is installed.
+ */
+function ln_quiz_advanced_module_preinstall($module) {
+  \Drupal::service('dsu_core.config_replace')->rewriteModuleConfig($module, 'rewrite');
+}
+
+/**
+ * Implements hook_module_preuninstall().
+ */
+function ln_quiz_advanced_module_preuninstall($module) {
+  \Drupal::service('dsu_core.config_replace')->rewriteModuleConfig($module, 'original');
+}

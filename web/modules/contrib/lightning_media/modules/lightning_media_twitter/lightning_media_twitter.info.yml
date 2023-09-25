@@ -1,0 +1,13 @@
+name: 'Media Twitter'
+core_version_requirement: '^8.9 || ^9.0.1 || ^10'
+type: module
+package: Lightning
+description: 'Twitter support for Lightning Media.'
+dependencies:
+  - lightning_media:lightning_media
+  - media_entity_twitter:media_entity_twitter
+
+# Information added by Drupal.org packaging script on 2022-11-23
+version: '8.x-4.8'
+project: 'lightning_media'
+datestamp: 1669230592

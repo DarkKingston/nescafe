@@ -1,0 +1,56 @@
+langcode: en
+status: true
+config_replace: replace
+dependencies:
+  config:
+    - field.field.paragraph.srh_step.field_c_text
+    - field.field.paragraph.srh_step.field_srh_tips
+    - paragraphs.paragraphs_type.srh_step
+  enforced:
+    module:
+      - ln_srh_basic
+  module:
+    - ds
+    - entity_reference_revisions
+    - ln_srh
+    - media
+    - text
+third_party_settings:
+  ds:
+    layout:
+      id: srh_two_columns_staked_footer
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        label: ''
+    regions:
+      top: {}
+      footer:
+        - field_c_text
+        - field_srh_tips
+id: paragraph.srh_step.default
+targetEntityType: paragraph
+bundle: srh_step
+mode: default
+content:
+  field_c_text:
+    weight: 4
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: footer
+  field_srh_tips:
+    type: entity_reference_revisions_entity_view
+    weight: 5
+    region: footer
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings:
+      ds:
+        ds_limit: ''
+hidden:
+  search_api_excerpt: true

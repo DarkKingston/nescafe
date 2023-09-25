@@ -1,0 +1,17 @@
+{
+  "name": "drupal/google_optimize_js",
+  "description": "A light weight drop-in implementation of Google Optimize via the optimize.js library.",
+  "type": "drupal-module",
+  "license": "GPL-2.0-or-later",
+  "minimum-stability": "stable",
+  "homepage": "https://drupal.org/project/google_optimize_js",
+  "authors": [
+    {
+      "name": "Luke Leber",
+      "email": "lukeleber@gmail.com"
+    }
+  ],
+  "require": {
+    "drupal/core": "^8.8 || ^9"
+  }
+}

@@ -1,0 +1,40 @@
+<?php
+
+/**
+ * @file
+ * Hook implementations for the Alkemics module.
+ */
+
+use Drupal\ln_alkemics\Controller\Importer;
+
+/**
+ * Implements hook_cron().
+ */
+function ln_alkemics_cron() {
+
+  // Alkemics Cron queue jobs.
+  $config = Drupal::service('config.factory')->getEditable('ln_alkemics.settings');
+
+  // Get activate cron toggle options value.
+  $activeCron = $config->get('ln_alkemics.alkemics_periodic_import_time_interval');
+
+  // Check last interval time.
+  $interval = $config->get('ln_alkemics.alkemics_connect_interval');
+  $last_run = Drupal::state()->get('ln_alkemics.next_execution', time() - $interval - 1);
+
+  // Updated last cron and added in existing queue.
+  if ($activeCron == 1 && ($last_run <= time() - $interval)) {
+
+    // Disable Server indexing.
+    $config->set('ln_alkemics.alkemics_indexing_server', '')->save();
+    Importer::toggleSolrSearchIndexingServer(FALSE);
+
+    $queue = Drupal::queue('syncronizer_alkemics_queue');
+    Drupal::logger('AlkemicsLogger')->notice('Job created');
+    $item = 1;
+    $queue->createItem($item);
+
+    // Set for next execution queue.
+    Drupal::state()->set('ln_alkemics.next_execution', time() + $interval);
+  }
+}

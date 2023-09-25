@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies: {  }
+id: text_position
+label: 'Text position'
+multiple: false
+bundles:
+  - all
+classys:
+  - dsu_text_position_bottom_center
+  - dsu_text_position_bottom_left
+  - dsu_text_position_bottom_right
+  - dsu_text_position_middle_center
+  - dsu_text_position_middle_left
+  - dsu_text_position_middle_right
+  - dsu_text_position_top_center
+  - dsu_text_position_top_left
+  - dsu_text_position_top_right

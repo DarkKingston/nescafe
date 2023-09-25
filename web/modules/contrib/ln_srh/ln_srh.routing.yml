@@ -1,0 +1,43 @@
+ln_srh.config:
+  path: '/admin/config/lightnest/srh'
+  defaults:
+    _form: '\Drupal\ln_srh\Form\SRHConnectionSettings'
+    _title: 'LightNest SRH Configuration'
+  requirements:
+    _permission: 'access administration pages'
+ln_srh.mapping:
+  path: '/admin/config/lightnest/srh/recipe-mapping'
+  defaults:
+    _form: '\Drupal\ln_srh\Form\SRHFieldMapping'
+    _title: 'SRH Recipe Field Mapping'
+  requirements:
+    _permission: 'access administration pages'
+ln_srh.sync:
+  path: '/node/{node}/srh-sync'
+  defaults:
+    _form: '\Drupal\ln_srh\Form\SRHSync'
+    _title: 'Confirm Syncronization Recipe'
+  options:
+    _node_operation_route: TRUE
+    parameters:
+      node:
+        type: entity:node
+  requirements:
+    _permission: 'access administration pages'
+    _entity_bundles: node:srh_recipe
+ln_srh.sync_recipes:
+  path: '/admin/config/lightnest/srh/sync-recipes'
+  defaults:
+    _form: '\Drupal\ln_srh\Form\SRHSyncRecipes'
+    _title: 'SRH Sync Recipes'
+  requirements:
+    _permission: 'access administration pages'
+ln_srh.go_recipe:
+  path: '/goSRH/{srh_id}'
+  defaults:
+    _controller: '\Drupal\ln_srh\Controller\SRHController::goSRH'
+    _title: 'Go SRH Recipe'
+  requirements:
+    _permission: 'access content'
+
+

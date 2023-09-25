@@ -1,0 +1,55 @@
+.paragraph--type--dsu-tint {
+  --color-light: #fff;
+  --color-dark: #333;
+  --text-align-x: left;
+  --text-color: var(--color-dark);
+  --bg-color: var(--color-light);
+  --spacing: 1.5rem;
+  --wrapper-margin-right: auto;
+  --wrapper-margin-left: 0;
+  background-color: var(--bg-color);
+  padding: var(--spacing);
+}
+.paragraph--type--dsu-tint.white-text {
+  --text-color: var(--color-light);
+  --bg-color: var(--color-dark);
+}
+
+.paragraph--type--dsu-tint .pager .page-item.disabled {
+  display: none;
+}
+
+.paragraph--type--dsu-tint .pager .page-item .page-link {
+  color: var(--text-color);
+  background-color: var(--bg-color);
+}
+
+.paragraph--type--dsu-tint.horizontal_position_center {
+  --text-align-x: center;
+  --wrapper-margin-left: auto;
+}
+
+.paragraph--type--dsu-tint.horizontal_position_right {
+  --text-align-x: right;
+  --wrapper-margin-right: 0;
+  --wrapper-margin-left: auto;
+}
+
+.paragraph--type--dsu-tint .text-container {
+  max-width: 1024px;
+  margin-top: var(--spacing);
+  margin-bottom: var(--spacing);
+  margin-right: var(--wrapper-margin-right);
+  margin-left: var(--wrapper-margin-left);
+}
+
+.paragraph--type--dsu-tint .text-container,
+.paragraph--type--dsu-tint .text-container * {
+  text-align: var(--text-align-x);
+  color: var(--text-color);
+}
+.paragraph--type--dsu-tint .field--name-field-c-advanced-title {
+  margin-bottom: var(--spacing);
+}
+.paragraph--type--dsu-tint .field--name-field-c-settings {
+}

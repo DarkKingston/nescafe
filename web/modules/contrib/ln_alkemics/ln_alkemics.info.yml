@@ -1,0 +1,21 @@
+name: 'Lightnest Alkemics'
+description: 'Connect with Alkemics for import and syncronize Products.'
+package: 'Lightnest'
+type: module
+version: 8.x-2.0.8
+core: 8.x
+core_version_requirement: ^8 || ^9
+dependencies:
+  - drupal:path
+  - dsu_product
+  - drupal:entity_browser
+  - drupal:paragraphs
+  - drupal:entity_reference_revisions
+  - drupal:options
+  - drupal:user
+  - drupal:video_embed_field
+  - dsu_c_core
+enforced:
+module:
+  - ln_alkemics
+configure: ln_alkemics.config

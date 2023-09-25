@@ -1,0 +1,12 @@
+# Changelog
+
+## 1.2.0
+- Refactor Component Core: Remove id field for generic one.
+
+## 1.1.4
+- H's should be implemented inside the DIV instead of above.
+
+## 1.1.3
+- Added paragraph features too enhance editorial experience.
+- Go to admin/config/development/features/edit/dsu_c_slider
+- Import latest configuration.

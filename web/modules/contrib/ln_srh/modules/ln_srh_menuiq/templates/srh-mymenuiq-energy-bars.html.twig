@@ -1,0 +1,11 @@
+<div class="srh-mymenuiq-energy-bars">
+  {% for bar in bars %}
+    <div class="nutrient-bar">
+      {% if bar.name %}
+        <label for="nutrient-{{ bar.name }}">{{ bar.name|capitalize|t }}</label>
+      {% endif %}
+      <progress id="nutrient-{{ bar.name }}" value="{{ bar.percentage }}" max="100">{{ bar.percentage}}</progress>
+      <span>{{ bar.quantity|round(1, 'floor')}}g / {{ bar.percentage}}%</span>
+    </div>
+  {% endfor %}
+</div>

@@ -1,0 +1,44 @@
+<div class="review-display-power-reviews">
+    <script>
+      POWERREVIEWS.display.render({
+        api_key: '{{ ln_c_power_reviews_keys.pr_api_key_read }}',
+        locale: '{{ ln_c_power_reviews_keys.pr_locale }}',
+        merchant_group_id: '{{ ln_c_power_reviews_keys.pr_merchant_group_id }}',
+        merchant_id: '{{ ln_c_power_reviews_keys.pr_merchant_id }}',
+        page_id: '{{ ln_c_power_reviews_page_id }}',
+        ENABLE_REVIEW_FILTERING: 'true',
+        Enable_CONTENT_COLLECTION_MODAL: '{{ "pr_write_review_form" in ln_c_power_rev_disp_type  ? 'true': 'false' }}',
+        REVIEW_DISPLAY_SNAPSHOT_TYPE: 'SIMPLE',
+        REVIEW_DISPLAY_PAGINATION_TYPE: 'VERTICAL',
+        components: {
+          ReviewDisplay: 'pr_reviewdisplay',
+          ReviewSnippet: 'pr_reviewsnippet',
+          ReviewList: 'pr_reviewlist',
+          CategorySnippet: 'pr_categorysnippet',
+          SizeFitSnippet: 'pr_sizesnippet',
+          ReviewSnapshot: 'pr_reviewsnapshot',
+          ReviewImageSnippet: 'pr_review_imagesnippet',
+          ReviewImageDisplay: 'pr_review_imagedisplay',
+          QuestionSnippet: 'pr_questionsnippet',
+          QuestionDisplay: 'pr_questiondisplay'
+        }
+      });
+    </script>
+    {% for key in ln_c_power_rev_disp_type %}
+
+        {# Get the review category snippet markup from configurations. #}
+        {% if key is not empty and key == "pr_categorysnippet" or key == "pr_write_review_form" %}
+            <div class="render-pr-category-snippet">
+                <div id="pr_reviewsnapshot"></div>
+            </div>
+        {% endif %}
+
+        {# Get the review display markup from configurations. #}
+        {% if key is not empty and key == "pr_review_display" %}
+            <div class="render-pr-review-display">
+                <div id="pr_reviewlist"></div>
+            </div>
+        {% endif %}
+
+    {% endfor %}
+</div>

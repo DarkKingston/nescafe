@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - lightning_core
+    - node
+third_party_settings:
+  lightning_core:
+    description: 'This is the default view mode used by the ln_entity_compare module to render compared entities'
+id: node.ln_entity_compare
+label: 'Entity Compare'
+targetEntityType: node
+cache: true
