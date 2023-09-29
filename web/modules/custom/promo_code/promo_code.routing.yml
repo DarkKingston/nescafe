@@ -1,0 +1,7 @@
+mymodule.form_submit:
+  path: '/form/promo-code'
+  defaults:
+    _form: '\Drupal\webform\Plugin\Webform\SubmissionForm'
+    _title: 'Webform'
+  requirements:
+    _permission: 'access content'

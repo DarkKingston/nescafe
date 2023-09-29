@@ -1,0 +1,28 @@
+name: Nescafe
+type: theme
+description: 'Nescafe custom theme'
+core_version_requirement: ^9
+libraries:
+  - nescafe/global-styling
+base theme: stable9
+regions:
+  navbar_left: Navbar Left
+  navbar_right: Navbar Right
+  header: Header
+  content: Content
+  stock: Stock page
+  tabel_principal: Tabel Principal page
+  details: Detail user page
+  reglament: Content Reglament Page
+  points: Points page
+  contacts: Contact Page
+  contactsModal: Modal for phone
+  verify: Verificarea datelor
+  policy: Content Policy Page
+  termeni: Content Termeni Page
+  register: Register
+  account: Account Private Area
+  add_promo: Add Promo
+  tombola: Tombola
+  reset: Reset Password
+  footer: Footer

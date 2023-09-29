@@ -1,0 +1,17 @@
+{% set classes = [
+  'region',
+  'region-' ~ region|clean_class,
+  'navbar',
+] %}
+
+<a href="tel:069891454" class="use-ajax webform-dialog webform-dialog-narrow phone_hover" data-dialog-type="modal">
+  <img src="/{{ directory }}/images/phone.svg" class="phone_desktop">
+  <img src="/{{ directory }}/images/phone_mob.svg" class="phone_mobile">
+</a>
+
+{{ content }}
+
+<button class="burger">
+  <img src="/{{ directory }}/images/burger.svg">
+</button>
+<div class="mob_menu_overlay"></div>

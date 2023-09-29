@@ -1,0 +1,58 @@
+<?php
+
+  /**
+   * @file
+   * Implementing some hook function
+   */
+use Drupal\Core\Url;
+use Drupal\Core\StringTranslation\TranslatableMarkup;
+use Platformsh\ConfigReader\Config;
+use Drupal\Core\Form\ConfigFormBase;
+use Drupal\Core\Form\FormStateInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
+use Drupal\user\Entity\User;
+  function drupalup_cron_cron(){
+
+    $curr_id_for_user = \Drupal::currentUser()->id();
+
+    $config = new Config();
+
+    $credentials = $config->credentials('database');
+
+    $dsn = sprintf('mysql:host=%s;port=%d;dbname=%s', $credentials['host'], $credentials['port'], $credentials['path']);
+    $conn = new \PDO($dsn, $credentials['username'], $credentials['password'], [
+      \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
+      \PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => TRUE,
+      \PDO::MYSQL_ATTR_FOUND_ROWS => TRUE,
+    ]);
+    $getTombolaParticipant = "SELECT * FROM promo_code WHERE tombola = 2";
+    $tombolaZilParticipant = $conn->query($getTombolaParticipant);
+    $tombolaZilParticipant->setFetchMode(\PDO::FETCH_OBJ);
+    foreach ($tombolaZilParticipant as $participant){
+        $IDwinner[] = $participant->active;
+    }
+    $aditionalWhere = "";
+    if(!empty($IDwinner)){
+    $aditionalWhere = "AND active NOT IN ('".implode(',', $IDwinner)."')";
+    }
+    $getTombola = "SELECT * FROM promo_code WHERE tombola = 1 $aditionalWhere ";
+    $tombolaZil  = $conn->query($getTombola);
+    $tombolaZil->setFetchMode(\PDO::FETCH_OBJ);
+
+    $ifUsers = 0;
+    $arrID = array();
+    foreach($tombolaZil as $zil){
+      $ifUsers++;
+      $arrID[] = $zil->id;
+    }
+    if($ifUsers >= 2){
+      $key = array_rand($arrID);
+    }
+
+    $tombolaSuccess = "UPDATE promo_code SET tombola = 2 WHERE id = '".$arrID[$key]."'";
+    if($conn->query($tombolaSuccess)){}
+
+
+
+  }
+?>

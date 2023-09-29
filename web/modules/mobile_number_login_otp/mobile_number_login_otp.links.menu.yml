@@ -1,0 +1,5 @@
+mobileloginotp.settings:
+  route_name: mobileloginotp.settings
+  parent: mobilelogin.settings.admin
+  title: 'Mobile Number Otp Configurations'
+  weight: 1

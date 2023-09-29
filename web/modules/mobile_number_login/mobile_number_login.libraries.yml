@@ -1,0 +1,12 @@
+mobile-number-login:
+  css:
+    component:
+      https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css: {external: true, minified: true}
+  js:
+    https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js: {external: true, minified: true}
+    http://www.geoplugin.net/javascript.gp: {external: true, minified: true}
+    js/mobile_number_login.js: {}
+  dependencies:
+    - core/drupal
+    - core/jquery
+    - core/once

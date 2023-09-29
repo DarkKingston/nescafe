@@ -1,0 +1,10 @@
+name: 'User Login Persistent Destination'
+type: module
+description: 'Ensures a persistent destination parameter on user login page'
+core_version_requirement: ^9 || ^10
+package: Other
+
+# Information added by Drupal.org packaging script on 2022-08-19
+version: '2.0.1'
+project: 'user_login_persistent_destination'
+datestamp: 1660938384

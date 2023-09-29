@@ -1,0 +1,6 @@
+name: 'Promo Code'
+type: module
+description: 'Custom module created by promo_code submit'
+core_version_requirement: ^9 || ^8
+package: Custom
+version: 1.0

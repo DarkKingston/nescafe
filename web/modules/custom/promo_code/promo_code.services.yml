@@ -1,0 +1,5 @@
+services:
+  promo_code.form_submit:
+    class: Drupal\promo_code\Form\PromoFormSubmit
+    tags:
+      - { name: form_alter, priority: 100 }

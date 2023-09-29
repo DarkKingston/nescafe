@@ -44,3 +44,7 @@ a.block-demo-backlink:hover {
   opacity: 0.675;
   background: #fcfcfa;
 }
+
+.messages--error{
+  display: none !important;
+}

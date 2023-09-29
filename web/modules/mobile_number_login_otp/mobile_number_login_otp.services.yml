@@ -1,0 +1,10 @@
+services:
+  mobile_number_login_otp.gateway:
+    class: Drupal\mobile_number_login_otp\GateWay
+    arguments: ['@http_client', '@config.factory']
+  mobile_number_login_otp.account.auth:
+    class: Drupal\mobile_number_login_otp\AccountAuth
+    arguments: ['@entity_type.manager', '@database', '@config.factory', '@datetime.time']
+  mobile_number_login_otp.otpcontroller:
+    class: Drupal\mobile_number_login_otp\Controller\MobileLoginOtpController
+    arguments: ['@entity_type.manager', '@database', '@config.factory']

@@ -1,0 +1,13 @@
+{
+    "name": "drupal/mobile_number_login_otp",
+    "description": "Provides the login functionality as a new page with mobile number and OTP",
+    "type": "drupal-module",
+    "authors": [
+        {
+            "name": "Praveen3555",
+            "email": "praveen3555@3499417.no-reply.drupal.org"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}

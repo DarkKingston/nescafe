@@ -1,0 +1,111 @@
+<?php
+
+/**
+ * @file
+ * Contains hooks for Mobile Number Login module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_help().
+ */
+function mobile_number_login_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'help.page.mobile_number_login':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('The Mobile Number Login module provides a suite of modules containing fun for module developers. For more information, see the <a href=":url">online documentation for the Mobile Number Login module</a>.', [':url' => 'https://www.drupal.org/docs/contributed-modules/mobile-number-login']) . '</p>';
+      return $output;
+  }
+}
+
+/**
+ * Implements hook_user_login_form_alter().
+ */
+function mobile_number_login_form_user_login_form_alter(&$form, FormStateInterface $formState) {
+  $form['mobileradio'] = [
+    '#type' => 'radios',
+    '#title' => t('Mobile Number or Email'),
+    '#options' => ['email' => t('Email'), 'mobile' => t('Mobile Number')],
+    '#required' => TRUE,
+    '#weight' => -50,
+    '#default_value' => 'email',
+  ];
+  $form['mobilenumber'] = [
+    '#type' => 'tel',
+    '#title' => t('Mobile Number'),
+    '#description' => t('Enter the Mobilenumber'),
+    '#maxlength' => 60,
+    '#attributes' => ['class' => ['mobile-number-login']],
+    '#wrapper_attributes' => ['class' => ['mobile-wrapper', 'hidden']],
+    '#size' => 60,
+    '#weight' => -49,
+  ];
+  $form['#attached']['library'][] = 'mobile_number_login/mobile-number-login';
+  $form['#attached']['drupalSettings']['default_countries_mobile_login'] = \Drupal::config('mobilenumberlogin.settings')->get('default_countries');
+  $form['name']['#element_validate'][] = 'mobile_number_login_user_login_validate';
+  $form['name']['#wrapper_attributes']['class'][] = 'name-wrapper';
+  $form['name']['#title'] = t('Email / Username');
+}
+
+/**
+ * Implements hook_user_register_form_alter().
+ */
+function mobile_number_login_form_user_register_form_alter(&$form, FormStateInterface $formState) {
+  $form['field_login_mobile_number']['#type'] = 'tel';
+  $form['field_login_mobile_number']['#attributes']['class'][] = 'mobile-number-login';
+  $form['#attached']['library'][] = 'mobile_number_login/mobile-number-login';
+  $form['#attached']['drupalSettings']['default_countries_mobile_login'] = \Drupal::config('mobilenumberlogin.settings')->get('default_countries');
+  $form['#validate'][] = 'mobile_number_login_user_register_validate';
+}
+
+/**
+ * Implements hook_user_register_validate().
+ */
+function mobile_number_login_user_register_validate($form, FormStateInterface $formState) {
+
+  $mobile = str_replace(" ", "", $formState->getValue('field_login_mobile_number_wrapper'));
+  if (empty($mobile)) {
+    $formState->setErrorByName('field_login_mobile_number_wrapper', t('Mobile number is required.'));
+  }
+  $users = \Drupal::entityTypeManager()->getStorage('user')
+    ->loadByProperties(['field_login_mobile_number' => $mobile]);
+  $formState->setValue('field_login_mobile_number', [['value' => $mobile]]);
+  $user = $users ? reset($users) : FALSE;
+  if ($user) {
+    $formState->setErrorByName('field_login_mobile_number_wrapper', t('Mobile number is already registered with another account.'));
+  }
+}
+
+/**
+ * Implements hook_user_login_validate().
+ */
+function mobile_number_login_user_login_validate($form, FormStateInterface $formState) {
+  $radio = $formState->getValue('mobileradio');
+  $name = $formState->getValue('name');
+  $mobile = $formState->getValue('mobilenumber');
+
+  if ($radio == 'mobile') {
+    $users = \Drupal::entityTypeManager()->getStorage('user')
+      ->loadByProperties(['field_login_mobile_number' => $mobile]);
+    $user = $users ? reset($users) : FALSE;
+    if ($user) {
+      $formState->setValue('name', $user->getAccountName());
+      return TRUE;
+    }
+  }
+  else {
+    if ($user = user_load_by_name($name)) {
+      return TRUE;
+    }
+
+    if ($user = user_load_by_mail($name)) {
+      $formState->setValue('name', $user->getAccountName());
+      return TRUE;
+    }
+  }
+
+  return FALSE;
+}

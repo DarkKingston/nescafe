@@ -1,0 +1,13 @@
+{
+    "name": "drupal/mobile_number_login",
+    "description": "Provides the login functionality through mobile number",
+    "type": "drupal-module",
+    "authors": [
+        {
+            "name": "Praveen3555",
+            "email": "praveen3555@3499417.no-reply.drupal.org"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}

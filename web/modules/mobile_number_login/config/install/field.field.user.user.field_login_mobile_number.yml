@@ -1,0 +1,20 @@
+uuid: bac6762e-fa60-4f21-a8f4-6b0b3d66c085
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_login_mobile_number
+  module:
+    - user
+id: user.user.field_login_mobile_number
+field_name: field_login_mobile_number
+entity_type: user
+bundle: user
+label: 'Mobile number'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

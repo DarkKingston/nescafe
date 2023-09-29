@@ -1,0 +1,14 @@
+global-styling:
+  css:
+    theme:
+      css/style.css: {}
+      css/media.css: {}
+  js:
+    js/script.js: {}
+    js/jquery_mask/jquery.maskedinput.min.js: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.once
+    - core/drupal
+    - core/jquery.ui.dialog
+    - core/drupal.dialog.ajax
