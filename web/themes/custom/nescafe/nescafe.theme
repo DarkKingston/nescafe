@@ -634,25 +634,27 @@ TABLE;
                 $finTombolaTxt = "Sunteți participant la tombolă finală";
                 $winTombolaTxt = "Ați câștigat un aparat de cafea. Îl puteți ridică la filiala: ";
               }
-              $checkTombola2 = "SELECT * FROM promo_code WHERE tombola = 2 AND statusTombola = 0 AND active = '".$curr_id_for_user."' ";
-              $resultcheckTombola2 = $conn->query($checkTombola2);
-              $resultcheckTombola2->setFetchMode(\PDO::FETCH_OBJ);
-              $checkCounterTombola2 = 0;
+//              $checkTombola2 = "SELECT * FROM promo_code WHERE tombola = 2 AND statusTombola = 0 AND active = '".$curr_id_for_user."' ";
+//              $resultcheckTombola2 = $conn->query($checkTombola2);
+//              $resultcheckTombola2->setFetchMode(\PDO::FETCH_OBJ);
+//              $checkCounterTombola2 = 0;
+//              foreach($resultcheckTombola as $resCheck){
+//                $checkCounterTombola2++;
+//              }
+//              if($checkCounterTombola2 == 0){
+//
+//              }
+
+              $checkTombola = "SELECT * FROM promo_code WHERE status = 2 AND active = '".$curr_id_for_user."' ";
+              $resultcheckTombola = $conn->query($checkTombola);
+              $resultcheckTombola->setFetchMode(\PDO::FETCH_OBJ);
+              $checkCounterTombola = 0;
               foreach($resultcheckTombola as $resCheck){
-                $checkCounterTombola2++;
+                $checkCounterTombola++;
               }
-              if($checkCounterTombola2 == 0){
-                $checkTombola = "SELECT * FROM promo_code WHERE tombola > 1 AND active = '".$curr_id_for_user."' ";
-                $resultcheckTombola = $conn->query($checkTombola);
-                $resultcheckTombola->setFetchMode(\PDO::FETCH_OBJ);
-                $checkCounterTombola = 0;
-                foreach($resultcheckTombola as $resCheck){
-                  $checkCounterTombola++;
-                }
-                $tombolaZilnica = "";
-                if($checkCounterTombola > 0){
-                  $tombolaZilnica = "<div style='font-size: 19px;color: #E31D1C; font-weight: 600; margin-top: 15px;'>".$zilTombolaTxt."</div>";
-                }
+              $tombolaZilnica = "";
+              if($checkCounterTombola > 0){
+                $tombolaZilnica = "<div style='font-size: 19px;color: #E31D1C; font-weight: 600; margin-top: 15px;'>".$zilTombolaTxt."</div>";
               }
 
               $checkTombolaFin = "SELECT * FROM promo_code WHERE final = 1 AND active = '".$curr_id_for_user."' ";
