@@ -647,11 +647,10 @@ TABLE;
                 $resultcheckTombola->setFetchMode(\PDO::FETCH_OBJ);
                 $checkCounterTombola = 0;
                 foreach($resultcheckTombola as $resCheck){
-                  dump($resCheck);
                   $checkCounterTombola++;
                 }
                 $tombolaZilnica = "";
-                if($checkCounterTombola == 0){
+                if($checkCounterTombola > 0){
                   $tombolaZilnica = "<div style='font-size: 19px;color: #E31D1C; font-weight: 600; margin-top: 15px;'>".$zilTombolaTxt."</div>";
                 }
               }
