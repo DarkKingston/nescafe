@@ -647,6 +647,7 @@ TABLE;
                 $resultcheckTombola->setFetchMode(\PDO::FETCH_OBJ);
                 $checkCounterTombola = 0;
                 foreach($resultcheckTombola as $resCheck){
+                  dump($resCheck);
                   $checkCounterTombola++;
                 }
                 $tombolaZilnica = "";
