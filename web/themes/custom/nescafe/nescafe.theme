@@ -532,10 +532,10 @@ function nescafe_preprocess_region__account(&$elem)
   }
   if (in_array('authenticated', $roles) && in_array('manager_filiala', $roles) && !in_array('administrator', $roles)) {
     if (isset($_POST['submitSearch']) && $_POST['search'] != '') {
-      $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `promo_code` ON `users_field_data`.uid = `promo_code`.active  LEFT JOIN `user__field_name` ON `users_field_data`.`uid` = `user__field_name`.`entity_id` LEFT JOIN `user__field_lastname` ON `users_field_data`.`uid` = `user__field_lastname`.`entity_id`  WHERE uid != 0 AND  `users_field_data`.`name` LIKE '%" . $_POST['search'] . "%' AND `promo_code`.`active` != 0 AND `promo_code`.`status` = 2 AND `promo_code`.`statusTombola` != 3 ";
+      $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `promo_code` ON `users_field_data`.uid = `promo_code`.active  LEFT JOIN `user__field_name` ON `users_field_data`.`uid` = `user__field_name`.`entity_id` LEFT JOIN `user__field_lastname` ON `users_field_data`.`uid` = `user__field_lastname`.`entity_id`  WHERE uid != 0 AND  `users_field_data`.`name` LIKE '%" . $_POST['search'] . "%' AND `promo_code`.`active` != 0 AND `promo_code`.`status` = 2  OR `promo_code`.`statusTombola`=2  ";
       //dump($_POST);
     } else {
-      $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `promo_code` ON `users_field_data`.uid = `promo_code`.active  LEFT JOIN `user__field_name` ON `users_field_data`.`uid` = `user__field_name`.`entity_id` LEFT JOIN `user__field_lastname` ON `users_field_data`.`uid` = `user__field_lastname`.`entity_id` WHERE uid != 0 AND `promo_code`.`active` != 0 AND `promo_code`.`status` = 2 ORDER BY uid ASC";
+      $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `promo_code` ON `users_field_data`.uid = `promo_code`.active  LEFT JOIN `user__field_name` ON `users_field_data`.`uid` = `user__field_name`.`entity_id` LEFT JOIN `user__field_lastname` ON `users_field_data`.`uid` = `user__field_lastname`.`entity_id` WHERE uid != 0 AND `promo_code`.`active` != 0 AND `promo_code`.`status` = 2  OR `promo_code`.`statusTombola`=2   ORDER BY uid ASC";
     }
   }
 
