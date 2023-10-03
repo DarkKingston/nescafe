@@ -796,6 +796,19 @@ TABLE;
           $resultFil = $conn->query($getMyFilala);
           $resultFil->setFetchMode(\PDO::FETCH_OBJ);
           foreach($resultFil as $fil_res){}
+          $updateStatus1 = "UPDATE promo_code SET status = 3, filiala_elib = '".$fil_res->field_filiala_value."'  WHERE active = '".$_SESSION['id_user']."' AND status = 2 AND id = '".$_SESSION['prem_id']."' ";
+          if ($conn->query($updateStatus1)) {
+            print "<form method='post' class='error_popup'>
+                                Succes
+                                <input type='submit' name='code_submit' value='Submit' onclick='closePopup()' class='btn_main action search_filiala form_btn'>
+                           </form>";
+          }else{
+            print "<form method='post' class='error_popup'>
+                                Eroare
+                                <input type='submit' name='code_submit' value='Submit' class='btn_main action search_filiala form_btn'>
+                                <button onclick='closePopup()' class='btn_main action search_filiala form_btn'>Inchide</button>
+                           </form>";
+          }
           $updateStatus = "UPDATE promo_code SET statusTombola = 3, filiala_elib = '".$fil_res->field_filiala_value."'  WHERE active = '".$_SESSION['id_user']."' AND statusTombola = 2 AND id = '".$_SESSION['prem_id']."' ";
           if ($conn->query($updateStatus)) {
             print "<form method='post' class='error_popup'>
