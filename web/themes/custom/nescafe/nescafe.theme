@@ -152,7 +152,17 @@ function nescafe_preprocess_page(&$page)
     print "<div class='logged hidden'>.</div>";
   }
   $roles = \Drupal::currentUser()->getRoles();
-
+  //google tag
+  print "
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KPTFBGPF');</script>
+<noscript><iframe src='https://www.googletagmanager.com/ns.html?id=GTM-KPTFBGPF'
+height='0' width='0' style='display:none;visibility:hidden'></iframe></noscript>
+  ";
+//  google tag end
 
   $config = new Config();
 
@@ -632,7 +642,7 @@ TABLE;
           $checkCounterTombola2++;
         }
         if($checkCounterTombola2 == 0){
-          $checkTombola = "SELECT * FROM promo_code WHERE tombola = 1 AND active = '".$curr_id_for_user."' ";
+          $checkTombola = "SELECT * FROM promo_code WHERE tombola > 1 AND active = '".$curr_id_for_user."' ";
           $resultcheckTombola = $conn->query($checkTombola);
           $resultcheckTombola->setFetchMode(\PDO::FETCH_OBJ);
           $checkCounterTombola = 0;
