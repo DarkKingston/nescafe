@@ -443,16 +443,16 @@ function nescafe_preprocess_region__account(&$elem)
       $tabel = 'Principal';
     }
 
-    $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` LEFT JOIN `promo_code` ON `users_field_data`.uid = `promo_code`.active  LEFT JOIN `user__field_name` ON `users_field_data`.`uid` = `user__field_name`.`entity_id` LEFT JOIN `user__field_lastname` ON `users_field_data`.`uid` = `user__field_lastname`.`entity_id`  WHERE uid != 0 AND `promo_code`.`active` != 0 AND `promo_code`.`status` != 0 AND `promo_code`.`status` != 1 ORDER BY uid ASC";
+    $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` LEFT JOIN `promo_code` ON `users_field_data`.uid = `promo_code`.active  LEFT JOIN `user__field_name` ON `users_field_data`.`uid` = `user__field_name`.`entity_id` LEFT JOIN `user__field_lastname` ON `users_field_data`.`uid` = `user__field_lastname`.`entity_id`  WHERE uid != 0 AND `promo_code`.`active` != 0 AND `promo_code`.`status` != 0 AND `promo_code`.`status` != 1 OR `promo_code`.`statusTombola`!=1 ORDER BY uid ASC";
 
     if (isset($_POST['filSearch']) && $_POST['filiala_inp'] != '') {
       if ($_POST['filiala_inp'] == 'Toate' || $_POST['filiala_inp'] == 'Все') {
-        $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` LEFT JOIN `promo_code` ON `users_field_data`.uid = `promo_code`.active  LEFT JOIN `user__field_name` ON `users_field_data`.`uid` = `user__field_name`.`entity_id` LEFT JOIN `user__field_lastname` ON `users_field_data`.`uid` = `user__field_lastname`.`entity_id`  WHERE uid != 0 AND `promo_code`.`active` != 0 AND `promo_code`.`status` != 0 AND `promo_code`.`status` != 1 ORDER BY uid ASC";
+        $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` LEFT JOIN `promo_code` ON `users_field_data`.uid = `promo_code`.active  LEFT JOIN `user__field_name` ON `users_field_data`.`uid` = `user__field_name`.`entity_id` LEFT JOIN `user__field_lastname` ON `users_field_data`.`uid` = `user__field_lastname`.`entity_id`  WHERE uid != 0 AND `promo_code`.`active` != 0 AND `promo_code`.`status` != 0 AND `promo_code`.`status` != 1 OR `promo_code`.`statusTombola`!=1 ORDER BY uid ASC";
       } else {
-        $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` LEFT JOIN `promo_code` ON `users_field_data`.uid = `promo_code`.active LEFT JOIN `user__field_name` ON `users_field_data`.`uid` = `user__field_name`.`entity_id` LEFT JOIN `user__field_lastname` ON `users_field_data`.`uid` = `user__field_lastname`.`entity_id` WHERE uid != 0 AND `promo_code`.`active` != 0 AND `promo_code`.`status` != 0 AND `promo_code`.`status` != 1 AND `promo_code`.`livrare` = '" . $_POST['filiala_inp'] . "' ORDER BY uid ASC";
+        $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` LEFT JOIN `promo_code` ON `users_field_data`.uid = `promo_code`.active LEFT JOIN `user__field_name` ON `users_field_data`.`uid` = `user__field_name`.`entity_id` LEFT JOIN `user__field_lastname` ON `users_field_data`.`uid` = `user__field_lastname`.`entity_id` WHERE uid != 0 AND `promo_code`.`active` != 0 AND `promo_code`.`status` != 0 AND `promo_code`.`status` != 1 OR `promo_code`.`statusTombola`!=1 AND `promo_code`.`livrare` = '" . $_POST['filiala_inp'] . "' ORDER BY uid ASC";
       }
     } else {
-      $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` LEFT JOIN `promo_code` ON `users_field_data`.uid = `promo_code`.active LEFT JOIN `user__field_name` ON `users_field_data`.`uid` = `user__field_name`.`entity_id` LEFT JOIN `user__field_lastname` ON `users_field_data`.`uid` = `user__field_lastname`.`entity_id` WHERE uid != 0 AND `promo_code`.`active` != 0 AND `promo_code`.`status` != 0 AND `promo_code`.`status` != 1  ORDER BY uid ASC";
+      $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` LEFT JOIN `promo_code` ON `users_field_data`.uid = `promo_code`.active LEFT JOIN `user__field_name` ON `users_field_data`.`uid` = `user__field_name`.`entity_id` LEFT JOIN `user__field_lastname` ON `users_field_data`.`uid` = `user__field_lastname`.`entity_id` WHERE uid != 0 AND `promo_code`.`active` != 0 AND `promo_code`.`status` != 0 AND `promo_code`.`status` != 1 OR `promo_code`.`statusTombola`!=1  ORDER BY uid ASC";
     }
 
     $sql = $sqlQuery;
@@ -729,7 +729,7 @@ TABLE;
        TABLE;
       $count = 1;
       foreach ($result as $record) {
-        dump($record);
+
         if($record->statusTombola == 2){
           printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><form method='post'><input type='hidden' value='".$record->uid."' name='active_id'> <input type='hidden' value='".$record->name."' name='form_phone'><input type='hidden' value='".$record->id."' name='prem_id'><input type='submit' name='submit_code_tombola' value='Submit' class='btn_main action search_filiala form_btn'></form></td></tr>\n", $count, $record->field_name_value,$record->field_lastname_value, $record->name, $record->premiuTombola, $record->filialaTombola, $record->uid);
         }
