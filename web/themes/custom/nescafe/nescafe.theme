@@ -150,7 +150,7 @@ function nescafe_preprocess_page(&$page)
 
   print "
     <div class='banner_soon'>
-        <img src='/images/banner.png' alt=''>
+        <img src='/themes/custom/nescafe/images/banner.png' alt=''>
     </div>
   ";
 
