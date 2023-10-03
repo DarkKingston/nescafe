@@ -798,7 +798,7 @@ TABLE;
                   $resultFil = $conn->query($getMyFilala);
                   $resultFil->setFetchMode(\PDO::FETCH_OBJ);
                   foreach($resultFil as $fil_res){}
-                  $updateStatus = "UPDATE promo_code SET statusTombola = 3, filiala_elib = '".$fil_res->field_filiala_value."'  WHERE active = '".$_SESSION['id_user']."' AND statusTombola = 2 AND id = '".$_SESSION['prem_id']."' ";
+                  $updateStatus = "UPDATE promo_code SET status = 3, filiala_elib = '".$fil_res->field_filiala_value."'  WHERE active = '".$_SESSION['id_user']."' AND statusTombola = 2 AND id = '".$_SESSION['prem_id']."' ";
                   if ($conn->query($updateStatus)) {
                     print "<form method='post' class='error_popup'>
                                 Succes
