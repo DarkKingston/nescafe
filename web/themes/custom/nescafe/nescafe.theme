@@ -147,6 +147,13 @@ function nescafe_preprocess_menu__header_btn(&$logged)
 
 function nescafe_preprocess_page(&$page)
 {
+
+  print "
+    <div class='banner_soon'>
+        <img src='/images/banner.png' alt=''>
+    </div>
+  ";
+
   $current_user = \Drupal::currentUser();
   if ($current_user->isAuthenticated()) {
     print "<div class='logged hidden'>.</div>";
