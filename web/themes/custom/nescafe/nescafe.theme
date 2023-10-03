@@ -645,7 +645,7 @@ TABLE;
 //
 //              }
 
-              $checkTombola = "SELECT * FROM promo_code WHERE status = 2 AND active = '".$curr_id_for_user."' ";
+              $checkTombola = "SELECT * FROM promo_code WHERE tombola = 1 AND active = '".$curr_id_for_user."' ";
               $resultcheckTombola = $conn->query($checkTombola);
               $resultcheckTombola->setFetchMode(\PDO::FETCH_OBJ);
               $checkCounterTombola = 0;
