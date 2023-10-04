@@ -1133,7 +1133,7 @@ button.shwpd{
 .banner_soon{
   position: fixed;
   top: 50%;
-  transform: translateX(-50%);
+  transform: translateY(-50%);
   left: 0;
   right: 0;
   bottom: 0;
