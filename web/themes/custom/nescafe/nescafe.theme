@@ -4108,7 +4108,6 @@ function nescafe_preprocess_region__details($details)
     $idGet = '';
     $idGet = $_GET['id'];
     $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` LEFT JOIN `promo_code` ON `users_field_data`.uid = `promo_code`.active  LEFT JOIN `user__field_name` ON `users_field_data`.`uid` = `user__field_name`.`entity_id` LEFT JOIN `user__field_lastname` ON `users_field_data`.`uid` = `user__field_lastname`.`entity_id` WHERE uid != 0 AND `promo_code`.`active` = '".$idGet."' ORDER BY uid ASC";
-print_r("SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` LEFT JOIN `promo_code` ON `users_field_data`.uid = `promo_code`.active  LEFT JOIN `user__field_name` ON `users_field_data`.`uid` = `user__field_name`.`entity_id` LEFT JOIN `user__field_lastname` ON `users_field_data`.`uid` = `user__field_lastname`.`entity_id` WHERE uid != 0 AND `promo_code`.`active` = '".$idGet."' ORDER BY uid ASC");
 
     $sql = $sqlQuery;
     //dump($sql);
