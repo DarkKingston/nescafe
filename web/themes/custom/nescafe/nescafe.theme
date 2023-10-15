@@ -4064,10 +4064,7 @@ use \Drupal\Core\Cache\Cache;
 function nescafe_preprocess_region__details($details)
 {
 
-// Clear all caches.
-  \Drupal::cache('page')->deleteAll();
-
-  $getParameters = $_SERVER['QUERY_STRING'];
+  $getParameters = $_SERVER['REQUEST_URI'];
   var_dump($getParameters);
   $roles = \Drupal::currentUser()->getRoles();
   $curr_id_for_user = \Drupal::currentUser()->id();
