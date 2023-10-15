@@ -4104,17 +4104,8 @@ function nescafe_preprocess_region__details($details)
       $stateON = 'Ridicat în -> ';
       $stateOFF = "In Asteptare";
     }
-    // Очистить весь кеш сайта.
-    cache_clear_all('*', 'cache', TRUE);
+    \Drupal::service('cache.default')->invalidateAll();
 
-// Очистить кеш шаблонов.
-    theme_get_registry(TRUE);
-
-// Очистить кеш меню.
-    menu_rebuild();
-
-// Очистить кеш роутов.
-    \Drupal::service('router.builder')->setRebuildNeeded();
     $sqlQuery = '';
     $idGet = '';
     $idGet = $_GET['id'];
