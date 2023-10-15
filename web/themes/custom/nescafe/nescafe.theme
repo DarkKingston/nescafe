@@ -148,6 +148,7 @@ function nescafe_preprocess_menu__header_btn(&$logged)
 function nescafe_preprocess_page(&$page)
 {
 
+  var_dump($_GET);
 //  print "
 //    <div class='banner_soon'>
 //        <img src='/themes/custom/nescafe/images/banner.png' alt=''>
@@ -1667,7 +1668,6 @@ TABLE;
 
 function nescafe_preprocess_region__stock($page)
 {
-  var_dump($_GET);
 
   $roles = \Drupal::currentUser()->getRoles();
   $curr_id_for_user = \Drupal::currentUser()->id();
