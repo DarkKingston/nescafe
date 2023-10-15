@@ -4105,6 +4105,8 @@ function nescafe_preprocess_region__details($details)
       $stateOFF = "In Asteptare";
     }
     \Drupal::service('cache.default')->invalidateAll();
+    \Drupal::entityDefinitionUpdateManager()->applyUpdates();
+    \Drupal::service('router.builder')->rebuild();
 
     $sqlQuery = '';
     $idGet = '';
