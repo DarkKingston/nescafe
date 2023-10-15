@@ -1667,6 +1667,7 @@ TABLE;
 
 function nescafe_preprocess_region__stock($page)
 {
+  var_dump($_GET);
 
   $roles = \Drupal::currentUser()->getRoles();
   $curr_id_for_user = \Drupal::currentUser()->id();
