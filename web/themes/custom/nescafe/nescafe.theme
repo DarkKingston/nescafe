@@ -4104,9 +4104,8 @@ function nescafe_preprocess_region__details($details)
       $stateON = 'Ridicat în -> ';
       $stateOFF = "In Asteptare";
     }
-    \Drupal::service('cache.default')->invalidateAll();
-    \Drupal::service('router.builder')->rebuild();
-
+    $getParameters = $_SERVER['QUERY_STRING'];
+    var_dump($getParameters);
     $sqlQuery = '';
     $idGet = '';
     $idGet = $_GET['id'];
