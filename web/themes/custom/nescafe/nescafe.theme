@@ -4062,7 +4062,10 @@ function nescafe_preprocess_region__stock($page)
 
 function nescafe_preprocess_region__details($details)
 {
+use \Drupal\Core\Cache\Cache;
 
+// Clear all caches.
+  Cache::invalidateTags(Cache::PERMANENT);
   $getParameters = $_SERVER['QUERY_STRING'];
   var_dump($getParameters);
   $roles = \Drupal::currentUser()->getRoles();
