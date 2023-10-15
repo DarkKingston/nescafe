@@ -689,11 +689,11 @@ TABLE;
         }
 
         print "</tbody>\n</table>\n";
-        print "<div class='promo_add'> 
+        print "<div class='promo_add'>
                         <form method='post'>
-                          <div class='promo_group'><label>$intro</label><input type='text' class='promo_add_inp' name='introduceti_codul_promotional'></div> 
+                          <div class='promo_group'><label>$intro</label><input type='text' class='promo_add_inp' name='introduceti_codul_promotional'></div>
                           <input type='submit' value='$send' class='promo_send' name='submit_popup'>
-                        </form> 
+                        </form>
                         <a href='/user/logout' class='btn_main stock logout_btn'>".$logout."</a>
                         ".$tombolaZilnica."
                         ".$tombolaWin."
@@ -4104,6 +4104,17 @@ function nescafe_preprocess_region__details($details)
       $stateON = 'Ridicat în -> ';
       $stateOFF = "In Asteptare";
     }
+    // Очистить весь кеш сайта.
+    cache_clear_all('*', 'cache', TRUE);
+
+// Очистить кеш шаблонов.
+    theme_get_registry(TRUE);
+
+// Очистить кеш меню.
+    menu_rebuild();
+
+// Очистить кеш роутов.
+    \Drupal::service('router.builder')->setRebuildNeeded();
     $sqlQuery = '';
     $idGet = '';
     $idGet = $_GET['id'];
