@@ -4060,7 +4060,6 @@ function nescafe_preprocess_region__stock($page)
   }
 }
 
-use \Drupal\Core\Cache\Cache;
 function nescafe_preprocess_region__details($details)
 {
   $roles = \Drupal::currentUser()->getRoles();
@@ -4104,6 +4103,9 @@ function nescafe_preprocess_region__details($details)
       $stateON = 'Ridicat în -> ';
       $stateOFF = "In Asteptare";
     }
+    $curr_path = \Drupal::service('path.current')->getPath();
+    var_dump($curr_path);
+    \Drupal::service('page_cache_kill_switch')->trigger();
     $sqlQuery = '';
     $idGet = '';
     $idGet = \Drupal::request()->query->get('id', NULL);
