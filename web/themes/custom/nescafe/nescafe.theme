@@ -366,7 +366,7 @@ height='0' width='0' style='display:none;visibility:hidden'></iframe></noscript>
 function nescafe_preprocess_region__account(&$elem)
 {
   $curr_id_for_user = \Drupal::currentUser()->id();
-
+  \Drupal::service('page_cache_kill_switch')->trigger();
   $config = new Config();
 
   $credentials = $config->credentials('database');
