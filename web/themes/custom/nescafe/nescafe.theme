@@ -742,9 +742,9 @@ TABLE;
 
         if($record->statusTombola == 2){
           printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><form method='post'><input type='hidden' value='".$record->uid."' name='active_id'> <input type='hidden' value='".$record->name."' name='form_phone'><input type='hidden' value='".$record->id."' name='prem_id'><input type='submit' name='submit_code_tombola' value='Submit' class='btn_main action search_filiala form_btn'></form></td></tr>\n", $count, $record->field_name_value,$record->field_lastname_value, $record->name, $record->premiuTombola, $record->filialaTombola, $record->uid);
-        }
+        }else{
         printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><form method='post'><input type='hidden' value='".$record->uid."' name='active_id'> <input type='hidden' value='".$record->name."' name='form_phone'><input type='hidden' value='".$record->id."' name='prem_id'><input type='submit' name='submit_code' value='Submit' class='btn_main action search_filiala form_btn'></form></td></tr>\n", $count, $record->field_name_value,$record->field_lastname_value, $record->name, $record->premiu, $record->livrare, $record->uid);
-
+        }
         $count++;
       }
 
