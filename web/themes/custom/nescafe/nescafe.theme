@@ -648,7 +648,7 @@ TABLE;
         $resultcheckTombola2 = $conn->query($checkTombola2);
         $resultcheckTombola2->setFetchMode(\PDO::FETCH_OBJ);
         $checkCounterTombola2 = 0;
-        foreach($resultcheckTombola as $resCheck){
+        foreach($resultcheckTombola2 as $resCheck){
           $checkCounterTombola2++;
         }
         if($checkCounterTombola2 == 0){
@@ -1468,7 +1468,7 @@ TABLE;
           }
         }
       }
-      if ($total > 0 && $total % 15 == 0 && $userID->tombola == 0  && $userID->premiu == '') {
+      if ($total % 15 == 0 && $userID->tombola == 0  && $userID->premiu == '') {
         $tombolaSuccess = "UPDATE promo_code SET tombola = 1,statusTombola = 0, data = NOW() WHERE promocode = '" . $userID->promocode . "' AND tombola = 0 ";
         if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru') {
           $txtone = "Поздравляем, Вы участник ежедневного розыгрыша!";
@@ -1639,7 +1639,7 @@ TABLE;
 
 
       }
-      if ($total > 0 && $total % 30 == 0 && $userID->final == 0) {
+      if ($total % 30 == 0 && $userID->final == 0) {
         $tombolaSuccess = "UPDATE promo_code SET final = 1, data = NOW() WHERE promocode = '" . $userID->promocode . "' AND final = 0 ";
         if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru') {
           $txtone = "Поздравляем, Вы участник финального розыгрыша!";
