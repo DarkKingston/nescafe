@@ -369,7 +369,7 @@ function nescafe_preprocess_region__account(&$elem)
   \Drupal::service('page_cache_kill_switch')->trigger();
   $config = new Config();
 
-  $credentials = $config->credentials('database');  
+  $credentials = $config->credentials('database');
 
   $dsn = sprintf('mysql:host=%s;port=%d;dbname=%s', $credentials['host'], $credentials['port'], $credentials['path']);
   $conn = new \PDO($dsn, $credentials['username'], $credentials['password'], [
@@ -463,7 +463,7 @@ function nescafe_preprocess_region__account(&$elem)
     }
 
     $sql = $sqlQuery;
-    //dump($sql);
+    dump($sql);
     $result = $conn->query($sql);
     $result->setFetchMode(\PDO::FETCH_OBJ);
 
