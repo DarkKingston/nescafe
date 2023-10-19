@@ -463,7 +463,6 @@ function nescafe_preprocess_region__account(&$elem)
     }
 
     $sql = $sqlQuery;
-    dump($sql);
     $result = $conn->query($sql);
     $result->setFetchMode(\PDO::FETCH_OBJ);
 
