@@ -465,13 +465,13 @@ function nescafe_preprocess_region__account(&$elem)
     $result = $conn->query($sql);
     $result->setFetchMode(\PDO::FETCH_OBJ);
 
-    print <<<TABLE
+    print '
           <table id="table8">
           <thead>
           <tr><th>ID</th><th>$name</th><th>$last_name</th><th>$phone</th><th>$prem</th><th>$livrare</th><th>$promoCode</th><th>$action</th></tr>
           </thead>
-          <tbody>
-          TABLE;
+          <tbody>'
+          ;
     $count = 1;
     foreach ($result as $record) {
       //dump($record);
