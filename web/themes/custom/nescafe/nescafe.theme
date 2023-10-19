@@ -630,10 +630,10 @@ TABLE;
             $count++;
           }
         }
-        if($curr_id_for_user == 201){
-          dump($total);
-          var_dump($total);
-        }
+//        if($curr_id_for_user == 201){
+//          dump($total);
+//          var_dump($total);
+//        }
         if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru') {
           $logout = 'Выход';
           $zilTombolaTxt = "Вы являетесь участником ежедневной лотереи";
