@@ -449,20 +449,21 @@ function nescafe_preprocess_region__account(&$elem)
       $promoCode = "Promocod";
       $tabel = 'Principal';
     }
-    $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` LEFT JOIN `promo_code` ON `users_field_data`.uid = `promo_code`.active  LEFT JOIN `user__field_name` ON `users_field_data`.`uid` = `user__field_name`.`entity_id` LEFT JOIN `user__field_lastname` ON `users_field_data`.`uid` = `user__field_lastname`.`entity_id`  WHERE uid != 0 AND `promo_code`.`active` != 0  ORDER BY uid ASC";
+
+    $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` LEFT JOIN `promo_code` ON `users_field_data`.uid = `promo_code`.active  LEFT JOIN `user__field_name` ON `users_field_data`.`uid` = `user__field_name`.`entity_id` LEFT JOIN `user__field_lastname` ON `users_field_data`.`uid` = `user__field_lastname`.`entity_id`  WHERE uid != 0 AND `promo_code`.`active` != 0 AND `promo_code`.`status` != 0 AND `promo_code`.`statusTombola`!=1 ORDER BY uid ASC";
 
     if (isset($_POST['filSearch']) && $_POST['filiala_inp'] != '') {
       if ($_POST['filiala_inp'] == 'Toate' || $_POST['filiala_inp'] == 'Все') {
-        $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` LEFT JOIN `promo_code` ON `users_field_data`.uid = `promo_code`.active  LEFT JOIN `user__field_name` ON `users_field_data`.`uid` = `user__field_name`.`entity_id` LEFT JOIN `user__field_lastname` ON `users_field_data`.`uid` = `user__field_lastname`.`entity_id`  WHERE uid != 0 AND `promo_code`.`active` != 0 ORDER BY uid ASC";
+        $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` LEFT JOIN `promo_code` ON `users_field_data`.uid = `promo_code`.active  LEFT JOIN `user__field_name` ON `users_field_data`.`uid` = `user__field_name`.`entity_id` LEFT JOIN `user__field_lastname` ON `users_field_data`.`uid` = `user__field_lastname`.`entity_id`  WHERE uid != 0 AND `promo_code`.`active` != 0 AND `promo_code`.`status` != 0 AND `promo_code`.`statusTombola`!=1 ORDER BY uid ASC";
       } else {
-        $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` LEFT JOIN `promo_code` ON `users_field_data`.uid = `promo_code`.active LEFT JOIN `user__field_name` ON `users_field_data`.`uid` = `user__field_name`.`entity_id` LEFT JOIN `user__field_lastname` ON `users_field_data`.`uid` = `user__field_lastname`.`entity_id` WHERE uid != 0 AND `promo_code`.`active` != 0  AND `promo_code`.`livrare` = '" . $_POST['filiala_inp'] . "' ORDER BY uid ASC";
+        $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` LEFT JOIN `promo_code` ON `users_field_data`.uid = `promo_code`.active LEFT JOIN `user__field_name` ON `users_field_data`.`uid` = `user__field_name`.`entity_id` LEFT JOIN `user__field_lastname` ON `users_field_data`.`uid` = `user__field_lastname`.`entity_id` WHERE uid != 0 AND `promo_code`.`active` != 0 AND `promo_code`.`status` != 0 AND `promo_code`.`statusTombola`!=1 AND `promo_code`.`livrare` = '" . $_POST['filiala_inp'] . "' ORDER BY uid ASC";
       }
     } else {
-      $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` LEFT JOIN `promo_code` ON `users_field_data`.uid = `promo_code`.active LEFT JOIN `user__field_name` ON `users_field_data`.`uid` = `user__field_name`.`entity_id` LEFT JOIN `user__field_lastname` ON `users_field_data`.`uid` = `user__field_lastname`.`entity_id` WHERE uid != 0 AND `promo_code`.`active` != 0 ORDER BY uid ASC";
+      $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` LEFT JOIN `promo_code` ON `users_field_data`.uid = `promo_code`.active LEFT JOIN `user__field_name` ON `users_field_data`.`uid` = `user__field_name`.`entity_id` LEFT JOIN `user__field_lastname` ON `users_field_data`.`uid` = `user__field_lastname`.`entity_id` WHERE uid != 0 AND `promo_code`.`active` != 0 AND `promo_code`.`status` != 0 AND `promo_code`.`statusTombola`!=1 ORDER BY uid ASC";
     }
 
-
     $sql = $sqlQuery;
+    dump($sql);
     $result = $conn->query($sql);
     $result->setFetchMode(\PDO::FETCH_OBJ);
 
@@ -472,19 +473,18 @@ function nescafe_preprocess_region__account(&$elem)
           <tr><th>ID</th><th>$name</th><th>$last_name</th><th>$phone</th><th>$prem</th><th>$livrare</th><th>$promoCode</th><th>$action</th></tr>
           </thead>
           <tbody>
-        TABLE;
+          TABLE;
     $count = 1;
     foreach ($result as $record) {
       //dump($record);
       if($record->statusTombola == 2){
         printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><a href='/details?id=%s' data-id='%s' class='btn_main action'>%s</a></td></tr>\n", $count, $record->field_name_value,$record->field_lastname_value, $record->name,$record->premiuTombola, $record->filialaTombola, $record->uid, $action);
-      }else if($record->status != 0){
-        printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><a href='/details?id=%s' data-id='%s' class='btn_main action'>%s</a></td></tr>\n", $count, $record->field_name_value, $record->field_lastname_value, $record->name, $record->premiu, $record->livrare, $record->promocode, $record->uid, $record->uid, $action);
       }
+      printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><a href='/details?id=%s' data-id='%s' class='btn_main action'>%s</a></td></tr>\n", $count, $record->field_name_value,$record->field_lastname_value, $record->name, $record->premiu, $record->livrare, $record->promocode, $record->uid, $record->uid, $action);
+
       $count++;
     }
 
-    print "</tbody>\n</table>\n";
     if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru') {
       $all = 'Все';
       $chis = 'Chișinău Bonus';
@@ -509,6 +509,7 @@ function nescafe_preprocess_region__account(&$elem)
       $logout = 'Ieșire';
       $search = 'Caută';
     }
+    print "</tbody>\n</table>\n";
     print "<div class='admin_btns'>
           <a href='/tabel-principal' class='btn_main stock'>" . $tabel . "</a>
           <a href='/stock' class='btn_main stock logout_btn'>" . $stats . "</a>
@@ -536,7 +537,6 @@ function nescafe_preprocess_region__account(&$elem)
   //    $sqlQuery = "SELECT * FROM promo_code WHERE active <> 0";
   //    $sqlQuery = "SELECT * FROM promo_code WHERE active <> 0";
   //}
-
   if (in_array('player', $roles) && !in_array('administrator', $roles)) {
     $sqlQuery = "SELECT * FROM promo_code WHERE active = '" . $curr_id_for_user . "' ORDER BY data ASC";
   }
@@ -632,10 +632,10 @@ TABLE;
             $count++;
           }
         }
-//        if($curr_id_for_user == 201){
-//          dump($total);
-//          var_dump($total);
-//        }
+        if($curr_id_for_user == 201){
+          dump($total);
+          var_dump($total);
+        }
         if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru') {
           $logout = 'Выход';
           $zilTombolaTxt = "Вы являетесь участником ежедневной лотереи";
