@@ -147,7 +147,7 @@ function nescafe_preprocess_menu__header_btn(&$logged)
 
 function nescafe_preprocess_page(&$page)
 {
-  \Drupal::service('page_cache_kill_switch')->trigger();
+
 //  print "
 //    <div class='banner_soon'>
 //        <img src='/themes/custom/nescafe/images/banner.png' alt=''>
@@ -366,7 +366,6 @@ height='0' width='0' style='display:none;visibility:hidden'></iframe></noscript>
 function nescafe_preprocess_region__account(&$elem)
 {
   $curr_id_for_user = \Drupal::currentUser()->id();
-  \Drupal::service('page_cache_kill_switch')->trigger();
   $config = new Config();
 
   $credentials = $config->credentials('database');
@@ -4106,14 +4105,6 @@ function nescafe_preprocess_region__details($details)
       $stateON = 'Ridicat în -> ';
       $stateOFF = "In Asteptare";
     }
-    $curr_path = \Drupal::service('path.current')->getPath();
-    //var_dump($curr_path);
-    \Drupal::service('page_cache_kill_switch')->trigger();
-    $sqlQuery = '';
-    $idGet = '';
-    $idGet = \Drupal::request()->query->get('id', NULL);
-    $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` LEFT JOIN `promo_code` ON `users_field_data`.uid = `promo_code`.active  LEFT JOIN `user__field_name` ON `users_field_data`.`uid` = `user__field_name`.`entity_id` LEFT JOIN `user__field_lastname` ON `users_field_data`.`uid` = `user__field_lastname`.`entity_id` WHERE uid != 0 AND `promo_code`.`active` = '".$idGet."' ORDER BY uid ASC";
-print_r("SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` LEFT JOIN `promo_code` ON `users_field_data`.uid = `promo_code`.active  LEFT JOIN `user__field_name` ON `users_field_data`.`uid` = `user__field_name`.`entity_id` LEFT JOIN `user__field_lastname` ON `users_field_data`.`uid` = `user__field_lastname`.`entity_id` WHERE uid != 0 AND `promo_code`.`active` = '".$idGet."' ORDER BY uid ASC");
 
     $sql = $sqlQuery;
     //dump($sql);
