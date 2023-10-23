@@ -4562,6 +4562,12 @@ function nescafe_preprocess_region__tabel_principal(){
         $string = str_replace("public://", "", $file_path);
         $arrImg = "<img src='/sites/default/files/" . $string . "'>";
         $stockInit = 0;
+        $elibSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 3";
+        $elib = $conn->query($elibSQL);
+        $countElib = 0;
+        foreach ($elib as $elibVal) {
+          $countElib++;
+        }
         $elib = $countElib;
         $solicitSQL = "SELECT COUNT(id) FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '" . $arrShow['filiala3'] . "' AND premiu = '" . $arrShow['name3'] . "'";
         $sol = $conn->query($solicitSQL);
