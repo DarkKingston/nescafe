@@ -462,7 +462,8 @@ function nescafe_preprocess_region__account(&$elem)
       $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` LEFT JOIN `promo_code` ON `users_field_data`.uid = `promo_code`.active LEFT JOIN `user__field_name` ON `users_field_data`.`uid` = `user__field_name`.`entity_id` LEFT JOIN `user__field_lastname` ON `users_field_data`.`uid` = `user__field_lastname`.`entity_id` WHERE uid != 0 AND `promo_code`.`active` != 0 AND `promo_code`.`status` != 0 AND `promo_code`.`status` != 1 OR `promo_code`.`statusTombola`!=1  ORDER BY uid ASC";
     }
 
-    $sql = $sqlQuery;
+//    $sql = $sqlQuery;
+    $sql = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` LEFT JOIN `promo_code` ON `users_field_data`.uid = `promo_code`.active  LEFT JOIN `user__field_name` ON `users_field_data`.`uid` = `user__field_name`.`entity_id` LEFT JOIN `user__field_lastname` ON `users_field_data`.`uid` = `user__field_lastname`.`entity_id`  WHERE uid != 0 AND `promo_code`.`active` != 0 AND `promo_code`.`status` != 0 ORDER BY uid ASC";
     //dump($sql);
     $result = $conn->query($sql);
     $result->setFetchMode(\PDO::FETCH_OBJ);
@@ -645,7 +646,7 @@ TABLE;
         $resultcheckTombola2 = $conn->query($checkTombola2);
         $resultcheckTombola2->setFetchMode(\PDO::FETCH_OBJ);
         $checkCounterTombola2 = 0;
-        foreach($resultcheckTombola as $resCheck){
+        foreach($resultcheckTombola2 as $resCheck){
           $checkCounterTombola2++;
         }
         if($checkCounterTombola2 == 0){
@@ -689,11 +690,11 @@ TABLE;
         }
 
         print "</tbody>\n</table>\n";
-        print "<div class='promo_add'> 
+        print "<div class='promo_add'>
                         <form method='post'>
-                          <div class='promo_group'><label>$intro</label><input type='text' class='promo_add_inp' name='introduceti_codul_promotional'></div> 
+                          <div class='promo_group'><label>$intro</label><input type='text' class='promo_add_inp' name='introduceti_codul_promotional'></div>
                           <input type='submit' value='$send' class='promo_send' name='submit_popup'>
-                        </form> 
+                        </form>
                         <a href='/user/logout' class='btn_main stock logout_btn'>".$logout."</a>
                         ".$tombolaZilnica."
                         ".$tombolaWin."
