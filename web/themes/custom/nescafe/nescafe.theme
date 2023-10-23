@@ -148,11 +148,11 @@ function nescafe_preprocess_menu__header_btn(&$logged)
 function nescafe_preprocess_page(&$page)
 {
 
-//  print "
-//    <div class='banner_soon'>
-//        <img src='/themes/custom/nescafe/images/banner.png' alt=''>
-//    </div>
-//  ";
+  print "
+    <div class='banner_soon'>
+        <img src='/themes/custom/nescafe/images/banner.png' alt=''>
+    </div>
+  ";
 
   $current_user = \Drupal::currentUser();
   if ($current_user->isAuthenticated()) {
