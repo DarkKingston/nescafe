@@ -449,8 +449,7 @@ function nescafe_preprocess_region__account(&$elem)
       $promoCode = "Promocod";
       $tabel = 'Principal';
     }
-    //set_time_limit(1000);
-    //ini_set('max_execution_time', 1000);
+
     $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` LEFT JOIN `promo_code` ON `users_field_data`.uid = `promo_code`.active  LEFT JOIN `user__field_name` ON `users_field_data`.`uid` = `user__field_name`.`entity_id` LEFT JOIN `user__field_lastname` ON `users_field_data`.`uid` = `user__field_lastname`.`entity_id`  WHERE uid != 0 AND `promo_code`.`active` != 0 AND `promo_code`.`status` != 0 AND `promo_code`.`statusTombola`!=1 ORDER BY uid ASC";
 
     if (isset($_POST['filSearch']) && $_POST['filiala_inp'] != '') {
@@ -633,7 +632,6 @@ TABLE;
             $count++;
           }
         }
-
         if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru') {
           $logout = 'Выход';
           $zilTombolaTxt = "Вы являетесь участником ежедневной лотереи";
@@ -650,7 +648,7 @@ TABLE;
         $resultcheckTombola2 = $conn->query($checkTombola2);
         $resultcheckTombola2->setFetchMode(\PDO::FETCH_OBJ);
         $checkCounterTombola2 = 0;
-        foreach($resultcheckTombola2 as $resCheck){
+        foreach($resultcheckTombola as $resCheck){
           $checkCounterTombola2++;
         }
         if($checkCounterTombola2 == 0){
@@ -1470,7 +1468,7 @@ TABLE;
           }
         }
       }
-      if ($total >=15 && $total % 15 == 0 && $userID->tombola == 0  && $userID->premiu == '') {
+      if ($total > 0 && $total % 15 == 0 && $userID->tombola == 0  && $userID->premiu == '') {
         $tombolaSuccess = "UPDATE promo_code SET tombola = 1,statusTombola = 0, data = NOW() WHERE promocode = '" . $userID->promocode . "' AND tombola = 0 ";
         if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru') {
           $txtone = "Поздравляем, Вы участник ежедневного розыгрыша!";
@@ -1641,7 +1639,7 @@ TABLE;
 
 
       }
-      if ($total>= 30 && $total % 30 == 0 && $userID->final == 0) {
+      if ($total > 0 && $total % 30 == 0 && $userID->final == 0) {
         $tombolaSuccess = "UPDATE promo_code SET final = 1, data = NOW() WHERE promocode = '" . $userID->promocode . "' AND final = 0 ";
         if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ru') {
           $txtone = "Поздравляем, Вы участник финального розыгрыша!";
