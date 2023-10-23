@@ -450,16 +450,16 @@ function nescafe_preprocess_region__account(&$elem)
       $tabel = 'Principal';
     }
 
-    $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` LEFT JOIN `promo_code` ON `users_field_data`.uid = `promo_code`.active  LEFT JOIN `user__field_name` ON `users_field_data`.`uid` = `user__field_name`.`entity_id` LEFT JOIN `user__field_lastname` ON `users_field_data`.`uid` = `user__field_lastname`.`entity_id`  WHERE uid != 0 AND `promo_code`.`active` != 0 AND `promo_code`.`status` != 0 AND `promo_code`.`statusTombola`!=1 ORDER BY uid ASC";
+    $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` LEFT JOIN `promo_code` ON `users_field_data`.uid = `promo_code`.active  LEFT JOIN `user__field_name` ON `users_field_data`.`uid` = `user__field_name`.`entity_id` LEFT JOIN `user__field_lastname` ON `users_field_data`.`uid` = `user__field_lastname`.`entity_id`  WHERE uid != 0 AND `promo_code`.`active` != 0 AND `promo_code`.`status` != 0 AND `promo_code`.`status` != 1 OR `promo_code`.`statusTombola`!=1 ORDER BY uid ASC";
 
     if (isset($_POST['filSearch']) && $_POST['filiala_inp'] != '') {
       if ($_POST['filiala_inp'] == 'Toate' || $_POST['filiala_inp'] == 'Все') {
-        $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` LEFT JOIN `promo_code` ON `users_field_data`.uid = `promo_code`.active  LEFT JOIN `user__field_name` ON `users_field_data`.`uid` = `user__field_name`.`entity_id` LEFT JOIN `user__field_lastname` ON `users_field_data`.`uid` = `user__field_lastname`.`entity_id`  WHERE uid != 0 AND `promo_code`.`active` != 0 AND `promo_code`.`status` != 0 AND `promo_code`.`statusTombola`!=1 ORDER BY uid ASC";
+        $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` LEFT JOIN `promo_code` ON `users_field_data`.uid = `promo_code`.active  LEFT JOIN `user__field_name` ON `users_field_data`.`uid` = `user__field_name`.`entity_id` LEFT JOIN `user__field_lastname` ON `users_field_data`.`uid` = `user__field_lastname`.`entity_id`  WHERE uid != 0 AND `promo_code`.`active` != 0 AND `promo_code`.`status` != 0 AND `promo_code`.`status` != 1 OR `promo_code`.`statusTombola`!=1 ORDER BY uid ASC";
       } else {
-        $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` LEFT JOIN `promo_code` ON `users_field_data`.uid = `promo_code`.active LEFT JOIN `user__field_name` ON `users_field_data`.`uid` = `user__field_name`.`entity_id` LEFT JOIN `user__field_lastname` ON `users_field_data`.`uid` = `user__field_lastname`.`entity_id` WHERE uid != 0 AND `promo_code`.`active` != 0 AND `promo_code`.`status` != 0 AND `promo_code`.`statusTombola`!=1 AND `promo_code`.`livrare` = '" . $_POST['filiala_inp'] . "' ORDER BY uid ASC";
+        $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` LEFT JOIN `promo_code` ON `users_field_data`.uid = `promo_code`.active LEFT JOIN `user__field_name` ON `users_field_data`.`uid` = `user__field_name`.`entity_id` LEFT JOIN `user__field_lastname` ON `users_field_data`.`uid` = `user__field_lastname`.`entity_id` WHERE uid != 0 AND `promo_code`.`active` != 0 AND `promo_code`.`status` != 0 AND `promo_code`.`status` != 1 OR `promo_code`.`statusTombola`!=1 AND `promo_code`.`livrare` = '" . $_POST['filiala_inp'] . "' ORDER BY uid ASC";
       }
     } else {
-      $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` LEFT JOIN `promo_code` ON `users_field_data`.uid = `promo_code`.active LEFT JOIN `user__field_name` ON `users_field_data`.`uid` = `user__field_name`.`entity_id` LEFT JOIN `user__field_lastname` ON `users_field_data`.`uid` = `user__field_lastname`.`entity_id` WHERE uid != 0 AND `promo_code`.`active` != 0 AND `promo_code`.`status` != 0 AND `promo_code`.`statusTombola`!=1  ORDER BY uid ASC";
+      $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` LEFT JOIN `promo_code` ON `users_field_data`.uid = `promo_code`.active LEFT JOIN `user__field_name` ON `users_field_data`.`uid` = `user__field_name`.`entity_id` LEFT JOIN `user__field_lastname` ON `users_field_data`.`uid` = `user__field_lastname`.`entity_id` WHERE uid != 0 AND `promo_code`.`active` != 0 AND `promo_code`.`status` != 0 AND `promo_code`.`status` != 1 OR `promo_code`.`statusTombola`!=1  ORDER BY uid ASC";
     }
 
     $sql = $sqlQuery;
@@ -689,11 +689,11 @@ TABLE;
         }
 
         print "</tbody>\n</table>\n";
-        print "<div class='promo_add'>
+        print "<div class='promo_add'> 
                         <form method='post'>
-                          <div class='promo_group'><label>$intro</label><input type='text' class='promo_add_inp' name='introduceti_codul_promotional'></div>
+                          <div class='promo_group'><label>$intro</label><input type='text' class='promo_add_inp' name='introduceti_codul_promotional'></div> 
                           <input type='submit' value='$send' class='promo_send' name='submit_popup'>
-                        </form>
+                        </form> 
                         <a href='/user/logout' class='btn_main stock logout_btn'>".$logout."</a>
                         ".$tombolaZilnica."
                         ".$tombolaWin."
@@ -1924,7 +1924,7 @@ function nescafe_preprocess_region__stock($page)
       }
       $stockInit = 0;
 
-      $solicitSQL = "SELECT * FROM promo_code WHERE active != 0 AND statusTombola = 2 AND filialaTombola = '" . $filValue['field_filiala_value'] . "' AND premiuTombola = '" . $arrShow['name1'] . "'";
+      $solicitSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '" . $filValue['field_filiala_value'] . "' AND premiu = '" . $arrShow['name1'] . "'";
       $sol = $conn->query($solicitSQL);
       $solicit = 0;
       foreach ($sol as $solVal) {
@@ -1940,7 +1940,7 @@ function nescafe_preprocess_region__stock($page)
       }
       $stockDisp = $initStock + $supl;
 
-      $elibSQL = "SELECT * FROM promo_code WHERE active != 0 AND statusTombola = 3";
+      $elibSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 3";
       $elib = $conn->query($elibSQL);
       $countElib = 0;
       foreach ($elib as $elibVal) {
@@ -2246,7 +2246,7 @@ function nescafe_preprocess_region__stock($page)
           $combinedArray[$premiuFiliala]['suplimentar'] += $info['suplimentar'];
           $combinedArray[$premiuFiliala]['data'] = $info['data'];
         }
-        $solicitSQL = "SELECT * FROM promo_code WHERE active != 0 AND statusTombola = 2 AND filialaTombola = '" . $arrFil1['value'] . "' AND premiuTombola = '" . $arrShow['name1'] . "' AND data BETWEEN '".$week7."' AND '".$week8."'";
+        $solicitSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '" . $arrFil1['value'] . "' AND premiu = '" . $arrShow['name1'] . "' AND data BETWEEN '".$week7."' AND '".$week8."'";
         $sol = $conn->query($solicitSQL);
         $solicit = 0;
         foreach ($sol as $solVal) {
@@ -2500,7 +2500,7 @@ function nescafe_preprocess_region__stock($page)
           $combinedArray[$premiuFiliala]['suplimentar'] += $info['suplimentar'];
           $combinedArray[$premiuFiliala]['data'] = $info['data'];
         }
-        $solicitSQL = "SELECT * FROM promo_code WHERE active != 0 AND statusTombola = 2 AND filialaTombola = '" . $arrFil1['value'] . "' AND premiuTombola = '" . $arrShow['name1'] . "' AND data BETWEEN '".$week6."' AND '".$week7."'";
+        $solicitSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '" . $arrFil1['value'] . "' AND premiu = '" . $arrShow['name1'] . "' AND data BETWEEN '".$week6."' AND '".$week7."'";
         $sol = $conn->query($solicitSQL);
         $solicit = 0;
         foreach ($sol as $solVal) {
@@ -2754,7 +2754,7 @@ function nescafe_preprocess_region__stock($page)
           $combinedArray[$premiuFiliala]['suplimentar'] += $info['suplimentar'];
           $combinedArray[$premiuFiliala]['data'] = $info['data'];
         }
-        $solicitSQL = "SELECT * FROM promo_code WHERE active != 0 AND statusTombola = 2 AND filialaTombola = '" . $arrFil1['value'] . "' AND premiuTombola = '" . $arrShow['name1'] . "' AND data BETWEEN '".$week5."' AND '".$week6."'";
+        $solicitSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '" . $arrFil1['value'] . "' AND premiu = '" . $arrShow['name1'] . "' AND data BETWEEN '".$week5."' AND '".$week6."'";
         $sol = $conn->query($solicitSQL);
         $solicit = 0;
         foreach ($sol as $solVal) {
@@ -3007,7 +3007,7 @@ function nescafe_preprocess_region__stock($page)
           $combinedArray[$premiuFiliala]['suplimentar'] += $info['suplimentar'];
           $combinedArray[$premiuFiliala]['data'] = $info['data'];
         }
-        $solicitSQL = "SELECT * FROM promo_code WHERE active != 0 AND statusTombola = 2 AND filialaTombola = '" . $arrFil1['value'] . "' AND premiuTombola = '" . $arrShow['name1'] . "' AND data BETWEEN '".$week4."' AND '".$week5."'";
+        $solicitSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '" . $arrFil1['value'] . "' AND premiu = '" . $arrShow['name1'] . "' AND data BETWEEN '".$week4."' AND '".$week5."'";
         $sol = $conn->query($solicitSQL);
         $solicit = 0;
         foreach ($sol as $solVal) {
@@ -3260,7 +3260,7 @@ function nescafe_preprocess_region__stock($page)
           $combinedArray[$premiuFiliala]['suplimentar'] += $info['suplimentar'];
           $combinedArray[$premiuFiliala]['data'] = $info['data'];
         }
-        $solicitSQL = "SELECT * FROM promo_code WHERE active != 0 AND statusTombola = 2 AND filialaTombola = '" . $arrFil1['value'] . "' AND premiuTombola = '" . $arrShow['name1'] . "' AND data BETWEEN '".$week3."' AND '".$week4."'";
+        $solicitSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '" . $arrFil1['value'] . "' AND premiu = '" . $arrShow['name1'] . "' AND data BETWEEN '".$week3."' AND '".$week4."'";
         $sol = $conn->query($solicitSQL);
         $solicit = 0;
         foreach ($sol as $solVal) {
@@ -3514,7 +3514,7 @@ function nescafe_preprocess_region__stock($page)
           $combinedArray[$premiuFiliala]['suplimentar'] += $info['suplimentar'];
           $combinedArray[$premiuFiliala]['data'] = $info['data'];
         }
-        $solicitSQL = "SELECT * FROM promo_code WHERE active != 0 AND statusTombola = 2 AND filialaTombola = '" . $arrFil1['value'] . "' AND premiuTombola = '" . $arrShow['name1'] . "' AND data BETWEEN '".$week2."' AND '".$week3."'";
+        $solicitSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '" . $arrFil1['value'] . "' AND premiu = '" . $arrShow['name1'] . "' AND data BETWEEN '".$week2."' AND '".$week3."'";
         $sol = $conn->query($solicitSQL);
         $solicit = 0;
         foreach ($sol as $solVal) {
@@ -3769,7 +3769,7 @@ function nescafe_preprocess_region__stock($page)
           $combinedArray[$premiuFiliala]['suplimentar'] += $info['suplimentar'];
           $combinedArray[$premiuFiliala]['data'] = $info['data'];
         }
-        $solicitSQL = "SELECT * FROM promo_code WHERE active != 0 AND statusTombola = 2 AND filialaTombola = '" . $arrFil1['value'] . "' AND premiuTombola = '" . $arrShow['name1'] . "' AND data BETWEEN '".$week1."' AND '".$week2."'";
+        $solicitSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '" . $arrFil1['value'] . "' AND premiu = '" . $arrShow['name1'] . "' AND data BETWEEN '".$week1."' AND '".$week2."'";
         $sol = $conn->query($solicitSQL);
         $solicit = 0;
         foreach ($sol as $solVal) {
@@ -4022,7 +4022,7 @@ function nescafe_preprocess_region__stock($page)
           $combinedArray[$premiuFiliala]['suplimentar'] += $info['suplimentar'];
           $combinedArray[$premiuFiliala]['data'] = $info['data'];
         }
-        $solicitSQL = "SELECT * FROM promo_code WHERE active != 0 AND statusTombola = 2 AND filialaTombola = '" . $arrFil1['value'] . "' AND premiuTombola = '" . $arrShow['name1'] . "' AND data BETWEEN '".$dataVal['data']."' AND '".$week1."'";
+        $solicitSQL = "SELECT * FROM promo_code WHERE active != 0 AND status = 2 AND livrare = '" . $arrFil1['value'] . "' AND premiu = '" . $arrShow['name1'] . "' AND data BETWEEN '".$dataVal['data']."' AND '".$week1."'";
         $sol = $conn->query($solicitSQL);
         $solicit = 0;
         foreach ($sol as $solVal) {
@@ -4104,11 +4104,9 @@ function nescafe_preprocess_region__details($details)
       $stateON = 'Ridicat în -> ';
       $stateOFF = "In Asteptare";
     }
-    $sqlQuery = '';
-    $idGet = '';
-    $idGet = $_GET['id'];
-    $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` LEFT JOIN `promo_code` ON `users_field_data`.uid = `promo_code`.active  LEFT JOIN `user__field_name` ON `users_field_data`.`uid` = `user__field_name`.`entity_id` LEFT JOIN `user__field_lastname` ON `users_field_data`.`uid` = `user__field_lastname`.`entity_id` WHERE uid != 0 AND `promo_code`.`active` = '".$idGet."' ORDER BY uid ASC";
-print_r("SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` LEFT JOIN `promo_code` ON `users_field_data`.uid = `promo_code`.active  LEFT JOIN `user__field_name` ON `users_field_data`.`uid` = `user__field_name`.`entity_id` LEFT JOIN `user__field_lastname` ON `users_field_data`.`uid` = `user__field_lastname`.`entity_id` WHERE uid != 0 AND `promo_code`.`active` = '".$idGet."' ORDER BY uid ASC");
+
+    $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `user__field_phone` ON `users_field_data`.`uid` = `user__field_phone`.`revision_id` LEFT JOIN `promo_code` ON `users_field_data`.uid = `promo_code`.active  LEFT JOIN `user__field_name` ON `users_field_data`.`uid` = `user__field_name`.`entity_id` LEFT JOIN `user__field_lastname` ON `users_field_data`.`uid` = `user__field_lastname`.`entity_id` WHERE uid != 0 AND `promo_code`.`active` = '" . $_GET['id'] . "' ORDER BY uid ASC";
+
 
     $sql = $sqlQuery;
     //dump($sql);
@@ -4230,10 +4228,10 @@ function nescafe_preprocess_region__reset()
   print "<div class='promo_add'>
     <form method='post'>
     <div class='promo_group promo_reset_pass'>
-    <label>".$intro."</label>
+    <label>$intro</label>
     <input type='text' class='promo_add_inp reset_pass' name='reset_password'>
     </div>
-    <input type='submit' value='".$send."' class='promo_send' name='submit_password'>
+    <input type='submit' value='$send' class='promo_send' name='submit_password'>
     </form>
     </div>";
 
