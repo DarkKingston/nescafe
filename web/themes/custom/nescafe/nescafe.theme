@@ -689,11 +689,11 @@ TABLE;
         }
 
         print "</tbody>\n</table>\n";
-        print "<div class='promo_add'> 
+        print "<div class='promo_add'>
                         <form method='post'>
-                          <div class='promo_group'><label>$intro</label><input type='text' class='promo_add_inp' name='introduceti_codul_promotional'></div> 
+                          <div class='promo_group'><label>$intro</label><input type='text' class='promo_add_inp' name='introduceti_codul_promotional'></div>
                           <input type='submit' value='$send' class='promo_send' name='submit_popup'>
-                        </form> 
+                        </form>
                         <a href='/user/logout' class='btn_main stock logout_btn'>".$logout."</a>
                         ".$tombolaZilnica."
                         ".$tombolaWin."
@@ -4230,10 +4230,10 @@ function nescafe_preprocess_region__reset()
   print "<div class='promo_add'>
     <form method='post'>
     <div class='promo_group promo_reset_pass'>
-    <label>$intro</label>
+    <label>".$intro."</label>
     <input type='text' class='promo_add_inp reset_pass' name='reset_password'>
     </div>
-    <input type='submit' value='$send' class='promo_send' name='submit_password'>
+    <input type='submit' value='".$send."' class='promo_send' name='submit_password'>
     </form>
     </div>";
 
