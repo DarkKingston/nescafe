@@ -4164,6 +4164,9 @@ function nescafe_preprocess_region__tombola()
       $mail = 'Почта';
       $stats = 'Сток';
       $promoCode = "Промокод";
+
+      $stateON = "Выдан в -> ";
+      $stateOFF = "В ожидании";
     }
     if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'ro') {
       $name = 'Nume';
@@ -4172,6 +4175,9 @@ function nescafe_preprocess_region__tombola()
       $mail = 'Posta';
       $stats = 'Stoc';
       $promoCode = "Promocod";
+
+      $stateON = "Ridicat în -> ";
+      $stateOFF = "În Asteptare";
     }
 
     $sqlQuery = "SELECT * FROM users_field_data LEFT JOIN `user__field_name` ON `users_field_data`.`uid` = `user__field_name`.`revision_id` LEFT JOIN `promo_code` ON `users_field_data`.uid = `promo_code`.active WHERE uid != 0 AND `promo_code`.`active` != 0 AND final != 0 ORDER BY uid ASC";
